@@ -1,0 +1,10 @@
+PROJETO_DESC=Seara de Jesus
+PROJETO_FOLDER=searadejesus.org.br/miles/
+DATABASE_PADRAO=desenv
+PATH_LOGO_PADRAO=tema/padrao/logo.png
+PATH_IMG_RODAPE_PADRAO=tema/padrao/rodape.png
+PREFIXO=td
+CURRENT_PROJECT=1
+CURRENT_DATABASE=desenv
+CODIGOCLIENTE=0
+THEME=desktop

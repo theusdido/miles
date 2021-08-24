@@ -1,0 +1,11 @@
+{
+	"currentproject":1,
+	"folder":"searadejesus.org.br/miles/",
+	"system":{
+		"url":{
+			"lib":"https://teia.tec.br/miles/sistema/lib/"
+		},
+		"request_protocol":"http",
+		"package":"erp"
+	}
+}

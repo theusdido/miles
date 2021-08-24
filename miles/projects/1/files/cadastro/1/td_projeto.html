@@ -1,0 +1,98 @@
+
+<script type="text/javascript text/javascript" src="system/classes/tdc/gradededados.class.js"></script>
+<script type="text/javascript text/javascript" src="system/validar.js"></script>
+<script type="text/javascript" src="projects/1/files/page/1/td_projeto.js"></script>
+<script type="text/javascript" src="system/formulario.js"></script>
+<input id="entidadeprincipalid" name="entidadeprincipalid" type="hidden" value="1" />
+<div class="bloco crud-contexto">
+<div class="titulo-pagina">Projeto</div>
+<div class="loader-pagina"></div>
+<span id="crud-contexto-listar-td_projeto" class="crud-contexto-listar fp" data-entidade="td_projeto" data-entidadeid="1" style="display:inline;">
+<button type="button" class="btn btn-primary b-novo">
+<span class="glyphicon glyphicon-plus"></span> Novo</button></span>
+<span id="crud-contexto-add-td_projeto" class="crud-contexto-add fp" data-entidade="td_projeto" data-entidadeid="1" style="display:none;">
+<div class="form-grupo-botao">
+<div class="loader-salvar"></div>
+<button type="button" class="btn btn-success b-salvar" id="b-salvar-td_projeto" data-loading-text="Aguarde...">
+<span class="glyphicon glyphicon-ok"></span> Salvar</button>
+<button type="button" class="btn btn-link b-voltar" id="td_projeto">
+<span class="glyphicon glyphicon-arrow-left"></span>Voltar</button>
+<div class="retorno msg-retorno-form-td_projeto" style="display:none">
+<div role="alert" class="alert alert-dismissible alert-success" style="text-align:right;font-weight:bold">
+<strong></strong>
+<button type="button" class="close" aria-label="Close" onclick="fecharAlerta();">
+<span aria-hidden="true">&times;</span></button></div></div></div>
+<div role="tabpanel">
+<ul class="nav nav-tabs" role="tablist">
+<li role="presentation">
+<a href="#pplbhtBp-td_projeto-conteudo-aba0" data-toggle="tab" role="tab" aria-controls="pplbhtBp-td_projeto-conteudo-aba0" aria-expanded="true">Capa</a></li>
+<li role="presentation" class="td_projetoGD">
+<a href="#YzupMP5j-td_projeto-conteudo-aba1" data-toggle="tab" role="tab" aria-controls="YzupMP5j-td_projeto-conteudo-aba1" aria-expanded="true">Banco de Dados</a></li></ul>
+<div class="tab-content">
+<div id="pplbhtBp-td_projeto-conteudo-aba0" role="tabpanel" class="tab-pane fade in" aria-labelledby="pplbhtBp-td_projeto-conteudo-aba0">
+<div class="row-fluid form_campos">
+<div class="coluna" data-ncolunas="3">
+<input type="hidden" id="id" name="id" class="form-control gd" data-entidade="td_projeto" /></div>
+<div class="coluna" data-ncolunas="3">
+<div class="form-group">
+<label for="nome" class="control-label">Nome</label>
+<input id="nome" name="nome" class="form-control input-sm texto-longo fp gd" data-entidade="td_projeto" required="true" atributo="1" /></div></div></div></div>
+<div id="YzupMP5j-td_projeto-conteudo-aba1" role="tabpanel" class="tab-pane fade in" aria-labelledby="YzupMP5j-td_projeto-conteudo-aba1">
+<div>
+<div class="bloco crud-contexto">
+<div class="loader-pagina"></div>
+<span id="crud-contexto-listar-td_projeto-td_connectiondatabase" class="crud-contexto-listar " data-entidade="td_connectiondatabase" data-entidadeid="39" style="display:inline;">
+<button type="button" class="btn btn-default b-novo">
+<span class="glyphicon glyphicon-plus"></span> Adicionar</button></span>
+<span id="crud-contexto-add-td_projeto-td_connectiondatabase" class="crud-contexto-add " data-entidade="td_connectiondatabase" data-entidadeid="39" style="display:none;">
+<div class="form-grupo-botao">
+<div class="loader-salvar"></div>
+<button type="button" class="btn btn-default b-salvar" id="b-salvar-td_connectiondatabase" data-loading-text="Aguarde...">
+<span class="glyphicon glyphicon-ok"></span> Salvar</button>
+<button type="button" class="btn btn-link b-voltar" id="td_connectiondatabase">
+<span class="glyphicon glyphicon-arrow-left"></span>Voltar</button>
+<div class="retorno msg-retorno-form-td_connectiondatabase" style="display:none">
+<div role="alert" class="alert alert-dismissible alert-success" style="text-align:right;font-weight:bold">
+<strong></strong>
+<button type="button" class="close" aria-label="Close" onclick="fecharAlerta();">
+<span aria-hidden="true">&times;</span></button></div></div></div>
+<form class="form-horizontal tdform">
+<fieldset>
+<div class="row-fluid form_campos">
+<div class="coluna" data-ncolunas="3">
+<input type="hidden" id="id" name="id" class="form-control gd" data-entidade="td_connectiondatabase" /></div>
+<div class="coluna" data-ncolunas="3">
+<div class="form-group">
+<label for="host" class="control-label">Host</label>
+<input id="host" name="host" class="form-control input-sm texto-longo gd" data-entidade="td_connectiondatabase" required="true" atributo="225" /></div></div>
+<div class="coluna" data-ncolunas="3">
+<div class="form-group">
+<label for="base" class="control-label">Banco</label>
+<input id="base" name="base" class="form-control input-sm texto-longo gd" data-entidade="td_connectiondatabase" required="true" atributo="226" /></div></div>
+<div class="coluna" data-ncolunas="3">
+<div>
+<div class="form-group">
+<label for="port" class="control-label">Porta</label>
+<input id="port" name="port" class="form-control input-sm texto-longo formato-numerointeiro" data-entidade="td_connectiondatabase" atributo="227" /></div></div></div>
+<div class="coluna" data-ncolunas="3">
+<div class="form-group">
+<label for="user" class="control-label">Usu&aacute;rio</label>
+<input id="user" name="user" class="form-control input-sm texto-longo" data-entidade="td_connectiondatabase" atributo="228" /></div></div>
+<div class="coluna" data-ncolunas="3">
+<div class="form-group">
+<label for="password" class="control-label">Senha</label>
+<input id="password" name="password" class="form-control input-sm texto-longo" data-entidade="td_connectiondatabase" atributo="229" /></div></div>
+<div class="coluna" data-ncolunas="3">
+<div class="form-group">
+<label for="td_type" class="control-label">Tipo</label>
+<div class="input-group">
+<select class="form-control input-sm  gd" required="true" atributo="230" id="td_type" name="td_type" data-entidade="td_connectiondatabase" data-atributodependencia="0"></select>
+<span class="input-group-btn"></span></div></div></div>
+<div class="coluna" data-ncolunas="3">
+<input id="td_projeto" name="td_projeto" type="hidden" data-entidade="td_connectiondatabase" class="form-control " atributo="231" /></div>
+<div class="coluna" data-ncolunas="3">
+<div class="form-group">
+<label for="td_sgdb" class="control-label">SGDB</label>
+<div class="input-group">
+<select class="form-control input-sm  gd" required="true" atributo="232" id="td_sgdb" name="td_sgdb" data-entidade="td_connectiondatabase" data-atributodependencia="0"></select>
+<span class="input-group-btn"></span></div></div></div></div></fieldset></form></span></div></div></div></div></div></span></div>
