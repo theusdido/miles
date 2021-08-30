@@ -21,11 +21,12 @@
 	);
 
 	// Criando Atributos
-	$descricao = criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar",200,0,3,1,0,0,"");
-	$entidade = criarAtributo($conn,$entidadeID,"td_entidade","Entidade","int",0,0,4,0,0,0,"");	
-	$motivo = criarAtributo($conn,$entidadeID,"td_motivo","Motivo","int",0,0,4,0,0,0,"");
-	$exigirobrigatorio = criarAtributo($conn,$entidadeID,"exigirobrigatorio","Exigir Obrigátorio","tinyint",0,1,7,0,0,0,"",1,0);
-	$exibirtitulo = criarAtributo($conn,$entidadeID,"exibirtitulo","Exigir Título","tinyint",0,1,7,0,0,0,"",1,0);	
+	$descricao 			= criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar",200,0,3,1,0,0,"");
+	$entidade 			= criarAtributo($conn,$entidadeID,"td_entidade","Entidade","int",0,0,4,0,0,0,"");	
+	$motivo 			= criarAtributo($conn,$entidadeID,"td_motivo","Motivo","int",0,0,4,0,0,0,"");
+	$exigirobrigatorio 	= criarAtributo($conn,$entidadeID,"exigirobrigatorio","Exigir Obrigátorio","tinyint",0,1,7,0,0,0,"",1,0);
+	$exibirtitulo 		= criarAtributo($conn,$entidadeID,"exibirtitulo","Exigir Título","tinyint",0,1,7,0,0,0,"",1,0);	
+	$exibirdadosantigos = criarAtributo($conn,$entidadeID,"exibirdadosantigos","Exigir Dados Antigos","tinyint",0,1,7,0,0,0,"",1,0);
 
 	// Criando Entidade
 	$alterarmovimentoID = criarEntidade(

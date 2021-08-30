@@ -86,16 +86,7 @@ class Pagina Extends Html {
 		$this->head->add($meta_charset,$meta_viewport,$meta_robots,$favicon,$bootstrap,$title);
 		$this->body->add($jquery,$bootstrap_js);
 		if ($this->showJSLibSystem){
-			$jsFuncoes = tdClass::Criar("script");
-			$jsFuncoes->src = Session::Get('URL_SYSTEM') . "funcoes.js";
-
-			$jsValidar = tdClass::Criar("script");
-			$jsValidar->src = Session::Get('URL_SYSTEM') . "validar.js";
-
-			$jsGradeDados = tdClass::Criar("script");
-			$jsGradeDados->src = Session::Get('URL_CLASS_TDC') . "gradededados.class.js";
-
-			$this->body->add($jsFuncoes,$jsValidar,$jsGradeDados);
+			addJSLIBFormSystem($this->body);
 		}
 		$this->jsInicial();
 	}
@@ -325,11 +316,11 @@ class Pagina Extends Html {
 	}
 
 	/*  
-		* M�todo getTitle
+		* Método getTitle
 	    * Data de Criacao: 28/10/2020
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
-		Retorna o titulo da p�gina
+		Retorna o titulo da pégina
 	*/
 	private function getTitle(){
 		$title 				= 'Miles';

@@ -528,6 +528,9 @@ function getHTMLTipoFormato($htmltipo,$valor,$entidade=0,$atributo=0,$id=0){
 		case 26:
 			$retorno = moneyToFloat($valor,true);
 		break;
+		case 29:
+			$retorno = str_replace("-","/",$valor);
+		break;
 		default:
 			$retorno = $valor;
 	}
@@ -1991,4 +1994,23 @@ function getURLParamsArray($url){
 
 function getSystemFKPreFixo($atributo = ""){
 	return "td_" . $atributo;
+}
+
+function addJSLIBFormSystem($elemento = null){
+	$jsFuncoes = tdClass::Criar("script");
+	$jsFuncoes->src = Session::Get('URL_SYSTEM') . "funcoes.js";
+
+	$jsValidar = tdClass::Criar("script");
+	$jsValidar->src = Session::Get('URL_SYSTEM') . "validar.js";
+
+	$jsGradeDados = tdClass::Criar("script");
+	$jsGradeDados->src = Session::Get('URL_CLASS_TDC') . "gradededados.class.js";
+
+	if ($elemento == null){
+		$jsFuncoes->mostrar();
+		$jsValidar->mostrar();
+		$jsGradeDados->mostrar();
+	}else{
+		$elemento->add($jsFuncoes,$jsValidar,$jsGradeDados);
+	}
 }

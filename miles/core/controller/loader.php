@@ -12,7 +12,7 @@
 	$lp->class = "text-muted">
 	$lp->add("Aguarde");
 	
-	$lcenter($limagem,$lp);
+	$lcenter->add($limagem,$lp);
 	$loader->add($lcenter);
 	
 	$loader->mostrar();

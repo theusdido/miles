@@ -1,98 +1,7 @@
 <?php
 	require 'conexao.php';
-	include_once 'log.php';
 	require 'prefixo.php';
-	
-	if (isset($_POST["op"])){
-		if ($_POST["op"] == "criarmovimentacao");{			
-
-			$path = "../../" . $_COOKIE["path_files_movimentacao"];
-
-			$fp = fopen($path . $_POST["filename"] ,'w');
-			fwrite($fp,htmlespecialcaracteres_($_POST["html"],1));
-			fclose($fp);			
-			
-			$jsFile = $path . "/" . $_POST["filenamejs"];
-			if (!file_exists($jsFile)){
-				$fp = fopen($jsFile ,'w');
-				fwrite($fp,"// JS da Movimentação");
-				fwrite($fp,"// Invocado ao clicar no botão Novo");
-				fwrite($fp,"\n");
-				fwrite($fp,"function beforeNew(){");
-				fwrite($fp,"\n");
-				fwrite($fp,"}");
-				fwrite($fp,"\n");
-				fwrite($fp,"// Executa após o carregamento padrão de uma novo registro");
-				fwrite($fp,"\n");
-				fwrite($fp,"function afterNew(){");
-				fwrite($fp,"\n");
-				fwrite($fp,"}");
-				fwrite($fp,"\n");
-				fwrite($fp,"// Invocado ao clicar no botão Salvar");
-				fwrite($fp,"\n");
-				fwrite($fp,"function beforeSave(){");
-				fwrite($fp,"\n");
-				fwrite($fp,"}");
-				fwrite($fp,"\n");
-				fwrite($fp,"// Executa após o salvamento padrão de um registro");
-				fwrite($fp,"\n");
-				fwrite($fp,"function afterSave(){");
-				fwrite($fp,"\n");
-				fwrite($fp,"}");
-				fwrite($fp,"\n");
-				fwrite($fp,"// Invocado ao clicar no botão Editar ");
-				fwrite($fp,"\n");
-				fwrite($fp,"function beforeEdit(){");
-				fwrite($fp,"\n");
-				fwrite($fp,"}");
-				fwrite($fp,"\n");
-				fwrite($fp,"// Executa após o carregamento padrão da edição de registro");
-				fwrite($fp,"\n");
-				fwrite($fp,"function afterEdit(){");
-				fwrite($fp,"\n");
-				fwrite($fp,"}");
-				fwrite($fp,"\n");
-				fwrite($fp,"// Invocado ao clicar no botão Voltar");
-				fwrite($fp,"\n");
-				fwrite($fp,"function beforeBack(){");
-				fwrite($fp,"\n");
-				fwrite($fp,"}");
-				fwrite($fp,"\n");
-				fwrite($fp,"// Executa após a ação de voltar a tela anterior");
-				fwrite($fp,"\n");
-				fwrite($fp,"function afterBack(){");
-				fwrite($fp,"\n");
-				fwrite($fp,"}");
-				fwrite($fp,"\n");
-				fwrite($fp,"// Invocado ao clicar no botão Deletar");
-				fwrite($fp,"\n");
-				fwrite($fp,"function beforeDelete(){");
-				fwrite($fp,"\n");
-				fwrite($fp,"}");
-				fwrite($fp,"\n");
-				fwrite($fp,"// Executa após a exclusão de um registro");
-				fwrite($fp,"\n");
-				fwrite($fp,"function afterDelete(){");
-				fwrite($fp,"\n");
-				fwrite($fp,"}");				
-				fclose($fp);
-			}
-
-			// Move os arquivos para sua respectiva pasta
-			$path_files_cadastro = "../../projects/".$config["CURRENT_PROJECT"]."/files/movimentacao/"; #Fora do escopo do sistema para recepurar a constante PATH_FILES_CADASTRO
-
-			$diretorio = dir($path_files_cadastro);
-			while($arquivo = $diretorio -> read()){
-				if ($arquivo != "" && $arquivo != "." && $arquivo != "..");{
-					if (strpos($arquivo,'.') > 0){							
-						copy($path_files_cadastro . $arquivo,$path . $arquivo);
-						unlink($path_files_cadastro . $arquivo);
-					}
-				}
-			}
-			exit;
-		}
-	}
+	require 'funcoes.php';
 
 	if (isset($_GET["t"])){
 		$entidade = $_GET["t"];
@@ -104,7 +13,7 @@
 <html>
 	<head>
 		<title>HTML Code</title>
-		<?php include 'head.php' ?>
+		<?php include 'head.php'; ?>
 		<style type="text/css">
 			#movimentacao-gerada{
 				border:3px solid #EEE;
@@ -113,8 +22,7 @@
 				padding:15px;				
 			}
 		</style>
-		<script type="text/javascript" src="../../lib/jquery/jquery.mask.js"></script>
-		<script type="text/javascript" src="../../lib/jquery/jquery.maskMoney.js"></script>
+
 	</head>
 	<body>
 		<?php include 'menu_topo.php'; ?>
@@ -155,7 +63,7 @@
 		});
 		function gerarMovimentacao(html){
 			$.ajax({
-				url:"gerarMovimentacao.php?op=salvar",
+				url:"../../index.php?controller=mdm/movimentacao&currentproject=<?=$_SESSION["currentproject"]?>",
 				type:"POST",
 				data:{
 					op:"criarmovimentacao",
@@ -163,6 +71,7 @@
 					filename:$("#filename").val(),
 					filenamejs:$("#filenamejs").val(),
 					entidade:"<?=$entidade?>",
+					id:"<?=$id?>",
 					urlupload:$("#urlupload").val()
 				},
 				complete:function(){

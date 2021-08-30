@@ -78,3 +78,18 @@ function getFormPadrao($ncolunas = 1,$fpForm){
 	
 	return $form;
 }
+
+$iframeEmExecucao = tdc::o("iframe");
+$iframeEmExecucao->border = 0;
+$iframeEmExecucao->frameborder = 0;
+$iframeEmExecucao->width = "100%";
+$iframeEmExecucao->height = "200";
+$iframeEmExecucao->scrolling = "no";
+
+$modalAddEmExecucao = tdClass::Criar("modal");
+$modalAddEmExecucao->nome = "modal-add-emexecucao";
+$modalAddEmExecucao->tamanho = "modal-lg";
+$modalAddEmExecucao->addHeader("",null);
+$modalAddEmExecucao->addBody($iframeEmExecucao);
+$modalAddEmExecucao->addFooter("");
+$crudAdd->add($modalAddEmExecucao);

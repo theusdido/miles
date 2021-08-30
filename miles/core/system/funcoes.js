@@ -552,7 +552,7 @@ function movimentacao(entidade,id,movimentacao){
 	setCookie("entidademovdados",entidade,"");
 	setCookie("idmovdados",id,"");
 	setCookie("movimentacaoselecionada",movimentacao,"");
-	$("#modal-movimentacao .modal-body p").load(session.currentprojectregisterpath + "files/movimentacao/"+movimentacao+"/"+td_entidade[entidade].nomecompleto+".html");
+	$("#modal-movimentacao .modal-body p").load(session.folderprojectfiles + "files/movimentacao/"+movimentacao+"/"+td_entidade[entidade].nomecompleto+".html");
 	$("#modal-movimentacao").modal("show");
 }
 function limpaArraysFormularioDados(){
@@ -686,7 +686,7 @@ function editarTDFormulario(entidade,id){
 	var funcionalidade = "editarformulario";
 	var EntidadePrincipalID = entidade;
 	var id = id;
-	$("#conteudoprincipal").load(session.currentprojectregisterpath + "files/cadastro/"+entidade+"/"+td_entidade[entidade].nomecompleto+".html",function(){
+	$("#conteudoprincipal").load(session.folderprojectfiles  + "files/cadastro/"+entidade+"/"+td_entidade[entidade].nomecompleto+".html",function(){
 		editarFormulario(entidade,id);
 	});
 }

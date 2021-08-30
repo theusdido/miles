@@ -94,7 +94,7 @@
 				<legend>Criar Banco de Dados</legend>
 				<div class="form-grupo-botao">
 				
-					<img id="loader-criarbanco" src="<?=$_SESSION["URL_CURRENT_PROJECT_THEME"]?>loading2.gif"/>
+					<img id="loader-criarbanco" src="<?=$_SESSION["URL_SYSTEM_THEME"]?>loading2.gif"/>
 					<button type="button" class="btn btn-primary" id="btn-criarbanco">
 						Criar Banco																
 					</button>	
@@ -195,7 +195,7 @@
 				$("#loader-criarbanco").hide();				
 				if (retorno == 1){
 					$("#retorno").html('<div class="alert alert-success" role="alert"><b>Parabéns !</b>. Base de dados criado com sucesso.</div>');
-					$("#guia-base").attr("src","<?=$_SESSION["URL_CURRENT_PROJECT_THEME"]?>check.gif");
+					$("#guia-base").attr("src","<?=$_SESSION['URL_SYSTEM_THEME']?>check.gif");
 				}else{
 					$("#retorno").html(retorno);
 				}

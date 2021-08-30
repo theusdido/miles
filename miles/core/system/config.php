@@ -343,6 +343,7 @@
 
 	// Caminho padrão para os arquivos da páginas de movimentação
 	define('PATH_FILES_MOVIMENTACAO',Session::Get("PATH_CURRENT_PROJECT").'files/movimentacao/');
+	define('URL_FILES_MOVIMENTACAO', Session::Get('URL_CURRENT_PROJECT') . 'files/movimentacao/');
 
 	// URL padrão para as classes de WIDGETS
 	define('URL_CLASS_WIDGETS', Session::Get('URL_CLASS') . 'widgets/');

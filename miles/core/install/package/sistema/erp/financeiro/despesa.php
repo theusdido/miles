@@ -28,6 +28,7 @@
 	$formapagamento 	= criarAtributo($conn,$entidadeID,"formapagamento","Forma de Pagamento","int",0,0,4,0,installDependencia($conn,"erp_financeiro_formapagamento"),0,"",0,0);
 	$despesafixa 		= criarAtributo($conn,$entidadeID,"despesafixa","Despesa Fixa","tinyint",0,1,7,0,0,0,"",0,0);
 
+
 	// Criando Acesso
 	$menu_webiste = addMenu($conn,'Financeiro','#','','','','financeiro');
 

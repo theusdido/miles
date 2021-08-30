@@ -70,8 +70,8 @@
 					exibirpesquisa:'{$atributo->exibirpesquisa}',
 					tipoinicializacao:'{$atributo->tipoinicializacao}',
 					atributodependencia:'{$atributo->atributodependencia}',
-					labelzerocheckbox:'{$atributo->labelzerocheckbox}',
-					labelumcheckbox:'{$atributo->labelumcheckbox}',
+					labelzerocheckbox:'".utf8charset($atributo->labelzerocheckbox,8)."',
+					labelumcheckbox:'".utf8charset($atributo->labelumcheckbox,8)."',
 					criarsomatoriogradededados:'{$atributo->criarsomatoriogradededados}',
 					naoexibircampo:'{$atributo->naoexibircampo}'
 				};

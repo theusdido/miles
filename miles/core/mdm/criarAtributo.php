@@ -364,6 +364,7 @@
 									<option value="27">27 - Multi Linha</option>
 									<option value="28">28 - Hora</option>
 									<option value="29">29 - Mês/Ano</option>
+									<option value="30">30 - Is Null e Is Empty</option>
 								</select>
 							</div>							
 							<div class="form-group">

@@ -203,7 +203,7 @@
 				<div class="col-md-9">
 					<div class="row-fluid">
 						<div id="form-grupo-botao-instalacao">
-							<img id="loader-instalar" src="../system/tema/padrao/loading2.gif"/>
+							<img id="loader-instalar" src="<?=$_SESSION["URL_SYSTEM_THEME"]?>loading2.gif"/>
 							<button type="button" class="btn btn-primary btn-instalacaosistema" id="btn-instalar">
 								<?=$displaybutton?>				
 							</button>
@@ -249,14 +249,14 @@
 							<button type="button" class="btn btn-warning btn-instalacaosistema" id="btn-atualizar-personalizado">
 								Atualizar
 							</button>
-							<img id="loading-atualizar-personalizado" src="../<?=$_SESSION["PATH_SYSTEM_THEME"]?>loading2.gif" />
+							<img id="loading-atualizar-personalizado" src="<?=$_SESSION["URL_SYSTEM_THEME"]?>loading2.gif" />
 						  </div>
 						</div>
 					</div>					
 				</div>
 			</div>
-			<script type="text/javascript" src="../lib/jquery/jquery.js"></script>
-			<script type="text/javascript" src="../lib/tdlib/js/tdlib.js"></script>
+			<script type="text/javascript" src="<?=$_SESSION["URL_LIB"]?>jquery/jquery.js"></script>
+			<script type="text/javascript" src="<?=$_SESSION["URL_LIB"]?>tdlib/js/tdlib.js"></script>
 			<script type="text/javascript">
 				<?php
 					if (isset($_GET["installsystem"])){
@@ -417,7 +417,7 @@
 									$("#barradeprogresso-instalacao .progress-bar").removeClass("progress-bar-info");
 									$("#barradeprogresso-instalacao .progress-bar").addClass("progress-bar-success");
 									$("#barradeprogresso-instalacao .progress-bar").html("Sistema Instalado com Sucesso!");
-									$("#guia-instalacao").attr("src","../system/tema/padrao/check.gif");
+									$("#guia-instalacao").attr("src","<?=$_SESSION['URL_SYSTEM_THEME']?>check.gif");
 									setTimeout(function(){
 										$("#barradeprogresso-instalacao").hide("5000");
 									},5000);
@@ -490,14 +490,18 @@
 				});
 
 				function addComponentesPersonalizados(){
+					var divRow = $('<div class="row">');
 					for(c in componentes){
+						var divCol		= $('<div class="col-md-4 col-sm-6">');
 						var formgroup 	= $('<div class="form-group">');
 						var label 		= $('<label for="'+c+'">'+c+'</label>');
 						var checkbox	= $('<input id="'+c+'" type="checkbox" data-componente="'+c+'">');
 
 						formgroup.append(checkbox,label);
-						$("#formulario-personalizado").append(formgroup);
+						divCol.append(formgroup);
+						divRow.append(divCol);
 					}
+					$("#formulario-personalizado").append(divRow);
 				}
 			</script>
 		</div>	

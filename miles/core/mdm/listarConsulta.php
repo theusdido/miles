@@ -33,7 +33,7 @@
 								$descricao = utf8_encode($linha["descricao"]);
 								
 								$query = $conn->query("SELECT descricao FROM td_entidade WHERE id = {$linha["td_entidade"]}")->fetch();
-								$entidade = utf8_encode($query["descricao"]);
+								$entidade = executefunction("utf8charset",array($query["descricao"],5));
 								echo "	<tr>
 											<td>{$linha["id"]}</td>
 											<td>{$descricao}</td>

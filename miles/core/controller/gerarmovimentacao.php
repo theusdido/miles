@@ -38,11 +38,11 @@
 					$query = $conn->query($sql);
 					$linha = $query->fetch();
 					$valorold = utf8_encode(getHTMLTipoFormato($atributo->tipohtml,$linha[$atributo->nome]));
-					echo $entidade->contexto->id . "<= =>" . $atributo->nome;
+
 					$valor = Campos::Integridade($entidade->contexto->id,$atributo->nome,$obj->valor,"");
 					if ($valor == $valorold) continue;
 					$sqlmov = "UPDATE "	. $entidadeNameMov . " SET {$atributo->nome} = '".$valor."' WHERE ID = " . $linha["id"];
-					echo $sqlmov;
+
 					$query = $conn->query($sqlmov);
 					if ($query){
 						$prox = getProxId(str_replace(PREFIXO . "_","","movimentacaohistoricoalteracao"),$conn);
@@ -143,16 +143,14 @@
 	$movimentacao = tdClass::Criar("persistent",array(MOVIMENTACAO,$id))->contexto;
 	$entidade = tdClass::Criar("persistent",array(ENTIDADE,$movimentacao->{ENTIDADE}))->contexto;
 
-	$cf = getCurrentConfigFile();
-	$path_files_movimentacao = PATH_PROJECT . $cf["CURRENT_PROJECT"] . "/" . PATH_FILES_MOVIMENTACAO . $id;
+	$cf = getCurrentConfigFile();	
+	$path_files_movimentacao = PATH_FILES_MOVIMENTACAO . $id;
+
 
 	// Cria diretório
 	if (!file_exists($path_files_movimentacao)){
 		mkdir($path_files_movimentacao);
 	}
-
-	// Seta Cookie Diretório
-	setCookie("path_files_movimentacao",$path_files_movimentacao . "/");
 
 	// Campo Entidade Principal
 	$entidadePrincipalID = tdClass::Criar("input");
@@ -172,23 +170,23 @@
 
 	// JS Funções
 	$jsFuncoes = tdClass::Criar("script");
-	$jsFuncoes->src = PATH_SYSTEM . "funcoes.js";
+	$jsFuncoes->src = Session::Get('URL_SYSTEM') . "funcoes.js";
 	$jsFuncoes->mostrar();
 
 	// Arquivo JS Incorporado
 	$jsIncorporado = tdClass::Criar("script");
-	$jsIncorporado->src = $path_files_movimentacao . "/" . $entidade->nome . ".js";
+	$jsIncorporado->src = URL_FILES_MOVIMENTACAO. $id . "/" . $entidade->nome . ".js";
 	$jsIncorporado->mostrar();
 	
 	// JS Formulário
 	$jsFormulario = tdClass::Criar("script");
-	$jsFormulario->src = PATH_SYSTEM . "formulario.js";
+	$jsFormulario->src = Session::Get('URL_SYSTEM') . "formulario.js";
 	$jsFormulario->mostrar();
 
 	
 	// JS Validar
 	$jsValidar = tdClass::Criar("script");
-	$jsValidar->src = PATH_SYSTEM . "validar.js";
+	$jsValidar->src = Session::Get('URL_SYSTEM') . "validar.js";
 	$jsValidar->mostrar();
 
 	$blocoTitulo = tdClass::Criar("bloco");
@@ -349,39 +347,43 @@
 			$obj->labelzerocheckbox = $atributo->labelzerocheckbox;
 			$obj->labelumcheckbox = $atributo->labelumcheckbox;
 			$obj->legenda = "Novo";
+			$obj->desabilitar = false;
 			
 			array_push($arrayCamposAtributos,$obj);
 
-			// Campo Valor Antigo
-			$obj = new stdclass();
-			$obj->id =  $atributo->id;
-			$obj->td_entidade = $atributo->{ENTIDADE};
-			$obj->nome = $atributo->nome . "-old";
-			$obj->descricao = $atributo->descricao;
-			$obj->tipo = $atributo->tipo;
-			$obj->tamanho = $atributo->tamanho;
-			$obj->nulo = $atributo->nulo;
-			$obj->omissao = $atributo->omissao;
-			$obj->collection = $atributo->collection;
-			$obj->atributos = $atributo->atributos;
-			$obj->indice = $atributo->indice;
-			$obj->autoincrement = $atributo->autoincrement;
-			$obj->comentario = $atributo->comentario;
-			$obj->exibirgradededados = $atributo->exibirgradededados;
-			$obj->chaveestrangeira = $atributo->chaveestrangeira;
-			$obj->tipohtml = $atributo->tipohtml;
-			$obj->dataretroativa = $atributo->dataretroativa;
-			$obj->ordem = $atributo->ordem;
-			$obj->inicializacao = $atributo->inicializacao;
-			$obj->readonly = 1;
-			$obj->exibirpesquisa = $atributo->exibirpesquisa;
-			$obj->tipoinicializacao = $atributo->tipoinicializacao;
-			$obj->atributodependencia = $atributo->atributodependencia;
-			$obj->labelzerocheckbox = $atributo->labelzerocheckbox;
-			$obj->labelumcheckbox = $atributo->labelumcheckbox;
-			$obj->legenda = "Antigo";
-			
-			array_push($arrayCamposAtributos,$obj);
+			if ($movimentacao->exibirdadosantigos == 1){
+				// Campo Valor Antigo
+				$obj = new stdclass();
+				$obj->id =  $atributo->id;
+				$obj->td_entidade = $atributo->{ENTIDADE};
+				$obj->nome = $atributo->nome . "-old";
+				$obj->descricao = $atributo->descricao;
+				$obj->tipo = $atributo->tipo;
+				$obj->tamanho = $atributo->tamanho;
+				$obj->nulo = $atributo->nulo;
+				$obj->omissao = $atributo->omissao;
+				$obj->collection = $atributo->collection;
+				$obj->atributos = $atributo->atributos;
+				$obj->indice = $atributo->indice;
+				$obj->autoincrement = $atributo->autoincrement;
+				$obj->comentario = $atributo->comentario;
+				$obj->exibirgradededados = $atributo->exibirgradededados;
+				$obj->chaveestrangeira = $atributo->chaveestrangeira;
+				$obj->tipohtml = $atributo->tipohtml;
+				$obj->dataretroativa = $atributo->dataretroativa;
+				$obj->ordem = $atributo->ordem;
+				$obj->inicializacao = $atributo->inicializacao;
+				$obj->readonly = 1;
+				$obj->exibirpesquisa = $atributo->exibirpesquisa;
+				$obj->tipoinicializacao = $atributo->tipoinicializacao;
+				$obj->atributodependencia = $atributo->atributodependencia;
+				$obj->labelzerocheckbox = $atributo->labelzerocheckbox;
+				$obj->labelumcheckbox = $atributo->labelumcheckbox;
+				$obj->legenda = "Antigo";
+				$obj->desabilitar = false;
+				
+				array_push($arrayCamposAtributos,$obj);
+			}
 		}
 		
 		$form->ncolunas = 2;

@@ -81,13 +81,9 @@ class tdc Extends tdClass{
 					$sql = tdc::f($sql[0],$sql[1],$sql[2],$sql[3]);
 				}
 			}
-			$dataset = tdClass::Criar("repositorio",array($entidade))->carregar($sql);
+			return tdClass::Criar("repositorio",array($entidade))->carregar($sql);
 		}
-		return (
-			sizeof($dataset) > 1
-			? $dataset
-			: $dataset[0]
-		);
+		return $dataset;
 	}
 	/*
 		* Método f

@@ -21,7 +21,11 @@ var contextoListar = "#crud-contexto-listar-" + EntidadePrincipalOBJ.nomecomplet
 var contextoAddTempGen = [];
 var contextoListarTempGen = [];
 var entidades = [];
-var registrounico = td_entidade[EntidadePrincipalID].registrounico;
+
+if (typeof registrounico == undefined || typeof registrounico == "undefined"){
+	var registrounico = EntidadePrincipalOBJ.registrounico;
+}
+
 var cmodal = " .modal-body p"; // Complemento Modal
 var pModalName = "myModal-"; // PREFIXO Modal Name
 var movimentacaoEntidadeDados = {};
@@ -65,7 +69,7 @@ if(parmsURL["funcionalidade"] != undefined){
 
 // Inicializa CADASTRO
 if (funcionalidade == "cadastro"){
-	if (parseInt(EntidadePrincipalOBJ.registrounico) == 0){
+	if (parseInt(registrounico) == 0){
 		if (gradesdedados[contextoListar] == undefined){
 			// Carrega a grade de dados padrão
 			var entidadePrincipalGD = new GradeDeDados(EntidadePrincipalID);
@@ -134,8 +138,13 @@ if (funcionalidade == "editarformulario"){
 
 // Registro Único
 if (registrounico == 1){
-	if (editarFormulario(EntidadePrincipalID,1) == ""){
+	$(".b-voltar",contextoAdd).hide();
+	if (funcionalidade == "add-emexecucao"){
 		novoRegistroFormulario($(contextoListar).find(".b-novo").first());
+	}else{
+		if (editarFormulario(EntidadePrincipalID,1) == ""){
+			novoRegistroFormulario($(contextoListar).find(".b-novo").first());
+		}
 	}
 }
 
@@ -483,6 +492,8 @@ $(".b-salvar").click(function(){
 				}
 				if (typeof afterSave === "function") afterSave(fp,this);
 				unLoaderSalvar();
+
+				parent.$("#modal-add-emexecucao").modal('hide');
 			},
 			error:function(ret){
 				if (fp){
@@ -1111,14 +1122,6 @@ function carregarListas(entidade,atributo,contextoAdd,valor){ // Argumento 4 é 
 			return false;
 		}
 	}
-	/*
-	if (isAtributoDependencia(td_entidade[td_atributo[atributo].td_entidade].nomecompleto,td_atributo[atributo].nome)) {
-		if (filtro == ""){
-			console.log("Não carrega a lista se o atributo for dependente e sem filtro => Entidade: " + td_entidade[td_atributo[atributo].td_entidade].nomecompleto + " - Atributo: " + td_atributo[atributo].nome);
-		}		
-		return false;
-	}
-	*/
 	if (td_atributo[atributo].chaveestrangeira != "" && td_atributo[atributo].chaveestrangeira != undefined && td_atributo[atributo].chaveestrangeira > 0){
 		if (typeof td_entidadeauxiliar[td_atributo[atributo].chaveestrangeira] == "object"){
 			$(".form-control[id=" + td_atributo[atributo].nome +"]",contextoAdd).html("");
@@ -1163,9 +1166,9 @@ function carregarListas(entidade,atributo,contextoAdd,valor){ // Argumento 4 é 
 					}
 					$(".form-control[id=" + td_atributo[atributo].nome+"][data-entidade="+td_entidade[td_atributo[atributo].td_entidade].nomecompleto+"]",contextoAdd).html(htmlretorno);
 					$(".form-control[id=" + td_atributo[atributo].nome +"-old][data-entidade="+td_entidade[td_atributo[atributo].td_entidade].nomecompleto+"]",contextoAdd).html(htmlretorno);
-					if (valor != ""){
-						$(".form-control[id=" + td_atributo[atributo].nome+"][data-entidade="+td_entidade[td_atributo[atributo].td_entidade].nomecompleto+"]",contextoAdd).val(valor);
-						$(".form-control[id=" + td_atributo[atributo].nome+"-old][data-entidade="+td_entidade[td_atributo[atributo].td_entidade].nomecompleto+"]",contextoAdd).val(valor);
+					if (valor != "" && valor != undefined){
+						$(".form-control[id=" + td_atributo[atributo].nome +"][data-entidade="+td_entidade[td_atributo[atributo].td_entidade].nomecompleto+"]",contextoAdd).val(valor);
+						$(".form-control[id=" + td_atributo[atributo].nome +"-old][data-entidade="+td_entidade[td_atributo[atributo].td_entidade].nomecompleto+"]",contextoAdd).val(valor);
 					}
 					/*
 					var isatributodep = isAtributoDependencia(td_entidade[td_atributo[atributo].td_entidade].nomecompleto,td_atributo[atributo].nome);
@@ -1881,3 +1884,18 @@ function loading2Page(seletor,exibir = true){
 		$(seletor + " .loader-salvar .loading2").hide();
 	}
 }
+
+$('.btn-add-emexecucao').click(function(){
+	var modal 		= $("#modal-add-emexecucao");
+	var campo 		= $(this).parents(".input-group").first().find(".form-control");
+	var atributo 	= campo.attr("atributo");
+	var fk			= td_atributo[atributo].chaveestrangeira;
+	var entidade	= campo.data("entidade");
+	var iframe = $("#modal-add-emexecucao iframe").attr("src",session.urlmiles + '?controller=htmlpage&entidade='+fk+'&op=cadastro');		
+
+	modal.on('hide.bs.modal', function (e) {
+		carregarListas(entidade,atributo,contextoAdd);
+	});
+
+	modal.modal('show');
+});

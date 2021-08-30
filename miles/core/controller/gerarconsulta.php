@@ -15,9 +15,6 @@
 		mkdir($pathfileconsulta);
 	}
 	
-	// Seta Cookie Diretório
-	setCookie("path_files_consulta",$pathfileconsulta . "/");
-	
 	$consulta = tdClass::Criar("persistent",array(CONSULTA,$id))->contexto;
 	$entidade = tdClass::Criar("persistent",array(ENTIDADE,$consulta->{ENTIDADE}))->contexto;
 	
@@ -40,12 +37,12 @@
 
 	// JS Formulário
 	$jsFormulario = tdClass::Criar("script");
-	$jsFormulario->src = PATH_SYSTEM . "formulario.js";
+	$jsFormulario->src = Session::Get('URL_SYSTEM')  . "formulario.js";
 	$jsFormulario->mostrar();
 
 	// JS Validar
 	$jsValidar = tdClass::Criar("script");
-	$jsValidar->src = PATH_SYSTEM . "validar.js";
+	$jsValidar->src = Session::Get('URL_SYSTEM')  . "validar.js";
 	$jsValidar->mostrar();
 
 	$blocoTitulo = tdClass::Criar("bloco");
@@ -73,7 +70,7 @@
 	// Seleciona os campos do FILTRO da CONSULTA
 	$sql = tdClass::Criar("sqlcriterio");
 	$sql->add(tdClass::Criar("sqlfiltro",array(CONSULTA,'=',$consulta->id)));
-	$sql->setPropriedade("order","id DESC");
+	$sql->setPropriedade("order","ordem ASC,id DESC");
 	$dataset = tdClass::Criar("repositorio",array(FILTROCONSULTA))->carregar($sql);
 
 	$arrayCamposAtributos = array();
@@ -222,3 +219,6 @@
 	$modal->addHeader("Movimentação",null);
 	$modal->addBody('');
 	$modal->mostrar();
+
+	// Cria o MDM File JavaScript Compile
+	include 'mdm/javascriptfile.php';

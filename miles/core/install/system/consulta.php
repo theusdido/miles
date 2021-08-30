@@ -43,10 +43,11 @@
 	);
 
 	// Criando Atributos
-	$consulta = criarAtributo($conn,$filtrosID,"td_consulta","Consulta","int",0,0,4,0,0,0,"");
-	$atributo = criarAtributo($conn,$filtrosID,"td_atributo","Atributo","int",0,0,4,0,0,0,"");
-	$operador = criarAtributo($conn,$filtrosID,"operador","Operador","varchar",5,0,3,1,0,0,"");
-	$legenda = criarAtributo($conn,$filtrosID,"legenda","Legenda","varchar",50,0,3,1,0,0,"");
+	$consulta 	= criarAtributo($conn,$filtrosID,"td_consulta","Consulta","int",0,0,4,0,0,0,"");
+	$atributo 	= criarAtributo($conn,$filtrosID,"td_atributo","Atributo","int",0,0,4,0,0,0,"");
+	$operador 	= criarAtributo($conn,$filtrosID,"operador","Operador","varchar",5,0,3,1,0,0,"");
+	$legenda 	= criarAtributo($conn,$filtrosID,"legenda","Legenda","varchar",50,0,3,1,0,0,"");
+	$ordem	 	= criarAtributo($conn,$filtrosID,"ordem","Ordem","tinyint",0,1,25,0);
 
 	// Status Grade
 	$statusGradeID = criarEntidade(

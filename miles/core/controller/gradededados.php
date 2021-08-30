@@ -119,9 +119,13 @@ if ($order = tdc::r("order",$array_order)){
 	foreach($order as $o){
 		$ordenacao .= ($ordenacao==""?"":",") . "{$o["campo"]} {$o["tipo"]}";
 	}
-	if ($ordenacao!=""){
+	if ($ordenacao != ""){
 		$sql->setPropriedade("order",$ordenacao);
-	}	
+	}else{
+		$sql->setPropriedade("order","id DESC");
+	}
+}else{
+	$sql->setPropriedade("order","id DESC");
 }
 
 // Quantidade total de dados
@@ -194,7 +198,6 @@ if ($filtroNN != ""){
     $sql->addFiltro("id","in",$ids);
 }
 
-#Debug::log($entidade->contexto->nome . " " . $sql->dump());
 
 $dataset = tdClass::Criar("repositorio",array($entidade->contexto->nome))->carregar($sql);
 $dados = "";

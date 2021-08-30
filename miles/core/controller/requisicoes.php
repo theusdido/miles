@@ -459,6 +459,7 @@ switch($op){
 				$sql->addFiltro($ft[0],$operador,$valorfiltro);
 			}
 		}
+		$sql->setPropriedade("order","id DESC");
 		$dataset = tdClass::Criar("repositorio",array($entidade->contexto->nome))->carregar($sql);
 		$atributo = tdClass::Read("atributo");
 		if ($atributo != "" && is_numeric($_GET["atributo"]) && (int)$atributo != 0){

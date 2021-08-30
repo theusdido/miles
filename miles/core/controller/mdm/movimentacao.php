@@ -1,0 +1,74 @@
+<?php
+
+    $id 	= $_POST["id"];
+    $path 	= PATH_FILES_MOVIMENTACAO . $id . "/";
+
+    $fp = fopen($path . $_POST["filename"] ,'w');
+    fwrite($fp,htmlespecialcaracteres($_POST["html"],1));
+    fclose($fp);			
+
+    $jsFile = $path . "/" . $_POST["filenamejs"];
+    if (!file_exists($jsFile)){
+        $fp = fopen($jsFile ,'w');
+        fwrite($fp,"// JS da Movimentação");
+        fwrite($fp,"// Invocado ao clicar no botão Novo");
+        fwrite($fp,"\n");
+        fwrite($fp,"function beforeNew(){");
+        fwrite($fp,"\n");
+        fwrite($fp,"}");
+        fwrite($fp,"\n");
+        fwrite($fp,"// Executa após o carregamento padrão de uma novo registro");
+        fwrite($fp,"\n");
+        fwrite($fp,"function afterNew(){");
+        fwrite($fp,"\n");
+        fwrite($fp,"}");
+        fwrite($fp,"\n");
+        fwrite($fp,"// Invocado ao clicar no botão Salvar");
+        fwrite($fp,"\n");
+        fwrite($fp,"function beforeSave(){");
+        fwrite($fp,"\n");
+        fwrite($fp,"}");
+        fwrite($fp,"\n");
+        fwrite($fp,"// Executa após o salvamento padrão de um registro");
+        fwrite($fp,"\n");
+        fwrite($fp,"function afterSave(){");
+        fwrite($fp,"\n");
+        fwrite($fp,"}");
+        fwrite($fp,"\n");
+        fwrite($fp,"// Invocado ao clicar no botão Editar ");
+        fwrite($fp,"\n");
+        fwrite($fp,"function beforeEdit(){");
+        fwrite($fp,"\n");
+        fwrite($fp,"}");
+        fwrite($fp,"\n");
+        fwrite($fp,"// Executa após o carregamento padrão da edição de registro");
+        fwrite($fp,"\n");
+        fwrite($fp,"function afterEdit(){");
+        fwrite($fp,"\n");
+        fwrite($fp,"}");
+        fwrite($fp,"\n");
+        fwrite($fp,"// Invocado ao clicar no botão Voltar");
+        fwrite($fp,"\n");
+        fwrite($fp,"function beforeBack(){");
+        fwrite($fp,"\n");
+        fwrite($fp,"}");
+        fwrite($fp,"\n");
+        fwrite($fp,"// Executa após a ação de voltar a tela anterior");
+        fwrite($fp,"\n");
+        fwrite($fp,"function afterBack(){");
+        fwrite($fp,"\n");
+        fwrite($fp,"}");
+        fwrite($fp,"\n");
+        fwrite($fp,"// Invocado ao clicar no botão Deletar");
+        fwrite($fp,"\n");
+        fwrite($fp,"function beforeDelete(){");
+        fwrite($fp,"\n");
+        fwrite($fp,"}");
+        fwrite($fp,"\n");
+        fwrite($fp,"// Executa após a exclusão de um registro");
+        fwrite($fp,"\n");
+        fwrite($fp,"function afterDelete(){");
+        fwrite($fp,"\n");
+        fwrite($fp,"}");				
+        fclose($fp);
+    }

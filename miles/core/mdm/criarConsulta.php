@@ -157,7 +157,7 @@
 		}
 		
 		if ($_GET["op"] == "listarconsulta"){
-			$sql = "SELECT id,".PREFIXO."atributo atributo,operador,legenda FROM ".PREFIXO."consultafiltro a WHERE td_consulta = {$_GET["consulta"]} ORDER BY id DESC";
+			$sql = "SELECT id,".PREFIXO."atributo atributo,operador,legenda FROM ".PREFIXO."consultafiltro a WHERE td_consulta = {$_GET["consulta"]} ORDER BY ordem ASC,id DESC";
 			$query = $conn->query($sql);
 			if ($query->rowCount() <= 0){
 				echo '<div class="alert alert-warning alert-dismissible text-center" role="alert">Nenhum campo de <strong>filtro</strong> configurado.</div>';
@@ -170,7 +170,9 @@
 				$queryAtributo = $conn->query($sqlAtributo);
 				$linhaAtributo = $queryAtributo->fetch();
 				$atributoDescricao = executefunction("utf8charset",array($linhaAtributo["descricao"]));
-				echo "<span class='list-group-item'>
+				echo "<span class='list-group-item' data-id='".$linha["id"]."'>
+						<span class='fas fa-ellipsis-v pontinhos' aria-hidden='true'></span>
+						&nbsp;&nbsp;
 						Atributo <strong>{$atributoDescricao}</strong> com  operador ( <strong>{$operador} ) </strong>
 						<button type='button' class='btn btn-default' onclick='excluirFiltro({$linha["id"]});' style='float:right;margin-top:-4px'>
 							<span class='fas fa-trash-alt' aria-hidden='true'></span>
@@ -178,6 +180,7 @@
 						<button id='atributo-editar-{$linha["id"]}' type='button' class='btn btn-default' data-atributo='{$atributo}' data-operador='{$operador}' data-idfiltro='{$linha["id"]}' data-legenda='{$linha["legenda"]}' onclick='editarFiltro({$linha["id"]})' style='float:right;margin-top:-4px'>
 							<span class='fas fa-edit' aria-hidden='true'></span>
 						</button>
+						
 					</span>";
 			}
 			exit;
@@ -265,6 +268,32 @@
 				atualizarListaFiltro("<?=$id?>");
 				atualizarListaStatus("<?=$id?>");
 				atualizarListaFiltroInicial("<?=$id?>");
+				$(".sortable").sortable({
+					update: function( event, ui ) {
+						var ordenacao = [];
+						$(this).find(".list-group-item").each(
+							(e,elemento) => {
+								var id = $(elemento).data("id");
+								if (id != undefined){
+									ordenacao.push({
+										id:id,
+										order:e+1
+									});
+								}					
+							}
+						);
+						$.ajax({
+							url:"<?=$_SESSION['URL_MILES']?>",
+							data:{
+								op:"ordenar",
+								controller:"sortable",
+								entidade:"td_consultafiltro",
+								atributo:"ordem",
+								ordem:ordenacao
+							}
+						});
+					}
+				});
 			}
 			function validar(){
 				if ($("#entidade").val() == "" || $("#entidade").val() == null){
@@ -298,6 +327,7 @@
 				$("#form-status #status").val($("#lista-status #atributo-editar-" + id).data("status"));
 				$("#form-status #idstatus").val($("#lista-status #atributo-editar-" + id).data("idstatus"));
 				$("#modalCadastroStatus").modal('show');
+				$("#form-status #atributo").change();
 			}
 			$(document).ready(function(){
 				$("#movimentacao").val("<?=isset($movimentacao)?$movimentacao:0?>");
@@ -610,8 +640,7 @@
 								</div>
 								<!-- CADASTRO DE FILTRO -->
 								<br/><br/>
-								<div id="lista-filtro" class="list-group">
-								</div>
+								<div id="lista-filtro" class="list-group sortable"></div>
 						  </div>
 						</div>
 					  </div>
@@ -656,7 +685,7 @@
 															$sql = "SELECT id,nome,descricao,chaveestrangeira FROM ".PREFIXO."atributo WHERE ".PREFIXO."entidade = " . $entidade ;
 															$query = $conn->query($sql);
 															foreach($query->fetchAll() as $linha){
-																echo '<option value="'.$linha["id"].'" data-nome="'.$linha["nome"].'" data-chaveestrangeira="'.$linha["chaveestrangeira"].'">'.utf8_encode($linha["descricao"]).' [ '.$linha["nome"].' ]</option>';
+																echo '<option value="'.$linha["id"].'" data-nome="'.$linha["nome"].'" data-chaveestrangeira="'.$linha["chaveestrangeira"].'">'.$linha["descricao"].' [ '.$linha["nome"].' ]</option>';
 															}
 														?>
 														</select>

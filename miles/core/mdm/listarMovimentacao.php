@@ -1,6 +1,7 @@
 <?php
 	require 'conexao.php';
-	require 'prefixo.php';	
+	require 'prefixo.php';
+	require 'funcoes.php';
 ?>
 <html>
 	<head>
@@ -32,7 +33,7 @@
 								$descricao = $linha["descricao"];
 								
 								$query = $conn->query("SELECT descricao FROM td_entidade WHERE id = {$linha["td_entidade"]}")->fetch();
-								$entidade = utf8_encode($query["descricao"]);
+								$entidade = $query["descricao"];
 								echo "	<tr>
 											<td>{$linha["id"]}</td>
 											<td>{$descricao}</td>

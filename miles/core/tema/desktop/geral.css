@@ -648,4 +648,8 @@ html, body { margin:0; height: 100%;} /* Para funcionar altura dos elementos aut
 {
 	background-color: #F0F0F0;
 }
+
+.btn-add-emexecucao{
+	height:30px;
+}
 -->

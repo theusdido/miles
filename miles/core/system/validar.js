@@ -441,7 +441,26 @@ if (typeof $().mask == "function"){
 	
 	//Mês-Ano
 	$(".formato-mesano").mask("99/9999");
-	
+	$('.formato-mesano').blur(function(e){
+		if (this.value!=''){
+			if (validarReferenciaAnoMes(this.value)){
+				statusFormControl(this,'success');
+			}else{
+				statusFormControl(this,'error');
+			}							
+		}else{
+			statusFormControl(this,'default');
+		}
+	});	
+
 	// Hora
 	$(".formato-hora").mask("99:99:99");
+}
+
+function validarReferenciaAnoMes(referencia = ""){
+	var ref = referencia.replace("-","").replace("/","");
+	if (ref.length != 6){
+		return false;
+	}
+	return true;
 }

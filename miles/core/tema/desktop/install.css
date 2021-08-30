@@ -69,12 +69,11 @@
 	text-align:right;
 }
 #formulario-personalizado label{
-	margin-left:3px;
+	margin-left:5px;
 }
 #formulario-personalizado .form-group{
 	border-bottom:1px solid #DDD;
-	width:20%;
-	margin:2%;
+	height:30px;
 }
 #loading-atualizar-personalizado{
 	display:none;
