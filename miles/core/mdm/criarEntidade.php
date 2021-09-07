@@ -88,7 +88,7 @@
 				// ID Última entidade
 				$linha_ultimo = $conn->query("SELECT MAX(id)+1 id FROM ".PREFIXO."entidade")->fetchAll();
 				$prox = $linha_ultimo[0]['id'];
-				$sql = "INSERT INTO ".PREFIXO."entidade (id,nome,descricao,exibirmenuadministracao,exibircabecalho,ncolunas,atributogeneralizacao,exibirlegenda,registrounico,carregarlibjavascript,tipoaba) VALUES ({$prox},'{$nome}','{$descricao}',{$exibirmenuadministracao},{$exibircabecalho},{$ncolunas},{$atributogeneralizacao},{$exibirlegenda},{$registrounico},{$carregarlibjavascript},'{$tipoaba}');";
+				$sql = "INSERT INTO entidade (id,nome,descricao,exibirmenuadministracao,exibircabecalho,ncolunas,atributogeneralizacao,exibirlegenda,registrounico,carregarlibjavascript,tipoaba) VALUES ({$prox},'{$nome}','{$descricao}',{$exibirmenuadministracao},{$exibircabecalho},{$ncolunas},{$atributogeneralizacao},{$exibirlegenda},{$registrounico},{$carregarlibjavascript},'{$tipoaba}');";
 				$query = $conn->query($sql);
 			}	
 		}else{
@@ -199,7 +199,7 @@
 									<option value="0" selected>Nenhum Selecionado</option>
 									<?php 
 										if ($id!=""){
-											$sql = "SELECT id,descricao FROM ".PREFIXO."atributo WHERE ".PREFIXO."entidade = " . $id;
+											$sql = "SELECT id,descricao FROM ".PREFIXO."atributo WHERE entidade = " . $id;
 											$query = $conn->query($sql);
 											foreach($query->fetchAll() as $linha){
 												echo '<option value="'.$linha["id"].'">'.executefunction("utf8charset",array($linha["descricao"])).'</option>';
@@ -214,7 +214,7 @@
 									<option value="0" selected>Nenhum Selecionado</option>
 									<?php 
 										if ($id!=""){						
-											$sql = "SELECT id,descricao FROM ".PREFIXO."atributo WHERE ".PREFIXO."entidade = " . $id;
+											$sql = "SELECT id,descricao FROM ".PREFIXO."atributo WHERE entidade = " . $id;
 											$query = $conn->query($sql);
 											foreach($query->fetchAll() as $linha){
 												echo '<option value="'.$linha["id"].'">'.executefunction("utf8charset",array($linha["descricao"])).'</option>';						

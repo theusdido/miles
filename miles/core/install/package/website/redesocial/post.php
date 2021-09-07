@@ -109,4 +109,4 @@
 	$menu_redesocial = addMenu($conn,'Rede Social','#','','','','redesocial');
 	
 	// 4º PASSO
-	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".PREFIXO.$entidadeNome.".html",'',$menu_redesocial,1,'redesocial-' . $entidadeNome);
+	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_redesocial,1,'redesocial-' . $entidadeNome);

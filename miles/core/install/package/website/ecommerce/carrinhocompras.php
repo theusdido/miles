@@ -63,7 +63,7 @@
 	$itenscarrinho_variacaotamanho 		= criarAtributo($conn,$itenscarrinhoID,"variacaotamanho","Tamanho ( Variação )","int",0,1,22,0,getEntidadeId("ecommerce_tamanhoproduto"));
 
 	// Adicionando Menu
-	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".PREFIXO.$entidadeNome.".html",'',$menu_webiste,7,'ecommerce-' . $entidadeNome,$entidadeID,'cadastro');
+	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,7,'ecommerce-' . $entidadeNome,$entidadeID,'cadastro');
 
 	// Cria Relacionamento
 	criarRelacionamento($conn,2,$entidadeID,$itenscarrinhoID,"Itens",$itenscarrinho_carrinho);

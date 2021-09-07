@@ -61,7 +61,7 @@
 	$listaRelatorio->class = "list-group lista-item-menu-crud";
 
 	if ($conn = Transacao::Get()){
-		$sqlMenuCrud = "select descricao,link,tipo from td_menucruditens WHERE td_menucrud = " . $_GET["menu"];
+		$sqlMenuCrud = "select descricao,link,tipo from td_menucruditens WHERE menucrud = " . $_GET["menu"];
 		$queryMenuCrud = $conn->query($sqlMenuCrud);
 		while ($linhaMenuCrud = $queryMenuCrud->fetch()){
 			$a = tdClass::Criar("hyperlink");

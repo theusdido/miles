@@ -3,7 +3,6 @@
 }
 #btn-testarconexao,#btn-pacotes,#btn-instalar,#btn-personalizar{
 	float:right;
-	margin-right:5px;
 }
 #loader-criarbanco,#loader-pacotes,#loader-instalar{
 	float:right;
@@ -30,15 +29,13 @@
 	margin-top:5px;
 }
 .panel-pacote{
-	float:left;
-	width:48%;
-	margin-left:1%;
+
 }
 .checkbox-componente{
 	float:right;				
 }
 #barradeprogresso-instalacao{
-	width:91%;
+	width:100%;
 	margin-top:7px;
 	display:none;
 }
@@ -69,17 +66,17 @@
 	text-align:right;
 }
 #formulario-personalizado label{
-	margin-left:5px;
+	margin-left:3px;
 }
 #formulario-personalizado .form-group{
 	border-bottom:1px solid #DDD;
-	height:30px;
+	width:20%;
+	margin:2%;
 }
 #loading-atualizar-personalizado{
 	display:none;
 }
 #btn-salvar-pacotes{
 	margin:10px auto;
-	width: 98%;
 	height: 30px;
 }

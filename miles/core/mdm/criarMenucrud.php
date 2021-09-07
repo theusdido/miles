@@ -77,7 +77,7 @@
 		}
 		
 		if ($_GET["op"] == "listaritem"){
-			$sql = "SELECT id,descricao,tipo,link FROM ".PREFIXO."menucruditens a WHERE td_menucrud = {$_GET["menucrud"]} ORDER BY id DESC";
+			$sql = "SELECT id,descricao,tipo,link FROM ".PREFIXO."menucruditens a WHERE menucrud = {$_GET["menucrud"]} ORDER BY id DESC";
 			$query = $conn->query($sql);
 			if ($query->rowCount() <= 0){
 				echo '<div class="alert alert-warning alert-dismissible text-center" role="alert">Nenhum iten de menu configurado.</div>';

@@ -36,7 +36,7 @@ if ($op == "get_form"){
 }
 if ($op == "atualizar_emmassa"){
 	$atributo 			= tdc::p(ATRIBUTO,tdc::r("atributo"));
-	$entidade 			= tdc::p(ENTIDADE,$atributo->td_entidade);
+	$entidade 			= tdc::p(ENTIDADE,$atributo->entidade);
 	$registros			= explode(",",tdc::r("registros"));
 	$entidadeprincipal 	= tdc::r("entidadeprincipal");
 
@@ -57,7 +57,7 @@ if ($op == "atualizar_emmassa"){
 		}
 	}else{
 		$relacionamento = tdc::p(RELACIONAMENTO,tdc::r("relacionamento"));
-		$atributoRel 	= tdc::p(ATRIBUTO,$relacionamento->td_atributo)->nome;
+		$atributoRel 	= tdc::p(ATRIBUTO,$relacionamento->atributo)->nome;
 		$dataset 		= tdc::d($entidade->nome,tdc::f($atributoRel,"IN",$registros));
 		foreach($dataset as $d){
 			$reg 		= $d->id;
@@ -75,7 +75,7 @@ if ($op == "atualizar_emmassa"){
 	exit;
 }
 if ($op == "get_atributos"){
-	echo json_encode(tdc::da(ATRIBUTO,tdc::f(ENTIDADE,"=",tdc::r("entidade"))));
+	echo json_encode(tdc::da(ATRIBUTO,tdc::f('entidade',"=",tdc::r("entidade"))));
 	exit;
 }
 if ($_POST["entidade"] == "" || (int)$_POST["entidade"] <= 0){
@@ -90,7 +90,7 @@ $ini_reg = (($max_registros * $bloco) - $max_registros);
 
 // Campos do Cabeçalho
 $sql = tdClass::Criar("sqlcriterio");
-$sql->addFiltro(ENTIDADE,"=",$entidade->contexto->id);
+$sql->addFiltro('entidade',"=",$entidade->contexto->id);
 if (tdClass::Criar("persistent",array(CONFIG,1))->contexto->tipogradedados == "table"){
 	$sql->addFiltro("exibirgradededados","=",1);
 }	
@@ -102,11 +102,11 @@ $campos_tipo = "int";
 $campos_html = "3";
 $campos_fk = "0";
 foreach ($dataset as $dado){
-	$campos_nome .= "," . $dado->nome;
-	$campos_descricao .= "," . $dado->descricao;
-	$campos_tipo .= "," . $dado->tipo;
-	$campos_html .= "," . $dado->tipohtml;
-	$campos_fk .= "," . $dado->chaveestrangeira;
+	$campos_nome 		.= "," . $dado->nome;
+	$campos_descricao 	.= "," . $dado->descricao;
+	$campos_tipo 		.= "," . $dado->tipo;
+	$campos_html 		.= "," . $dado->tipohtml;
+	$campos_fk 			.= "," . $dado->chaveestrangeira;
 }
 
 // Carrega Dados
@@ -119,13 +119,9 @@ if ($order = tdc::r("order",$array_order)){
 	foreach($order as $o){
 		$ordenacao .= ($ordenacao==""?"":",") . "{$o["campo"]} {$o["tipo"]}";
 	}
-	if ($ordenacao != ""){
+	if ($ordenacao!=""){
 		$sql->setPropriedade("order",$ordenacao);
-	}else{
-		$sql->setPropriedade("order","id DESC");
-	}
-}else{
-	$sql->setPropriedade("order","id DESC");
+	}	
 }
 
 // Quantidade total de dados
@@ -198,6 +194,7 @@ if ($filtroNN != ""){
     $sql->addFiltro("id","in",$ids);
 }
 
+#Debug::log($entidade->contexto->nome . " " . $sql->dump());
 
 $dataset = tdClass::Criar("repositorio",array($entidade->contexto->nome))->carregar($sql);
 $dados = "";
@@ -218,7 +215,7 @@ foreach($dataset as $dado){
 				$attrRel = tdClass::Criar("persistent",array(ATRIBUTO,$entRel->contexto->campodescchave))->contexto->nome;
 			}else{
 				$sqlAttrRelVazio = tdClass::Criar("sqlcriterio");
-				$sqlAttrRelVazio->addFiltro(ENTIDADE,"=",$entRel->contexto->id);
+				$sqlAttrRelVazio->addFiltro('entidade',"=",$entRel->contexto->id);
 				$sqlAttrRelVazio->addFiltro("exibirgradededados","=",1);
 				$sqlAttrRelVazio->setPropriedade("limit",1);
 				$datasetAttrRelVazio = tdClass::Criar("repositorio",array(ATRIBUTO))->carregar($sqlAttrRelVazio);
@@ -244,10 +241,10 @@ foreach($dataset as $dado){
 
 $total_registros = tdClass::Criar("repositorio",array($entidade->contexto->nome))->quantia($sqlTotal);
 
-$retorno["entidade"] = $entidade->contexto->id;
-$retorno["dados"] = $dados_array;
-$retorno["dadosreais"] = $dados_array_reais;
-$retorno["total"] = $total_registros;
+$retorno["entidade"] 		= $entidade->contexto->id;
+$retorno["dados"] 			= $dados_array;
+$retorno["dadosreais"] 		= $dados_array_reais;
+$retorno["total"] 			= $total_registros;
 
 
 echo json_encode($retorno);

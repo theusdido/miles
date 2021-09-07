@@ -62,7 +62,7 @@ $thQuantidade   = $tabela->add("th",array("propriedades" => array( "innerhtml" =
 $thValorTotal   = $tabela->add("th",array("propriedades" => array( "innerhtml" => "Total" , "align" => "right" , "width" => "10%" ) , "elementopai" => $trHead));
 
 $conn = Transacao::get();
-$sqlTotalAcessos = "SELECT * FROM td_ecommerce_pedido WHERE td_status = 6;";
+$sqlTotalAcessos = "SELECT * FROM td_ecommerce_pedido WHERE status = 6;";
 $queryTotalAcessos = $conn->query($sqlTotalAcessos);
 $itens = $queryTotalAcessos->fetchAll(PDO::FETCH_OBJ);
 
@@ -70,7 +70,7 @@ if (sizeof($itens) > 0) {
     foreach ($itens as $item) {
         $trBody = $tabela->add("tr", array("elementopai" => $tbody));
 
-        $cliente = $item->td_cliente == 0 ? utf8_encode("Não Logado") : $item->td_cliente . " - " . tdc::p("td_ecommerce_cliente", $item->td_cliente)->nome;
+        $cliente = $item->cliente == 0 ? utf8_encode("Não Logado") : $item->cliente . " - " . tdc::p("td_ecommerce_cliente", $item->cliente)->nome;
         $frete = $item->valorfrete == 0 ? " - " : "R$ " . moneyToFloat($item->valorfrete, true);
 
         $tdPedido = $tabela->add("td", array("propriedades" => array("innerhtml" => $item->id), "elementopai" => $trBody));

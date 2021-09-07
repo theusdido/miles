@@ -51,8 +51,8 @@ class tdInstall {
 			$base 		= $d->base;
 			$usuario 	= $d->user;
 			$senha 		= $d->password;
-			$tipo		= tdc::p("td_typeconnectiondatabase",$d->td_type)->nome;
-			$sgbd		= tdc::p("td_database",$d->td_sgdb)->nome;
+			$tipo		= tdc::p("td_typeconnectiondatabase",$d->type)->nome;
+			$sgbd		= tdc::p("td_database",$d->sgdb)->nome;
 			$porta 		= $d->port;
 
 			$fp = fopen(self::getLocalConfigProjeto().$tipo."_mysql.ini","w+");

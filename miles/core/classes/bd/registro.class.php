@@ -167,24 +167,28 @@ abstract class Registro {
 		Recupera (retorna) um objeto da base de dados através de seu ID e instancia ele na memória
 	*/		
 	public function carregar($id){
-		$sql = tdClass::Criar("sqlselecionar");		
-		$sql->setEntidade($this->getEntidade());
-		$sql->addColuna("*");
+		try {
+			$sql = tdClass::Criar("sqlselecionar");		
+			$sql->setEntidade($this->getEntidade());
+			$sql->addColuna("*");
 
-		$criterio = tdClass::Criar("sqlcriterio");
-		$criterio->Add(tdClass::Criar("sqlfiltro",array("id","=",$id)));
-		$sql->setCriterio($criterio);
-		if ($conn = Transacao::get()){
-			Transacao::log($sql->getInstrucao());
-			$resultado = $conn->query($sql->getInstrucao());
-			if($resultado){
-				$this->dados = $resultado->fetchObject($this->getEntidade());
-				return $this->dados;
+			$criterio = tdClass::Criar("sqlcriterio");
+			$criterio->Add(tdClass::Criar("sqlfiltro",array("id","=",$id)));
+			$sql->setCriterio($criterio);
+			if ($conn = Transacao::get()){
+				Transacao::log($sql->getInstrucao());
+				$resultado = $conn->query($sql->getInstrucao());
+				if($resultado){
+					$this->dados = $resultado->fetchObject($this->getEntidade());
+					return $this->dados;
+				}else{
+					return false;
+				}
 			}else{
-				return false;
+				throw new Exception("Não há transação ativa");
 			}
-		}else{
-			throw new Exception("Não há transação ativa");
+		}catch(Throwable $t){
+			return false;	
 		}
 	}
 

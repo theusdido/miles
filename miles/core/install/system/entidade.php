@@ -1,6 +1,6 @@
  <?php
 	// Nome da Entidade
-	$entidade = PREFIXO . "entidade";
+	$entidade = getSystemPREFIXO()  . "entidade";
 	
 	// Criando Entidade
 	criarTabelaDicionario($conn,$entidade);
@@ -26,4 +26,4 @@
 	criarCampoDicionario($conn,$entidade,"btnexportarcsv","boolean",false,1,7);
 	criarCampoDicionario($conn,$entidade,"btnimprimirtodosregistroshtml","boolean",false,1,7);
 	criarCampoDicionario($conn,$entidade,"btnimprimirtodosregistrospdf","boolean",false,1,7);
-	criarCampoDicionario($conn,$entidade,"tipoaba","varchar",5,0);
+	criarCampoDicionario($conn,$entidade,"tipoaba","varchar",5,1,7);

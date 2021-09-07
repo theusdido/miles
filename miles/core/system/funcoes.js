@@ -285,6 +285,7 @@ function statusFormControl(campo,tipo){
 				$(campo).parent().parent().removeClass('has-success');	
 			}
 		break;
+		case 'default':
 		default:
 			if (!$(campo).parent().hasClass("calendar-picker-group")){
 				$(campo).parent().removeClass('has-success');
@@ -413,7 +414,7 @@ function getIdAtributo(atributonome,entidadenome){
 	}
 	var idRetorno = 0;
 	for (a in td_atributo){
-		if (td_atributo[a].nome == atributonome && td_atributo[a].td_entidade == entidade){
+		if (td_atributo[a].nome == atributonome && td_atributo[a].entidade == entidade){
 			idRetorno = td_atributo[a].id;
 		}
 	}
@@ -437,7 +438,7 @@ function getParmsURL(){
 function retornaPermissao(funcao){
 	var retorno = false;
 	for (fp in td_funcaopermissao){
-		if (td_funcaopermissao[fp].td_funcao == funcao && td_funcaopermissao[fp].td_usuario == session.userid && td_funcaopermissao[fp].permissao == 1){
+		if (td_funcaopermissao[fp].funcao == funcao && td_funcaopermissao[fp].usuario == session.userid && td_funcaopermissao[fp].permissao == 1){
 			retorno = true;
 		}
 	}
@@ -552,7 +553,7 @@ function movimentacao(entidade,id,movimentacao){
 	setCookie("entidademovdados",entidade,"");
 	setCookie("idmovdados",id,"");
 	setCookie("movimentacaoselecionada",movimentacao,"");
-	$("#modal-movimentacao .modal-body p").load(session.folderprojectfiles + "files/movimentacao/"+movimentacao+"/"+td_entidade[entidade].nomecompleto+".html");
+	$("#modal-movimentacao .modal-body p").load(session.currentprojectregisterpath + "files/movimentacao/"+movimentacao+"/"+td_entidade[entidade].nomecompleto+".html");
 	$("#modal-movimentacao").modal("show");
 }
 function limpaArraysFormularioDados(){
@@ -631,8 +632,8 @@ function getAtributoId(entidade,atributo){
 	}
 	var retornoID = 0;
 	for(a in td_atributo){
-		if (td_entidade[td_atributo[a].td_entidade] == undefined) continue;
-		if (td_atributo[a].nome == atributo && td_atributo[a].td_entidade == entidade){
+		if (td_entidade[td_atributo[a].entidade] == undefined) continue;
+		if (td_atributo[a].nome == atributo && td_atributo[a].entidade == entidade){
 			retornoID = td_atributo[a].id;
 			break;
 		}
@@ -686,7 +687,7 @@ function editarTDFormulario(entidade,id){
 	var funcionalidade = "editarformulario";
 	var EntidadePrincipalID = entidade;
 	var id = id;
-	$("#conteudoprincipal").load(session.folderprojectfiles  + "files/cadastro/"+entidade+"/"+td_entidade[entidade].nomecompleto+".html",function(){
+	$("#conteudoprincipal").load(session.currentprojectregisterpath + "files/cadastro/"+entidade+"/"+td_entidade[entidade].nomecompleto+".html",function(){
 		editarFormulario(entidade,id);
 	});
 }

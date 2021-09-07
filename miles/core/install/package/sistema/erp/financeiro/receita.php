@@ -26,11 +26,9 @@
 	$valor 				= criarAtributo($conn,$entidadeID,"valor","Valor","float",0,1,13,0,0,0,"",0,0);
 	$formarecebimento 	= criarAtributo($conn,$entidadeID,"formarecebimento","Forma de Recebimento","int",0,0,4,0,installDependencia($conn,"erp_financeiro_formarecebimento"),0,"",0,0);
 	$receitafixa 		= criarAtributo($conn,$entidadeID,"receitafixa","Receita Fixa","tinyint",0,1,7,0,0,0,"",0,0);
-	$referencia	 		= criarAtributo($conn,$entidadeID,"referencia","Referência","char",7,1,29,1);
-	
 
 	// Criando Acesso
 	$menu_webiste = addMenu($conn,'Financeiro','#','','','','financeiro');
 
 	// Adicionando Menu
-	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".PREFIXO.$entidadeNome.".html",'',$menu_webiste,1,'financeiro-' . $entidadeNome,$entidadeID, 'cadastro');
+	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,1,'financeiro-' . $entidadeNome,$entidadeID, 'cadastro');

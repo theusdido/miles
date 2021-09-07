@@ -29,9 +29,9 @@
 		$pai			= $_POST["pai"];
 		
 		if ($id == ""){
-			$sql = "INSERT INTO td_menu (id,td_projeto,td_entidade,descricao,link,target,ordem,".PREFIXO."pai) VALUES (".getProxId("td_menu",$conn).",".$projeto.",".$entidade.",".$descricao.",".$link.",".$target.",".$ordem.",".$pai.")";
+			$sql = "INSERT INTO td_menu (id,projeto,entidade,descricao,link,target,ordem,pai) VALUES (".getProxId("menu",$conn).",".$projeto.",".$entidade.",".$descricao.",".$link.",".$target.",".$ordem.",".$pai.")";
 		}else{
-			$sql = "UPDATE td_menu SET td_projeto = ".$projeto." , td_entidade = ".$entidade." , descricao = ".$descricao." , link = ".$link." , target = ".$target." , ordem = ".$ordem." , ".PREFIXO."pai = ".$pai." WHERE id = ".$id;
+			$sql = "UPDATE td_menu SET projeto = ".$projeto." , entidade = ".$entidade." , descricao = ".$descricao." , link = ".$link." , target = ".$target." , ordem = ".$ordem." , ".PREFIXO."pai = ".$pai." WHERE id = ".$id;
 		}
 		
 		$query = $conn->query($sql);
@@ -48,11 +48,11 @@
 	$id = isset($_GET["id"])?$_GET["id"]:"";
 
 	if ($id != ""){
-		$sql = "SELECT id,td_projeto,td_entidade,descricao,link,target,ordem,".PREFIXO."pai pai FROM td_menu WHERE id = ".$id;
+		$sql = "SELECT id,projeto,entidade,descricao,link,target,ordem,pai pai FROM td_menu WHERE id = ".$id;
 		$query = $conn->query($sql);
 		While ($linha = $query->fetch()){	
-			$projeto =  $linha["td_projeto"];
-			$entidade = ($linha["td_entidade"]==""?0:$linha["td_entidade"]);
+			$projeto =  $linha["projeto"];
+			$entidade = ($linha["entidade"]==""?0:$linha["entidade"]);
 			$descricao = $linha["descricao"];
 			$link = $linha["link"];
 			$target = $linha["target"];
@@ -177,7 +177,7 @@
 								<select id="pai" name="pai" class="form-control">
 									<option value="0">-- Selecione --</option>
 									<?php
-										$sql = "SELECT id,descricao FROM td_menu WHERE ".PREFIXO."pai <> 0 OR ".PREFIXO."pai IS NOT NULL";
+										$sql = "SELECT id,descricao FROM td_menu WHERE pai <> 0 OR pai IS NOT NULL";
 										$query = $conn->query($sql);
 										While($linha = $query->fetch()){
 											if (qtdePaiMenu($linha["id"],$conn) == 1){
@@ -205,11 +205,11 @@
 							<td width="5%" align="center">Excluir</td>
 						</tr>	
 						<?php
-							$sql = "SELECT id,descricao,".PREFIXO."pai pai,td_entidade FROM td_menu ORDER BY ".PREFIXO."pai ASC,ordem ASC,ID ASC";
+							$sql = "SELECT id,descricao,pai pai,entidade FROM td_menu ORDER BY pai ASC,ordem ASC,ID ASC";
 							$query = $conn->query($sql);
 							While ($linha = $query->fetch()){
 								$descricao = utf8_encode($linha["descricao"]);
-								$sqlMenuPai = "SELECT 1 FROM td_menu WHERE id = ".$linha["id"] . " AND ".PREFIXO."pai IS NOT NULL AND ".PREFIXO."pai <> 0;";
+								$sqlMenuPai = "SELECT 1 FROM td_menu WHERE id = ".$linha["id"] . " AND pai IS NOT NULL AND pai <> 0;";
 								$queryMenuPai = $conn->query($sqlMenuPai);
 								if (qtdePaiMenu($linha["id"],$conn) == 2){
 								

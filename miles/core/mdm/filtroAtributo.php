@@ -11,7 +11,7 @@ require 'funcoes.php';
 			$query = $conn->query($sql);
 			$linha = $query->fetch();
 			
-			$sqlOptions = "SELECT id,descricao FROM td_atributo WHERE td_entidade = " . $linha["chaveestrangeira"];
+			$sqlOptions = "SELECT id,descricao FROM td_atributo WHERE entidade = " . $linha["chaveestrangeira"];
 			$queryOptions = $conn->query($sqlOptions);
 			while ($linhaOptions = $queryOptions->fetch()){
 				echo '<option value="'.$linhaOptions["id"].'">'.utf8_encode($linhaOptions["descricao"]).'</option>';
@@ -49,10 +49,10 @@ require 'funcoes.php';
 		
 		if($id == ""){
 			$idRetorno = getProxId("atributofiltro",$conn);
-			$sql = "INSERT INTO td_atributofiltro (id,td_entidade,td_atributo,td_campo,operador,valor) VALUES (".$idRetorno.",".$entidade.",".$atributo.",".$campo.",'".$operador."','".$valor."');";
+			$sql = "INSERT INTO td_atributofiltro (id,entidade,atributo,campo,operador,valor) VALUES (".$idRetorno.",".$entidade.",".$atributo.",".$campo.",'".$operador."','".$valor."');";
 		}else{
 			$idRetorno = $id;
-			$sql = "UPDATE td_atributofiltro SET td_entidade = ".$entidade.", td_atributo = ".$atributo.", td_campo = ".$campo.", operador = '".$operador."', valor = '".$valor."' WHERE id = " . $idRetorno;
+			$sql = "UPDATE td_atributofiltro SET entidade = ".$entidade.", atributo = ".$atributo.", campo = ".$campo.", operador = '".$operador."', valor = '".$valor."' WHERE id = " . $idRetorno;
 		}
 			
 		$query = $conn->query($sql);
@@ -67,8 +67,8 @@ require 'funcoes.php';
 		$sql = "SELECT * FROM td_atributofiltro WHERE id = " . $id;
 		$query = $conn->query($sql);
 		while ($linha = $query->fetch()){
-			$atributo = $linha["td_atributo"];
-			$campo = $linha["td_campo"];
+			$atributo = $linha["atributo"];
+			$campo = $linha["campo"];
 			$operador = $linha["operador"];
 			$valor = $linha["valor"];
 		}
@@ -101,7 +101,7 @@ require 'funcoes.php';
 							<select id="atributo" name="atributo" class="form-control">
 								<option value="">-- Selecione --</option>
 								<?php
-									$sql = "SELECT id,descricao FROM td_atributo WHERE td_entidade = ".$entidade." AND (tipohtml = 4 or tipohtml = 5 or tipohtml = 22) ORDER BY ordem ASC";
+									$sql = "SELECT id,descricao FROM td_atributo WHERE entidade = ".$entidade." AND (tipohtml = 4 or tipohtml = 5 or tipohtml = 22) ORDER BY ordem ASC";
 									$query = $conn->query($sql);
 									While ($linha = $query->fetch()){
 										echo "<option value='".$linha["id"]."'>".utf8_encode($linha["descricao"])."</option>";
@@ -113,7 +113,7 @@ require 'funcoes.php';
 							<label for="campo">Campo</label>
 							<select id="campo" name="campo" class="form-control">
 								<?php
-									$sql = "SELECT id,descricao FROM td_atributo WHERE td_entidade = ".$entidade." ORDER BY ordem ASC";
+									$sql = "SELECT id,descricao FROM td_atributo WHERE entidade = ".$entidade." ORDER BY ordem ASC";
 									$query = $conn->query($sql);
 									While ($linha = $query->fetch()){
 										echo "<option value='".$linha["id"]."'>".utf8_encode($linha["descricao"])."</option>";
@@ -138,15 +138,15 @@ require 'funcoes.php';
 					</form>
 					<div class="list-group">
 					<?php
-						$sql = "SELECT * FROM td_atributofiltro WHERE td_entidade = " . $entidade;
+						$sql = "SELECT * FROM td_atributofiltro WHERE entidade = " . $entidade;
 						$query = $conn->query($sql);
 						while ($linha = $query->fetch()){
 							
-							$sqlAtributo = "SELECT descricao FROM td_atributo WHERE id = " . $linha["td_atributo"];
+							$sqlAtributo = "SELECT descricao FROM td_atributo WHERE id = " . $linha["atributo"];
 							$queryAtributo = $conn->query($sqlAtributo);
 							$linhaAtributo = $queryAtributo->fetch();
 							
-							$sqlCampo = "SELECT descricao FROM td_atributo WHERE id = " . $linha["td_campo"];
+							$sqlCampo = "SELECT descricao FROM td_atributo WHERE id = " . $linha["campo"];
 							$queryCampo = $conn->query($sqlCampo);
 							$linhaCampo = $queryCampo->fetch();
 							

@@ -33,7 +33,7 @@
 	$menu_webiste = addMenu($conn,'E-Commerce','#','','','','ecommerce');
 
 	// Adicionando Menu
-	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".PREFIXO.$entidadeNome.".html",'',$menu_webiste,8,'ecommerce-' . $entidadeNome,$entidadeID,'cadastro');
+	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,8,'ecommerce-' . $entidadeNome,$entidadeID,'cadastro');
 
 	// Cria Relacionamento
 	criarRelacionamento($conn,2,$entidadeID,getEntidadeId("endereco",$conn),utf8_decode("Endereço"),0);

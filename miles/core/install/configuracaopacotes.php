@@ -1,37 +1,3 @@
-<?php
-	include 'conexao.php';
-	include '../system/funcoes.php';
-	include $_SESSION["PATH_TDC"] . 'entity.class.php';
-
-	if (!empty($_POST)){
-		if ($_POST["op"] == "instalarcomponente"){
-			$config = parse_ini_file($_SESSION["FILE_CURRENT_CONFIG_PROJECT"]);
-			define("PREFIXO",$config["PREFIXO"] . "_");
-
-			if (isset($_POST["componente"])){
-				$path_componente = explode("-",$_POST["componente"]);
-				$path = "";
-				foreach($path_componente as $c){
-					$path .= "/" . $c;
-				}
-				include_once 'package' . $path. ".php";
-			}
-			
-			if (isset($_POST["registro"])){
-				if (file_exists('registro/' . $_POST["registro"]. ".php")){
-					include_once 'registro/' . $_POST["registro"]. ".php";
-				}
-			}
-
-			echo 1;
-			exit;
-		}
-		if ($_POST["op"] == "atualiza_instalacao"){
-			$query = $conn->query("UPDATE td_instalacao SET pacoteconfigurado = 1 WHERE id = 1;");
-			exit;
-		}
-	}
-?>
 <html>
 	<head>
 		<?php 
@@ -51,46 +17,57 @@
 					<form>
 						<fieldset>
 							<legend>Configuração dos Pacotes</legend>
-							
-							<div id="btn-salvar-pacotes" class="form-grupo-botao">
-								<img id="loader-pacotes" src="<?=$_SESSION["URL_SYSTEM_THEME"]?>loading2.gif"/>
-								<button type="button" class="btn btn-primary" id="btn-pacotes">
-									Salvar
-								</button>
-								<div id="retorno" class="alert" role="alert">
-									<button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-									<p class="msg"></p>
+							<div class="row">
+								<div class="col-md-12 col-sm-12">
+									<div id="btn-salvar-pacotes" class="form-grupo-botao">
+										<img id="loader-pacotes" src="<?=$_SESSION["URL_SYSTEM_THEME"]?>loading2.gif"/>
+										<button type="button" class="btn btn-primary" id="btn-pacotes">
+											Salvar
+										</button>
+									</div>
 								</div>
 							</div>
-							
-							<div class="panel panel-default panel-pacote">
-							  <div class="panel-heading">Website</div>
-							  <div class="panel-body">
-								<div class="list-group">
-									<a href="#" class="list-group-item carregar-componentes" data-pacote="website" data-componente="geral">Geral</a>
-									<a href="#" class="list-group-item carregar-componentes" data-pacote="website" data-componente="institucional">Institucional</a>
-									<a href="#" class="list-group-item carregar-componentes" data-pacote="website" data-componente="ecommerce">E-Commerce</a>
-									<a href="#" class="list-group-item carregar-componentes" data-pacote="website" data-componente="blog">Blog</a>								  								  
-									<a href="#" class="list-group-item carregar-componentes" data-pacote="website" data-componente="landpage">LandPage</a>
-									<a href="#" class="list-group-item carregar-componentes" data-pacote="website" data-componente="onpage">OnePage</a>
-									<a href="#" class="list-group-item carregar-componentes" data-pacote="website" data-componente="forum">Fórum</a>
-									<a href="#" class="list-group-item carregar-componentes" data-pacote="website" data-componente="portal">Portal</a>
-									<a href="#" class="list-group-item carregar-componentes" data-pacote="website" data-componente="redesocial">Rede Social</a>
+							<div class="row">
+								<div class="col-md-12 col-sm-12">
+									<div id="retorno" class="alert" role="alert">
+										<button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+										<p class="msg"></p>
+									</div>
 								</div>
-							  </div>
 							</div>
-							
-							<div class="panel panel-default panel-pacote">
-							  <div class="panel-heading">Sistema</div>
-							  <div class="panel-body">
-								<div class="list-group">
-								  <a href="#" class="list-group-item carregar-componentes" data-pacote="sistema" data-componente="erp">ERP - Enterprise Resource Planning</a>
-								  <a href="#" class="list-group-item carregar-componentes" data-pacote="sistema" data-componente="crm">CRM - Customer Relationship Management</a>
-								  <a href="#" class="list-group-item carregar-componentes" data-pacote="sistema" data-componente="bi">BI - Business Intelligence</a>								  								  
+
+							<div class="row">
+								<div class="col-md-6 col-sm-6">
+									<div class="panel panel-default panel-pacote">
+										<div class="panel-heading">Website</div>
+										<div class="panel-body">
+											<div class="list-group">
+												<a href="#" class="list-group-item carregar-componentes" data-pacote="website" data-componente="geral">Geral</a>
+												<a href="#" class="list-group-item carregar-componentes" data-pacote="website" data-componente="institucional">Institucional</a>
+												<a href="#" class="list-group-item carregar-componentes" data-pacote="website" data-componente="ecommerce">E-Commerce</a>
+												<a href="#" class="list-group-item carregar-componentes" data-pacote="website" data-componente="blog">Blog</a>								  								  
+												<a href="#" class="list-group-item carregar-componentes" data-pacote="website" data-componente="landpage">LandPage</a>
+												<a href="#" class="list-group-item carregar-componentes" data-pacote="website" data-componente="onpage">OnePage</a>
+												<a href="#" class="list-group-item carregar-componentes" data-pacote="website" data-componente="forum">Fórum</a>
+												<a href="#" class="list-group-item carregar-componentes" data-pacote="website" data-componente="portal">Portal</a>
+												<a href="#" class="list-group-item carregar-componentes" data-pacote="website" data-componente="redesocial">Rede Social</a>
+											</div>
+										</div>
+									</div>
 								</div>
-							  </div>
+								<div class="col-md-6 col-sm-6">							
+									<div class="panel panel-default panel-pacote">
+										<div class="panel-heading">Sistema</div>
+										<div class="panel-body">
+											<div class="list-group">
+												<a href="#" class="list-group-item carregar-componentes" data-pacote="sistema" data-componente="erp">ERP - Enterprise Resource Planning</a>
+												<a href="#" class="list-group-item carregar-componentes" data-pacote="sistema" data-componente="crm">CRM - Customer Relationship Management</a>
+												<a href="#" class="list-group-item carregar-componentes" data-pacote="sistema" data-componente="bi">BI - Business Intelligence</a>								  								  
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
-							
 						</fieldset>	  
 					</form>		
 				</div>
@@ -110,7 +87,7 @@
 			  </div>
 			</div>			
 			<script type="text/javascript" language="JavaScript" src="<?=$_SESSION["URL_LIB"]?>jquery/jquery.js"></script>
-			<script type="text/javascript" src="<?=$_SESSION["URL_LIB"]?>bootstrap/3.3.1/js/bootstrap.js"/></script>
+			<script type="text/javascript" src="<?=$_SESSION["URL_LIB"]?>bootstrap/3.3.1/js/bootstrap.js"></script>
 			<script type="text/javascript" language="JavaScript">
 				var componentes = [];
 				var indiceComponente = 0;
@@ -121,7 +98,7 @@
 					var pacote = $(this).data("pacote");
 					var componente = $(this).data("componente");
 					$("#view-componente .modal-body p").html("");
-					$("#view-componente .modal-body p").load("package/" + pacote + "/" + componente + "/componentes.php?currentproject=<?=$_SESSION["currentproject"]?>"
+					$("#view-componente .modal-body p").load("<?=$_SESSION["URL_INSTALL"]?>package/" + pacote + "/" + componente + "/componentes.php?currentproject=<?=$_SESSION["currentproject"]?>"
 					,function(){
 						$(".checkbox-componente").each(function(){
 						for(c in componentes){
@@ -160,12 +137,12 @@
                         return false;
                     }
 					$.ajax({
-						url:"configuracaopacotes.php",
+						url:"<?=$_SESSION['URL_MILES']?>",
 						type:"POST",
 						data:{
+							controller:'install/modulos',
 							op:"instalarcomponente",
-							componente:componentes[indiceComponente],
-							currentproject:<?=$_SESSION["currentproject"]?>
+							componente:componentes[indiceComponente]
 						},
 						beforeSend:function(){
 							$("#loader-pacotes").show();
@@ -179,11 +156,11 @@
 									instalarcomponentes();
 								}else{
 									$.ajax({
-										url:"configuracaopacotes.php",
+										url:"<?=$_SESSION['URL_MILES']?>",
 										type:"POST",
 										data:{
-											op:"atualiza_instalacao",
-											currentproject:<?=$_SESSION["currentproject"]?>
+											controller:'install/modulos',
+											op:"atualizar"
 										},
                                          error:function(ret){
 											 msgRetorno('<b>Error !</b>'+ret.responseText,"alert-danger");
@@ -207,12 +184,12 @@
 				}	
 				function instalarregistros(){
 					$.ajax({
-						url:"configuracaopacotes.php",
+						url:"<?=$_SESSION['URL_MILES']?>",
 						type:"POST",
 						data:{
+							controller:'install/modulos',
 							op:"instalarcomponente",
-							registro:registros[indiceRegistro],
-							currentproject:<?=$_SESSION["currentproject"]?>
+							registro:registros[indiceRegistro]
 						},
 						beforeSend:function(){
 							$("#loader-pacotes").show();

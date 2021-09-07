@@ -13,7 +13,7 @@ $registro 			= tdc::r("registro");
 $pedido				= tdc::p("td_ecommerce_pedido",$registro);
 $empresa			= tdc::p("td_empresa",isset($_SESSION["empresa"])?Session::Get()->empresa:1);
 
-$cliente 			= tdc::p("td_ecommerce_cliente",$pedido->td_cliente);
+$cliente 			= tdc::p("td_ecommerce_cliente",$pedido->cliente);
 $enderecliente 		= tdc::p("td_ecommerce_endereco",@(int)getListaRegFilho(getEntidadeId("ecommerce_cliente"),getEntidadeId("ecommerce_endereco"),$cliente->id)[0]->regfilho);
 $enderecoempresa	= tdc::p("td_endereco",@(int)getListaRegFilho(getEntidadeId("empresa"),getEntidadeId("endereco"),Session::Get()->empresa)[0]->regfilho);
 $configuracoes		= tdc::p("td_ecommerce_configuracoes",1);
@@ -76,7 +76,7 @@ $divdadosenderecocliente2	= $topo->add("div", array("propriedades" => array( "cl
 
 // Div Cabeçalho do Pedido
 $divcabecalhopedido = $topo->add("div", array("propriedades" => array( "class" => "div-cabecalho-pedido" , "innerhtml" => array(
-	$topo->node("div", array("innerhtml" => "Status: " . tdc::p("td_ecommerce_statuspedido",$pedido->td_status)->descricao , "class" => "div-cabecalho-pedido-status")),
+	$topo->node("div", array("innerhtml" => "Status: " . tdc::p("td_ecommerce_statuspedido",$pedido->status)->descricao , "class" => "div-cabecalho-pedido-status")),
     $topo->node("div", array("innerhtml" => "Valor Frete: " . ($pedido->valorfrete != ""?'R$ ' . moneyToFloat($pedido->valorfrete,true):'-') , "class" => "div-cabecalho-pedido-valorfrete")),
 	$topo->node("div", array("innerhtml" => "Valor Total: R$ " . moneyToFloat($pedido->valortotal,true) , "class" => "div-cabecalho-pedido-valortotal"))
 ))));
@@ -98,11 +98,11 @@ $thQtdade 	= $tabela->add("th",array("propriedades" => array( "innerhtml" => "Qt
 $thValor 	= $tabela->add("th",array("propriedades" => array( "innerhtml" => "Valor" , "align" => "right" , "width" => "10%" ) , "elementopai" => $trHead));
 $thTotal 	= $tabela->add("th",array("propriedades" => array( "innerhtml" => "Total" , "align" => "right" , "width" => "15%" ) , "elementopai" => $trHead));
 
-$itens 		= tdc::d(getEntidadeEcommercePedidoItem(),tdc::f("td_pedido","=",$pedido->id));
+$itens 		= tdc::d(getEntidadeEcommercePedidoItem(),tdc::f("pedido","=",$pedido->id));
 foreach($itens as $item){
 	$trBody		= $tabela->add("tr",array("elementopai" => $tbody));
-	$tamanhoproduto = tdc::p("td_ecommerce_tamanhoproduto",$item->td_produto);
-	$produto		= tdc::p("td_ecommerce_produto",$tamanhoproduto->td_produto);
+	$tamanhoproduto = tdc::p("td_ecommerce_tamanhoproduto",$item->produto);
+	$produto		= tdc::p("td_ecommerce_produto",$tamanhoproduto->produto);
     $referencia     = $produto->referencia!="" ? " - Ref.: " . $produto->referencia : '';
 
 	$tdID   	= $tabela->add("td",array("propriedades" => array( "innerhtml" => $produto->id ) , "elementopai" => $trBody));
@@ -123,8 +123,7 @@ $tdTotalQtdade 	= $tabela->add("td",array("propriedades" => array( "innerhtml" =
 $tdTotalValor 	= $tabela->add("td",array("propriedades" => array( "innerhtml" => "" ) , "elementopai" => $trBody));
 $tdTotalTotal 	= $tabela->add("td",array("propriedades" => array( "innerhtml" => "R$ " .moneyToFloat($pedido->valortotal,true) , "align" => "right") , "elementopai" => $trBody));
 
-//$enderecoempresa->td_cidade
-$cidadeempresa	= tdc::p("td_cidade",tdc::p("td_bairro",$enderecoempresa->td_bairro)->td_cidade);
+$cidadeempresa	= tdc::p("td_cidade",tdc::p("td_bairro",$enderecoempresa->bairro)->cidade);
 
 // RODAPÉ
 $trFoot				= $tabela->add("tr");

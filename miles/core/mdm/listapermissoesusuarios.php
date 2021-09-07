@@ -36,19 +36,19 @@
 				echo "		</div>";
 				echo "		<ul class='lista-usuario' id='lista-usuario-".$linha["id"]."'>";
 				echo "<b>Usuário</b>";
-				$sqlusuarios = "SELECT id,nome,td_perfil FROM td_usuario WHERE (perfilusuario <> 1 OR perfilusuario IS NULL) AND td_grupousuario = " . $linha["id"];
+				$sqlusuarios = "SELECT id,nome,perfil FROM td_usuario WHERE (perfilusuario <> 1 OR perfilusuario IS NULL) AND grupousuario = " . $linha["id"];
 				$rsusuarios = $conn->query($sqlusuarios);
 				While ($linhausuarios = $rsusuarios->fetch()){
-					echo "<li><a href='#' class='usuario-na-lista-porusuario' id='".$linhausuarios["id"]."' data-perfil='".$linhausuarios["td_perfil"]."'>".$linhausuarios["nome"]."</a></li>";
+					echo "<li><a href='#' class='usuario-na-lista-porusuario' id='".$linhausuarios["id"]."' data-perfil='".$linhausuarios["perfil"]."'>".$linhausuarios["nome"]."</a></li>";
 				}
 				if ($rsusuarios->rowcount() <= 0){
 					echo "<li><b>Nenhum Usuário</b></li>";
 				}			
 				echo "<b>Perfil</b>";
-				$sqlperfil = "SELECT id,nome,td_perfil FROM td_usuario WHERE perfilusuario = 1 AND td_grupousuario = ".$linha["id"];
+				$sqlperfil = "SELECT id,nome,perfil FROM td_usuario WHERE perfilusuario = 1 AND grupousuario = ".$linha["id"];
 				$queryperfil = $conn->query($sqlperfil);
 				While ($linhaperfil = $queryperfil->fetch()){
-					echo "<li><a href='#' class='usuario-na-lista-porusuario' id='".$linhaperfil["id"]."' data-perfil='".$linhaperfil["td_perfil"]."'>".$linhaperfil["nome"]."</a></li>";
+					echo "<li><a href='#' class='usuario-na-lista-porusuario' id='".$linhaperfil["id"]."' data-perfil='".$linhaperfil["perfil"]."'>".$linhaperfil["nome"]."</a></li>";
 				}
 				echo "		</ul>";
 				echo "	</li>";
@@ -434,7 +434,7 @@
 				</thead>
 				<tbody>
 					<?php
-						$sql = "SELECT id,descricao FROM td_menu WHERE td_pai = 0 or td_pai is null or td_entidade = 0 or td_entidade is null;";
+						$sql = "SELECT id,descricao FROM td_menu WHERE pai = 0 or pai is null or entidade = 0 or entidade is null;";
 						$rs = $conn->query($sql);
 						while ($linha = $rs->fetch()){
 							$descricao = executefunction("utf8charset",array($linha["descricao"],5));

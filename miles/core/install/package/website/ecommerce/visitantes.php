@@ -1,5 +1,5 @@
 <?php
-    // Setando variáveis
+    // Setando variï¿½veis
     $entidadeNome = "ecommerce_visitantes";
     $entidadeDescricao = "Visitantes";
 
@@ -26,10 +26,10 @@
     $hora           = criarAtributo($conn,$entidadeID,"hora","Hora","time",0,0,28,1);
     $ip             = criarAtributo($conn,$entidadeID,"ip","IP","varchar",25,0,3,0);
     $navegador      = criarAtributo($conn,$entidadeID,"navegador","Navegador","varchar",20,0,3,0);
-    $sessao         = criarAtributo($conn,$entidadeID,"sessao","Sessão","char",32,0,3,0);
+    $sessao         = criarAtributo($conn,$entidadeID,"sessao","Sessï¿½o","char",32,0,3,0);
 
     // Criando Acesso
     $menu_webiste = addMenu($conn,'E-Commerce','#','','','','ecommerce');
 
     // Adicionando Menu
-    addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".PREFIXO.$entidadeNome.".html",'',$menu_webiste,0,'ecommerce-' . $entidadeNome,$entidadeID,'cadastro');
+    addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,0,'ecommerce-' . $entidadeNome,$entidadeID,'cadastro');

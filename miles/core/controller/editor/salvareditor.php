@@ -13,7 +13,7 @@ if ($conn = Transacao::get()){
 			$conn->exec($sqlPagina);
 			//addLog($sqlPagina);					
 		}else if(is_numeric($idPagina)){
-			$deletar = "DELETE FROM td_tags WHERE td_pagina = {$idPagina};DELETE FROM td_tagsattributes WHERE td_pagina = {$idPagina};";
+			$deletar = "DELETE FROM td_tags WHERE pagina = {$idPagina};DELETE FROM td_tagsattributes WHERE pagina = {$idPagina};";
 			$conn->exec($deletar);
 			//addLog($deletar);	
 		}else{
@@ -27,7 +27,7 @@ if ($conn = Transacao::get()){
 				$idTag = $tags["idtag"];
 				
 				$texto = utf8charset($tags["text"]);
-				$sqlInsertTag = "INSERT INTO td_tags (id,td_pagina,nome,tagpai,texto) VALUES (".$idTag.",{$idPagina},'{$tags["name"]}','{$tagpai}','{$texto}');";
+				$sqlInsertTag = "INSERT INTO td_tags (id,pagina,nome,tagpai,texto) VALUES (".$idTag.",{$idPagina},'{$tags["name"]}','{$tagpai}','{$texto}');";
 				//echo "<br>\n" . $sqlInsertTag;
 				$conn->exec($sqlInsertTag);
 				//addLog($sqlInsertTag);
@@ -40,7 +40,7 @@ if ($conn = Transacao::get()){
 						$sqlProx = "SELECT IFNULL(MAX(id),0)+1 FROM td_tagsattributes;";
 						$prox = $conn->query($sqlProx)->fetch();
 						$valorAttr = str_replace($retirar_atributos,'',$a[1]);
-						$sqlInsertTag = "INSERT INTO td_tagsattributes (id,atributo,valor,td_tags) VALUES ({$prox[0]},'{$a[0]}','{$valorAttr}',{$idTag});";						
+						$sqlInsertTag = "INSERT INTO td_tagsattributes (id,atributo,valor,tags) VALUES ({$prox[0]},'{$a[0]}','{$valorAttr}',{$idTag});";						
 						$conn->exec($sqlInsertTag);
 						//addLog($sqlInsertTag);
 					}								

@@ -107,7 +107,7 @@
 		}
 		
 		if ($_GET["op"] == "listarrelatorio"){
-			$sql = "SELECT id,".PREFIXO."atributo atributo,operador,legenda FROM ".PREFIXO."relatoriofiltro a WHERE td_relatorio = {$_GET["relatorio"]} ORDER BY id DESC";
+			$sql = "SELECT id,".PREFIXO."atributo atributo,operador,legenda FROM ".PREFIXO."relatoriofiltro a WHERE relatorio = {$_GET["relatorio"]} ORDER BY id DESC";
 			$query = $conn->query($sql);
 			if ($query->rowCount() <= 0){
 				echo '<div class="alert alert-warning alert-dismissible text-center" role="alert">Nenhum campo de <strong>filtro</strong> configurado.</div>';
@@ -134,7 +134,7 @@
 		}
 		
 		if ($_GET["op"] == "listarstatus"){
-			$sql = "SELECT id,".PREFIXO."atributo atributo,operador,valor,".PREFIXO."status FROM ".PREFIXO."relatoriostatus a WHERE td_relatorio = {$_GET["relatorio"]}";
+			$sql = "SELECT id,".PREFIXO."atributo atributo,operador,valor,".PREFIXO."status FROM ".PREFIXO."relatoriostatus a WHERE relatorio = {$_GET["relatorio"]}";
 			$query = $conn->query($sql);
 			if ($query->rowCount() <= 0){
 				echo '<div class="alert alert-warning alert-dismissible text-center" role="alert">Nenhum filtro de <strong>status</strong> configurado.</div>';
@@ -152,7 +152,7 @@
 						<button type='button' class='btn btn-default' onclick='excluirStatus({$linha["id"]});' style='float:right;margin-top:-4px'>
 							<span class='fas fa-trash-alt' aria-hidden='true'></span>
 						</button>
-						<button id='atributo-editar-{$linha["id"]}' type='button' class='btn btn-default' data-atributo='{$atributo}' data-operador='{$operador}' data-valor='{$valor}' data-idstatus='{$linha["id"]}' data-status='{$linha["td_status"]}' onclick='editarStatus({$linha["id"]})' style='float:right;margin-top:-4px'>
+						<button id='atributo-editar-{$linha["id"]}' type='button' class='btn btn-default' data-atributo='{$atributo}' data-operador='{$operador}' data-valor='{$valor}' data-idstatus='{$linha["id"]}' data-status='{$linha["status"]}' onclick='editarStatus({$linha["id"]})' style='float:right;margin-top:-4px'>
 							<span class='fas fa-edit' aria-hidden='true'></span>
 						</button>
 					</span>";

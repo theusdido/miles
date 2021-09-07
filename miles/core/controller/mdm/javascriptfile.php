@@ -48,7 +48,7 @@
 			fwrite($mdmJSCompile,utf8charset("
 				td_atributo[{$atributo->id}] = {
 					id:{$atributo->id},
-					td_entidade:'{$atributo->td_entidade}',
+					entidade:'{$atributo->entidade}',
 					nome:'{$atributo->nome}',
 					descricao:'".$descricaoAtributo."',
 					tipo:'{$atributo->tipo}',
@@ -70,8 +70,8 @@
 					exibirpesquisa:'{$atributo->exibirpesquisa}',
 					tipoinicializacao:'{$atributo->tipoinicializacao}',
 					atributodependencia:'{$atributo->atributodependencia}',
-					labelzerocheckbox:'".utf8charset($atributo->labelzerocheckbox,8)."',
-					labelumcheckbox:'".utf8charset($atributo->labelumcheckbox,8)."',
+					labelzerocheckbox:'{$atributo->labelzerocheckbox}',
+					labelumcheckbox:'{$atributo->labelumcheckbox}',
 					criarsomatoriogradededados:'{$atributo->criarsomatoriogradededados}',
 					naoexibircampo:'{$atributo->naoexibircampo}'
 				};
@@ -88,7 +88,7 @@
 					pai:'{$relacionamento->pai}',
 					tipo:'{$relacionamento->tipo}',
 					filho:'{$relacionamento->filho}',
-					td_atributo:'{$relacionamento->td_atributo}',
+					atributo:'{$relacionamento->atributo}',
 					descricao:'{$relacionamento->descricao}',
 					controller:'{$relacionamento->controller}',
 					cardinalidade:'{$relacionamento->cardinalidade}'
@@ -105,10 +105,10 @@
 			fwrite($mdmJSCompile,utf8charset("
 				td_permissoes[{$permissoes->id}] = {
 					id:'{$permissoes->id}',
-					td_projeto:'{$permissoes->td_projeto}',
-					td_empresa:'{$permissoes->td_empresa}',
-					td_entidade:'{$permissoes->td_entidade}',
-					td_usuario:'{$permissoes->td_usuario}',
+					projeto:'{$permissoes->projeto}',
+					empresa:'{$permissoes->empresa}',
+					entidade:'{$permissoes->entidade}',
+					usuario:'{$permissoes->usuario}',
 					inserir:'{$permissoes->inserir}',
 					excluir:'{$permissoes->excluir}',
 					editar:'{$permissoes->editar}',
@@ -128,8 +128,8 @@
 			fwrite($mdmJSCompile,utf8charset("
 				td_filtroatributo[{$filtroatributo->id}] = {
 					id:'{$permissoes->id}',
-					td_atributo:'{$filtroatributo->td_atributo}',
-					td_campo:'{$filtroatributo->td_campo}',
+					atributo:'{$filtroatributo->atributo}',
+					campo:'{$filtroatributo->campo}',
 					operador:'{$filtroatributo->operador}',
 					valor:'{$filtroatributo->valor}'
 				};
@@ -143,19 +143,19 @@
 			fwrite($mdmJSCompile,utf8charset("
 				td_consulta[{$consultas->id}] = {
 					id:'{$consultas->id}',
-					td_projeto:'{$consultas->td_projeto}',
-					td_empresa:'{$consultas->td_empresa}',
-					td_entidade:'{$consultas->td_entidade}',
-					td_movimentacao:'{$consultas->td_movimentacao}',
+					projeto:'{$consultas->projeto}',
+					empresa:'{$consultas->empresa}',
+					entidade:'{$consultas->entidade}',
+					movimentacao:'{$consultas->movimentacao}',
 					descricao:'{$consultas->descricao}',
 					filtros:{
 			",$localCharset));			
-			$sqlFiltros = "SELECT id,operador,td_atributo FROM td_consultafiltro a WHERE td_consulta = " . $consultas->id;
+			$sqlFiltros = "SELECT id,operador,atributo FROM td_consultafiltro a WHERE consulta = " . $consultas->id;
 			$queryFiltros = $conn->query($sqlFiltros);
 			$iAP = 1;
 			$tAP = $queryFiltros->rowcount();
 			While ($linhaFiltros = $queryFiltros->fetch()){
-				fwrite($mdmJSCompile,utf8charset('"'.$linhaFiltros["id"].'":{"td_atributo":"'.$linhaFiltros["td_atributo"].'","operador":"'.$linhaFiltros["operador"].'"}',$localCharset));
+				fwrite($mdmJSCompile,utf8charset('"'.$linhaFiltros["id"].'":{"atributo":"'.$linhaFiltros["atributo"].'","operador":"'.$linhaFiltros["operador"].'"}',$localCharset));
 				if ($iAP < $tAP) fwrite($mdmJSCompile,",");
 				$iAP++;
 			}
@@ -163,12 +163,12 @@
 					},
 					status:{
 			");
-			$sqlStatus = "SELECT id,valor,operador,td_atributo,td_status FROM td_consultastatus a WHERE td_consulta = " . $consultas->id;
+			$sqlStatus = "SELECT id,valor,operador,atributo,status FROM td_consultastatus a WHERE consulta = " . $consultas->id;
 			$queryStatus = $conn->query($sqlStatus);
 			$iAP = 1;
 			$tAP = $queryStatus->rowcount();
 			While ($linhaStatus = $queryStatus->fetch()){
-				fwrite($mdmJSCompile,utf8charset('"'.$linhaStatus["id"].'":{"td_atributo":"'.$linhaStatus["td_atributo"].'","operador":"'.$linhaStatus["operador"].'","valor":"'.$linhaStatus["valor"].'","td_status":"'.$linhaStatus["td_status"].'"}',$localCharset));
+				fwrite($mdmJSCompile,utf8charset('"'.$linhaStatus["id"].'":{"atributo":"'.$linhaStatus["atributo"].'","operador":"'.$linhaStatus["operador"].'","valor":"'.$linhaStatus["valor"].'","status":"'.$linhaStatus["status"].'"}',$localCharset));
 				if ($iAP < $tAP) fwrite($mdmJSCompile,",");
 				$iAP++;
 			}
@@ -185,18 +185,18 @@
 			fwrite($mdmJSCompile,utf8charset("
 				td_relatorio[{$relatorios->id}] = {
 					id:'{$relatorios->id}',
-					td_projeto:'{$relatorios->td_projeto}',
-					td_empresa:'{$relatorios->td_empresa}',
-					td_entidade:'{$relatorios->td_entidade}',
+					projeto:'{$relatorios->projeto}',
+					empresa:'{$relatorios->empresa}',
+					entidade:'{$relatorios->entidade}',
 					descricao:'{$relatorios->descricao}',
 					filtros:{
 			",$localCharset));
-			$sqlFiltros = "SELECT id,operador,td_atributo FROM td_relatoriofiltro a WHERE td_relatorio = " . $relatorios->id;
+			$sqlFiltros = "SELECT id,operador,atributo FROM td_relatoriofiltro a WHERE relatorio = " . $relatorios->id;
 			$queryFiltros = $conn->query($sqlFiltros);
 			$iAP = 1;
 			$tAP = $queryFiltros->rowcount();
 			While ($linhaFiltros = $queryFiltros->fetch()){
-				fwrite($mdmJSCompile,utf8charset('"'.$linhaFiltros["id"].'":{"td_atributo":"'.$linhaFiltros["td_atributo"].'","operador":"'.$linhaFiltros["operador"].'"}',$localCharset));
+				fwrite($mdmJSCompile,utf8charset('"'.$linhaFiltros["id"].'":{"atributo":"'.$linhaFiltros["atributo"].'","operador":"'.$linhaFiltros["operador"].'"}',$localCharset));
 				if ($iAP < $tAP) fwrite($mdmJSCompile,",");
 				$iAP++;
 			}
@@ -204,12 +204,12 @@
 					},
 					status:{
 			");
-			$sqlStatus = "SELECT id,valor,operador,td_atributo,td_status FROM td_relatoriostatus a WHERE td_relatorio = " . $relatorios->id;
+			$sqlStatus = "SELECT id,valor,operador,atributo,status FROM td_relatoriostatus a WHERE relatorio = " . $relatorios->id;
 			$queryStatus = $conn->query($sqlStatus);
 			$iAP = 1;
 			$tAP = $queryStatus->rowcount();
 			While ($linhaStatus = $queryStatus->fetch()){
-				fwrite($mdmJSCompile,utf8charset('"'.$linhaStatus["id"].'":{"td_atributo":"'.$linhaStatus["td_atributo"].'","operador":"'.$linhaStatus["operador"].'","valor":"'.$linhaStatus["valor"].'","td_status":"'.$linhaStatus["td_status"].'"}',$localCharset));
+				fwrite($mdmJSCompile,utf8charset('"'.$linhaStatus["id"].'":{"atributo":"'.$linhaStatus["atributo"].'","operador":"'.$linhaStatus["operador"].'","valor":"'.$linhaStatus["valor"].'","status":"'.$linhaStatus["status"].'"}',$localCharset));
 				if ($iAP < $tAP) fwrite($mdmJSCompile,",");
 				$iAP++;
 			}
@@ -240,7 +240,7 @@
 				td_movimentacao[{$movimentacao->id}] = {
 					id:'{$movimentacao->id}',
 					descricao:'{$movimentacao->descricao}',
-					classe:'{$movimentacao->td_entidade}'
+					classe:'{$movimentacao->entidade}'
 				};
 			",$localCharset));
 		}

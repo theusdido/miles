@@ -28,7 +28,7 @@
 					
 					$session->permitirexclusao			= ($dataset[0]->permitirexclusao==""?0:$dataset[0]->permitirexclusao);
 					$session->permitirtrocarempresa		= ($dataset[0]->permitirtrocarempresa==""?0:$dataset[0]->permitirtrocarempresa);
-					$session->usergroup 				=  $dataset[0]->td_grupousuario;
+					$session->usergroup 				=  $dataset[0]->grupousuario;
 					Session::set($session);
 
 					$retorno = array(

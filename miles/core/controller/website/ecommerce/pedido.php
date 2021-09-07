@@ -22,7 +22,7 @@ if ($conn = Transacao::Get()){
 $btnAlterarStatus = '<button class="btn btn-primary form-control" type="button" id="btn-pedidohome-alterarstatus">Alterar Status</button>';
 
 // Dados do Cliente
-$cliente 					= tdClass::Criar("persistent",array("td_ecommerce_cliente",$pedido->td_cliente))->contexto;
+$cliente 					= tdClass::Criar("persistent",array("td_ecommerce_cliente",$pedido->cliente))->contexto;
 $cnpj 						= "<div class='dadoscliente'><label>CNPJ</label><p>".$cliente->cnpj."</p></div>";
 $nomefantasia				= "<div class='dadoscliente'><label>Nome Fantasia</label><p>".$cliente->nomefantasia."</p></div>";
 $email 						= "<div class='dadoscliente'><label>E-Mail</label><p>".$cliente->email."</p></div>";
@@ -31,20 +31,20 @@ $btnAlterarDadosCliente 	= '<button class="btn btn-success" type="button" id="pe
 
 // Dados de Pagametno
 $datapagamento 				= "<div class='dadospagamento'><label>Data</label><p>".datetimeToMysqlFormat($pedido->datahoraretorno,true)."</p></div>";
-$status 					= "<div class='dadospagamento'><label>Status</label><p>".tdc::p("td_ecommerce_statuspedido",$pedido->td_status)->descricao."</p></div>";
-$metodo 					= "<div class='dadospagamento'><label>Método</label><p>".tdc::p("td_ecommerce_metodopagamento",$pedido->td_metodopagamento)->descricao."</p></div>";
+$status 					= "<div class='dadospagamento'><label>Status</label><p>".tdc::p("td_ecommerce_statuspedido",$pedido->status)->descricao."</p></div>";
+$metodo 					= "<div class='dadospagamento'><label>Método</label><p>".tdc::p("td_ecommerce_metodopagamento",$pedido->metodopagamento)->descricao."</p></div>";
 $notafiscal 				= '<button class="btn btn-primary form-control" type="button" disabled>Nota Fiscal</button>';
 
 $datahoraentrega = $entregue = $transportadora = $valorfrete = $pesototal = $rastreamento = $codigorastreamento = "";
 $cep = $estado = $cidade = $bairro = $logradouro = $numero = $complemento = "";
-$expedicao					= tdc::d("td_ecommerce_expedicao",tdc::f("td_pedido","=",$pedidoID));
+$expedicao					= tdc::d("td_ecommerce_expedicao",tdc::f("pedido","=",$pedidoID));
 
 if (sizeof($expedicao) > 0){
 	$datahoraentrega 		= $expedicao->datahorarecebimento;
 	$entregue 				= $expedicao->entregue;
 	$valorfrete				= $expedicao->valorfrete;
 	$pesototal				= $expedicao->pesototal;
-	$transportadora			= $expedicao->td_transportadora;
+	$transportadora			= $expedicao->transportadora;
 	$codigorastreamento		= $expedicao->codigorastreamento;
 
 	$endereco = getListaRegFilho(getEntidadeId("ecommerce_expedicao"),getEntidadeId("ecommerce_endereco"),$expedicao->id);
@@ -52,7 +52,7 @@ if (sizeof($expedicao) > 0){
 		$cep 				= $endereco->cep;
 		$estado 			= $endereco->estado;
 		$cidade 			= $endereco->cidade;
-		$bairro 			= $endereco->td_bairro;
+		$bairro 			= $endereco->bairro;
 		$logradouro 		= $endereco->logradouro;
 		$numero 			= $endereco->numero;
 		$complemento 		= $endereco->complemento;
@@ -204,9 +204,9 @@ if ($conn = Transacao::Get()){
 	
 	$totalquantidade = $totalvalorunitario = $totalgeral = 0;
 	$sqlItens = "
-		SELECT id,qtde,valor,descricao,td_produto 
+		SELECT id,qtde,valor,descricao,produto 
 		FROM ".getEntidadeEcommercePedidoItem()." 
-		WHERE td_pedido = " .$pedidoID."
+		WHERE pedido = " .$pedidoID."
 		ORDER BY descricao;
 	";
 	$queryItens = $conn->query($sqlItens);
@@ -214,7 +214,7 @@ if ($conn = Transacao::Get()){
 		$tr = tdClass::Criar("tabelalinha");
 
 		$td = tdClass::Criar("tabelacelula");
-		$td->add($linhaItens["td_produto"]);
+		$td->add($linhaItens["produto"]);
 		$tr->add($td);
 
 		$td = tdClass::Criar("tabelacelula");
@@ -322,7 +322,7 @@ $colEndereco->add($panelEndereco);
 $jsPedido = tdClass::Criar("script");
 $jsPedido->add('
 	$(document).ready(function(){
-		$("#pedido-listastatus").val("'.$pedido->td_status.'");
+		$("#pedido-listastatus").val("'.$pedido->status.'");
 	});
 	$("#pedido-editar-cliente").click(function(){
 		editarTDFormulario('.$cliente->getID().','.$cliente->id.');

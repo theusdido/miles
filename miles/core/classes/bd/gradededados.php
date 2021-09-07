@@ -36,7 +36,7 @@ if ($op == "get_form"){
 }
 if ($op == "atualizar_emmassa"){
 	$atributo 			= tdc::p(ATRIBUTO,tdc::r("atributo"));
-	$entidade 			= tdc::p(ENTIDADE,$atributo->td_entidade);
+	$entidade 			= tdc::p(ENTIDADE,$atributo->entidade);
 	$registros			= explode(",",tdc::r("registros"));
 	$entidadeprincipal 	= tdc::r("entidadeprincipal");
 
@@ -57,7 +57,7 @@ if ($op == "atualizar_emmassa"){
 		}
 	}else{
 		$relacionamento = tdc::p(RELACIONAMENTO,tdc::r("relacionamento"));
-		$atributoRel 	= tdc::p(ATRIBUTO,$relacionamento->td_atributo)->nome;
+		$atributoRel 	= tdc::p(ATRIBUTO,$relacionamento->atributo)->nome;
 		$dataset 		= tdc::d($entidade->nome,tdc::f($atributoRel,"IN",$registros));
 		foreach($dataset as $d){
 			$reg 		= $d->id;

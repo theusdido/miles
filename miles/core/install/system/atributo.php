@@ -1,12 +1,12 @@
  <?php
 	// Nome da Entidade
-	$entidade = PREFIXO . "atributo";
+	$entidade = getSystemPREFIXO()  . "atributo";
 
 	// Criando Entidade
 	criarTabelaDicionario($conn,$entidade);
 	
 	// Criando Atributos
-	criarCampoDicionario($conn,$entidade,PREFIXO . "entidade","int",0,0);
+	criarCampoDicionario($conn,$entidade,"entidade","int",0,0);
 	criarCampoDicionario($conn,$entidade,"nome","varchar",120,0);
 	criarCampoDicionario($conn,$entidade,"descricao","varchar",120,0);
 	criarCampoDicionario($conn,$entidade,"tipo","varchar",50,0);	

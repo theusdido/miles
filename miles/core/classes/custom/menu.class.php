@@ -25,9 +25,9 @@ class Menu {
 		$sqlMenu = "
 			SELECT * 
 			FROM " . MENU . " 
-			WHERE td_pai = {$pai} 
-			AND td_pai = 0
-			ORDER BY td_pai,ordem;";
+			WHERE pai = {$pai} 
+			AND pai = 0
+			ORDER BY pai,ordem;";
 		$queryMenu = $conn->query($sqlMenu);
 		While ($linhaMenu = $queryMenu->fetch()){
 			array_push ($retornomenu,Menu::open($linhaMenu["id"]));
@@ -46,8 +46,8 @@ class Menu {
 				"id"			=> $linha["id"],
 				"descricao" 	=> $linha["descricao"],
 				"link" 			=> $linha["link"],
-				"pai" 			=> $linha["td_pai"],
-				"td_entidade" 	=> $linha["td_entidade"],
+				"pai" 			=> $linha["pai"],
+				"entidade" 	=> $linha["entidade"],
 				"target" 		=> empty($linha["target"])?"":$linha["target"],
 				"tipomenu" 		=> $linha["tipomenu"],
 				"filhos" 		=> Menu::filhos( $linha["id"] ),

@@ -4,7 +4,7 @@
     * @license : Estilo Site Ltda.
     * @link http://www.estilosite.com.br
 		
-    * Classe que implementa conex�o com o banco de dados
+    * Classe que implementa conexão com o banco de dados
     * Data de Criacao: 04/06/2012
     * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 */	
@@ -28,75 +28,58 @@ final class Conexao{
 		@parms $banco
 	*/
 	public static function abrir($banco){
-		
-		/*
-			Tratamento para a transação principal do sistema.
-			Nesse caso deve chamar o arquivo do projeto selecionado
-		*/		
-		if ($banco == "current") {
-			$arq_config = Session::Get("PATH_CURRENT_CONFIG_PROJECT").DATABASECONNECTION."_mysql.ini";
-		}else if($banco == "miles"){
-			$arq_config = PATH_CONFIG."miles_mysql.ini";
-		}else{
-			if (file_exists($_SESSION["PATH_CURRENT_CONFIG_PROJECT"] . $banco."_mysql.ini")){
-				$arq_config = $_SESSION["PATH_CURRENT_CONFIG_PROJECT"] . $banco."_mysql.ini";
-			}else{
-				$arq_config = PATH_CURRENT_CONFIG_PROJECT . $banco."_mysql.ini";
-			}
-		}
+		$bd = self::getDados();
+		if ($bd != false){
+			$usuario 	= $bd["usuario"];
+			$senha 		= $bd["senha"];
+			$base 		= $bd["base"];
+			$host		= $bd["host"];
+			$tipo		= ($bd["tipo"]==""?"mysql":$bd["tipo"]);
+			$porta		= ($bd["porta"]=="")?"3306":$bd["porta"];
 
-		if (!file_exists($arq_config)){
-			echo "Arquivo <b>{$banco}</b> de configuração com o banco de dados não existe. => " . $arq_config . " <= ";
+			$erros 		= array();
+			if ($usuario == ''){
+				array_push($erros,
+					'Usuário no arquivo de configuração com o banco de dados não pode ser vazio'
+				);
+			}
+			
+			if ($base == ''){
+				array_push($erros,
+					'Base de dados no arquivo de configuração com o banco de dados não pode ser vazio'
+				);
+			}
+			
+			if ($host == ''){
+				array_push($erros,
+					'Host no arquivo de configuração com o  banco de dados não pode ser vazio'
+				);
+			}
+
+			if (sizeof($erros) > 0 && IS_SHOW_ERROR_MESSAGE){
+				foreach($erros as $e){
+					echo $e . "\n <br>";
+				}
+				return null;
+			}else{
+				switch(trim($tipo)){
+					case 'mysql':
+						try{
+							$conn = Conexao::getConnection($tipo,$host,$base,$usuario,$senha,$porta);
+						}catch(Throwable $t){
+							if (IS_SHOW_ERROR_MESSAGE){
+								var_dump($t->getMessage());
+							}
+						}
+					break;
+				}
+				// Define o Schema
+				if (!defined("SCHEMA")) define('SCHEMA',$bd["base"]);
+				return $conn;
+			}
+		}else{
 			return null;
 		}
-		try{
-			if (!$bd = parse_ini_file($arq_config)){
-				throw new Exception("Arquivo <b>{$banco}</b> de configuração com o banco de dados n�o existe.");
-			}
-			self::$dados = $bd;
-		}catch(Exception $e){
-			if (IS_SHOW_ERROR_MESSAGE){
-				echo utf8_encode($e->getMessage());
-			}
-			return false;
-			exit;
-		}
-
-		$usuario 	= $bd["usuario"];
-		$senha 		= $bd["senha"];
-		$base 		= $bd["base"];
-		$host		= $bd["host"];
-		$tipo		= ($bd["tipo"]==""?"mysql":$bd["tipo"]);
-		$porta		= ($bd["porta"]=="")?"3306":$bd["porta"];
-
-		if ($usuario == ''){
-			echo 'Usuário no arquivo de configuração com o banco de dados não pode ser vazio';
-			exit;
-		}
-		
-		if ($base == ''){
-			echo 'Base de dados no arquivo de configuração com o banco de dados não pode ser vazio';
-			exit;
-		}
-		
-		if ($host == ''){
-			echo 'Host no arquivo de configuração com o  banco de dados não pode ser vazio';
-			exit;
-		}
-		switch(trim($tipo)){
-			case 'mysql':
-				try{
-					$conn = Conexao::getConnection($tipo,$host,$base,$usuario,$senha,$porta);
-				}catch(Throwable $t){
-					if (IS_SHOW_ERROR_MESSAGE){
-						var_dump($t->getMessage());
-					}
-				}
-			break;
-		}
-		// Define o Schema
-		if (!defined("SCHEMA")) define('SCHEMA',$bd["base"]);
-		return $conn;
 	}
 	public static function getConnection($type = null,$host,$base,$user,$password = null,$port = null){
 		if ($type == null) $type = "mysql";
@@ -117,6 +100,29 @@ final class Conexao{
 		}
 	}
 	public static function getDados(){
-		return self::$dados;
+		/*
+			Tratamento para a transação principal do sistema.
+			Nesse caso deve chamar o arquivo do projeto selecionado
+		*/	
+		$arq_config = PATH_CURRENT_CONFIG_PROJECT.DATABASECONNECTION."_mysql.ini";
+		if (!file_exists($arq_config)){
+			if (IS_SHOW_ERROR_MESSAGE){
+				echo "Arquivo <b>{$banco}</b> de configuração com o banco de dados não existe. => " . $arq_config . " <= ";
+			}
+			return false;
+		}else{
+			try{
+				if (!$bd = parse_ini_file($arq_config)){
+					throw new Exception("Arquivo <b>{$banco}</b> de configuração com o banco de dados não existe.");
+				}
+				return $bd;
+			}catch(Exception $e){
+				if (IS_SHOW_ERROR_MESSAGE){
+					echo utf8_encode($e->getMessage());
+				}
+				return false;
+			}
+
+		}
 	}
 }

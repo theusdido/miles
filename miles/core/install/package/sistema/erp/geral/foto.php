@@ -25,7 +25,7 @@
 	$foto = criarAtributo($conn,$entidadeID,"foto","Foto","text",0,0,19,0,0,0,'',1,0);
 
 	// Criando Acesso
-	$menu_webiste = addMenu($conn,'Geral','#','','','','geral');
+	$menu_webiste 	= addMenu($conn,'Geral','#','',0,0,'geral');
 
 	// Adicionando Menu
-	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".PREFIXO.$entidadeNome.".html",'',$menu_webiste,8,'geral-' . $entidadeNome);
+	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,8,'geral-' . $entidadeNome,$entidadeID,'cadastro');

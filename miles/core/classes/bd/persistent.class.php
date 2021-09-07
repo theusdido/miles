@@ -22,7 +22,7 @@ class Persistent extends Registro {
 	*/
 	function __construct($entidade){
 		if ($entidade == "") {
-			echo 'Entidade não especificada ou não existe em td_entidade.';
+			echo 'Entidade não especificada ou não existe.';
 			return null;
 		}
 		if(!class_exists($entidade)){

@@ -1,8 +1,8 @@
 <?php
 	$usuario = $senha = $base = $host = $tipo = $porta = "";
 	$check_criarbase = $check_instalacaosistema = $check_pacoteconfigurado = $_SESSION["URL_SYSTEM_THEME"] . 'check-no.gif';
-	include 'conexao.php';
 
+	/*
 	$sqlinstalacao = "SELECT * FROM td_instalacao WHERE id = 1;";
 	$queryinstalacao = $conn->query($sqlinstalacao);
 	if ($queryinstalacao){
@@ -21,6 +21,7 @@
 			$_SESSION["PACOTECONFIGURACAO"] = 1;
 		}
 	}
+	*/
 
 ?>
 <div class="list-group">
@@ -28,11 +29,11 @@
 		Criar Banco de Dados
 		<img src="<?=$check_criarbase?>" class="check-no" id="guia-base"/>
 	</a>
-	<a href="instalacaosistema.php?currentproject=<?=$_SESSION["currentproject"]?>" class="list-group-item">
+	<a href="<?=$_SESSION["URL_MILES"]?>?controller=install/pacotes" class="list-group-item">
 		Instalação do Sistema
 		<img src="<?=$check_instalacaosistema?>" class="check-no" id="guia-instalacao"/>
 	</a>
-	<a href="configuracaopacotes.php?currentproject=<?=$_SESSION["currentproject"]?>" class="list-group-item">
+	<a href="<?=$_SESSION["URL_MILES"]?>?controller=install/modulos" class="list-group-item">
 		Configuração dos Pacotes
 		<img src="<?=$check_pacoteconfigurado?>" class="check-no" id="guia-pacote"/>
 	</a>

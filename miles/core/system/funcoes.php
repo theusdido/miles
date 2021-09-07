@@ -528,9 +528,6 @@ function getHTMLTipoFormato($htmltipo,$valor,$entidade=0,$atributo=0,$id=0){
 		case 26:
 			$retorno = moneyToFloat($valor,true);
 		break;
-		case 29:
-			$retorno = str_replace("-","/",$valor);
-		break;
 		default:
 			$retorno = $valor;
 	}
@@ -630,7 +627,7 @@ function criarEntidade(
 	$nome 		= getSystemPREFIXO() . $nome;
 	$descricao 	= utf8charset($descricao);
 
-	$sqlExisteEntidade = "SELECT id,nome FROM " . getSystemPREFIXO() . "entidade WHERE nome='{$nome}'";
+	$sqlExisteEntidade = "SELECT id,nome FROM " . ENTIDADE . " WHERE nome='{$nome}'";
 	$queryExisteEntidade = $conn->query($sqlExisteEntidade);
 	if (!$queryExisteEntidade){
 		echo $sqlExisteEntidade;
@@ -640,10 +637,10 @@ function criarEntidade(
 	
 	if ($queryExisteEntidade->rowCount() <= 0){
 		$entidade = getProxId("entidade",$conn);
-		$sql = "INSERT INTO ".getSystemPREFIXO()."entidade (id,nome,descricao,exibirmenuadministracao,exibircabecalho,ncolunas,atributogeneralizacao,exibirlegenda,registrounico,carregarlibjavascript) VALUES (".$entidade.",'{$nome}','".$descricao."',{$exibirmenuadministracao},{$exibircabecalho},{$ncolunas},{$atributogeneralizacao},{$exibirlegenda},{$registrounico},{$carregarlibjavascript});";		
+		$sql = "INSERT INTO ".ENTIDADE." (id,nome,descricao,exibirmenuadministracao,exibircabecalho,ncolunas,atributogeneralizacao,exibirlegenda,registrounico,carregarlibjavascript) VALUES (".$entidade.",'{$nome}','".$descricao."',{$exibirmenuadministracao},{$exibircabecalho},{$ncolunas},{$atributogeneralizacao},{$exibirlegenda},{$registrounico},{$carregarlibjavascript});";		
 	}else{
 		$entidade = $linhaExisteEntidade["id"];
-		$sql = "UPDATE ".getSystemPREFIXO()."entidade SET nome = '{$nome}',descricao = '".$descricao."',exibirmenuadministracao = {$exibirmenuadministracao},exibircabecalho = {$exibircabecalho},ncolunas = {$ncolunas},atributogeneralizacao = {$atributogeneralizacao},exibirlegenda = {$exibirlegenda},registrounico = {$registrounico},carregarlibjavascript={$carregarlibjavascript} WHERE id = {$entidade}";
+		$sql = "UPDATE ".ENTIDADE." SET nome = '{$nome}',descricao = '".$descricao."',exibirmenuadministracao = {$exibirmenuadministracao},exibircabecalho = {$exibircabecalho},ncolunas = {$ncolunas},atributogeneralizacao = {$atributogeneralizacao},exibirlegenda = {$exibirlegenda},registrounico = {$registrounico},carregarlibjavascript={$carregarlibjavascript} WHERE id = {$entidade}";
 	}
 	$query = $conn->query($sql);
 	if (!$query){
@@ -736,20 +733,12 @@ function criarAtributo(
 		$tamanhoSQL = '';
 	}
 	
-	$tamanho = $tamanho == ''?0:$tamanho;
-
-	// Adiciona o PREFIXO caso o atributo seja uma chave estrangeira
-	if ($chaveestrangeira != null && $chaveestrangeira != "" && !empty($chaveestrangeira) && $chaveestrangeira!="null"){
-		$nome_PREFIXO = getSystemFKPREFIXO();
-	}else{
-		$nome_PREFIXO = "";	
-	}
-	
-	$entidadeentidadedefault = defined("ENTIDADE")?ENTIDADE:getSystemPREFIXO()."entidade";
-	$entidadeatributodefault = defined("ATRIBUTO")?ATRIBUTO:getSystemPREFIXO()."atributo";
+	$tamanho 					= $tamanho == ''?0:$tamanho;	
+	$entidadeentidadedefault 	= ENTIDADE;
+	$entidadeatributodefault 	= ATRIBUTO;
 
 	$PREFIXO = getSystemPREFIXO();
-	$sqlExisteAtributo = "SELECT id FROM {$entidadeatributodefault} WHERE nome='{$nome_PREFIXO}{$nome}' AND {$entidadeentidadedefault}={$entidade};";
+	$sqlExisteAtributo = "SELECT id FROM {$entidadeatributodefault} WHERE nome='{$nome}' AND entidade={$entidade};";
 	$queryExisteAtributo = $conn->query($sqlExisteAtributo);
 	if (!$queryExisteAtributo){
 		echo $sqlExisteAtributo;
@@ -764,9 +753,9 @@ function criarAtributo(
 	$linha = $query->fetchAll();		
 	if ($queryExisteAtributo->rowCount() <= 0){		
 		$id = getProxId("atributo",$conn);
-		$sql = "INSERT INTO {$entidadeatributodefault} (id,{$entidadeentidadedefault},nome,descricao,tipo,tamanho,nulo,tipohtml,exibirgradededados,chaveestrangeira,dataretroativa,inicializacao,tipoinicializacao,labelzerocheckbox,labelumcheckbox,readonly,legenda) VALUES (".$id.",{$entidade},'{$nome_PREFIXO}{$nome}','".$descricao."','{$tipo}','{$tamanho}',{$nulo},'{$tipohtml}',{$exibirgradededados},{$chaveestrangeira},{$dataretroativa},'{$inicializacao}',{$tipoinicializacao},'{$labelzerocheckbox}','{$labelumcheckbox}',{$readonly},'{$legenda}');";	$query = $conn->query($sql);
+		$sql = "INSERT INTO {$entidadeatributodefault} (id,entidade,nome,descricao,tipo,tamanho,nulo,tipohtml,exibirgradededados,chaveestrangeira,dataretroativa,inicializacao,tipoinicializacao,labelzerocheckbox,labelumcheckbox,readonly,legenda) VALUES (".$id.",{$entidade},'{$nome}','".$descricao."','{$tipo}','{$tamanho}',{$nulo},'{$tipohtml}',{$exibirgradededados},{$chaveestrangeira},{$dataretroativa},'{$inicializacao}',{$tipoinicializacao},'{$labelzerocheckbox}','{$labelumcheckbox}',{$readonly},'{$legenda}');";	$query = $conn->query($sql);
 		if ($query){
-			$sql = "ALTER TABLE {$linha[0]["nome"]} ADD COLUMN {$nome_PREFIXO}{$nome} {$tipo}{$tamanhoSQL} {$nuloSQL};";
+			$sql = "ALTER TABLE {$linha[0]["nome"]} ADD COLUMN {$nome} {$tipo}{$tamanhoSQL} {$nuloSQL};";
 			$criar = $conn->query($sql);
 		}else{
 			echo $sql;
@@ -785,10 +774,10 @@ function criarAtributo(
 		}
 		$linha_old = $query_old->fetchAll();
 		
-		$sql = "UPDATE {$entidadeatributodefault} SET {$entidadeentidadedefault} = {$entidade},nome='{$nome_PREFIXO}{$nome}',descricao='{$descricao}',tipo='{$tipo}',tamanho='{$tamanho}',nulo={$nulo},tipohtml='{$tipohtml}',exibirgradededados={$exibirgradededados},chaveestrangeira={$chaveestrangeira},dataretroativa={$dataretroativa},inicializacao='{$inicializacao}',tipoinicializacao = {$tipoinicializacao},labelzerocheckbox = '{$labelzerocheckbox}',labelumcheckbox = '{$labelumcheckbox}', readonly = {$readonly} , legenda = '{$legenda}' WHERE id={$id}";
+		$sql = "UPDATE {$entidadeatributodefault} SET entidade = {$entidade},nome='{$nome}',descricao='{$descricao}',tipo='{$tipo}',tamanho='{$tamanho}',nulo={$nulo},tipohtml='{$tipohtml}',exibirgradededados={$exibirgradededados},chaveestrangeira={$chaveestrangeira},dataretroativa={$dataretroativa},inicializacao='{$inicializacao}',tipoinicializacao = {$tipoinicializacao},labelzerocheckbox = '{$labelzerocheckbox}',labelumcheckbox = '{$labelumcheckbox}', readonly = {$readonly} , legenda = '{$legenda}' WHERE id={$id};";
 		$query = $conn->query($sql);
 		if ($query){
-			$sqlFisicamante = "SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{$linha[0]["nome"]}' AND  COLUMN_NAME = '{$nome_PREFIXO}{$nome}'";
+			$sqlFisicamante = "SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{$linha[0]["nome"]}' AND  COLUMN_NAME = '{$nome}';";
 			$queryFisicamante = $conn->query($sqlFisicamante);
 			if (!$queryFisicamante){
 				echo $sqlFisicamente;
@@ -796,10 +785,10 @@ function criarAtributo(
 			}
 			
 			if ($queryFisicamante->rowCount() > 0 ){
-				$sql = "ALTER TABLE {$linha[0]["nome"]} CHANGE {$linha_old[0]['nome']} {$nome_PREFIXO}{$nome} {$tipo}{$tamanhoSQL} {$nuloSQL};";
+				$sql = "ALTER TABLE {$linha[0]["nome"]} CHANGE {$linha_old[0]['nome']} {$nome} {$tipo}{$tamanhoSQL} {$nuloSQL};";
 				$atualizar = $conn->query($sql);
 				if (!$atualizar){
-					$sql = "ALTER TABLE {$linha[0]["nome"]} ADD COLUMN {$nome_PREFIXO}{$nome} {$tipo}{$tamanhoSQL} {$nuloSQL};";
+					$sql = "ALTER TABLE {$linha[0]["nome"]} ADD COLUMN {$nome} {$tipo}{$tamanhoSQL} {$nuloSQL};";
 					$inserir = $conn->query($sql);
 					if (!$inserir){
 						echo $sql;
@@ -807,7 +796,7 @@ function criarAtributo(
 					}
 				}
 			}else{
-				$sql = "ALTER TABLE {$linha[0]["nome"]} ADD COLUMN {$nome_PREFIXO}{$nome} {$tipo}{$tamanhoSQL} {$nuloSQL};";
+				$sql = "ALTER TABLE {$linha[0]["nome"]} ADD COLUMN {$nome} {$tipo}{$tamanhoSQL} {$nuloSQL};";
 				$criar = $conn->query($sql);
 				if (!$criar){
 					echo $sql;
@@ -823,16 +812,10 @@ function criarAtributo(
 }
 function getProxId($entidade,$conn = null){
 	if ($conn == null) global $conn;
-	if (defined('PREFIXO')){
-		$PREFIXO = PREFIXO;
-		if (stripos($PREFIXO,"_") === false){
-			$PREFIXO .= "_";
-		}
-	}else{
-		$PREFIXO = "td_";
-	}
-	$sql = "SELECT IFNULL(MAX(id),0) + 1 FROM ".$PREFIXO."$entidade";
-	$query = $conn->query($sql);
+	$entidadeName 	= getSystemPREFIXO() . str_replace(getSystemPREFIXO(),"",$entidade);
+
+	$sql 	= 'SELECT IFNULL(MAX(id),0) + 1 FROM ' . $entidadeName;
+	$query 	= $conn->query($sql);
 	if (!$query){
 		echo $sql;
 		var_dump($conn->errorInfo());		
@@ -851,15 +834,13 @@ function addMenu(
 	$entidade = 0, #7
 	$tipomenu = "" #8
 ){
-	
-	if (!defined("MENU")) define("MENU",getSystemPREFIXO()."menu");
 	$descricao = utf8charset($descricao);
 	$sql = "SELECT id FROM " . MENU. " WHERE fixo = '".$fixo."';";
 	$query = $conn->query($sql);
 	if ($query->rowCount() > 0){
 		$linha = $query->fetch();
 		$menu_webiste = $linha["id"];
-		$sqlMenu = 	"UPDATE " . MENU ." SET descricao = '".$descricao."',link = '".$link."',target = '".$target."',".getSystemPREFIXO()."pai = ".$pai.",fixo = '".$fixo."' , td_entidade = {$entidade} , tipomenu = '{$tipomenu}' WHERE id = ".$menu_webiste.";";
+		$sqlMenu = 	"UPDATE " . MENU ." SET descricao = '".$descricao."',link = '".$link."',target = '".$target."',pai = ".$pai.",fixo = '".$fixo."' , entidade = {$entidade} , tipomenu = '{$tipomenu}' WHERE id = ".$menu_webiste.";";
 	}else{
 		$menu_webiste = getProxId("menu",$conn);
 		if ($ordem == 0){
@@ -868,12 +849,17 @@ function addMenu(
 			$linhaOrdem = $queryOrdem->fetch();
 			$ordem = $linhaOrdem["ordem"];
 		}
-		$sqlMenu = 	"INSERT INTO ". MENU." (id,descricao,link,target,".getSystemPREFIXO()."pai,ordem,fixo,td_entidade,tipomenu) VALUES 
+		$sqlMenu = 	"INSERT INTO ". MENU." (id,descricao,link,target,pai,ordem,fixo,entidade,tipomenu) VALUES 
 		(".$menu_webiste.",'".$descricao."','".$link."','".$target."','".$pai."','".$ordem."','".$fixo."',".$entidade.",'".$tipomenu."');";
 	}
-	if ($conn->exec($sqlMenu)){
-		addMenuPermissao($menu_webiste);
+	try{
+		if ($conn->exec($sqlMenu)){
+			addMenuPermissao($menu_webiste);
+		}
+	}catch(Throwable $t){
+		if (IS_SHOW_ERROR_MESSAGE) var_dump($sqlMenu);
 	}
+
 	return $menu_webiste;
 }
 
@@ -883,9 +869,9 @@ function addMenuPermissao(
 	$permissao = 1
 ){
 	global $conn;	
-	if ($usuario == null) $usuario = $_SESSION["userid"];
+	if ($usuario == null) $usuario = isset($_SESSION["userid"])?$_SESSION["userid"]:1;
 	$idMP = installDependencia("menupermissoes","system");
-	$sqlv = "SELECT id FROM td_menupermissoes WHERE td_menu = {$menu} AND td_usuario = {$usuario};";
+	$sqlv = "SELECT id FROM td_menupermissoes WHERE menu = {$menu} AND usuario = {$usuario};";
 	$queryv = $conn->query($sqlv);
 	if ($queryv->rowCount() > 0){
 		$linhav = $queryv->fetch();
@@ -893,7 +879,7 @@ function addMenuPermissao(
 		$sql = "UPDATE td_menupermissoes SET permissao = {$permissao} WHERE id = {$id};";
 	}else{
 		$id = getProxId("menupermissoes");
-		$sql = "INSERT INTO td_menupermissoes (id,td_projeto,td_empresa,td_menu,td_usuario,permissao) VALUES ({$id},1,1,{$menu},$usuario,$permissao);";
+		$sql = "INSERT INTO td_menupermissoes (id,projeto,empresa,menu,usuario,permissao) VALUES ({$id},1,1,{$menu},$usuario,$permissao);";
 	}
 	if ($conn->exec($sql)){
 		return true;
@@ -908,7 +894,7 @@ $entidade, #1
 $descricao, #2
 $atributos #3
 ){
-	$sql_verificar = "SELECT id FROM ".getSystemPREFIXO()."abas WHERE descricao = '{$descricao}' AND " . getSystemPREFIXO() . "entidade = " . $entidade;
+	$sql_verificar = "SELECT id FROM ".ABAS." WHERE descricao = '{$descricao}' AND entidade = " . $entidade;
 	$query_verificar = $conn->query($sql_verificar);
 	if (!$query_verificar){
 		echo $sql_verificar;
@@ -921,10 +907,10 @@ $atributos #3
 	}
 	if ($query_verificar->rowCount() > 0){
 		$id = $linha_verificar[0];
-		$sql = "UPDATE ".getSystemPREFIXO()."abas SET descricao = '{$descricao}' , atributos = '{$atributos}' WHERE id = {$id};";
+		$sql = "UPDATE ".ABAS." SET descricao = '{$descricao}' , atributos = '{$atributos}' WHERE id = {$id};";
 	}else{
 		$id = getProxId("abas",$conn);
-		$sql = "INSERT INTO ".getSystemPREFIXO()."abas (id,".getSystemPREFIXO()."entidade,descricao,atributos) values ({$id},{$entidade},'{$descricao}','{$atributos}');";
+		$sql = "INSERT INTO ".ABAS." (id,entidade,descricao,atributos) values ({$id},{$entidade},'{$descricao}','{$atributos}');";
 	}
 	$query = $conn->query($sql);
 	if ($query){
@@ -941,7 +927,7 @@ function getEntidadeId($entidadeString,$conn = null){
 		return 0;
 	}else{
 		if ($PREFIXO == substr($entidadeString,0,3)) $PREFIXO = '';
-		$sql = "SELECT id FROM td_entidade WHERE nome = '".$PREFIXO.$entidadeString."'";
+		$sql = "SELECT id FROM ".ENTIDADE." WHERE nome = '".$PREFIXO.$entidadeString."'";
 		$query = $conn->query($sql);
 		if ($query->rowCount() > 0){
 			$linha = $query->fetch();
@@ -959,7 +945,7 @@ function getAtributoId($entidadeString,$atributoString,$conn = null){
 		return 0;
 	}else{
 		$entidadeString = str_replace($PREFIXO,"",$entidadeString);
-		$sql = "SELECT id FROM td_atributo WHERE td_entidade = ".getEntidadeId($entidadeString,$conn)." AND nome = '".$atributoString."'";
+		$sql = "SELECT id FROM ".ATRIBUTO." WHERE entidade = ".getEntidadeId($entidadeString,$conn)." AND nome = '".$atributoString."'";
 		$query = $conn->query($sql);
 		if ($query->rowCount() > 0){
 			$linha = $query->fetch();
@@ -972,15 +958,15 @@ function getAtributoId($entidadeString,$atributoString,$conn = null){
 function criarRelacionamento($conn,$tipo,$entidadePai,$entidadeFilho,$descricao = "",$atributo = 0){
 	$descricao 		= utf8charset($descricao);
 	$cardinalidade 	= getCardinalidade($tipo);
-	$sqlVerifica 	= "SELECT id FROM td_relacionamento WHERE pai = " . $entidadePai . " AND filho = " . $entidadeFilho . " AND tipo = " . $tipo;
+	$sqlVerifica 	= "SELECT id FROM ".RELACIONAMENTO." WHERE pai = " . $entidadePai . " AND filho = " . $entidadeFilho . " AND tipo = " . $tipo;
 	$queryVerifica 	= $conn->query($sqlVerifica);
 	if ($queryVerifica->rowcount() > 0){
 		$linhaVerifica 	= $queryVerifica->fetch();
 		$idRetorno 		= $linhaVerifica["id"];
-		$sql = "UPDATE " . getSystemPREFIXO() . "relacionamento SET descricao = '$descricao' , td_atributo = $atributo , cardinalidade = '{$cardinalidade}' WHERE id = " . $idRetorno;
+		$sql = "UPDATE " . RELACIONAMENTO . " SET descricao = '$descricao' , atributo = $atributo , cardinalidade = '{$cardinalidade}' WHERE id = " . $idRetorno;
 	}else{
 		$idRetorno = getProxId("relacionamento",$conn);		
-		$sql = "INSERT INTO " . getSystemPREFIXO() . "relacionamento (id,descricao,tipo,pai,filho,td_atributo,cardinalidade) 
+		$sql = "INSERT INTO " . RELACIONAMENTO . " (id,descricao,tipo,pai,filho,atributo,cardinalidade) 
 				VALUES (".$idRetorno.",'".$descricao."',".$tipo.",".$entidadePai.",".$entidadeFilho.",".$atributo.",'{$cardinalidade}');";
 	}
 	$query = $conn->query($sql);
@@ -1011,7 +997,7 @@ function retirarAcentos($string){
     return preg_replace(array("/(á|à|ã|â|ä)/","/(Á|À|Ã|Â|Ä)/","/(é|è|ê|ë)/","/(É|È|Ê|Ë)/","/(í|ì|î|ï)/","/(Í|Ì|Î|Ï)/","/(ó|ò|õ|ô|ö)/","/(Ó|Ò|Õ|Ô|Ö)/","/(ú|ù|û|ü)/","/(Ú|Ù|Û|Ü)/","/(ñ)/","/(Ñ)/","/(ç)/","/(Ç)/", "/(ª|º)/"),explode(" ","a A e E i I o O u U n N c C"),$string);
 }
 function qtdePaiMenu($menu,$conn){
-	$sql = "SELECT IFNULL(pai,0) pai FROM td_menu WHERE id = " . $menu;
+	$sql = "SELECT IFNULL(pai,0) pai FROM ".MENU." WHERE id = " . $menu;
 	$query = $conn->query($sql);
 	$linha = $query->fetch();
 	if ($linha["pai"] == 0){
@@ -1098,14 +1084,14 @@ function atualizarRegistro($conn,$tabela,$id = "",$atributos,$valores,$atualizar
 }
 function clonarAtributo($atributo,$conn){
 
-	$sql = "SELECT * FROM td_atributo WHERE id = {$atributo}";
+	$sql = "SELECT * FROM ".ATRIBUTO." WHERE id = {$atributo}";
 	$query = $conn->query($sql);
 	if ($query->rowCount() >0){
 		$linha = (object)$query->fetch();
 		
 		$newAtributo = getProxId("atributo",$conn);
 		$sql = "INSERT INTO ".PREFIXO."atributo (id,".PREFIXO."entidade,nome,descricao,tipo,tamanho,nulo,tipohtml,exibirgradededados,chaveestrangeira,dataretroativa,inicializacao,tipoinicializacao,labelzerocheckbox,labelumcheckbox,readonly) 
-		VALUES (".$newAtributo.",{$linha->td_entidade},'{$linha->nome}','".($linha->descricao)."','{$linha->tipo}','{$linha->tamanho}',{$linha->nulo},'{$linha->tipohtml}',{$linha->exibirgradededados},{$linha->chaveestrangeira},{$linha->dataretroativa},'{$linha->inicializacao}',{$linha->tipoinicializacao},'','',0);";
+		VALUES (".$newAtributo.",{$linha->entidade},'{$linha->nome}','".($linha->descricao)."','{$linha->tipo}','{$linha->tamanho}',{$linha->nulo},'{$linha->tipohtml}',{$linha->exibirgradededados},{$linha->chaveestrangeira},{$linha->dataretroativa},'{$linha->inicializacao}',{$linha->tipoinicializacao},'','',0);";
 		$query = $conn->query($sql);
 		
 	}else{
@@ -1259,7 +1245,7 @@ function isAtributoDependenciaPai($attr){
 	
 	$atributo = tdClass::Criar("persistent",array(ATRIBUTO,$attr))->contexto;
 	if ($atributo == null) return false;
-	$sql = "SELECT 1 FROM td_atributo WHERE ".ENTIDADE." = ".$atributo->td_entidade . " AND atributodependencia = " . $attr;
+	$sql = "SELECT 1 FROM ".ATRIBUTO." WHERE entidade = ".$atributo->entidade . " AND atributodependencia = " . $attr;
 	$query = $conn->query($sql);
 	if ($query->rowCount() > 0){
 		return true;
@@ -1271,8 +1257,8 @@ function getConfigFile(){
 	$config = parse_ini_file("config/default_config.inc");
 	return $config;
 }
-function getCurrentConfigFile($raiz = ""){
-	$config = parse_ini_file($raiz . CURRENT_PATH_CONFIG);
+function getCurrentConfigFile(){
+	$config = parse_ini_file(FILE_CURRENT_CONFIG_PROJECT);
 	return $config;
 }
 function createDirectory($dir){
@@ -1371,7 +1357,7 @@ function setCurrentConfigFile($atualizar,$replace = true){
 			}
 		}
 
-		$fp = fopen(CURRENT_PATH_CONFIG,"w");
+		$fp = fopen(PATH_CURRENT_CONFIG_PROJECT,"w");
 		foreach($new as $n => $k){
 			if ($n != '' && $new[$n] != ''){
 				fwrite($fp,$n."=".$new[$n]."\r\n");
@@ -1389,7 +1375,7 @@ function setCurrentFileDatabse($config){
 	$type = $configCurrent["CURRENT_DATABASE"];
 
 	$connMILES = getMilesDataBase();
-	$sql = "SELECT * FROM td_connectiondatabase WHERE td_projeto = " . $configCurrent["CURRENT_PROJECT"] . " AND td_type = " . getDescTipoConnection($type);
+	$sql = "SELECT * FROM td_connectiondatabase WHERE projeto = " . $configCurrent["CURRENT_PROJECT"] . " AND type = " . getDescTipoConnection($type);
 	$query = $connMILES->query($sql);
 
 	if ($linha = $query->fetch()){
@@ -1420,7 +1406,7 @@ function setCurrentFileDatabse($config){
 }
 
 function setAtributoGeneralizacao($conn,$entidade,$atributo){
-	$sql = "UPDATE td_entidade  SET atributogeneralizacao = " . $atributo . " WHERE id = " . $entidade;
+	$sql = "UPDATE ".ENTIDADE."  SET atributogeneralizacao = " . $atributo . " WHERE id = " . $entidade;
 	$conn->exec($sql);
 }
 
@@ -1434,8 +1420,8 @@ function installDependencia($conn,$entidade = "",$package = "package/sistema/"){
 	}
 
 	if (substr($package,-1) != "/") $package .="/";
-	$pathfile = $package . str_replace("_","/",$entidade) . ".php";
-	if (file_exists($pathfile)){
+	$pathfile = PATH_INSTALL . $package . str_replace("_","/",$entidade) . ".php";
+	if (file_exists($pathfile)){	
 		include_once $pathfile;
 		return getEntidadeId($entidade,$conn);
 	}else{
@@ -1524,7 +1510,7 @@ function utf8charset($texto, $local = null, $decodificacao = null , $convert = n
 		}
 	}else{
 		if (is_numeric($local)){
-			$charset = tdClass::Criar("persistent",array("td_charset",$local))->contexto->charset;
+			$charset = tdClass::Criar("persistent",array("charset",$local))->contexto->charset;
 			switch($charset){
 				case 'N': return $texto; break;
 				case 'D': return utf8decode($texto); break;
@@ -1770,16 +1756,7 @@ function isRelacionamentoPai($entidade){
 }
 
 function getSystemPREFIXO(){
-	if (defined('PREFIXO')){
-		if (PREFIXO != "td_"){
-			$PREFIXO = PREFIXO . "_";
-		}else{
-			return PREFIXO;
-		}
-	}else{
-		$PREFIXO = "td_";
-	}
-	return $PREFIXO;
+	return PREFIXO . "_";
 }
 function getCurrentConnection(){
 	global $conn;
@@ -1900,7 +1877,7 @@ function isTelefone($numero){
 }
 function addAutoIncrement($entidade){
     global $conn;
-	$sql = "SELECT nome FROM td_entidade WHERE id = " . $entidade . ";";
+	$sql = "SELECT nome FROM ".ENTIDADE." WHERE id = " . $entidade . ";";
 	$query = $conn->query($sql);
 	if ($query->rowCount() > 0){
 		$linha = $query->fetch();
@@ -1994,23 +1971,4 @@ function getURLParamsArray($url){
 
 function getSystemFKPreFixo($atributo = ""){
 	return "td_" . $atributo;
-}
-
-function addJSLIBFormSystem($elemento = null){
-	$jsFuncoes = tdClass::Criar("script");
-	$jsFuncoes->src = Session::Get('URL_SYSTEM') . "funcoes.js";
-
-	$jsValidar = tdClass::Criar("script");
-	$jsValidar->src = Session::Get('URL_SYSTEM') . "validar.js";
-
-	$jsGradeDados = tdClass::Criar("script");
-	$jsGradeDados->src = Session::Get('URL_CLASS_TDC') . "gradededados.class.js";
-
-	if ($elemento == null){
-		$jsFuncoes->mostrar();
-		$jsValidar->mostrar();
-		$jsGradeDados->mostrar();
-	}else{
-		$elemento->add($jsFuncoes,$jsValidar,$jsGradeDados);
-	}
 }

@@ -24,10 +24,10 @@
 	$contato = criarAtributo($conn,$entidadeID,"contato","Contato","varchar","200",1,3,1,0,0,"");
 
 	// Criando Acesso
-	$menu_webiste = addMenu($conn,'Financeiro','#','','','','financeiro');
+	$menu_webiste 	= addMenu($conn,'Geral','#','',0,0,'geral');
 
 	// Adicionando Menu
-	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".PREFIXO.$entidadeNome.".html",'',$menu_webiste,8,'financeiro-' . $entidadeNome);
+	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,8,'financeiro-' . $entidadeNome,$entidadeID,'cadastro');
 	
 	// Criar Aba
 	criarAba($conn,$entidadeID,"Capa",$contato);

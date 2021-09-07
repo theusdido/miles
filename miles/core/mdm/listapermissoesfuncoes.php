@@ -15,14 +15,14 @@
 				echo "		<table class='table table-hover table-condensed lista_usuarios_funcoes' id='t-funcao-".$linha["id"]."'>";
 				echo "			<tbody>";
 
-				$sqlusuario = "SELECT a.id,b.nome,b.id td_usuario FROM td_funcaopermissoes a,td_usuario b WHERE td_funcao = ".$linha["id"]." AND a.td_usuario = b.id AND permissao = 1";
+				$sqlusuario = "SELECT a.id,b.nome,b.id usuario FROM td_funcaopermissoes a,usuario b WHERE funcao = ".$linha["id"]." AND a.usuario = b.id AND permissao = 1";
 				$queryusuario = $conn->query($sqlusuario);
 				While ($linhausuario = $queryusuario->fetch()){
 					$nome = utf8_encode($linhausuario["nome"]);
 					echo "			<tr>";
 					echo "				<td width='90%'><small class='descricao-usuario'>".$nome."</small></td>";
 					echo "				<td width='10%' align='right'>";
-					echo "					<button type='button' class='btn btn-default excluir-usuario-funcao' aria-label='Excluir Usuário Função' data-usuario='".$linhausuario["td_usuario"]."' data-funcao='".$linha["id"]."'>";
+					echo "					<button type='button' class='btn btn-default excluir-usuario-funcao' aria-label='Excluir Usuário Função' data-usuario='".$linhausuario["usuario"]."' data-funcao='".$linha["id"]."'>";
 					echo "						<span class='fas fa-trash-alt' aria-hidden='true'></span>";
 					echo "					</button>";
 					echo "				</td>";

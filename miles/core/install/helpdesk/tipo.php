@@ -32,12 +32,3 @@
 		$dataretroativa = 0,
 		$inicializacao = ""
 	);
-	
-	$conn->exec("INSERT INTO " .PREFIXO . $entidadeNome. " (id,descricao) VALUES (1,'Alterar');");
-	$conn->exec("INSERT INTO " .PREFIXO . $entidadeNome. " (id,descricao) VALUES (2,'Corrigir');");
-	$conn->exec("INSERT INTO " .PREFIXO . $entidadeNome. " (id,descricao) VALUES (3,'Desenvolver');");
-	$conn->exec("INSERT INTO " .PREFIXO . $entidadeNome. " (id,descricao) VALUES (4,'Estudar');");
-	$conn->exec("INSERT INTO " .PREFIXO . $entidadeNome. " (id,descricao) VALUES (5,'".utf8_decode('Propôr')."');");
-	$conn->exec("INSERT INTO " .PREFIXO . $entidadeNome. " (id,descricao) VALUES (6,'Solicitar');");
-	$conn->exec("INSERT INTO " .PREFIXO . $entidadeNome. " (id,descricao) VALUES (7,'Verificar');");
-	$conn->exec("INSERT INTO " .PREFIXO . $entidadeNome. " (id,descricao) VALUES (8,'Contactar');");

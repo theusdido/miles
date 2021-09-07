@@ -99,10 +99,10 @@
 	}
 	if ($id!=""){
 
-		$sql = "SELECT ".PREFIXO."entidade,nome,descricao,tipo,tamanho,nulo,tipohtml,exibirgradededados,chaveestrangeira,dataretroativa,inicializacao,readonly,indice,tipoinicializacao,atributodependencia,labelzerocheckbox,labelumcheckbox,legenda,desabilitar,criarsomatoriogradededados,naoexibircampo FROM ".PREFIXO."atributo WHERE id = {$id}";
+		$sql = "SELECT entidade,nome,descricao,tipo,tamanho,nulo,tipohtml,exibirgradededados,chaveestrangeira,dataretroativa,inicializacao,readonly,indice,tipoinicializacao,atributodependencia,labelzerocheckbox,labelumcheckbox,legenda,desabilitar,criarsomatoriogradededados,naoexibircampo FROM ".PREFIXO."atributo WHERE id = {$id}";
 		$query = $conn->query($sql);
 		foreach($query->fetchAll() as $linha){
-			$entidade					= executefunction("utf8charset",array($linha[PREFIXO."entidade"]));
+			$entidade					= executefunction("utf8charset",array($linha["entidade"]));
 			$nome						= $linha["nome"];
 			$descricao					= executefunction("utf8charset",array($linha["descricao"]));
 			$tipo						= $linha["tipo"];
@@ -364,7 +364,6 @@
 									<option value="27">27 - Multi Linha</option>
 									<option value="28">28 - Hora</option>
 									<option value="29">29 - Mês/Ano</option>
-									<option value="30">30 - Is Null e Is Empty</option>
 								</select>
 							</div>							
 							<div class="form-group">

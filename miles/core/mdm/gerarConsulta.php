@@ -4,6 +4,37 @@
 	require 'prefixo.php';
 	require_once 'funcoes.php';
 
+	if (isset($_POST["op"])){
+		if ($_POST["op"] == "criarconsulta");{			
+
+			$path = "../../" . $_COOKIE["path_files_consulta"];
+			
+			$fp = fopen($path . $_POST["filename"] ,'w');
+			fwrite($fp,htmlespecialcaracteres_($_POST["html"],1));
+			fclose($fp);			
+			
+			$jsFile = $path . "/" . $_POST["filenamejs"];
+			if (!file_exists($jsFile)){
+				$fp = fopen($jsFile ,'w');
+				fwrite($fp,"// JS da Consulta");			
+				fclose($fp);
+			}
+
+			// Move os arquivos para sua respectiva pasta
+			$path_files_cadastro = "../../projects/".$_SESSION["currentproject"]."/files/consulta/"; #Fora do escopo do sistema para recepurar a constante PATH_FILES_CONSULTA
+			$diretorio = dir($path_files_cadastro);
+			while($arquivo = $diretorio -> read()){
+				if ($arquivo != "" && $arquivo != "." && $arquivo != "..");{
+					if (strpos($arquivo,'.') > 0){							
+						copy($path_files_cadastro . $arquivo,$path . $arquivo);
+						unlink($path_files_cadastro . $arquivo);
+					}
+				}
+			}
+			exit;
+		}
+	}
+
 	if (isset($_GET["t"])){
 		$entidade = $_GET["t"];
 	}
@@ -70,7 +101,7 @@
 		});
 		function gerarConsulta(html){
 			$.ajax({
-				url:"../../index.php?controller=mdm/consulta&currentproject=<?=$_SESSION["currentproject"]?>",
+				url:"gerarConsulta.php?op=salvar&currentproject=<?=$_SESSION["currentproject"]?>",
 				type:"POST",
 				data:{
 					op:"criarconsulta",
@@ -78,7 +109,6 @@
 					filename:$("#filename").val(),
 					filenamejs:$("#filenamejs").val(),
 					entidade:"<?=$entidade?>",
-					id:"<?=$id?>",
 					urlupload:$("#urlupload").val(),
 					currentproject:<?=$_SESSION["currentproject"]?>
 				},

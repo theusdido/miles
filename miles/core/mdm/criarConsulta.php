@@ -29,9 +29,9 @@
 				$query_prox = $conn->query("SELECT IFNULL(MAX(id),0)+1 FROM ".PREFIXO."consulta");
 				$prox = $query_prox->fetch();
 				$id = $prox[0];
-				$sql = "INSERT INTO ".PREFIXO."consulta (id,descricao,".PREFIXO."entidade,td_movimentacao) VALUES ({$id},'{$descricao}',{$entidade},{$movimentacao});";
+				$sql = "INSERT INTO ".PREFIXO."consulta (id,descricao,".PREFIXO."entidade,movimentacao) VALUES ({$id},'{$descricao}',{$entidade},{$movimentacao});";
 			}else{
-				$sql = "UPDATE ".PREFIXO."consulta SET ".PREFIXO."entidade = {$entidade} , descricao = '{$descricao}' , td_movimentacao = {$movimentacao} WHERE id = {$id};";
+				$sql = "UPDATE ".PREFIXO."consulta SET ".PREFIXO."entidade = {$entidade} , descricao = '{$descricao}' , movimentacao = {$movimentacao} WHERE id = {$id};";
 			}
 			$query = $conn->query($sql);
 			if($query){
@@ -157,7 +157,7 @@
 		}
 		
 		if ($_GET["op"] == "listarconsulta"){
-			$sql = "SELECT id,".PREFIXO."atributo atributo,operador,legenda FROM ".PREFIXO."consultafiltro a WHERE td_consulta = {$_GET["consulta"]} ORDER BY ordem ASC,id DESC";
+			$sql = "SELECT id,".PREFIXO."atributo atributo,operador,legenda FROM ".PREFIXO."consultafiltro a WHERE consulta = {$_GET["consulta"]} ORDER BY id DESC";
 			$query = $conn->query($sql);
 			if ($query->rowCount() <= 0){
 				echo '<div class="alert alert-warning alert-dismissible text-center" role="alert">Nenhum campo de <strong>filtro</strong> configurado.</div>';
@@ -170,9 +170,7 @@
 				$queryAtributo = $conn->query($sqlAtributo);
 				$linhaAtributo = $queryAtributo->fetch();
 				$atributoDescricao = executefunction("utf8charset",array($linhaAtributo["descricao"]));
-				echo "<span class='list-group-item' data-id='".$linha["id"]."'>
-						<span class='fas fa-ellipsis-v pontinhos' aria-hidden='true'></span>
-						&nbsp;&nbsp;
+				echo "<span class='list-group-item'>
 						Atributo <strong>{$atributoDescricao}</strong> com  operador ( <strong>{$operador} ) </strong>
 						<button type='button' class='btn btn-default' onclick='excluirFiltro({$linha["id"]});' style='float:right;margin-top:-4px'>
 							<span class='fas fa-trash-alt' aria-hidden='true'></span>
@@ -180,14 +178,13 @@
 						<button id='atributo-editar-{$linha["id"]}' type='button' class='btn btn-default' data-atributo='{$atributo}' data-operador='{$operador}' data-idfiltro='{$linha["id"]}' data-legenda='{$linha["legenda"]}' onclick='editarFiltro({$linha["id"]})' style='float:right;margin-top:-4px'>
 							<span class='fas fa-edit' aria-hidden='true'></span>
 						</button>
-						
 					</span>";
 			}
 			exit;
 		}
 
 		if ($_GET["op"] == "listarfiltroinicial"){
-			$sql = "SELECT id,".PREFIXO."atributo atributo,operador,legenda,valor FROM ".PREFIXO."consultafiltroinicial a WHERE td_consulta = {$_GET["consulta"]} ORDER BY id DESC";
+			$sql = "SELECT id,".PREFIXO."atributo atributo,operador,legenda,valor FROM ".PREFIXO."consultafiltroinicial a WHERE consulta = {$_GET["consulta"]} ORDER BY id DESC";
 			$query = $conn->query($sql);
 			if ($query->rowCount() <= 0){
 				echo '<div class="alert alert-warning alert-dismissible text-center" role="alert">Nenhum campo de <strong>filtro</strong> configurado.</div>';
@@ -214,7 +211,7 @@
 			exit;
 		}
 		if ($_GET["op"] == "listarstatus"){
-			$sql = "SELECT id,".PREFIXO."atributo atributo,operador,valor,".PREFIXO."status FROM ".PREFIXO."consultastatus a WHERE td_consulta = {$_GET["consulta"]}";
+			$sql = "SELECT id,".PREFIXO."atributo atributo,operador,valor,".PREFIXO."status FROM ".PREFIXO."consultastatus a WHERE consulta = {$_GET["consulta"]}";
 			$query = $conn->query($sql);
 			if ($query->rowCount() <= 0){
 				echo '<div class="alert alert-warning alert-dismissible text-center" role="alert">Nenhum filtro de <strong>status</strong> configurado.</div>';
@@ -232,7 +229,7 @@
 						<button type='button' class='btn btn-default' onclick='excluirStatus({$linha["id"]});' style='float:right;margin-top:-4px'>
 							<span class='fas fa-trash-alt' aria-hidden='true'></span>
 						</button>
-						<button id='atributo-editar-{$linha["id"]}' type='button' class='btn btn-default' data-atributo='{$atributo}' data-operador='{$operador}' data-valor='{$valor}' data-idstatus='{$linha["id"]}' data-status='{$linha["td_status"]}' onclick='editarStatus({$linha["id"]})' style='float:right;margin-top:-4px'>
+						<button id='atributo-editar-{$linha["id"]}' type='button' class='btn btn-default' data-atributo='{$atributo}' data-operador='{$operador}' data-valor='{$valor}' data-idstatus='{$linha["id"]}' data-status='{$linha["status"]}' onclick='editarStatus({$linha["id"]})' style='float:right;margin-top:-4px'>
 							<span class='fas fa-edit' aria-hidden='true'></span>
 						</button>
 					</span>";
@@ -241,12 +238,12 @@
 		}		
 	}
 	if ($id != ""){
-		$sql = "SELECT descricao,".PREFIXO."entidade,td_movimentacao FROM ".PREFIXO."consulta WHERE id = {$id}";
+		$sql = "SELECT descricao,".PREFIXO."entidade,movimentacao FROM ".PREFIXO."consulta WHERE id = {$id}";
 		$query = $conn->query($sql);
 		foreach ($query->fetchAll() as $linha){
 			$entidade		= $linha[PREFIXO."entidade"];
 			$descricao		= executefunction("utf8charset",array($linha["descricao"]));
-			$movimentacao	= $linha["td_movimentacao"];
+			$movimentacao	= $linha["movimentacao"];
 		}
 	}
 ?>
@@ -268,32 +265,6 @@
 				atualizarListaFiltro("<?=$id?>");
 				atualizarListaStatus("<?=$id?>");
 				atualizarListaFiltroInicial("<?=$id?>");
-				$(".sortable").sortable({
-					update: function( event, ui ) {
-						var ordenacao = [];
-						$(this).find(".list-group-item").each(
-							(e,elemento) => {
-								var id = $(elemento).data("id");
-								if (id != undefined){
-									ordenacao.push({
-										id:id,
-										order:e+1
-									});
-								}					
-							}
-						);
-						$.ajax({
-							url:"<?=$_SESSION['URL_MILES']?>",
-							data:{
-								op:"ordenar",
-								controller:"sortable",
-								entidade:"td_consultafiltro",
-								atributo:"ordem",
-								ordem:ordenacao
-							}
-						});
-					}
-				});
 			}
 			function validar(){
 				if ($("#entidade").val() == "" || $("#entidade").val() == null){
@@ -327,7 +298,6 @@
 				$("#form-status #status").val($("#lista-status #atributo-editar-" + id).data("status"));
 				$("#form-status #idstatus").val($("#lista-status #atributo-editar-" + id).data("idstatus"));
 				$("#modalCadastroStatus").modal('show');
-				$("#form-status #atributo").change();
 			}
 			$(document).ready(function(){
 				$("#movimentacao").val("<?=isset($movimentacao)?$movimentacao:0?>");
@@ -640,7 +610,8 @@
 								</div>
 								<!-- CADASTRO DE FILTRO -->
 								<br/><br/>
-								<div id="lista-filtro" class="list-group sortable"></div>
+								<div id="lista-filtro" class="list-group">
+								</div>
 						  </div>
 						</div>
 					  </div>
@@ -685,7 +656,7 @@
 															$sql = "SELECT id,nome,descricao,chaveestrangeira FROM ".PREFIXO."atributo WHERE ".PREFIXO."entidade = " . $entidade ;
 															$query = $conn->query($sql);
 															foreach($query->fetchAll() as $linha){
-																echo '<option value="'.$linha["id"].'" data-nome="'.$linha["nome"].'" data-chaveestrangeira="'.$linha["chaveestrangeira"].'">'.$linha["descricao"].' [ '.$linha["nome"].' ]</option>';
+																echo '<option value="'.$linha["id"].'" data-nome="'.$linha["nome"].'" data-chaveestrangeira="'.$linha["chaveestrangeira"].'">'.utf8_encode($linha["descricao"]).' [ '.$linha["nome"].' ]</option>';
 															}
 														?>
 														</select>

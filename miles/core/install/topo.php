@@ -1,6 +1,6 @@
 <div class="row-fluid">
 	<div class="col-md-12">
-		<img id="logoinstalacao" src="<?=$_SESSION["URL_CURRENT_PROJECT_THEME"]?>logo.png" height="75" />
+		<img id="logoinstalacao" src="<?=$_SESSION["URL_SYSTEM_THEME"]?>logo.png" height="75" />
 		<h2 id="guiafrasetopo">Guia de Instalação</h2>
 		<hr id="hr-instalacao"/>
 	</div>

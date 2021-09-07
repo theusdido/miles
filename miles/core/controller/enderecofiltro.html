@@ -331,23 +331,6 @@ function optionsBairro(campo,valores){
 			$("#bairro").prop("disabled",false);
 			optionsBairro("#bairro",$(this).html());
 		});
-	
-	/*
-		$("#bairro").show();
-		$("#bairro-manual").val('');
-		$("#bairro-manual").hide();
-
-		$("#bairro").prop("disabled",true);
-		$("#bairro").html("<option value=''>Carregando os Dados ...");
-		
-		$("#bairro").load("index.php?controller=requisicoes&op=carregar_options&entidade=12&filtro=td_cidade^" + this.value,
-			function(){
-				$(this).prop("disabled",false);				
-				$(this).html('<option value="-1">Escolha um bairro ...</option><option value="0">Adicionar Manualmente ...</option>' + $(this).html());
-			}
-		);
-		$("#logradouro,#cep").val('');
-		*/
 	});
 		
 	$("#btn-salvar-endereco").click(function(){

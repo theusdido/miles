@@ -21,12 +21,11 @@
 	);
 
 	// Criando Atributos
-	$descricao 			= criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar",200,0,3,1,0,0,"");
-	$entidade 			= criarAtributo($conn,$entidadeID,"td_entidade","Entidade","int",0,0,4,0,0,0,"");	
-	$motivo 			= criarAtributo($conn,$entidadeID,"td_motivo","Motivo","int",0,0,4,0,0,0,"");
-	$exigirobrigatorio 	= criarAtributo($conn,$entidadeID,"exigirobrigatorio","Exigir Obrigátorio","tinyint",0,1,7,0,0,0,"",1,0);
-	$exibirtitulo 		= criarAtributo($conn,$entidadeID,"exibirtitulo","Exigir Título","tinyint",0,1,7,0,0,0,"",1,0);	
-	$exibirdadosantigos = criarAtributo($conn,$entidadeID,"exibirdadosantigos","Exigir Dados Antigos","tinyint",0,1,7,0,0,0,"",1,0);
+	$descricao = criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar",200,0,3,1,0,0,"");
+	$entidade = criarAtributo($conn,$entidadeID,"entidade","Entidade","int",0,0,4,0,0,0,"");	
+	$motivo = criarAtributo($conn,$entidadeID,"motivo","Motivo","int",0,0,4,0,0,0,"");
+	$exigirobrigatorio = criarAtributo($conn,$entidadeID,"exigirobrigatorio","Exigir Obrigátorio","tinyint",0,1,7,0,0,0,"",1,0);
+	$exibirtitulo = criarAtributo($conn,$entidadeID,"exibirtitulo","Exigir Título","tinyint",0,1,7,0,0,0,"",1,0);	
 
 	// Criando Entidade
 	$alterarmovimentoID = criarEntidade(
@@ -46,8 +45,8 @@
 	);
 
 	// Criando Atributos
-	$movimentacao = criarAtributo($conn,$alterarmovimentoID,"td_movimentacao","Movimentação","int",0,0,4,0,0,0,"");
-	$atributo = criarAtributo($conn,$alterarmovimentoID,"td_atributo","Atributo","int",0,0,4,0,0,0,"");
+	$movimentacao = criarAtributo($conn,$alterarmovimentoID,"movimentacao","Movimentação","int",0,0,4,0,0,0,"");
+	$atributo = criarAtributo($conn,$alterarmovimentoID,"atributo","Atributo","int",0,0,4,0,0,0,"");
 	$legenda = criarAtributo($conn,$alterarmovimentoID,"legenda","Legenda","varchar",50,0,3,1,0,0,"");
 
 	// Status Grade
@@ -67,8 +66,8 @@
 		$registrounico = 0
 	);
 
-	$movimentacao = criarAtributo($conn,$statusMovimentacaoID,"td_movimentacao","Movimentação","int",0,0,4,0,0,0,"");
-	$atributo = criarAtributo($conn,$statusMovimentacaoID,"td_atributo","Atributo","int",0,0,4,0,0,0,"");
+	$movimentacao = criarAtributo($conn,$statusMovimentacaoID,"movimentacao","Movimentação","int",0,0,4,0,0,0,"");
+	$atributo = criarAtributo($conn,$statusMovimentacaoID,"atributo","Atributo","int",0,0,4,0,0,0,"");
 	$operador = criarAtributo($conn,$statusMovimentacaoID,"operador","Operador","varchar",5,0,3,1,0,0,"");
 	$valor = criarAtributo($conn,$statusMovimentacaoID,"valor","Valor","varchar",200,0,3,1,0,0,"");
 	
@@ -89,9 +88,9 @@
 		$registrounico = 0
 	);
 
-	$movimentacao = criarAtributo($conn,$historicoMovimentacaoID,"td_movimentacao","Movimentação","int",0,0,4,0,0,0,"");
-	$entidade = criarAtributo($conn,$historicoMovimentacaoID,"td_entidade","Entidade","int",0,0,4,0,0,0,"");
-	$atributo = criarAtributo($conn,$historicoMovimentacaoID,"td_atributo","Atributo","int",0,0,4,0,0,0,"");
+	$movimentacao = criarAtributo($conn,$historicoMovimentacaoID,"movimentacao","Movimentação","int",0,0,4,0,0,0,"");
+	$entidade = criarAtributo($conn,$historicoMovimentacaoID,"entidade","Entidade","int",0,0,4,0,0,0,"");
+	$atributo = criarAtributo($conn,$historicoMovimentacaoID,"atributo","Atributo","int",0,0,4,0,0,0,"");
 	$legenda = criarAtributo($conn,$historicoMovimentacaoID,"legenda","Legenda","varchar",50,0,3,1,0,0,"");
 	
 	// Histórico de Aletração de Movimentação
@@ -111,13 +110,13 @@
 		$registrounico = 0
 	);
 	
-	$movimentacao = criarAtributo($conn,$historicoAlteracaoMovimentacaoID,"td_movimentacao","Movimentação","int",0,0,4,0,0,0,"");
+	$movimentacao = criarAtributo($conn,$historicoAlteracaoMovimentacaoID,"movimentacao","Movimentação","int",0,0,4,0,0,0,"");
 	$usuario = criarAtributo($conn,$historicoAlteracaoMovimentacaoID,"usuario","Usuário","int",0,0,4,1,getEntidadeId("usuario",$conn),0,"",1,0);
 	$datahora = criarAtributo($conn,$historicoAlteracaoMovimentacaoID,"datahora","Data/Hora","datetime",0,0,23,1,0,0,"",1,0);
-	$atributo = criarAtributo($conn,$historicoAlteracaoMovimentacaoID,"td_atributo","Atributo","int",0,0,4,1,0,0,"",1,0);
+	$atributo = criarAtributo($conn,$historicoAlteracaoMovimentacaoID,"atributo","Atributo","int",0,0,4,1,0,0,"",1,0);
 	$valor = criarAtributo($conn,$historicoAlteracaoMovimentacaoID,"valor","Valor","varchar",200,0,3,1,0,0,"",1,0);
 	$valorold = criarAtributo($conn,$historicoAlteracaoMovimentacaoID,"valorold","Valor Antigo","varchar",200,0,3,1,0,0,"",1,0);
-	$entidade = criarAtributo($conn,$historicoAlteracaoMovimentacaoID,"td_entidade","Entidade","int",0,0,4,1,0,0,"",1,0);
-	$motivo = criarAtributo($conn,$historicoAlteracaoMovimentacaoID,"td_motivo","Motivo","int",0,0,4,1,0,0,"",1,0);
-	$entidademotivo = criarAtributo($conn,$historicoAlteracaoMovimentacaoID,"td_entidademotivo","Entidade Motivo","int",0,0,4,1,0,0,"",1,0);
+	$entidade = criarAtributo($conn,$historicoAlteracaoMovimentacaoID,"entidade","Entidade","int",0,0,4,1,0,0,"",1,0);
+	$motivo = criarAtributo($conn,$historicoAlteracaoMovimentacaoID,"motivo","Motivo","int",0,0,4,1,0,0,"",1,0);
+	$entidademotivo = criarAtributo($conn,$historicoAlteracaoMovimentacaoID,"entidademotivo","Entidade Motivo","int",0,0,4,1,0,0,"",1,0);
 	$observacao = criarAtributo($conn,$historicoAlteracaoMovimentacaoID,"observacao","Observação","text",0,1,14,0,0,0,"",1,0);

@@ -63,16 +63,16 @@ $thNavegador 	= $tabela->add("th",array("propriedades" => array( "innerhtml" => 
 $thSessao 	    = $tabela->add("th",array("propriedades" => array( "innerhtml" => utf8_encode("Sessão") , "align" => "left" , "width" => "15%" ) , "elementopai" => $trHead));
 
 $conn = Transacao::get();
-$sqlTotalAcessos = "SELECT * FROM td_ecommerce_visitantes GROUP BY sessao,ip,td_cliente ORDER BY data DESC,hora DESC;";
+$sqlTotalAcessos = "SELECT * FROM td_ecommerce_visitantes GROUP BY sessao,ip,cliente ORDER BY data DESC,hora DESC;";
 $queryTotalAcessos = $conn->query($sqlTotalAcessos);
 $itens = $queryTotalAcessos->fetchAll(PDO::FETCH_OBJ);
 foreach($itens as $item){
     $trBody		    = $tabela->add("tr",array("elementopai" => $tbody));
 
-    if ($item->td_cliente == 0){
+    if ($item->cliente == 0){
         $cliente = utf8_encode("Não Logado");
     }else{
-        $cliente = $item->td_cliente . " - " . tdc::p("td_ecommerce_cliente",$item->td_cliente)->nome;
+        $cliente = $item->cliente . " - " . tdc::p("td_ecommerce_cliente",$item->cliente)->nome;
     }
 
     $tdCliente   	= $tabela->add("td",array("propriedades" => array( "innerhtml" => $cliente) , "elementopai" => $trBody));

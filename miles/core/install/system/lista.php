@@ -14,8 +14,8 @@
 		$campodescchave = "",
 		$atributogeneralizacao = 0,
 		$exibirlegenda = 1,
-		$criarprojeto = 1,
-		$criarempresa = 1,
+		$criarprojeto = 0,
+		$criarempresa = 0,
 		$criarauth = 0,
 		$registrounico = 0
 	);

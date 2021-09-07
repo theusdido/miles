@@ -27,19 +27,19 @@
 							<td width="5%" align="center">Excluir</td>
 						</tr>	
 						<?php
-							$sql = "SELECT id,descricao,td_entidade FROM ".PREFIXO."consulta";
+							$sql = "SELECT id,descricao,entidade FROM ".PREFIXO."consulta";
 							$query = $conn->query($sql);
 							foreach ($query->fetchAll() as $linha){
 								$descricao = utf8_encode($linha["descricao"]);
 								
-								$query = $conn->query("SELECT descricao FROM td_entidade WHERE id = {$linha["td_entidade"]}")->fetch();
-								$entidade = executefunction("utf8charset",array($query["descricao"],5));
+								$query = $conn->query("SELECT descricao FROM td_entidade WHERE id = {$linha["entidade"]}")->fetch();
+								$entidade = utf8_encode($query["descricao"]);
 								echo "	<tr>
 											<td>{$linha["id"]}</td>
 											<td>{$descricao}</td>
 											<td>{$entidade}</td>
 											<td align='center'>
-												<button type='button' class='btn btn-primary' onclick=location.href='criarConsulta.php?id={$linha["id"]}&entidade={$linha["td_entidade"]}&currentproject=".$_SESSION["currentproject"]."'>
+												<button type='button' class='btn btn-primary' onclick=location.href='criarConsulta.php?id={$linha["id"]}&entidade={$linha["entidade"]}&currentproject=".$_SESSION["currentproject"]."'>
 													<span class='fas fa-pencil-alt' aria-hidden='true'></span>
 												</button>
 											</td>

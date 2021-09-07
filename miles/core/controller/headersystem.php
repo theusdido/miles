@@ -12,12 +12,12 @@ if (Session::get("usergroup") == 1 || Session::get("currentproject") == 1){
 		$where = "";
 		if ($termo != "*"){
 			if (is_numeric($termo)){
-				$where = " AND a.td_projeto = " . $termo;
+				$where = " AND a.projeto = " . $termo;
 			}else if( is_string($termo)){
 				$where = " AND b.nome LIKE '%" . $termo . "%'";
 			}
 		}	
-		$sql = "SELECT a.td_projeto,a.td_type,a.id FROM td_connectiondatabase a,td_projeto b WHERE a.td_projeto = b.id {$where} ORDER BY a.td_projeto";
+		$sql = "SELECT a.projeto,a.type,a.id FROM td_connectiondatabase a,projeto b WHERE a.projeto = b.id {$where} ORDER BY a.projeto";
 		$query = $connMILES->query($sql);
 
 		if ($query->rowcount() > 0){
@@ -44,8 +44,8 @@ if (Session::get("usergroup") == 1 || Session::get("currentproject") == 1){
 			
 
 			while ($p = $query->fetch()){
-				$projeto = (object)getRegistro($connMILES,"td_projeto","id,nome","id=".$p["td_projeto"]);
-				$tipo = (object)getRegistro($connMILES,"td_typeconnectiondatabase","id,descricao","id=".$p["td_type"]);
+				$projeto = (object)getRegistro($connMILES,"td_projeto","id,nome","id=".$p["projeto"]);
+				$tipo = (object)getRegistro($connMILES,"td_typeconnectiondatabase","id,descricao","id=".$p["type"]);
 				$databaseid = $p["id"];
 
 				$a = tdClass::Criar("hyperlink");
@@ -162,7 +162,7 @@ if (Session::get("usergroup") == 1 || Session::get("currentproject") == 1){
 	$colBloco->add($iconInstallHome);
 	
 	$aInstallHome = tdClass::Criar("hyperlink");
-	$aInstallHome->href = Session::Get("URL_INSTALL") . "index.php?currentproject=" . Session::Get("currentproject") . "&ambiente=" . AMBIENTE;
+	$aInstallHome->href = Session::Get("URL_MILES") . "index.php?controller=install";
 	$aInstallHome->target = "_blank";
 	$aInstallHome->add("Instalação/Atualização");
 	$aInstallHome->id = "link-install-home";

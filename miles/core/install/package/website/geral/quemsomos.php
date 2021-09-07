@@ -25,4 +25,4 @@
 	$menu_webiste = addMenu($conn,'WebSite','#','','','','website');
 
 	// 4 PASSO
-	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".PREFIXO.$entidadeNome.".html",'website',$menu_webiste,0,'',$entidadeID,'cadastro');
+	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'website',$menu_webiste,0,'',$entidadeID,'cadastro');

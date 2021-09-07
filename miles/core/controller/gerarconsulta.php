@@ -15,6 +15,9 @@
 		mkdir($pathfileconsulta);
 	}
 	
+	// Seta Cookie Diretório
+	setCookie("path_files_consulta",$pathfileconsulta . "/");
+	
 	$consulta = tdClass::Criar("persistent",array(CONSULTA,$id))->contexto;
 	$entidade = tdClass::Criar("persistent",array(ENTIDADE,$consulta->{ENTIDADE}))->contexto;
 	
@@ -37,12 +40,12 @@
 
 	// JS Formulário
 	$jsFormulario = tdClass::Criar("script");
-	$jsFormulario->src = Session::Get('URL_SYSTEM')  . "formulario.js";
+	$jsFormulario->src = PATH_SYSTEM . "formulario.js";
 	$jsFormulario->mostrar();
 
 	// JS Validar
 	$jsValidar = tdClass::Criar("script");
-	$jsValidar->src = Session::Get('URL_SYSTEM')  . "validar.js";
+	$jsValidar->src = PATH_SYSTEM . "validar.js";
 	$jsValidar->mostrar();
 
 	$blocoTitulo = tdClass::Criar("bloco");
@@ -70,17 +73,17 @@
 	// Seleciona os campos do FILTRO da CONSULTA
 	$sql = tdClass::Criar("sqlcriterio");
 	$sql->add(tdClass::Criar("sqlfiltro",array(CONSULTA,'=',$consulta->id)));
-	$sql->setPropriedade("order","ordem ASC,id DESC");
+	$sql->setPropriedade("order","id DESC");
 	$dataset = tdClass::Criar("repositorio",array(FILTROCONSULTA))->carregar($sql);
 
 	$arrayCamposAtributos = array();
 	$atributo = "";
 	$i =1;
 	foreach ($dataset as $ftConsulta){
-		$atributo = tdClass::Criar("persistent",array(ATRIBUTO,(int)$ftConsulta->td_atributo))->contexto;
+		$atributo = tdClass::Criar("persistent",array(ATRIBUTO,(int)$ftConsulta->atributo))->contexto;
 		$obj = new stdclass();
 		$obj->id 						=  $atributo->id;
-		$obj->td_entidade 				= $atributo->{ENTIDADE};
+		$obj->entidade 				= $atributo->{ENTIDADE};
 		$obj->nome 						= $atributo->nome;
 		$obj->descricao 				= $atributo->descricao;
 		$obj->tipo 						= $atributo->tipo;
@@ -162,10 +165,10 @@
 	// Consulta Filtro Inicial
 	$gdFiltroInicial = "";
 	$sqlCI = tdClass::Criar("sqlcriterio");
-	$sqlCI->addFiltro("td_consulta","=",$id);
+	$sqlCI->addFiltro("consulta","=",$id);
 	$dsCI = tdClass::Criar("repositorio",array("td_consultafiltroinicial"))->carregar($sqlCI);
 	foreach ($dsCI as $d){
-		$atributoCI = tdClass::Criar("persistent",array(ATRIBUTO,$d->td_atributo))->contexto->nome;
+		$atributoCI = tdClass::Criar("persistent",array(ATRIBUTO,$d->atributo))->contexto->nome;
 		$gdFiltroInicial .= 'gd.addFiltro("'.$atributoCI.'","'.$d->operador.'","'.$d->valor.'");';
 	}
 
@@ -175,7 +178,7 @@
 
 		var gd 			= gradesdedados["#'.$contextoListarID.'"];
 		gd.consulta 	= '.$id.';
-		gd.movimentacao = '.$consulta->td_movimentacao.';
+		gd.movimentacao = '.$consulta->movimentacao.';
 		gd.clear();
 
 		'.$gdFiltroInicial.'
@@ -199,8 +202,8 @@
 		var i = 1;
 		for (f in td_consulta['.$id.'].filtros){
 			var ft = td_consulta['.$id.'].filtros[f];
-			$("#form-consulta .form-control[atributo="+ft.td_atributo+"]").attr("data-operador",ft.operador);
-			$("#form-consulta .form-control[atributo="+ft.td_atributo+"]").attr("data-tipo",td_atributo[ft.td_atributo].tipo);
+			$("#form-consulta .form-control[atributo="+ft.atributo+"]").attr("data-operador",ft.operador);
+			$("#form-consulta .form-control[atributo="+ft.atributo+"]").attr("data-tipo",td_atributo[ft.atributo].tipo);
 			i++;
 		}
 		
@@ -219,6 +222,3 @@
 	$modal->addHeader("Movimentação",null);
 	$modal->addBody('');
 	$modal->mostrar();
-
-	// Cria o MDM File JavaScript Compile
-	include 'mdm/javascriptfile.php';

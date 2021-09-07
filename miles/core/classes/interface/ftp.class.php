@@ -42,7 +42,7 @@ class FTP {
 		if ($connMILES !== false && $connMILES !== null){
 		
 			// Seta os dados do projeto ( Busca na base MILES )
-			$sqlftp = 'SELECT * FROM td_connectionftp WHERE td_projeto = ' . Session::Get()->projeto . ';';		
+			$sqlftp = 'SELECT * FROM td_connectionftp WHERE projeto = ' . Session::Get()->projeto . ';';		
 			$queryftp = $connMILES->query($sqlftp);
 			$linhaftp = $queryftp->fetch();
 

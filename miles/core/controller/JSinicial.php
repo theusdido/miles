@@ -9,7 +9,7 @@
 					if (td_entidade[ea].entidadeauxiliar == 1){
 						var atributos = "id";
 						for(a in td_atributo){
-							if (td_atributo[a].td_entidade == td_entidade[ea].id){
+							if (td_atributo[a].entidade == td_entidade[ea].id){
 								if (td_atributo[a].nome != "empresa" && td_atributo[a].nome != "projeto"){
 									atributos += "," + td_atributo[a].nome;
 								}
@@ -113,7 +113,7 @@
 			for (e in td_entidade){
 				var td_atributo_aux = [];
 				for (a in td_atributo){
-					if (td_atributo[a].td_entidade == td_entidade[e].id){
+					if (td_atributo[a].entidade == td_entidade[e].id){
 						var ordematributo = 0;
 						if (td_atributo[a].ordem == "" || td_atributo[a].ordem == 0){
 							ordematributo = td_atributo_aux.length;

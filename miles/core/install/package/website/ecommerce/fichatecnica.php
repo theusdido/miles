@@ -29,7 +29,7 @@
 	$menu_webiste = addMenu($conn,'E-Commerce','#','','','','ecommerce');
 
 	// Adicionando Menu
-    addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".PREFIXO.$entidadeNome.".html",'',$menu_webiste,0,'ecommerce-' . $entidadeNome,$entidadeID,'cadastro');
+    addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,0,'ecommerce-' . $entidadeNome,$entidadeID,'cadastro');
     
 	// Cria Relacionamento
 	criarRelacionamento($conn,6,getEntidadeId("ecommerce_produto",$conn),$entidadeID,"Ficha Técnica",$produto);

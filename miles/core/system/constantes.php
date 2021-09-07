@@ -30,7 +30,7 @@
 	define("FOLDER_CONFIG","config");
 	
 	// FOLDER BUILD
-	define("FOLDER_BUILD","build");
+	define("FOLDER_BUILD","build");	
 
 	#***************************************
 	# PATH
@@ -39,3 +39,13 @@
 	// Diretório do core
 	define("PATH_CORE",PATH_MILES . FOLDER_CORE . '/');
 	
+
+	#***************************************
+	# SQL
+	#***************************************
+
+	// Operador E
+	define('E','AND ');
+
+	// Operador OU
+	define('OU','OR ');

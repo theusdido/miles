@@ -21,6 +21,6 @@
 	);
  
 	// Criando Atributos
-	$entidade = criarAtributo($conn,$entidadeID,"td_entidade","Entidade","int",0,0,4,0);
-	$descricao = criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar",120,0,3,1,0,0,"");
-	$atributos = criarAtributo($conn,$entidadeID,"atributos","Atributos","varchar",200,0,3,1,0,0,"");
+	$entidade 	= criarAtributo($conn,$entidadeID,'entidade',"Entidade","int",0,0,4,0);
+	$descricao 	= criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar",120,0,3,1,0,0,"");
+	$atributos 	= criarAtributo($conn,$entidadeID,"atributos","Atributos","varchar",200,0,3,1,0,0,"");

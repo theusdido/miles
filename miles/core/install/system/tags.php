@@ -21,7 +21,7 @@
 	);
 
 	// Criando Atributos
-	$entidade = criarAtributo($conn,$entidadeID,"td_entidade","Entidade","int",0,0,4,0,0,0,"");
+	$entidade = criarAtributo($conn,$entidadeID,"entidade","Entidade","int",0,0,4,0,0,0,"");
 	$pagina = criarAtributo($conn,$entidadeID,"pagina","Página","int",0,0,4,0,getEntidadeId("pagina",$conn),0,"");
 	$nome = criarAtributo($conn,$entidadeID,"nome","Nome","varchar",50,0,3,1,0,0,"");
 	$tagpai = criarAtributo($conn,$entidadeID,"tagpai","Tag ( Pai )","int",0,0,3,1,0,0,"");

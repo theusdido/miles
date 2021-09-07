@@ -21,7 +21,7 @@
                 $sql = "
                     SELECT a.id,b.descricao 
                     FROM td_menu a
-                    INNER JOIN td_consulta b ON a.td_entidade = b.id
+                    INNER JOIN td_consulta b ON a.entidade = b.id
                     WHERE a.tipomenu = 'consulta';";
                 $rs = $conn->query($sql);
                 while ($linha = $rs->fetch()){

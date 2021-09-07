@@ -32,7 +32,7 @@
 	$menu_redesocial = addMenu($conn,$entidadeDescricao,'#','','','','redesocial');
 
 	// Adicionando Menu
-	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".PREFIXO.$entidadeNome.".html",'',$menu_redesocial,1,'redesocial-' . $entidadeNome);
+	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_redesocial,1,'redesocial-' . $entidadeNome);
 
 	// Relacionamento
 	criarRelacionamento($conn,2,getEntidadeId("website_redesocial_usuario",$conn),$entidadeID,"Perfil",$usuario);

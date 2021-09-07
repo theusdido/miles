@@ -824,9 +824,6 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
 							console.warn('Dados não encontrado ao carregar imagem!');
 						}
 					break;
-					case 29:
-						valor = valor.replace("-","/");
-					break;
 				}
 			}
 			if (typeof td_consulta[this.consulta] != "undefined"){
@@ -838,39 +835,34 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
 							case "!": var operador = "!="; break;
 							default: var operador = "==";
 						}
+
 						var tipohtml = td_atributo[ft.td_atributo].tipohtml;
 						if (valorreal != ""){
 							if (parseInt(tipohtml) == 11){
-								var dt = valorreal;
+								var dt = valorreal.split(" ")[0];
 								if (dt != undefined && dt != null && dt != ''){
-									var dia1 = parseInt(dt.split("-")[2]);
-									var mes1 = parseInt(dt.split("-")[1]) - 1;
-									var ano1 = parseInt(dt.split("-")[0])
-									var data1 = new Date(ano1,mes1,dia1);
+									var data = dt.split("-")[2] + "/" + dt.split("-")[1] + "/" + dt.split("-")[0];
+									var data1 = new Date(dt.split("-")[2],dt.split("-")[1],dt.split("-")[0]);
 									var dt2 = (ft.valor=="now()"?config.datahora.split(" ")[0]:ft.valor);
-									var dia2 = parseInt(dt2.split("/")[0]);
-									var mes2 = parseInt(dt2.split("/")[1]) - 1;
-									var ano2 = parseInt(dt2.split("/")[2]); 
-									var data2 = new Date(ano2,mes2,dia2);
-
+									var data2 = new Date(dt2.split("/")[0],dt2.split("/")[1],dt2.split("/")[2]);
 									switch(ft.operador){
 										case "=":
-											if (String(data1) == String(data2)) eval("tr.addClass('"+td_status[ft.td_status].classe+"');");
+											if (data1 == data2) eval("tr.addClass('"+td_status[ft.status].classe+"');");
 										break;
 										case "!":
-											if (data1 != data2) eval("tr.addClass('"+td_status[ft.td_status].classe+"');");
+											if (data1 != data2) eval("tr.addClass('"+td_status[ft.status].classe+"');");
 										break;
 										case ">":
-											if (data1 > data2) eval("tr.addClass('"+td_status[ft.td_status].classe+"');");
+											if (data1 > data2) eval("tr.addClass('"+td_status[ft.status].classe+"');");
 										break;
 										case "<":
-											if (data1 < data2) eval("tr.addClass('"+td_status[ft.td_status].classe+"');");
+											if (data1 < data2) eval("tr.addClass('"+td_status[ft.status].classe+"');");
 										break;								
 										case ">=":
-											if (data1 >= data2) eval("tr.addClass('"+td_status[ft.td_status].classe+"');");
+											if (data1 >= data2) eval("tr.addClass('"+td_status[ft.status].classe+"');");
 										break;
 										case "<=":
-											if (data1 <= data2) eval("tr.addClass('"+td_status[ft.td_status].classe+"');");
+											if (data1 <= data2) eval("tr.addClass('"+td_status[ft.status].classe+"');");
 										break;
 									}
 								}
@@ -884,27 +876,27 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
 									var data2 = new Date((ft.valor=="now()"?config.datahora:ft.valor));
 									switch(ft.operador){
 										case "=":									
-											if (data1 == data2) eval("tr.addClass('"+td_status[ft.td_status].classe+"');");
+											if (data1 == data2) eval("tr.addClass('"+td_status[ft.status].classe+"');");
 										break;
 										case "!":
-											if (data1 != data2) eval("tr.addClass('"+td_status[ft.td_status].classe+"');");
+											if (data1 != data2) eval("tr.addClass('"+td_status[ft.status].classe+"');");
 										break;
 										case ">":
-											if (data1 > data2) eval("tr.addClass('"+td_status[ft.td_status].classe+"');");
+											if (data1 > data2) eval("tr.addClass('"+td_status[ft.status].classe+"');");
 										break;
 										case "<":
-											if (data1 < data2) eval("tr.addClass('"+td_status[ft.td_status].classe+"');");
+											if (data1 < data2) eval("tr.addClass('"+td_status[ft.status].classe+"');");
 										break;								
 										case ">=":
-											if (data1 >= data2) eval("tr.addClass('"+td_status[ft.td_status].classe+"');");
+											if (data1 >= data2) eval("tr.addClass('"+td_status[ft.status].classe+"');");
 										break;
 										case "<=":
-											if (data1 <= data2) eval("tr.addClass('"+td_status[ft.td_status].classe+"');");
+											if (data1 <= data2) eval("tr.addClass('"+td_status[ft.status].classe+"');");
 										break;
 									}
-								}							
+								}	
 							}else{
-								eval("if ("+valorreal+operador+ft.valor+"){ tr.addClass('"+td_status[ft.td_status].classe+"');}");
+								eval("if ("+valorreal+operador+ft.valor+"){ tr.addClass('"+td_status[ft.status].classe+"');}");
 							}
 						}	
 					}
@@ -999,7 +991,7 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
 GradeDeDados.prototype.nenhumRegistro = function(){
 	//this.dadosCorpo
 	for(atr in td_atributo){
-		if (td_atributo[atr].exibirgradededados == 1 && td_atributo[atr].td_entidade == this.entidade){
+		if (td_atributo[atr].exibirgradededados == 1 && td_atributo[atr].entidade == this.entidade){
 			this.attr_cabecalho_nome.push(td_atributo[atr].nome);
 			this.attr_cabecalho_descricao.push(td_atributo[atr].descricao);
 			this.attr_cabecalho_tipo.push(td_atributo[atr].tipo);
@@ -1113,26 +1105,23 @@ GradeDeDados.prototype.setCabecalhoAtributos = function(){
 	this.attr_cabecalho_nome.splice(1,this.attr_cabecalho_nome.length);
 	this.attr_cabecalho_descricao.splice(1,this.attr_cabecalho_descricao.length);
 	this.attr_cabecalho_tipo.splice(1,this.attr_cabecalho_tipo.length);
-	try{
-		if (td_entidade[this.entidade].atributos.length > 0){
-			for (a in td_entidade[this.entidade].atributos){
-				if (td_entidade[this.entidade].atributos[a].td_entidade == this.entidade && parseInt(td_entidade[this.entidade].atributos[a].exibirgradededados) == 1){
-					this.attr_cabecalho_nome.push(td_entidade[this.entidade].atributos[a].nome);
-					this.attr_cabecalho_descricao.push(td_entidade[this.entidade].atributos[a].descricao);
-					this.attr_cabecalho_tipo.push(td_entidade[this.entidade].atributos[a].tipo);
-				}
-			}
-		}else{
-			for (a in td_atributo){
-				if (td_atributo[a].td_entidade == this.entidade && td_atributo[a].exibirgradededados == "1"){					
-					this.attr_cabecalho_nome.push(td_atributo[a].nome);
-					this.attr_cabecalho_descricao.push(td_atributo[a].descricao);
-					this.attr_cabecalho_tipo.push(td_atributo[a].tipo);
-				}
+
+	if (td_entidade[this.entidade].atributos.length > 0){
+		for (a in td_entidade[this.entidade].atributos){
+			if (td_entidade[this.entidade].atributos[a].entidade == this.entidade && parseInt(td_entidade[this.entidade].atributos[a].exibirgradededados) == 1){
+				this.attr_cabecalho_nome.push(td_entidade[this.entidade].atributos[a].nome);
+				this.attr_cabecalho_descricao.push(td_entidade[this.entidade].atributos[a].descricao);
+				this.attr_cabecalho_tipo.push(td_entidade[this.entidade].atributos[a].tipo);
 			}
 		}
-	}catch(e){
-		console.warn(e);
+	}else{
+		for (a in td_atributo){
+			if (td_atributo[a].entidade == this.entidade && td_atributo[a].exibirgradededados == "1"){					
+				this.attr_cabecalho_nome.push(td_atributo[a].nome);
+				this.attr_cabecalho_descricao.push(td_atributo[a].descricao);
+				this.attr_cabecalho_tipo.push(td_atributo[a].tipo);
+			}
+		}
 	}
 }
 GradeDeDados.prototype.editarEmMassa = function(){
@@ -1172,7 +1161,7 @@ GradeDeDados.prototype.editarEmMassa = function(){
 
 	function addListaAtributos(entidadeAdd,relacionamentoAdd = 0){
 		td_entidade[entidadeAdd].atributos.forEach(function(atributo){
-			if (atributo.nome != "td_projeto" && atributo.nome != "td_empresa" && parseInt(atributo.naoexibircampo) != 1){
+			if (atributo.nome != "projeto" && atributo.nome != "empresa" && parseInt(atributo.naoexibircampo) != 1){
 				var option = $('<option value="'+atributo.id+'" data-relacionamento="'+relacionamentoAdd+'">'+atributo.descricao+'</option>');
 				selectAtributos.append(option);
 			}

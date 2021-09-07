@@ -11,7 +11,7 @@
 */	
 class Campos {
 	/*  
-		* Método TextoCurto
+		* M�todo TextoCurto
 	    * Data de Criacao: 12/03/2015
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
@@ -29,11 +29,11 @@ class Campos {
 		return $campo;
 	}
 	/*  
-		* Método TextoMedio
+		* M�todo TextoMedio
 	    * Data de Criacao: 12/03/2015
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
-		Campo de texto médio
+		Campo de texto m�dio
 	*/	
 	public static function TextoMedio($id,$nome,$descricao,$valor=null){		
 		$campo = tdClass::Criar("labeledit");
@@ -47,7 +47,7 @@ class Campos {
 		return $campo;
 	}
 	/*  
-		* Método TextoLongo
+		* M�todo TextoLongo
 	    * Data de Criacao: 12/03/2015
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
@@ -66,7 +66,7 @@ class Campos {
 	}	
 
 	/*  
-		* Método CPF
+		* M�todo CPF
 	    * Data de Criacao: 12/03/2015
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
@@ -84,7 +84,7 @@ class Campos {
 		return $campo;
 	}
 	/*  
-		* Método OCULTO
+		* M�todo OCULTO
 	    * Data de Criacao: 25/03/2015
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
@@ -101,7 +101,7 @@ class Campos {
 		return $campo;	
 	}
 	/*  
-		* Método Texarea
+		* M�todo Texarea
 	    * Data de Criacao: 25/03/2015
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
@@ -128,7 +128,7 @@ class Campos {
 		return $campo;
 	}
 	/*
-		* Método NumeroProcessoJudicial
+		* M�todo NumeroProcessoJudicial
 	    * Data de Criacao: 09/05/2015
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
@@ -259,7 +259,7 @@ class Campos {
 					return null;
 				}	
 			break;
-			case 24: # Filtro (Endereço)
+			case 24: # Filtro (Endere�o)
 				if ($valor == "" || $valor == null){
 					return 0;
 				}else{
@@ -337,15 +337,7 @@ class Campos {
 		$descricao_resultado->name = "descricao-".$nome;
 		$descricao_resultado->data_entidade = $entidade;
 		
-		$icon_add	= tdc::o("i");
-		$icon_add->class = "fas fa-plus";
-
-		$button_add = tdc::o("button");
-		$button_add->type = "button";
-		$button_add->class = "btn btn-default btn-add-emexecucao";
-		$button_add->add($icon_add);
-
-		$input_group_btn->add($button,$button_add);
+		$input_group_btn->add($button);
 		$input_group->add($termo,$descricao_resultado,$input_group_btn);
 				
 		$modal = tdClass::Criar("modal");
@@ -490,11 +482,11 @@ class Campos {
 	}
 
 	/*
-		* Método Lista
+		* M�todo Lista
 	    * Data de Criacao: 20/08/2019
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
-		Campo de lista única
+		Campo de lista �nica
 	*/
 	public static function Lista($id, $nome, $descricao, $opcoes = null){
 		$label = tdClass::Criar("label");
@@ -519,11 +511,11 @@ class Campos {
 	}
 	
 	/*
-		* Método InteiroBotao
+		* M�todo InteiroBotao
 	    * Data de Criacao: 20/08/2019
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
-		Campo de número inteiro com botões
+		Campo de n�mero inteiro com bot�es
 	*/
 	public static function InteiroBotao($id,$descricao){
 		$formgroup = tdClass::Criar("div");
@@ -563,11 +555,11 @@ class Campos {
 	}
 	
 	/*
-		* Método NumeroDecimal
+		* M�todo NumeroDecimal
 	    * Data de Criacao: 20/08/2019
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
-		Campo de némero decimal
+		Campo de n�mero decimal
 	*/
 	public static function NumeroDecimal($id,$descricao,$valor=null){
 		$campo = tdClass::Criar("labeledit");
@@ -581,11 +573,11 @@ class Campos {
 	}
 	
 	/*
-		* Método Monetário
+		* M�todo Monet�rio
 	    * Data de Criacao: 20/08/2019
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
-		Campo de valor monetário
+		Campo de valor monet�rio
 	*/
 	public static function Monetario($id,$descricao,$valor=null){
 		$campo = tdClass::Criar("labeledit");

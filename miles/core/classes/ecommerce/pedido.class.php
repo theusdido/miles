@@ -32,14 +32,14 @@ class Pedido {
 		*	[ array ] - Itens do pedido
 	*/
     public function itens(){
-        $ft = tdc::f("td_pedido","=",$this->id);
+        $ft = tdc::f("pedido","=",$this->id);
         $ft->setPropriedade("order","descricao");        
 
         foreach(tdc::d(getEntidadeEcommercePedidoItem(),$ft) as $item){
             if ($this->isVariacaoTamanho){
-                $tamanhoproduto = tdc::p("td_ecommerce_tamanhoproduto",$item->td_produto);
+                $tamanhoproduto = tdc::p("td_ecommerce_tamanhoproduto",$item->produto);
                 $id             = $tamanhoproduto->id;
-                $produto		= tdc::p("td_ecommerce_produto",$tamanhoproduto->td_produto);
+                $produto		= tdc::p("td_ecommerce_produto",$tamanhoproduto->produto);
                 if ($this->isReferenciaProduto){
                     $referencia     = $produto->referencia != "" ? " - Ref.: " . $produto->referencia : '';
                 }else{
@@ -49,7 +49,7 @@ class Pedido {
                 $tamanho        = $tamanhoproduto->descricao;
                 
             }else{
-                $produto		= tdc::p("td_ecommerce_produto",$item->td_produto);
+                $produto		= tdc::p("td_ecommerce_produto",$item->produto);
                 $id             = $produto->id;
                 $descricao      = $produto->nome;
                 $tamanho        = '';

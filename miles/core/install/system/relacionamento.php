@@ -24,7 +24,7 @@
 	$pai 				= criarAtributo($conn,$entidadeID,"pai","Pai","int",0,0,4,0,0,0,"");
 	$tipo 				= criarAtributo($conn,$entidadeID,"tipo","Tipo","int",0,0,4,0,0,0,"");
 	$filho 				= criarAtributo($conn,$entidadeID,"filho","Filho","int",0,0,4,0,0,0,"");
-	$td_atributo 		= criarAtributo($conn,$entidadeID,"td_atributo","Atributo","int",0,1,4,1,0,0,"");
+	$td_atributo 		= criarAtributo($conn,$entidadeID,"atributo","Atributo","int",0,1,4,1,0,0,"");
 	$descricao 			= criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar",200,0,3,1,0,0,"");
 	$controller 		= criarAtributo($conn,$entidadeID,"controller","Controller","text",0,1,3,1,0,0,"");
 	$cardinalidade 		= criarAtributo($conn,$entidadeID,"cardinalidade","Cadinalidade","char",2,1,4);

@@ -48,8 +48,8 @@
 	// Criando Atributos
 	$usuario 	= criarAtributo($conn,$entidadeIDHistorico,"usuario","Usuário","int",0,0,22,1,getEntidadeId("usuario",$conn),0,"",1,0);
 	$datahora 	= criarAtributo($conn,$entidadeIDHistorico,"datahora","Data e Hora","date",0,0,23,1,0,0,"",1,0);
-	$entidade 	= criarAtributo($conn,$entidadeIDHistorico,"td_entidade","Entidade","int",0,1,22,1,0,0,"",1,0);
-	$atributo 	= criarAtributo($conn,$entidadeIDHistorico,"td_atributo","Atributo","int",0,1,22,1,0,0,"",1,0);
+	$entidade 	= criarAtributo($conn,$entidadeIDHistorico,"entidade","Entidade","int",0,1,22,1,0,0,"",1,0);
+	$atributo 	= criarAtributo($conn,$entidadeIDHistorico,"atributo","Atributo","int",0,1,22,1,0,0,"",1,0);
 	$valorold 	= criarAtributo($conn,$entidadeIDHistorico,"valorold","Valor Antigo","varchar",200,0,3,1,0,0,"",1,0);
 	$valornew 	= criarAtributo($conn,$entidadeIDHistorico,"valornew","Valor Novo","varchar",200,0,3,1,0,0,"",1,0);
 	$registro	= criarAtributo($conn,$entidadeIDHistorico,"registro","Registro","int",0,0,3,1,0,0,"",1,0);

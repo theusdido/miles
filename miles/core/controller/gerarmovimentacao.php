@@ -38,11 +38,11 @@
 					$query = $conn->query($sql);
 					$linha = $query->fetch();
 					$valorold = utf8_encode(getHTMLTipoFormato($atributo->tipohtml,$linha[$atributo->nome]));
-
+					echo $entidade->contexto->id . "<= =>" . $atributo->nome;
 					$valor = Campos::Integridade($entidade->contexto->id,$atributo->nome,$obj->valor,"");
 					if ($valor == $valorold) continue;
 					$sqlmov = "UPDATE "	. $entidadeNameMov . " SET {$atributo->nome} = '".$valor."' WHERE ID = " . $linha["id"];
-
+					echo $sqlmov;
 					$query = $conn->query($sqlmov);
 					if ($query){
 						$prox = getProxId(str_replace(PREFIXO . "_","","movimentacaohistoricoalteracao"),$conn);
@@ -52,7 +52,7 @@
 						$observacao = utf8charset($_GET["observacao"]);
 						$motivo = isset($_GET["motivo"])?$_GET["motivo"]:0;
 						$sql = "
-							INSERT INTO td_movimentacaohistoricoalteracao (id,observacao,td_atributo,td_empresa,td_entidade,td_entidademotivo,td_motivo,td_movimentacao,td_usuario,valor,valorold,td_projeto,datahora) VALUES 							
+							INSERT INTO td_movimentacaohistoricoalteracao (id,observacao,atributo,empresa,entidade,entidademotivo,motivo,movimentacao,usuario,valor,valorold,projeto,datahora) VALUES 							
 							({$prox},'{$observacao}',{$atributo->id},{$empresa},{$entidade->contexto->id},{$_GET["entidademotivo"]},{$motivo},{$_GET["movimentacao"]},{$usuario},'{$valor}','{$valorold}',1,'{$datahora}');
 						";
 						$conn->query($sql);
@@ -66,12 +66,12 @@
 		if ($_GET["op"] == "salvarstatus"){
 			if ($conn = Transacao::Get()){
 				$motivo = isset($_GET["motivo"])?$_GET["motivo"]:0;
-				$sql = "SELECT td_atributo,valor FROM td_movimentacaostatus WHERE td_movimentacao = " . $_GET["movimentacao"];
+				$sql = "SELECT atributo,valor FROM td_movimentacaostatus WHERE movimentacao = " . $_GET["movimentacao"];
 				$query = $conn->query($sql);
 				while ($linha = $query->fetch()){
 					
-					$atributo = tdClass::Criar("persistent",array(ATRIBUTO,$linha["td_atributo"]))->contexto;
-					$entidade = tdClass::Criar("persistent",array(ENTIDADE,$atributo->td_entidade))->contexto;
+					$atributo = tdClass::Criar("persistent",array(ATRIBUTO,$linha["atributo"]))->contexto;
+					$entidade = tdClass::Criar("persistent",array(ENTIDADE,$atributo->entidade))->contexto;
 					
 					$valor = Campos::Integridade($entidade->id,$atributo->nome,$linha["valor"],"");
 					$valorold = tdClass::Criar("persistent",array($entidade->nome,$_GET["id"]))->contexto->{$atributo->nome};
@@ -86,7 +86,7 @@
 						$datahora = date("Y-m-d H:i:s");
 						$observacao = utf8charset($_GET["observacao"]);
 						$sqlMHA = "
-							INSERT INTO td_movimentacaohistoricoalteracao (id,observacao,td_atributo,td_empresa,td_entidade,td_entidademotivo,td_motivo,td_movimentacao,td_usuario,valor,valorold,td_projeto,datahora) VALUES 
+							INSERT INTO td_movimentacaohistoricoalteracao (id,observacao,atributo,empresa,entidade,entidademotivo,motivo,movimentacao,usuario,valor,valorold,projeto,datahora) VALUES 
 							({$prox},'{$observacao}',{$atributo->id},{$empresa},{$entidade->id},{$_GET["entidademotivo"]},{$motivo},{$_GET["movimentacao"]},{$usuario},'{$valor}','{$valorold}',1,'{$datahora}');
 						";
 
@@ -143,14 +143,16 @@
 	$movimentacao = tdClass::Criar("persistent",array(MOVIMENTACAO,$id))->contexto;
 	$entidade = tdClass::Criar("persistent",array(ENTIDADE,$movimentacao->{ENTIDADE}))->contexto;
 
-	$cf = getCurrentConfigFile();	
-	$path_files_movimentacao = PATH_FILES_MOVIMENTACAO . $id;
-
+	$cf = getCurrentConfigFile();
+	$path_files_movimentacao = PATH_PROJECT . $cf["CURRENT_PROJECT"] . "/" . PATH_FILES_MOVIMENTACAO . $id;
 
 	// Cria diretório
 	if (!file_exists($path_files_movimentacao)){
 		mkdir($path_files_movimentacao);
 	}
+
+	// Seta Cookie Diretório
+	setCookie("path_files_movimentacao",$path_files_movimentacao . "/");
 
 	// Campo Entidade Principal
 	$entidadePrincipalID = tdClass::Criar("input");
@@ -170,23 +172,23 @@
 
 	// JS Funções
 	$jsFuncoes = tdClass::Criar("script");
-	$jsFuncoes->src = Session::Get('URL_SYSTEM') . "funcoes.js";
+	$jsFuncoes->src = PATH_SYSTEM . "funcoes.js";
 	$jsFuncoes->mostrar();
 
 	// Arquivo JS Incorporado
 	$jsIncorporado = tdClass::Criar("script");
-	$jsIncorporado->src = URL_FILES_MOVIMENTACAO. $id . "/" . $entidade->nome . ".js";
+	$jsIncorporado->src = $path_files_movimentacao . "/" . $entidade->nome . ".js";
 	$jsIncorporado->mostrar();
 	
 	// JS Formulário
 	$jsFormulario = tdClass::Criar("script");
-	$jsFormulario->src = Session::Get('URL_SYSTEM') . "formulario.js";
+	$jsFormulario->src = PATH_SYSTEM . "formulario.js";
 	$jsFormulario->mostrar();
 
 	
 	// JS Validar
 	$jsValidar = tdClass::Criar("script");
-	$jsValidar->src = Session::Get('URL_SYSTEM') . "validar.js";
+	$jsValidar->src = PATH_SYSTEM . "validar.js";
 	$jsValidar->mostrar();
 
 	$blocoTitulo = tdClass::Criar("bloco");
@@ -235,10 +237,10 @@
 	
 	if (sizeof($dataset) > 0){
 		foreach ($dataset as $ftMovimentacao){
-			$atributo = tdClass::Criar("persistent",array(ATRIBUTO,(int)$ftMovimentacao->td_atributo))->contexto;
+			$atributo = tdClass::Criar("persistent",array(ATRIBUTO,(int)$ftMovimentacao->atributo))->contexto;
 			$obj = new stdclass();
 			$obj->id =  $atributo->id;
-			$obj->td_entidade = $atributo->{ENTIDADE};
+			$obj->entidade = $atributo->{ENTIDADE};
 			$obj->nome = $atributo->nome;
 			$obj->descricao = $atributo->descricao;
 			$obj->tipo = $atributo->tipo;
@@ -318,11 +320,11 @@
 	$atributosID = "";
 	if (sizeof($dataset) > 0){
 		foreach ($dataset as $ftMovimentacao){
-			$atributo = tdClass::Criar("persistent",array(ATRIBUTO,(int)$ftMovimentacao->td_atributo))->contexto;
+			$atributo = tdClass::Criar("persistent",array(ATRIBUTO,(int)$ftMovimentacao->atributo))->contexto;
 			$atributosID .= ($atributosID == ""?"":",") . $atributo->id;
 			$obj = new stdclass();
 			$obj->id =  $atributo->id;
-			$obj->td_entidade = $atributo->{ENTIDADE};
+			$obj->entidade = $atributo->{ENTIDADE};
 			$obj->nome = $atributo->nome;
 			$obj->descricao = $atributo->descricao;
 			$obj->tipo = $atributo->tipo;
@@ -347,43 +349,39 @@
 			$obj->labelzerocheckbox = $atributo->labelzerocheckbox;
 			$obj->labelumcheckbox = $atributo->labelumcheckbox;
 			$obj->legenda = "Novo";
-			$obj->desabilitar = false;
 			
 			array_push($arrayCamposAtributos,$obj);
 
-			if ($movimentacao->exibirdadosantigos == 1){
-				// Campo Valor Antigo
-				$obj = new stdclass();
-				$obj->id =  $atributo->id;
-				$obj->td_entidade = $atributo->{ENTIDADE};
-				$obj->nome = $atributo->nome . "-old";
-				$obj->descricao = $atributo->descricao;
-				$obj->tipo = $atributo->tipo;
-				$obj->tamanho = $atributo->tamanho;
-				$obj->nulo = $atributo->nulo;
-				$obj->omissao = $atributo->omissao;
-				$obj->collection = $atributo->collection;
-				$obj->atributos = $atributo->atributos;
-				$obj->indice = $atributo->indice;
-				$obj->autoincrement = $atributo->autoincrement;
-				$obj->comentario = $atributo->comentario;
-				$obj->exibirgradededados = $atributo->exibirgradededados;
-				$obj->chaveestrangeira = $atributo->chaveestrangeira;
-				$obj->tipohtml = $atributo->tipohtml;
-				$obj->dataretroativa = $atributo->dataretroativa;
-				$obj->ordem = $atributo->ordem;
-				$obj->inicializacao = $atributo->inicializacao;
-				$obj->readonly = 1;
-				$obj->exibirpesquisa = $atributo->exibirpesquisa;
-				$obj->tipoinicializacao = $atributo->tipoinicializacao;
-				$obj->atributodependencia = $atributo->atributodependencia;
-				$obj->labelzerocheckbox = $atributo->labelzerocheckbox;
-				$obj->labelumcheckbox = $atributo->labelumcheckbox;
-				$obj->legenda = "Antigo";
-				$obj->desabilitar = false;
-				
-				array_push($arrayCamposAtributos,$obj);
-			}
+			// Campo Valor Antigo
+			$obj = new stdclass();
+			$obj->id =  $atributo->id;
+			$obj->entidade = $atributo->{ENTIDADE};
+			$obj->nome = $atributo->nome . "-old";
+			$obj->descricao = $atributo->descricao;
+			$obj->tipo = $atributo->tipo;
+			$obj->tamanho = $atributo->tamanho;
+			$obj->nulo = $atributo->nulo;
+			$obj->omissao = $atributo->omissao;
+			$obj->collection = $atributo->collection;
+			$obj->atributos = $atributo->atributos;
+			$obj->indice = $atributo->indice;
+			$obj->autoincrement = $atributo->autoincrement;
+			$obj->comentario = $atributo->comentario;
+			$obj->exibirgradededados = $atributo->exibirgradededados;
+			$obj->chaveestrangeira = $atributo->chaveestrangeira;
+			$obj->tipohtml = $atributo->tipohtml;
+			$obj->dataretroativa = $atributo->dataretroativa;
+			$obj->ordem = $atributo->ordem;
+			$obj->inicializacao = $atributo->inicializacao;
+			$obj->readonly = 1;
+			$obj->exibirpesquisa = $atributo->exibirpesquisa;
+			$obj->tipoinicializacao = $atributo->tipoinicializacao;
+			$obj->atributodependencia = $atributo->atributodependencia;
+			$obj->labelzerocheckbox = $atributo->labelzerocheckbox;
+			$obj->labelumcheckbox = $atributo->labelumcheckbox;
+			$obj->legenda = "Antigo";
+			
+			array_push($arrayCamposAtributos,$obj);
 		}
 		
 		$form->ncolunas = 2;
@@ -483,7 +481,7 @@
 						dadosalterar:dadosAlterar,
 						entidadepai:getCookie("entidademovdados"),
 						identidadepai:getCookie("idmovdados"),
-						entidademotivo:"'.$movimentacao->td_motivo.'",
+						entidademotivo:"'.$movimentacao->motivo.'",
 						motivo:$("#td_motivo").val(),
 						observacao:$("#observacao").val(),
 						movimentacao:'.$movimentacao->id.'
@@ -530,8 +528,8 @@
 	$linhaForm->add($blocoForm);
 	$linhaForm->mostrar();
 	
-	if ($movimentacao->td_motivo > 0){
-		$motivo = tdClass::Criar("persistent",array(ENTIDADE,$movimentacao->td_motivo))->contexto;
+	if ($movimentacao->motivo > 0){
+		$motivo = tdClass::Criar("persistent",array(ENTIDADE,$movimentacao->motivo))->contexto;
 		$campo_motivo = '<label for=\'td_motivo\' class=\'control-label\'>'.$motivo->descricao.'</label>';
 		$campo_motivo .= '<select class=\'form-control input-sm\' required=\'true\' id=\'td_motivo\' name=\'td_motivo\' data-entidade=\''.$motivo->nome.'\'></select>';
 		$carregarMotivo = 'carregarListaMotivo()';
@@ -545,7 +543,7 @@
 	}
 	$QtdeStatus = 0;
 	if ($conn = Transacao::Get()){
-		$sqlQtdeStatus = "SELECT 1 FROM td_movimentacaostatus WHERE td_movimentacao = " . $movimentacao->id;
+		$sqlQtdeStatus = "SELECT 1 FROM td_movimentacaostatus WHERE movimentacao = " . $movimentacao->id;
 		$queryQtdeStatus = $conn->query($sqlQtdeStatus);
 		$QtdeStatus = $queryQtdeStatus->rowCount();
 	}	
@@ -592,7 +590,7 @@
 					op:"salvarstatus",
 					movimentacao:getCookie("movimentacaoselecionada"),
 					id:getCookie("idmovdados"),
-					entidademotivo:"'.$movimentacao->td_motivo.'",
+					entidademotivo:"'.$movimentacao->motivo.'",
 					motivo:$("#td_motivo").val(),
 					observacao:$("#observacao").val(),
 				},

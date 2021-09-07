@@ -9,9 +9,34 @@
 	$paginadoc = "* @Página: {$entidade} - {$_POST["descricaoentidade"]} [{$_POST["nomeentidade"]}]";
 
 	// Cria o arquivo HTML
-	$fp = fopen($path . $_POST["filename"] ,'w');
+	$fp = fopen($path . $_POST["filename"] ,'w+');
 	fwrite($fp,htmlespecialcaracteres($_POST["html"],1));
 	fclose($fp);
+
+	/*
+	// Arquivo HTML do Componente Angular
+	$fp = fopen("../../../../miles/angularjs/aplicacao/src/app/pages/crm/pessoa/pessoa.component.html" ,'w');
+	fwrite($fp,htmlespecialcaracteres(
+	'
+		<div class="main-content">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="card">
+							<div class="card-header card-header-danger">
+								<h4 class="card-title">PESSOA</h4>
+								<p class="card-category">Cadastro Único de Locador, Locatário, Fiador.</p>
+							</div>
+							<div class="card-body">'.$_POST["html"].'</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	'
+	,1));
+	fclose($fp);
+	*/
 
 	// Cria o arquivo HTML Embutido Dinâmico
 	$dhtmlFile = $path . $_POST["nomeentidade"] . ".htm";
@@ -20,7 +45,7 @@
 		fwrite($fp,"<!--\n * HTML Personalizado \n {$datacriacaodoc} \n {$authordoc} \n {$paginadoc} \n\n Escreve seu código HTML personalizado aqui! \n-->\n");
 		fclose($fp);
 	}	
-
+	
 	// Cria o arquivo CSS
 	$cssFile = $path . $_POST["filenamecss"];
 	if (!file_exists($cssFile)){

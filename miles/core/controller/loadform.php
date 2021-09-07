@@ -10,7 +10,7 @@ if ($conn = Transacao::get()){
 		foreach($dataset as $d){
 			array_push($dadosParams,array(
 				"entidade" 		=> (int)$d->filho,
-				"atributo" 		=> $d->td_atributo!=0?tdc::a($d->td_atributo)->nome:0,
+				"atributo" 		=> $d->atributo!=0?tdc::a($d->atributo)->nome:0,
 				"valor" 		=> '',
 				"tipoRel" 		=> (int)$d->tipo,
 				"entidadepai" 	=> (int)$d->pai
@@ -77,9 +77,9 @@ if ($conn = Transacao::get()){
 
 		if ($query->rowcount() > 0){
 			while ($linha = $query->fetch()){
-				$sqlAttr = "SELECT id,nome,tipohtml FROM " . ATRIBUTO . " WHERE " . ENTIDADE . " = " . $entidadeID . ";";
-				$queryAttr = $conn->query($sqlAttr);
-				$dados_retorno = array();
+				$sqlAttr 		= "SELECT id,nome,tipohtml FROM " . ATRIBUTO . " WHERE entidade = " . $entidadeID . ";";
+				$queryAttr 		= $conn->query($sqlAttr);
+				$dados_retorno 	= array();
 				while ($linhaAttr = $queryAttr->fetch()){
 					$dados_array = array("atributo" => $linhaAttr["nome"] , "valor" => getHTMLTipoFormato($linhaAttr["tipohtml"],utf8charset($linha[$linhaAttr["nome"]],3),$entidadeID,$linhaAttr["id"],tdClass::Read("registroprincipal")) , "idatributo" => $linhaAttr["id"]);
 					array_push($dados_retorno,$dados_array);

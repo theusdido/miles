@@ -72,7 +72,7 @@ Menu.prototype.menuprincipal = function(dados){
 			}	
 			var li = $("<li>");
 			var linkpath = session.folderprojectfiles + dados[d].link;
-			if (dados[d].td_entidade == "" || dados[d].td_entidade == 0){
+			if (dados[d].entidade == "" || dados[d].entidade == 0){
 				
 			}else{
 				//var linkpath = dados[d].link == "#"?dados[d].link:session.folderfiles+dados[d].link;

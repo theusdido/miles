@@ -169,7 +169,7 @@ if ($conn = Transacao::Get()){
 	$tBody = tdClass::Criar("tbody");
 	
 	$totalquantidade = $totalvalorunitario = $totalgeral = 0;
-	$sqlItens = "SELECT id,qtde,valor,descricao FROM td_ecommerce_itenscarrinho WHERE td_carrinho = " .$carrinhoID;
+	$sqlItens = "SELECT id,qtde,valor,descricao FROM td_ecommerce_itenscarrinho WHERE carrinho = " .$carrinhoID;
 	$queryItens = $conn->query($sqlItens);
 	while ($linhaItens = $queryItens->fetch()){
 		$tr = tdClass::Criar("tabelalinha");

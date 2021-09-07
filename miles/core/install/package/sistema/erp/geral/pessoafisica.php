@@ -21,15 +21,15 @@
 	);
 
 	// Criando Atributos
-	$pessoa = criarAtributo($conn,$entidadeID,"pessoa","Pessoa","int",0,1,16,0,installDependencia($conn,'erp_geral_pessoa'),0,"",1,0);
-	$cpf = criarAtributo($conn,$entidadeID,"cpf","CPF","varchar","15",0,10,1,0,0,"",1,0);
-	$genero = criarAtributo($conn,$entidadeID,"genero","Gênero","int",0,0,4,0,installDependencia($conn,'erp_geral_genero'),0,"",1,0);
-	$estadocivil = criarAtributo($conn,$entidadeID,"estadocivil","Estado Civil","int",0,0,4,0,installDependencia($conn,'erp_geral_estadocivil'),0,"",1,0);
-	$datanascimento = criarAtributo($conn,$entidadeID,"datanascimento","Data de Nascimento","date",0,0,11,0,0,0,"",1,0);
-	$nacionalidade = criarAtributo($conn,$entidadeID,"nacionalidade","Nacionalidade","int",0,0,4,0,installDependencia($conn,'erp_geral_nacionalidade'),0,"",1,0);
-	$profissao = criarAtributo($conn,$entidadeID,"profissao","Profissão","int",0,0,4,0,installDependencia($conn,'erp_geral_profissao'),0,"",1,0);
-	$pai = criarAtributo($conn,$entidadeID,"pai","Pai","varchar",120,0,3,0);
-	$mae = criarAtributo($conn,$entidadeID,"mae","Mãe","varchar",120,0,3,0);
+	$pessoa 			= criarAtributo($conn,$entidadeID,"pessoa","Pessoa","int",0,1,16,0,installDependencia($conn,'erp_geral_pessoa'),0,"",1,0);
+	$cpf 				= criarAtributo($conn,$entidadeID,"cpf","CPF","varchar","15",0,10,1,0,0,"",1,0);
+	$genero 			= criarAtributo($conn,$entidadeID,"genero","Gênero","int",0,0,4,0,installDependencia($conn,'erp_geral_genero'),0,"",1,0);
+	$estadocivil 		= criarAtributo($conn,$entidadeID,"estadocivil","Estado Civil","int",0,0,4,0,installDependencia($conn,'erp_geral_estadocivil'),0,"",1,0);
+	$datanascimento 	= criarAtributo($conn,$entidadeID,"datanascimento","Data de Nascimento","date",0,0,11,0,0,0,"",1,0);
+	$nacionalidade 		= criarAtributo($conn,$entidadeID,"nacionalidade","Nacionalidade","int",0,0,4,0,installDependencia($conn,'erp_geral_nacionalidade'),0,"",1,0);
+	$profissao 			= criarAtributo($conn,$entidadeID,"profissao","Profissão","int",0,0,4,0,installDependencia($conn,'erp_geral_profissao'),0,"",1,0);
+	$pai 				= criarAtributo($conn,$entidadeID,"pai","Pai","varchar",120,0,3,0);
+	$mae 				= criarAtributo($conn,$entidadeID,"mae","Mãe","varchar",120,0,3,0);
 
 	// Criando Relacionamento
 	criarRelacionamento(

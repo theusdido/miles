@@ -25,13 +25,13 @@
 	);
 
 	// Criando Atributos
-	$descricao = criarAtributo($conn,$entidadeID,"numero","Número","varchar","25",1,8,0,0,0,"");
-	$tipo = criarAtributo($conn,$entidadeID,"tipo","Tipo de Telefone","int",0,0,4,0,$tipotelefone,0,"",1,0);
-	$operadora = criarAtributo($conn,$entidadeID,"operadora","Operadora","int",0,0,4,0,$operadoratelefone,0,"",1,0);
-	$contato = criarAtributo($conn,$entidadeID,"contato","Contato","varchar","60",1,3,1,0,0,"");
+	$descricao 		= criarAtributo($conn,$entidadeID,"numero","Número","varchar","25",1,8,0,0,0,"");
+	$tipo 			= criarAtributo($conn,$entidadeID,"tipo","Tipo de Telefone","int",0,0,4,0,$tipotelefone,0,"",1,0);
+	$operadora 		= criarAtributo($conn,$entidadeID,"operadora","Operadora","int",0,0,4,0,$operadoratelefone,0,"",1,0);
+	$contato 		= criarAtributo($conn,$entidadeID,"contato","Contato","varchar","60",1,3,1,0,0,"");
 
 	// Criando Acesso
-	$menu_webiste = addMenu($conn,'Telefone','#','','','','geral');
+	$menu_webiste 	= addMenu($conn,'Geral','#','',0,0,'geral');
 
 	// Adicionando Menu
-	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".PREFIXO.$entidadeNome.".html",'',$menu_webiste,8,'geral-' . $entidadeNome);
+	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,8,'geral-' . $entidadeNome,$entidadeID,'cadastro');

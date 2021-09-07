@@ -86,7 +86,16 @@ class Pagina Extends Html {
 		$this->head->add($meta_charset,$meta_viewport,$meta_robots,$favicon,$bootstrap,$title);
 		$this->body->add($jquery,$bootstrap_js);
 		if ($this->showJSLibSystem){
-			addJSLIBFormSystem($this->body);
+			$jsFuncoes = tdClass::Criar("script");
+			$jsFuncoes->src = Session::Get('URL_SYSTEM') . "funcoes.js";
+
+			$jsValidar = tdClass::Criar("script");
+			$jsValidar->src = Session::Get('URL_SYSTEM') . "validar.js";
+
+			$jsGradeDados = tdClass::Criar("script");
+			$jsGradeDados->src = Session::Get('URL_CLASS_TDC') . "gradededados.class.js";
+
+			$this->body->add($jsFuncoes,$jsValidar,$jsGradeDados);
 		}
 		$this->jsInicial();
 	}
@@ -244,14 +253,13 @@ class Pagina Extends Html {
 		$jsDecode->src = URL_LIB . "phpjs-master/functions/xml/utf8_decode.js";
 
 		$cf = getCurrentConfigFile();
-
 		$jsSession = tdClass::Criar("script");
 		$jsSession->add('
 				function SystemSession(){
 					this.autenticado 				= "'.(isset(Session::get()->autenticado)?Session::get()->autenticado:"").'";
 					this.userid 					= "'.(isset(Session::get()->userid)?Session::get()->userid:"").'";
 					this.username 					= "'.(isset(Session::get()->username)?Session::get()->username:"").'";
-					this.usergroup 					= '.(isset(Session::get()->usergroup)?Session::get()->usergroup:0).';
+					this.usergroup 					= '.(isset(Session::get()->usergroup)?(is_numeric(Session::get()->usergroup)?Session::get()->usergroup:0):0).';
 					this.empresa					= "'.(isset(Session::get()->empresa)?Session::get()->empresa:"").'";
 					this.projeto					= "'.(isset(Session::get()->projeto)?Session::get()->projeto:"").'";
 					this.permitirexclusao			= "'.(isset(Session::get()->permitirexclusao)?Session::get()->permitirexclusao:"").'";
@@ -316,11 +324,11 @@ class Pagina Extends Html {
 	}
 
 	/*  
-		* Método getTitle
+		* M�todo getTitle
 	    * Data de Criacao: 28/10/2020
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
-		Retorna o titulo da pégina
+		Retorna o titulo da p�gina
 	*/
 	private function getTitle(){
 		$title 				= 'Miles';

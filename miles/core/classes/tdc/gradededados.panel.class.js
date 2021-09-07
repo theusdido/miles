@@ -169,7 +169,7 @@ GradeDeDados.prototype.load = function(){
 			dadosLoad = retorno;
 			if (td_entidade[instancia.entidade].atributos.length > 0){
 				for (a in td_entidade[instancia.entidade].atributos){
-					if (td_entidade[instancia.entidade].atributos[a].td_entidade == instancia.entidade){
+					if (td_entidade[instancia.entidade].atributos[a].entidade == instancia.entidade){
 						instancia.attr_cabecalho_nome.push(td_entidade[instancia.entidade].atributos[a].nome);
 						instancia.attr_cabecalho_descricao.push(td_entidade[instancia.entidade].atributos[a].descricao);
 						instancia.attr_cabecalho_tipo.push(td_entidade[instancia.entidade].atributos[a].tipo);
@@ -177,7 +177,7 @@ GradeDeDados.prototype.load = function(){
 				}
 			}else{
 				for (a in td_atributo){
-					if (td_atributo[a].td_entidade == instancia.entidade){
+					if (td_atributo[a].entidade == instancia.entidade){
 						instancia.attr_cabecalho_nome.push(td_atributo[a].nome);
 						instancia.attr_cabecalho_descricao.push(td_atributo[a].descricao);
 						instancia.attr_cabecalho_tipo.push(td_atributo[a].tipo);
@@ -866,22 +866,22 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal="",nomes_cabecalho
 										var data2 = new Date(dt2.split("/")[0],dt2.split("/")[1],dt2.split("/")[2]);
 										switch(ft.operador){
 											case "=":
-												if (data1 == data2) eval("painelbody.addClass('"+td_status[ft.td_status].classe+"');");
+												if (data1 == data2) eval("painelbody.addClass('"+td_status[ft.status].classe+"');");
 											break;
 											case "!":
-												if (data1 != data2) eval("painelbody.addClass('"+td_status[ft.td_status].classe+"');");
+												if (data1 != data2) eval("painelbody.addClass('"+td_status[ft.status].classe+"');");
 											break;
 											case ">":
-												if (data1 > data2) eval("painelbody.addClass('"+td_status[ft.td_status].classe+"');");
+												if (data1 > data2) eval("painelbody.addClass('"+td_status[ft.status].classe+"');");
 											break;
 											case "<":
-												if (data1 < data2) eval("painelbody.addClass('"+td_status[ft.td_status].classe+"');");
+												if (data1 < data2) eval("painelbody.addClass('"+td_status[ft.status].classe+"');");
 											break;								
 											case ">=":
-												if (data1 >= data2) eval("painelbody.addClass('"+td_status[ft.td_status].classe+"');");
+												if (data1 >= data2) eval("painelbody.addClass('"+td_status[ft.status].classe+"');");
 											break;
 											case "<=":
-												if (data1 <= data2) eval("painelbody.addClass('"+td_status[ft.td_status].classe+"');");
+												if (data1 <= data2) eval("painelbody.addClass('"+td_status[ft.status].classe+"');");
 											break;
 										}
 									}
@@ -899,28 +899,28 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal="",nomes_cabecalho
 										var data2 = new Date((ft.valor=="now()"?config.datahora:ft.valor));
 										switch(ft.operador){
 											case "=":									
-												if (data1 == data2) eval("painelbody.addClass('"+td_status[ft.td_status].classe+"');");
+												if (data1 == data2) eval("painelbody.addClass('"+td_status[ft.status].classe+"');");
 											break;
 											case "!":
-												if (data1 != data2) eval("painelbody.addClass('"+td_status[ft.td_status].classe+"');");
+												if (data1 != data2) eval("painelbody.addClass('"+td_status[ft.status].classe+"');");
 											break;
 											case ">":
-												if (data1 > data2) eval("painelbody.addClass('"+td_status[ft.td_status].classe+"');");
+												if (data1 > data2) eval("painelbody.addClass('"+td_status[ft.status].classe+"');");
 											break;
 											case "<":
-												if (data1 < data2) eval("painelbody.addClass('"+td_status[ft.td_status].classe+"');");
+												if (data1 < data2) eval("painelbody.addClass('"+td_status[ft.status].classe+"');");
 											break;								
 											case ">=":
-												if (data1 >= data2) eval("painelbody.addClass('"+td_status[ft.td_status].classe+"');");
+												if (data1 >= data2) eval("painelbody.addClass('"+td_status[ft.status].classe+"');");
 											break;
 											case "<=":
-												if (data1 <= data2) eval("painelbody.addClass('"+td_status[ft.td_status].classe+"');");
+												if (data1 <= data2) eval("painelbody.addClass('"+td_status[ft.status].classe+"');");
 											break;
 										}
 									}
 								break;	
 								default:
-									eval("if ("+valorreal+operador+ft.valor+"){ painelbody.addClass('"+td_status[ft.td_status].classe+"');}");
+									eval("if ("+valorreal+operador+ft.valor+"){ painelbody.addClass('"+td_status[ft.status].classe+"');}");
 							}
 						}	
 					}
@@ -1044,7 +1044,7 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal="",nomes_cabecalho
 GradeDeDados.prototype.nenhumRegistro = function(){
 	//this.dadosCorpo
 	for(atr in td_atributo){
-		if (td_atributo[atr].td_entidade == this.entidade){
+		if (td_atributo[atr].entidade == this.entidade){
 			this.attr_cabecalho_nome.push(td_atributo[atr].nome);
 			this.attr_cabecalho_descricao.push(td_atributo[atr].descricao);
 			this.attr_cabecalho_tipo.push(td_atributo[atr].tipo);

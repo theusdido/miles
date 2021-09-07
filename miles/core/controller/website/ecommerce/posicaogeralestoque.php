@@ -6,13 +6,13 @@
 	$variacaoproduto	= tdc::r("variacaoproduto");
 	
 	if ($produto == ""){
-		$produto = tdc::p("td_ecommerce_tamanhoproduto",$variacaoproduto)->td_produto;
+		$produto = tdc::p("td_ecommerce_tamanhoproduto",$variacaoproduto)->produto;
 	}
 
-	$where = " WHERE td_produto = {$produto} ";
+	$where = " WHERE produto = {$produto} ";
 	if ($variacaoproduto != ""){
-		$where .= " AND td_variacaoproduto = {$variacaoproduto} ";
-		$variacaoinsertcampo = "td_variacaoproduto";
+		$where .= " AND variacaoproduto = {$variacaoproduto} ";
+		$variacaoinsertcampo = "variacaoproduto";
 		$variacaoinsertvalor = $variacaoproduto;
 	}else{
 		$variacaoinsertcampo =  $variacaoinsertvalor = "";
@@ -26,7 +26,7 @@
 		$sqlUpdate = "UPDATE td_ecommerce_posicaogeralestoque SET saldo = (saldo " . $operacao . " " . $quantidade . ") , datahora = now() {$where} ";
 		$queryUpdade = $conn->query($sqlUpdate);
 	}else{
-		$sqlInsert = "INSERT INTO td_ecommerce_posicaogeralestoque (id,td_produto,".($variacaoproduto != ""?$variacaoinsertcampo . ",":"")."saldo,datahora) VALUES (".getProxId("ecommerce_posicaogeralestoque",$conn).",{$produto},".($variacaoproduto != ""?$variacaoinsertvalor . ",":"")."{$quantidade},now());";
+		$sqlInsert = "INSERT INTO td_ecommerce_posicaogeralestoque (id,produto,".($variacaoproduto != ""?$variacaoinsertcampo . ",":"")."saldo,datahora) VALUES (".getProxId("ecommerce_posicaogeralestoque",$conn).",{$produto},".($variacaoproduto != ""?$variacaoinsertvalor . ",":"")."{$quantidade},now());";
 		$queryInsert = $conn->query($sqlInsert);
 	}
 

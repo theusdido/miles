@@ -28,4 +28,4 @@
 	$menu_webiste = addMenu($conn,'Geral','#','','','','geral');
 
 	// Adicionando Menu
-	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".PREFIXO.$entidadeNome.".html",'',$menu_webiste,0,'geral-' . $entidadeNome, $entidadeID, 'cadastro');
+	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,0,'geral-' . $entidadeNome, $entidadeID, 'cadastro');

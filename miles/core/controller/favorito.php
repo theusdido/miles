@@ -1,6 +1,6 @@
 <?php
 	if ($conn = Transacao::Get()){
-		$sqlFavorito = "select valorid,count(valorid) as qtde from td_log WHERE acao = 4 and td_entidade = " . getEntidadeId("menu",$conn) . " group by valorid order by qtde desc limit 3;";
+		$sqlFavorito = "select valorid,count(valorid) as qtde from ".LOG." WHERE acao = 4 and entidade = " . getEntidadeId("menu",$conn) . " group by valorid order by qtde desc limit 3;";
 		$queryFavorito = $conn->query($sqlFavorito);
 		if ($queryFavorito->rowCount() > 0){
 			$listaFavorito = tdClass::Criar("div");
@@ -10,13 +10,13 @@
 				$a = tdClass::Criar("hyperlink");
 				$a->class="list-group-item";
 				$a->href = "#";
-				$menu = tdClass::Criar("persistent",array("td_menu",$linhaFavorito["valorid"]))->contexto;
+				$menu = tdClass::Criar("persistent",array(MENU,$linhaFavorito["valorid"]))->contexto;
 
 				if ($menu->link != "" && $menu->descricao != ""){
 					$a->onclick = "menuprincipal.menuselecionado = ".$menu->id.";menuprincipal.carregarpagina('".Session::Get("PATH_CURRENT_PROJECT").$menu->link."','#conteudoprincipal');";
 					$descricaoMenu = $menu->descricao;
-					$paiMenu = $menu->td_pai;
-					$descricaoMenuPai = ($menu->td_pai != "" && $menu->td_pai > 0)? tdClass::Criar("persistent",array("td_menu",$menu->td_pai))->contexto->descricao . '<span class="fas fa-arrow-right" aria-hidden="true"></span>':"";
+					$paiMenu = $menu->pai;
+					$descricaoMenuPai = ($menu->pai != "" && $menu->pai > 0)? tdClass::Criar("persistent",array(MENU,$menu->pai))->contexto->descricao . '<span class="fas fa-arrow-right" aria-hidden="true"></span>':"";
 					$qtdeMenu = '<small class="qtde-menu-favorito">' . $linhaFavorito["qtde"] . "</small>";
 					$a->add( $descricaoMenuPai . $descricaoMenu . $qtdeMenu);
 					$listaFavorito->add($a);

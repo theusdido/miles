@@ -21,11 +21,11 @@
 	);
 
 	// Criando Atributos
-	$descricao = criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar",120,0,3,1,0,0,"");
-	$link = criarAtributo($conn,$entidadeID,"link","Link","varchar",200,0,3,1,0,0,"");
-	$target = criarAtributo($conn,$entidadeID,"target","Target","varchar",15,1,3,1,0,0,"");
-	$pai = criarAtributo($conn,$entidadeID,"pai","Pai","int",0,0,4,0,$entidadeID,0,"");
-	$ordem = criarAtributo($conn,$entidadeID,"ordem","Ordem","smallint",0,0,3,0,0,0,"");
-	$fixo = criarAtributo($conn,$entidadeID,"fixo","Fixo","varchar",200,0,3,0,0,0,"");
-	$tipomenu = criarAtributo($conn,$entidadeID,"tipomenu","Tipo de Menu","varchar",35,0,3,0,0,0,"");
-	$entidade = criarAtributo($conn,$entidadeID,PREFIXO . "entidade","Entidade","int",0,0,3,0,0,0,"");
+	$descricao 	= criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar",120,0,3,1,0,0,"");
+	$link 		= criarAtributo($conn,$entidadeID,"link","Link","varchar",200,0,3,1,0,0,"");
+	$target 	= criarAtributo($conn,$entidadeID,"target","Target","varchar",15,1,3,1,0,0,"");
+	$pai 		= criarAtributo($conn,$entidadeID,"pai","Pai","int",0,0,4,0,$entidadeID,0,"");
+	$ordem 		= criarAtributo($conn,$entidadeID,"ordem","Ordem","smallint",0,0,3,0,0,0,"");
+	$fixo 		= criarAtributo($conn,$entidadeID,"fixo","Fixo","varchar",200,0,3,0,0,0,"");
+	$tipomenu 	= criarAtributo($conn,$entidadeID,"tipomenu","Tipo de Menu","varchar",35,0,3,0,0,0,"");
+	$entidade 	= criarAtributo($conn,$entidadeID,"entidade","Entidade","int",0,0,3,0,0,0,"");

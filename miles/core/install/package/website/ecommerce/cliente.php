@@ -34,7 +34,7 @@
 	$menu_webiste = addMenu($conn,'E-Commerce','#','','','','ecommerce');
 	
 	// Adicionando Menu
-	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".PREFIXO.$entidadeNome.".html",'',$menu_webiste,8,'ecommerce-' . $entidadeNome,$entidadeID,'cadastro');
+	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,8,'ecommerce-' . $entidadeNome,$entidadeID,'cadastro');
 	
 	// Criar Aba
 	$camposAba = array($nome,$genero,$datanascimento,$email,$senha,$telefone,$cpf);

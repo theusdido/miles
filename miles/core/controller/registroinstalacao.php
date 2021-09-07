@@ -3,36 +3,36 @@
     inserirRegistro($conn,getSystemPrefixo() . "usuario",1, array("nome","email","senha","permitirexclusao","permitirtrocarempresa",getSystemFKPrefixo() . "grupousuario","perfilusuario",getSystemFKPrefixo() . "perfil"), array("'Root'","'root'","'63a9f0ea7bb98050796b649e85481845'",1,1,1,0,0));
 
     // Menu
-    inserirRegistro($conn,getSystemPrefixo() . "menu",1, array("descricao","link","target",getSystemFKPreFixo("pai"),"ordem","fixo","td_entidade","tipomenu"), array("'Administração'","'#'","''",0,1,"'adm'",0,1));
+    inserirRegistro($conn,getSystemPrefixo() . "menu",1, array("descricao","link","target",getSystemFKPreFixo("pai"),"ordem","fixo","entidade","tipomenu"), array("'Administração'","'#'","''",0,1,"'adm'",0,1));
     $usuarioID = getEntidadeId("usuario",$conn);
-    inserirRegistro($conn,getSystemPrefixo() . "menu",2, array("descricao","link","target",getSystemFKPreFixo("pai"),"ordem","fixo","td_entidade","tipomenu"), array("'Usuário'","'files/cadastro/".$usuarioID."/td_usuario.html'","''",1,1,"''",$usuarioID,1));
+    inserirRegistro($conn,getSystemPrefixo() . "menu",2, array("descricao","link","target",getSystemFKPreFixo("pai"),"ordem","fixo","entidade","tipomenu"), array("'Usuário'","'files/cadastro/".$usuarioID."/".USUARIO.".html'","''",1,1,"''",$usuarioID,1));
     $menuID = getEntidadeId("menu",$conn);
-    inserirRegistro($conn,getSystemPrefixo() . "menu",3, array("descricao","link","target",getSystemFKPreFixo("pai"),"ordem","fixo","td_entidade","tipomenu"), array("'Menu'","'files/cadastro/".$menuID."/td_menu.html'","''",1,2,"''",$menuID,1));
+    inserirRegistro($conn,getSystemPrefixo() . "menu",3, array("descricao","link","target",getSystemFKPreFixo("pai"),"ordem","fixo","entidade","tipomenu"), array("'Menu'","'files/cadastro/".$menuID."/".MENU.".html'","''",1,2,"''",$menuID,1));
     $projetoID = getEntidadeId("projeto",$conn);
-    inserirRegistro($conn,getSystemPrefixo() . "menu",4, array("descricao","link","target",getSystemFKPreFixo("pai"),"ordem","fixo","td_entidade","tipomenu"), array("'Projeto'","'files/cadastro/".$projetoID."/td_projeto.html'","''",1,3,"''",$projetoID,1));
+    inserirRegistro($conn,getSystemPrefixo() . "menu",4, array("descricao","link","target",getSystemFKPreFixo("pai"),"ordem","fixo","entidade","tipomenu"), array("'Projeto'","'files/cadastro/".$projetoID."/".PROJETO.".html'","''",1,3,"''",$projetoID,1));
     $empresaID = getEntidadeId("empresa",$conn);
-    inserirRegistro($conn,getSystemPrefixo() . "menu",5, array("descricao","link","target",getSystemFKPreFixo("pai"),"ordem","fixo","td_entidade","tipomenu"), array("'Empresa'","'files/cadastro/".$empresaID."/td_empresa.html'","''",1,4,"''",$empresaID,1));
+    inserirRegistro($conn,getSystemPrefixo() . "menu",5, array("descricao","link","target",getSystemFKPreFixo("pai"),"ordem","fixo","entidade","tipomenu"), array("'Empresa'","'files/cadastro/".$empresaID."/".EMPRESA.".html'","''",1,4,"''",$empresaID,1));
     $avisoID = getEntidadeId("aviso",$conn);
-    inserirRegistro($conn,getSystemPrefixo() . "menu",6, array("descricao","link","target",getSystemFKPreFixo("pai"),"ordem","fixo","td_entidade","tipomenu"), array("'Aviso'","'files/cadastro/".$avisoID."/td_aviso.html'","''",1,5,"''",$avisoID,1));
+    inserirRegistro($conn,getSystemPrefixo() . "menu",6, array("descricao","link","target",getSystemFKPreFixo("pai"),"ordem","fixo","entidade","tipomenu"), array("'Aviso'","'files/cadastro/".$avisoID."/".AVISO.".html'","''",1,5,"''",$avisoID,1));
     $grupousuarioID = getEntidadeId("grupousuario",$conn);
-    inserirRegistro($conn,getSystemPrefixo() . "menu",7, array("descricao","link","target",getSystemFKPreFixo("pai"),"ordem","fixo","td_entidade","tipomenu"), array("'Grupo de Usuário'","'files/cadastro/".$grupousuarioID."/td_grupousuario.html'","''",1,6,"''",$grupousuarioID,1));
+    inserirRegistro($conn,getSystemPrefixo() . "menu",7, array("descricao","link","target",getSystemFKPreFixo("pai"),"ordem","fixo","entidade","tipomenu"), array("'Grupo de Usuário'","'files/cadastro/".$grupousuarioID."/".USUARIOGRUPO.".html'","''",1,6,"''",$grupousuarioID,1));
     
-    inserirRegistro($conn,getSystemPrefixo() . "menu",8, array("descricao","link","target",getSystemFKPreFixo("pai"),"ordem","fixo","td_entidade","tipomenu"), array("'Ticket'","'#'","''",0,2,"'ticket'",0,1));
+    inserirRegistro($conn,getSystemPrefixo() . "menu",8, array("descricao","link","target",getSystemFKPreFixo("pai"),"ordem","fixo","entidade","tipomenu"), array("'Ticket'","'#'","''",0,2,"'ticket'",0,1));
     $ticketstatusID = getEntidadeId("ticketstatus",$conn);
-    inserirRegistro($conn,getSystemPrefixo() . "menu",9, array("descricao","link","target",getSystemFKPreFixo("pai"),"ordem","fixo","td_entidade","tipomenu"), array("'Status'","'files/cadastro/".$ticketstatusID."/td_ticketstatus.html'","''",8,1,"''",$ticketstatusID,1));
+    inserirRegistro($conn,getSystemPrefixo() . "menu",9, array("descricao","link","target",getSystemFKPreFixo("pai"),"ordem","fixo","td_entidade","tipomenu"), array("'Status'","'files/cadastro/".$ticketstatusID."/".getSystemFKPrefixo()."ticketstatus.html'","''",8,1,"''",$ticketstatusID,1));
     $ticketprioridadeID = getEntidadeId("ticketprioridade",$conn);
-    inserirRegistro($conn,getSystemPrefixo() . "menu",10, array("descricao","link","target",getSystemFKPreFixo("pai"),"ordem","fixo","td_entidade","tipomenu"), array("'Prioridade'","'files/cadastro/".$ticketprioridadeID."/td_ticketprioridade.html'","''",8,2,"''",$ticketprioridadeID,1));
+    inserirRegistro($conn,getSystemPrefixo() . "menu",10, array("descricao","link","target",getSystemFKPreFixo("pai"),"ordem","fixo","entidade","tipomenu"), array("'Prioridade'","'files/cadastro/".$ticketprioridadeID."/".getSystemFKPrefixo()."ticketprioridade.html'","''",8,2,"''",$ticketprioridadeID,1));
     $tickettipoID = getEntidadeId("tickettipo",$conn);
-    inserirRegistro($conn,getSystemPrefixo() . "menu",11, array("descricao","link","target",getSystemFKPreFixo("pai"),"ordem","fixo","td_entidade","tipomenu"), array("'Tipo'","'files/cadastro/".$tickettipoID."/td_tickettipo.html'","''",8,3,"''",$tickettipoID,1));
+    inserirRegistro($conn,getSystemPrefixo() . "menu",11, array("descricao","link","target",getSystemFKPreFixo("pai"),"ordem","fixo","entidade","tipomenu"), array("'Tipo'","'files/cadastro/".$tickettipoID."/".getSystemFKPrefixo()."tickettipo.html'","''",8,3,"''",$tickettipoID,1));
     $ticketID = getEntidadeId("ticket",$conn);
-    inserirRegistro($conn,getSystemPrefixo() . "menu",12, array("descricao","link","target",getSystemFKPreFixo("pai"),"ordem","fixo","td_entidade","tipomenu"), array("'Ticket'","'files/cadastro/".$ticketID."/td_ticket.html'","''",8,4,"''",$ticketID,1));
+    inserirRegistro($conn,getSystemPrefixo() . "menu",12, array("descricao","link","target",getSystemFKPreFixo("pai"),"ordem","fixo","entidade","tipomenu"), array("'Ticket'","'files/cadastro/".$ticketID."/".getSystemFKPrefixo()."ticket.html'","''",8,4,"''",$ticketID,1));
     $ticketinteractionID = getEntidadeId("ticketinteraction",$conn);
-    inserirRegistro($conn,getSystemPrefixo() . "menu",13, array("descricao","link","target",getSystemFKPreFixo("pai"),"ordem","fixo","td_entidade","tipomenu"), array("'Ticket Interação'","'files/cadastro/".$ticketinteractionID."/td_ticketinteraction.html'","''",8,5,"''",$ticketinteractionID,1));
+    inserirRegistro($conn,getSystemPrefixo() . "menu",13, array("descricao","link","target",getSystemFKPreFixo("pai"),"ordem","fixo","entidade","tipomenu"), array("'Ticket Interação'","'files/cadastro/".$ticketinteractionID."/".getSystemFKPrefixo()."ticketinteraction.html'","''",8,5,"''",$ticketinteractionID,1));
     $ticketseguidoresID = getEntidadeId("ticketseguidores",$conn);
-    inserirRegistro($conn,getSystemPrefixo() . "menu",14, array("descricao","link","target",getSystemFKPreFixo("pai"),"ordem","fixo","td_entidade","tipomenu"), array("'Seguidores'","'files/cadastro/".$ticketseguidoresID."/td_ticketseguidores.html'","''",8,6,"''",$ticketseguidoresID,1));
+    inserirRegistro($conn,getSystemPrefixo() . "menu",14, array("descricao","link","target",getSystemFKPreFixo("pai"),"ordem","fixo","entidade","tipomenu"), array("'Seguidores'","'files/cadastro/".$ticketseguidoresID."/".getSystemFKPrefixo()."ticketseguidores.html'","''",8,6,"''",$ticketseguidoresID,1));
 
     // Menu Compilar
-    inserirRegistro($conn,getSystemPrefixo() . "menu",15, array("descricao","link","target",getSystemFKPreFixo("pai"),"ordem","fixo","td_entidade","tipomenu"), array("'Compilar'","'index.php?controller=compilar'","''",1,7,"''",0,"'personalizado'"));
+    inserirRegistro($conn,getSystemPrefixo() . "menu",15, array("descricao","link","target",getSystemFKPreFixo("pai"),"ordem","fixo","entidade","tipomenu"), array("'Compilar'","'index.php?controller=compilar'","''",1,7,"''",0,"'personalizado'"));
 
     // Grupo Usuário
     inserirRegistro($conn,getSystemPrefixo() . "grupousuario",1, array("descricao"), array("'Desenvolvimento'"));
@@ -105,7 +105,7 @@
     inserirRegistro($conn,getSystemPrefixo() . "database",2, array("nome"), array("'cache'"));
     
     // Aba - Projeto
-    inserirRegistro($conn,getSystemPrefixo() . "abas",2, array("td_entidade","descricao","atributos"), array(getEntidadeId("td_abas",$conn),"'Aba'",getAtributoId(getEntidadeId("td_abas",$conn),"nome",$conn)));
+    inserirRegistro($conn,getSystemPrefixo() . "abas",2, array("entidade","descricao","atributos"), array(getEntidadeId("abas",$conn),"'Aba'",getAtributoId(getEntidadeId("td_abas",$conn),"nome",$conn)));
 
     // Local para CharSet
     inserirRegistro($conn,getSystemPrefixo() . "charset",1, array("local","charset"), array("'Página principal (index)'","'D'"));

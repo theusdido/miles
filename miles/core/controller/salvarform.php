@@ -82,7 +82,7 @@
                         $queryListaV = $conn->query($sqlListaV);
                         if ($queryListaV->rowCount() <= 0 ){
                             $id = tdClass::Criar("persistent",array(LISTA))->contexto->getUltimo() + 1;
-                            $sqlUpdateLista = "INSERT INTO " . LISTA . " (id,entidadepai,entidadefilho,regpai,regfilho,td_projeto,td_empresa) VALUES ({$id},{$entidadePai},{$entidadeFilho},{$regPai},{$regFilho},0,0);";
+                            $sqlUpdateLista = "INSERT INTO " . LISTA . " (id,entidadepai,entidadefilho,regpai,regfilho,projeto,empresa) VALUES ({$id},{$entidadePai},{$entidadeFilho},{$regPai},{$regFilho},0,0);";
                             $conn->Exec($sqlUpdateLista);
                         }
 					}

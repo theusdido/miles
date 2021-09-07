@@ -41,7 +41,7 @@
 		default: $type = 1;
 	}
 
-	$sqlProductionDB = "SELECT * from td_connectiondatabase WHERE td_projeto = {$currentproject} AND td_type = 4";
+	$sqlProductionDB = "SELECT * from td_connectiondatabase WHERE projeto = {$currentproject} AND type = 4";
 	$queryProductionDB = $connMiles->query($sqlProductionDB);
 	if ($queryProductionDB->rowCount() > 0){
 		if ($linhaProductionDB = $queryProductionDB->fetch()){
@@ -63,7 +63,7 @@
 		$connProducao = null;
 	}
 	
-	$sqlCurrentDB = "SELECT * from td_connectiondatabase WHERE td_projeto = {$currentproject} AND td_type = {$type}";
+	$sqlCurrentDB = "SELECT * from td_connectiondatabase WHERE projeto = {$currentproject} AND type = {$type}";
 	$queryCurrentDB = $connMiles->query($sqlCurrentDB);
 	if ($linhaCurrentDB = $queryCurrentDB->fetch()){
 		$tipo = "mysql";

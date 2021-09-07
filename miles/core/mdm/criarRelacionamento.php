@@ -65,7 +65,7 @@
 		}
 	}
 	if ($id != ""){
-		$sql = "SELECT filho,tipo,pai,".PREFIXO."atributo,descricao,td_atributo FROM ".PREFIXO."relacionamento WHERE id = {$id}";
+		$sql = "SELECT filho,tipo,pai,".PREFIXO."atributo,descricao,atributo FROM ".PREFIXO."relacionamento WHERE id = {$id}";
 		$query = $conn->query($sql);
 		foreach ($query->fetchAll() as $linha){			
 			$tipo 			= $linha["tipo"];			

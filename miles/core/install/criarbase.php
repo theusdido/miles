@@ -9,45 +9,13 @@
 		$porta		= $_GET["porta"];
 
 		$conexao = testarconexao($host,$base,$porta,$usuario,$tipo,$senha);
-		
-		if ($_GET["op"] == "testarconexao"){
-			if (isset($_GET["apenasstatus"])){				
-				echo $conexao;
-			}else{
-				if ($conexao == 1){				
-					echo '<div class="alert alert-success" role="alert"><b>Parabéns !</b>. Conectado com Sucesso.</div>';
-				}else{
-					echo '<div class="alert alert-danger" role="alert">'.$conexao.'</div>';
-				}
-			}
-		}
 		if ($_GET["op"] == "statusconexao"){
 			echo $conexao;
 			exit;
 		}
-		if ($_GET["op"] == "criarbanco"){
-				if ($conexao == 1){
-					try{
-						$conn = new PDO("$tipo:host=$host;port=$porta;dbname=$base",$usuario,$senha);
-						$conn->exec("CREATE TABLE td_instalacao (id int not null primary key, bancodedadoscriado tinyint, sistemainstalado tinyint, pacoteconfigurado tinyint);");
-						$conn->exec("INSERT INTO td_instalacao (id,bancodedadoscriado,sistemainstalado,pacoteconfigurado) VALUES (1,1,0,0);");
-						$conn->exec("CREATE TABLE td_conexoes (id int not null primary key, host varchar(60), base varchar(60), porta varchar(15) , usuario varchar(60) , senha varchar(200) , tipo varchar(15));");
-						$conn->exec("INSERT INTO td_conexoes (id,usuario,senha,base,host,tipo,porta) VALUES (1,'$usuario','$senha','$base','$host','$tipo','$porta');");
-						echo 1;
-					}catch(Exception $e){
-						echo '<div class="alert alert-danger" role="alert">Erro ao conexão base de dados. Motivo: ';
-						foreach ($conn->errorInfo() as $erro){
-							echo $erro . "</br>";
-						}
-						echo '</div>';
-					}
-				}else{
-					echo '<div class="alert alert-danger" role="alert">Erro ao criar base de dados. Motivo: ' . $conexao;
-				}
-		}		
 		exit;
 	}
-	
+
 	function testarconexao($host,$base,$porta,$usuario,$tipo,$senha){
 		$retorno = 0;
 		$erro = array();
@@ -58,7 +26,6 @@
 			$erro[1] = "<b>Base</b> não pode ser vazio.";
 		}
 		if ($porta == ""){
-			$erro[2] = "<b>Porta</b> não pode ser vazio.";
 		}
 		if ($usuario == ""){
 			$erro[3] = "<b>Porta</b> não pode ser vazio.";
@@ -133,21 +100,16 @@
 	</div>
 </div>
 <?php
-	
-	$databaseConfig = $_SESSION["PATH_CURRENT_PROJECT"] . "config/".$_SESSION["currenttypedatabase"]."_mysql.ini";
-	$host = $base = $port = $user = $password = $type = "";
-	if ($_SESSION["CRIARBASE"] == 1){
-		$dm 		= parse_ini_file($databaseConfig);
-		$host 		= $dm["host"];
-		$base 		= $dm["base"];
-		$port 		= $dm["porta"];
-		$user 		= $dm["usuario"];
-		$password 	= $dm["senha"];
-		$type 		= $dm["tipo"];
-	}
+	$host 		= 'localhost';
+	$base 		= '';
+	$port 		= '3306';
+	$user 		= 'root';	 
+	$password 	= "";
+	$type 		= 'mysql';
 ?>
-<script type="text/javascript" language="JavaScript" src="<?=$_SESSION["URL_LIB"]?>jquery/jquery.js"></script>
-<script type="text/javascript" language="JavaScript">
+<script type="text/javascript" src="<?=$_SESSION["URL_LIB"]?>jquery/jquery.js"></script>
+<script type="text/javascript" src="<?=$_SESSION["URL_SYSTEM"]?>funcoes.js"></script>
+<script type="text/javascript">
 	$(document).ready(function(){
 		$("#host").val("<?=$host?>");
 		$("#base").val("<?=$base?>");
@@ -155,12 +117,19 @@
 		$("#usuario").val("<?=$user?>");
 		$("#senha").val("<?=$password?>");
 		$("#tipo").val("<?=$type?>");
+
+		$("#base").blur( function(){
+			if ($(this).val() != ''){
+				statusFormControl('#base','default');
+			}
+		});
 	});
 	$("#btn-testarconexao").click(function(){
 		$.ajax({
-			url:"criarbase.php",
+			url:"<?=$_SESSION['URL_MILES']?>",
 			data:{
-				op:"testarconexao",
+				controller:"install/database",
+				op:"testar",
 				host:$("#host").val(),
 				base:$("#base").val(),
 				porta:$("#porta").val(),
@@ -169,20 +138,35 @@
 				tipo:$("#tipo").val()
 			},
 			success:function(retorno){
+				var retorno = JSON.parse(retorno);
+				if (retorno.status == 1){
+					$("#retorno").html(
+						'<div class="alert alert-success" role="alert"><b>Parabéns!</b>. Teste de conexão realizado com sucesso.</div>'
+					);
+				}else{
+					$("#retorno").html(
+						'<div class="alert alert-danger" role="alert"><b>Error: </b> Teste de conexão falhou.</div>'
+					);
+				}
 				$("#retorno").show("5000");
-				$("#retorno").html(retorno);
 				setTimeout(function(){
 					$("#retorno").hide("5000");
-				},3000);				
+				},3000);
 			}
 		});
 	});
 	$("#btn-criarbanco").click(function(){
+		if ($("#base").val() == ''){
+			statusFormControl('#base','error');
+			$("#base").focus();
+			return false;
+		}		
 		$("#loader-criarbanco").show();
 		$.ajax({
-			url:"criarbase.php",
+			url:"<?=$_SESSION['URL_MILES']?>",
 			data:{
-				op:"criarbanco",
+				controller:"install/database",
+				op:"criar",
 				host:$("#host").val(),
 				base:$("#base").val(),
 				porta:$("#porta").val(),
@@ -195,7 +179,7 @@
 				$("#loader-criarbanco").hide();				
 				if (retorno == 1){
 					$("#retorno").html('<div class="alert alert-success" role="alert"><b>Parabéns !</b>. Base de dados criado com sucesso.</div>');
-					$("#guia-base").attr("src","<?=$_SESSION['URL_SYSTEM_THEME']?>check.gif");
+					$("#guia-base").attr("src","<?=$_SESSION["URL_SYSTEM_THEME"]?>check.gif");
 				}else{
 					$("#retorno").html(retorno);
 				}

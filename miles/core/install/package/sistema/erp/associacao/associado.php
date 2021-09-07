@@ -24,14 +24,14 @@
 	$idPessoa 			= getEntidadeId('erp_geral_pessoa');
 	
 	// Criando Atributos
-	$pessoa				= criarAtributo($conn,$entidadeID,"pessoa","Pessoa","int",0,1,16,1,$idPessoa);
+	$pessoa				= criarAtributo($conn,$entidadeID,"pessoa","Pessoa","int",0,1,16,$idPessoa);
 	$planomensalidade 	= criarAtributo($conn,$entidadeID,"planomensalidade","Plano de Mensalidade","int",0,0,4,0,installDependencia('erp_associacao_planomensalidade'));
 
 	// Criando Acesso
 	$menu = addMenu($conn,'Associação','#','',0,0,'associacao');
 
 	// Adicionando Menu
-	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".PREFIXO.$entidadeNome.".html",'',$menu,1,'associacao-' . $entidadeNome,$entidadeID,'cadastro');
+	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu,1,'associacao-' . $entidadeNome,$entidadeID,'cadastro');
 	
 	// Criar Relacionado com Pessoa
 	criarRelacionamento($conn,9,$idPessoa,$entidadeID,'Associado',$pessoa);

@@ -5,13 +5,13 @@
 	$sql = tdClass::Criar("sqlcriterio");
 	$sql->addFiltro("datainicio",'>=',date("Y-m-d"));
 	$sql->addFiltro("datainicio",'<=',date("Y-m-d"));
-	$sql->addFiltro("td_projeto",'=',Session::get()->projeto);
-	$sql->addFiltro("td_empresa",'=',Session::get()->empresa);
+	$sql->addFiltro("projeto",'=',Session::get()->projeto);
+	$sql->addFiltro("empresa",'=',Session::get()->empresa);
 	$dataset = tdClass::Criar("repositorio",array(PREFIXO . "_aviso"))->carregar($sql);
 	foreach($dataset as $aviso){
 		$panel = tdClass::Criar("panel");
 		$panel->head("AVISO");
-		switch ($aviso->td_tipoaviso){
+		switch ($aviso->tipoaviso){
 			case 1:
 				$panel->tipo = "success";
 			break;

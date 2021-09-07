@@ -12,7 +12,7 @@
 			echo "		</div>";
 			echo "		<ul class='lista-usuario' id='lista-usuario-".$linha["id"]."'>";
 			
-			$sqlusuarios = "SELECT a.id,a.nome FROM td_usuario a WHERE a.td_grupousuario = ".$linha["id"]." AND NOT EXISTS (SELECT 1 FROM td_funcaopermissoes b WHERE a.id = b.td_usuario AND b.td_funcao = ".$_GET["funcao"]." AND b.permissao = 1 )";
+			$sqlusuarios = "SELECT a.id,a.nome FROM td_usuario a WHERE a.grupousuario = ".$linha["id"]." AND NOT EXISTS (SELECT 1 FROM td_funcaopermissoes b WHERE a.id = b.usuario AND b.funcao = ".$_GET["funcao"]." AND b.permissao = 1 )";
 			$queryusuarios = $conn->query($sqlusuarios);
 			if ($queryusuarios->rowcount() <= 0){
 				echo "<li><b>Nenhum Usuário</b></li>";

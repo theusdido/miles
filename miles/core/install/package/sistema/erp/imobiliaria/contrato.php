@@ -229,4 +229,4 @@
 	$menu_webiste = addMenu($conn,'Jurídico','#','','','','juridico');
 
 	// Menu
-	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".PREFIXO.$entidadeNome.".html",'',$menu_webiste,8,'juridico-' . $entidadeNome,$entidadeID, 'cadastro');
+	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,8,'juridico-' . $entidadeNome,$entidadeID, 'cadastro');

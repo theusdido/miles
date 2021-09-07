@@ -66,41 +66,13 @@
 						$linhaAtualAtributo["readonly"] #13
 					);
 				}
-				/*
-				// Aba
-				$sqlAba = "SELECT * FROM td_abas WHERE " . PREFIXO . "entidade = " . $entidadeID;
-				$queryAba = $conn->query($sqlAba);
-				while($linhaAba = $queryAba->fetch()){
-					criarAba(
-						$connProducao, #0
-						$linhaAba[PREFIXO . "entidade"], #1
-						$linhaAba["descricao"], #2
-						$linhaAba["atributos"] #3
-					);
-				}
-				
-				// Relacionamento
-				$sqlRelacionamento = "SELECT * FROM td_relacionamento WHERE entidadepai = " . $entidadeID;
-				$queryRelacionamento = $conn->query($sqlRelacionamento);
-				while($linhaRelacionamento = $queryRelacionamento->fetch()){
-					criarRelacionamento(
-						$connProducao,
-						$linhaRelacionamento["tipo"],
-						$linhaRelacionamento["pai"],
-						$linhaRelacionamento["filho"],
-						utf8_encode($linhaRelacionamento["descricao"]),
-						$linhaRelacionamento["td_atributo"]
-					);
-				}
-				*/
+
 			}
 		}
 		if ($entidadesregistro != ''){
 			if (isset($_GET["entidade"])){
-				//$where = " AND a.td_entidade = " . $_GET["entidade"];
 				$entidades = array($_GET["entidade"]);
 			}else if (isset($_GET["entidadesregistro"])){
-				//$where = " AND a.td_entidade in (" . $_GET["entidadesregistro"] . ")";
 				$entidades = explode(",",$_GET["entidadesregistro"]);
 			}else{
 				//$where = "";
@@ -118,7 +90,7 @@
 
 				// Atributos
 				$atributos = $atributosdados = array();
-				$sqlAtual = "SELECT id,nome,tipohtml,tipo FROM td_atributo WHERE td_entidade = {$e};";
+				$sqlAtual = "SELECT id,nome,tipohtml,tipo FROM td_atributo WHERE entidade = {$e};";
 				$queryAtual = $conn->query($sqlAtual);
 				while ($linhaAtual = $queryAtual->fetch()){
 					array_push($atributosdados,array(
@@ -153,7 +125,7 @@
 			}
 		}
 		if ($entidadesarquivo != ''){
-			$sqlftp = 'SELECT * FROM td_connectionftp WHERE td_projeto = ' . PROJETO;
+			$sqlftp = 'SELECT * FROM td_connectionftp WHERE projeto = ' . PROJETO;
 			$queryftp = $connMiles->query($sqlftp);
 			$linhaftp = $queryftp->fetch();
 

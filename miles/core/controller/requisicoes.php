@@ -233,11 +233,7 @@ switch($op){
 			$sql->add(tdClass::Criar("sqlfiltro",array("inativo",'<>',1)));											
 		}			
 		/* Filtro de Inativo */
-				
-		if ($entidade->contexto->nome == "td_relacaocredores"){
-			$sql->setPropriedade("order",'td_classificacao, codigo');	
-		}
-		
+						
 		if ($entidade->contexto->campodescchave != "" and $entidade->contexto->campodescchave != null and $entidade->contexto->campodescchave != 0){
 			/* Ordena por ordem alfabetica */
 			$campodescchave = tdClass::Criar("persistent",array(ATRIBUTO,$entidade->contexto->campodescchave));
@@ -459,7 +455,6 @@ switch($op){
 				$sql->addFiltro($ft[0],$operador,$valorfiltro);
 			}
 		}
-		$sql->setPropriedade("order","id DESC");
 		$dataset = tdClass::Criar("repositorio",array($entidade->contexto->nome))->carregar($sql);
 		$atributo = tdClass::Read("atributo");
 		if ($atributo != "" && is_numeric($_GET["atributo"]) && (int)$atributo != 0){
@@ -520,14 +515,14 @@ switch($op){
 		
 		if ($conn = Transacao::Get()){
 			// Entidade ( Permissão )
-			$sql = "SELECT id,descricao FROM td_entidade ORDER BY id ASC";
+			$sql = "SELECT id,descricao FROM ".ENTIDADE." ORDER BY id ASC";
 			$query = $conn->query($sql);
 			While ($linha = $query->fetch()){
 				
 				// Dados do Perfil
 				// [Entidade Permissão]
 				$inserirEntidade = $excluirEntidade = $editarEntidade = $visualizarEntidade = 0;
-				$sqlPerfilEntidade = "SELECT id,td_projeto,td_empresa,td_entidade,IFNULL(inserir,0) inserir,IFNULL(excluir,0) excluir,IFNULL(editar,0) editar,IFNULL(visualizar,0) visualizar FROM td_entidadepermissoes WHERE td_usuario = ".$perfil." AND td_entidade = ".$linha["id"];
+				$sqlPerfilEntidade = "SELECT id,projeto,empresa,entidade,IFNULL(inserir,0) inserir,IFNULL(excluir,0) excluir,IFNULL(editar,0) editar,IFNULL(visualizar,0) visualizar FROM ".PERMISSOES." WHERE usuario = ".$perfil." AND entidade = ".$linha["id"];
 				$queryPerfilEntidade = $conn->query($sqlPerfilEntidade);
 				if ($linhaPerfilEntidade = $queryPerfilEntidade->fetch()){
 					$inserirEntidade = $linhaPerfilEntidade["inserir"];
@@ -536,16 +531,16 @@ switch($op){
 					$visualizarEntidade = $linhaPerfilEntidade["visualizar"];
 				}
 
-				$sqlUsuario = "SELECT id FROM td_entidadepermissoes WHERE td_usuario = ".$usuario." AND td_entidade = ".$linha["id"];
+				$sqlUsuario = "SELECT id FROM ".PERMISSOES." WHERE usuario = ".$usuario." AND entidade = ".$linha["id"];
 				$queryUsuario = $conn->query($sqlUsuario);
 				if ($queryUsuario->rowcount() <= 0){
 					
-					$sqlInsertEntidadePermissao = "INSERT INTO td_entidadepermissoes (id,td_projeto,td_empresa,td_entidade,td_usuario,inserir,excluir,editar,visualizar) VALUES (".getProxId("entidadepermissoes",$conn).",1,1,".$linha["id"].",".$usuario.",".$inserirEntidade.",".$excluirEntidade.",".$editarEntidade.",".$visualizarEntidade.");";
+					$sqlInsertEntidadePermissao = "INSERT INTO ".PERMISSOES." (id,projeto,empresa,entidade,usuario,inserir,excluir,editar,visualizar) VALUES (".getProxId("entidadepermissoes",$conn).",1,1,".$linha["id"].",".$usuario.",".$inserirEntidade.",".$excluirEntidade.",".$editarEntidade.",".$visualizarEntidade.");";
 					$queryInsertEntidadePermissao = $conn->query($sqlInsertEntidadePermissao);
 
 				}else{
 					$linhaUsuario = $queryUsuario->fetch();
-					$sqlUpdateEntidadePermissao = "UPDATE td_entidadepermissoes SET td_projeto = 1, td_empresa = 1
+					$sqlUpdateEntidadePermissao = "UPDATE ".PERMISSOES." SET projeto = 1, empresa = 1
 					, inserir = {$inserirEntidade} , excluir = {$excluiEntidade} , editar = {$editarEntidade} , visualizar = {$visualizarEntidade} 
 					WHERE id = " . $linhaUsuario["id"];
 					
@@ -554,14 +549,14 @@ switch($op){
 			}
 			
 			// Entidade ( Permissão )
-			$sql = "SELECT id,descricao FROM td_atributo ORDER BY id ASC";
+			$sql = "SELECT id,descricao FROM ".ATRIBUTO." ORDER BY id ASC";
 			$query = $conn->query($sql);
 			While ($linha = $query->fetch()){
 				
 				// Dados do Perfil
 				// [Atributo Permissão]
 				$inserirAtributo = $excluirAtributo = $editarAtributo = $visualizarAtributo = 0;
-				$sqlPerfilAtributo = "SELECT id,td_projeto,td_empresa,td_atributo,IFNULL(inserir,0) inserir,IFNULL(excluir,0) excluir,IFNULL(editar,0) editar,IFNULL(visualizar,0) visualizar FROM td_atributopermissoes WHERE td_usuario = ".$perfil." AND td_atributo = ".$linha["id"];
+				$sqlPerfilAtributo = "SELECT id,projeto,empresa,atributo,IFNULL(inserir,0) inserir,IFNULL(excluir,0) excluir,IFNULL(editar,0) editar,IFNULL(visualizar,0) visualizar FROM  WHERE usuario = ".$perfil." AND atributo = ".$linha["id"];
 				$queryPerfilAtributo = $conn->query($sqlPerfilAtributo);
 				if ($linhaPerfilAtributo = $queryPerfilAtributo->fetch()){
 					$inserirAtributo = $linhaPerfilAtributo["inserir"];
@@ -570,16 +565,16 @@ switch($op){
 					$visualizarAtributo = $linhaPerfilAtributo["visualizar"];
 				}
 
-				$sqlUsuario = "SELECT id FROM td_atributopermissoes WHERE td_usuario = ".$usuario." AND td_atributo = ".$linha["id"];
+				$sqlUsuario = "SELECT id FROM ".PERMISSOESATRIBUTO." WHERE usuario = ".$usuario." AND atributo = ".$linha["id"];
 				$queryUsuario = $conn->query($sqlUsuario);
 				if ($queryUsuario->rowcount() <= 0){
 					
-					$sqlInsertAtributoPermissao = "INSERT INTO td_atributopermissoes (id,td_projeto,td_empresa,td_atributo,td_usuario,inserir,excluir,editar,visualizar) VALUES (".getProxId("atributopermissoes",$conn).",1,1,".$linha["id"].",".$usuario.",".$inserirAtributo.",".$excluirAtributo.",".$editarAtributo.",".$visualizarAtributo.");";
+					$sqlInsertAtributoPermissao = "INSERT INTO ".PERMISSOESATRIBUTO." (id,projeto,empresa,atributo,usuario,inserir,excluir,editar,visualizar) VALUES (".getProxId("atributopermissoes",$conn).",1,1,".$linha["id"].",".$usuario.",".$inserirAtributo.",".$excluirAtributo.",".$editarAtributo.",".$visualizarAtributo.");";
 					$queryInsertAtributoPermissao = $conn->query($sqlInsertAtributoPermissao);
 
 				}else{
 					$linhaUsuario = $queryUsuario->fetch();
-					$sqlUpdateAtributoPermissao = "UPDATE td_atributopermissoes SET td_projeto = 1, td_empresa = 1
+					$sqlUpdateAtributoPermissao = "UPDATE ".PERMISSOESATRIBUTO." SET projeto = 1, empresa = 1
 					, inserir = {$inserirAtributo} , excluir = {$excluiAtributo} , editar = {$editarAtributo} , visualizar = {$visualizarAtributo} 
 					WHERE id = " . $linhaUsuario["id"];
 					
@@ -588,29 +583,29 @@ switch($op){
 			}
 			
 			// Função ( Permissão )
-			$sql = "SELECT id,descricao FROM td_funcao ORDER BY id ASC";
+			$sql = "SELECT id,descricao FROM ".FUNCAO." ORDER BY id ASC";
 			$query = $conn->query($sql);
 			While ($linha = $query->fetch()){
 				
 				// Dados do Perfil
 				// [Função Permissão]
 				$permissao = 0;
-				$sqlPerfilFuncao = "SELECT id,td_projeto,td_empresa,td_funcao,permissao FROM td_funcaopermissoes WHERE td_usuario = ".$perfil." AND td_funcao = ".$linha["id"];
+				$sqlPerfilFuncao = "SELECT id,projeto,empresa,funcao,permissao FROM ".FUNCOESPERMISSOES." WHERE usuario = ".$perfil." AND funcao = ".$linha["id"];
 				$queryPerfilFuncao = $conn->query($sqlPerfilFuncao);
 				if ($linhaPerfilFuncao = $queryPerfilFuncao->fetch()){
 					$permissao = $linhaPerfilFuncao["permissao"];
 				}
 
-				$sqlUsuario = "SELECT id FROM td_funcaopermissoes WHERE td_usuario = ".$usuario." AND td_funcao = ".$linha["id"];
+				$sqlUsuario = "SELECT id FROM ".FUNCOESPERMISSOES." WHERE usuario = ".$usuario." AND funcao = ".$linha["id"];
 				$queryUsuario = $conn->query($sqlusuario);
 				if ($queryUsuario->rowcount() <= 0){
 					
-					$sqlInsertFuncaoPermissao = "INSERT INTO td_funcaopermissoes (id,td_projeto,td_empresa,td_funcao,td_usuario,permissao) VALUES (".getProxId("funcaoPermissoes",$conn).",1,1,".$linha["id"].",".$usuario.",".$permissao.");";
+					$sqlInsertFuncaoPermissao = "INSERT INTO ".FUNCOESPERMISSOES." (id,projeto,empresa,funcao,usuario,permissao) VALUES (".getProxId("funcaoPermissoes",$conn).",1,1,".$linha["id"].",".$usuario.",".$permissao.");";
 					$queryInsertFuncaoPermissao = $conn->query($sqlInsertFuncaoPermissao);
 
 				}else{
 					$linhaUsuario = $queryUsuario->fetch();
-					$sqlUpdateFuncaoPermissao = "UPDATE td_funcaopermissoes SET td_projeto = 1, td_empresa = 1
+					$sqlUpdateFuncaoPermissao = "UPDATE ".FUNCOESPERMISSOES." SET projeto = 1, empresa = 1
 					, permissao = {$permissao} 
 					WHERE id = " . $linhaUsuario["id"];
 					
@@ -619,29 +614,29 @@ switch($op){
 			}
 			
 			// Menu ( Permissão )
-			$sql = "SELECT id,descricao FROM td_menu ORDER BY id ASC";
+			$sql = "SELECT id,descricao FROM ".MENU." ORDER BY id ASC";
 			$query = $conn->query($sql);
 			While ($linha = $query->fetch()){
 				
 				// Dados do Perfil
 				// [Função Permissão]
 				$permissao = 0;
-				$sqlPerfilMenu = "SELECT id,td_projeto,td_empresa,td_menu,permissao FROM td_menupermissoes WHERE td_usuario = ".$perfil." AND td_menu = ".$linha["id"];
+				$sqlPerfilMenu = "SELECT id,projeto,empresa,menu,permissao FROM ".MENUPERMISSOES." WHERE usuario = ".$perfil." AND menu = ".$linha["id"];
 				$queryPerfilMenu = $conn->query($sqlPerfilMenu);
 				if ($linhaPerfilMenu = $queryPerfilMenu->fetch()){
 					$permissao = $linhaPerfilMenu["permissao"];
 				}
 
-				$sqlUsuario = "SELECT id FROM td_menupermissoes WHERE td_usuario = ".$usuario." AND td_menu = ".$linha["id"];
+				$sqlUsuario = "SELECT id FROM ".MENUPERMISSOES." WHERE usuario = ".$usuario." AND menu = ".$linha["id"];
 				$queryUsuario = $conn->query($sqlUsuario);
 				if ($queryUsuario->rowcount() <= 0){
 					
-					$sqlInsertMenuPermissao = "INSERT INTO td_menupermissoes (id,td_projeto,td_empresa,td_menu,td_usuario,permissao) VALUES (".getProxId("menuPermissoes",$conn).",1,1,".$linha["id"].",".$usuario.",".$permissao.");";
+					$sqlInsertMenuPermissao = "INSERT INTO ".MENUPERMISSOES." (id,projeto,empresa,menu,usuario,permissao) VALUES (".getProxId("menuPermissoes",$conn).",1,1,".$linha["id"].",".$usuario.",".$permissao.");";
 					$queryInsertMenuPermissao = $conn->query($sqlInsertMenuPermissao);
 
 				}else{
 					$linhaUsuario = $queryUsuario->fetch();
-					$sqlUpdateMenuPermissao = "UPDATE td_menupermissoes SET td_projeto = 1, td_empresa = 1
+					$sqlUpdateMenuPermissao = "UPDATE ".MENUPERMISSOES." SET projeto = 1, empresa = 1
 					, permissao = {$permissao} 
 					WHERE id = " . $linhaUsuario["id"];
 					
@@ -691,55 +686,55 @@ switch($op){
 			$usuario = 1;
 		}else{
 			$conn = Transacao::Get();
-			$usuario = $_GET["usuario"];
+			$usuario = isset($_GET["usuario"])?$_GET["usuario"]:1;
 		}
 	
 		if ($conn){
-			$sqlEntidade = "SELECT id FROM td_entidade";
+			$sqlEntidade = "SELECT id FROM " . ENTIDADE;
 			$queryEntidade = $conn->query($sqlEntidade);
 			while($linhaEntidade = $queryEntidade->fetch()){
 				
-				$sqlDelEntidadePermissao = "DELETE FROM td_entidadepermissoes WHERE td_entidade = " . $linhaEntidade["id"] . " AND td_usuario = " . $usuario;
+				$sqlDelEntidadePermissao = "DELETE FROM ".MENUPERMISSOES." WHERE entidade = " . $linhaEntidade["id"] . " AND usuario = " . $usuario;
 				$queryDelEntidadePermissao = $conn->query($sqlDelEntidadePermissao);
 
-				$sqlInsertEntidadePermissao = "INSERT INTO td_entidadepermissoes (id,td_entidade,td_usuario,inserir,excluir,editar,visualizar) VALUES (
+				$sqlInsertEntidadePermissao = "INSERT INTO ".MENUPERMISSOES." (id,entidade,usuario,inserir,excluir,editar,visualizar) VALUES (
 				".getProxId("entidadepermissoes",$conn).",".$linhaEntidade["id"].",".$usuario.",".$_GET["permissao"].",".$_GET["permissao"].",".$_GET["permissao"].",".$_GET["permissao"].");";
 				$queryInsertEntidadePermissao = $conn->query($sqlInsertEntidadePermissao);
 
 			}
 			
-			$sqlAtributo = "SELECT id FROM td_atributo";
+			$sqlAtributo = "SELECT id FROM " . ATRIBUTO;
 			$queryAtributo = $conn->query($sqlAtributo);
 			while($linhaAtributo = $queryAtributo->fetch()){
 				
-				$sqlDelAtributoPermissao = "DELETE FROM td_atributopermissoes WHERE td_atributo = " . $linhaAtributo["id"] . " AND td_usuario = " . $usuario;
+				$sqlDelAtributoPermissao = "DELETE FROM ".PERMISSOESATRIBUTO." WHERE atributo = " . $linhaAtributo["id"] . " AND usuario = " . $usuario;
 				$queryDelAtributoPermissao = $conn->query($sqlDelAtributoPermissao);
 				
-				$sqlInsertAtributoPermissao = "INSERT INTO td_atributopermissoes (id,td_projeto,td_empresa,td_atributo,td_usuario,inserir,excluir,editar,visualizar) VALUES (
+				$sqlInsertAtributoPermissao = "INSERT INTO ".PERMISSOESATRIBUTO." (id,projeto,empresa,atributo,usuario,inserir,excluir,editar,visualizar) VALUES (
 				".getProxId("atributopermissoes",$conn).",1,1,".$linhaAtributo["id"].",".$usuario.",".$_GET["permissao"].",".$_GET["permissao"].",".$_GET["permissao"].",".$_GET["permissao"].");";
 				$queryInsertAtributoPermissao = $conn->query($sqlInsertAtributoPermissao);			
 			}
 
-			$sqlMenu = "SELECT id FROM td_menu";
+			$sqlMenu = "SELECT id FROM " . MENU;
 			$queryMenu = $conn->query($sqlMenu);
 			while($linhaMenu = $queryMenu->fetch()){
 				
-				$sqlDelMenuPermissao = "DELETE FROM td_menupermissoes WHERE td_menu = " . $linhaMenu["id"] . " AND td_usuario = " . $usuario;
+				$sqlDelMenuPermissao = "DELETE FROM ".MENUPERMISSOES." WHERE menu = " . $linhaMenu["id"] . " AND usuario = " . $usuario;
 				$queryDelMenuPermissao = $conn->query($sqlDelMenuPermissao);
 				
-				$sqlInsertMenuPermissao = "INSERT INTO td_menupermissoes (id,td_projeto,td_empresa,td_menu,td_usuario,permissao) VALUES (
+				$sqlInsertMenuPermissao = "INSERT INTO ".MENUPERMISSOES." (id,projeto,empresa,menu,usuario,permissao) VALUES (
 				".getProxId("menupermissoes",$conn).",1,1,".$linhaMenu["id"].",".$usuario.",".$_GET["permissao"].");";
 				$queryInsertMenuPermissao = $conn->query($sqlInsertMenuPermissao);			
 			}
 			
-			$sqlMenu = "SELECT id FROM td_menu";
+			$sqlMenu = "SELECT id FROM " . MENU;
 			$queryMenu = $conn->query($sqlMenu);
 			while($linhaMenu = $queryMenu->fetch()){
 				
-				$sqlDelMenuPermissao = "DELETE FROM td_menupermissoes WHERE td_menu = " . $linhaMenu["id"] . " AND td_usuario = " . $usuario;
+				$sqlDelMenuPermissao = "DELETE FROM ".MENUPERMISSOES." WHERE menu = " . $linhaMenu["id"] . " AND usuario = " . $usuario;
 				$queryDelMenuPermissao = $conn->query($sqlDelMenuPermissao);
 				
-				$sqlInsertMenuPermissao = "INSERT INTO td_menupermissoes (id,td_projeto,td_empresa,td_menu,td_usuario,permissao) VALUES (
+				$sqlInsertMenuPermissao = "INSERT INTO ".MENUPERMISSOES." (id,projeto,empresa,menu,usuario,permissao) VALUES (
 				".getProxId("menupermissoes",$conn).",1,1,".$linhaMenu["id"].",".$usuario.",".$_GET["permissao"].");";
 				$queryInsertMenuPermissao = $conn->query($sqlInsertMenuPermissao);
 			}
@@ -751,12 +746,12 @@ switch($op){
 	break;
 	case "logmenu":
 		if ($conn =Transacao::Get()){
-			$log 				= tdClass::Criar("persistent",array("td_log"))->contexto;
+			$log 				= tdClass::Criar("persistent",array(LOG))->contexto;
 			$log->id 			= $log->getUltimo() + 1;
-			$log->td_usuario	= Session::get()->userid;
-			$log->td_projeto	= Session::get()->projeto;
-			$log->td_empresa	= Session::get()->empresa;
-			$log->td_entidade	= getEntidadeId("menu",$conn);
+			$log->usuario	= Session::get()->userid;
+			$log->projeto	= Session::get()->projeto;
+			$log->empresa	= Session::get()->empresa;
+			$log->entidade	= getEntidadeId("menu",$conn);
 			$log->valorid 		= $_GET["menu"];
 			$log->datahora		= date("Y-m-d H:i:s");
 			$log->acao 			= 4;
@@ -855,7 +850,7 @@ switch($op){
 		$tipo = getDescTipoConnection(tdClass::Read("typedatabase"));
 
 		// Redefine sessão do Projeto		
-		$sqlProjetoMiles = "SELECT * FROM td_projeto WHERE  id = " . tdClass::Read("project") . ";";
+		$sqlProjetoMiles = "SELECT * FROM ".PROJETO." WHERE  id = " . tdClass::Read("project") . ";";
 		$queryProjetoMiles = $connMILES->query($sqlProjetoMiles);
 		$projetocurrent = (object)$queryProjetoMiles->fetch();
 
@@ -867,7 +862,7 @@ switch($op){
 			exit;
 		}
 
-		$sqlDatabase = "SELECT * FROM td_connectiondatabase WHERE  id = " . (int)tdClass::Read("databaseid") . ";";
+		$sqlDatabase = "SELECT * FROM ".CONNECTIONDATABASE." WHERE  id = " . (int)tdClass::Read("databaseid") . ";";
 		$queryDatabase = $connMILES->query($sqlDatabase);
 		$database = (object)$queryDatabase->fetch();
 	
@@ -894,7 +889,7 @@ switch($op){
 					"porta"		=> $database->port,
 					"usuario" 	=> $database->user,
 					"senha" 	=> $database->password,
-					"tipo"		=> $database->td_type
+					"tipo"		=> $database-> 	type
 				)
 			);
 			*/

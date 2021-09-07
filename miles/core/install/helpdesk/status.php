@@ -33,8 +33,3 @@
 		$inicializacao = ""
 	);
 	
-	$conn->exec("INSERT INTO " . PREFIXO . $entidadeNome . " (id,descricao) VALUES (1,'Abrir');");	
-	$conn->exec("INSERT INTO " . PREFIXO . $entidadeNome . " (id,descricao) VALUES (2,'Aguardar');");
-	$conn->exec("INSERT INTO " . PREFIXO . $entidadeNome . " (id,descricao) VALUES (3,'Interagir');");
-	$conn->exec("INSERT INTO " . PREFIXO . $entidadeNome . " (id,descricao) VALUES (4,'Finalizar');");
-	$conn->exec("INSERT INTO " . PREFIXO . $entidadeNome . " (id,descricao) VALUES (5,'Reabrir');");

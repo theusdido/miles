@@ -49,7 +49,7 @@ Class TdEditorIconFormulario extends Elemento {
 				pagina.addElement(divtitulo,objSel);
 				
 				/*
-				var grupobotoes = $("<div class=\'form-grupo-botao\'><div class=\'loader-salvar\'></div><button type=\'button\' class=\'btn btn-success b-salvar\' id=\'b-salvar-td_cliente\' data-loading-text=\'Aguarde...\'><span class=\'fas fa-check\'></span> Salvar</button><button type=\'button\' class=\'btn btn-link b-voltar\' id=\'td_cliente\' value=\'\'><span class=\'fas fa-arrow-leftt\'></span>Voltar</button><div class=\'retorno msg-retorno-form-td_cliente\' style=\'display:none\'><div role=\'alert\' class=\'alert alert-dismissible alert-success\' style=\'text-align:right;font-weight:bold\'><strong></strong><button type=\'button\' class=\'close\' aria-label=\'Close\' onclick=\'fecharAlerta();\'><span aria-hidden=\'true\'>×</span></button></div></div></div>");
+				var grupobotoes = $("<div class=\'form-grupo-botao\'><div class=\'loader-salvar\'></div><button type=\'button\' class=\'btn btn-success b-salvar\' id=\'b-salvar-td_cliente\' data-loading-text=\'Aguarde...\'><span class=\'fas fa-check\'></span> Salvar</button><button type=\'button\' class=\'btn btn-link b-voltar\' id=\'cliente\' value=\'\'><span class=\'fas fa-arrow-leftt\'></span>Voltar</button><div class=\'retorno msg-retorno-form-td_cliente\' style=\'display:none\'><div role=\'alert\' class=\'alert alert-dismissible alert-success\' style=\'text-align:right;font-weight:bold\'><strong></strong><button type=\'button\' class=\'close\' aria-label=\'Close\' onclick=\'fecharAlerta();\'><span aria-hidden=\'true\'>×</span></button></div></div></div>");
 				pagina.addElement(grupobotoes,objSel);
 				*/
 				

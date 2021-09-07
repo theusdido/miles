@@ -1,7 +1,6 @@
 <?php
 	require 'conexao.php';
-	require 'prefixo.php';
-	require 'funcoes.php';
+	require 'prefixo.php';	
 ?>
 <html>
 	<head>
@@ -27,19 +26,19 @@
 							<td width="5%" align="center">Excluir</td>
 						</tr>	
 						<?php
-							$sql = "SELECT id,descricao,td_entidade FROM ".PREFIXO."movimentacao";
+							$sql = "SELECT id,descricao,entidade FROM ".PREFIXO."movimentacao";
 							$query = $conn->query($sql);
 							foreach ($query->fetchAll() as $linha){
 								$descricao = $linha["descricao"];
 								
-								$query = $conn->query("SELECT descricao FROM td_entidade WHERE id = {$linha["td_entidade"]}")->fetch();
-								$entidade = $query["descricao"];
+								$query = $conn->query("SELECT descricao FROM td_entidade WHERE id = {$linha["entidade"]}")->fetch();
+								$entidade = utf8_encode($query["descricao"]);
 								echo "	<tr>
 											<td>{$linha["id"]}</td>
 											<td>{$descricao}</td>
 											<td>{$entidade}</td>
 											<td align='center'>
-												<button type='button' class='btn btn-primary' onclick=location.href='criarMovimentacao.php?id={$linha["id"]}&entidade={$linha["td_entidade"]}'>
+												<button type='button' class='btn btn-primary' onclick=location.href='criarMovimentacao.php?id={$linha["id"]}&entidade={$linha["entidade"]}'>
 													<span class='fas fa-pencil-alt' aria-hidden='true'></span>
 												</button>
 											</td>

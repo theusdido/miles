@@ -30,4 +30,4 @@
 	$menu = addMenu($conn,'Associação','#','',0,0,'associacao');
 
 	// Adicionando Menu
-	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".PREFIXO.$entidadeNome.".html",'',$menu,1,'associacao-' . $entidadeNome,$entidadeID,'cadastro');
+	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu,1,'associacao-' . $entidadeNome,$entidadeID,'cadastro');

@@ -26,7 +26,7 @@ class Endereco {
 		$sql = "
 			SELECT id FROM td_ecommerce_cidade 
 			WHERE nome LIKE '%".$cidadeNome."%' 
-			AND td_uf = {$uf}
+			AND uf = {$uf}
 			ORDER BY id DESC LIMIT 1;
 		";
 		$query = Transacao::Get()->query($sql);
@@ -36,7 +36,7 @@ class Endereco {
 		}else{
 			$cidade 		= tdc::p("td_ecommerce_cidade");
 			$cidade->nome 	= $cidadeNome;
-			$cidade->td_uf	= $uf;
+			$cidade->uf	= $uf;
 			$cidade->armazenar();
 			return $cidade->id;
 		}
@@ -56,7 +56,7 @@ class Endereco {
 		$sql = "
 			SELECT id FROM td_ecommerce_bairro 
 			WHERE nome LIKE '%".$bairroNome."%' 
-			AND td_cidade = {$cidade}
+			AND cidade = {$cidade}
 			ORDER BY id DESC LIMIT 1;
 		";
 		$query = Transacao::Get()->query($sql);
@@ -66,7 +66,7 @@ class Endereco {
 		}else{
 			$bairro 			= tdc::p("td_ecommerce_bairro");
 			$bairro->nome 		= $bairroNome;
-			$bairro->td_cidade	= $cidade;
+			$bairro->cidade	= $cidade;
 			$bairro->armazenar();
 			return $bairro->id;
 		}

@@ -60,7 +60,7 @@ class ImprimirRegistro {
 		$divBody = tdc::html("div","","imprimirregistro-body");
 		foreach (tdc::dh(get_class($this->entidade),$this->entidade->id,[1]) as $k => $d){
 			foreach(tdc::d(ATRIBUTO,array(ENTIDADE,"=",$k)) as $a){
-				if (!($this->campodescentidadeprincipal->nome == $a->nome && $this->campodescentidadeprincipal->td_entidade == $k)){
+				if (!($this->campodescentidadeprincipal->nome == $a->nome && $this->campodescentidadeprincipal->entidade == $k)){
 					$label 	= tdc::html("span",$a->descricao.": ",null,"descricao-span");
 					$dado	= tdc::html("span",$d->{$a->nome},null,"dados-span");
 					$linha 	= tdc::html("div");

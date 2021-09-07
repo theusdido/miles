@@ -19,17 +19,8 @@ if (isset($_GET["entidade"])){
 $isprincipal = tdc::r("principal") == "" ? false : json_decode($_GET["principal"]);
 $cf = getCurrentConfigFile();
 if ($isprincipal){
-	$pathfilepage = FOLDER_FILES_CADASTRO . $entidade->contexto->id;
-	/*
-	$pathfilepage = FOLDER_FILES_CADASTRO . $entidade->contexto->id;
-
-	// Cria diretório
-	if (!file_exists($pathfilepage)){
-		createDirectory($pathfilepage);
-	}	
-	// Seta Cookie Diretório
-	setCookie("path_files_cadastro",$pathfilepage ."/");
-	*/
+	$pathfilepage 	= PATH_FILES_CADASTRO . $entidade->contexto->id . "/";
+	$urlfilepage	= URL_FILES_CADASTRO . $entidade->contexto->id . "/";
 }
 
 // Bloco (BOOTSTRAP)
@@ -111,37 +102,37 @@ if ($isprincipal){
 
 	// Adiciona CSS personalizado
 	$cssCustom = tdClass::Criar("link");
-	$cssCustom->type = "text/css";
-	$cssCustom->href = $pathfilepage . "/" . $entidade->contexto->nome . ".css";
-	$cssCustom->rel = "stylesheet";
+	$cssCustom->type 	= "text/css";
+	$cssCustom->href 	= $urlfilepage . $entidade->contexto->nome . ".css";
+	$cssCustom->rel 	= "stylesheet";
 	$bloco->add($cssCustom);
 
 	if ($entidade->contexto->carregarlibjavascript == 1){
 
 		// Adiciona a classe Grade de Dados em JavaScript
-		$jsGrade = tdClass::Criar("script");
-		$jsGrade->src = Session::Get('URL_CLASS_TDC') . "gradededados.class.js";
+		$jsGrade 		= tdClass::Criar("script");
+		$jsGrade->src 	= Session::Get('URL_CLASS_TDC') . "gradededados.class.js";
 		$bloco->add($jsGrade);
 
 		// Adiciona a página padrão de validação dos campos do formulário
-		$jsValidar = tdClass::Criar("script");
+		$jsValidar 		= tdClass::Criar("script");
 		$jsValidar->src = Session::Get('URL_SYSTEM') . "validar.js";
 		$bloco->add($jsValidar);
 
 		// Arquivo JS Incorporado
-	    $js = tdClass::Criar("script");
-		$js->src = $pathfilepage . "/" . $entidade->contexto->nome . ".js";
+	    $js 		= tdClass::Criar("script");
+		$js->src 	= $urlfilepage . $entidade->contexto->nome . ".js";
 		$bloco->add($js);
 
 		// Adiciona a página padrão de validação dos campos do formulário
-		$jsFormulario = tdClass::Criar("script");
-		$jsFormulario->src = Session::Get('URL_SYSTEM') . "formulario.js";
+		$jsFormulario 		= tdClass::Criar("script");
+		$jsFormulario->src 	= Session::Get('URL_SYSTEM') . "formulario.js";
 		$bloco->add($jsFormulario);
 	}
 
 	// HTML Personalizado
-	$htmlPersonalizado = tdClass::Criar("div");
-	$htmlPersonalizado->id = "div-htmlpersonalizado";
+	$htmlPersonalizado 		= tdClass::Criar("div");
+	$htmlPersonalizado->id 	= "div-htmlpersonalizado";
 	$bloco->add($htmlPersonalizado);
 
 	$EntidadePrincipalID = Campos::Oculto("entidadeprincipalid","entidadeprincipalid",$entidade->contexto->id);
@@ -167,7 +158,7 @@ switch(tdc::r("acao")){
 		echo 1;
 
 		// Cria o arquivo HTML
-		$fp = fopen($pathfilepage . "/" . $entidade->contexto->nome . ".html" ,'w');
+		$fp = fopen($pathfilepage . $entidade->contexto->nome . ".html" ,'w');
 		fwrite($fp,$bloco->toString());
 		fclose($fp);
 

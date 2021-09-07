@@ -53,7 +53,7 @@
 	$itenspedidovalor = criarAtributo($conn,$itenspedidoID,"valor","Valor","float",0,0,13,1,0,0,"");
 
 	// Adicionando Menu
-	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".PREFIXO.$entidadeNome.".html",'',$menu_comercial,7,'comercial-' . $entidadeNome);
+	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_comercial,7,'comercial-' . $entidadeNome);
 
 	// Cria Relacionamento
 	criarRelacionamento($conn,2,$entidadeID,$itenspedidoID,"Itens",$itenspedidopedido);

@@ -42,7 +42,7 @@
 
 	// Criando Atributos
 	$link = criarAtributo($conn,$menucruditensID,"link","Link","varchar",500,0,3,1,0,0,"");
-	$menu = criarAtributo($conn,$menucruditensID,"td_menu","Menu","int",0,0,4,0,0,0,"");
+	$menu = criarAtributo($conn,$menucruditensID,"menu","Menu","int",0,0,4,0,0,0,"");
 	$descricao = criarAtributo($conn,$menucruditensID,"descricao","Descrição","varchar",50,0,3,1,0,0,"");
 	# Tipo =>  1 - Cadastro; 2 - Consulta; 3 - Movimentação; 4 - Relatório;
 	$tipo = criarAtributo($conn,$menucruditensID,"tipo","Tipo","int",0,0,4,0,0,0,"");

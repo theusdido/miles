@@ -29,7 +29,7 @@
 			echo "<option value='" .utf8_encode($linha["nome"]) . "' ".(strtoupper(retirarAcentos($selecionado))==strtoupper(retirarAcentos(utf8_encode($linha["nome"])))?"selected":"") .">".utf8_encode($linha["nome"])."</option>";
 		}
 		
-		$sql = "SELECT id,nome FROM td_erp_imobiliaria_bairro WHERE td_cidade = " . getIdCidade($_GET["localidade"],$_GET["uf"]); 
+		$sql = "SELECT id,nome FROM td_erp_imobiliaria_bairro WHERE cidade = " . getIdCidade($_GET["localidade"],$_GET["uf"]); 
 		$query = $conn->query($sql);
 		while ($linha = $query->fetch()){
 			echo "<option value='" .utf8_encode($linha["nome"]) . "' ". ($selecionado == $linha["id"]?"selected":"") .">".utf8_encode($linha["nome"])."</option>";
@@ -42,16 +42,16 @@
 		$descricao = ($_GET["descricao"]);
 		$cidade = getIdCidade($_GET["cidade"],$_GET["uf"]);	
 
-		$sqlBairro = "SELECT id FROM td_erp_imobiliaria_bairro WHERE nome = '".utf8charset($descricao)."' AND td_cidade = " . $cidade;
+		$sqlBairro = "SELECT id FROM td_erp_imobiliaria_bairro WHERE nome = '".utf8charset($descricao)."' AND cidade = " . $cidade;
 		$queryBairro = $conn->query($sqlBairro);
 		if ($queryBairro->rowCount() <= 0){
 			$bairro = tdClass::Criar("persistent",array("td_erp_imobiliaria_bairro"))->contexto;
 			$id = $bairro->proximoID();
 			$bairro->id = $id;
-			$bairro->td_projeto = 1;
-			$bairro->td_empresa = 1;
+			$bairro->projeto = 1;
+			$bairro->empresa = 1;
 			$bairro->nome = $descricao;
-			$bairro->td_cidade = $cidade;
+			$bairro->cidade = $cidade;
 			$salvar =  $bairro->armazenar();
 			Transacao::Fechar();
 			if ($salvar){
@@ -104,11 +104,11 @@
 
 			$end = tdClass::Criar("persistent",array("td_erp_imobiliaria_endereco"))->contexto;
 			$end->id = $id;			
-			$end->td_bairro = $bairro;
+			$end->bairro = $bairro;
 			$end->logradouro = $logradouro;
 			$end->cep = $cep;
-			$end->td_empresa = 1;
-			$end->td_projeto = 1;
+			$end->empresa = 1;
+			$end->projeto = 1;
 			$end->armazenar();
 			Transacao::Fechar();
 			echo $id;
@@ -149,7 +149,7 @@
 	function getIdCidade($cidade,$uf){
 		global $conn;
 		$ufID = is_numeric($uf)?$uf:getIdEstado($uf);
-		$sql = "SELECT id FROM td_erp_imobiliaria_cidade WHERE nome LIKE '%{$cidade}%' AND td_estado = '{$ufID}';";
+		$sql = "SELECT id FROM td_erp_imobiliaria_cidade WHERE nome LIKE '%{$cidade}%' AND estado = '{$ufID}';";
 		$query = $conn->query($sql);
 		if ($query->rowCount() > 0){
 			return $query->fetch()[0];
@@ -157,9 +157,9 @@
 			$cidadeOBJ = tdClass::Criar("persistent",array("td_erp_imobiliaria_cidade"))->contexto;
 			$idCidade = $cidadeOBJ->proximoID();
 			$cidadeOBJ->id = $idCidade;
-			$cidadeOBJ->td_empresa = Session::Get()->empresa;
-			$cidadeOBJ->td_projeto = Session::Get()->projeto;
-			$cidadeOBJ->td_estado = $ufID;
+			$cidadeOBJ->empresa = Session::Get()->empresa;
+			$cidadeOBJ->projeto = Session::Get()->projeto;
+			$cidadeOBJ->estado = $ufID;
 			$cidadeOBJ->nome = $cidade;
 			//$cidadeOBJ->sigla = getSiglaLocalidade($cidade,$uf);
 			$cidadeOBJ->armazenar();
@@ -178,9 +178,9 @@
 			$ufOBJ = tdClass::Criar("persistent",array("td_erp_imobiliaria_estado"))->contexto;
 			$idUF = $ufOBJ->proximoID();
 			$ufOBJ->id = $idUF;
-			$ufOBJ->td_empresa = Session::Get()->empresa;
-			$ufOBJ->td_projeto = Session::Get()->projeto;
-			$ufOBJ->td_pais = 1;
+			$ufOBJ->empresa = Session::Get()->empresa;
+			$ufOBJ->projeto = Session::Get()->projeto;
+			$ufOBJ->pais = 1;
 			$ufOBJ->nome = getNomeUF($uf);
 			$ufOBJ->sigla = $uf;
 			$ufOBJ->denominacao = '';
@@ -218,7 +218,7 @@
 	
 	function getIdBairro($bairro,$cidade){
 		global $conn;
-		$sql = "SELECT id FROM td_erp_imobiliaria_bairro WHERE nome LIKE '%{$bairro}%' AND td_cidade = {$cidade};";
+		$sql = "SELECT id FROM td_erp_imobiliaria_bairro WHERE nome LIKE '%{$bairro}%' AND cidade = {$cidade};";
 		$query = $conn->query($sql);
 		if ($query->rowCount() > 0){
 			return $query->fetch()[0];

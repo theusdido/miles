@@ -24,9 +24,9 @@
 	$descricao = criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar","200",1,3,1,0,0,"");
 
 	// Criando Acesso
-	$menu_webiste = addMenu($conn,'Tipo de Telefone','#','','','','geral');
+	$menu_webiste 	= addMenu($conn,'Geral','#','',0,0,'geral');
 
 	// Adicionando Menu
-	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".PREFIXO.$entidadeNome.".html",'',$menu_webiste,8,'geral-' . $entidadeNome);
+	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,8,'geral-' . $entidadeNome,$entidadeID,'cadastro');
 
 	Entity::setDescriptionField($conn,$entidadeID,$descricao,true);

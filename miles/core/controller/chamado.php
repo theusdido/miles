@@ -169,7 +169,7 @@
 			$usuario = Session::Get()->userid;
 			$sqlsalvarinterecao = "
 				INSERT INTO td_ticketinteraction 
-					(id,td_empresa,td_projeto,td_ticket,descricao,data,td_usuario)
+					(id,empresa,projeto,ticket,descricao,data,usuario)
 				VALUES
 					({$proxid},{$empresa},{$projeto},{$ticket},'{$descricao}','$data',$usuario)
 				;	
@@ -194,16 +194,16 @@
 			$ticket = $_GET["ticket"];
 			$nomeusuario = "";
 			$sqlinteracao = "
-				SELECT id,descricao,td_usuario,data 
+				SELECT id,descricao,usuario,data 
 				FROM td_ticketinteraction 
-				WHERE td_ticket = " . $ticket . "
+				WHERE ticket = " . $ticket . "
 				ORDER BY data DESC "
 			;
 			$queryinteracao = $connMILES->query($sqlinteracao);
 			while ($linhainteracao = $queryinteracao->fetch()){
-				if (is_numeric($linhainteracao["td_usuario"])){
-					if ($linhainteracao["td_usuario"] > 0){
-						$userobj = tdClass::Criar("persistent",array(USUARIO,$linhainteracao["td_usuario"]))->contexto;
+				if (is_numeric($linhainteracao["usuario"])){
+					if ($linhainteracao["usuario"] > 0){
+						$userobj = tdClass::Criar("persistent",array(USUARIO,$linhainteracao["usuario"]))->contexto;
 						$nomeusuario = $userobj->nome;
 					}
 				}
@@ -236,7 +236,7 @@
 				$descricaochamado->class = "text-info";
 
 				$spanArquivos = tdClass::Criar("span");
-				$sqlArquivosChamados = "SELECT id,arquivo FROM td_ticketanexo WHERE td_ticket = " . $ticket . " AND td_ticketinteraction = " . $linhainteracao["id"];
+				$sqlArquivosChamados = "SELECT id,arquivo FROM td_ticketanexo WHERE ticket = " . $ticket . " AND ticketinteraction = " . $linhainteracao["id"];
 				$queryArquivosChamados = $connMILES->query($sqlArquivosChamados);
 				while ($linhaArquivosChamados = $queryArquivosChamados->fetch()){
 					$file = PATH_FILE . "ticket/anexo-" . $ticket . "-".$linhainteracao["id"]."-". $linhaArquivosChamados["id"] . "." . getExtensao($linhaArquivosChamados["arquivo"]);
@@ -320,7 +320,7 @@
 				$descricaochamado->class = "text-info";
 				
 				$spanArquivos = tdClass::Criar("span");
-				$sqlArquivosChamados = "SELECT id,arquivo FROM td_ticketanexo WHERE td_ticket = " . $id;
+				$sqlArquivosChamados = "SELECT id,arquivo FROM td_ticketanexo WHERE ticket = " . $id;
 				$queryArquivosChamados = $connMILES->query($sqlArquivosChamados);
 				while ($linhaArquivosChamados = $queryArquivosChamados->fetch()){
 					$file = PATH_FILE . "ticket/anexo-" . $id . "-0-". $linhaArquivosChamados["id"] . "." . getExtensao($linhaArquivosChamados["arquivo"]);
@@ -451,11 +451,11 @@
 			$where = " WHERE 1=1 ";			
 			if (Session::Get()->userid != 1){ // Condição especial para super usuário
 				$where .= "
-					AND a.td_projeto = ".Session::Get()->projeto;
+					AND a.projeto = ".Session::Get()->projeto;
 			}
 			$statuschamado = (int)tdClass::Read("status");
 			if (tdClass::Read("status") != ""){
-				$where .= " AND a.td_status = " . tdClass::Read("status") . " ";
+				$where .= " AND a.status = " . tdClass::Read("status") . " ";
 			}
 
 			$sqlChamadosAbertos = "
@@ -463,7 +463,7 @@
 					a.id,
 					a.titulo,
 					a.descricao,
-					(SELECT b.nome FROM td_projeto b WHERE b.id = a.td_projeto) projetonome,
+					(SELECT b.nome FROM td_projeto b WHERE b.id = a.projeto) projetonome,
 					a.datacriacao
 				FROM td_ticket a 
 				{$where}
@@ -699,12 +699,12 @@
 					id,
 					titulo,
 					descricao,
-					td_projeto,
-					td_usuario,
-					td_tipo,
-					td_prioridade,
+					projeto,
+					usuario,
+					tipo,
+					prioridade,
 					datacriacao,
-					td_status
+					status
 				) VALUES (
 					".$numerochamado.",
 					'".$titulo."',
@@ -743,7 +743,7 @@
 
 		if ($op == "finalizar"){
 			$ticket = tdc::p("td_ticket",tdc::r("id"));			
-			$ticket->td_status = 4;
+			$ticket->status = 4;
 			if ($ticket->armazenar()){
 				$status = "success";
 				Transacao::Fechar();
@@ -770,9 +770,9 @@
 		$listaChamado->class = "list-group";
 		
 		$sqlChamado = '
-			SELECT a.id,a.titulo,a.td_usuario,a.td_projeto
+			SELECT a.id,a.titulo,a.usuario,a.projeto
 			FROM td_ticket a 
-			'.(Session::Get()->userid!=1?'WHERE a.td_projeto = '.Session::Get()->projeto:'').'
+			'.(Session::Get()->userid!=1?'WHERE a.projeto = '.Session::Get()->projeto:'').'
 			ORDER BY a.id DESC 
 			LIMIT 3;
 		';
@@ -784,10 +784,10 @@
 			$a->href = "#";
 			$a->data_id = $linhaChamado["id"];
 			
-			if ($linhaChamado["td_projeto"] != Session::Get()->projeto){
+			if ($linhaChamado["projeto"] != Session::Get()->projeto){
 				$referenciaExibirChamado = Session::Get()->currentprojectname;
 			}else{
-				$referenciaExibirChamado = tdClass::Criar("persistent",array(USUARIO,$linhaChamado["td_usuario"]))->contexto->nome;				
+				$referenciaExibirChamado = tdClass::Criar("persistent",array(USUARIO,$linhaChamado["usuario"]))->contexto->nome;				
 			}
 			$SmallRefExibirChamado = '<small class="nome-usuario-abertura-chamado-home">' . substr($referenciaExibirChamado,0,25) . "</small>";
 			$a->add(substr($linhaChamado["titulo"],0,60) . $SmallRefExibirChamado);
@@ -821,7 +821,7 @@
 				$extensao = trim(substr($file["name"],strripos($file["name"],"."),5));								
 				$nomearquivo = "anexo-" . $ticket . "-" . $ticketinteraction . "-" . $prox . $extensao;
 				move_uploaded_file($file["tmp_name"],PATH_FILE . "ticket/" . $nomearquivo);
-				$sql_insert_arquivo = "INSERT INTO td_ticketanexo (id,td_ticket,td_ticketinteraction,arquivo) VALUES({$prox},{$ticket},{$ticketinteraction},'".$file["name"]."');";
+				$sql_insert_arquivo = "INSERT INTO td_ticketanexo (id,ticket,ticketinteraction,arquivo) VALUES({$prox},{$ticket},{$ticketinteraction},'".$file["name"]."');";
 				$query = $connMILES->exec($sql_insert_arquivo);
 				if (!$query){
 					echo $sql_insert_arquivo . "<br/>";

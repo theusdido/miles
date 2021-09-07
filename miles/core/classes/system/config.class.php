@@ -26,6 +26,8 @@ class Config {
 			$currentProject = (int)$_GET["currentproject"];
 		}else if (isset($_POST["currentproject"])){
 			$currentProject = (int)$_POST["currentproject"];
+		}else if(isset($mjc->currentproject)){
+			$currentproject = $mjc->currentproject;
 		}else{
 			if (isset($_SESSION["currentproject"])){
 				$currentProject = $_SESSION["currentproject"];

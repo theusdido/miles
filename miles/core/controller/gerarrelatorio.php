@@ -79,7 +79,7 @@
 	$atributo = "";
 	$i =1;
 	foreach ($dataset as $ftRelatorio){
-		$atributo = tdClass::Criar("persistent",array(ATRIBUTO,(int)$ftRelatorio->td_atributo))->contexto;
+		$atributo = tdClass::Criar("persistent",array(ATRIBUTO,(int)$ftRelatorio->atributo))->contexto;
 		if ($ftRelatorio->operador == ".."){
 			$objinicial = new stdclass();
 			$objinicial->nome = $atributo->nome . "-inicial";
@@ -100,7 +100,7 @@
 
 	function addCampoAtributo($obj,$atributo){
 		$obj->id = $atributo->id;
-		$obj->td_entidade = $atributo->{ENTIDADE};
+		$obj->entidade = $atributo->{ENTIDADE};
 		$obj->nome = isset($obj->nome)?$obj->nome:$atributo->nome;
 		$obj->descricao = $atributo->descricao;
 		$obj->tipo = $atributo->tipo;
@@ -239,12 +239,12 @@
 		var i = 1;
 		for (f in td_relatorio['.$id.'].filtros){
 			var ft = td_relatorio['.$id.'].filtros[f];			
-			$("#form-relatorio .form-control[atributo="+ft.td_atributo+"]").attr("data-operador",ft.operador);
-			$("#form-relatorio .form-control[atributo="+ft.td_atributo+"]").attr("data-tipo",td_atributo[ft.td_atributo].tipo);
+			$("#form-relatorio .form-control[atributo="+ft.atributo+"]").attr("data-operador",ft.operador);
+			$("#form-relatorio .form-control[atributo="+ft.atributo+"]").attr("data-tipo",td_atributo[ft.atributo].tipo);
 			i++;
 		}
 		for (c in td_atributo){
-			if (td_atributo[c].td_entidade == entidadeID && td_atributo[c].exibirgradededados == 1){
+			if (td_atributo[c].entidade == entidadeID && td_atributo[c].exibirgradededados == 1){
 				if (parseInt(td_atributo[c].chaveestrangeira) > 0){
 					var fk = td_entidade[td_atributo[c].chaveestrangeira].nome;
 				}else{

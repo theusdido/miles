@@ -1,19 +1,17 @@
 <?php
 	require 'conexao.php';
-	require 'prefixo.php';
-	require_once 'funcoes.php';
-	include 'configuracoes.php';
-
+	require 'prefixo.php';	
+	//include 'log.php';
+	include '../funcoes.php';
 	
 	$id = $tipo = $entidade = $atributo = $descricao = $ent = $entidadefilho = $motivo = $exigirobrigatorio = "";
-	$exibirtitulo = 0;
 	
 	if (isset($_GET["op"])){
 		if ($_GET["op"] == "lista_atributos"){
 			$sql = "SELECT id,descricao,nome FROM ".PREFIXO."atributo WHERE ".PREFIXO."entidade = " . $_GET["entidade"];
 			$query = $conn->query($sql);
 			foreach($query->fetchAll() as $linha){
-				echo '<option value="'.$linha["id"].'">'.executefunction("utf8charset",$linha["descricao"]).' [ '.$linha["nome"].' ]</option>';
+				echo '<option value="'.$linha["id"].'">'.utf8_encode($linha["descricao"]).' [ '.$linha["nome"].' ]</option>';
 			}
 			exit;
 		}
@@ -33,17 +31,16 @@
 			$descricao				= $_POST["descricao"];
 			$entidade	 			= $_POST["entidade"];
 			$motivo					= $_POST["motivo"];
-			$exigirobrigatorio		= isset($_POST["exigirobrigatorio"])?1:0;
-			$exibirtitulo			= isset($_POST["exibirtitulo"])?1:0;
-			$exibirdadosantigos		= isset($_POST["exibirdadosantigos"])?1:0;
+			$exigirobrigatorio		= isset($_POST["exigirobrigatorio"])?1:0;;
+			$exibirtitulo			= isset($_POST["exibirtitulo"])?1:0;;
 
 			if ($id == ""){
 				$query_prox = $conn->query("SELECT IFNULL(MAX(id),0)+1 FROM ".PREFIXO."movimentacao");
 				$prox = $query_prox->fetch();
 				$id = $prox[0];
-				$sql = "INSERT INTO ".PREFIXO."movimentacao (id,descricao,".PREFIXO."entidade,".PREFIXO."motivo,exigirobrigatorio,exibirtitulo,exibirdadosantigos) VALUES ({$id},'{$descricao}',{$entidade},{$motivo},{$exigirobrigatorio},{$exibirtitulo},{$exibirdadosantigos});";
+				$sql = "INSERT INTO ".PREFIXO."movimentacao (id,descricao,".PREFIXO."entidade,".PREFIXO."motivo,exigirobrigatorio,exibirtitulo) VALUES ({$id},'{$descricao}',{$entidade},{$motivo},{$exigirobrigatorio},{$exibirtitulo});";
 			}else{
-				$sql = "UPDATE ".PREFIXO."movimentacao SET ".PREFIXO."entidade = {$entidade} , descricao = '{$descricao}' , ".PREFIXO."motivo = {$motivo} , exigirobrigatorio = {$exigirobrigatorio} , exibirtitulo = {$exibirtitulo}, exibirdadosantigos = {$exibirdadosantigos} WHERE id = {$id};";
+				$sql = "UPDATE ".PREFIXO."movimentacao SET ".PREFIXO."entidade = {$entidade} , descricao = '{$descricao}' , ".PREFIXO."motivo = {$motivo} , exigirobrigatorio = {$exigirobrigatorio} , exibirtitulo = {$exibirtitulo} WHERE id = {$id};";
 			}
 			$query = $conn->query($sql);
 			if($query){
@@ -160,7 +157,7 @@
 		}
 
 		if ($_GET["op"] == "listarmovimentacao"){
-			$sql = "SELECT id,".PREFIXO."atributo atributo,legenda FROM ".PREFIXO."movimentacaoalterar a WHERE td_movimentacao = {$_GET["movimentacao"]} ORDER BY id DESC";
+			$sql = "SELECT id,".PREFIXO."atributo atributo,legenda FROM ".PREFIXO."movimentacaoalterar a WHERE movimentacao = {$_GET["movimentacao"]} ORDER BY id DESC";
 			$query = $conn->query($sql);
 			if ($query->rowCount() <= 0){
 				echo '<div class="alert alert-warning alert-dismissible text-center" role="alert">Nenhum campo de <strong>alterar</strong> configurado.</div>';
@@ -186,7 +183,7 @@
 		}
 		
 		if ($_GET["op"] == "listarstatus"){
-			$sql = "SELECT id,".PREFIXO."atributo atributo,operador,valor FROM ".PREFIXO."movimentacaostatus a WHERE td_movimentacao = {$_GET["movimentacao"]}";
+			$sql = "SELECT id,".PREFIXO."atributo atributo,operador,valor FROM ".PREFIXO."movimentacaostatus a WHERE movimentacao = {$_GET["movimentacao"]}";
 			$query = $conn->query($sql);
 			if ($query->rowCount() <= 0){
 				echo '<div class="alert alert-warning alert-dismissible text-center" role="alert">Nenhum atributo de <strong>status</strong> configurado.</div>';
@@ -212,7 +209,7 @@
 			exit;
 		}
 		if ($_GET["op"] == "listarhistorico"){
-			$sql = "SELECT id,".PREFIXO."atributo atributo,legenda FROM ".PREFIXO."movimentacaohistorico a WHERE td_movimentacao = {$_GET["movimentacao"]}";
+			$sql = "SELECT id,".PREFIXO."atributo atributo,legenda FROM ".PREFIXO."movimentacaohistorico a WHERE movimentacao = {$_GET["movimentacao"]}";
 			$query = $conn->query($sql);
 			if ($query->rowCount() <= 0){
 				echo '<div class="alert alert-warning alert-dismissible text-center" role="alert">Nenhum atributo de <strong>histórico</strong> configurado.</div>';
@@ -220,7 +217,7 @@
 			foreach($query->fetchAll() as $linha){
 				$atributo = $linha["atributo"];
 				$legenda = $linha["legenda"];
-				$sqlAtributo = "SELECT descricao,td_entidade FROM td_atributo WHERE id = " . $atributo;
+				$sqlAtributo = "SELECT descricao,entidade FROM td_atributo WHERE id = " . $atributo;
 				$queryAtributo = $conn->query($sqlAtributo);
 				$linhaAtributo = $queryAtributo->fetch();
 				$atributoDescricao = utf8_encode($linhaAtributo["descricao"]);
@@ -229,7 +226,7 @@
 						<button type='button' class='btn btn-default' onclick='excluirHistorico({$linha["id"]});' style='float:right;margin-top:-4px'>
 							<span class='fas fa-trash-alt' aria-hidden='true'></span>
 						</button>
-						<button id='atributo-editar-{$linha["id"]}' type='button' class='btn btn-default' data-atributo='{$atributo}' data-entidade='{$linhaAtributo["td_entidade"]}' data-legenda='{$legenda}' data-idhistorico='{$linha["id"]}' onclick='editarHistorico({$linha["id"]})' style='float:right;margin-top:-4px'>
+						<button id='atributo-editar-{$linha["id"]}' type='button' class='btn btn-default' data-atributo='{$atributo}' data-entidade='{$linhaAtributo["entidade"]}' data-legenda='{$legenda}' data-idhistorico='{$linha["id"]}' onclick='editarHistorico({$linha["id"]})' style='float:right;margin-top:-4px'>
 							<span class='fas fa-edit' aria-hidden='true'></span>
 						</button>
 					</span>";
@@ -238,15 +235,14 @@
 		}
 	}
 	if ($id != ""){
-		$sql = "SELECT descricao,".PREFIXO."entidade,".PREFIXO."motivo,exigirobrigatorio,exibirtitulo,exibirdadosantigos FROM ".PREFIXO."movimentacao WHERE id = {$id}";
+		$sql = "SELECT descricao,".PREFIXO."entidade,".PREFIXO."motivo,exigirobrigatorio,exibirtitulo FROM ".PREFIXO."movimentacao WHERE id = {$id}";
 		$query = $conn->query($sql);
 		foreach ($query->fetchAll() as $linha){
-			$entidade			= $linha[PREFIXO."entidade"];
-			$descricao			= $linha["descricao"];
-			$motivo				= $linha[PREFIXO."motivo"];
-			$exigirobrigatorio 	= $linha["exigirobrigatorio"];
-			$exibirtitulo 		= $linha["exibirtitulo"];
-			$exibirdadosantigos	= $linha["exibirdadosantigos"];
+			$entidade		= $linha[PREFIXO."entidade"];
+			$descricao		= $linha["descricao"];
+			$motivo			= $linha[PREFIXO."motivo"];
+			$exigirobrigatorio = $linha["exigirobrigatorio"];
+			$exibirtitulo = $linha["exibirtitulo"];
 		}
 	}
 ?>
@@ -264,7 +260,6 @@
 					$("#motivo").val("<?=$motivo?>");
 					document.getElementById("exigirobrigatorio").checked = (<?=(int)$exigirobrigatorio?>==0)?false:true;
 					document.getElementById("exibirtitulo").checked = (<?=(int)$exibirtitulo?>==0)?false:true;
-					document.getElementById("exibirdadosantigos").checked = (<?=(int)$exibirdadosantigos?>==0)?false:true;
 				}else{
 					$("#accordion_alterar").hide();
 				}
@@ -534,10 +529,10 @@
 								<label for="entidade">Entidade</label>
 								<select id="entidade" name="entidade" class="form-control">
 									<?php 
-										$sql = "SELECT id,nome,descricao FROM ".PREFIXO."entidade ORDER BY id DESC;";
+										$sql = "SELECT id,nome,descricao FROM ".PREFIXO."entidade";
 										$query = $conn->query($sql);
 										foreach($query->fetchAll() as $linha){
-											echo '<option value="'.$linha["id"].'" data-nome="'.$linha["nome"].'">'.executefunction("utf8charset",array($linha["descricao"])).' [ '.$linha["nome"].' ]</option>';
+											echo '<option value="'.$linha["id"].'" data-nome="'.$linha["nome"].'">'.utf8_encode($linha["descricao"]).' [ '.$linha["nome"].' ]</option>';
 										}
 									?>
 								</select>
@@ -547,10 +542,10 @@
 								<select id="motivo" name="motivo" class="form-control">
 									<option value="0">-- Selecione --</option>
 									<?php 
-										$sql = "SELECT id,nome,descricao FROM ".PREFIXO."entidade ORDER BY id DESC;";
+										$sql = "SELECT id,nome,descricao FROM ".PREFIXO."entidade";
 										$query = $conn->query($sql);
 										foreach($query->fetchAll() as $linha){
-											echo '<option value="'.$linha["id"].'" data-nome="'.$linha["nome"].'">'.executefunction("utf8charset",array($linha["descricao"])).' [ '.$linha["nome"].' ]</option>';
+											echo '<option value="'.$linha["id"].'" data-nome="'.$linha["nome"].'">'.utf8_encode($linha["descricao"]).' [ '.$linha["nome"].' ]</option>';
 										}
 									?>
 								</select>
@@ -563,11 +558,6 @@
 							<div class="checkbox">
 								<label for="exibirtitulo">
 									<input id="exibirtitulo" name="exibirtitulo" type="checkbox"> Exibir Título (Legenda) na página
-								</label>
-							</div>
-							<div class="checkbox">
-								<label for="exibirdadosantigos">
-									<input id="exibirdadosantigos" name="exibirdadosantigos" type="checkbox"> Exibir Dados Antigos
 								</label>
 							</div>							
 							<div id="error"></div>

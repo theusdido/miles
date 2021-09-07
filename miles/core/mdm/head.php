@@ -1,7 +1,5 @@
 <meta charset="utf-8">
 <link href="<?=$_SESSION["URL_LIB"]?>bootstrap/3.3.1/css/bootstrap.css" rel="stylesheet" />
-<link href="<?=$_SESSION["URL_LIB"]?>jquery/ui/jquery-ui.css" rel="stylesheet" />
-
 <style type="text/css">
 /* Folha de Estilo */
 .navbar-default{
@@ -49,14 +47,8 @@
 #label-id-atributo small {
 	font-size:14px;
 }
-#lista-filtro .pontinhos {
-	cursor:move;
-}
 </style>
 <script type="text/javascript" src="<?=$_SESSION["URL_LIB"]?>jquery/jquery.js"></script>
 <script type="text/javascript" src="<?=$_SESSION["URL_LIB"]?>bootstrap/3.3.1/js/bootstrap.js"></script>
 <script type="text/javascript" src="<?=$_SESSION["URL_LIB"]?>jquery/jquery-bootbox.js"></script>
-<script type="text/javascript" src="<?=$_SESSION["URL_LIB"]?>jquery/jquery.mask.js"></script>
-<script type="text/javascript" src="<?=$_SESSION["URL_LIB"]?>jquery/jquery.maskMoney.js"></script>
-<script type="text/javascript" src="<?=$_SESSION["URL_LIB"]?>jquery/ui/jquery-ui.min.js"></script>
-<script type="text/javascript" src="<?=$_SESSION["URL_LIB"]?>fontawesome/ea948eea7a.js"></script>
+<script type="text/javascript" src="<?=$_SESSION["URL_LIB"]?>fontawesome/ea948eea7a.js" /></script>

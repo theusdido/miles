@@ -9,7 +9,6 @@
 		include 'modulos/imobiliaria.php';
 		include 'modulos/escola.php';
 		include 'modulos/associacao.php';
-		include 'modulos/livraria.php';
 	?>
 </div>
 

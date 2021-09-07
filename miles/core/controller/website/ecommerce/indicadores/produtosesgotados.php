@@ -74,8 +74,8 @@ if (sizeof($itens) > 0) {
     foreach ($itens as $item) {
         $trBody     = $tabela->add("tr", array("elementopai" => $tbody));
 
-        $tamanho    = tdc::p("td_ecommerce_tamanhoproduto",$item->td_produto);
-        $produto    = tdc::p("td_ecommerce_produto",$tamanho->td_produto);
+        $tamanho    = tdc::p("td_ecommerce_tamanhoproduto",$item->produto);
+        $produto    = tdc::p("td_ecommerce_produto",$tamanho->produto);
 
         $tdPedido       = $tabela->add("td", array("propriedades" => array("innerhtml" => $produto->id), "elementopai" => $trBody));
         $tdCliente      = $tabela->add("td", array("propriedades" => array("innerhtml" => $produto->nome), "elementopai" => $trBody));

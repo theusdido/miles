@@ -4,20 +4,20 @@ $totalAcessos = $visitantesOnline = $carrinhosAtivos = $carrinhosAbandonados = $
 if ($conn = Transacao::get()){
 
     // Visitantes ONLINE
-    $sqlVisitantesOnline = "SELECT 1 FROM td_ecommerce_visitantes WHERE inativo = false GROUP BY sessao,ip,td_cliente;";
+    $sqlVisitantesOnline = "SELECT 1 FROM td_ecommerce_visitantes WHERE inativo = false GROUP BY sessao,ip,cliente;";
     $queryVisitantesOnline = $conn->query($sqlVisitantesOnline);
     $visitantesOnline = $queryVisitantesOnline->rowCount();
     $queryVisitantesOnline->closeCursor();
 
     // Total de Acessos
-    $sqlTotalAcessos = "SELECT 1 FROM td_ecommerce_visitantes GROUP BY sessao,ip,td_cliente;";
+    $sqlTotalAcessos = "SELECT 1 FROM td_ecommerce_visitantes GROUP BY sessao,ip,cliente;";
     $queryTotalAcessos = $conn->query($sqlTotalAcessos);
     $totalAcessos = $queryTotalAcessos->rowCount();
     $queryTotalAcessos->closeCursor();
 
     // Carrinhos Ativos
     $sqlCarrinhosAtivos = "SELECT 1 FROM td_ecommerce_carrinhodecompras a 
-                            WHERE EXISTS( SELECT 1 FROM td_ecommerce_itenscarrinho b WHERE a.id = b.td_carrinho ) 
+                            WHERE EXISTS( SELECT 1 FROM td_ecommerce_itenscarrinho b WHERE a.id = b.carrinho ) 
                             AND (inativo = false OR inativo IS NULL)
                             AND datahoracriacao BETWEEN NOW() - INTERVAL 30 DAY AND NOW()  
                             ";
@@ -27,7 +27,7 @@ if ($conn = Transacao::get()){
 
     // Carrinhos abandonados
     $sqlCarrinhosAbandonados = "SELECT 1 FROM td_ecommerce_carrinhodecompras a 
-                            WHERE EXISTS( SELECT 1 FROM td_ecommerce_itenscarrinho b WHERE a.id = b.td_carrinho ) 
+                            WHERE EXISTS( SELECT 1 FROM td_ecommerce_itenscarrinho b WHERE a.id = b.carrinho ) 
                             AND (inativo = false OR inativo IS NULL)
                             AND datahoracriacao < NOW() - INTERVAL 30 DAY;";
     $queryCarrinhosAbandonados = $conn->query($sqlCarrinhosAbandonados);
@@ -35,7 +35,7 @@ if ($conn = Transacao::get()){
     $queryCarrinhosAbandonados->closeCursor();
 
     // Pedidos Devolvidos
-    $sqlPedidosDevolvidos = "SELECT * FROM td_ecommerce_pedido WHERE td_status = 6;";
+    $sqlPedidosDevolvidos = "SELECT * FROM td_ecommerce_pedido WHERE status = 6;";
     $queryPedidosDevolvidos = $conn->query($sqlPedidosDevolvidos);
     $pedidosDevolvidos = $queryPedidosDevolvidos->rowCount();
     $queryPedidosDevolvidos->closeCursor();

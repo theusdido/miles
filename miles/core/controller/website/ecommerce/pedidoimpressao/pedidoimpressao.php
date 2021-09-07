@@ -16,7 +16,7 @@ $body			= tdc::o("body");
 $registro 		= tdc::r("registro");
 $pedido			= tdc::p("td_ecommerce_pedido",$registro);
 $empresa		= tdc::p("td_empresa",Session::Get()->empresa);
-$cliente 		= tdc::p("td_ecommerce_cliente",$pedido->td_cliente);
+$cliente 		= tdc::p("td_ecommerce_cliente",$pedido->cliente);
 $enderecliente 	= tdc::p("td_ecommerce_endereco",@(int)getListaRegFilho(getEntidadeId("ecommerce_cliente"),getEntidadeId("ecommerce_endereco"),$cliente->id)[0]->regfilho);
 $enderecoempresa= tdc::p("td_endereco",@(int)getListaRegFilho(getEntidadeId("empresa"),getEntidadeId("endereco"),Session::Get()->empresa)[0]->regfilho);
 
@@ -83,7 +83,7 @@ $divdadosenderecocliente2	= $topo->add("div", array("propriedades" => array( "cl
 $valorFrete = $pedido->valorfrete;
 
 // Status do pedido
-$statusPedido = tdc::p("td_ecommerce_statuspedido",$pedido->td_status)->descricao;
+$statusPedido = tdc::p("td_ecommerce_statuspedido",$pedido->status)->descricao;
 
 // Pedido
 $pedido = new Pedido($pedido->id);
@@ -129,7 +129,7 @@ $tdTotalValor 	= $tabela->add("td",array("propriedades" => array( "innerhtml" =>
 $tdTotalTotal 	= $tabela->add("td",array("propriedades" => array( "innerhtml" => "R$ " .moneyToFloat($pedido->somaValorTotal(),true) , "align" => "right") , "elementopai" => $trBody));
 
 //$enderecoempresa->td_cidade
-$cidadeempresa	= tdc::p("td_cidade",tdc::p("td_bairro",$enderecoempresa->td_bairro)->td_cidade);
+$cidadeempresa	= tdc::p("td_cidade",tdc::p("td_bairro",$enderecoempresa->bairro)->cidade);
 
 // RODAPÉ
 $trFoot				= $tabela->add("tr");
@@ -138,7 +138,7 @@ $divRodape			= $tabela->add("div", array( "propriedades" => array("class" => "di
 $emitidopor			= $tabela->add("div", array( "propriedades" => array("innerhtml" => "Impresso por " . Session::Get()->username , "class" => "div-emitidopor") , "elementopai" =>  $divRodape));
 $datahoraemissao	= $tabela->add("div", array( "propriedades" => array("innerhtml" => "Impresso em " . date("d/m/Y H:i:s") , "class" => "div-datahora-emissao") , "elementopai" =>  $divRodape));
 #$divEndereco1Rodape	= $tabela->add("div", array( "propriedades" => array("innerhtml" => $enderecoempresa->logradouro ."," . $enderecoempresa->numero . " - " . $enderecoempresa->complemento , "class" => "div-endereco-empresa1") , "elementopai" =>  $divRodape));
-#$divEndereco2Rodape	= $tabela->add("div", array( "propriedades" => array("innerhtml" => "Cep:" . $enderecoempresa->cep . " - " . tdc::p("td_bairro",$enderecoempresa->td_bairro)->nome . " - " . $cidadeempresa->nome . " / " . tdc::p("td_uf",$cidadeempresa->td_uf)->sigla , "class" => "div-endereco-empresa2") , "elementopai" =>  $divRodape));
+#$divEndereco2Rodape	= $tabela->add("div", array( "propriedades" => array("innerhtml" => "Cep:" . $enderecoempresa->cep . " - " . tdc::p("td_bairro",$enderecoempresa->bairro)->nome . " - " . $cidadeempresa->nome . " / " . tdc::p("td_uf",$cidadeempresa->uf)->sigla , "class" => "div-endereco-empresa2") , "elementopai" =>  $divRodape));
 
 $head->add($style);
 $body->add($topo->getHTML());

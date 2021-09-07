@@ -85,7 +85,7 @@
 	$itenspedido_valor 		= criarAtributo($conn,$itenspedidoID,"valor","Valor","float",0,0,13,1,0,0,"");	
 
 	// Adicionando Menu
-	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".PREFIXO.$entidadeNome.".html",'',$menu_webiste,7,'ecommerce-' . $entidadeNome,$entidadeID,'cadastro');
+	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,7,'ecommerce-' . $entidadeNome,$entidadeID,'cadastro');
 
 	// Cria Relacionamento
 	criarRelacionamento($conn,2,$entidadeID,$itenspedidoID,"Itens",$itenspedido_pedido);

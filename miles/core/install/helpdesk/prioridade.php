@@ -32,7 +32,3 @@
 		$dataretroativa = 0,
 		$inicializacao = ""
 	);
-	
-	$conn->exec("INSERT INTO " .PREFIXO . $entidadeNome. " (id,descricao) VALUES (1,'Alta');");
-	$conn->exec("INSERT INTO " .PREFIXO . $entidadeNome. " (id,descricao) VALUES (2,'".utf8_decode('Média')."');");
-	$conn->exec("INSERT INTO " .PREFIXO . $entidadeNome. " (id,descricao) VALUES (3,'Baixa');");

@@ -64,7 +64,9 @@ header, article{
     width: 80%;
     position: absolute;
     top: 25%;
-    left: 10%;	
+    left: 10%;
+	height:50%;
+	object-fit: scale-down;	
 }
 
 #logon form{
@@ -647,9 +649,5 @@ html, body { margin:0; height: 100%;} /* Para funcionar altura dos elementos aut
 .td-aba .nav-pills li a:focus
 {
 	background-color: #F0F0F0;
-}
-
-.btn-add-emexecucao{
-	height:30px;
 }
 -->

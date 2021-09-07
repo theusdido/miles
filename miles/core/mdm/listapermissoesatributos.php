@@ -27,15 +27,15 @@
 			include 'conexao.php';
 			
 			$entidadeID =  $_GET["entidade"];
-			$sql = "SELECT id,descricao,td_entidade FROM td_atributo WHERE td_entidade = " .$entidadeID;
+			$sql = "SELECT id,descricao,entidade FROM td_atributo WHERE entidade = " .$entidadeID;
 			$query = $conn->query($sql);
 			While ($linha = $query->fetch()){
 				
-				$sqlpermissao = "SELECT * FROM td_atributopermissoes WHERE td_atributo = ".$linha["id"]." AND td_usuario = ".$_GET["usuario"];
+				$sqlpermissao = "SELECT * FROM td_atributopermissoes WHERE atributo = ".$linha["id"]." AND usuario = ".$_GET["usuario"];
 				$querypermissao = $conn->query($sqlpermissao);
 				$linhapermissao = $querypermissao->fetch();
 				$descricao = utf8_encode($linha["descricao"]);
-				echo "<tr data-entidadeid='".$linha["td_entidade"]."' id='".$linha["id"]."'>";
+				echo "<tr data-entidadeid='".$linha["entidade"]."' id='".$linha["id"]."'>";
 				echo "		<td><small>".$descricao."</small></td>";
 				#echo"		<td><center><input type='checkbox' onclick=setaPermissao(this,'atributo'); "_$S(rspermissao.inserir=1:"checked",1:"")_" /></center></td>";
 				#echo "		<td><center><input type='checkbox' onclick=setaPermissao(this,'atributo'); "_$S(rspermissao.excluir=1:"checked",1:"")_" /></center></td>";

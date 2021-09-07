@@ -19,8 +19,8 @@ if ($conn = Transacao::get()){
 					
 					$novalista = tdClass::Criar("persistent",array(LISTA))->contexto;
 					$novalista->id = $novalista->proximoID();
-					$novalista->td_projeto = 0;
-					$novalista->td_empresa = 0;
+					$novalista->projeto = 0;
+					$novalista->empresa = 0;
 					$novalista->entidadepai = $l->entidadepai;
 					$novalista->entidadefilho =  $l->entidadefilho;
 					$novalista->regpai = $idclone;

@@ -28,10 +28,10 @@
 	setAtributoGeneralizacao($conn,$entidadeID,$tipopessoa);
 
 	// Criando Acesso
-	$menu_webiste = addMenu($conn,'Geral','#','','','','geral');
+	$menu_webiste 	= addMenu($conn,'Geral','#','',0,0,'geral');
 
 	// Adicionando Menu
-	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".PREFIXO.$entidadeNome.".html",'',$menu_webiste,0,'geral-' . $entidadeNome);
+	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,0,'geral-' . $entidadeNome,$entidadeID,'cadastro');
 
 	$aba = criarAba($conn,$entidadeID,"Capa",array($nome));
 

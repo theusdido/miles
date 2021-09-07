@@ -12,12 +12,12 @@
 	if (isset($_GET["transferencia"])){
 		
 		// Verifica se o campo já existe na entidade destino
-		$verificaSQL = "SELECT 1 FROM " . PREFIXO . "atributo WHERE " . PREFIXO . "entidade = " . $_GET["entidade"] . " AND nome = '".$_GET["nome"]."';";
+		$verificaSQL = "SELECT 1 FROM atributo WHERE " . PREFIXO . "entidade = " . $_GET["entidade"] . " AND nome = '".$_GET["nome"]."';";
 		$verificaQUERY = $conn->query($verificaSQL);
 		if ($verificaQUERY->rowCount() <= 0 ){
 			
 			// Seleciona os dados do atributo de origem			
-			$atributoAtualSQL = "SELECT (SELECT nome FROM ".PREFIXO."entidade b WHERE a." . PREFIXO . "entidade = b.id ) nomeentidade,a.nome,a.descricao,a.tipo,a.tamanho,a.nulo,a.tipohtml,a.exibirgradededados,a.chaveestrangeira,a.dataretroativa,a.inicializacao FROM " . PREFIXO . "atributo a,".PREFIXO."entidade b WHERE a." . PREFIXO . "entidade = b.id AND a.id=" . $_GET["atributo"];
+			$atributoAtualSQL = "SELECT (SELECT nome FROM ".PREFIXO."entidade b WHERE a.entidade = b.id ) nomeentidade,a.nome,a.descricao,a.tipo,a.tamanho,a.nulo,a.tipohtml,a.exibirgradededados,a.chaveestrangeira,a.dataretroativa,a.inicializacao FROM " . PREFIXO . "atributo a,".PREFIXO."entidade b WHERE a.entidade = b.id AND a.id=" . $_GET["atributo"];
 			$atributoAtualQUERY = $conn->query($atributoAtualSQL);			
 			if ($atributoAtualQUERY->rowCount() > 0){				
 				$atributoAtualLINHA = $atributoAtualQUERY->fetch();
@@ -95,7 +95,7 @@
 							<td width="10%" align='center'>Excluir</td>							
 						</tr>	
 						<?php
-							$sql = "SELECT id,nome,descricao,ordem FROM ".PREFIXO."atributo WHERE ".PREFIXO."entidade = {$entidade} ORDER BY ordem ASC";
+							$sql = "SELECT id,nome,descricao,ordem FROM ".PREFIXO."atributo WHERE entidade = {$entidade} ORDER BY ordem ASC";
 							$query = $conn->query($sql);
 							foreach ($query->fetchAll() as $linha){
 								$descricao = executefunction("utf8charset",array($linha["descricao"]));

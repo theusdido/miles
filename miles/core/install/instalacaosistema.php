@@ -1,177 +1,5 @@
 <?php
 
-	include 'conexao.php';
-	include '../system/funcoes.php';
-
-	if (!empty($_POST)){
-
-		define("PREFIXO",$config["PREFIXO"] . "_");
-		if ($_POST["op"] == "installed"){
-			$sql = "SELECT sistemainstalado FROM  td_instalacao WHERE id = 1;";
-			$query = $conn->query($sql);
-			$linha = $query->fetch();
-			echo $linha["sistemainstalado"];
-			exit;
-		}
-		
-		if ($_POST["op"] == "criararquivosconfiguracao"){
-			require_once '../system/classes/install/install.class.php';
-			tdInstall::$projeto = $_POST["projetoid"];
-			tdInstall::criarArquivosConfiguracao(array(
-				"PROJECT_DESC" => $_POST["projetodesc"],
-				"DATABASE_PADRAO" => $_POST["databasepadrao"],
-				"CURRENT_DATABASE" => $_POST["databasepadrao"]
-			));			
-			exit;
-		}
-		if ($_POST["op"] == "inserirregistros" && (int)$_POST["novainstalacao"] == 1){
-			
-			// Usuários
-			inserirRegistro($conn,PREFIXO . "usuario",1, array("nome","email","senha","permitirexclusao","permitirtrocarempresa",PREFIXO . "grupousuario","perfilusuario",PREFIXO . "perfil"), array("'Root'","'root'","'63a9f0ea7bb98050796b649e85481845'",1,1,1,0,null));
-
-			// Menu
-			inserirRegistro($conn,PREFIXO . "menu",1, array("descricao","link","target","td_pai","ordem","fixo","td_entidade","tipomenu"), array("'Administração'","'#'","''",0,1,"'adm'",0,1));
-			$usuarioID = getEntidadeId("usuario",$conn);
-			inserirRegistro($conn,PREFIXO . "menu",2, array("descricao","link","target","td_pai","ordem","fixo","td_entidade","tipomenu"), array("'Usuário'","'files/cadastro/".$usuarioID."/td_usuario.html'","''",1,1,"''",$usuarioID,1));
-			$menuID = getEntidadeId("menu",$conn);
-			inserirRegistro($conn,PREFIXO . "menu",3, array("descricao","link","target","td_pai","ordem","fixo","td_entidade","tipomenu"), array("'Menu'","'files/cadastro/".$menuID."/td_menu.html'","''",1,2,"''",$menuID,1));
-			$projetoID = getEntidadeId("projeto",$conn);
-			inserirRegistro($conn,PREFIXO . "menu",4, array("descricao","link","target","td_pai","ordem","fixo","td_entidade","tipomenu"), array("'Projeto'","'files/cadastro/".$projetoID."/td_projeto.html'","''",1,3,"''",$projetoID,1));
-			$empresaID = getEntidadeId("empresa",$conn);
-			inserirRegistro($conn,PREFIXO . "menu",5, array("descricao","link","target","td_pai","ordem","fixo","td_entidade","tipomenu"), array("'Empresa'","'files/cadastro/".$empresaID."/td_empresa.html'","''",1,4,"''",$empresaID,1));
-			$avisoID = getEntidadeId("aviso",$conn);
-			inserirRegistro($conn,PREFIXO . "menu",6, array("descricao","link","target","td_pai","ordem","fixo","td_entidade","tipomenu"), array("'Aviso'","'files/cadastro/".$avisoID."/td_aviso.html'","''",1,5,"''",$avisoID,1));
-			$grupousuarioID = getEntidadeId("grupousuario",$conn);
-			inserirRegistro($conn,PREFIXO . "menu",7, array("descricao","link","target","td_pai","ordem","fixo","td_entidade","tipomenu"), array("'Grupo de Usuário'","'files/cadastro/".$grupousuarioID."/td_grupousuario.html'","''",1,6,"''",$grupousuarioID,1));
-			
-			inserirRegistro($conn,PREFIXO . "menu",8, array("descricao","link","target","td_pai","ordem","fixo","td_entidade","tipomenu"), array("'Ticket'","'#'","''",0,2,"'ticket'",0,1));
-			$ticketstatusID = getEntidadeId("ticketstatus",$conn);
-			inserirRegistro($conn,PREFIXO . "menu",9, array("descricao","link","target","td_pai","ordem","fixo","td_entidade","tipomenu"), array("'Status'","'files/cadastro/".$ticketstatusID."/td_ticketstatus.html'","''",8,1,"''",$ticketstatusID,1));
-			$ticketprioridadeID = getEntidadeId("ticketprioridade",$conn);
-			inserirRegistro($conn,PREFIXO . "menu",10, array("descricao","link","target","td_pai","ordem","fixo","td_entidade","tipomenu"), array("'Prioridade'","'files/cadastro/".$ticketprioridadeID."/td_ticketprioridade.html'","''",8,2,"''",$ticketprioridadeID,1));
-			$tickettipoID = getEntidadeId("tickettipo",$conn);
-			inserirRegistro($conn,PREFIXO . "menu",11, array("descricao","link","target","td_pai","ordem","fixo","td_entidade","tipomenu"), array("'Tipo'","'files/cadastro/".$tickettipoID."/td_tickettipo.html'","''",8,3,"''",$tickettipoID,1));
-			$ticketID = getEntidadeId("ticket",$conn);
-			inserirRegistro($conn,PREFIXO . "menu",12, array("descricao","link","target","td_pai","ordem","fixo","td_entidade","tipomenu"), array("'Ticket'","'files/cadastro/".$ticketID."/td_ticket.html'","''",8,4,"''",$ticketID,1));
-			$ticketinteractionID = getEntidadeId("ticketinteraction",$conn);
-			inserirRegistro($conn,PREFIXO . "menu",13, array("descricao","link","target","td_pai","ordem","fixo","td_entidade","tipomenu"), array("'Ticket Interação'","'files/cadastro/".$ticketinteractionID."/td_ticketinteraction.html'","''",8,5,"''",$ticketinteractionID,1));
-			$ticketseguidoresID = getEntidadeId("ticketseguidores",$conn);
-			inserirRegistro($conn,PREFIXO . "menu",14, array("descricao","link","target","td_pai","ordem","fixo","td_entidade","tipomenu"), array("'Seguidores'","'files/cadastro/".$ticketseguidoresID."/td_ticketseguidores.html'","''",8,6,"''",$ticketseguidoresID,1));
-
-			// Menu Compilar
-			inserirRegistro($conn,PREFIXO . "menu",15, array("descricao","link","target","td_pai","ordem","fixo","td_entidade","tipomenu"), array("'Compilar'","'index.php?controller=compilar'","''",1,7,"''",0,"'personalizado'"));
-
-			// Grupo Usuário
-			inserirRegistro($conn,PREFIXO . "grupousuario",1, array("descricao"), array("'Desenvolvimento'"));
-			inserirRegistro($conn,PREFIXO . "grupousuario",2, array("descricao"), array("'Administrador'"));
-
-			// Config
-			inserirRegistro($conn,PREFIXO . "config",1, array(
-				"urlupload",
-				"urlrequisicoes",
-				"urlsaveform",
-				"urlloadform",
-				"urluploadform",
-				"urlpesquisafiltro",
-				"urlenderecofiltro",
-				"urlexcluirregistros",
-				"urlinicializacao",
-				"urlloading",
-				"urlloadgradededados",
-				"urlrelatorio",
-				"urlmenu",
-				"bancodados",
-				"linguagemprogramacao",
-				"pathfileupload",
-				"pathfileuploadtemp",
-				"testecharset",
-				"tipogradedados"
-			), array(
-				"'index.php?controller=upload'",
-				"'index.php?controller=requisicoes'",
-				"'index.php?controller=salvarform'",
-				"'index.php?controller=loadform'",
-				"'index.php?controller=upload'",
-				"'index.php'",
-				"'index.php'",
-				"'index.php?controller=excluirregistros'",
-				"'index.php?controller=inicializacao'",
-				"'index.php?controller=loading'",
-				"'index.php?controller=gradededados'",
-				"'index.php?controller=relatorio'",
-				"'index.php?controller=menu'",
-				"'mysql'",
-				"'php'",
-				"'projects/".$config["CURRENT_PROJECT"]."/arquivos'",
-				"'projects/".$config["CURRENT_PROJECT"]."/arquivos/temp'",
-				"'á'",
-				"'table'"
-			));
-
-			// Status
-			inserirRegistro($conn,PREFIXO . "status",1, array("descricao","classe"), array("'Ativo'","'td-status-ativo'"));
-			inserirRegistro($conn,PREFIXO . "status",2, array("descricao","classe"), array("'Sucesso'","'td-status-sucesso'"));
-			inserirRegistro($conn,PREFIXO . "status",3, array("descricao","classe"), array("'Alerta'","'td-status-alerta'"));
-			inserirRegistro($conn,PREFIXO . "status",4, array("descricao","classe"), array("'Erro'","'td-status-erro'"));
-			inserirRegistro($conn,PREFIXO . "status",5, array("descricao","classe"), array("'Informativo'","'td-status-info'"));			
-
-			// Tipo Aviso
-			inserirRegistro($conn,PREFIXO . "tipoaviso",1, array("descricao"), array("'Sucesso'"));
-			inserirRegistro($conn,PREFIXO . "tipoaviso",2, array("descricao"), array("'Alerta'"));
-			inserirRegistro($conn,PREFIXO . "tipoaviso",3, array("descricao"), array("'Erro'"));
-			inserirRegistro($conn,PREFIXO . "tipoaviso",4, array("descricao"), array("'Informativo'"));
-
-			// Tipo de Conexão com Banco de Dados
-			inserirRegistro($conn,PREFIXO . "typeconnectiondatabase",1, array("nome,descricao"), array("'desenv'","'Desenvolvimento'"));
-			inserirRegistro($conn,PREFIXO . "typeconnectiondatabase",2, array("nome,descricao"), array("'teste'","'Testes'"));
-			inserirRegistro($conn,PREFIXO . "typeconnectiondatabase",3, array("nome,descricao"), array("'homolog'","'Homologação'"));
-			inserirRegistro($conn,PREFIXO . "typeconnectiondatabase",4, array("nome,descricao"), array("'producao'","'Produção'"));
-
-			// Banco de Dados
-			inserirRegistro($conn,PREFIXO . "database",1, array("nome","descricao"), array("mysql","'MySQL'"));
-			inserirRegistro($conn,PREFIXO . "database",2, array("nome","descricao"), array("cache","'CACHÉ'"));
-			
-			// Aba - Projeto
-			inserirRegistro($conn,PREFIXO . "abas",2, array("td_entidade","descricao","atributos"), array(getEntidadeId("td_abas",$conn),"'Aba'",getAtributoId(getEntidadeId("td_abas",$conn),"nome",$conn)));
-
-			// Local para CharSet
-			inserirRegistro($conn,PREFIXO . "charset",1, array("local","charset"), array("'Página principal (index)'","'D'"));
-			inserirRegistro($conn,PREFIXO . "charset",2, array("local","charset"), array("'Grade de Dados (load)'","'E'"));
-			inserirRegistro($conn,PREFIXO . "charset",3, array("local","charset"), array("'Formulário (load)'","'N'"));
-			inserirRegistro($conn,PREFIXO . "charset",4, array("local","charset"), array("'Classe Campos'","'N'"));
-			inserirRegistro($conn,PREFIXO . "charset",5, array("local","charset"), array("'MDM Embituido PHP'","'E'"));
-			inserirRegistro($conn,PREFIXO . "charset",6, array("local","charset"), array("'MDM Salvar Form com Submit'","'E'"));
-			inserirRegistro($conn,PREFIXO . "charset",7, array("local","charset"), array("'Gerar HTML no CRUD'","'D'"));
-			inserirRegistro($conn,PREFIXO . "charset",8, array("local","charset"), array("'Javascript Embutido no PHP'","'D'"));
-			
-		}
-
-		if (file_exists($bdPathFile)){
-			
-			if ($_POST["op"] == "instalar"){
-				
-				$query = $conn->query("UPDATE td_instalacao SET sistemainstalado = 1 WHERE id = 1;");
-				if (!$query){
-					foreach ($conn->errorInfo() as $erro){
-						echo $erro . "</br>";
-					}
-				}
-				echo 1;
-				exit;
-				
-			}
-			if ($_POST["op"] == "instrucao"){
-				include $_POST["instrucao"];
-				echo 1;
-				exit;
-			}
-			
-			if ($_POST["op"] == "config_projeto"){
-				$conn->query("INSERT INTO td_projeto (id,nome) VALUES (1,'".utf8_decode($_POST["nome"])."');");
-				exit;
-			}
-		}	
-	}
 	$projetodesc = $projetodiretorio = $projetoprefixo = "";
 	$displaybutton = "Instalar";
 	$novaInstalacao = 1;
@@ -202,22 +30,29 @@
 				</div>
 				<div class="col-md-9">
 					<div class="row-fluid">
-						<div id="form-grupo-botao-instalacao">
-							<img id="loader-instalar" src="<?=$_SESSION["URL_SYSTEM_THEME"]?>loading2.gif"/>
-							<button type="button" class="btn btn-primary btn-instalacaosistema" id="btn-instalar">
-								<?=$displaybutton?>				
-							</button>
-							<button type="button" class="btn btn-info btn-instalacaosistema" id="btn-personalizar">
-								Personalizada
-							</button>
-							<div class="progress" id="barradeprogresso-instalacao">
-							  <div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
-								20% Complete
-							  </div>
+						<div class="col-md-12 col-sm-12">
+							<div id="form-grupo-botao-instalacao">
+								<img id="loader-instalar" src="<?=$_SESSION["URL_SYSTEM_THEME"]?>loading2.gif"/>
+								<button type="button" class="btn btn-primary btn-instalacaosistema" id="btn-instalar">
+									<?=$displaybutton?>				
+								</button>
+								<button type="button" class="btn btn-info btn-instalacaosistema" id="btn-personalizar">
+									Personalizada
+								</button>
+								<div id="retorno"></div>
 							</div>
-							<div id="retorno"></div>
 						</div>
 					</div>
+					<div class="row-fluid">
+						<div class="col-md-12 col-sm-12">					
+							<div class="progress" id="barradeprogresso-instalacao">
+							  <div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+								0% Complete
+							  </div>
+							</div>							
+						</div>
+					</div>
+
 					<div class="row-fluid" id="linha-formulario">
 						<form id="form-instalacao-sistema">
 							<fieldset>
@@ -283,12 +118,12 @@
 				componentes['system.tipoaviso'] 			= 'system/tipoaviso.php';
 				componentes['system.aviso'] 				= 'system/aviso.php';
 				componentes['system.config'] 				= 'system/config.php';
-				componentes['system.entidadePermissoes']	= 'system/entidadePermissoes.php';
-				componentes['system.atributoPermissoes'] 	= 'system/atributoPermissoes.php';
+				componentes['system.entidadepermissoes']	= 'system/entidadepermissoes.php';
+				componentes['system.atributopermissoes'] 	= 'system/atributopermissoes.php';
 				componentes['system.funcao'] 				= 'system/funcao.php';
-				componentes['system.funcaoPermissoes']		= 'system/funcaoPermissoes.php';
-				componentes['system.menuPermissoes'] 		= 'system/menuPermissoes.php';
-				componentes['system.atributoFiltro'] 		= 'system/atributoFiltro.php';
+				componentes['system.funcaopermissoes']		= 'system/funcaopermissoes.php';
+				componentes['system.menupermissoes'] 		= 'system/menupermissoes.php';
+				componentes['system.atributofiltro'] 		= 'system/atributofiltro.php';
 				componentes['system.status'] 				= 'system/status.php';
 				componentes['system.consulta'] 				= 'system/consulta.php';
 				componentes['system.relatorio'] 			= 'system/relatorio.php';
@@ -328,16 +163,16 @@
 						linhas.push(componentes[c]);
 					}
 					totalinstrucao = linhas.length;
+
 					$.ajax({
 						type:"POST",
-						url:"instalacaosistema.php",
+						url:"<?=$_SESSION['URL_MILES']?>",
 						data:{
-							<?=getBDParams()?>
+							controller:"install/instalar",
 							op:"instalar",
 							projectfolder:$("#projectfolder").val(),
 							projectname:$("#projectname").val(),
-							prefixo:$("#prefixo").val(),
-							currentproject:<?=$_SESSION["currentproject"]?>
+							prefixo:$("#prefixo").val()
 						},
 						success:function(retorno){
 							if (retorno == 1 || retorno == "1"){
@@ -347,7 +182,7 @@
 								executa(linhas[progressaoatual]);
 							}else{
 								$("#retorno").html('<div class="alert alert-danger" role="alert">Erro ao instalar o sistema. Motivo: ' +retorno+ '</div>');
-								$("#retorno").show();								
+								$("#retorno").show();				
 							}
 						}
 					});
@@ -397,12 +232,11 @@
 				function executa(instrucao){
 					$.ajax({
 						type:"POST",
-						url:"instalacaosistema.php",
+						url:"<?=$_SESSION['URL_MILES']?>",
 						data:{
-							<?=getBDParams()?>
+							controller:"install/instalar",
 							op:"instrucao",
-							instrucao:instrucao,
-							currentproject:<?=$_SESSION["currentproject"]?>
+							instrucao:instrucao
 						},
 						success:function(retorno){
 							if (retorno == 1 || retorno == "1"){
@@ -423,19 +257,26 @@
 									},5000);
 									$.ajax({
 										type:"POST",
-										url:"instalacaosistema.php",
+										url:"<?=$_SESSION['URL_MILES']?>",
 										data:{
-											<?=getBDParams()?>
+											controller:"install/instalar",
+											op:"projeto",
+											nome:$("#projectname").val()
+										}
+									});
+									$.ajax({
+										type:"POST",
+										url:"<?=$_SESSION['URL_MILES']?>",
+										data:{
+											controller:"install/instalar",
 											op:"inserirregistros",
-											novainstalacao:"<?=$novaInstalacao?>",
-											currentproject:<?=$_SESSION["currentproject"]?>
+											novainstalacao:"<?=$novaInstalacao?>"
 										},
 										complete:function(){
 											// Setando Permissões
 											$.ajax({
-												url:"../index.php?",
+												url:"<?=$_SESSION['URL_MILES']?>",
 												data:{
-													<?=getBDParams()?>
 													controller:"requisicoes",
 													op:"setar_todas_permissoes",
 													auth:1,
@@ -445,39 +286,24 @@
 										}
 									});
 									<?php
+										/*
 										if (isset($_GET["installsystem"])){
 											echo 'parent.finalizacaoDisplayInstalacao();';
 											$newdir = "../projects/" . $_GET["projetoid"] . "/";
 											copiardiretorio("../projects/1/",$newdir,true,"config");
 										}
+										*/
 									?>
 									$.ajax({
 										type:"POST",
-										url:"instalacaosistema.php",
+										url:"<?=$_SESSION['URL_MILES']?>",
 										data:{
-											<?=getBDParams()?>
-											op:"criar_arquivos_configuracao_projeto",
-											nome:$("#projectname").val(),
-											currentproject:<?=$_SESSION["currentproject"]?>
-										},
-										success:function(){
-
+											controller:'install/instalar',
+											op:"arquivos",
+											nome:$("#projectname").val()
 										}
 									});
 								}
-								$.ajax({
-									type:"POST",
-									url:"instalacaosistema.php",
-									data:{
-										<?=getBDParams()?>
-										op:"config_projeto",
-										nome:$("#projectname").val(),
-										currentproject:<?=$_SESSION["currentproject"]?>
-									},
-									success:function(){
-
-									}
-								});
 							}else{
 								$("#retorno").html('<div class="alert alert-danger" role="alert">Erro ao instalar o sistema. Motivo: ' +retorno+ '</div>');
 								$("#retorno").show();
@@ -490,18 +316,14 @@
 				});
 
 				function addComponentesPersonalizados(){
-					var divRow = $('<div class="row">');
 					for(c in componentes){
-						var divCol		= $('<div class="col-md-4 col-sm-6">');
 						var formgroup 	= $('<div class="form-group">');
 						var label 		= $('<label for="'+c+'">'+c+'</label>');
 						var checkbox	= $('<input id="'+c+'" type="checkbox" data-componente="'+c+'">');
 
 						formgroup.append(checkbox,label);
-						divCol.append(formgroup);
-						divRow.append(divCol);
+						$("#formulario-personalizado").append(formgroup);
 					}
-					$("#formulario-personalizado").append(divRow);
 				}
 			</script>
 		</div>	

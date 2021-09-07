@@ -25,7 +25,7 @@
     $sigla     = criarAtributo($conn,$entidadeID,"sigla","Sigla","varchar","15",1,3,1);
 
 	// Criando Acesso
-	$menu_webiste = addMenu($conn,$entidadeDescricao,'#','','','','geral');
+	$menu_webiste 	= addMenu($conn,'Geral','#','',0,0,'geral');
 
 	// Adicionando Menu
-	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".PREFIXO.$entidadeNome.".html",'',$menu_webiste,8,'geral-' . $entidadeNome);
+	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,8,'geral-' . $entidadeNome,$entidadeID,'cadastro');
