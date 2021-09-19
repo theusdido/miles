@@ -626,12 +626,13 @@ function criarEntidade(
 
 	$nome 		= getSystemPREFIXO() . $nome;
 	$descricao 	= utf8charset($descricao);
-
-	$sqlExisteEntidade = "SELECT id,nome FROM " . ENTIDADE . " WHERE nome='{$nome}'";
-	$queryExisteEntidade = $conn->query($sqlExisteEntidade);
-	if (!$queryExisteEntidade){
+	try{
+		$sqlExisteEntidade = "SELECT id,nome FROM " . ENTIDADE . " WHERE nome='{$nome}';";
+		$queryExisteEntidade = $conn->query($sqlExisteEntidade);
+	}catch(Throwable $t){
 		echo $sqlExisteEntidade;
 		var_dump($conn->errorInfo());
+		return false;
 	}
 	$linhaExisteEntidade = $queryExisteEntidade->fetch();
 	

@@ -155,6 +155,22 @@
 			
 				td_entidade[10] = {
 					id:10,
+					nome:'td_menupermissoes',
+					descricao:'Menu Permissões',
+					exibirmenuadministracao:'1',
+					exibircabecalho:'1',
+					pai:'',
+					ncolunas:'3',
+					campodescchave:'',
+					atributogeneralizacao:'0',
+					exibirlegenda:'1',
+					registrounico:0,
+					pacote:'',
+					nomecompleto:'td_menupermissoes'
+				};
+			
+				td_entidade[11] = {
+					id:11,
 					nome:'td_pais',
 					descricao:'País',
 					exibirmenuadministracao:'0',
@@ -169,8 +185,8 @@
 					nomecompleto:'td_pais'
 				};
 			
-				td_entidade[11] = {
-					id:11,
+				td_entidade[12] = {
+					id:12,
 					nome:'td_uf',
 					descricao:'Estado',
 					exibirmenuadministracao:'0',
@@ -183,22 +199,6 @@
 					registrounico:0,
 					pacote:'',
 					nomecompleto:'td_uf'
-				};
-			
-				td_entidade[12] = {
-					id:12,
-					nome:'td_menupermissoes',
-					descricao:'Menu Permissões',
-					exibirmenuadministracao:'1',
-					exibircabecalho:'1',
-					pai:'',
-					ncolunas:'3',
-					campodescchave:'',
-					atributogeneralizacao:'0',
-					exibirlegenda:'1',
-					registrounico:0,
-					pacote:'',
-					nomecompleto:'td_menupermissoes'
 				};
 			
 				td_entidade[13] = {
@@ -1009,7 +1009,7 @@
 					exibircabecalho:'1',
 					pai:'',
 					ncolunas:'3',
-					campodescchave:'0',
+					campodescchave:'',
 					atributogeneralizacao:'397',
 					exibirlegenda:'1',
 					registrounico:0,
@@ -2846,10 +2846,10 @@
 				td_atributo[56] = {
 					id:56,
 					entidade:'10',
-					nome:'nome',
-					descricao:'Nome',
-					tipo:'varchar',
-					tamanho:'200',
+					nome:'menu',
+					descricao:'Menu',
+					tipo:'int',
+					tamanho:'0',
 					omissao:'',
 					collection:'',
 					atributos:'',
@@ -2857,9 +2857,9 @@
 					indice:'',
 					autoincrement:'',
 					comentario:'',
-					exibirgradededados:'1',
-					chaveestrangeira:'0',
-					tipohtml:'3',
+					exibirgradededados:'0',
+					chaveestrangeira:'1',
+					tipohtml:'4',
 					dataretroativa:'0',
 					ordem:'',
 					readonly:'0',
@@ -2876,10 +2876,10 @@
 				td_atributo[57] = {
 					id:57,
 					entidade:'10',
-					nome:'sigla',
-					descricao:'Sigla',
-					tipo:'char',
-					tamanho:'2',
+					nome:'usuario',
+					descricao:'Usuário',
+					tipo:'int',
+					tamanho:'0',
 					omissao:'',
 					collection:'',
 					atributos:'',
@@ -2887,9 +2887,9 @@
 					indice:'',
 					autoincrement:'',
 					comentario:'',
-					exibirgradededados:'1',
-					chaveestrangeira:'0',
-					tipohtml:'3',
+					exibirgradededados:'0',
+					chaveestrangeira:'3',
+					tipohtml:'4',
 					dataretroativa:'0',
 					ordem:'',
 					readonly:'0',
@@ -2905,6 +2905,36 @@
 			
 				td_atributo[58] = {
 					id:58,
+					entidade:'10',
+					nome:'permissao',
+					descricao:'Permissão',
+					tipo:'tinyint',
+					tamanho:'0',
+					omissao:'',
+					collection:'',
+					atributos:'',
+					nulo:'0',
+					indice:'',
+					autoincrement:'',
+					comentario:'',
+					exibirgradededados:'0',
+					chaveestrangeira:'0',
+					tipohtml:'7',
+					dataretroativa:'0',
+					ordem:'',
+					readonly:'0',
+					inicializacao:'',
+					exibirpesquisa:'',
+					tipoinicializacao:'1',
+					atributodependencia:'',
+					labelzerocheckbox:'Não',
+					labelumcheckbox:'Sim',
+					criarsomatoriogradededados:'',
+					naoexibircampo:''
+				};
+			
+				td_atributo[59] = {
+					id:59,
 					entidade:'11',
 					nome:'projeto',
 					descricao:'Projeto',
@@ -2933,8 +2963,8 @@
 					naoexibircampo:''
 				};
 			
-				td_atributo[59] = {
-					id:59,
+				td_atributo[60] = {
+					id:60,
 					entidade:'11',
 					nome:'empresa',
 					descricao:'Empresa',
@@ -2963,8 +2993,8 @@
 					naoexibircampo:''
 				};
 			
-				td_atributo[60] = {
-					id:60,
+				td_atributo[61] = {
+					id:61,
 					entidade:'11',
 					nome:'inativo',
 					descricao:'Inativo',
@@ -2993,8 +3023,8 @@
 					naoexibircampo:''
 				};
 			
-				td_atributo[61] = {
-					id:61,
+				td_atributo[62] = {
+					id:62,
 					entidade:'11',
 					nome:'nome',
 					descricao:'Nome',
@@ -3023,8 +3053,8 @@
 					naoexibircampo:''
 				};
 			
-				td_atributo[62] = {
-					id:62,
+				td_atributo[63] = {
+					id:63,
 					entidade:'11',
 					nome:'sigla',
 					descricao:'Sigla',
@@ -3040,36 +3070,6 @@
 					exibirgradededados:'1',
 					chaveestrangeira:'0',
 					tipohtml:'3',
-					dataretroativa:'0',
-					ordem:'',
-					readonly:'0',
-					inicializacao:'',
-					exibirpesquisa:'',
-					tipoinicializacao:'1',
-					atributodependencia:'',
-					labelzerocheckbox:'',
-					labelumcheckbox:'',
-					criarsomatoriogradededados:'',
-					naoexibircampo:''
-				};
-			
-				td_atributo[63] = {
-					id:63,
-					entidade:'11',
-					nome:'pais',
-					descricao:'País',
-					tipo:'int',
-					tamanho:'0',
-					omissao:'',
-					collection:'',
-					atributos:'',
-					nulo:'1',
-					indice:'',
-					autoincrement:'',
-					comentario:'',
-					exibirgradededados:'1',
-					chaveestrangeira:'10',
-					tipohtml:'4',
 					dataretroativa:'0',
 					ordem:'',
 					readonly:'0',
@@ -3176,10 +3176,10 @@
 				td_atributo[67] = {
 					id:67,
 					entidade:'12',
-					nome:'menu',
-					descricao:'Menu',
-					tipo:'int',
-					tamanho:'0',
+					nome:'nome',
+					descricao:'Nome',
+					tipo:'varchar',
+					tamanho:'200',
 					omissao:'',
 					collection:'',
 					atributos:'',
@@ -3187,9 +3187,9 @@
 					indice:'',
 					autoincrement:'',
 					comentario:'',
-					exibirgradededados:'0',
-					chaveestrangeira:'1',
-					tipohtml:'4',
+					exibirgradededados:'1',
+					chaveestrangeira:'0',
+					tipohtml:'3',
 					dataretroativa:'0',
 					ordem:'',
 					readonly:'0',
@@ -3206,10 +3206,10 @@
 				td_atributo[68] = {
 					id:68,
 					entidade:'12',
-					nome:'usuario',
-					descricao:'Usuário',
-					tipo:'int',
-					tamanho:'0',
+					nome:'sigla',
+					descricao:'Sigla',
+					tipo:'char',
+					tamanho:'2',
 					omissao:'',
 					collection:'',
 					atributos:'',
@@ -3217,9 +3217,9 @@
 					indice:'',
 					autoincrement:'',
 					comentario:'',
-					exibirgradededados:'0',
-					chaveestrangeira:'3',
-					tipohtml:'4',
+					exibirgradededados:'1',
+					chaveestrangeira:'0',
+					tipohtml:'3',
 					dataretroativa:'0',
 					ordem:'',
 					readonly:'0',
@@ -3236,20 +3236,20 @@
 				td_atributo[69] = {
 					id:69,
 					entidade:'12',
-					nome:'permissao',
-					descricao:'Permissão',
-					tipo:'tinyint',
+					nome:'pais',
+					descricao:'País',
+					tipo:'int',
 					tamanho:'0',
 					omissao:'',
 					collection:'',
 					atributos:'',
-					nulo:'0',
+					nulo:'1',
 					indice:'',
 					autoincrement:'',
 					comentario:'',
-					exibirgradededados:'0',
-					chaveestrangeira:'0',
-					tipohtml:'7',
+					exibirgradededados:'1',
+					chaveestrangeira:'11',
+					tipohtml:'4',
 					dataretroativa:'0',
 					ordem:'',
 					readonly:'0',
@@ -3257,8 +3257,8 @@
 					exibirpesquisa:'',
 					tipoinicializacao:'1',
 					atributodependencia:'',
-					labelzerocheckbox:'Não',
-					labelumcheckbox:'Sim',
+					labelzerocheckbox:'',
+					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
 					naoexibircampo:''
 				};
@@ -3428,7 +3428,7 @@
 					autoincrement:'',
 					comentario:'',
 					exibirgradededados:'1',
-					chaveestrangeira:'11',
+					chaveestrangeira:'12',
 					tipohtml:'4',
 					dataretroativa:'0',
 					ordem:'',
@@ -4028,7 +4028,7 @@
 					autoincrement:'',
 					comentario:'',
 					exibirgradededados:'0',
-					chaveestrangeira:'17',
+					chaveestrangeira:'0',
 					tipohtml:'4',
 					dataretroativa:'0',
 					ordem:'',
