@@ -33,7 +33,7 @@
 	$foto = criarAtributo($conn,$entidadeID,"foto","Foto","varchar","200",0,19,0,0,0,"");
 	
 	// Criando Acesso
-	$menu_webiste = addMenu($conn,'Blog','#','','','','blog');
+	$menu_webiste = addMenu($conn,'Blog','#','',0,0,'blog');
 	
 	// Adicionando Menu
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,1,'blog-' . $entidadeNome);

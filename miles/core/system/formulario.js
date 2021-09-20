@@ -72,9 +72,15 @@ if (funcionalidade == "cadastro"){
 			entidadePrincipalGD.contexto=contextoListar;
 			gradesdedados[contextoListar] = entidadePrincipalGD;
 			gradesdedados[contextoListar].exibirpesquisa = true;
+			gradesdedados[contextoListar].exibireditar 	= true;
+			gradesdedados[contextoListar].exibirexcluir = true;
+			gradesdedados[contextoListar].exibiremmassa = true;			
 			entidadePrincipalGD.show();
 		}else{
 			gradesdedados[contextoListar].exibirpesquisa = true;
+			gradesdedados[contextoListar].exibireditar 	= true;
+			gradesdedados[contextoListar].exibirexcluir = true;
+			gradesdedados[contextoListar].exibiremmassa = true;			
 			gradesdedados[contextoListar].clear();
 			gradesdedados[contextoListar].reload();
 		}
@@ -82,6 +88,7 @@ if (funcionalidade == "cadastro"){
 }
 // Inicializa CONSULTA
 if (funcionalidade == "consulta"){
+	/*
 	// Seta CK Editores para CONSULTA
 	setaCkEditores(true);
 	if (gradesdedados[contextoListar] == undefined){
@@ -105,6 +112,7 @@ if (funcionalidade == "consulta"){
 			carregarListas($(this).data("entidade"),$(this).attr("id"),"");
 		}
 	});
+	*/
 }
 
 // Inicializa RELATORIO
@@ -1358,6 +1366,10 @@ function novoRegistroFormulario(objBotaoNovo){
 				$("#" + td_atributo[atributoID].nome + "[data-entidade="+nomeEntidadeDados+"]",contextoAdd).parents(".form-group").find("iframe").first().attr("src",getURLProject("index.php?controller=upload&atributo="+td_atributo[atributoID].id+"&valor=&id=" + indicetemp));
 			}
 		}
+
+		$(".checkbox-s",contextoAdd).removeClass("active");
+		$(".checkbox-n",contextoAdd).addClass("active");
+		
 		if (fp){
 			
 			if ($('#select-generalizacao-multipla').length > 0){
@@ -1366,10 +1378,10 @@ function novoRegistroFormulario(objBotaoNovo){
 				$('#select-generalizacao-multipla')[0].sumo.reload();
 				$('#select-generalizacao-multipla').change();
 				$('#select-generalizacao-multipla')[0].sumo.unSelectAll();
-			}	
+			}
+		}else{
+			
 		}
-		$(".checkbox-s",contextoAdd).removeClass("active");
-		$(".checkbox-n",contextoAdd).addClass("active");
 	});
 
 	$(".form-group",contextoAdd).removeClass("has-success");

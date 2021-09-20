@@ -36,7 +36,7 @@
 	$emailpessoal = criarAtributo($conn,$entidadeID,"emailpessoal","E-Mail Pessoal","varchar",16,0,12);
 	$cresi = criarAtributo($conn,$entidadeID,"cresi","CRESI","varchar",15,0,2);
 	// Criando Acesso
-	$menu_webiste = addMenu($conn,'Geral','#','','','','Geral');
+	$menu_webiste = addMenu($conn,'Geral','#','',0,0,'Geral');
 
 	// Adicionando Menu
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,8,'geral-' . $entidadeNome);

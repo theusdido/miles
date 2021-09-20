@@ -168,6 +168,8 @@
 									});
 									indiceComponente 	= 0;
 									indiceRegistro 		= 0;
+									componentes.splice(0,componentes.length);
+									$(".checkbox-componente,.checkbox-registro").prop("checked",false);
 									msgRetorno('<b>Parabéns !</b>. Pacotes configurados com sucesso.');
 									$("#guia-pacote").attr("src","<?=$_SESSION['URL_SYSTEM_THEME']?>check.gif");
 									

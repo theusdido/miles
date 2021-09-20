@@ -1,6 +1,6 @@
 <?php
 	// Criando Acesso
-	$menu_geral = addMenu($conn,'Geral','#','','','','geral');
+	$menu_geral = addMenu($conn,'Geral','#','',0,0,'geral');
 
 	// Estado
 	$paisID = criarEntidade(

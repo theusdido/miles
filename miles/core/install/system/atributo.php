@@ -22,7 +22,7 @@
 	criarCampoDicionario($conn,$entidade,"chaveestrangeira","int",0,1);
 	criarCampoDicionario($conn,$entidade,"tipohtml","int",0,1);
 	criarCampoDicionario($conn,$entidade,"dataretroativa","smallint",0,1);
-	criarCampoDicionario($conn,$entidade,"ordem","smallint",0,1);
+	criarCampoDicionario($conn,$entidade,"ordem","float",0,1);
  	criarCampoDicionario($conn,$entidade,"inicializacao","varchar",200,1);
 	criarCampoDicionario($conn,$entidade,"readonly","boolean",0,1);
 	criarCampoDicionario($conn,$entidade,"exibirpesquisa","boolean",0,1);

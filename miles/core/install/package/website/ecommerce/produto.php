@@ -55,7 +55,7 @@
     $produto_marca = criarAtributo($conn,$entidadeID,"marca","Marca","int",1,1,4,0,installDependencia($conn,"ecommerce_marca","package/website/"));	
 
 	// Criando Acesso
-	$menu_webiste = addMenu($conn,'E-Commerce','#','','','','ecommerce');
+	$menu_webiste = addMenu($conn,'E-Commerce','#','',0,0,'ecommerce');
 
 	// Adicionando Menu
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,6,'ecommerce-' . $entidadeNome,$entidadeID,'cadastro');

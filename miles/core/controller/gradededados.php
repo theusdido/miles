@@ -131,10 +131,10 @@ $sqlTotal = tdClass::Criar("sqlcriterio");
 if (tdClass::read("filtros") != ""){
 	$filtros = explode("~",tdClass::read("filtros"));	
 	foreach($filtros as $ft){
-		$f = explode("^",$ft);
-		$campo_a = explode(" ",$f[0]);
-		$camponome = $campo_a[0];
-
+		$f 				= explode("^",$ft);
+		$campo_a 		= explode(" ",$f[0]);
+		$camponome 		= $campo_a[0];
+		
 		if ($f[1] == "%" && $f[3] == "varchar"){
 			$sql->addFiltro($camponome,"like",'%' . utf8charset($f[2],2) . '%');
 			$sqlTotal->addFiltro($camponome,"like",'%' . utf8charset($f[2],2) . '%');
@@ -156,12 +156,16 @@ if (tdClass::read("filtros") != ""){
 
 			$sql->add($sqlFiltrosNulo);
 			$sqlTotal->add($sqlFiltrosNulo);
+		}else if ($f[1] == "!"){
+			$sql->addFiltro($camponome,'<>',$f[2]);
+			$sqlTotal->addFiltro($camponome,'<>',$f[2]);				
 		}else{
 			$sql->addFiltro($camponome,$f[1],$f[2]);
 			$sqlTotal->addFiltro($camponome,$f[1],$f[2]);
 		}		
 	}
 }
+
 // Filtro
 if (tdClass::read("filtro") != ""){
 	$filtro = explode("^",tdClass::read("filtro"));

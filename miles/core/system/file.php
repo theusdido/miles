@@ -2,6 +2,9 @@
 	// Caminho do Favicon do projeto
 	define("FILE_CURRENT_FAVICON",isset($config["FAVICON"])?$config["FAVICON"]:'');
 
+	// Nome do arquivo do Favicon do sistema
+	define('FILE_FAVICON','logo-favicon.png');
+
 	// Logo Padrão
 	define("FILE_LOGO", isset($config["LOGO"]) ? $config["LOGO"] : 'logo.png');
 

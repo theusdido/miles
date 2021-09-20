@@ -106,7 +106,7 @@
 	);
 	
 	// 3º PASSO
-	$menu_blog = addMenu($conn,'Blog','#','','','','blog');
+	$menu_blog = addMenu($conn,'Blog','#','',0,0,'blog');
 	
 	// 4º PASSO
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',".$menu_blog.",2,'website-'.$entidadeNome);

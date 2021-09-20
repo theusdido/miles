@@ -26,7 +26,7 @@
 	$perfil = criarAtributo($conn,$entidadeID,"perfil","Perfil","int",0,0,16,0,getEntidadeId("website_redesocial_perfil",$conn));
 
 	// Criando Acesso
-	$menu_redesocial = addMenu($conn,$entidadeDescricao,'#','','','','redesocial');
+	$menu_redesocial = addMenu($conn,$entidadeDescricao,'#','',0,0,'redesocial');
 
 	// Adicionando Menu
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_redesocial,1,'redesocial-' . $entidadeNome);

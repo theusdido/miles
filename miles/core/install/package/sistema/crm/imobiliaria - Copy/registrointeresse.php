@@ -24,7 +24,7 @@
 	$cliente = criarAtributo($conn,$entidadeID,"cliente","Cliente","int",0,0,4,0,getEntidadeId("crm_imobiliaria_cliente",$conn));
 	$corretor = criarAtributo($conn,$entidadeID,"corretor","Corretor","int",0,0,4,0,getEntidadeId("crm_imobiliaria_corretor",$conn));
 	// Criando Acesso
-	$menu_webiste = addMenu($conn,'Geral','#','','','','Geral');
+	$menu_webiste = addMenu($conn,'Geral','#','',0,0,'Geral');
 
 	// Adicionando Menu
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,8,'geral-' . $entidadeNome);

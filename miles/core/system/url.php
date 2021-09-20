@@ -5,11 +5,12 @@
 	// URL ALIAS
 	if (isset($_GET["alias"])) Session::append("URL_ALIAS",REQUES_PROTOCOL . HTTP_HOST . "/" . $_GET["alias"]);
 
-	$ruri 			= $_SERVER['REQUEST_URI'];
-	$request_uri 	= explode('?',(strpos($ruri,'index.php') > -1 ? dirname($ruri).'/' : $ruri));
+	$ruri 				= $_SERVER['REQUEST_URI'];	
+	$request_uri 		= explode('?',(strpos($ruri,'index.php') > -1 ? dirname($ruri).'/' : $ruri));
+	$request_uri_dir	= str_replace("index.php","",$request_uri[0]);
 
 	// URL MILES
-	Session::append("URL_MILES",REQUEST_PROTOCOL . HTTP_HOST . $request_uri[0]);
+	Session::append("URL_MILES",REQUEST_PROTOCOL . HTTP_HOST . $request_uri_dir);
 	
 	// URL CORE
 	Session::append("URL_CORE",Session::Get('URL_MILES') . FOLDER_CORE . '/');
@@ -39,6 +40,8 @@
 	Session::append("URL_CURRENT_LOGO_PADRAO",Session::Get("URL_CURRENT_PROJECT_THEME") . FILE_LOGO );
     
 	Session::append("URL_CURRENT_FAVICON",Session::Get("URL_CURRENT_PROJECT_THEME") . FILE_CURRENT_FAVICON);
+
+	Session::append("URL_FAVICON",Session::Get("URL_SYSTEM_THEME") . FILE_FAVICON);	
     
 	Session::append("URL_CURRENT_CONFIG_PROJECT",Session::Get("URL_CURRENT_PROJECT"). FOLDER_CONFIG . "/");
     

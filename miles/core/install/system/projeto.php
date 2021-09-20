@@ -21,8 +21,8 @@
 	);
 
 	// Criando Atributos
-	$nomefantasia = criarAtributo($conn,$entidadeID,"nome","Nome","varchar",120,0,3,1,0,0,"");
-	$projectdiretorio = criarAtributo($conn,$entidadeID,"projectdiretorio","Diretótio Projeto","varchar",50,1,3);
+	$nomefantasia 		= criarAtributo($conn,$entidadeID,"nome","Nome","varchar",120,0,3,1,0,0,"");
+	$projectdiretorio 	= criarAtributo($conn,$entidadeID,"projectdiretorio","Diretótio Projeto","varchar",50,1,3);
 
 	// Criando Aba
 	criarAba($conn,$entidadeID,"Capa",$nomefantasia.",".$projectdiretorio);

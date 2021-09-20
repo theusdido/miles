@@ -3,11 +3,11 @@
 	"folder":"miles/",
 	"system":{
 		"url":{
-			"lib":"http://teia.tec.br/miles/sistema/lib/"
+			"lib":"http://localhost/miles/lib/"
 		},
 		"request_protocol":"http",
 		"package":"erp"
 	},
-	"theme":"desktop",
-	"prefix":"td"
+	"prefix":"td",
+	"theme":"desktop"
 }

@@ -25,7 +25,7 @@
 	$centrocusto = criarAtributo($conn,$entidadeID,"centrocusto","Centro de Custo","int",0,0,22,1,installDependencia($conn,"erp_contabil_centrocusto"),0,"",0,0);
 
 	// Criando Acesso
-	$menu_webiste = addMenu($conn,'Contábil','#','','','','contabil');
+	$menu_webiste = addMenu($conn,'Contábil','#','',0,0,'contabil');
 	
 	// Adicionando Menu
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,8,'contabil-' . $entidadeNome);

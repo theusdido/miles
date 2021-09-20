@@ -106,7 +106,7 @@
 	);
 	
 	// 3º PASSO
-	$menu_redesocial = addMenu($conn,'Rede Social','#','','','','redesocial');
+	$menu_redesocial = addMenu($conn,'Rede Social','#','',0,0,'redesocial');
 	
 	// 4º PASSO
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_redesocial,1,'redesocial-' . $entidadeNome);

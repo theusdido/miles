@@ -35,6 +35,9 @@ function GradeDeDados(entidade){
 	this.movimentacao = "";
 	this.funcaoretorno = "";
 	this.exibirpesquisa = true;
+	this.exibireditar = true;
+	this.exibirexcluir = true;
+	this.exibiremmassa = true;
 	this.totalRegistroRetorno = 0;
 	this.order = [];
 	this.construct(entidade);
@@ -239,8 +242,12 @@ GradeDeDados.prototype.cabecalho = function(){
 			if (this.movimentacao != ""){
 				tr.append($("<th class='movimentacao-coluna-gradededados'><center>Mov.</center></th>"));
 			}
-			tr.append($("<th class='editar-coluna-gradededados'><center>Editar</center></th>"));
-			tr.append($("<th class='excluir-coluna-gradededados'><center>Excluir</center></th>"));
+			if (this.exibireditar){
+				tr.append($("<th class='editar-coluna-gradededados'><center>Editar</center></th>"));
+			}
+			if (this.exibirexcluir){
+				tr.append($("<th class='excluir-coluna-gradededados'><center>Excluir</center></th>"));
+			}			
 
 			var thSelTodos = $("<th>");
 			var thCenter = $("<center>")
@@ -251,7 +258,9 @@ GradeDeDados.prototype.cabecalho = function(){
 			});
 			thCenter.append(buttonSelTodos);
 			thSelTodos.append(thCenter);
-			tr.append(thSelTodos);
+			if (this.exibireditar || this.exibirexcluir || this.exibiremmassa){
+				tr.append(thSelTodos);
+			}
 		}
 		thead.append(tr);
 		this.table.append(thead);
@@ -588,7 +597,6 @@ GradeDeDados.prototype.excluir = function(){
 }
 GradeDeDados.prototype.selecionarTodos = function(botaoSelAll){
 	$(botaoSelAll).each(function(){
-		console.log("=>" + $(this).attr("data-sel"));
 		if ($(this).attr("data-sel")=="false"){
 			$(".gradededados input[type='checkbox']").prop("checked",true);
 			$(this).attr("data-sel","true");
@@ -614,6 +622,7 @@ GradeDeDados.prototype.rodape = function(){
 				var td = $("<td colspan='"+(this.attr_cabecalho_nome.length+3)+"'>");
 				var instancia = gradesdedados[this.contexto];
 				
+
 				// Excluir Selecionados
 				var btnExcluirTodos = $("<input type='button' style='float:right;' value='Excluir Selecionados' class='btn btn-default btn-excluir-selecionados'>");
 				btnExcluirTodos.on("click",".btn-excluir-selecionados",function(){
@@ -626,8 +635,8 @@ GradeDeDados.prototype.rodape = function(){
 					instancia.editarEmMassa();
 				});
 
-				td.append(btnExcluirTodos);
-				td.append(btnEditarEmMassa);
+				if (this.exibirexcluir) td.append(btnExcluirTodos);
+				if (this.exibiremmassa) td.append(btnEditarEmMassa);
 				tr.append(td);
 				tfoot.append(tr);
 				this.table.append(tfoot);
@@ -829,22 +838,21 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
 			if (typeof td_consulta[this.consulta] != "undefined"){
 				for (f in td_consulta[this.consulta].status){
 					var ft = td_consulta[this.consulta].status[f];
-					if (ft.td_atributo == idAtributo){
+					if (ft.atributo == idAtributo){
 						switch (ft.operador){
 							case "=": var operador = "=="; break;
 							case "!": var operador = "!="; break;
 							default: var operador = "==";
 						}
 
-						var tipohtml = td_atributo[ft.td_atributo].tipohtml;
+						var tipohtml = td_atributo[ft.atributo].tipohtml;
 						if (valorreal != ""){
 							if (parseInt(tipohtml) == 11){
 								var dt = valorreal.split(" ")[0];
 								if (dt != undefined && dt != null && dt != ''){
-									var data = dt.split("-")[2] + "/" + dt.split("-")[1] + "/" + dt.split("-")[0];
-									var data1 = new Date(dt.split("-")[2],dt.split("-")[1],dt.split("-")[0]);
-									var dt2 = (ft.valor=="now()"?config.datahora.split(" ")[0]:ft.valor);
-									var data2 = new Date(dt2.split("/")[0],dt2.split("/")[1],dt2.split("/")[2]);
+									var data1 	= new Date(dt.split("-")[0],dt.split("-")[1],dt.split("-")[2]).toUTCString();
+									var dt2 	= (ft.valor=="now()"?config.datahora.split(" ")[0]:ft.valor);
+									var data2 	= new Date(dt2.split("/")[2],dt2.split("/")[1],dt2.split("/")[0]).toUTCString();
 									switch(ft.operador){
 										case "=":
 											if (data1 == data2) eval("tr.addClass('"+td_status[ft.status].classe+"');");
@@ -869,11 +877,11 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
 							}else if (parseInt(tipohtml) == 23){
 								var dt = valorreal.split(" ")[0];
 								if (dt != undefined && dt != null && dt != ''){
-									var data = dt.split("-")[2] + "/" + dt.split("-")[1] + "/" + dt.split("-")[0];
-									var hora = valorreal.split(" ")[1];
-									var datahora = data + " " + hora;
-									var data1 = new Date(datahora);
-									var data2 = new Date((ft.valor=="now()"?config.datahora:ft.valor));
+									var data 		= dt.split("-")[2] + "/" + dt.split("-")[1] + "/" + dt.split("-")[0];
+									var hora 		= valorreal.split(" ")[1];
+									var datahora 	= data + " " + hora;
+									var data1 		= new Date(datahora);
+									var data2 		= new Date((ft.valor=="now()"?config.datahora:ft.valor));
 									switch(ft.operador){
 										case "=":									
 											if (data1 == data2) eval("tr.addClass('"+td_status[ft.status].classe+"');");
@@ -947,7 +955,7 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
 	var entidadeGD 		= this.nomeEntidade;
 	var entidade 		= this.entidade;
 	var btnEditar 		= $("<td align='center' class='editar-coluna-gradededados'></td>");
-	btnEditar.append(spanEditar);
+	if (this.exibireditar) btnEditar.append(spanEditar);
 
 	var tdExcluir 		= $("<td align='center' class='excluir-coluna-gradededados'>");
 	var btnExcluir 		= $("<span class='botao fas fa-trash-alt btn btn-danger'></span>");	
@@ -959,16 +967,21 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
 	btnExcluir.click(function(){
 		instancia.excluir(id,$(this));
 	});
-	tdExcluir.append(btnExcluir);
-	tdExcluir.append(loaderExcluir);
+	if (this.exibirexcluir){
+		tdExcluir.append(btnExcluir);
+		tdExcluir.append(loaderExcluir);
+	}
+
 	var checkExcluir = "<td align='center'><span align='center' class='grade-info'><input type='checkbox' value='"+id+"' class='gradededados-checkbox-excluir'></span></td>";	
 	if (!this.retornaFiltro){
 		if (this.movimentacao != ""){
 			tr.append(btnMovimentacao);
 		}
-		tr.append(btnEditar);
-		tr.append(tdExcluir);
-		tr.append(checkExcluir);
+		if (this.exibireditar) tr.append(btnEditar);
+		if (this.exibirexcluir){
+			tr.append(tdExcluir);
+			tr.append(checkExcluir);
+		} 
 	}else{
 		tr.attr("style","cursor:pointer;");
 		var instancia = this;

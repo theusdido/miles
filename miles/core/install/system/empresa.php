@@ -1,7 +1,7 @@
  <?php
 	// Setando variáveis
-	$entidadeNome = "empresa";
-	$entidadeDescricao = "Empresa";
+	$entidadeNome 		= "empresa";
+	$entidadeDescricao 	= "Empresa";
 	
 	// Criando Entidade
 	$entidadeID = criarEntidade(

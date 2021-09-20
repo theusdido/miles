@@ -33,6 +33,6 @@
 	criarAba($conn,$entidadeID,"Capa",$contato);
 
 	// Criando Relacionamento
-	criarRelacionamento($conn,9,installDependencia($conn,"sistema_erp_geral_pessoa"),$entidadeID,"Fornecedor",0);
-	criarRelacionamento($conn,5,$entidadeID,installDependencia($conn,"sistema_erp_geral_produto"),"Produtos",0);
-	criarRelacionamento($conn,5,$entidadeID,installDependencia($conn,"sistema_erp_geral_servico"),"Serviços",0);
+	criarRelacionamento($conn,9,$entidadeID,installDependencia($conn,"erp_geral_pessoa"),"Fornecedor",0);
+	criarRelacionamento($conn,5,$entidadeID,installDependencia($conn,"erp_geral_produto"),"Produtos",0);
+	criarRelacionamento($conn,5,$entidadeID,installDependencia($conn,"erp_geral_servico"),"Serviços",0);

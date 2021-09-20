@@ -1,5 +1,6 @@
 <meta charset="utf-8">
 <link href="<?=$_SESSION["URL_LIB"]?>bootstrap/3.3.1/css/bootstrap.css" rel="stylesheet" />
+<link rel="icon" href="<?=$_SESSION["URL_FAVICON"]?>" />
 <style type="text/css">
 /* Folha de Estilo */
 .navbar-default{

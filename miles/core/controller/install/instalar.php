@@ -1,14 +1,15 @@
 <?php
     $op = tdc::r('op');
-    $conn = Conexao::getConnection(
-        $_SESSION["db_type"],
-        $_SESSION["db_host"],
-        $_SESSION["db_base"],
-        $_SESSION["db_user"],
-        $_SESSION["db_password"],
-        $_SESSION["db_port"]
-    );
-
+	if (!$conn){
+		$conn = Conexao::getConnection(
+			$_SESSION["db_type"],
+			$_SESSION["db_host"],
+			$_SESSION["db_base"],
+			$_SESSION["db_user"],
+			$_SESSION["db_password"],
+			$_SESSION["db_port"]
+		);
+	}
     switch($op){
         case 'instalar':
             $query = $conn->query("UPDATE ".INSTALACAO." SET sistemainstalado = 1 WHERE id = 1;");
@@ -20,7 +21,7 @@
             echo 1;
         break;
         case 'instrucao':
-            include 'core/install/' . $_POST["instrucao"];
+            include 'core/install/' . tdc::r("instrucao");
             echo 1;            
         break;
         case 'projeto':

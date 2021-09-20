@@ -60,7 +60,7 @@
 	)));
 
 	// Criando Acesso
-	$menu_webiste = addMenu($conn,'E-Commerce','#','','','','ecommerce');
+	$menu_webiste = addMenu($conn,'E-Commerce','#','',0,0,'ecommerce');
 	
 	// Itens do Carrinho
 	$itenspedidoID = criarEntidade(

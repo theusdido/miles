@@ -28,7 +28,7 @@
 	$pedidoformapagamento = criarAtributo($conn,$entidadeID,"formapagamento","Forma de Pagamento","int",0,1,30,1,installDependencia($conn,"erp_financeiro_formapagamento"),0,"");
 
 	// Criando Acesso
-	$menu_comercial = addMenu($conn,'Comercial','#','','','','comercial');
+	$menu_comercial = addMenu($conn,'Comercial','#','',0,0,'comercial');
 	
 	// Itens do Carrinho
 	$itenspedidoID = criarEntidade(

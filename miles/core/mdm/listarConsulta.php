@@ -1,7 +1,7 @@
 <?php
 	require 'conexao.php';
-	require 'prefixo.php';
-	require_once 'funcoes.php';
+	require 'prefixo.php';	
+	require 'funcoes.php';
 ?>
 <html>
 	<head>
@@ -20,9 +20,9 @@
 					<table width="100%" class="table table-hover" style="float:right">
 						<caption><strong>Lista de Consultas</strong></caption>
 						<tr>
-							<td width="10%">Id</td>
-							<td width="40%">Descrição</td>
+							<td width="10%">ID</td>
 							<td width="40%">Nome</td>
+							<td width="40%">Entidade</td>
 							<td width="5%" align="center">Editar</td>
 							<td width="5%" align="center">Excluir</td>
 						</tr>	
@@ -30,10 +30,10 @@
 							$sql = "SELECT id,descricao,entidade FROM ".PREFIXO."consulta";
 							$query = $conn->query($sql);
 							foreach ($query->fetchAll() as $linha){
-								$descricao = utf8_encode($linha["descricao"]);
+								$descricao = executefunction("utf8charset",array($linha["descricao"]));
 								
 								$query = $conn->query("SELECT descricao FROM td_entidade WHERE id = {$linha["entidade"]}")->fetch();
-								$entidade = utf8_encode($query["descricao"]);
+								$entidade = executefunction("utf8charset",array($query["descricao"]));
 								echo "	<tr>
 											<td>{$linha["id"]}</td>
 											<td>{$descricao}</td>

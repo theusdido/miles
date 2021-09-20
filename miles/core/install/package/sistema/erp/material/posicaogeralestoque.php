@@ -27,7 +27,7 @@
 	$datahora = criarAtributo($conn,$entidadeID,"datahora","Data/Hora","datetime",0,1,23,1);
 
 	// Criando Acesso
-	$menu_webiste = addMenu($conn,'Material','#','','','','material');
+	$menu_webiste = addMenu($conn,'Material','#','',0,0,'material');
 
 	// Adicionando Menu
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,8,'material-' . $entidadeNome);

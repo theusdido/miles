@@ -626,16 +626,15 @@ function criarEntidade(
 
 	$nome 		= getSystemPREFIXO() . $nome;
 	$descricao 	= utf8charset($descricao);
-	try{
-		$sqlExisteEntidade = "SELECT id,nome FROM " . ENTIDADE . " WHERE nome='{$nome}';";
-		$queryExisteEntidade = $conn->query($sqlExisteEntidade);
-	}catch(Throwable $t){
+
+	$sqlExisteEntidade = "SELECT id,nome FROM " . ENTIDADE . " WHERE nome='{$nome}'";
+	$queryExisteEntidade = $conn->query($sqlExisteEntidade);
+	if (!$queryExisteEntidade){
 		echo $sqlExisteEntidade;
 		var_dump($conn->errorInfo());
-		return false;
 	}
 	$linhaExisteEntidade = $queryExisteEntidade->fetch();
-	
+
 	if ($queryExisteEntidade->rowCount() <= 0){
 		$entidade = getProxId("entidade",$conn);
 		$sql = "INSERT INTO ".ENTIDADE." (id,nome,descricao,exibirmenuadministracao,exibircabecalho,ncolunas,atributogeneralizacao,exibirlegenda,registrounico,carregarlibjavascript) VALUES (".$entidade.",'{$nome}','".$descricao."',{$exibirmenuadministracao},{$exibircabecalho},{$ncolunas},{$atributogeneralizacao},{$exibirlegenda},{$registrounico},{$carregarlibjavascript});";		
@@ -649,10 +648,8 @@ function criarEntidade(
 		var_dump($conn->errorInfo());
 		exit;
 	}
-
 	$sqlExisteFisicamente = "SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE UPPER(TABLE_NAME) = UPPER('".$nome."') AND UPPER(TABLE_SCHEMA) = UPPER('".SCHEMA."')";
 	$queryExisteFisicamente = $conn->query($sqlExisteFisicamente);
-
 	if ($queryExisteFisicamente->rowCount() <= 0){
 		$sql = "CREATE TABLE IF NOT EXISTS {$nome}(id int not null primary key) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
 		$query = $conn->query($sql);
@@ -671,7 +668,6 @@ function criarEntidade(
 			}
 		}	
 	}
-
 	if ($criarprojeto == 1){
 		criarAtributo($conn,$entidade,'projeto','Projeto','smallint',0,1,'16',0,installDependencia($conn,"projeto","system/"),0,'session.projeto',1);
 	}
@@ -754,7 +750,8 @@ function criarAtributo(
 	$linha = $query->fetchAll();		
 	if ($queryExisteAtributo->rowCount() <= 0){		
 		$id = getProxId("atributo",$conn);
-		$sql = "INSERT INTO {$entidadeatributodefault} (id,entidade,nome,descricao,tipo,tamanho,nulo,tipohtml,exibirgradededados,chaveestrangeira,dataretroativa,inicializacao,tipoinicializacao,labelzerocheckbox,labelumcheckbox,readonly,legenda) VALUES (".$id.",{$entidade},'{$nome}','".$descricao."','{$tipo}','{$tamanho}',{$nulo},'{$tipohtml}',{$exibirgradededados},{$chaveestrangeira},{$dataretroativa},'{$inicializacao}',{$tipoinicializacao},'{$labelzerocheckbox}','{$labelumcheckbox}',{$readonly},'{$legenda}');";	$query = $conn->query($sql);
+		$sql = "INSERT INTO {$entidadeatributodefault} (id,entidade,nome,descricao,tipo,tamanho,nulo,tipohtml,exibirgradededados,chaveestrangeira,dataretroativa,inicializacao,tipoinicializacao,labelzerocheckbox,labelumcheckbox,readonly,legenda) VALUES (".$id.",{$entidade},'{$nome}','".$descricao."','{$tipo}','{$tamanho}',{$nulo},'{$tipohtml}',{$exibirgradededados},{$chaveestrangeira},{$dataretroativa},'{$inicializacao}',{$tipoinicializacao},'{$labelzerocheckbox}','{$labelumcheckbox}',{$readonly},'{$legenda}');";
+		$query = $conn->query($sql);
 		if ($query){
 			$sql = "ALTER TABLE {$linha[0]["nome"]} ADD COLUMN {$nome} {$tipo}{$tamanhoSQL} {$nuloSQL};";
 			$criar = $conn->query($sql);
@@ -809,6 +806,7 @@ function criarAtributo(
 			var_dump($conn->errorInfo());
 		}
 	}
+	ordenarAtributo($id);
 	return $id;
 }
 function getProxId($entidade,$conn = null){
@@ -845,10 +843,10 @@ function addMenu(
 	}else{
 		$menu_webiste = getProxId("menu",$conn);
 		if ($ordem == 0){
-			$sqlOrdem = "SELECT IFNULL(MAX(ordem),0) + 1 ordem FROM " . MENU . " WHERE fixo = '{$target}';";
+			$sqlOrdem 	= "SELECT IFNULL(MAX(ordem),0) + 1 ordem FROM " . MENU . " WHERE fixo = '{$target}';";
 			$queryOrdem = $conn->query($sqlOrdem);
 			$linhaOrdem = $queryOrdem->fetch();
-			$ordem = $linhaOrdem["ordem"];
+			$ordem 		= $linhaOrdem["ordem"];
 		}
 		$sqlMenu = 	"INSERT INTO ". MENU." (id,descricao,link,target,pai,ordem,fixo,entidade,tipomenu) VALUES 
 		(".$menu_webiste.",'".$descricao."','".$link."','".$target."','".$pai."','".$ordem."','".$fixo."',".$entidade.",'".$tipomenu."');";
@@ -957,7 +955,7 @@ function getAtributoId($entidadeString,$atributoString,$conn = null){
 	}
 }
 function criarRelacionamento($conn,$tipo,$entidadePai,$entidadeFilho,$descricao = "",$atributo = 0){
-	$descricao 		= utf8charset($descricao);
+	
 	$cardinalidade 	= getCardinalidade($tipo);
 	$sqlVerifica 	= "SELECT id FROM ".RELACIONAMENTO." WHERE pai = " . $entidadePai . " AND filho = " . $entidadeFilho . " AND tipo = " . $tipo;
 	$queryVerifica 	= $conn->query($sqlVerifica);
@@ -970,12 +968,14 @@ function criarRelacionamento($conn,$tipo,$entidadePai,$entidadeFilho,$descricao 
 		$sql = "INSERT INTO " . RELACIONAMENTO . " (id,descricao,tipo,pai,filho,atributo,cardinalidade) 
 				VALUES (".$idRetorno.",'".$descricao."',".$tipo.",".$entidadePai.",".$entidadeFilho.",".$atributo.",'{$cardinalidade}');";
 	}
-	$query = $conn->query($sql);
-	if (!$query){
+	try{
+		$query = $conn->query($sql);
+		return $idRetorno;
+	}catch(Throwable $t){
 		echo $sql;
 		var_dump($conn->errorInfo());
-	}
-	return $idRetorno;
+		return 0;
+	}	
 }
 function getCardinalidade($tipo){
 	switch($tipo){
@@ -1971,5 +1971,81 @@ function getURLParamsArray($url){
 }
 
 function getSystemFKPreFixo($atributo = ""){
-	return "td_" . $atributo;
+	return $atributo;
+}
+/*  
+	* ordenarAtributo
+	* Data de Criacao: 18/09/2021
+	* @author Edilson Valentim dos Santos Bitencourt (Theusdido)
+	* Ordena o atributo para ser exibido no formulário
+	* PARAMETROS
+	*	@params: Number atributo:"ID do Atributo"
+	* RETORNO
+	*	@return:void
+*/
+function ordenarAtributo($atributo){
+	$a = tdc::p(ATRIBUTO,$atributo);
+	if ($a->ordem <= 0 || $a->ordem == ''){
+		switch($a->tipohtml){
+			case 16:
+				$ordem = 1;
+			break;
+			case 1:
+			case 2:
+			case 3:
+				$ordem = 2;
+			break;
+			case 4:
+			case 5:
+				$ordem = 3;
+			case 10:
+			case 15:
+			case 17:
+				$ordem = 4;
+			break;
+			case 11:
+			case 23:
+				$ordem = 5;
+			break;
+			case 12:
+			case 8:
+			case 6:
+			case 13:
+				$ordem = 6;
+			break;
+			case 9:
+			case 18:
+			case 29:
+				$ordem = 7;
+			break;
+			case 25:
+			case 26:
+			case 28:
+				$ordem = 8;
+			break;
+			case 21:
+			case 22:
+			case 24:
+				$ordem = 9;
+			break;
+			case 19:
+			case 20:
+				$ordem = 10;
+			break;
+			case 7:
+				$ordem = 11;
+			break;
+			case 14:
+			case 27:
+				$ordem = 12;
+			break;
+			case 30:
+				$ordem = 13;
+			break;
+			default:
+				$ordem = 0;
+		}
+		$a->ordem = $ordem;
+		$a->armazenar();
+	}
 }

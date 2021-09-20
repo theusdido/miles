@@ -28,7 +28,7 @@
 	criarAtributo($conn,$entidadeID,"fixo","Fixo","varchar","35",1,3,0,0,0,"");
 	
 	// 3º PASSO
-	$menu_webiste = addMenu($conn,'WebSite','#','','','','website');
+	$menu_webiste = addMenu($conn,'WebSite','#','',0,0,'website');
 	
 	// 4º PASSO
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',".$menu_webiste.",3,'website-'.$entidadeNome);

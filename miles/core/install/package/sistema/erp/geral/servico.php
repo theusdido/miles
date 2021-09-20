@@ -23,7 +23,7 @@
 	// Criando Atributos
 	$nome 			= criarAtributo($conn,$entidadeID,"nome","Nome","varchar","200",1,3,1,0,0,"");
 	$descricao 		= criarAtributo($conn,$entidadeID,"descricao","Descrição","text",0,1,21,0,0,0,"",1,0);
-	$tiposervico 	= criarAtributo($conn,$entidadeID,"tipo","Tipo","int",0,1,4,0,getEntidadeId("erp_geral_tiposervico",$conn),0,"",1,0);
+	$tiposervico 	= criarAtributo($conn,$entidadeID,"tipo","Tipo","int",0,1,4,0,installDependencia($conn,"erp_geral_tiposervico"));
 	$valor 			= criarAtributo($conn,$entidadeID,"valor","Valor","float",0,0,13,1,0);
 
 	// Criando Acesso

@@ -1,5 +1,5 @@
 PROJETO_DESC=Seara de Jesus
-PROJETO_FOLDER=miles/
+PROJETO_FOLDER=miles
 DATABASE_PADRAO=desenv
 PATH_LOGO_PADRAO=tema/padrao/logo.png
 PATH_IMG_RODAPE_PADRAO=tema/padrao/rodape.png

@@ -109,23 +109,6 @@
 				carregar("?controller=home","#conteudoprincipal");
 			}
 
-			// Adiciona atributos na entidade
-			for (e in td_entidade){
-				var td_atributo_aux = [];
-				for (a in td_atributo){
-					if (td_atributo[a].entidade == td_entidade[e].id){
-						var ordematributo = 0;
-						if (td_atributo[a].ordem == "" || td_atributo[a].ordem == 0){
-							ordematributo = td_atributo_aux.length;
-						}else{
-							ordematributo = td_atributo[a].ordem;
-						}
-						td_atributo_aux[ordematributo] = td_atributo[a];
-					}
-				}
-				td_entidade[e].atributos = td_atributo_aux;
-			}
-
 			// Carrega a Home
 			goHome();
 

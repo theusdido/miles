@@ -25,11 +25,11 @@
 	$fornecedor 		= criarAtributo($conn,$entidadeID,"fornecedor","Fornecedor","int",0,0,22,0,installDependencia($conn,"erp_contabil_elementocusto"),0,"",0,0);
 	$elementocusto 		= criarAtributo($conn,$entidadeID,"elementocusto","Elemento de Custo","int",0,1,4,0,installDependencia($conn,"erp_contabil_elementocusto"),0,"",0,0);
 	$valor 				= criarAtributo($conn,$entidadeID,"valor","Valor","float",0,1,13,0,0,0,"",0,0);
-	$formapagamento 	= criarAtributo($conn,$entidadeID,"formapagamento","Forma de Pagamento","int",0,0,4,0,installDependencia($conn,"erp_financeiro_formapagamento"),0,"",0,0);
+	$formapagamento 	= criarAtributo($conn,$entidadeID,"formapagamento","Forma de Pagamento","int",0,1,4,0,installDependencia($conn,"erp_financeiro_formapagamento"),0,"",0,0);
 	$despesafixa 		= criarAtributo($conn,$entidadeID,"despesafixa","Despesa Fixa","tinyint",0,1,7,0,0,0,"",0,0);
 
 	// Criando Acesso
-	$menu_webiste = addMenu($conn,'Financeiro','#','','','','financeiro');
+	$menu_webiste = addMenu($conn,'Financeiro','#','',0,0,'financeiro');
 
 	// Adicionando Menu
-	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,1,'financeiro-' . $entidadeNome,$entidadeID, 'cadastro');
+	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,8,'financeiro-' . $entidadeNome,$entidadeID, 'cadastro');

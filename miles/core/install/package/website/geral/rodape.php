@@ -24,7 +24,7 @@
 	criarAtributo($conn,$entidadeID,"exibirfrasedesenvolvidopor","Frase ( Desenvolvido por )","tinyint","",0,7,1,0,0,"");
 	
 	// 3º PASSO
-	$menu_webiste = addMenu($conn,'WebSite','#','','','','website');
+	$menu_webiste = addMenu($conn,'WebSite','#','',0,0,'website');
 	
 	// 4º PASSO
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',".$menu_webiste.",6,'website-' . $entidadeNome);

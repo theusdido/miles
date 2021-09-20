@@ -23,3 +23,9 @@
 	// Criando Atributos
 	$descricao = criarAtributo($conn,$entidadeID,"descricao","Descrição","int",0,1,3);
 	$codigo = criarAtributo($conn,$entidadeID,"codigo","Código","int",0,1,25);
+
+	// Criando Acesso
+	$menu_webiste = addMenu($conn,'Financeiro','#','',0,0,'financeiro');
+
+	// Adicionando Menu
+	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,8,'financeiro-' . $entidadeNome,$entidadeID, 'cadastro');

@@ -29,3 +29,5 @@
 	$fixo 		= criarAtributo($conn,$entidadeID,"fixo","Fixo","varchar",200,0,3,0,0,0,"");
 	$tipomenu 	= criarAtributo($conn,$entidadeID,"tipomenu","Tipo de Menu","varchar",35,0,3,0,0,0,"");
 	$entidade 	= criarAtributo($conn,$entidadeID,"entidade","Entidade","int",0,0,3,0,0,0,"");
+	$path 		= criarAtributo($conn,$entidadeID,"path","Path","varchar",250,1,3);
+	$icon 		= criarAtributo($conn,$entidadeID,"icon","Icon","varchar",50,1,3);

@@ -3,174 +3,6 @@
 	require 'prefixo.php';
 	require 'funcoes.php';
 
-	if (isset($_POST["op"])){
-		if ($_POST["op"] == "criarpagina");{
-			if (!isset($_SESSION["userid"])){
-				echo 'Sessão expirou';
-				exit;
-			}
-			$sql = "UPDATE " . PREFIXO . "entidade SET htmlpagefile = '".addslashes($_POST["html"])."' WHERE id={$_POST["entidade"]};";
-			$query = $conn->query($sql);
-
-			if ($query){
-				$path = '/' . $_COOKIE["path_files_cadastro"];
-				$fp_teste = fopen($path . '/teste.txt','a');
-				fwrite($fp_teste,'teste');
-				fclose($fp_teste);
-				exit;
-
-				// Documentação
-				$datacriacaodoc = "* @Data de Criacao: ".date("d/m/Y H:i:s");
-				$authordoc = "* @Criado por: ".$_SESSION["username"].", @id: ".$_SESSION["userid"];
-				$paginadoc = "* @Página: {$_POST["entidade"]} - {$_POST["descricaoentidade"]} [{$_POST["nomeentidade"]}]";				
-
-				// Cria o arquivo HTML
-				$fp = fopen($path . $_POST["filename"] ,'w');
-				fwrite($fp,htmlespecialcaracteres_($_POST["html"],1));
-				fclose($fp);
-
-				// Arquivo HTML do Componente Angular
-				$fp = fopen("../../../../miles/angularjs/aplicacao/src/app/pages/crm/pessoa/pessoa.component.html" ,'w');
-				fwrite($fp,htmlespecialcaracteres_(
-				'
-					<div class="main-content">
-						<div class="container-fluid">
-							<div class="row">
-								<div class="col-md-12">
-									<div class="card">
-										<div class="card-header card-header-danger">
-											<h4 class="card-title">PESSOA</h4>
-											<p class="card-category">Cadastro Único de Locador, Locatário, Fiador.</p>
-										</div>
-										<div class="card-body">'.$_POST["html"].'</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				'
-				,1));
-				fclose($fp);
-
-				// Cria o arquivo HTML Embutido Dinâmico
-				$dhtmlFile = $path . "/" . $_POST["nomeentidade"] . ".htm";
-				if (!file_exists($dhtmlFile)){
-					$fp = fopen($dhtmlFile,'w');
-					fwrite($fp,"<!--\n * HTML Personalizado \n {$datacriacaodoc} \n {$authordoc} \n {$paginadoc} \n\n Escreve seu código HTML personalizado aqui! \n-->\n");
-					fclose($fp);
-				}	
-				
-				// Cria o arquivo CSS
-				$cssFile = $path . "/" . $_POST["filenamecss"];
-				if (!file_exists($cssFile)){
-					$fp = fopen($cssFile ,'w');
-					fwrite($fp,"/*\n * CSS Personalizado \n {$datacriacaodoc} \n {$authordoc} \n {$paginadoc} \n\n Escreve seu código CSS personalizado aqui! \n*/\n");
-					fclose($fp);
-				}
-				
-				// Cria o arquivo JS
-				$jsFile = $path . "/" . $_POST["filenamejs"];
-				if (!file_exists($jsFile)){
-					$fp = fopen($jsFile ,'w');
-					fwrite($fp,"/*\n * JS Personalizado \n {$datacriacaodoc} \n {$authordoc} \n {$paginadoc} \n */\n\n");
-					fwrite($fp,"// Invocado ao clicar no botão Novo");
-					fwrite($fp,"\n");
-					fwrite($fp,"function beforeNew(){");
-					fwrite($fp,"\n\t var btnnew = arguments[0];");
-					fwrite($fp,"\n");
-					fwrite($fp,"}");
-					fwrite($fp,"\n");
-					fwrite($fp,"// Executa após o carregamento padrão de uma novo registro");
-					fwrite($fp,"\n");
-					fwrite($fp,"function afterNew(){");					
-					fwrite($fp,"\n\t var contexto = arguments[0];");
-					fwrite($fp,"\n");					
-					fwrite($fp,"}");
-					fwrite($fp,"\n");
-					fwrite($fp,"// Invocado ao clicar no botão Salvar");
-					fwrite($fp,"\n");
-					fwrite($fp,"function beforeSave(){");
-					fwrite($fp,"\n\t var btnsave = arguments[0];");
-					fwrite($fp,"\n");
-					fwrite($fp,"}");
-					fwrite($fp,"\n");
-					fwrite($fp,"// Executa após o salvamento padrão de um registro");
-					fwrite($fp,"\n");
-					fwrite($fp,"function afterSave(){");
-					fwrite($fp,"\n\t var fp = arguments[0];");
-					fwrite($fp,"\n\t var btnsave = arguments[1];");
-					fwrite($fp,"\n");
-					fwrite($fp,"}");
-					fwrite($fp,"\n");
-					fwrite($fp,"// Invocado ao clicar no botão Editar ");
-					fwrite($fp,"\n");
-					fwrite($fp,"function beforeEdit(){");
-					fwrite($fp,"\n\t var entidade = arguments[0];");
-					fwrite($fp,"\n\t var registro = arguments[1];");
-					fwrite($fp,"\n");
-					fwrite($fp,"}");
-					fwrite($fp,"\n");
-					fwrite($fp,"// Executa após o carregamento padrão da edição de registro");
-					fwrite($fp,"\n");
-					fwrite($fp,"function afterEdit(){");
-					fwrite($fp,"\n\t var entidade = arguments[0];");
-					fwrite($fp,"\n\t var registro = arguments[1];");					
-					fwrite($fp,"\n");
-					fwrite($fp,"}");
-					fwrite($fp,"\n");
-					fwrite($fp,"// Invocado ao clicar no botão Voltar");
-					fwrite($fp,"\n");
-					fwrite($fp,"function beforeBack(){");
-					fwrite($fp,"\n\t var btnback = arguments[0];");
-					fwrite($fp,"\n");
-					fwrite($fp,"}");
-					fwrite($fp,"\n");
-					fwrite($fp,"// Executa após a ação de voltar a tela anterior");
-					fwrite($fp,"\n");
-					fwrite($fp,"function afterBack(){");
-					fwrite($fp,"\n\t var btnback = arguments[0];");
-					fwrite($fp,"\n");
-					fwrite($fp,"}");
-					fwrite($fp,"\n");
-					fwrite($fp,"// Invocado ao clicar no botão Deletar");
-					fwrite($fp,"\n");
-					fwrite($fp,"function beforeDelete(){");
-					fwrite($fp,"\n");
-					fwrite($fp,"}");
-					fwrite($fp,"\n");
-					fwrite($fp,"// Executa após a exclusão de um registro");
-					fwrite($fp,"\n");
-					fwrite($fp,"function afterDelete(){");
-					fwrite($fp,"\n");
-					fwrite($fp,"}");
-					fwrite($fp,"\n");
-					fwrite($fp,"if (typeof funcionalidade === 'undefined') var funcionalidade = 'cadastro';");
-					fwrite($fp,"\n\n/* \n ### Escreva seu código JavaScript abaixo dessa linha ou dentro das funções acima ### \n*/\n");
-					fclose($fp);
-				}
-				
-				// Move os arquivos para sua respectiva pasta
-				$path_files_cadastro = "../../projects/".$_SESSION["currentproject"]."/files/cadastro/"; #Fora do escopo do sistema para recepurar a constante PATH_FILES_CADASTRO
-				if (!file_exists($path_files_cadastro)){
-					echo 'Diretório não existe';
-					exit;
-				}
-				$diretorio = dir($path_files_cadastro);
-				while($arquivo = $diretorio -> read()){
-					if ($arquivo != "" && $arquivo != "." && $arquivo != "..");{
-						if (strpos($arquivo,'.') > 0){							
-							copy($path_files_cadastro . $arquivo,$path . $arquivo);
-							unlink($path_files_cadastro . $arquivo);
-						}
-					}
-				}
-			}else{
-				echo 0;
-			}
-			exit;
-		}
-	}
-
 	if (isset($_GET["t"])){
 		$entidade = $_GET["t"];
 	}
@@ -219,7 +51,7 @@
 								<input type="text" id="filename" name="filename" class="form-control" value="<?php echo $linha[0]["nome"]; ?>.html" style="float:right;width:89%;margin-right:1%;"/>
 								<input type="hidden" id="filenamejs" name="filenamejs" class="form-control" value="<?php echo $linha[0]["nome"]; ?>.js" />
 								<input type="hidden" id="filenamecss" name="filenamecss" value="<?php echo $linha[0]["nome"]; ?>.css" />
-								<!-- <textarea id="codigo" name="codigo" style="width:100%;height:400px;" class="form-control"> -->
+								<input type="hidden" id="filenamehtm" name="filenamehtm" value="<?php echo $linha[0]["nome"]; ?>.htm" />
 								<div id="pagina-gerada"></div>
 							</div>
 						</fieldset>						
@@ -236,11 +68,11 @@
 				controller:"gerarpagina",
 				entidade:<?=$entidade?>,
 				principal:true,
-				currentproject:"<?=$_SESSION["currentproject"]?>"
+				currentproject:"<?=$_SESSION["currentproject"]?>",
+				id:<?=$id?>
 			},
 			complete:function(retorno){
 				gerarPagina(retorno.responseText);
-				gerarComponenteAngularJS();
 			},
 			beforeSend:function(){
 				$("#pagina-gerada").html('<img src="../tema/padrao/loading2.gif" id="loading" style="float:left;margin-left:48%;" />');
@@ -250,33 +82,25 @@
 	
 	function gerarPagina(html){
 		$.ajax({
-			url:"../../index.php?controller=mdm/componente&currentproject=<?=$_SESSION["currentproject"]?>",
+			url:"../../index.php",
 			type:"POST",
 			data:{
+				controller:"mdm/componente",
 				op:"criarpagina",
 				html:html,
 				filename:$("#filename").val(),
 				filenamejs:$("#filenamejs").val(),
 				filenamecss:$("#filenamecss").val(),
+				filenamehtm:$("#filenamehtm").val(),
 				entidade:"<?=$entidade?>",
 				nomeentidade:"<?=$nomeEntidadePrincipal?>",
 				descricaoentidade:"<?=$descricaoEntidadePrincipal?>",
-				urlupload:$("#urlupload").val()
+				urlupload:$("#urlupload").val(),
+				currentproject:<?=$_SESSION["currentproject"]?>,
+				id:<?=$id?>
 			},
 			complete:function(){
 				$("#pagina-gerada").html("Carregou");;
-			}
-		});
-	}
-
-	function gerarComponenteAngularJS(){
-		$.ajax({
-			url:"../../index.php",
-			data:{
-				controller:"gerarcomponenteangularjs",
-				entidade:<?=$entidade?>,
-				principal:true,
-				currentproject:"<?=$_SESSION["currentproject"]?>"
 			}
 		});
 	}

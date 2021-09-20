@@ -31,3 +31,6 @@
 
 	// Adicionando Menu
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu,1,'associacao-' . $entidadeNome,$entidadeID,'cadastro');
+	addMenu($conn,"Mensalidade","index.php?controller=erp/associacao/mensalidade",'',$menu,2,'associacao-mensalidade',0,'personalizado');
+
+	Entity::setDescriptionField($conn,$entidadeID,$nome,true);

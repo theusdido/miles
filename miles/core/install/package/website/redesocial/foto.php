@@ -29,7 +29,7 @@
 	$legenda = criarAtributo($conn,$entidadeID,"legenda","Legenda","varchar",500,0,3,1,0,0,"");
 	
 	// Criando Acesso
-	$menu_redesocial = addMenu($conn,$entidadeDescricao,'#','','','','redesocial');
+	$menu_redesocial = addMenu($conn,$entidadeDescricao,'#','',0,0,'redesocial');
 
 	// Adicionando Menu
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_redesocial,1,'redesocial-' . $entidadeNome);

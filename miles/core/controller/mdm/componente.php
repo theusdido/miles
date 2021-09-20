@@ -1,61 +1,48 @@
 <?php
-
-	$entidade 	= $_POST["entidade"];
-	$path 		= PATH_FILES_CADASTRO . $entidade . "/";
+	$entidade 		= tdc::e(tdc::r('entidade'));
+	$descricao_doc 	= $entidade->id . " - " . $entidade->descricao . "[ ".$entidade->nome." ]";
+	switch(tdc::r('op')){
+		case 'criarpagina':
+			$path 		= PATH_FILES_CADASTRO . $entidade->id . "/";
+		break;
+		case 'criarconsulta':
+			$path 		= PATH_FILES_CONSULTA . tdc::r('id') . "/";
+		break;
+	}
 
 	// Documentação
 	$datacriacaodoc = "* @Data de Criacao: ".date("d/m/Y H:i:s");
-	$authordoc = "* @Criado por: ".$_SESSION["username"].", @id: ".$_SESSION["userid"];
-	$paginadoc = "* @Página: {$entidade} - {$_POST["descricaoentidade"]} [{$_POST["nomeentidade"]}]";
+	$authordoc 		= "* @Criado por: ".$_SESSION["username"].", @id: ".$_SESSION["userid"];
+	$paginadoc 		= "* @Página: {$descricao_doc}";
+
+	// Cria o diretório do registro caso não exista
+	if (!file_exists($path)){
+		mkdir($path,777);
+	}
 
 	// Cria o arquivo HTML
-	$fp = fopen($path . $_POST["filename"] ,'w+');
+	$fp = fopen($path . tdc::r('filename') ,'w');
 	fwrite($fp,htmlespecialcaracteres($_POST["html"],1));
 	fclose($fp);
 
-	/*
-	// Arquivo HTML do Componente Angular
-	$fp = fopen("../../../../miles/angularjs/aplicacao/src/app/pages/crm/pessoa/pessoa.component.html" ,'w');
-	fwrite($fp,htmlespecialcaracteres(
-	'
-		<div class="main-content">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="card">
-							<div class="card-header card-header-danger">
-								<h4 class="card-title">PESSOA</h4>
-								<p class="card-category">Cadastro Único de Locador, Locatário, Fiador.</p>
-							</div>
-							<div class="card-body">'.$_POST["html"].'</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	'
-	,1));
-	fclose($fp);
-	*/
-
 	// Cria o arquivo HTML Embutido Dinâmico
-	$dhtmlFile = $path . $_POST["nomeentidade"] . ".htm";
+	$dhtmlFile = $path . tdc::r('filenamehtm');
 	if (!file_exists($dhtmlFile)){
 		$fp = fopen($dhtmlFile,'w');
 		fwrite($fp,"<!--\n * HTML Personalizado \n {$datacriacaodoc} \n {$authordoc} \n {$paginadoc} \n\n Escreve seu código HTML personalizado aqui! \n-->\n");
 		fclose($fp);
 	}	
-	
+
 	// Cria o arquivo CSS
-	$cssFile = $path . $_POST["filenamecss"];
+	$cssFile = $path . tdc::r('filenamecss');
 	if (!file_exists($cssFile)){
 		$fp = fopen($cssFile ,'w');
 		fwrite($fp,"/*\n * CSS Personalizado \n {$datacriacaodoc} \n {$authordoc} \n {$paginadoc} \n\n Escreve seu código CSS personalizado aqui! \n*/\n");
 		fclose($fp);
 	}
-	
+
 	// Cria o arquivo JS
-	$jsFile = $path . $_POST["filenamejs"];
+	$jsFile = $path . tdc::r('filenamejs');
 	if (!file_exists($jsFile)){
 		$fp = fopen($jsFile ,'w');
 		fwrite($fp,"/*\n * JS Personalizado \n {$datacriacaodoc} \n {$authordoc} \n {$paginadoc} \n */\n\n");
@@ -134,3 +121,6 @@
 		fwrite($fp,"\n\n/* \n ### Escreva seu código JavaScript abaixo dessa linha ou dentro das funções acima ### \n*/\n");
 		fclose($fp);
 	}
+
+	// Cria o MDM File JavaScript Compile
+	include 'javascriptfile.php';

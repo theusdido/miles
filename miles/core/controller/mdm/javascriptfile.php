@@ -19,7 +19,10 @@
 
 	$dataset = tdClass::Criar("repositorio",array(ENTIDADE))->carregar();
 	if ($dataset){
-		foreach ($dataset as $entidade){		
+		foreach ($dataset as $entidade){
+			$filtro_atributo = tdc::f();
+			$filtro_atributo->addFiltro('entidade','=',$entidade->id);
+			$filtro_atributo->setPropriedade('order','ordem ASC');
 			fwrite($mdmJSCompile,utf8charset("
 				td_entidade[{$entidade->id}] = {
 					id:{$entidade->id},
@@ -34,7 +37,8 @@
 					exibirlegenda:'{$entidade->exibirlegenda}',
 					registrounico:{$entidade->registrounico},
 					pacote:'{$entidade->pacote}',
-					nomecompleto:'".(($entidade->pacote==""?"":$entidade->pacote."."))."{$entidade->nome}'
+					nomecompleto:'".(($entidade->pacote==""?"":$entidade->pacote."."))."{$entidade->nome}',
+					atributos:".tdc::dj(ATRIBUTO,$filtro_atributo)."
 				};
 			",$localCharset));		
 		}	

@@ -25,7 +25,7 @@
 	$nacionalidade = criarAtributo($conn,$entidadeID,"nacionalidade","Nacionalidade","varchar",50,0,2);
 	$sigla = criarAtributo($conn,$entidadeID,"sigla","Sigla","char",2,0,1);
 	// Criando Acesso
-	$menu_webiste = addMenu($conn,'Geral','#','','','','Geral');
+	$menu_webiste = addMenu($conn,'Geral','#','',0,0,'Geral');
 
 	// Adicionando Menu
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,8,'geral-' . $entidadeNome,$entidadeID, 'cadastro');

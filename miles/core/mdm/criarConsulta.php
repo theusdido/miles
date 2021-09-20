@@ -5,10 +5,12 @@
 	error_reporting(E_ALL);	
 
 	require 'conexao.php';
-	require 'prefixo.php';
-	require_once 'funcoes.php';
+	require 'prefixo.php';	
+	require 'funcoes.php';
 	
 	$id = $tipo = $entidade = $atributo = $descricao = $ent = $entidadefilho = "";
+	$exibirbotaoeditar = $exibirbotaoexcluir = $exibirbotaoemmassa = "";
+
 	
 	if (isset($_GET["entidade"])){
 		$entidade = $_GET["entidade"];
@@ -23,15 +25,18 @@
 			$id			 			= isset($_POST["id"])?$_POST["id"]:'';
 			$descricao				= executefunction("utf8charset",array($_POST["descricao"]));
 			$entidade	 			= $_POST["entidade"];
-			$movimentacao	 		= isset($_POST["movimentacao"])?$_POST["movimentacao"]:0;
+			$movimentacao	 		= isset($_POST["movimentacao"])?$_POST["movimentacao"]:0;			
+			$exibirbotaoeditar		= isset($_POST["exibirbotaoeditar"])?1:0;
+			$exibirbotaoexcluir		= isset($_POST["exibirbotaoexcluir"])?1:0;
+			$exibirbotaoemmassa		= isset($_POST["exibirbotaoemmassa"])?1:0;
 
 			if ($id == ""){
 				$query_prox = $conn->query("SELECT IFNULL(MAX(id),0)+1 FROM ".PREFIXO."consulta");
 				$prox = $query_prox->fetch();
 				$id = $prox[0];
-				$sql = "INSERT INTO ".PREFIXO."consulta (id,descricao,".PREFIXO."entidade,movimentacao) VALUES ({$id},'{$descricao}',{$entidade},{$movimentacao});";
+				$sql = "INSERT INTO ".PREFIXO."consulta (id,descricao,entidade,movimentacao,exibirbotaoeditar,exibirbotaoexcluir,exibirbotaoemmassa) VALUES ({$id},'{$descricao}',{$entidade},{$movimentacao},{$exibirbotaoeditar},{$exibirbotaoexcluir},{$exibirbotaoemmassa});";
 			}else{
-				$sql = "UPDATE ".PREFIXO."consulta SET ".PREFIXO."entidade = {$entidade} , descricao = '{$descricao}' , movimentacao = {$movimentacao} WHERE id = {$id};";
+				$sql = "UPDATE ".PREFIXO."consulta SET entidade = {$entidade} , descricao = '{$descricao}' , movimentacao = {$movimentacao} , exibirbotaoeditar = {$exibirbotaoeditar} , exibirbotaoexcluir = {$exibirbotaoexcluir} , exibirbotaoemmassa = {$exibirbotaoemmassa} WHERE id = {$id};";
 			}
 			$query = $conn->query($sql);
 			if($query){
@@ -53,9 +58,9 @@
 				$query_prox = $conn->query("SELECT IFNULL(MAX(id),0)+1 FROM ".PREFIXO."consultafiltro");
 				$prox = $query_prox->fetch();
 				$id = $prox[0];
-				$sql = "INSERT INTO ".PREFIXO."consultafiltro (id,operador,".PREFIXO."atributo,".PREFIXO."consulta,legenda) VALUES ({$id},'{$operador}',{$atributo},{$consulta},'{$legenda}');";
+				$sql = "INSERT INTO ".PREFIXO."consultafiltro (id,operador,atributo,consulta,legenda) VALUES ({$id},'{$operador}',{$atributo},{$consulta},'{$legenda}');";
 			}else{
-				$sql = "UPDATE ".PREFIXO."consultafiltro SET ".PREFIXO."atributo = {$atributo} , ".PREFIXO."consulta = {$consulta} , operador = '{$operador}' , legenda = '{$legenda}' WHERE id = {$id};";
+				$sql = "UPDATE ".PREFIXO."consultafiltro SET atributo = {$atributo} , consulta = {$consulta} , operador = '{$operador}' , legenda = '{$legenda}' WHERE id = {$id};";
 			}			
 			$query = $conn->query($sql);
 			if($query){
@@ -80,9 +85,9 @@
 				$query_prox = $conn->query("SELECT IFNULL(MAX(id),0)+1 FROM ".PREFIXO."consultafiltroinicial");
 				$prox = $query_prox->fetch();
 				$id = $prox[0];
-				$sql = "INSERT INTO ".PREFIXO."consultafiltroinicial (id,operador,".PREFIXO."atributo,".PREFIXO."consulta,legenda,valor) VALUES ({$id},'{$operador}',{$atributo},{$consulta},'{$legenda}','{$valor}');";
+				$sql = "INSERT INTO ".PREFIXO."consultafiltroinicial (id,operador,atributo,consulta,legenda,valor) VALUES ({$id},'{$operador}',{$atributo},{$consulta},'{$legenda}','{$valor}');";
 			}else{
-				$sql = "UPDATE ".PREFIXO."consultafiltroinicial SET ".PREFIXO."atributo = {$atributo} , ".PREFIXO."consulta = {$consulta} , operador = '{$operador}' , legenda = '{$legenda}' , valor = '{$valor}' WHERE id = {$id};";
+				$sql = "UPDATE ".PREFIXO."consultafiltroinicial SET atributo = {$atributo} , consulta = {$consulta} , operador = '{$operador}' , legenda = '{$legenda}' , valor = '{$valor}' WHERE id = {$id};";
 			}
 			$query = $conn->query($sql);
 			if($query){
@@ -107,9 +112,9 @@
 				$query_prox = $conn->query("SELECT IFNULL(MAX(id),0)+1 FROM ".PREFIXO."consultastatus");
 				$prox = $query_prox->fetch();
 				$id = $prox[0];
-				$sql = "INSERT INTO ".PREFIXO."consultastatus (id,operador,valor,".PREFIXO."atributo,".PREFIXO."consulta,".PREFIXO."status) VALUES ({$id},'{$operador}','{$valor}',{$atributo},{$consulta},{$status});";
+				$sql = "INSERT INTO ".PREFIXO."consultastatus (id,operador,valor,atributo,consulta,status) VALUES ({$id},'{$operador}','{$valor}',{$atributo},{$consulta},{$status});";
 			}else{
-				$sql = "UPDATE ".PREFIXO."consultastatus SET ".PREFIXO."atributo = {$atributo} , ".PREFIXO."consulta = {$consulta} , valor = '{$valor}' , operador = '{$operador}' , ".PREFIXO."status = {$status} WHERE id = {$id};";
+				$sql = "UPDATE ".PREFIXO."consultastatus SET atributo = {$atributo} , consulta = {$consulta} , valor = '{$valor}' , operador = '{$operador}' , status = {$status} WHERE id = {$id};";
 			}
 			echo $sql;
 			$query = $conn->query($sql);
@@ -157,7 +162,7 @@
 		}
 		
 		if ($_GET["op"] == "listarconsulta"){
-			$sql = "SELECT id,".PREFIXO."atributo atributo,operador,legenda FROM ".PREFIXO."consultafiltro a WHERE consulta = {$_GET["consulta"]} ORDER BY id DESC";
+			$sql = "SELECT id,atributo atributo,operador,legenda FROM ".PREFIXO."consultafiltro a WHERE consulta = {$_GET["consulta"]} ORDER BY id DESC";
 			$query = $conn->query($sql);
 			if ($query->rowCount() <= 0){
 				echo '<div class="alert alert-warning alert-dismissible text-center" role="alert">Nenhum campo de <strong>filtro</strong> configurado.</div>';
@@ -184,7 +189,7 @@
 		}
 
 		if ($_GET["op"] == "listarfiltroinicial"){
-			$sql = "SELECT id,".PREFIXO."atributo atributo,operador,legenda,valor FROM ".PREFIXO."consultafiltroinicial a WHERE consulta = {$_GET["consulta"]} ORDER BY id DESC";
+			$sql = "SELECT id,atributo atributo,operador,legenda,valor FROM ".PREFIXO."consultafiltroinicial a WHERE consulta = {$_GET["consulta"]} ORDER BY id DESC";
 			$query = $conn->query($sql);
 			if ($query->rowCount() <= 0){
 				echo '<div class="alert alert-warning alert-dismissible text-center" role="alert">Nenhum campo de <strong>filtro</strong> configurado.</div>';
@@ -211,7 +216,7 @@
 			exit;
 		}
 		if ($_GET["op"] == "listarstatus"){
-			$sql = "SELECT id,".PREFIXO."atributo atributo,operador,valor,".PREFIXO."status FROM ".PREFIXO."consultastatus a WHERE consulta = {$_GET["consulta"]}";
+			$sql = "SELECT id,atributo atributo,operador,valor,status FROM ".PREFIXO."consultastatus a WHERE consulta = {$_GET["consulta"]}";
 			$query = $conn->query($sql);
 			if ($query->rowCount() <= 0){
 				echo '<div class="alert alert-warning alert-dismissible text-center" role="alert">Nenhum filtro de <strong>status</strong> configurado.</div>';
@@ -238,12 +243,15 @@
 		}		
 	}
 	if ($id != ""){
-		$sql = "SELECT descricao,".PREFIXO."entidade,movimentacao FROM ".PREFIXO."consulta WHERE id = {$id}";
+		$sql = "SELECT descricao,entidade,movimentacao,exibirbotaoeditar,exibirbotaoexcluir,exibirbotaoemmassa FROM ".PREFIXO."consulta WHERE id = {$id}";
 		$query = $conn->query($sql);
 		foreach ($query->fetchAll() as $linha){
-			$entidade		= $linha[PREFIXO."entidade"];
-			$descricao		= executefunction("utf8charset",array($linha["descricao"]));
-			$movimentacao	= $linha["movimentacao"];
+			$entidade			= $linha["entidade"];
+			$descricao			= executefunction("utf8charset",array($linha["descricao"]));
+			$movimentacao		= $linha["movimentacao"];
+			$exibirbotaoeditar 	= $linha["exibirbotaoeditar"];
+			$exibirbotaoexcluir = $linha["exibirbotaoexcluir"];
+			$exibirbotaoemmassa = $linha["exibirbotaoemmassa"];
 		}
 	}
 ?>
@@ -258,8 +266,14 @@
 					$("#accordion_filtros").show();
 					$("#descricao").val("<?=$descricao?>");
 					$("#entidade").val("<?=$entidade?>");
+					document.getElementById("exibirbotaoeditar").checked 	= (<?=(int)$exibirbotaoeditar?>==0)?false:true;
+					document.getElementById("exibirbotaoexcluir").checked 	= (<?=(int)$exibirbotaoexcluir?>==0)?false:true;
+					document.getElementById("exibirbotaoemmassa").checked 	= (<?=(int)$exibirbotaoemmassa?>==0)?false:true;
 				}else{
 					$("#accordion_filtros").hide();
+					document.getElementById("exibirbotaoeditar").checked 	= false;
+					document.getElementById("exibirbotaoexcluir").checked 	= false;
+					document.getElementById("exibirbotaoemmassa").checked 	= false;
 				}
 				$("#valor").val("");
 				atualizarListaFiltro("<?=$id?>");
@@ -525,7 +539,22 @@
 										}
 									?>
 								</select>
-							</div>							
+							</div>
+							<div class="checkbox">
+								<label for="exibirbotaoeditar">
+									<input type="checkbox" name="exibirbotaoeditar" id="exibirbotaoeditar">Exibir botão <b>Editar</b>
+								</label>
+							</div>
+							<div class="checkbox">
+								<label for="exibirbotaoexcluir">
+									<input type="checkbox" name="exibirbotaoexcluir" id="exibirbotaoexcluir">Exibir botão <b>Excluir</b>
+								</label>
+							</div>
+							<div class="checkbox">
+								<label for="exibirbotaoemmassa">
+									<input type="checkbox" name="exibirbotaoemmassa" id="exibirbotaoemmassa">Exibir botão <b>Em Massa</b>
+								</label>
+							</div>
 							<div id="error"></div>
 							<button type="submit" class="btn btn-primary" >Salvar</button>
 						</fieldset>
@@ -571,7 +600,7 @@
 														<label for="atributo">Atributo</label>
 														<select id="atributo" name="atributo" class="form-control">
 														<?php 
-															$sql = "SELECT id,nome,descricao FROM ".PREFIXO."atributo WHERE ".PREFIXO."entidade = " . $entidade;
+															$sql = "SELECT id,nome,descricao FROM ".PREFIXO."atributo WHERE entidade = " . $entidade;
 															$query = $conn->query($sql);
 															foreach($query->fetchAll() as $linha){
 																echo '<option value="'.$linha["id"].'" data-nome="'.$linha["nome"].'">'.executefunction("utf8charset",array($linha["descricao"])).' [ '.$linha["nome"].' ]</option>';
@@ -653,10 +682,10 @@
 														<label for="atributo">Atributo</label>
 														<select id="atributo" name="atributo" class="form-control">
 														<?php 
-															$sql = "SELECT id,nome,descricao,chaveestrangeira FROM ".PREFIXO."atributo WHERE ".PREFIXO."entidade = " . $entidade ;
+															$sql = "SELECT id,nome,descricao,chaveestrangeira FROM ".PREFIXO."atributo WHERE entidade = " . $entidade ;
 															$query = $conn->query($sql);
 															foreach($query->fetchAll() as $linha){
-																echo '<option value="'.$linha["id"].'" data-nome="'.$linha["nome"].'" data-chaveestrangeira="'.$linha["chaveestrangeira"].'">'.utf8_encode($linha["descricao"]).' [ '.$linha["nome"].' ]</option>';
+																echo '<option value="'.$linha["id"].'" data-nome="'.$linha["nome"].'" data-chaveestrangeira="'.$linha["chaveestrangeira"].'">'.executefunction("utf8charset",array($linha["descricao"])).' [ '.$linha["nome"].' ]</option>';
 															}
 														?>
 														</select>
@@ -748,7 +777,7 @@
 														<label for="atributo">Atributo</label>
 														<select id="atributo" name="atributo" class="form-control">
 														<?php 
-															$sql = "SELECT id,nome,descricao FROM ".PREFIXO."atributo WHERE ".PREFIXO."entidade = " . $entidade;
+															$sql = "SELECT id,nome,descricao FROM ".PREFIXO."atributo WHERE entidade = " . $entidade;
 															$query = $conn->query($sql);
 															foreach($query->fetchAll() as $linha){
 																echo '<option value="'.$linha["id"].'" data-nome="'.$linha["nome"].'">'.executefunction("utf8charset",array($linha["descricao"])).' [ '.$linha["nome"].' ]</option>';

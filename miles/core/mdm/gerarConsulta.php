@@ -2,45 +2,14 @@
 
 	require 'conexao.php';	
 	require 'prefixo.php';
-	require_once 'funcoes.php';
-
-	if (isset($_POST["op"])){
-		if ($_POST["op"] == "criarconsulta");{			
-
-			$path = "../../" . $_COOKIE["path_files_consulta"];
-			
-			$fp = fopen($path . $_POST["filename"] ,'w');
-			fwrite($fp,htmlespecialcaracteres_($_POST["html"],1));
-			fclose($fp);			
-			
-			$jsFile = $path . "/" . $_POST["filenamejs"];
-			if (!file_exists($jsFile)){
-				$fp = fopen($jsFile ,'w');
-				fwrite($fp,"// JS da Consulta");			
-				fclose($fp);
-			}
-
-			// Move os arquivos para sua respectiva pasta
-			$path_files_cadastro = "../../projects/".$_SESSION["currentproject"]."/files/consulta/"; #Fora do escopo do sistema para recepurar a constante PATH_FILES_CONSULTA
-			$diretorio = dir($path_files_cadastro);
-			while($arquivo = $diretorio -> read()){
-				if ($arquivo != "" && $arquivo != "." && $arquivo != "..");{
-					if (strpos($arquivo,'.') > 0){							
-						copy($path_files_cadastro . $arquivo,$path . $arquivo);
-						unlink($path_files_cadastro . $arquivo);
-					}
-				}
-			}
-			exit;
-		}
-	}
+	require 'funcoes.php';
 
 	if (isset($_GET["t"])){
 		$entidade = $_GET["t"];
 	}
 
-	$id = $_GET["id"];
-	$entidade = $_GET["entidade"];
+	$id 		= $_GET["id"];
+	$entidade 	= $_GET["entidade"];
 ?>
 <html>
 	<head>
@@ -73,8 +42,9 @@
 								<button id="gerar" name="gerar" type="button" class="btn btn-primary" style="float:right;margin-bottom:5px;width:10%;">Gerar</button>
 								<div id="gravando-pagina"></div>
 								<input type="text" id="filename" name="filename" class="form-control" value="<?php echo $linha[0]["nome"]; ?>.html" style="float:right;width:89%;margin-right:1%;"/>
-								<input type="hidden" id="filenamejs" name="filenamejs" class="form-control" value="<?php echo $linha[0]["nome"]; ?>.js" style="float:right;width:89%;margin-right:1%;"/>
-								<!-- <textarea id="codigo" name="codigo" style="width:100%;height:400px;" class="form-control"> -->
+								<input type="hidden" id="filenamejs" name="filenamejs" class="form-control" value="<?php echo $linha[0]["nome"]; ?>.js" />
+								<input type="hidden" id="filenamecss" name="filenamecss" value="<?php echo $linha[0]["nome"]; ?>.css" />
+								<input type="hidden" id="filenamehtm" name="filenamehtm" value="<?php echo $linha[0]["nome"]; ?>.htm" />
 								<div id="consulta-gerada"></div>
 							</div>
 						</fieldset>						
@@ -84,7 +54,7 @@
 	</body>
 </html>
 <script type="text/javascript">
-	$("#gerar").click(function(){		
+	$("#gerar").click(function(){
 		$.ajax({
 			url:"../../index.php",
 			data:{
@@ -101,16 +71,20 @@
 		});
 		function gerarConsulta(html){
 			$.ajax({
-				url:"gerarConsulta.php?op=salvar&currentproject=<?=$_SESSION["currentproject"]?>",
+				url:"../../index.php",
 				type:"POST",
 				data:{
+					controller:"mdm/componente",
 					op:"criarconsulta",
 					html:html,
 					filename:$("#filename").val(),
 					filenamejs:$("#filenamejs").val(),
+					filenamecss:$("#filenamecss").val(),
+					filenamehtm:$("#filenamehtm").val(),
 					entidade:"<?=$entidade?>",
 					urlupload:$("#urlupload").val(),
-					currentproject:<?=$_SESSION["currentproject"]?>
+					currentproject:<?=$_SESSION["currentproject"]?>,
+					id:<?=$id?>
 				},
 				complete:function(){
 					$("#consulta-gerada").html("Carregou");

@@ -13,14 +13,16 @@ include_once PATH_TDC . 'elemento.class.php';
 class TdFormulario Extends Elemento {
 	public $fieldset;
 	public $legenda;
-	protected $dados = array();
-	public $ncolunas = 3;
-	public $fp;
-	public $gd = "gd";
+	protected $dados 		= array();
+	public $ncolunas 		= 3;
+	public $gd 				= "gd";
+	public $fp				= "";
 	public $linhacampos;
-	public $exibirid = false;
-	public $funcionalidade = "cadastro";
-	public $exibirlegenda = true;
+	public $exibirid 		= false;
+	public $funcionalidade 	= "cadastro";
+	public $exibirlegenda 	= true;
+	public $grupo_botoes;
+	private $botoes 		= array();
 
 	/*  
 		* Método construct 
@@ -31,11 +33,12 @@ class TdFormulario Extends Elemento {
 	*/		
 	function __construct(){
 		parent::__construct('form');
-		$this->fieldset = tdClass::Criar("fieldset");
-		$this->legenda = tdClass::Criar("legend");		
-		$this->class = "form-horizontal tdform";
-		$this->linhacampos = tdClass::Criar("div");
-		$this->linhacampos->class = "row-fluid form_campos";
+		$this->fieldset 			= tdClass::Criar("fieldset");
+		$this->legenda 				= tdClass::Criar("legend");		
+		$this->class 				= "form-horizontal tdform";
+		$this->linhacampos 			= tdClass::Criar("div");
+		$this->linhacampos->class 	= "row-fluid form_campos";
+		$this->grupo_botoes			= tdc::html("div" , array("class" => "form-grupo-botao"));
 	}
 	/*  
 		* Método CamposHTML 
@@ -44,6 +47,7 @@ class TdFormulario Extends Elemento {
 		
 		Monta os campos em HTML de acordo com o tipo que vem da tabela "Coluna"
 		@params $colunas (Instancia do Objeto Coluna)
+		@params $retorno true: retorna os campos no método - false: exibe os campos
 	*/			
 	public function camposHTML($colunas,$retorno=false){
 
@@ -472,12 +476,11 @@ class TdFormulario Extends Elemento {
 					$input->class = "form-control td-file-hidden " . ($this->fp != ""?$this->fp:"");
 					if ($coluna->exibirgradededados ==1) $input->class = $this->gd;
 					if ($coluna->nulo==0) $input->required = "true";					
-
 					$input->atributo = $coluna->id;
 					$iframe = tdClass::Criar("iframe");
 					$iframe->data_entidade = $coluna->{ENTIDADE};
 					$iframe->data_atributo=$coluna->id;
-					$iframe->src = tdClass::Criar("persistent",array(CONFIG,1))->contexto->urlupload . "&atributo={$coluna->id}&valor={$initialValue}&id=" . (isset($this->dados)?$this->dados[$i]->id:-1) . "&currentproject=" . Session::Get()->projeto;
+					$iframe->src = tdClass::Criar("persistent",array(CONFIG,1))->contexto->urlupload . "&atributo={$coluna->id}&valor={$initialValue}&id=" . ($initialValue!=''?$initialValue:-1) . "&currentproject=" . Session::Get()->projeto;
 					$campo->add($input,$label,$iframe);
 				break;
 				// CK Editor - Editor de Texto
@@ -793,18 +796,10 @@ class TdFormulario Extends Elemento {
 					$input->label->add($legenda);
 				}
 			}
-			$coluna = tdClass::Criar("div");
-			if ($this->ncolunas >0){
-				$coluna->class = "coluna";
-				$coluna->data_ncolunas = $this->ncolunas;
-			}	
-			$coluna->add($campo);	
-			$this->linhacampos->add($coluna);
+			$this->addCampo($campo);
 		}
 		if ($retorno){
 			return $this->linhacampos;
-		}else{
-			$this->fieldset->add($this->linhacampos);
 		}
 	}
 	/*
@@ -875,6 +870,8 @@ class TdFormulario Extends Elemento {
 		return $retorno;
 	}
 	public function mostrar(){
+		$this->setGrupoBotoes();
+		$this->fieldset->add($this->linhacampos);
 		if ($this->exibirlegenda){
 			if ($this->legenda->qtde_filhos>0) $this->fieldset->add($this->legenda);
 		}	
@@ -1056,5 +1053,46 @@ class TdFormulario Extends Elemento {
 		}else{
 			return '';
 		}
+	}
+	/*
+		* Método addCampo
+	    * Data de Criacao: 18/09/2021
+	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
+
+		Adiciona campo no formulário
+		@params $campo Elemento HTML
+	*/
+	public function addCampo($campo){
+		$coluna = tdClass::Criar("div");
+		if ($this->ncolunas >0){
+			$coluna->class = "coluna";
+			$coluna->data_ncolunas = $this->ncolunas;
+		}	
+		$coluna->add($campo);	
+		$this->linhacampos->add($coluna);
+	}
+	/*
+		* Método addButtons
+	    * Data de Criacao: 18/09/2021
+	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
+
+		Adiciona botões
+		@params $botao: Elemento HTML
+	*/
+	public function addBotao($botao){
+		array_push($this->botoes,$botao);
+	}
+
+	private function setGrupoBotoes(){
+		$div_loader		= tdc::html("div",array("class" => "loader-salvar"));
+		$loading        = tdc::html("imagem", array("class" => "loading2"));
+		$loading->src   = Session::Get("URL_LOADING2");
+		$div_loader->add($loading);
+
+		$this->grupo_botoes->add($div_loader);
+		foreach($this->botoes as $b){
+			$this->grupo_botoes->add($b);
+		}
+		$this->add($this->grupo_botoes);
 	}
 }

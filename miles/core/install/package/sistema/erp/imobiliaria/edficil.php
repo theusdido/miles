@@ -25,7 +25,7 @@
 	$enderecoedficil = criarAtributo($conn,$entidadeID,"enderecoedficil","Endereço do Edfícil","Int",0,0,4,0,getEntidadeId("erp_imobiliaria_enderecoedficil",$conn));
 	
 	// Criando Acesso
-	$menu_webiste = addMenu($conn,'Geral','#','','','','Geral');
+	$menu_webiste = addMenu($conn,'Geral','#','',0,0,'Geral');
 
 	// Adicionando Menu
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,8,'geral-' . $entidadeNome,$entidadeID, 'cadastro');

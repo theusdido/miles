@@ -83,11 +83,7 @@ class tdc Extends tdClass{
 			}
 			$dataset = tdClass::Criar("repositorio",array($entidade))->carregar($sql);
 		}
-		return (
-			sizeof($dataset) > 1
-			? $dataset
-			: $dataset[0]
-		);
+		return $dataset;
 	}
 	/*
 		* Método f
@@ -176,15 +172,21 @@ class tdc Extends tdClass{
 	*/
 	public static function html($elemento,$body = null,$id = null,$class = null)
 	{
-		$e = tdc::o($elemento);		
-		if ($body != null){
-			$e->add($body);
-		}
-		if ($id != null){
-			$e->id = $id;
-		}
-		if ($class != null){
-			$e->class = $class;
+		$e = tdc::o($elemento);
+		if (gettype($body) == 'array'){
+			foreach($body as $key => $value){
+				$e->{$key} = $value;
+			}
+		}else{
+			if ($body != null){
+				$e->add($body);
+			}
+			if ($id != null){
+				$e->id = $id;
+			}
+			if ($class != null){
+				$e->class = $class;
+			}
 		}
 		return $e;
 	}

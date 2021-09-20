@@ -31,7 +31,7 @@
 	$cpf 				= criarAtributo($conn,$entidadeID,"cpf","CPF","varchar",35,1,10,1,0,0,"",0,0);
 
 	// Criando Acesso
-	$menu_webiste = addMenu($conn,'E-Commerce','#','','','','ecommerce');
+	$menu_webiste = addMenu($conn,'E-Commerce','#','',0,0,'ecommerce');
 	
 	// Adicionando Menu
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,8,'ecommerce-' . $entidadeNome,$entidadeID,'cadastro');
@@ -43,7 +43,7 @@
 	/* *** ENDEREÇO *** */
 	
 	// Criando Acesso
-	$menu_geral = addMenu($conn,'Geral','#','','','','geral');
+	$menu_geral = addMenu($conn,'Geral','#','',0,0,'geral');
 	
 	// Estado
 	$ufID = criarEntidade(

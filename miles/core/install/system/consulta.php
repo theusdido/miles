@@ -21,9 +21,12 @@
 	);
 
 	// Criando Atributos
-	$descricao 		= criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar",200,0,3,1,0,0,"");
-	$entidade 		= criarAtributo($conn,$entidadeID,"entidade","Entidade","int",0,0,4,0,0,0,"");
-	$movimentacao 	= criarAtributo($conn,$entidadeID,"movimentacao","Movimentação","int",0,0,4,0,0,0,"");
+	$descricao 			= criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar",200,0,3,1,0,0,"");
+	$entidade 			= criarAtributo($conn,$entidadeID,"entidade","Entidade","int",0,0,4,0,0,0,"");
+	$movimentacao 		= criarAtributo($conn,$entidadeID,"movimentacao","Movimentação","int",0,0,4,0,0,0,"");
+	$exibirbotaoeditar	= criarAtributo($conn,$entidadeID,"exibirbotaoeditar","Exibir Botão Editar","boolean",0,1,7);
+	$exibirbotaoexcluir	= criarAtributo($conn,$entidadeID,"exibirbotaoexcluir","Exibir Botão Excluir","boolean",0,1,7);
+	$exibirbotaoemmassa	= criarAtributo($conn,$entidadeID,"exibirbotaoemmassa","Exibir Botão Em Massa","boolean",0,1,7);
 
 	// Criando Entidade
 	$filtrosID = criarEntidade(

@@ -33,7 +33,7 @@
 	$telefoneextra = criarAtributo($conn,$entidadeID,"telefoneextra","Telefone Extra","varchar",16,0,8);
 	$email = criarAtributo($conn,$entidadeID,"email","E-Mail","varchar",16,0,12);
 	// Criando Acesso
-	$menu_webiste = addMenu($conn,'Geral','#','','','','Geral');
+	$menu_webiste = addMenu($conn,'Geral','#','',0,0,'Geral');
 
 	// Adicionando Menu
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,8,'geral-' . $entidadeNome);

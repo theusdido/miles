@@ -22,7 +22,7 @@
 	criarAtributo($conn,$entidadeID,"texto"	,"Texto"	,"text","",1,21	,0,0,0,"");
 
 	// 3 PASSO
-	$menu_webiste = addMenu($conn,'WebSite','#','','','','website');
+	$menu_webiste = addMenu($conn,'WebSite','#','',0,0,'website');
 
 	// 4 PASSO
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'website',$menu_webiste,0,'',$entidadeID,'cadastro');

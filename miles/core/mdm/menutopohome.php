@@ -18,21 +18,20 @@
 
 	if ($op == "ordenacao"){
 		foreach($_GET["dados"] as $d){
-			$sql = "UPDATE td_menu SET ordem = {$d["ordem"]} WHERE id={$d["menu"]}";
+			$sql = "UPDATE ".PREFIXO."menu SET ordem = {$d["ordem"]} WHERE id={$d["menu"]}";
 			$query = $conn->exec($sql);
 		}	
 		exit;
 	}
 	$excluir = isset($_GET["excluir"])?$_GET["excluir"]:"";
 	if ($excluir != ""){
-		$sql = "DELETE FROM td_menu WHERE id = {$excluir};";
+		$sql = "DELETE FROM ".PREFIXO."menu WHERE id = {$excluir};";
 		$query = $conn->query($sql);
 		if ($query){
 			// Excluir premissões
-			$sqlP = "DELETE FROM td_menupermissoes WHERE menu = {$excluir};";
+			$sqlP = "DELETE FROM ".PREFIXO."menupermissoes WHERE menu = {$excluir};";
 			$queryP = $conn->query($sqlP);
 			if (!$queryP){
-				//echo "<meta http-equiv='refresh' content='0;url=".$self."'>";
 				echo $sqlP;
 				var_dump($conn->errorInfo());
 			}
@@ -44,7 +43,7 @@
 	}
 	if ($op == "carregaentidade"){
 		echo '<option value="0">-- Selecione --</option>';
-		$sql = "SELECT id,nome,descricao,pacote FROM td_entidade ORDER BY id DESC;";
+		$sql = "SELECT id,nome,descricao,pacote FROM ".PREFIXO."entidade ORDER BY id DESC;";
 		$query = $conn->query($sql);
 		While($linha = $query->fetch()){
 			$descricao = executefunction("utf8charset",array($linha["descricao"]));
@@ -54,7 +53,7 @@
 	}
 	if ($op == 'carregaconsulta'){
 		echo '<option value="0">-- Selecione --</option>';
-		$sql = "SELECT b.id,a.nome,b.descricao,a.pacote FROM td_entidade a,consulta b WHERE a.id = b.entidade ORDER BY a.id DESC;";
+		$sql = "SELECT b.id,a.nome,b.descricao,a.pacote FROM ".PREFIXO."entidade a,".PREFIXO."consulta b WHERE a.id = b.entidade ORDER BY a.id DESC;";
 		$query = $conn->query($sql);
 		While($linha = $query->fetch()){
 			$descricao = executefunction("utf8charset",array($linha["descricao"]));
@@ -64,7 +63,7 @@
 	}
 	if ($op == 'carregarelatorio'){
 		echo '<option value="0">-- Selecione --</option>';
-		$sql = "SELECT b.id,a.nome,b.descricao,a.pacote FROM td_entidade a,td_relatorio b WHERE a.id = b.entidade ORDER BY a.id DESC;";
+		$sql = "SELECT b.id,a.nome,b.descricao,a.pacote FROM ".PREFIXO."entidade a,".PREFIXO."relatorio b WHERE a.id = b.entidade ORDER BY a.id DESC;";
 		$query = $conn->query($sql);
 		While($linha = $query->fetch()){
 			$descricao = executefunction("utf8charset",array($linha["descricao"]));
@@ -74,7 +73,7 @@
 	}
 	if ($op == 'carregamovimentacao'){
 		echo '<option value="0">-- Selecione --</option>';
-		$sql = "SELECT b.id,a.nome,b.descricao,a.pacote FROM td_entidade a,td_movimentacao b WHERE a.id = b.entidade ORDER BY a.id DESC;";
+		$sql = "SELECT b.id,a.nome,b.descricao,a.pacote FROM ".PREFIXO."entidade a,".PREFIXO."movimentacao b WHERE a.id = b.entidade ORDER BY a.id DESC;";
 		$query = $conn->query($sql);
 		While($linha = $query->fetch()){
 			$descricao = executefunction("utf8charset",array($linha["descricao"]));
@@ -104,7 +103,7 @@
 		if ($id == ""){
 			$idNew = getProxIdMDM("menu");
 			$sql = "
-				INSERT INTO td_menu (
+				INSERT INTO ".PREFIXO."menu (
 					id,entidade,descricao,link,target,ordem,pai,tipomenu,fixo
 					,path,icon
 				) VALUES (
@@ -113,7 +112,7 @@
 				);";
 		}else{
 			$sql = "
-				UPDATE td_menu 
+				UPDATE ".PREFIXO."menu 
 				SET 
 					entidade = ".$entidade." 
 					, descricao = ".$descricao." 
@@ -134,7 +133,7 @@
 				if ($id == ""){
 					try{
                         // Seta permissão para o usuário que criou o menu
-                        $sqlP = "INSERT INTO td_menupermissoes (id,projeto,menu,usuario,permissao) VALUES (DEFAULT,1,{$idNew},1,1);";						
+                        $sqlP = "INSERT INTO ".PREFIXO."menupermissoes (id,projeto,menu,usuario,permissao) VALUES (DEFAULT,1,{$idNew},1,1);";						
                         $conn->exec($sqlP);
                     }catch(Exception $e){
 					    $conn->rollBack();
@@ -162,7 +161,7 @@
 	$id = isset($_GET["id"])?$_GET["id"]:"";
 
 	if ($id != ""){
-		$sql = "SELECT * FROM td_menu WHERE id = {$id};";
+		$sql = "SELECT * FROM ".PREFIXO."menu WHERE id = {$id};";
 		$query = $conn->query($sql);
 		While ($linha = $query->fetch()){
 			$entidade 	= ($linha["entidade"]==""?0:$linha["entidade"]);
@@ -178,8 +177,9 @@
 	}
 
 	function imprimeLinhaMenu($indice,$id,$descricao,$pai,$self,$idpai){
-		$retorno = "";
 		global $parmsiframe;
+		$retorno 	= "";
+		$pai 		= $pai == 0 ? '' : $pai;
 		if ($pai == ""){
 			$mais = "
 						<button type='button' class='btn btn-default' aria-label='Ver sub menu' onclick=versubmenu(".$id.",'".str_replace(" ","^",$descricao)."')>
@@ -191,7 +191,6 @@
 		}
 
 		$retorno .= "	<tr data-indice='".$indice."' data-menu='".$id."'>";
-		
 		$retorno .= "		<td>".$id."</td>";
 		$retorno .= "		<td>".$descricao."</td>";
 		$retorno .= "		<td>".$pai."</td>";
@@ -233,7 +232,6 @@
 								},
 								complete:function(ret){
 									if (parseInt(ret.responseText) == 1){
-										console.log("#tmenutopo tbody tr[data-menu='.$id.']");
 										$("#tmenutopo tbody tr[data-menu='.$id.']").remove();
 									}
 								}
@@ -449,7 +447,7 @@
 								<select id="pai" name="pai" class="form-control">
 									<option value="0">-- Selecione --</option>
 									<?php
-										$sql = "SELECT id,descricao FROM td_menu WHERE pai = 0 or pai is null ORDER BY ordem ASC";
+										$sql = "SELECT id,descricao FROM ".PREFIXO."menu WHERE pai = 0 or pai is null ORDER BY ordem ASC";
 										$query = $conn->query($sql);
 										While($linha = $query->fetch()){
 											$descricao = executefunction("utf8charset",array($linha["descricao"]));
@@ -489,9 +487,9 @@
 							}
 							$sql = "
 								SELECT a.id,a.descricao,
-								(SELECT b.descricao FROM td_menu b WHERE b.id = a.pai) pai,
+								(SELECT b.descricao FROM ".PREFIXO."menu b WHERE b.id = a.pai) pai,
 								a.pai
-								FROM td_menu a 
+								FROM ".PREFIXO."menu a 
 								{$where}
 								ORDER BY a.pai ASC,a.ordem ASC,a.id ASC
 							";

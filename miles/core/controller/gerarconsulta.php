@@ -1,15 +1,13 @@
 <?php
-
-	if (isset($_GET["id"])){
-		$id = $_GET["id"];
-	}else{
+	$id = tdc::r('id');
+	if ($id == ''){
 		echo 'Parametro "ID" não foi enviado.';
 		exit;
 	}
-	
+
 	$cf = getCurrentConfigFile();
 	$pathfileconsulta = PATH_FILES_CONSULTA . $id;
-
+	
 	// Cria diretório
 	if (!file_exists($pathfileconsulta)){
 		mkdir($pathfileconsulta);
@@ -19,33 +17,33 @@
 	setCookie("path_files_consulta",$pathfileconsulta . "/");
 	
 	$consulta = tdClass::Criar("persistent",array(CONSULTA,$id))->contexto;
-	$entidade = tdClass::Criar("persistent",array(ENTIDADE,$consulta->{ENTIDADE}))->contexto;
+	$entidade = tdClass::Criar("persistent",array(ENTIDADE,$consulta->entidade))->contexto;
 	
 	// Campo Entidade Principal
-	$entidadePrincipalID = tdClass::Criar("input");
-	$entidadePrincipalID->id = "entidadeprincipalid";
-	$entidadePrincipalID->name = "entidadeprincipalid";
-	$entidadePrincipalID->type = "hidden";
+	$entidadePrincipalID 		= tdClass::Criar("input");
+	$entidadePrincipalID->id 	= "entidadeprincipalid";
+	$entidadePrincipalID->name 	= "entidadeprincipalid";
+	$entidadePrincipalID->type 	= "hidden";
 	$entidadePrincipalID->value = $entidade->id;
 	$entidadePrincipalID->mostrar();
 
 	// Campo Entidade Principal
-	$funcionalidadeTD = tdClass::Criar("input");
-	$funcionalidadeTD->id = "funcionalidadetd";
-	$funcionalidadeTD->name = "funcionalidadetd";
-	$funcionalidadeTD->type = "hidden";
-	$funcionalidadeTD->value = "consulta";
+	$funcionalidadeTD 			= tdClass::Criar("input");
+	$funcionalidadeTD->id 		= "funcionalidadetd";
+	$funcionalidadeTD->name 	= "funcionalidadetd";
+	$funcionalidadeTD->type 	= "hidden";
+	$funcionalidadeTD->value 	= "consulta";
 	$funcionalidadeTD->mostrar();
 	
 
 	// JS Formulário
-	$jsFormulario = tdClass::Criar("script");
-	$jsFormulario->src = PATH_SYSTEM . "formulario.js";
+	$jsFormulario 		= tdClass::Criar("script");
+	$jsFormulario->src 	= Session::Get('URL_SYSTEM') . "formulario.js";
 	$jsFormulario->mostrar();
 
 	// JS Validar
-	$jsValidar = tdClass::Criar("script");
-	$jsValidar->src = PATH_SYSTEM . "validar.js";
+	$jsValidar 		= tdClass::Criar("script");
+	$jsValidar->src = Session::Get('URL_SYSTEM') . "validar.js";
 	$jsValidar->mostrar();
 
 	$blocoTitulo = tdClass::Criar("bloco");
@@ -63,17 +61,17 @@
 	$linhaTitulo->mostrar();
 	
 	// Botão PESQUISAR
-	$btn_pesquisar = tdClass::Criar("button");
-	$btn_pesquisar->class = "btn btn-primary b-pesquisar";
-	$btn_pesquisar->id = "pesquisa-consulta";
-	$span_pesquisar = tdClass::Criar("span");
-	$span_pesquisar->class = "fas fa-search";	
+	$btn_pesquisar 				= tdClass::Criar("button");
+	$btn_pesquisar->class 		= "btn btn-primary b-pesquisar";
+	$btn_pesquisar->id 			= "pesquisa-consulta";
+	$span_pesquisar 			= tdClass::Criar("span");
+	$span_pesquisar->class 		= "fas fa-search";	
 	$btn_pesquisar->add($span_pesquisar," Pesquisar");
 
 	// Seleciona os campos do FILTRO da CONSULTA
 	$sql = tdClass::Criar("sqlcriterio");
-	$sql->add(tdClass::Criar("sqlfiltro",array(CONSULTA,'=',$consulta->id)));
-	$sql->setPropriedade("order","id DESC");
+	$sql->add(tdClass::Criar("sqlfiltro",array("consulta",'=',$consulta->id)));
+	$sql->setPropriedade("order","id ASC");
 	$dataset = tdClass::Criar("repositorio",array(FILTROCONSULTA))->carregar($sql);
 
 	$arrayCamposAtributos = array();
@@ -82,8 +80,8 @@
 	foreach ($dataset as $ftConsulta){
 		$atributo = tdClass::Criar("persistent",array(ATRIBUTO,(int)$ftConsulta->atributo))->contexto;
 		$obj = new stdclass();
-		$obj->id 						=  $atributo->id;
-		$obj->entidade 				= $atributo->{ENTIDADE};
+		$obj->id 						= $atributo->id;
+		$obj->entidade 					= $atributo->entidade;
 		$obj->nome 						= $atributo->nome;
 		$obj->descricao 				= $atributo->descricao;
 		$obj->tipo 						= $atributo->tipo;
@@ -168,20 +166,41 @@
 	$sqlCI->addFiltro("consulta","=",$id);
 	$dsCI = tdClass::Criar("repositorio",array("td_consultafiltroinicial"))->carregar($sqlCI);
 	foreach ($dsCI as $d){
-		$atributoCI = tdClass::Criar("persistent",array(ATRIBUTO,$d->atributo))->contexto->nome;
-		$gdFiltroInicial .= 'gd.addFiltro("'.$atributoCI.'","'.$d->operador.'","'.$d->valor.'");';
+		$gdFiltroInicial .= 'gd.addFiltro("'.tdc::a($d->atributo)->nome.'","'.$d->operador.'","'.$d->valor.'");';
 	}
 
 	// JS 
 	$js = tdClass::Criar("script");
 	$js->add('
 
-		var gd 			= gradesdedados["#'.$contextoListarID.'"];
-		gd.consulta 	= '.$id.';
-		gd.movimentacao = '.$consulta->movimentacao.';
+		// Seta CK Editores para CONSULTA
+		setaCkEditores(true);
+		if (gradesdedados[contextoListar] == undefined){
+			// Carrega a grade de dados padrão
+			var gd 	= new GradeDeDados('.$consulta->entidade.');
+			gd.contexto="#'.$contextoListarID.'";
+		}else{
+			var gd 	= gradesdedados["#'.$contextoListarID.'"];
+		}
+		gd.consulta 		= '.$id.';
+		gd.movimentacao 	= '.$consulta->movimentacao.';
+		gd.exibireditar		= '.($consulta->exibireditar?'true':'false').';
+		gd.exibirexcluir	= '.($consulta->exibirexcluir?'true':'false').';
+		gd.exibiremmassa	= '.($consulta->exibiremmassa?'true':'false').';		
+		gd.exibirpesquisa 	= false;
+		gd.setOrder("id","DESC");		
+		'.$gdFiltroInicial.'
+		gd.show();
 		gd.clear();
 
-		'.$gdFiltroInicial.'
+		$("#form-consulta.tdform .form_campos .form-control").each(function(){
+			if ($(this).prop("tagName") == "SELECT"){
+				$(this).removeAttr("required");
+				var atributo = $(this).attr("id").split(" ")[0];
+				carregarListas($(this).data("entidade"),$(this).attr("id"),"");
+			}
+		});
+		$(".asteriscoobrigatorio").hide();
 		$("#pesquisa-consulta").click(function(){
 			gd.clear();
 			'.$gdFiltroInicial.'

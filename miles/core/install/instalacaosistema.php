@@ -204,16 +204,14 @@
 					$("#formulario-personalizado .form-group input[type=checkbox]:checked").each(function(){
 						instrucao = componentes[$(this).data("componente")];
 						$.ajax({
-							type:"POST",
-							url:"instalacaosistema.php",
+							url:"<?=$_SESSION['URL_MILES']?>",
 							beforeSend:function(){
 								$("#loading-atualizar-personalizado").show();
 							},
 							data:{
-								<?=getBDParams()?>
+								controller:"install/instalar",
 								op:"instrucao",
-								instrucao:instrucao,
-								currentproject:<?=$_SESSION["currentproject"]?>
+								instrucao:instrucao
 							},
 							complete:function(retorno){
 								$("#loading-atualizar-personalizado").hide();
@@ -225,10 +223,8 @@
 							}
 						});	
 					});
-					
 				});
 
-				
 				function executa(instrucao){
 					$.ajax({
 						type:"POST",

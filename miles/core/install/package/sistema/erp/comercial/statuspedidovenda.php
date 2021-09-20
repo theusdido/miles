@@ -23,7 +23,7 @@
 	$descricao = criarAtributo($conn,$statuspedidoID,"descricao","Descrição","varchar",200,0,3,0,0,0,"");
 	
 	// Criando Acesso
-	$menu_comercial = addMenu($conn,'Comercial','#','','','','comercial');
+	$menu_comercial = addMenu($conn,'Comercial','#','',0,0,'comercial');
 	
 	// Adicionando Menu
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$statuspedidoID."/".PREFIXO."statuspedido.html",'',$menu_comercial,7,'comercial-statuspedido');	

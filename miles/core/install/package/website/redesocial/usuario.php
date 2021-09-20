@@ -30,7 +30,7 @@
 	$foto = criarAtributo($conn,$entidadeID,"foto","Foto","text","",1,19,0,0,0,"");
 
 	// Criando Acesso
-	$menu_redesocial = addMenu($conn,'Rede Social','#','','','','redesocial');
+	$menu_redesocial = addMenu($conn,'Rede Social','#','',0,0,'redesocial');
 	
 	// Adicionando Menu
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_redesocial,1,'redesocial-' . $entidadeNome);
