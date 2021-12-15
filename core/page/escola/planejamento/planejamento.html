@@ -1,0 +1,181 @@
+<form>
+    <div class="text-right">
+        <input type="submit" id="salvar" value="Salvar">
+        <input type="submit" id="finalizar" value="Finalizar">
+        <input type="submit" id="enviar" value="Enviar">
+    </div>
+
+    <div>
+        <br>
+        <label for="planejamento">PLANEJAMENTO QUINZENAL </label>
+            <select name="planejamento" id="planejamento">
+                <option value="" disabled selected>N°</option>
+                <option value="01">01</option>
+                <option value="02">02</option>
+                <option value="03">03</option>
+                <option value="04">04</option>
+            </select>
+        <span>(conforme Resolução CEE/SC nº 009/2020 e Parecer CEE/SC nº 179/2020)</span>
+    </div>
+
+    <div>
+        <br>
+        <label for="periodo">PERÍODO: </label>
+        <input type="date" id="periodo" name="periodo" pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}" required> <!--formato da data errado-->
+        <span class="validity"></span>
+
+        <label for="ate"> a </label>
+        <input type="date" id="ate" name="ate" required>
+        <span class="validity"></span>
+    </div>
+
+    <div>
+        <br>
+        <label>IDENTIFICAÇÃO: </label><br>
+
+        <label for="professor">Professor: </label>
+        <input class="form-control" type="text" id="professor" name="professor" placeholder="Nome" required><br>
+
+        <label for="componente">Componente curricular: </label>
+        <input class="form-control" type="text" id="componente" name="componente" placeholder="Ex: Programação de Aplicativos" required><br>
+
+        <label for="email">E-mail: </label>
+        <input class="form-control" type="text" id="email" name="email" placeholder="nome@email.com.br" required>
+    </div>
+
+    <div>
+        <br>
+        <label for="turma">Turma(s): </label>
+        <select class="multiselect" name="turma" id="turma" multiple>
+            <option value="" disabled selected>Escolha sua(s) turma(s)</option> <!-- Pq se não colocar "selected" não aparece a msg "Escolha sua(s) turma(s)"?-->
+            <option value="1">01</option>
+            <option value="2">02</option>
+            <option value="3">03</option>
+            <option value="4">04</option>
+            <option value="5">05</option>
+        </select>
+    </div>
+        
+    <div>
+        <br>
+        <label for="quantidadeAulas">Quantidade de aulas semanais: </label>
+        <select class="multiselect" name="quantidadeAulas" id="quantidadeAulas" multiple>
+            <option value="" disabled selected>Quantidade de aulas</option>
+            <option value="1">01</option>
+            <option value="2">02</option>
+            <option value="3">03</option>  
+        </select>
+    </div>    
+        
+    <div>
+        <br>
+        <label for="objGeral">OBJETIVO GERAL: </label>
+        <textarea class="form-control" id="objGeral" name="objGeral" rows="4" cols="12" placeholder="Descreva os objetivos da disciplina." required>
+        </textarea>    
+    </div>
+
+    <div>
+        <br>
+        <label>OBJETIVOS DE APRENDIZAGEM A SEREM ALCANÇADOS/ CONTEÚDOS: </label><br>
+        <label for="objetivo">&emsp;Objetivos: </label>
+        <select class="multiselect" name="objetivo" id="objetivo" multiple>
+            <option value="" disabled selected>Objetivos</option>
+            <option value="1">01</option>
+            <option value="2">02</option>
+            <option value="3">03</option>  
+        </select>
+
+        <label for="competencia">&emsp;Habilidades e competências: </label>
+        <select class="multiselect" name="competencia" id="competencia" multiple>
+            <option value="" disabled selected>Habilidades e competências</option>
+            <option value="1">01</option>
+            <option value="2">02</option>
+            <option value="3">03</option>  
+        </select>  
+        
+        <label for="conteudo">&emsp;Conteúdo: </label>
+        <select class="multiselect" name="conteudo" id="conteudo" multiple>
+            <option value="" disabled selected>Conteúdo</option>
+            <option value="1">01</option>
+            <option value="2">02</option>
+            <option value="3">03</option>  
+        </select>
+    </div>
+
+    <div>
+        <br>
+        <label>METODOLOGIA, PRÁTICAS PEDAGÓGICAS E RECURSOS: </label><br>
+        <label for="metodologia">&emsp;Metodologia: </label>
+        <select class="multiselect" name="metodologia" id="metodologia" multiple>
+            <option value="" disabled selected>Metodologia</option>
+            <option value="1">01</option>
+            <option value="2">02</option>
+            <option value="3">03</option>  
+        </select>
+
+        <label for="pedagogica">&emsp;Práticas pedagógicas: </label>
+        <select class="multiselect" name="pedagogica" id="pedagogica" multiple>
+            <option value="" disabled selected>Práticas pedagógicas</option>
+            <option value="1">01</option>
+            <option value="2">02</option>
+            <option value="3">03</option>  
+        </select>
+
+        <label for="recurso">&emsp;Recursos: </label>
+        <select class="multiselect" name="recurso" id="recurso" multiple>
+            <option value="" disabled selected>Recursos</option>
+            <option value="1">01</option>
+            <option value="2">02</option>
+            <option value="3">03</option>  
+        </select>     
+    </div>
+
+    <div>
+        <br>
+        <label>CRITÉRIOS E INSTRUMENTOS DE AVALIAÇÃO DO PROCESSO ENSINO-APRENDIZAGEM: </label><br>
+        <label for="objetivo1">&emsp;Objetivo 1: </label>
+        <select class="multiselect" name="objetivo1" id="objetivo1" multiple>
+            <option value="" disabled selected>Objetivo 1</option>
+            <option value="1">01</option>
+            <option value="2">02</option>
+            <option value="3">03</option>  
+        </select>
+
+        <label for="objetivo2">&emsp;Objetivo 2: </label>
+        <select class="multiselect" name="objetivo2" id="objetivo2" multiple>
+            <option value="" disabled selected>Objetivo2</option>
+            <option value="1">01</option>
+            <option value="2">02</option>
+            <option value="3">03</option>  
+        </select>
+
+        <label for="objetivo3">&emsp;Objetivo 3: </label>
+        <select class="multiselect" name="objetivo3" id="objetivo3" multiple>
+            <option value="" disabled selected>Objetivo3</option>
+            <option value="1">01</option>
+            <option value="2">02</option>
+            <option value="3">03</option>  
+        </select>   
+    </div>
+
+    <div>
+        <br>
+        <label for="recuperacao">INSTRUMENTOS DE RECUPERAÇÃO PARALELA: </label>
+        <span><br>
+            &emsp;Para fins de recuperação paralela de conteúdo, serão observados os procedimentos da Portaria SED nº 109/2019, proporcionando novas oportunidades de aprendizagem, sucedidas de avaliação que deverão ser feitas em forma de diferentes instrumentos avaliativos. Os resultados obtidos no processo de recuperação serão expressos através de nota.
+        </span>    
+    </div>
+
+    <div>
+        <br>
+        <label for="bibliografia">REFERÊNCIAS BIBLIOGRÁFICAS: </label>
+        <select class="multiselect" id="bibliografia" name="bibliografia" multiple>
+            <option value="" disabled selected>Referência(s)</option>
+            <option value="1">01</option>
+            <option value="2">02</option>
+            <option value="3">03</option>
+            <option value="4">04</option>
+            <option value="5">05</option>
+        </select>
+    </div>
+</form>
