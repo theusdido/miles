@@ -109,7 +109,11 @@
 	$strutuct = json_decode(file_get_contents(PATH_CONFIG . 'estrutura.json'));
 
 	// Carrega Composer
-	require 'vendor/autoload.php';
+	$path_composer = 'vendor/autoload.php';
+	if (file_exists($path_composer)){
+		require $path_composer;
+	}
+	
 
 	// Inclui a classe AutoLoad
 	require PATH_MILES . $strutuct->auto_load_class;	

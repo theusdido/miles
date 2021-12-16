@@ -53,3 +53,5 @@
 <script type="text/javascript" src="<?=$_SESSION["URL_LIB"]?>bootstrap/3.3.1/js/bootstrap.js"></script>
 <script type="text/javascript" src="<?=$_SESSION["URL_LIB"]?>jquery/jquery-bootbox.js"></script>
 <script type="text/javascript" src="<?=$_SESSION["URL_LIB"]?>fontawesome/ea948eea7a.js" /></script>
+<script type="text/javascript" src="<?=$_SESSION["URL_LIB"]?>jquery/jquery.mask.js"></script>
+<script type="text/javascript" src="<?=$_SESSION["URL_LIB"]?>jquery/jquery.maskMoney.js"></script>

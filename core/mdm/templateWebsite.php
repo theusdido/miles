@@ -15,8 +15,6 @@
 				padding:15px;				
 			}
 		</style>
-		<script type="text/javascript" src="../../lib/jquery/jquery.mask.js"></script>
-		<script type="text/javascript" src="../../lib/jquery/jquery.maskMoney.js"></script>
 	</head>
 	<body>
 		<?php include 'menu_topo.php'; ?>
@@ -48,11 +46,16 @@
 </html>
 <script type="text/javascript">
 	$("#gerar").click(function(){
+		let url_site = $("#urltemplate").val();
+		if (!(url_site.indexOf('http://') > -1 || url_site.indexOf('https://') > -1)){
+			bootbox.alert('Adicionar protocolo <b>http://</b> ou <b>https://</b> na URL. ');
+			return false;
+		}
 		$.ajax({
 			url:"../../index.php",
 			data:{
 				controller:"website/importar",
-				url:$("#urltemplate").val(),
+				url:url_site,
 				currentproject:"<?=$_SESSION["currentproject"]?>"
 			},
 			complete:function(retorno){

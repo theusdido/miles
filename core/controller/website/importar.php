@@ -9,14 +9,16 @@
     * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 	* Importar Site
 */
-$url = tdc::r("url");
-$arrayurl = explode("/",$url);
-$urlraiz = str_replace(end($arrayurl),"",$url);
-$indexfile = Session::Get("PATH_CURRENT_WEBSITE") . "index.html";
+$url 			= tdc::r("url");
+$arrayurl 		= explode("/",$url);
+$urlraiz 		= str_replace(end($arrayurl),"",$url);
+$indexfile 		= PATH_CURRENT_WEBSITE . "index.html";
+
 if (!tdFile::add($indexfile,file_get_contents($url))){
 	echo 'Não conseguiu gravar o arquivo';
 	exit;
 }
+
 $arquivo = file($indexfile);
 foreach ($arquivo as $linha){
 	$tamanho = strlen($linha);
@@ -32,9 +34,16 @@ foreach ($arquivo as $linha){
 						// Atributos
 						$attr = explode("=",$v);
 						if ($attr[0] == "href" || $attr[0] == "src"){
-							$caminhorelativo = substr($attr[1],1,strlen($attr[1])-2);
+							$attr_value 		= $attr[1];
+							$caminhorelativo 	= substr($attr_value,1,strlen($attr_value)-2);
+							$attr_value 		= str_replace('"','', str_replace("'",'',$attr_value));
+							if (substr($attr_value,0,1) == '/'){
+								$attr_value = substr($attr_value, 1, strlen($attr_value));
+							}							
 							if (!preg_match('/http[s]?:\/\//i',$caminhorelativo)){
-								tdFile::download(Session::Get("PATH_CURRENT_WEBSITE") . $caminhorelativo,$urlraiz . $caminhorelativo);
+								if (substr($attr_value,0,1) != '#' && $attr_value != ''){
+									tdFile::download(PATH_CURRENT_WEBSITE . $caminhorelativo,$urlraiz . $caminhorelativo);
+								}
 							}
 						}
 					}
