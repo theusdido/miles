@@ -7,10 +7,10 @@
 
 	// Carrega as configurações do arquivo miles.json
 	require PATH_SYSTEM . 'miles.json.php';
-
+	
 	// Carrega os arquivos de configuração do sistema	
 	require PATH_SYSTEM . 'config.php';
-
+	
 	// Arquivo de compatibilidade entre versões
 	include PATH_SYSTEM . 'compatibilidade.php';
 

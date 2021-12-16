@@ -68,8 +68,8 @@ class Pagina Extends Html {
 			$meta_charset->content = "text/html; charset=utf-8";
 		}	
 
-		$meta_viewport = tdClass::Criar("meta");
-		$meta_viewport->name = "viewport";
+		$meta_viewport 			= tdClass::Criar("meta");
+		$meta_viewport->name 	= "viewport";
 		$meta_viewport->content = "width=device-width, initial-scale=1";
 
 		$meta_robots = tdClass::Criar("meta");
@@ -81,7 +81,7 @@ class Pagina Extends Html {
 		$favicon->rel = "icon";
 
 		$faviconSYSTEM	= Session::Get("URL_SYSTEM_THEME") . "logo-favicon.png";
-		$favicon->href = file_exists(Session::Get("PATH_CURRENT_FAVICON")) ? Session::Get("URL_CURRENT_FAVICON") : $faviconSYSTEM;
+		$favicon->href = file_exists(PATH_CURRENT_FAVICON) ? Session::Get('URL_CURRENT_FAVICON') : $faviconSYSTEM;
 
 		$this->setTitle();
 		$this->head->add($meta_charset,$meta_viewport,$meta_robots,$favicon,$bootstrap);

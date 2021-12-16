@@ -9,7 +9,7 @@
     "xmlhttprequest": "^1.8.0"
   },
   "scripts": {
-    "start": "nodemon index.js -e ejs,js --watch ../../projects/1/controller/importarextratojson.js",
+    "start": "nodemon index.js -e ejs,js",
     "watch": "nodemon --ext *"
   },
   "devDependencies": {
