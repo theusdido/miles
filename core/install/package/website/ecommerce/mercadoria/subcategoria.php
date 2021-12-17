@@ -1,5 +1,5 @@
 <?php
-    // Setando variáveis
+    // Setando variï¿½veis
     $entidadeNome = "ecommerce_subcategoria";
     $entidadeDescricao = "Subcategoria";
 
@@ -20,7 +20,7 @@
         $registrounico = 0
     );
 
-    $descricao = criarAtributo($conn, $entidadeID, "descricao", "Descrição", "varchar", 200, 0, 3, 1, 0, 0, "");
+    $descricao = criarAtributo($conn, $entidadeID, "descricao", "Descriï¿½ï¿½o", "varchar", 200, 0, 3, 1, 0, 0, "");
     $categoria = criarAtributo($conn, $entidadeID,"categoria","Categoria","int",0,0,4,1,installDependencia($conn,"ecommerce_categoria","package/website/ecommerce/mercadoria/categoria"));
 
     // Criando Acesso
