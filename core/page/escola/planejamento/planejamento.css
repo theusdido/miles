@@ -1,5 +1,15 @@
-input[type=submit] {
-    width: 70px;  
-    height: 35px;
-    text-align: center;
+.SumoSelect{
+    float:left;
+    clear:left;
+    width: 100%;
+}
+
+.data-linha
+{
+    padding:0px !important;
+}
+.data-coluna
+{   
+    padding-left: 0px;
+    margin:0px !important;
 }
