@@ -1,4 +1,5 @@
 <!-- CONTABIL -->
+
 <?php
 	$modulo_name 		= 'nfse';
 	$modulo_descricao	= 'NFSe';

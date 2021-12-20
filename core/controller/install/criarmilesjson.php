@@ -4,7 +4,7 @@
         {
             "version":2.0,
             "currentproject":1,
-            "folder":"'.$uri.'",
+            "folder":"'.removeBarraRoot($uri).'",
             "system":{
                 "url":{
                     "lib":"https://teia.tec.br/miles/sistema/lib/"

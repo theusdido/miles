@@ -111,7 +111,9 @@
 						url:"<?=$_SESSION["URL_MILES"]?>",
 						data:{
 							currentproject:<?=$_SESSION["currentproject"]?>,
-							controller:'install/componentes',
+							//controller:'install/componentes',
+							controller:'page',
+							page:'install/component',
 							package:package_selecionado,
 							component:modulo_selecionado
 						},

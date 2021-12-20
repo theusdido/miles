@@ -1,9 +1,14 @@
 <?php	
-	$uri 				= isset($_SERVER["SCRIPT_URI"]) ? $_SERVER["SCRIPT_URI"] : $_SERVER["REQUEST_URI"];
-	$path_miles_json 	= PATH_MILES . "miles.json";
+	$uri 					= isset($_SERVER["SCRIPT_URI"]) ? $_SERVER["SCRIPT_URI"] : $_SERVER["REQUEST_URI"];
+	$path_miles_json 		= PATH_MILES . "miles.json";
 
 	if (!file_exists($path_miles_json)){
 		include PATH_MILES . 'core/controller/install/criarmilesjson.php';
+	}
+
+	if (sizeof(file($path_miles_json)) <= 0){
+		echo 'Arquivo <strong>miles.json<</strong> está comrrompido.';
+		exit;
 	}
 
 	$miles_json = file_get_contents($path_miles_json);

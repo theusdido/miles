@@ -1,9 +1,12 @@
 <?php
 	// Define o caminho absoluto da raiz do MILES
-	define('PATH_MILES',dirname(__DIR__) . '/');
+	define('PATH_MILES',dirname(__DIR__) . '/');	
 
 	// Seta as constantes
 	require PATH_MILES . 'core/system/constantes.php';
+
+	// Carrega biblioteca de funções estáticas
+	require PATH_SYSTEM . 'functions.php';
 
 	// Carrega as configurações do arquivo miles.json
 	require PATH_SYSTEM . 'miles.json.php';

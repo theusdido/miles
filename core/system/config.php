@@ -123,7 +123,7 @@
 	spl_autoload_register(array($AutoLoad, "load"));	
 
 	// Inclui os arquivos de funções do sistema
-	require PATH_SYSTEM . 'funcoes.php';	
+	require PATH_SYSTEM . 'funcoes.php';
 	require PATH_SYSTEM . 'path.php';
 	require PATH_SYSTEM . 'file.php';
 	require PATH_SYSTEM . 'estaticas.php';

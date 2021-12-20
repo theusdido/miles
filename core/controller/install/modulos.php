@@ -46,6 +46,13 @@
                 echo 1;
             }
         break;
+        case 'load':
+            $package    = tdc::r('package');
+            $module     = tdc::r('module');
+
+            include PATH_PACKAGE . $package . '/modulos/' . $module .'.php';
+            echo json_encode($modules);
+        break;
         default:
             include 'core/install/configuracaopacotes.php';        
     }
