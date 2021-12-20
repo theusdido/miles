@@ -417,7 +417,11 @@ function isemail($email){
 
 function getExtensao($str){
 	$array = explode(".", $str);
-	return strtolower(end($array));
+	if (sizeof($array) > 1){
+		return strtolower(end($array));
+	}else{
+		return '';
+	}
 }
 function getUrl($url,$opcoes = null){
 	if ($opcoes != null){

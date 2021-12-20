@@ -9,65 +9,62 @@
     * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 	* Importar Site
 */
-$url 			= tdc::r("url");
-$arrayurl 		= explode("/",$url);
-$urlraiz 		= str_replace(end($arrayurl),"",$url);
-$indexfile 		= PATH_CURRENT_WEBSITE . "index.html";
+$url 				= tdc::r("url");
+$arrayurl 			= explode("/",$url);
+$urlraiz 			= str_replace(end($arrayurl),"",$url);
+$path_root_website	= FOLDER_PROJECT . '/' . CURRENT_PROJECT_ID . '/' . FOLDER_WEBSITE . '/';
+$local_filename		= tdc::r('filename') == '' ? 'index' : tdc::r('filename');
+$template_file		= $path_root_website . 'template.html';
+$url_root_website	= URL_PROJECT . FOLDER_WEBSITE . '/';
+$index_file			= $path_root_website . $local_filename . '.php';
 
-if (!tdFile::add($indexfile,file_get_contents($url))){
+if (!tdFile::add($template_file,file_get_contents($url))){
 	echo 'Não conseguiu gravar o arquivo';
 	exit;
 }
 
-$arquivo = file($indexfile);
+// Arquivo index.php
+$fp_index = fopen($index_file,'w');
+
+$arquivo = file($template_file);
 foreach ($arquivo as $linha){
-	$tamanho = strlen($linha);
-	if(preg_match_all('/<[a-z]+[^>]*>/i', $linha, $matches, PREG_OFFSET_CAPTURE)){
-		foreach ($matches as $m){
-			foreach($m as $t){
-				$posicaotag = $t[1];
-				$tagInner = str_replace(array("<",">"),"",$t[0]);
-				foreach(explode(" ",$tagInner) as $i => $v){
-					if ($i == 0){
-						$tag = $v;
-					}else{
-						// Atributos
-						$attr = explode("=",$v);
-						if ($attr[0] == "href" || $attr[0] == "src"){
-							$attr_value 		= $attr[1];
-							$caminhorelativo 	= substr($attr_value,1,strlen($attr_value)-2);
-							$attr_value 		= str_replace('"','', str_replace("'",'',$attr_value));
-							if (substr($attr_value,0,1) == '/'){
-								$attr_value = substr($attr_value, 1, strlen($attr_value));
-							}							
-							if (!preg_match('/http[s]?:\/\//i',$caminhorelativo)){
-								if (substr($attr_value,0,1) != '#' && $attr_value != ''){
-									tdFile::download(PATH_CURRENT_WEBSITE . $caminhorelativo,$urlraiz . $caminhorelativo);
-								}
+	$tamanho 	= strlen($linha);
+	$new_linha	= $linha;
+	// Encontra as TAGS
+	if ( preg_match_all('/<[^>]+>/i',$linha, $match , PREG_OFFSET_CAPTURE) ){
+		foreach($match[0] as $m){
+			$content = $m[0];
+			if (preg_match_all('/ ([\w]+)="([^"]+)"/i',$content, $match_content , PREG_SET_ORDER) ){
+				foreach($match_content as $c){
+					
+					#echo 'Nome => ' . $c[1] . "\n";
+					#echo 'Valor => ' . $c[2] . "\n";
+					
+
+					$attr 	= $c[1];
+					$value	= $c[2];
+
+					if ($attr == 'href' || $attr == 'src'){
+						if (substr($value,0,1) == '/'){
+							$file_downloaded = substr($value,1,strlen($value));
+							if (getExtensao($value) != ''){
+								tdFile::download($path_root_website . $file_downloaded,$urlraiz . $file_downloaded);
+								$new_atributo 	= ' ' . $attr . '="' . $file_downloaded . '" ';
+								$new_linha 		= str_replace($c[0],$new_atributo,$new_linha);								
 							}
 						}
+
+							echo 'Atributo => ' . $c[0] . "\n";
+							echo $value . "\n";
+							echo getExtensao($value) . "\n";
+							echo "------------------\n";						
 					}
-				}
-				$preconteudo = substr($linha,$posicaotag,$tamanho);
-				$posicaoinicial = $posicaotag + strlen($t[0]);				
-				try{
-					if (!preg_match('/br[\/]?/i',$tag)){
-						preg_match('/<\/[ ]*'.trim($tag).'[ ]*>/i',$linha, $tagfechamento , PREG_OFFSET_CAPTURE ,$posicaoinicial);
-						if ($tagfechamento){
-							$posicaofinal = $tagfechamento[0][1];
-							$conteudo = substr($linha,$posicaoinicial,($posicaofinal - $posicaoinicial));
-						}						
-					}
-					throw new Exception('Erro no busca do fechamento da tag');
-				}catch(Exception $e){					
-					#var_dump($tag);
-					#var_dump($linha);
-					#var_dump($tagfechamento);
-					#var_dump($posicaoinicial);
-					break;
-					exit;
 				}
 			}
 		}
 	}
-}	
+
+	fwrite($fp_index,$new_linha);
+}
+
+fclose($fp_index);
