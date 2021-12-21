@@ -1,6 +1,6 @@
 <?php
-	$entidadeNome = "post";
-	$entidadeDescricao = "Post";
+	$entidadeNome 		= "website_blog_post";
+	$entidadeDescricao 	= "Post";
 	
 	// 1º PASSO
 	$entidadeID = criarEntidade(

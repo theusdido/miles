@@ -1,6 +1,6 @@
 <?php
 	// Setando variáveis
-	$entidadeNome = "erp_imobiliaria_redesocial";
+	$entidadeNome = "imobiliaria_redesocial";
 	$entidadeDescricao = "Rede Social";
 
 	// Criando Entidade
@@ -21,14 +21,14 @@
 	);
 
 	// Criando Atributos
-	$pessoa = criarAtributo($conn,$entidadeID,"pessoa","Pessoa","int",0,0,16,0,getEntidadeId('erp_imobiliaria_pessoa',$conn),0,"",1,0);
+	$pessoa = criarAtributo($conn,$entidadeID,"pessoa","Pessoa","int",0,0,16,0,getEntidadeId('imobiliaria_pessoa',$conn),0,"",1,0);
 	$redesocial = criarAtributo($conn,$entidadeID,"redesocial","Rede Social","int",0,0,16,0,getEntidadeId('erp_geral_redesocial',$conn),0,"",1,0);
 	$link  = criarAtributo($conn,$entidadeID,"link","Link","varchar",200,1,3);
 
 	criarRelacionamento(
 		$conn,
 		6,
-		getEntidadeId("erp_imobiliaria_pessoa",$conn),
+		getEntidadeId("imobiliaria_pessoa",$conn),
 		$entidadeID,
 		"Rede Social",
 		$pessoa

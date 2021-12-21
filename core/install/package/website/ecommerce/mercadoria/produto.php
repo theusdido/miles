@@ -1,7 +1,7 @@
 <?php
 	// Setando variáveis
-	$entidadeNome = "ecommerce_produto";
-	$entidadeDescricao = "Produto";
+	$entidadeNome 		= "ecommerce_produto";
+	$entidadeDescricao 	= "Produto";
 	
 	// Criando Entidade
 	$entidadeID = criarEntidade(
@@ -40,19 +40,19 @@
 	$produto_destaque 			= criarAtributo($conn,$entidadeID,"destaque","Destaque","boolean","",0,7,0,0,0,"");
 
 	// Adiciando categoria em produto
-	$produto_categoria = criarAtributo($conn,$entidadeID,"categoria","Categoria","int",0,1,4,1,installDependencia($conn,"ecommerce_categoria","package/website/ecommerce/mercadoria/categoria"),0,"");
+	$produto_categoria = criarAtributo($conn,$entidadeID,"categoria","Categoria","int",0,1,4,1,installDependencia("ecommerce_categoria","package/website/ecommerce/mercadoria/categoria"),0,"");
 
 	// Adicionando Subcategoria em produto
-    $produto_subcategoria = criarAtributo($conn,$entidadeID,"subcategoria","Subcategoria","int",0,1,4,0,installDependencia($conn,"ecommerce_subcategoria","package/website/ecommerce/mercadoria/categoria"),0,"");
+    $produto_subcategoria = criarAtributo($conn,$entidadeID,"subcategoria","Subcategoria","int",0,1,4,0,installDependencia("ecommerce_subcategoria","package/website/ecommerce/mercadoria/categoria"),0,"");
 
 	// Adiciando tipo de produto
-	$produto_tipo = criarAtributo($conn,$entidadeID,"tipo","Tipo","int",0,1,4,0,installDependencia($conn,"ecommerce_tipoproduto","package/website/ecommerce/mercadoria/tipoproduto"),0,"");
+	$produto_tipo = criarAtributo($conn,$entidadeID,"tipo","Tipo","int",0,1,4,0,installDependencia("ecommerce_tipoproduto","package/website/ecommerce/mercadoria/tipoproduto"),0,"");
 
     // Adiciando Unidade de Medida
-    $produto_unidademedida = criarAtributo($conn,$entidadeID,"unidademedida","Unidade de Medida","int","",1,4,0,installDependencia($conn,"ecommerce_unidademedida","package/website/ecommerce/mercadoria/unidademedida"));
+    $produto_unidademedida = criarAtributo($conn,$entidadeID,"unidademedida","Unidade de Medida","int","",1,4,0,installDependencia("ecommerce_unidademedida","package/website/ecommerce/mercadoria/unidademedida"));
 	
     // Adiciando Marca
-    $produto_marca = criarAtributo($conn,$entidadeID,"marca","Marca","int",1,1,4,0,installDependencia($conn,"ecommerce_marca","package/website/ecommerce/mercadoria/marca"));	
+    $produto_marca = criarAtributo($conn,$entidadeID,"marca","Marca","int",1,1,4,0,installDependencia("ecommerce_marca","package/website/ecommerce/mercadoria/marca"));	
 
 	// Criando Acesso
 	$menu_webiste = addMenu($conn,'E-Commerce','#','',0,0,'ecommerce');

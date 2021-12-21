@@ -21,8 +21,8 @@
 	);
 
 	// Criando Atributos
-	$corretor = criarAtributo($conn,$entidadeID,"corretor","Corretor","int",0,0,22,0,installDependencia($conn,"crm_imobiliaria_corretor"));
-	$cliente = criarAtributo($conn,$entidadeID,"cliente","Cliente","int",0,0,22,0,installDependencia($conn,"erp_imobiliaria_pessoa"));
+	$corretor = criarAtributo($conn,$entidadeID,"corretor","Corretor","int",0,0,22,0,installDependencia("crm_imobiliaria_corretor",'package/negocio/imobiliaria/corretor'));
+	$cliente = criarAtributo($conn,$entidadeID,"cliente","Cliente","int",0,0,22,0,installDependencia("imobiliaria_pessoa",'package/negocio/imobiliaria/pessoa'));
 	$datainicial = criarAtributo($conn,$entidadeID,"datainicial","Data Inicial","date",0,0,11);
 	$datafinal = criarAtributo($conn,$entidadeID,"datafinal","Data Final","date",0,0,11);
 
@@ -33,6 +33,6 @@
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,8,'crm-' . $entidadeNome ,$entidadeID,'cadastro');
 	
 	// Entidades adicionais
-	installDependencia($conn,"crm_imobiliaria_negociacaoetapa");
-	installDependencia($conn,"crm_imobiliaria_negociacaoimoveis");
-	installDependencia($conn,"crm_imobiliaria_negociacaointeracao");
+	installDependencia("imobiliaria_negociacaoetapa",'package/negocio/imobiliaria/negociacaoetapa');
+	installDependencia("imobiliaria_negociacaoimoveis",'package/negocio/imobiliaria/negociacaoimoveis');
+	installDependencia("imobiliaria_negociacaointeracao",'package/negocio/imobiliaria/negociacaointeracao');

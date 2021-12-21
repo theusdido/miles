@@ -1,8 +1,8 @@
 <?php
 
 	// Setando variáveis
-	$entidadeNome = "ecommerce_pagseguro";
-	$entidadeDescricao = "Pag Seguro";
+	$entidadeNome 		= "ecommerce_pagseguro";
+	$entidadeDescricao 	= "Pag Seguro";
 
 	// Criando Entidade
 	$entidadeID = criarEntidade(

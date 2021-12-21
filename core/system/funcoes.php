@@ -676,10 +676,10 @@ function criarEntidade(
 	}
 	
 	if ($criarprojeto == 1){
-		criarAtributo($conn,$entidade,'projeto','Projeto','smallint',0,1,'16',0,installDependencia($conn,"projeto","system/projeto"),0,'session.projeto',1);
+		criarAtributo($conn,$entidade,'projeto','Projeto','smallint',0,1,'16',0,installDependencia("projeto","system/projeto"),0,'session.projeto',1);
 	}
 	if ($criarempresa == 1){
-		criarAtributo($conn,$entidade,'empresa','Empresa','smallint',0,1,'16',0,installDependencia($conn,"empresa","system/empresa"),0,'session.empresa',1);
+		criarAtributo($conn,$entidade,'empresa','Empresa','smallint',0,1,'16',0,installDependencia("empresa","system/empresa"),0,'session.empresa',1);
 	}
 	
 	if ($criarauth == 1){
@@ -1442,23 +1442,14 @@ function setAtributoGeneralizacao($conn,$entidade,$atributo){
 }
 
 // Inclui e instala uma entidade na instalação
-function installDependencia($conn,$entidade_nome_install = "",$package = "package/sistema/"){
-	// Se o primeiro parametro for uma string, passando o nome da entidade. Pega a conexão global
-	if (gettype($conn) == "string"){
-		if ($entidade_nome_install != ""){
-			$package = $entidade_nome_install;
-		}
-		$entidade_nome_install = $conn;
-		global $conn;
-	}
-
+function installDependencia($entidade_nome_install = "",$package = "package/sistema/"){
+	global $conn;
 	$pathfile = PATH_INSTALL . $package . ".php";
-	//var_dump($pathfile);
 	if (file_exists($pathfile)){	
 		include_once $pathfile;
 		return getEntidadeId($entidade_nome_install,$conn);
 	}else{
-		echo 'Arquivo não encotrado => ' . $pathfile . '<br/>\n';
+		echo 'Arquivo da entidade [ <b>'.$entidade_nome_install.'</b> ] não encotrado => ' . $pathfile . '<br/>\n';
 		return 0;
 	}
 }

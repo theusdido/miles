@@ -1,6 +1,6 @@
 <?php
 	// Setando variáveis
-	$entidadeNome = "erp_imobiliaria_listainteresseimovel";
+	$entidadeNome = "imobiliaria_listainteresseimovel";
 	$entidadeDescricao = "Lista de Interesse Imóvel";
 
 	// Criando Entidade
@@ -21,5 +21,5 @@
 	);
 
 	// Criando Atributos
-	$imovel = criarAtributo($conn,$entidadeID,"imovel","Imóvel","int",0,1,4,0,installDependencia($conn,'erp_imobiliaria_imovel'),0,"",1,0);
-	$listainteresse = criarAtributo($conn,$entidadeID,"listainteresse","Lista Interesse","int",0,1,4,0,installDependencia($conn,'erp_imobiliaria_listainteresse'),0,"",1,0);
+	$imovel = criarAtributo($conn,$entidadeID,"imovel","Imóvel","int",0,1,4,0,installDependencia('imobiliaria_imovel','package/negocio/imobiliaria/imovel'),0,"",1,0);
+	$listainteresse = criarAtributo($conn,$entidadeID,"listainteresse","Lista Interesse","int",0,1,4,0,installDependencia('imobiliaria_listainteresse','package/negocio/imobiliaria/listainteresse'),0,"",1,0);

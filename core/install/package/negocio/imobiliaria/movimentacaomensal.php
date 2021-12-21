@@ -1,6 +1,6 @@
 <?php
 	// Setando variáveis
-	$entidadeNome = "erp_imobiliaria_movimentacaomensal";
+	$entidadeNome = "imobiliaria_movimentacaomensal";
 	$entidadeDescricao = "Movimentação Mensal";
 	// Criando Entidade
 	$entidadeID = criarEntidade(
@@ -21,13 +21,13 @@
 
 	// Criando Atributos
 	$descricao = criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar",200,0,3);
-	$pessoa = criarAtributo($conn,$entidadeID,"pessoa","Pessoa","int",0,1,22,0,installDependencia($conn,'erp_imobiliaria_contrato'),0,"",1,0);
+	$pessoa = criarAtributo($conn,$entidadeID,"pessoa","Pessoa","int",0,1,22,0,installDependencia('imobiliaria_contrato','package/negocio/imobiliaria/contrato'),0,"",1,0);
 	$mesano = $descricao = criarAtributo($conn,$entidadeID,"mesano","Mês/Ano","char",6,0,3);
-	$contrato = criarAtributo($conn,$entidadeID,"contrato","Contrato","int",0,1,4,0,installDependencia($conn,'erp_imobiliaria_contrato'),0,"",1,0);
-	$evento = criarAtributo($conn,$entidadeID,"evento","Evento","int",0,1,4,0,installDependencia($conn,'erp_imobiliaria_movimentacaomensalevento'),0,"",1,0);
+	$contrato = criarAtributo($conn,$entidadeID,"contrato","Contrato","int",0,1,4,0,installDependencia('imobiliaria_contrato','package/negocio/imobiliaria/contrato'),0,"",1,0);
+	$evento = criarAtributo($conn,$entidadeID,"evento","Evento","int",0,1,4,0,installDependencia('imobiliaria_movimentacaomensalevento','package/negocio/imobiliaria/movimentacaomensalevento'),0,"",1,0);
 	$valor = criarAtributo($conn,$entidadeID,"valor","Valor","float",0,1,13);
 	$tipopessoa = criarAtributo($conn,$entidadeID,"tipopessoa","Tipo Pessoa","int",0,1,16);
-	$tipo = criarAtributo($conn,$entidadeID,"tipo","Tipo","int",1,1,4,0,installDependencia($conn,'erp_imobiliaria_movimentacaomensaltipoevento'),0,"",1,0);
+	$tipo = criarAtributo($conn,$entidadeID,"tipo","Tipo","int",1,1,4,0,installDependencia('imobiliaria_movimentacaomensaltipoevento','package/negocio/imobiliaria/movimentacaomensaltipoevento'),0,"",1,0);
 	
 
 	// Criando Acesso

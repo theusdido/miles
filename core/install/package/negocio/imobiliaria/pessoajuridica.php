@@ -1,6 +1,6 @@
 <?php
 	// Setando variáveis
-	$entidadeNome = "erp_imobiliaria_pessoajuridica";
+	$entidadeNome = "imobiliaria_pessoajuridica";
 	$entidadeDescricao = "Pessoa Jurídica";
 
 	// Criando Entidade
@@ -21,7 +21,7 @@
 	);
 
 	// Criando Atributos
-	$pessoa = criarAtributo($conn,$entidadeID,"pessoa","Pessoa","int",0,0,16,0,getEntidadeId('erp_imobiliaria_pessoa',$conn),0,"",1,0);
+	$pessoa = criarAtributo($conn,$entidadeID,"pessoa","Pessoa","int",0,0,16,0,getEntidadeId('imobiliaria_pessoa',$conn),0,"",1,0);
 	$razaosocial = criarAtributo($conn,$entidadeID,"razaosocial","Razão Social","varchar","200",1,3,1,0,0,"");
 	$cnpj = criarAtributo($conn,$entidadeID,"cnpj","CNPJ","varchar","25",0,10,1,0,0,"",1,0);
 	$atividadecomercial = criarAtributo($conn,$entidadeID,"atividadecomercial","Atividade Comercial","varchar","200",1,3,1,0,0,"");
@@ -37,7 +37,7 @@
 	criarRelacionamento(
 		$conn,
 		3,
-		getEntidadeId("erp_imobiliaria_pessoa",$conn),
+		getEntidadeId("imobiliaria_pessoa",$conn),
 		$entidadeID,
 		"Jurídica",
 		$pessoa

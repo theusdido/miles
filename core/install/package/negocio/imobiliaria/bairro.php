@@ -1,6 +1,6 @@
 <?php
 	// Setando variáveis
-	$entidadeNome = "erp_imobiliaria_bairro";
+	$entidadeNome = "imobiliaria_bairro";
 	$entidadeDescricao = "Bairro";
 
 	// Criando Entidade
@@ -22,4 +22,4 @@
 
 	// Criando Atributos
 	$nome = criarAtributo($conn,$entidadeID,"nome","Nome","varchar",200,0,3);
-	$cidade = criarAtributo($conn,$entidadeID,"cidade","Cidade","int",0,1,22,0,installDependencia($conn,'erp_imobiliaria_cidade'),0,"",1,0);
+	$cidade = criarAtributo($conn,$entidadeID,"cidade","Cidade","int",0,1,22,0,installDependencia('imobiliaria_cidade','package/negocio/imobiliaria/cidade'),0,"",1,0);

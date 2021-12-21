@@ -1,7 +1,7 @@
 <?php
 	// Setando variáveis
-	$entidadeNome = "ecommerce_operacaoestoque";
-	$entidadeDescricao = "Operação de Estoque";
+	$entidadeNome 		= "ecommerce_operacaoestoque";
+	$entidadeDescricao 	= "Operação de Estoque";
 
 	// Criando Entidade
 	$entidadeID = criarEntidade(
@@ -24,9 +24,9 @@
 	
 	// Criando Atributos
 	
-	$produto = criarAtributo($conn,$entidadeID,"produto","Produto","int",0,0,22,1,installDependencia($conn,"ecommerce_produto","package/website/ecommerce/mercadoria/produto"));
+	$produto = criarAtributo($conn,$entidadeID,"produto","Produto","int",0,0,22,1,installDependencia("ecommerce_produto","package/website/ecommerce/mercadoria/produto"));
 	$quantidade = criarAtributo($conn,$entidadeID,"quantidade","Quantidade","int",0,1,25,1);
-	$operacaoestoque = criarAtributo($conn,$entidadeID,"operacaoestoque","Operação","int",0,0,4,1,installDependencia($conn,"ecommerce_tipooperacaoestoque","package/website/ecommerce/estoque/tipooperacaoestoque"));
+	$operacaoestoque = criarAtributo($conn,$entidadeID,"operacaoestoque","Operação","int",0,0,4,1,installDependencia("ecommerce_tipooperacaoestoque","package/website/ecommerce/estoque/tipooperacaoestoque"));
 	
 	// Criando Acesso
 	$menu_webiste = addMenu($conn,'Material','#','',0,0,'material');

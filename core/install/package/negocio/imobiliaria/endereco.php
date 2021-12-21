@@ -1,6 +1,6 @@
 <?php
 	// Setando variáveis
-	$entidadeNome = "erp_imobiliaria_endereco";
+	$entidadeNome = "imobiliaria_endereco";
 	$entidadeDescricao = "Endereço";
 
 	// Criando Entidade
@@ -22,8 +22,8 @@
 
 	// Criando Atributos	
 	$logradouro = criarAtributo($conn,$entidadeID,"logradouro","Logradouro","varchar",200,0,3);
-	$cep = criarAtributo($conn,$entidadeID,"cep","CEP","varchar",9,0,9);
-	$bairro = criarAtributo($conn,$entidadeID,"bairro","Bairro","int",0,0,4,0,installDependencia($conn,"erp_imobiliaria_bairro"));
+	$cep 		= criarAtributo($conn,$entidadeID,"cep","CEP","varchar",9,0,9);
+	$bairro 	= criarAtributo($conn,$entidadeID,"bairro","Bairro","int",0,0,4,0,installDependencia("imobiliaria_bairro",'package/negocio/imobiliaria/bairro'));
 	
 	// Criando Acesso
 	$menu_webiste = addMenu($conn,'Geral','#','',0,0,'Geral');

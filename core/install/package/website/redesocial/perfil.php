@@ -24,7 +24,7 @@
 	$nome = criarAtributo($conn,$entidadeID,"nome","Nome","varchar","200",0,3,1,0,0,"");
 	$genero = criarAtributo($conn,$entidadeID,"genero","Gênero","int",0,0,4,1,getEntidadeId("website_redesocial_genero",$conn),0,"");
 	$datanascimento = criarAtributo($conn,$entidadeID,"datanascimento","Data de Nascimento","date",0,0,11,0,0,0,"");
-	$especie = criarAtributo($conn,$entidadeID,"especie","Espécie","int",0,0,4,1,installDependencia($conn,"website_redesocial_especie"));
+	$especie = criarAtributo($conn,$entidadeID,"especie","Espécie","int",0,0,4,1,installDependencia("website_redesocial_especie",'package/website/redesocial/especie'));
 	$foto = criarAtributo($conn,$entidadeID,"foto","Foto","varchar",500,1,19);
 	$usuario = criarAtributo($conn,$entidadeID,"usuario","Usuário","int",0,0,16,0,getEntidadeId("website_redesocial_usuario",$conn));
 

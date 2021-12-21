@@ -21,7 +21,7 @@
 	);
 
 	// Criando Atributos
-	$produto 		= criarAtributo($conn,$entidadeID,"produto","Produto","int",0,0,22,1,installDependencia($conn,"erp_comercial_produto"),0,"");
+	$produto 		= criarAtributo($conn,$entidadeID,"produto","Produto","int",0,0,22,1,installDependencia("erp_produto",'package/negocio/erp/produto/produto'),0,"");
 	$saldo 			= criarAtributo($conn,$entidadeID,"saldo","Saldo","int",0,1,25,1);
 	$datahora 		= criarAtributo($conn,$entidadeID,"datahora","Data/Hora","datetime",0,1,23,1);
 

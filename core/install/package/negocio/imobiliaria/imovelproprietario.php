@@ -1,6 +1,6 @@
 <?php
 	// Setando variáveis
-	$entidadeNome = "erp_imobiliaria_imovelproprietario";
+	$entidadeNome = "imobiliaria_imovelproprietario";
 	$entidadeDescricao = "Imóvel Proprietário";
 
 	// Criando Entidade
@@ -21,14 +21,14 @@
 	);
 
 	// Criando Atributos
-	$pessoa = criarAtributo($conn,$entidadeID,"pessoa","Pessoa","int",0,0,22,1,installDependencia($conn,'erp_imobiliaria_pessoa'),0,"",1,0);
+	$pessoa = criarAtributo($conn,$entidadeID,"pessoa","Pessoa","int",0,0,22,1,installDependencia('imobiliaria_pessoa','package/negocio/imobiliaria/pessoa'),0,"",1,0);
 	$percentualparticipacaoimovel = criarAtributo($conn,$entidadeID,"percentualparticipacaoimovel","% Participação Imóvel","int",0,1,25,1);
 
 	// Criando Relacionamento
 	criarRelacionamento(
 		$conn,
 		2,
-		installDependencia($conn,"erp_imobiliaria_imovel"),
+		installDependencia("imobiliaria_imovel",'package/negocio/imobiliaria/imovel'),
 		$entidadeID,
 		"Proprietário(s)",
 		$pessoa

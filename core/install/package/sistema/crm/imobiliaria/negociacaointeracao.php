@@ -21,6 +21,6 @@
 	);
 
 	// Criando Atributos
-	$negociacao = criarAtributo($conn,$entidadeID,"negociacao","Negociação","int",0,0,22,0,installDependencia($conn,"crm_imobiliaria_negociacao"));
+	$negociacao = criarAtributo($conn,$entidadeID,"negociacao","Negociação","int",0,0,22,0,installDependencia("imobiliaria_negociacao",'package/negocio/imobiliaria/negociacao'));
 	$descricao = criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar",200,0,3);
 	$datahora = criarAtributo($conn,$entidadeID,"datahora","Data Hora","date",0,0,23);

@@ -1,8 +1,8 @@
 <?php
 
 	// Setando variáveis
-	$entidadeNome = "ecommerce_metodopagamento";
-	$entidadeDescricao = "Método de Pagamento";
+	$entidadeNome 		= "ecommerce_metodopagamento";
+	$entidadeDescricao 	= "Método de Pagamento";
 
 	// Criando Entidade
 	$entidadeID = criarEntidade(

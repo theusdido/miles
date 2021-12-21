@@ -21,9 +21,9 @@
 	);
 
 	// Criando Atributos	
-	$produto 			= criarAtributo($conn,$entidadeID,"produto","Produto","int",0,0,22,1,installDependencia($conn,"erp_comercial_produto"),0,"");
+	$produto 			= criarAtributo($conn,$entidadeID,"produto","Produto","int",0,0,22,1,installDependencia("erp_produto",'package/sistema/erp/produto/produto'),0,"");
 	$quantidade 		= criarAtributo($conn,$entidadeID,"quantidade","Quantidade","int",0,1,25,0);
-	$operacaoestoque 	= criarAtributo($conn,$entidadeID,"operacaoestoque","Operação","int",0,0,4,1,installDependencia($conn,"erp_material_tipooperacaoestoque"),0,"");
+	$operacaoestoque 	= criarAtributo($conn,$entidadeID,"operacaoestoque","Operação","int",0,0,4,1,installDependencia("erp_material_tipooperacaoestoque",'package/sistema/erp/material/tipooperacaoestoque'),0,"");
 
 	// Criando Acesso
 	$menu_webiste = addMenu($conn,'Material','#','',0,0,'material');

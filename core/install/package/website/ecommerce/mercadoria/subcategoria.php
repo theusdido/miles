@@ -1,7 +1,7 @@
 <?php
-    // Setando vari�veis
-    $entidadeNome = "ecommerce_subcategoria";
-    $entidadeDescricao = "Subcategoria";
+    // Setando variáveis
+    $entidadeNome       = "ecommerce_subcategoria";
+    $entidadeDescricao  = "Subcategoria";
 
     // Categoria
     $entidadeID = criarEntidade(
@@ -21,7 +21,7 @@
     );
 
     $descricao = criarAtributo($conn, $entidadeID, "descricao", "Descri��o", "varchar", 200, 0, 3, 1, 0, 0, "");
-    $categoria = criarAtributo($conn, $entidadeID,"categoria","Categoria","int",0,0,4,1,installDependencia($conn,"ecommerce_categoria","package/website/ecommerce/mercadoria/categoria"));
+    $categoria = criarAtributo($conn, $entidadeID,"categoria","Categoria","int",0,0,4,1,installDependencia("ecommerce_categoria","package/website/ecommerce/mercadoria/categoria"));
 
     // Criando Acesso
     $menu_webiste = addMenu($conn, 'E-Commerce', '#', '', '', '', 'ecommerce');

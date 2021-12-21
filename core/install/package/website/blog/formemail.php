@@ -1,6 +1,6 @@
 <?php
-	$entidadeNome = "formemail";
-	$entidadeDescricao = "Fale Conosco";
+	$entidadeNome 		= "website_blog_formemail";
+	$entidadeDescricao 	= "Fale Conosco";
 	
 	// 1º PASSO
 	$entidadeID = criarEntidade(

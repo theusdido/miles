@@ -7,7 +7,7 @@
 		array("nome" => "nfse" , "descricao" => "NFSE" , "tipohtml" => "numero_inteiro" , "chave_estrangeira" => getEntidadeId('erp_nfse_nota'))
 	);
 	$pessoa	= $entidade->addAttr(
-		array("nome" => "pessoa" , "descricao" => "Pessoa" , "tipohtml" => "numero_inteiro" , "chave_estrangeira" => installDependencia('erp_geral_pessoa'))
+		array("nome" => "pessoa" , "descricao" => "Pessoa" , "tipohtml" => "numero_inteiro" , "chave_estrangeira" => installDependencia('erp_geral_pessoa','package/sistema/erp/pessoa/pessoa'))
 	);
 
 	$prestcnpj	= $entidade->addAttr(

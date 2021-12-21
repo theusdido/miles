@@ -17,13 +17,13 @@
 		$registrounico = 0
 	);
 
-	$pedido					= criarAtributo($conn,$entidadeID,"pedido","Pedido","int",0,0,22,1,installDependencia($conn,"ecommerce_pedido","package/website/ecommerce/comercial/pedido"));
+	$pedido					= criarAtributo($conn,$entidadeID,"pedido","Pedido","int",0,0,22,1,installDependencia("ecommerce_pedido","package/website/ecommerce/comercial/pedido"));
 	$datahoraenvio 			= criarAtributo($conn,$entidadeID,"datahoraenvio","Data/Hora de Envio","datetime",0,0,23,0);
 	$datahorarecebimento 	= criarAtributo($conn,$entidadeID,"datahorarecebimento","Data/Hora de Recebimento","datetime",0,0,23,0);
 	$entregue 				= criarAtributo($conn,$entidadeID,"entregue","Entregue ?","boolean",0,0,7,0);
 	$valorfrete				= criarAtributo($conn,$entidadeID,"valorfrete","Valor Frete","float",0,1,13,0);
 	$pesototal				= criarAtributo($conn,$entidadeID,"pesototal","Peso Total","float",0,1,26,0);
-	$transportadora			= criarAtributo($conn,$entidadeID,"transportadora","Transportadora","int",0,0,22,1,installDependencia($conn,"ecommerce_transportadora","package/website/ecommerce/envio/transportadora"));
+	$transportadora			= criarAtributo($conn,$entidadeID,"transportadora","Transportadora","int",0,0,22,1,installDependencia("ecommerce_transportadora","package/website/ecommerce/envio/transportadora"));
 	$codigorastreamento		= criarAtributo($conn,$entidadeID,"codigorastreamento","Código Rastreamento","varchar",200,0,3,0);
 
 	// Criando Acesso

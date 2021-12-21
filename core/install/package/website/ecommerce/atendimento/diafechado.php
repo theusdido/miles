@@ -1,7 +1,7 @@
 <?php
     // Setando variáveis
-    $entidadeNome = "ecommerce_diafechado";
-    $entidadeDescricao = "Dia Fechado";
+    $entidadeNome       = "ecommerce_diafechado";
+    $entidadeDescricao  = "Dia Fechado";
 
     // Categoria
     $entidadeID = criarEntidade(

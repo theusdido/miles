@@ -24,7 +24,7 @@
 	);
 
 	$nosso_numero	= $entidade->addAttr(
-		array("nome" => "nosso_numero" , "descricao" => "Nosso Número" , "tipohtml" => "varchar" , "tamanho" => 25)
+		array("nome" => "nosso_numero" , "descricao" => "Nosso Número" , "tipo" => "varchar" , "tamanho" => 25)
 	);
 
 	$valortotal     = $entidade->addAttr(
@@ -32,7 +32,7 @@
 	);
 
 	$documento	    = $entidade->addAttr(
-		array("nome" => "documento" , "descricao" => "Documento" , "tipohtml" => "varchar" , "tamanho" => 50)
+		array("nome" => "documento" , "descricao" => "Documento" , "tipo" => "varchar" , "tamanho" => 50)
 	);
 
 	$pagador	    = $entidade->addAttr(
@@ -44,23 +44,23 @@
 	);
 	
     $especie	    = $entidade->addAttr(
-		array("nome" => "especie" , "descricao" => "Espécie" , "tipohtml" => "varchar", "tamanho" => 5)
+		array("nome" => "especie" , "descricao" => "Espécie" , "tipo" => "varchar", "tamanho" => 5)
 	);
 
 	$especie_documento	    = $entidade->addAttr(
-		array("nome" => "especie_documento" , "descricao" => "Espécie do Documento" , "tipohtml" => "varchar", "tamanho" => 5)
+		array("nome" => "especie_documento" , "descricao" => "Espécie do Documento" , "tipo" => "varchar", "tamanho" => 5)
 	);
 
 	$aceite	    = $entidade->addAttr(
-		array("nome" => "aceite" , "descricao" => "Aceite" , "tipohtml" => "varchar", "tamanho" => 5)
+		array("nome" => "aceite" , "descricao" => "Aceite" , "tipo" => "varchar", "tamanho" => 5)
 	);
 
 	$moeda	    = $entidade->addAttr(
-		array("nome" => "moeda" , "descricao" => "Moeda" , "tipohtml" => "varchar", "tamanho" => 5)
+		array("nome" => "moeda" , "descricao" => "Moeda" , "tipo" => "varchar", "tamanho" => 5)
 	);
 
 	$conta_bancaria	  = $entidade->addAttr(
-		array("nome" => "conta_bancaria" , "descricao" => "Conta Bancária" , "tipohtml" => "inteiro", "chave_estrangeira" => getEntidadeId('erp_financeiro_contabancaria'))
+		array("nome" => "conta_bancaria" , "descricao" => "Conta Bancária" , "tipohtml" => "numero_inteiro", "chave_estrangeira" => getEntidadeId('erp_financeiro_contabancaria'))
 	);
 
 	$beneficiario	    = $entidade->addAttr(
@@ -68,11 +68,11 @@
 	);
 
 	$local_pagamento	    = $entidade->addAttr(
-		array("nome" => "local_pagamento" , "descricao" => "Local Pagamento" , "tipohtml" => "varchar", "tamanho" => 200)
+		array("nome" => "local_pagamento" , "descricao" => "Local Pagamento" , "tipo" => "varchar", "tamanho" => 200)
 	);
 
 	$codigo_barras	    = $entidade->addAttr(
-		array("nome" => "codigo_barras" , "descricao" => "Código de Barras" , "tipohtml" => "varchar", "tamanho" => 200)
+		array("nome" => "codigo_barras" , "descricao" => "Código de Barras" , "tipo" => "varchar", "tamanho" => 200)
 	);
 
 	$percentual_multa     = $entidade->addAttr(

@@ -1,6 +1,6 @@
 <?php
 	// Setando variáveis
-	$entidadeNome = "erp_imobiliaria_mobiliado";
+	$entidadeNome = "imobiliaria_mobiliado";
 	$entidadeDescricao = "Mobiliado";
 	// Criando Entidade
 	$entidadeID = criarEntidade(

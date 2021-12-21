@@ -21,8 +21,8 @@
 	);
 
 	// Criando Atributos
-	$imovel = criarAtributo($conn,$entidadeID,"imovel","Imóvel","int",0,0,22,0,installDependencia($conn,"erp_imobiliaria_imovel"));
-	$negociacao = criarAtributo($conn,$entidadeID,"negociacao","Negociação","int",0,0,22,0,installDependencia($conn,"crm_imobiliaria_negociacao"));
+	$imovel = criarAtributo($conn,$entidadeID,"imovel","Imóvel","int",0,0,22,0,installDependencia("imobiliaria_imovel",'package/negocio/imobiliaria/imovel'));
+	$negociacao = criarAtributo($conn,$entidadeID,"negociacao","Negociação","int",0,0,22,0,installDependencia("imobiliaria_negociacao",'package/negocio/imobiliaria/negociacao'));
 	$vendido = criarAtributo($conn,$entidadeID,"vendido","Vendido ?","tinyint",0,0,7);
 
 	// Criando Acesso

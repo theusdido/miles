@@ -1,5 +1,5 @@
 <?php
-	$entidadeNome = PREFIXO . "erp_imobiliaria_tipoendereco";
+	$entidadeNome = PREFIXO . "imobiliaria_tipoendereco";
 
 	inserirRegistro($conn,$entidadeNome,1, array("descricao"), array("'Residêncial'"));
 	inserirRegistro($conn,$entidadeNome,2, array("descricao"), array("'Comercial'"));

@@ -1,6 +1,6 @@
 <?php
-	$entidadeNome = "tagsocorrencia";
-	$entidadeDescricao = "Tags Ocorrência";
+	$entidadeNome 		= "website_blog_tagsocorrencia";
+	$entidadeDescricao 	= "Tags Ocorrência";
 	
 	// 1º PASSO
 	$entidadeID = criarEntidade(

@@ -1,6 +1,6 @@
 <?php
 	// Setando variáveis
-	$entidadeNome = "erp_imobiliaria_iptu";
+	$entidadeNome = "imobiliaria_iptu";
 	$entidadeDescricao = "IPTU";
 
 	// Criando Entidade
@@ -21,11 +21,11 @@
 	);
 
 	// Criando Atributos
-	$numerocarneiptu = criarAtributo($conn,$entidadeID,"numerocarneiptu","Número Carnê IPTU","varchar",200,1,3,1);
-	$valor = criarAtributo($conn,$entidadeID,"valor","Valor","float",0,1,13);
-	$informacoesiptu = criarAtributo($conn,$entidadeID,"informacaoiptu","Informação IPTU","varchar",200,1,3);
+	$numerocarneiptu 		= criarAtributo($conn,$entidadeID,"numerocarneiptu","Número Carnê IPTU","varchar",200,1,3,1);
+	$valor 					= criarAtributo($conn,$entidadeID,"valor","Valor","float",0,1,13);
+	$informacoesiptu 		= criarAtributo($conn,$entidadeID,"informacaoiptu","Informação IPTU","varchar",200,1,3);
 	$percentualcomissaoiptu = criarAtributo($conn,$entidadeID,"percentualcomissaoaluguel","% Comissáo IPTU","int",0,1,26);
-	$imovel = criarAtributo($conn,$entidadeID,"imovel","Imóvel","int",0,1,16,0,installDependencia($conn,'erp_imobiliaria_imovel'));
+	$imovel 				= criarAtributo($conn,$entidadeID,"imovel","Imóvel","int",0,1,16,0,installDependencia('imobiliaria_imovel','package/negocio/imobiliaria/imovel'));
 
 	// Criar Relacionamento
-	criarRelacionamento($conn,6,installDependencia($conn,'erp_imobiliaria_imovel'),$entidadeID,"IPTU",$imovel);
+	criarRelacionamento($conn,6,$imovel,$entidadeID,"IPTU",$imovel);

@@ -1,6 +1,6 @@
 <?php
 	// Setando variáveis
-	$entidadeNome = "erp_imobiliaria_pessoa";
+	$entidadeNome = "imobiliaria_pessoa";
 	$entidadeDescricao = "Pessoa";
 
 	// Criando Entidade
@@ -37,6 +37,6 @@
 
 	$aba = criarAba($conn,$entidadeID,"Capa",array($nome,$tipopessoa,$datacadastro,$observacao));
 
-	$pessoafisica = installDependencia($conn,"erp_imobiliaria_pessoafisica");
-	$pessoajuridica = installDependencia($conn,"erp_imobiliaria_pessoajuridica");
-	$pessoaendereco = installDependencia($conn,"erp_imobiliaria_pessoaendereco");
+	$pessoafisica 	= installDependencia("imobiliaria_pessoafisica",'package/negocio/imobiliaria/pessoafisica');
+	$pessoajuridica = installDependencia("imobiliaria_pessoajuridica",'package/negocio/imobiliaria/pessoajuridica');
+	$pessoaendereco = installDependencia("imobiliaria_pessoaendereco",'package/negocio/imobiliaria/pessoaendereco');

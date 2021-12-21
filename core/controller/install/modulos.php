@@ -1,28 +1,20 @@
 <?php
     $op = tdc::r('op');
-
     switch($op){
         case 'instalarcomponente':
             $componente = tdc::r('componente');
             if ($componente != ''){
-                $path_componente = explode("-",$componente);
-                $path = "";
-                foreach($path_componente as $c){
-                    $path .= "/" . $c;
-                }
+                $path = str_replace('-','/',$componente);
                 $componente_path = PATH_PACKAGE . $path. ".php";
                 if (file_exists($componente_path)){
-                    include_once PATH_PACKAGE . $path. ".php";
-                    $componente_path = PATH_CURRENT_PACKAGE . $path. ".php";
-                    if (file_exists($componente_path)){
-                        include_once $componente_path;
-                    }
+                    include_once $componente_path;
                 }else{
-                    echo 'Arquivo não encontrado =>  [ <b>'.$componente_path.'</b> ].';
+                    echo 'Arquivo componente não encontrado =>  [ <b>'.$componente_path.'</b> ].';
                 }
             }
-            $registro = json_decode(tdc::r("registro"));
-			if ($registro != null){
+            $registro = tdc::r("registro");
+			if ($registro != null && $registro != ''){
+                $registro = json_decode(tdc::r("registro"));
 				if ($registro->file != ''){
 					$path_registro = explode("-",$registro->path);
 					$path = "";
@@ -33,9 +25,8 @@
 					if (file_exists($path_registro)){
 						include_once $path_registro;
 					}else{
-                        echo 'Arquivo não encontrado =>  [ <b>'.$path_registro.'</b> ].';
+                        echo 'Arquivo registro não encontrado =>  [ <b>'.$path_registro.'</b> ].';
                     }
-
 				}
 			}
             echo 1;            

@@ -1,7 +1,7 @@
 <?php
 	// Setando variáveis
-	$entidadeNome = "perfil";
-	$entidadeDescricao = "Perfil";
+	$entidadeNome		= "website_blog_perfil";
+	$entidadeDescricao 	= "Perfil";
 	
 	// Criando Entidade
 	$entidadeID = criarEntidade(

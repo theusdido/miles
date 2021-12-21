@@ -1,6 +1,6 @@
 <?php
 	// Setando variáveis
-	$entidadeNome = "erp_imobiliaria_motivoexclusaoboletos";
+	$entidadeNome = "imobiliaria_motivoexclusaoboletos";
 	$entidadeDescricao = "Motivo de Exclusão de Boletos";
 	// Criando Entidade
 	$entidadeID = criarEntidade(

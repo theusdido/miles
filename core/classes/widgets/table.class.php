@@ -35,6 +35,7 @@ class Table Extends Elemento {
     */
     public function addHeadTR($content){
         $tr     = tdc::html('tr');
+        if (func_num_args() > 1) $content = func_get_args();
         switch(gettype($content)){
             case 'array':
                 foreach($content as $param){
@@ -57,7 +58,7 @@ class Table Extends Elemento {
         @content: String | Object | Array
         @return: Elemento th
     */
-    private function addHeadTRContentTH($content){
+    private function addHeadTRContentTH($content){        
         $th     = tdc::html('th');
         $th->add($content);
         return $th;
@@ -73,6 +74,9 @@ class Table Extends Elemento {
     */
     public function addBodyTR($content){
         $tr     = tdc::html('tr');
+        
+        if (func_num_args() > 1) $content = func_get_args();
+
         switch(gettype($content)){
             case 'array':
                 foreach($content as $param){

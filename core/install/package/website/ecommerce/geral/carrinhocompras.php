@@ -1,7 +1,7 @@
 <?php
 	// Setando variáveis
-	$entidadeNome = "ecommerce_carrinhocompras";
-	$entidadeDescricao = "Carrinho de Compras";
+	$entidadeNome 		= "ecommerce_carrinhocompras";
+	$entidadeDescricao 	= "Carrinho de Compras";
 
 	// Criando Entidade
 	$entidadeID = criarEntidade(
@@ -31,7 +31,7 @@
 	$carrinho_valortotal 			= criarAtributo($conn,$entidadeID,"valortotal","Valor Total","float",0,1,13,1,0,0,"");
 	$carrinho_qtdetotaldeitens 		= criarAtributo($conn,$entidadeID,"qtdetotaldeitens","Qtde Total de Itens","int",0,1,25,0,0,0,"");
 	$carrinho_valorfrete 			= criarAtributo($conn,$entidadeID,"valorfrete","Valor Frete","float",0,1,13,1,0,0,"");
-	$carrinho_transportadora 		= criarAtributo($conn,$entidadeID,"transportadora","Transportadora","int",0,1,22,0,installDependencia($conn,"ecommerce_transportadora","package/website/ecommerce/envio/transportadora"));
+	$carrinho_transportadora 		= criarAtributo($conn,$entidadeID,"transportadora","Transportadora","int",0,1,22,0,installDependencia("ecommerce_transportadora","package/website/ecommerce/envio/transportadora"));
 
 	// Criando Acesso
 	$menu_webiste = addMenu($conn,'E-Commerce','#','',0,0,'ecommerce');

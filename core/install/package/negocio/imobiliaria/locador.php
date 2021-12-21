@@ -1,6 +1,6 @@
 <?php
 	// Setando variáveis
-	$entidadeNome = "erp_imobiliaria_locador";
+	$entidadeNome = "imobiliaria_locador";
 	$entidadeDescricao = "Locador";
 
 	// Criando Entidade
@@ -21,18 +21,18 @@
 	);
 
 	// Criando Atributos
-	$pessoa = criarAtributo($conn,$entidadeID,"pessoa","Pessoa","int",0,0,16,0,getEntidadeId('erp_imobiliaria_pessoa',$conn),0,"",1,0);
+	$pessoa = criarAtributo($conn,$entidadeID,"pessoa","Pessoa","int",0,0,16,0,getEntidadeId('imobiliaria_pessoa',$conn),0,"",1,0);
 	$taxacontrato = criarAtributo($conn,$entidadeID,"taxacontrato","Taxa de Contrato","float",0,0,13);
 	$comissaoaluguel = criarAtributo($conn,$entidadeID,"comissaoaluguel","% de Comissão do Aluguél","int",0,0,26);
 	$comissaoiptu = criarAtributo($conn,$entidadeID,"comissaoiptu","Comissão IPTU","int",0,1,26);
 	$diapagamento = criarAtributo($conn,$entidadeID,"diapagamento","Dia do Pagamento","int",0,1,25);
-	$tipopagametno = $formapagamento = criarAtributo($conn,$entidadeID,"tipopagamento","Tipo de Pagamento","int",0,0,4,1,getEntidadeId("erp_imobiliaria_formapagamento",$conn),0,"",0,0);	
+	$tipopagametno = $formapagamento = criarAtributo($conn,$entidadeID,"tipopagamento","Tipo de Pagamento","int",0,0,4,1,getEntidadeId("imobiliaria_formapagamento",$conn),0,"",0,0);	
 	$emitecheque = criarAtributo($conn,$entidadeID,"emitecheque","Emite Cheque","tinyint",0,1,7);
 
 	criarRelacionamento(
 		$conn,
 		9,
-		getEntidadeId("erp_imobiliaria_pessoa",$conn),
+		getEntidadeId("imobiliaria_pessoa",$conn),
 		$entidadeID,
 		"Locador",
 		$pessoa

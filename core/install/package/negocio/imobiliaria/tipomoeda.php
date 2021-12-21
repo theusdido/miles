@@ -1,6 +1,6 @@
 <?php
 	// Setando variáveis
-	$entidadeNome = "erp_imobiliaria_tipomoeda";
+	$entidadeNome = "imobiliaria_tipomoeda";
 	$entidadeDescricao = "Tipo de Moeda";
 	// Criando Entidade
 	$entidadeID = criarEntidade(

@@ -42,7 +42,11 @@ $(document).ready(function(){
             module:modulo_selecionado
         },
         complete:function(res){
-            // $('#accordion-install-components').html(res.responseText);
+            let retorno = JSON.parse(res.responseText);
+            retorno.forEach((e) => {
+                let url_compoente = 'index.php?controller=install/componentes&package=' + package_selecionado + '&component=' + modulo_selecionado;
+                $('#accordion-install-components').load(url_compoente);
+            });
         }
     });
 });
