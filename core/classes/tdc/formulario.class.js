@@ -200,9 +200,8 @@ tdFormulario.prototype.setaPrimeiraAba = function(){
 tdFormulario.prototype.setaCkEditores = function(is_novo){
 	// Setando valores do CK Editor
 	for(c in this.CKEditores){
-		let instanciaCK = CKEditores[c];
 		if (is_novo){
-			instanciaCK.setData("");
+			this.CKEditores[c].setData("");
 		}
 	}
 
@@ -213,9 +212,11 @@ tdFormulario.prototype.setaCkEditores = function(is_novo){
 		let idCampo = "div-editor-" + $(this).attr("id") + "-" + $(this).data("entidade");
 		let config  = {};
 		let valor   = "";
-
-		const instanciaEditor = instancia.CKEDITOR.appendTo( idCampo , config, valor );
-		instancia.CKEditores[$(this).data("entidade") + "^" + $(this).attr("id")] = instanciaEditor;
+		
+		if (instancia.CKEDITOR != undefined){
+			const instanciaEditor = instancia.CKEDITOR.appendTo( idCampo , config, valor );
+			instancia.CKEditores[$(this).data("entidade") + "^" + $(this).attr("id")] = instanciaEditor;
+		}
 	});	
 }
 

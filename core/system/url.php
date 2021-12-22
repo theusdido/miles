@@ -1,7 +1,7 @@
 <?php
     // URL ROOT
-	Session::append("URL_ROOT",REQUEST_PROTOCOL . HTTP_HOST . "/" . PROJETO_FOLDER . "/");
-	define('URL_ROOT', REQUEST_PROTOCOL . HTTP_HOST . "/" . PROJETO_FOLDER . "/");
+	Session::append("URL_ROOT",REQUEST_PROTOCOL . HTTP_HOST . "/" . FOLDER_PROJECT . "/");
+	define('URL_ROOT', REQUEST_PROTOCOL . HTTP_HOST . "/" . FOLDER_PROJECT . "/");
 
 	// URL ALIAS
 	if (isset($_GET["alias"])) Session::append("URL_ALIAS",REQUES_PROTOCOL . HTTP_HOST . "/" . $_GET["alias"]);

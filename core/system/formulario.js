@@ -1,3 +1,5 @@
-var formulario = [];
-formulario[66] = new tdFormulario(66);
-formulario[66].loadGrade();
+var EntidadePrincipalID = $("#entidadeprincipalid").val();
+var formulario          = [];
+
+formulario[EntidadePrincipalID] = new tdFormulario(EntidadePrincipalID);
+formulario[EntidadePrincipalID].loadGrade();
