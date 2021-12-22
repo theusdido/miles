@@ -24,10 +24,12 @@
 	*/
 
 ?>
+
+
 <div class="list-group">
-	<a href="index.php?currentproject=<?=$_SESSION["currentproject"]?>" class="list-group-item">
+	<a href="<?=$_SESSION["URL_MILES"]?>?controller=install" class="list-group-item">
 		Criar Banco de Dados
-		<img src="<?=$check_criarbase?>" class="check-no" id="guia-base"/>
+		<img src="<?=$check_criarbase?>" class="check-no" id="guia-pacote"/>
 	</a>
 	<a href="<?=$_SESSION["URL_MILES"]?>?controller=install/pacotes" class="list-group-item">
 		Instalação do Sistema
