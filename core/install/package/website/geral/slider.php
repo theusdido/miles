@@ -1,6 +1,6 @@
 <?php
-	$entidadeNome = "slider";
-	$entidadeDescricao = "Slider";
+	$entidadeNome 		= "website_geral_slider";
+	$entidadeDescricao 	= "Slider";
 	
 	// 1º PASSO
 	$entidadeID = criarEntidade(
@@ -28,4 +28,4 @@
 	$menu_webiste = addMenu($conn,'WebSite','#','',0,0,'website');
 	
 	// 4º PASSO
-	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',".$menu_webiste.",5,'website-'.$entidadeNome);
+	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,5,'website-'.$entidadeNome,$entidadeID, 'cadastro');

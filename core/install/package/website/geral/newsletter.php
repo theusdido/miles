@@ -1,6 +1,6 @@
 <?php
-	$entidadeNome = "website_geral_newsletter";
-	$entidadeDescricao = "Newsletter";
+	$entidadeNome 		= "website_geral_newsletter";
+	$entidadeDescricao 	= "Newsletter";
 	
 	// 1º PASSO
 	$entidadeID = criarEntidade(
@@ -27,4 +27,4 @@
 	$menu_webiste = addMenu($conn,'WebSite','#','',0,0,'website');
 	
 	// 4º PASSO
-	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',".$menu_webiste.",5,'website-'.$entidadeNome);
+	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,5,'website-'.$entidadeNome,$entidadeID, 'cadastro');

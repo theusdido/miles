@@ -1,6 +1,6 @@
 <?php
-	$entidadeNome = "website_geral_quemsomos";
-	$entidadeDescricao = "Quem Somos";
+	$entidadeNome 		= "website_geral_quemsomos";
+	$entidadeDescricao 	= "Quem Somos";
 
 	$entidadeID = criarEntidade(
 		$conn,
