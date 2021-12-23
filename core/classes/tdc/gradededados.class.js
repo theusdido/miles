@@ -878,7 +878,7 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
 	
 	let spanEditar = $("<span reg='"+id+"' data-entidade='"+this.entidade+"' data-funcionalidade='"+this.funcionalidade+"' class='botao fas fa-pencil-alt btn btn-default' ></span>");
 	spanEditar.on("click",function(){
-debugger;
+
 		let entidadeid 		= $(this).data("entidade");
 		let id 				= $(this).attr("reg");
 		let funcionalidade 	= $(this).data("funcionalidade");
