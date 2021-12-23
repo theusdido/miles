@@ -14,10 +14,10 @@
 					if ($query->rowCount() <= 0){						
 						
 						$prox 	= getProxId($entidadeNameMov);
-						$sqlmov = "INSERT INTO " . $entidadeNameMov. " (id,{$atributo->nome},{$entidadepai}) VALUES ({$prox},'".Campos::Integridade($entidade->contexto->id,$atributo->nome,$obj->valor,"")."',{$identidadepai});";
+						$sqlmov = "INSERT INTO " . $entidadeNameMov. " (id,{$atributo->nome},{$entidadepai}) VALUES ({$prox},'".Config::Integridade($entidade->contexto->id,$atributo->nome,$obj->valor,"")."',{$identidadepai});";
 					}else{
 						$linha 	= $query->fetch();
-						$sqlmov = "UPDATE "	. $entidadeNameMov . " SET {$atributo->nome} = '".Campos::Integridade($entidade->contexto->id,$atributo->nome,$obj->valor,"")."' WHERE ID = " . $linha["id"];
+						$sqlmov = "UPDATE "	. $entidadeNameMov . " SET {$atributo->nome} = '".Config::Integridade($entidade->contexto->id,$atributo->nome,$obj->valor,"")."' WHERE ID = " . $linha["id"];
 					}
 					$conn->query($sqlmov);
 				}
@@ -38,7 +38,7 @@
 					$query 				= $conn->query($sql);
 					$linha 				= $query->fetch();
 					$valorold 			= utf8_encode(getHTMLTipoFormato($atributo->tipohtml,$linha[$atributo->nome]));
-					$valor 				= Campos::Integridade($entidade->contexto->id,$atributo->nome,$obj->valor,"");
+					$valor 				= Config::Integridade($entidade->contexto->id,$atributo->nome,$obj->valor,"");
 
 					if ($valor == $valorold) continue;
 					
@@ -73,7 +73,7 @@
 					$atributo = tdClass::Criar("persistent",array(ATRIBUTO,$linha["atributo"]))->contexto;
 					$entidade = tdClass::Criar("persistent",array(ENTIDADE,$atributo->entidade))->contexto;
 					
-					$valor 		= Campos::Integridade($entidade->id,$atributo->nome,$linha["valor"],"");
+					$valor 		= Config::Integridade($entidade->id,$atributo->nome,$linha["valor"],"");
 					$valorold 	= tdClass::Criar("persistent",array($entidade->nome,$_GET["id"]))->contexto->{$atributo->nome};
 
 					$sqlUpdate 		= "UPDATE {$entidade->nome} SET {$atributo->nome} = '".$valor."' WHERE ID = ".$_GET["id"].";";					

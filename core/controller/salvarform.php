@@ -39,7 +39,7 @@
 				){
 					$entidade->{$dado["atributo"]} = 0;
 				}else{
-					$entidade->{$dado["atributo"]} = Campos::Integridade($entidade->getID(),$dado["atributo"],$dado["valor"],$id);
+					$entidade->{$dado["atributo"]} = Config::Integridade($entidade->getID(),$dado["atributo"],$dado["valor"],$id);
 				}
 			}
 		}

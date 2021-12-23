@@ -56,4 +56,136 @@ class Config {
 		}
 		return $isonline;
 	}
+
+	/*
+		* integridade
+		* Data de Criacao: desconhecido
+		* @author Edilson Valentim dos Santos Bitencourt (Theusdido)
+		* Retorna um padrão de dados e processa o salvamento de dados padrão
+		* PARAMETROS
+		*	@params: int entidade:"ID da Entidade"
+		*	@params: String atributo:"Nome do Atributo"
+		*	@params: any valor:"Valor a ser salvo"
+		*	@params: int id:"ID do registro"
+		* RETORNO
+		*	@return any: Valor formatado para salvamento
+	*/		
+	public static function integridade($entidade,$atributo,$valor,$id){
+
+		$sql = tdClass::Criar("sqlcriterio");
+		$sql->addFiltro("nome","=",$atributo);
+		$sql->addFiltro("entidade","=",$entidade);
+		$dataset = tdClass::Criar("repositorio",array(ATRIBUTO))->carregar($sql);
+		if (sizeof($dataset) <= 0) return $valor;
+		switch((int)$dataset[0]->tipohtml){
+			case 1: case 2: case 3:
+				$retorno = utf8charset($valor,4);
+			break;
+			case 6: # Senha
+				$retorno = strlen($valor) == 32 ? $valor : md5($valor);
+			break;
+			case 7:				
+				$retorno = $valor == "" ? 0 : $valor;
+			break;
+			case 10:
+				$retorno = $valor;
+			break;
+			case 11: # Data
+				if ($valor != ""){
+					$separador = (strpos($valor,"/") > 0)?"/":"-";
+					$dt = explode($separador,$valor);
+					return $dt[2] . "-" . $dt[1] . "-" . $dt[0];
+				}else{
+					return null;
+				}
+			break;
+			case 13:
+				$retorno = (double)moneyToFloat($valor);
+			break;
+			case 19: # Upload
+				if ($valor == ""){
+					$retorno = $valor;
+				}else{
+					$val 				= json_decode(utf8_decode($valor),true);
+					$op             	= isset($val["op"])?$val["op"]:'';
+					$filename 			= isset($val["filename"])?$val["filename"]: (isset($val[1])?$val[1]:'');
+					$tipo 				= isset($val["tipo"])?$val["tipo"]:'';
+					$src 				= isset($val["src"])?$val["src"]:'';
+					$legenda			= isset($val["legenda"])?$val["legenda"]:'';					
+					$isexcluirtemp		= isset($val["isexcluirtemp"])?(bool)$val["isexcluirtemp"]:true;
+					$filenamefixed		= $atributo . "-" . $entidade . "-". $id. "." . getExtensao($filename);
+					$filenametemp		= isset($val["filenametemp"])?$val["filenametemp"]:'';
+					$pathfiletemp		= PATH_CURRENT_FILE_TEMP . $filenametemp;
+					$pathfile       	= PATH_CURRENT_FILE . $filenamefixed;
+					$pathexternalfile	= '/public_html/sistema/projects/'.Session::Get()->projeto.'/arquivos/' . $filenamefixed;
+					$file_full_temp		= isset($val["filenametemp"])?PATH_CURRENT_FILE_TEMP . $val["filenametemp"]:'';
+
+					// Em modo de exclusão
+					if ($op == "excluir"){
+						if (file_exists($pathfile)){
+
+							// Exclui o arquivo no FTP
+							$ftp = new FTP();
+							$ftp->delete($pathexternalfile);
+
+							// Exclui o arquivo
+							unlink($pathfile);
+						}
+						$filename = '';
+					}
+
+					// Efetiva o salvamento do arquivo
+					if (
+						file_exists($file_full_temp) && 
+						sizeof($val) > 0 && 
+						$filename != '' && 
+						$file_full_temp != ''
+					){
+						// Envia arquivo para o FTP Externo do Projeto
+						$ftp = new FTP();
+						$ftp->put($file_full_temp,$pathexternalfile);
+
+						// Move o arquivo da pasta temporária para permanente
+						if (copy($file_full_temp,$pathfile)){
+
+							// [ NÃO APAGAR ] - Exclui o arquivo temporário 
+							#if ($isexcluirtemp && !is_dir($pathfiletemp)) unlink($pathfiletemp);
+
+						}else{
+							Debug::log('Não foi possível mover o arquivo [ '.$file_full_temp.' ] para ['.$pathexternalfile.']');
+						}
+					}
+					$retorno = $filename;
+				}
+			break;
+			case 22: # Filtro
+				if ($valor == "" || $valor == null){
+					return 0;
+				}else{
+					return $valor;
+				}
+			break;
+			case 23: # Data e Hora
+				if ($valor != ""){
+					$separador = (strpos($valor,"/") > 0)?"/":"-";
+					$data = explode(" ",$valor);
+					$hora = explode(" ",$valor);
+					$dt = explode($separador,$data[0]);
+					return $dt[2] . "-" . $dt[1] . "-" . $dt[0] . (isset($data[1])?" " . $data[1]:"");
+				}else{
+					return null;
+				}	
+			break;
+			case 24: # Filtro (Endereço)
+				if ($valor == "" || $valor == null){
+					return 0;
+				}else{
+					return $valor;
+				}
+			break;
+			default:
+				$retorno = $valor;
+		}
+		return $retorno;
+	}	
 }

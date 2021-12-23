@@ -52,7 +52,7 @@ if ($op == "atualizar_emmassa"){
 	if ($entidadeprincipal == $entidade->id){
 		foreach($registros as $reg){
 			$registro = tdc::p($entidade->nome,$reg);
-			$registro->{$atributo->nome} = Campos::Integridade($entidade->id,$atributo->nome,$valor,$reg);
+			$registro->{$atributo->nome} = Config::Integridade($entidade->id,$atributo->nome,$valor,$reg);
 			$registro->armazenar();
 		}
 	}else{
@@ -62,7 +62,7 @@ if ($op == "atualizar_emmassa"){
 		foreach($dataset as $d){
 			$reg 		= $d->id;
 			$registro 	= tdc::p($entidade->nome,$reg);			
-			$registro->{$atributo->nome} = Campos::Integridade($entidade->id,$atributo->nome,$valor,$reg);
+			$registro->{$atributo->nome} = Config::Integridade($entidade->id,$atributo->nome,$valor,$reg);
 			$registro->armazenar();
 		}
 	}
