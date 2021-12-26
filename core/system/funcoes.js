@@ -642,7 +642,6 @@ function getTipoExtensao(arquivo){
 	}
 	return tipo;
 }
-
 function moneyToFloat(valor){
 	var sempontos = replaceAll(valor, ".", "");
 	return parseFloat(sempontos.replace(",","."));
@@ -721,4 +720,98 @@ function getSRCLoader(){
 }
 function getIMGLoader(){
 	return '<img src="'+getSRCLoader()+'" class="loading2" />';
+}
+
+function carregarListas(entidade,atributo,contextoAdd,valor){ // Argumento 4 é o filtro
+	
+	if (!isNumeric(atributo)){
+		for(a in td_atributo){
+			if (td_entidade[td_atributo[a].entidade] == undefined) continue;
+			if (td_atributo[a].nome == atributo && td_entidade[td_atributo[a].entidade].nomecompleto == entidade){
+				atributo = td_atributo[a].id;
+			}
+		}
+	}
+
+	var obrigatorio = $("#" + td_atributo[atributo].nome + "[data-entidade="+entidade+"]",contextoAdd).attr("required") == undefined?0:1;
+	var filtro = "";
+	for (tda in td_filtroatributo){
+		if (td_filtroatributo[tda].atributo == atributo){
+			var ft = td_atributo[td_filtroatributo[tda].td_campo].nome + "^" + td_filtroatributo[tda].operador + "^" + td_filtroatributo[tda].valor;
+			filtro += (filtro==""?ft:"~" + ft);
+		}
+	}
+
+	if (!isNumeric(atributo) || atributo == "" || atributo == null || atributo == undefined || atributo <= 0){		
+		console.log("Atributo de Chave estrangeira inesistente. Entidade => " + entidade + " Contexto => " + contextoAdd + " Valor => " + valor);
+		return false;
+	}	
+	if (arguments.length == 5){		
+		filtro += arguments[4];
+		if (arguments[4].split("^")[2] == ""){
+			console.log("Valor do Filtro não encontrado.");
+			return false;
+		}
+	}
+
+	if (td_atributo[atributo].chaveestrangeira != "" && td_atributo[atributo].chaveestrangeira != undefined && td_atributo[atributo].chaveestrangeira > 0){
+		if (typeof td_entidadeauxiliar[td_atributo[atributo].chaveestrangeira] == "object"){
+			$(".form-control[id=" + td_atributo[atributo].nome +"]",contextoAdd).html("");
+			var entaux = td_entidadeauxiliar[td_atributo[atributo].chaveestrangeira];
+			for (ea in entaux){
+				var htmlOPT;
+				eval("ophtmlOPTt = entaux[ea]." + td_atributo[td_entidade[td_atributo[atributo].chaveestrangeira].campodescchave].nome);
+				var opt = "<option value='"+entaux[ea].id+"'>" + ophtmlOPTt + "</option>";
+				$(".form-control[id=" + td_atributo[atributo].nome +"]",contextoAdd).append(opt);
+			}
+			if (valor != "" && valor != undefined){
+				$(".form-control[id=" + td_atributo[atributo].nome + "]",contextoAdd).val(valor);
+			}
+		}else{
+			try{
+				var campochavedescricao = td_entidade[td_atributo[atributo].chaveestrangeira].campodescchave;
+				if (campochavedescricao <= 0){
+					console.log("Campo descrição da tabela ( ["+td_entidade[td_atributo[atributo].chaveestrangeira].id+"]"+td_entidade[td_atributo[atributo].chaveestrangeira].nomecompleto+" ) não encontrado ");
+				}
+			}catch(e){
+				var campochavedescricao = 0;
+				console.log('Chave estrangeira não encontrada e/ou atributo descrição não encontrado');
+			}
+			$.ajax({
+				url:config.urlrequisicoes,
+				type:"GET",
+				data:{
+					op:"carregar_options",
+					entidade:td_atributo[atributo].chaveestrangeira,
+					atributo:campochavedescricao,
+					filtro:filtro
+				},
+				beforeSend:function(){
+					$(".form-control[id=" + td_atributo[atributo].nome+"]",contextoAdd).html("<option value=''>Aguarde ...</option>");
+				},
+				complete:function(ret){
+					var retorno = ret.responseText;
+					if (obrigatorio == 0){
+						var htmlretorno = "<option value=''>-- Selecione --</option>" + retorno;
+					}else{
+						var htmlretorno = retorno;
+					}
+					$(".form-control[id=" + td_atributo[atributo].nome+"][data-entidade="+td_entidade[td_atributo[atributo].entidade].nomecompleto+"]",contextoAdd).html(htmlretorno);
+					$(".form-control[id=" + td_atributo[atributo].nome +"-old][data-entidade="+td_entidade[td_atributo[atributo].entidade].nomecompleto+"]",contextoAdd).html(htmlretorno);
+					if (valor != ""){
+						$(".form-control[id=" + td_atributo[atributo].nome+"][data-entidade="+td_entidade[td_atributo[atributo].entidade].nomecompleto+"]",contextoAdd).val(valor);
+						$(".form-control[id=" + td_atributo[atributo].nome+"-old][data-entidade="+td_entidade[td_atributo[atributo].entidade].nomecompleto+"]",contextoAdd).val(valor);
+					}
+				},
+				error:function(ret){
+					console.log("ERRO ao carregar lista => " + ret.responseText);
+				}
+			});
+		}	
+	}
+}
+
+function excluirArquivoUpload(dadosarquivos,entidade,atributo){
+	$("iframe[data-entidade="+entidade+"][data-atributo="+atributo+"]").attr("src",getURLProject("index.php?controller=upload&atributo="+atributo+"&valor="));
+	$("[atributo="+atributo+"]").val('{"op":"excluir","filename":"'+dadosarquivos.filename+'"}');
 }

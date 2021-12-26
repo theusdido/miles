@@ -7,7 +7,7 @@
 	}
 
 	if (sizeof(file($path_miles_json)) <= 0){
-		echo 'Arquivo <strong>miles.json<</strong> está comrrompido.';
+		echo 'Arquivo <strong>miles.json</strong> está comrrompido.';
 		exit;
 	}
 

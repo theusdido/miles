@@ -28,9 +28,9 @@ $jsMenu = tdClass::Criar("script");
 $jsMenu->add(
 	'
 		// Variaveis e Funções Globais em JavaScript		
-		var menuprincipal = new Menu();
-		menuprincipal.contexto = "#menu";
-		menuprincipal.exibirbrand = true;
+		var menuprincipal 			= new Menu();
+		menuprincipal.contexto 		= "#menu";
+		menuprincipal.exibirbrand 	= true;
 		menuprincipal.mostrar();
 	'
 );

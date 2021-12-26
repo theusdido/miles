@@ -891,6 +891,7 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
 			if ($(this).parents(".crud-contexto-listar").first().hasClass("fp")){
 				editarTDFormulario(entidadeid,id);
 			}else{
+				debugger;
 				editarFormulario(entidadeid,id);
 			}
 		}

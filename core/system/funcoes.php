@@ -1677,20 +1677,15 @@ function getTipoHTML($atributo,$entidade = null){
 	return $tipohtml;
 }
 function addCampoFormatadoDB($dados,$entidade){
-	if (is_object($dados)){
-	#	var_dump($dados->id);
-		
-		foreach($dados->toArray() as $key => $d){
-			echo $key . " => " . $entidade . " = ".getTipoHTML($key,$entidade)." <br/>";
-			#$tipohtml = getTipoHTML($key,$entidade);
-			#var_dump($tipohtml);
-	#		$tipohtml = getTipoHTML($key,$entidade);
-		}
-	}
+	// Entidade interna não precisa adicionar a formatação dos campos
+	// Futuramento criar um atributo para fazer esse controle
 
+	if ($entidade == RELACIONAMENTO){
+		return $dados;
+	}
 	foreach ($dados as $key => $value){
-		$tipohtml = getTipoHTML($key,$entidade);
-		$linha = array( $key => $value );
+		$tipohtml 	= getTipoHTML($key,$entidade);
+		$linha 		= array( $key => $value );
 		if ($tipohtml == 13 ){
 			$valorformatado = getHTMLTipoFormato( $tipohtml , $value );
 			$dados["formated_" . $key] = $valorformatado;

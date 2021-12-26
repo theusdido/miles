@@ -1,3 +1,4 @@
+
 function tdFormulario (){
 	this.registro_id				= 0;
     this.entidade_id                = 0;
@@ -200,9 +201,8 @@ tdFormulario.prototype.setaPrimeiraAba = function(){
 tdFormulario.prototype.setaCkEditores = function(is_novo){
 	// Setando valores do CK Editor
 	for(c in this.CKEditores){
-		let instanciaCK = CKEditores[c];
 		if (is_novo){
-			instanciaCK.setData("");
+			this.CKEditores[c].setData("");
 		}
 	}
 
@@ -213,9 +213,11 @@ tdFormulario.prototype.setaCkEditores = function(is_novo){
 		let idCampo = "div-editor-" + $(this).attr("id") + "-" + $(this).data("entidade");
 		let config  = {};
 		let valor   = "";
-
-		const instanciaEditor = instancia.CKEDITOR.appendTo( idCampo , config, valor );
-		instancia.CKEditores[$(this).data("entidade") + "^" + $(this).attr("id")] = instanciaEditor;
+		
+		if (instancia.CKEDITOR != undefined){
+			const instanciaEditor = instancia.CKEDITOR.appendTo( idCampo , config, valor );
+			instancia.CKEditores[$(this).data("entidade") + "^" + $(this).attr("id")] = instanciaEditor;
+		}
 	});	
 }
 
@@ -614,10 +616,10 @@ tdFormulario.prototype.salvar = function(){
 	}
 
 	// Adiciona dados para ser enviado
-	this.addDados(dados_obj,idRegistro,relacionamento,this.is_principal,relacionamentoTipo);	
+	this.addDados(dados_obj,idRegistro,relacionamento,this.is_principal,relacionamentoTipo);
 
 	// Salvar o formulário
-	if (this.is_principal || idRegistro > 0){
+	if (this.is_principal){
 
 		let dadospreenviar = [];
 
@@ -631,8 +633,8 @@ tdFormulario.prototype.salvar = function(){
 		if (idRegistro <= 0){
 			dadosenviar = dadospreenviar.reverse();
 		}else{
-			let primeiraarraydados = [];
-			let restoarraydados = [];
+			let primeiraarraydados 	= [];
+			let restoarraydados 	= [];
 			for (dp in dadospreenviar){
 				if (dadospreenviar[dp].fp){
 					primeiraarraydados.push(dadospreenviar[dp]);
@@ -745,7 +747,6 @@ tdFormulario.prototype.salvar = function(){
 				addLoaderSalvar(this.instancia.getContextoAdd());
 			}
 		});
-	}else{
 	}	
 }
 
@@ -774,13 +775,14 @@ tdFormulario.prototype.exibirDadosEdicao =  function(){
 	}
 }
 
-tdFormulario.prototype.editar = function(){
-	if (typeof beforeEdit === "function") beforeEdit(this.entidade.id,this.registro_id);	
+tdFormulario.prototype.editar = function(){	
+	if (typeof beforeEdit === "function") beforeEdit(this.entidade.id,this.registro_id);
 	//Limpa o formulário para edição de um novo registro
 	this.novo();
 	this.setaAtributoGeneralizacaoLista();
+	
 	addLog("", "", "", this.entidade.id,this.registro_id, 7, "");
-
+	
 	// Verifica se o usuário tem permissão para editar
 	for (permissao in td_permissoes){
 		if (session.userid == td_permissoes[permissao].usuario && this.entidade.id == td_permissoes[permissao].entidade){
@@ -791,153 +793,139 @@ tdFormulario.prototype.editar = function(){
 		}
 	}
 
-	// Modo de edição de registro temporário
-	if (!isNumeric(parseInt(this.registro_id))){
-		/*
-		for (d in dados_temp){
-			if (dados_temp[d].entidade == entidadeNome && dados_temp[d].id == id.replace("T","")){
-				var dados = dados_temp[d].dados;
-				for (dt in dados){
-					var campo = $("#" + dados[dt].atributo + "[data-entidade="+entidadeNome+"]",contextoAdd);
-					campo.val(dados[dt].valor);
-					retornaDadoFormatadoCampo(dados[dt].atributo,entidadeNome,contextoAdd,dados[dt].valor);
-				}
+	$.ajax({
+		url:config.urlloadform,
+		data:{
+			entidadeprincipal:this.entidade.id,
+			registroprincipal:this.registro_id,
+			rastrearrelacionamentos:true
+		},
+		instancia:this,
+		dataType:"json",
+		beforeSend:function(){
+			addLoaderGeral();
+		},
+		error:function(ret){
+			bootbox.alert("<b>Erro ao carregar os dados.</b> Favor entrar em contato com a equipe de SUPORTE.");
+			unLoaderGeral();
+		},
+		complete:function(ret){
+			let retorno = [];
+
+			try {
+				retorno = JSON.parse(ret.responseText);
+			}catch(err){
+				console.log(err.message);
+				return false;
 			}
-		}
-		$("#id[data-entidade="+entidadeNome+"]",contextoAdd).val(id);
-		setaPrimeiraAba(contextoAdd);
-		$(contextoListar).hide();
-		$(contextoAdd).show();
-		if (typeof afterEdit === "function") afterEdit(entidade,id);
-		*/
-	}else{
-		$.ajax({
-			url:config.urlloadform,
-			data:{
-				entidadeprincipal:this.entidade.id,
-				registroprincipal:this.registro_id,
-				rastrearrelacionamentos:true
-			},
-			instancia:this,
-			dataType:"json",
-			beforeSend:function(){
-				addLoaderGeral();
-			},
-			error:function(ret){
-				bootbox.alert("<b>Erro ao carregar os dados.</b> Favor entrar em contato com a equipe de SUPORTE.");
-				unLoaderGeral();
-			},
-			complete:function(ret){
-				let retorno = [];
 
-				try {
-    				retorno = JSON.parse(ret.responseText);
-				}catch(err){
-    				console.log(err.message);
-					return false;
-				}
+			retorno.forEach(function(r){					
+				let dadosRetorno 			= r.dados;
+				let entidadeDados 			= td_entidade[r.entidade];
+				let tipoRelacionamento 		= "";
+				let atributoRelacionamento 	= "";
+				let nomeEntidadeDados 		= entidadeDados.nomecompleto;
+				
+				if (!r.fp){
+					// Verifica o tipo de relacionamento
+					this.entidade.relacionamentos.forEach(function(relacionamento){
+						const tipo 		= relacionamento.tipo;
+						const atributo 	= relacionamento.atributo;
+						const pai 		= relacionamento.pai;
+						const filho 	= relacionamento.filho;
+						const entidade 	= r.entidade;
 
-				retorno.forEach(function(r){
-					//retornoEdicao = retorno[r].id;
-					let dadosRetorno 			= r.dados;
-					let entidadeDados 			= td_entidade[r.entidade];
-					let tipoRelacionamento 		= "";
-					let atributoRelacionamento 	= "";
-					let nomeEntidadeDados 		= entidadeDados.nomecompleto;
-					
-					if (!r.fp){
-						// Verifica o tipo de relacionamento
-						this.entidade.relacionamentos.forEach(function(relacionamento){
-							const tipo 		= relacionamento.tipo;
-							const atributo 	= relacionamento.atributo;
-							const pai 		= relacionamento.pai;
-							const filho 	= relacionamento.filho;
-							const entidade 	= r.entidade;
+						if ((tipo != "" || tipo != 0) && entidade == filho){
+							tipoRelacionamento 		= tipo;
+							atributoRelacionamento	= atributo;
+						}
 
-							if ((tipo != "" || tipo != 0) && entidade == filho){
-								tipoRelacionamento 		= tipo;
-								atributoRelacionamento	= atributo;
-							}
+						// Configura o cadastro para a generalização simples
+						if (pai == entidade && (tipo == 3 || tipo == 8)){
+							for(d in dadosRetorno){
+								if (td_atributo[td_entidade[entidade].atributogeneralizacao].nome == dadosRetorno[d].atributo){
+									if (dadosRetorno[d].valor  == td_relacionamento[rel].filho){
 
-							// Configura o cadastro para a generalização simples
-							if (pai == entidade && (tipo == 3 || tipo == 8)){
-								for(d in dadosRetorno){
-									if (td_atributo[td_entidade[entidade].atributogeneralizacao].nome == dadosRetorno[d].atributo){
-										if (dadosRetorno[d].valor  == td_relacionamento[rel].filho){
-	
-											$("#select-generalizacao-unica")[0].sumo.selectItem(td_relacionamento[rel].filho);
-											$(".div-relacionamento-generalizacao,.generalizacaoABA",this.getContextoAdd()).hide();
-											$("#select-generalizacao-unica").attr("readonly","true");
-											$(".generalizacaoABA." + td_entidade[td_relacionamento[rel].filho].nome).show();
-											$(".div-relacionamento-generalizacao#drv-" + td_entidade[td_relacionamento[rel].filho].nome,this.getContextoAdd()).show();
-										}
+										$("#select-generalizacao-unica")[0].sumo.selectItem(td_relacionamento[rel].filho);
+										$(".div-relacionamento-generalizacao,.generalizacaoABA",this.getContextoAdd()).hide();
+										$("#select-generalizacao-unica").attr("readonly","true");
+										$(".generalizacaoABA." + td_entidade[td_relacionamento[rel].filho].nome).show();
+										$(".div-relacionamento-generalizacao#drv-" + td_entidade[td_relacionamento[rel].filho].nome,this.getContextoAdd()).show();
 									}
 								}
 							}
-
-							// Seleciona a lista da generalização multipla
-							if (tipo == 9 && pai == entidade){
-								$("#select-generalizacao-multipla")[0].sumo.selectItem(String(entidade));
-							}
-						},this);
-					}
-
-					// Abre o formulário das entidades de relacionamento
-					if (tipoRelacionamento == "" || tipoRelacionamento == 1 || tipoRelacionamento == 7 || tipoRelacionamento == 3 || tipoRelacionamento == 9){
-						this.setDados(r.id,r.dados);
-						this.setaPrimeiraAba();
-
-						$(this.getContextoListar()).hide();
-						$(this.getContextoAdd()).show();
-
-					// Seta a grade de dados para as entidades de relacionamento
-					}else if (tipoRelacionamento == 2 || tipoRelacionamento == 6 || tipoRelacionamento == 5 || tipoRelacionamento == 8 || tipoRelacionamento == 10){
-						this.setGradeRelacionamento(r.entidade,r.id,r.dados);
-						$(formulario[r.entidade].getContextoAdd(),this.getContextoAdd()).hide();
-						$(formulario[r.entidade].getContextoListar(),this.getContextoAdd()).show();
-					}
-
-					if ($("#select-generalizacao-unica")){
-						$("#select-generalizacao-unica").attr("readonly","true");
-						$("#select-generalizacao-unica").attr("disabled","true");
-						this.setaLayoutGeneralizao();
-						if (r.fp){
-							$("#select-generalizacao-unica").change();
 						}
-					}
 
-				},this.instancia);
-				
-				if ($('#select-generalizacao-multipla')){
-					$('#select-generalizacao-multipla').SumoSelect();
+						// Seleciona a lista da generalização multipla
+						if (tipo == 9 && pai == entidade){
+							$("#select-generalizacao-multipla")[0].sumo.selectItem(String(entidade));
+						}
+					},this);
+				}
+
+				// Abre o formulário das entidades de relacionamento
+				if (tipoRelacionamento == "" || tipoRelacionamento == 1 || tipoRelacionamento == 7 || tipoRelacionamento == 3 || tipoRelacionamento == 9){
+					this.setDados(r);
+					this.setaPrimeiraAba();
+					$(this.getContextoListar()).hide();
+					$(this.getContextoAdd()).show();
+
+				// Seta a grade de dados para as entidades de relacionamento
+				}else if (tipoRelacionamento == 2 || tipoRelacionamento == 6 || tipoRelacionamento == 5 || tipoRelacionamento == 8 || tipoRelacionamento == 10){
+					this.setGradeRelacionamento(r.entidade,r.id,r.dados);
+					$(formulario[r.entidade].getContextoAdd(),this.getContextoAdd()).hide();
+					$(formulario[r.entidade].getContextoListar(),this.getContextoAdd()).show();
+				}
+				if ($("#select-generalizacao-unica")){
+					$("#select-generalizacao-unica").attr("readonly","true");
+					$("#select-generalizacao-unica").attr("disabled","true");
+					this.setaLayoutGeneralizao();
 					if (r.fp){
-						$("#select-generalizacao-multipla").change();
+						$("#select-generalizacao-unica").change();
 					}
 				}
+			},this.instancia);
+			
+			if ($('#select-generalizacao-multipla')){
+				$('#select-generalizacao-multipla').SumoSelect();
 				if (r.fp){
-					this.instancia.exibirDadosEdicao();
-					this.this.instancia.liberaBotaoSalvar()
+					$("#select-generalizacao-multipla").change();
 				}
-				// Permissão dos atributos
-				this.instancia.setPermissoesAtributos('edicao');
-				if (typeof afterEdit === "function") afterEdit(this.instancia.entidade.id,this.instancia.registro_id);
-				unLoaderGeral();
 			}
-		});
-	}
+			if (r.fp){
+				this.instancia.exibirDadosEdicao();
+				this.this.instancia.liberaBotaoSalvar()
+			}
+
+			// Permissão dos atributos
+			this.instancia.setPermissoesAtributos('edicao');
+			if (typeof afterEdit === "function") afterEdit(this.instancia.entidade.id,this.instancia.registro_id);
+			unLoaderGeral();
+		}
+	});
+	
 }
 
-tdFormulario.prototype.setDados = function(id,dados){
-	this.registro_id 	= id;
-	let entidade_nome 	= this.entidade.nome;
-	let contextoAdd		= this.getContextoAdd();
-	let contextoListar	= this.getContextoListar();
+tdFormulario.prototype.setDados = function(dados){
 
-	$("#id[data-entidade="+entidade_nome+"]",contextoAdd).val(id);
-	dados.forEach(function(dado){
-		let valorDados 	= dado.valor;
-		let direto 		= true;
+	let form	 		= formulario[dados.entidade];
+	let entidade_nome 	= form.entidade.nome;
+	let contextoAdd		= form.contexto_add;
+	let id				= dados.id;
+	let atributos		= dados.dados;
 
+	// id do Formulário
+	$('#id[data-entidade='+entidade_nome+']',contextoAdd).val(id);
+	formulario[dados.entidade].registro_id = id;
+
+	// Não prosseguir sem dados atributos
+	if (atributos == '' || atributos == undefined) return false;
+	debugger;
+	// Percorre os atributos do formulário
+	atributos.forEach(function(dado){
+		let valorDados 		= dado.valor;
+		let direto 			= true;
+		
 		if ($("#" + dado.atributo + "[data-entidade="+entidade_nome+"]",contextoAdd).prop("tagName") == "SELECT"){
 			if (td_atributo[getIdAtributo(dado.atributo,entidade_nome)].atributodependencia <= 0){										
 				carregarListas(entidade_nome,dado.atributo,contextoAdd,valorDados);
@@ -949,7 +937,6 @@ tdFormulario.prototype.setDados = function(id,dados){
 						$("#" + dado.atributo + "[data-entidade="+entidade_nome+"]",contextoAdd).prop('selectedIndex', 0);
 					}
 				}
-				
 			}else{
 				if ($("#" + dado.atributo + "[data-entidade="+entidade_nome+"]",contextoAdd).attr("required") == "required"){
 					direto = false;
@@ -990,11 +977,12 @@ tdFormulario.prototype.setDados = function(id,dados){
 				$("#" + dado.atributo + "[data-entidade="+entidade_nome+"]",contextoAdd).parents(".form-group").find(".checkbox-s").removeClass("active");
 				valorDados = 0;
 			}									
-		}								
+		}
+
 		if ($("#" + dado.atributo + "[data-entidade="+entidade_nome+"]",contextoAdd).hasClass("td-file-hidden")){
 			const dadosRetornoJSON = JSON.parse(dado.valor);
 			if (dadosRetornoJSON.filename != ""){
-				$("#" + dado.atributo + "[data-entidade="+entidade_nome+"]",contextoAdd).parents(".form-group").find("iframe").first().attr("src",config.urluploadform + "&atributo="+dado.idatributo+"&valor="+dado.valor+"&id=" + retorno[r].id);
+				$("#" + dado.atributo + "[data-entidade="+entidade_nome+"]",contextoAdd).parents(".form-group").find("iframe").first().attr("src",config.urluploadform + "&atributo="+dado.idatributo+"&valor="+dado.valor+"&id=" + id);
 			}
 		}
 
@@ -1005,6 +993,7 @@ tdFormulario.prototype.setDados = function(id,dados){
 		if ($("#" + dado.atributo + "[data-entidade="+entidade_nome+"]",contextoAdd).hasClass(".formato-moeda")){
 			if (valorDados == 0) valorDados = "0,00";
 		}
+
 		if ($("#" + dado.atributo + "[data-entidade="+entidade_nome+"]",contextoAdd).hasClass("formato-ckeditor")){
 			try{
 				CKEditores[entidade_nome + "^" + dado.atributo].setData(valorDados);

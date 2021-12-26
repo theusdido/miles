@@ -1,6 +1,6 @@
 <?php	
-	$entidadeNome = "menurodape";
-	$entidadeDescricao = "Menu ( Rodapé )";
+	$entidadeNome 		= "website_geral_menurodape";
+	$entidadeDescricao 	= "Menu ( Rodapé )";
 	
 	// 1º PASSO
 	$entidadeID = criarEntidade(
@@ -31,4 +31,4 @@
 	$menu_webiste = addMenu($conn,'WebSite','#','',0,0,'website');
 	
 	// 4º PASSO
-	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',".$menu_webiste.",4,'website-' . $entidadeNome);
+	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,4,'website-' . $entidadeNome,$entidadeID, 'cadastro');

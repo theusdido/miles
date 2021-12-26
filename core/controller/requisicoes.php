@@ -80,7 +80,7 @@ switch($op){
 		
 		foreach($_POST["dados"] as $chave => $valor){
 			if ($chave!="undefined"){				
-				$dados->contexto->{$chave} = Campos::Integridade($entidade->contexto->id,$chave,$valor,($id>0?$id:($dados->contexto->getUltimo()+1)));
+				$dados->contexto->{$chave} = Config::Integridade($entidade->contexto->id,$chave,$valor,($id>0?$id:($dados->contexto->getUltimo()+1)));
 			}	
 		}
 		try{
