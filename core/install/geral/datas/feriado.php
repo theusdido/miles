@@ -24,7 +24,7 @@
     );
 
     $dia 			= criarAtributo($conn, $entidadeID,"dia","Dia","int",0,0,25,1);
-	$mes		 	= criarAtributo($conn, $entidadeID,"mes","Mês","int",0,0,4,1,Entity::install("geral_mes"));
+	//$mes		 	= criarAtributo($conn, $entidadeID,"mes","Mês","int",0,0,4,1,Entity::install("geral_mes"));
 	$nome			= criarAtributo($conn, $entidadeID,"nome","Nome","varchar",50,0,3);
 
     // Criando Acesso

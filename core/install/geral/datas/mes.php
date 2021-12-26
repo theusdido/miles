@@ -1,7 +1,7 @@
 <?php
     // Setando variáveis
-    $entidadeNome = "mes";
-    $entidadeDescricao = "Mês";
+    $entidadeNome       = "geral_mes";
+    $entidadeDescricao  = "Mês";
 
     // Categoria
     $entidadeID = criarEntidade(
