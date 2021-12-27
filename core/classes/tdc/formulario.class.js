@@ -380,7 +380,6 @@ tdFormulario.prototype.setEntidadesFilho = function(){
 }
 
 tdFormulario.prototype.setBotoes = function(){
-
 	this.btn_novo 	= $(".b-novo"	, this.getContextoListar()).first();
 	this.btn_voltar	= $(".b-voltar"	, this.getContextoAdd()).first();
 	this.btn_salvar	= $(".b-salvar"	, this.getContextoAdd()).first();
@@ -617,7 +616,7 @@ tdFormulario.prototype.salvar = function(){
 
 	// Adiciona dados para ser enviado
 	this.addDados(dados_obj,idRegistro,relacionamento,this.is_principal,relacionamentoTipo);
-
+	
 	// Salvar o formulário
 	if (this.is_principal){
 
@@ -643,43 +642,6 @@ tdFormulario.prototype.salvar = function(){
 				}
 			}
 			dadosenviar = primeiraarraydados.concat(restoarraydados);
-		}
-
-		if (currentrelacionamento != null){
-			if (currentrelacionamento.cardinalidade == '1N' || currentrelacionamento.cardinalidade == 'NN'){
-				let linha_grade 	= [];
-				this.getGrade().attr_cabecalho_nome.forEach(function(atributo){
-					const elementoDOM = "#" + atributo + "[data-entidade="+this.entidade.nomecompleto+"]";
-					let tagName 	= $(elementoDOM,this.getContextoAdd()).prop("tagName");
-					let val			= '';
-					switch(tagName){
-						case "INPUT":
-							val = $(elementoDOM,this.getContextoAdd()).val();
-						break;
-						case "SELECT":					
-							val = $(elementoDOM + " option:selected",this.getContextoAdd()).html();
-						break;
-						case "TEXTAREA":
-							val = $(elementoDOM,this.getContextoAdd()).html();
-						break;
-						default:
-							val = $(elementoDOM,this.getContextoAdd()).val();
-					}
-					if ($(elementoDOM,this.getContextoAdd()).hasClass("termo-filtro")){
-						val = $(elementoDOM,this.getContextoAdd()).parents(".input-group").find(".descricao-filtro").val();
-					}
-					linha_grade[atributo] = val;
-				},this);
-
-				const idEdicao = $("#id[data-entidade="+this.entidade.nomecompleto+"]",this.getContextoAdd()).val();
-				this.getGrade().addLinha(idEdicao,linha_grade);
-				$(this.getContextoAdd()).hide();
-				$(this.getContextoListar()).show();
-				if (relacionamentoTipo == 2 || relacionamentoTipo == 10){
-					this.composicao[this.entidade_id] = true;
-				}
-				if (typeof afterSave === "function") afterSave(this.is_principal,this);
-			}
 		}
 
 		// AJAX que envia os dados a serem salvos
@@ -709,6 +671,7 @@ tdFormulario.prototype.salvar = function(){
 									// Atualiza o ID do banco de dados no registro
 									formulario[getEntidadeId(entidades_retorno.entidade)].id = entidades_retorno.id;
 									$("#id[data-entidade="+entidades_retorno.entidade+"]").val(entidades_retorno.id);
+									debugger;
 								break;
 								default:
 								// Recarrega as grades de dados
@@ -747,7 +710,44 @@ tdFormulario.prototype.salvar = function(){
 				addLoaderSalvar(this.instancia.getContextoAdd());
 			}
 		});
-	}	
+	}else{
+		if (currentrelacionamento != null){
+			if (currentrelacionamento.cardinalidade == '1N' || currentrelacionamento.cardinalidade == 'NN'){
+				let linha_grade 	= [];
+				this.getGrade().attr_cabecalho_nome.forEach(function(atributo){
+					const elementoDOM = "#" + atributo + "[data-entidade="+this.entidade.nomecompleto+"]";
+					let tagName 	= $(elementoDOM,this.getContextoAdd()).prop("tagName");
+					let val			= '';
+					switch(tagName){
+						case "INPUT":
+							val = $(elementoDOM,this.getContextoAdd()).val();
+						break;
+						case "SELECT":					
+							val = $(elementoDOM + " option:selected",this.getContextoAdd()).html();
+						break;
+						case "TEXTAREA":
+							val = $(elementoDOM,this.getContextoAdd()).html();
+						break;
+						default:
+							val = $(elementoDOM,this.getContextoAdd()).val();
+					}
+					if ($(elementoDOM,this.getContextoAdd()).hasClass("termo-filtro")){
+						val = $(elementoDOM,this.getContextoAdd()).parents(".input-group").find(".descricao-filtro").val();
+					}
+					linha_grade[atributo] = val;
+				},this);
+
+				const idEdicao = $("#id[data-entidade="+this.entidade.nomecompleto+"]",this.getContextoAdd()).val();
+				this.getGrade().addLinha(idEdicao,linha_grade);
+				$(this.getContextoAdd()).hide();
+				$(this.getContextoListar()).show();
+				if (relacionamentoTipo == 2 || relacionamentoTipo == 10){
+					this.composicao[this.entidade_id] = true;
+				}
+				if (typeof afterSave === "function") afterSave(this.is_principal,this);
+			}
+		}		
+	}
 }
 
 tdFormulario.prototype.addDados = function(dados_obj,id,relacionamento,fp,tiporelacionamento){
@@ -916,6 +916,7 @@ tdFormulario.prototype.setDados = function(dados){
 
 	// id do Formulário
 	$('#id[data-entidade='+entidade_nome+']',contextoAdd).val(id);
+	debugger;
 	formulario[dados.entidade].registro_id = id;
 
 	// Não prosseguir sem dados atributos

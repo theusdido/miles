@@ -675,7 +675,7 @@ function getURLProject(parametro = null){
 	var urlproject 		= session.urlmiles.replace("index.php","") + "index.php";
 	var parmsProject 	= [];
 	parmsProject.push(getParamsOBJ("currentproject",session.projeto));
-	parmsProject.push(getParamsOBJ("nocache",nocache));
+	//parmsProject.push(getParamsOBJ("nocache",nocache));
 	var tipoparms = typeof parametro;
 	switch(typeof parametro){
 		case 'string':

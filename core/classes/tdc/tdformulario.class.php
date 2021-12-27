@@ -61,42 +61,38 @@ class TdFormulario Extends Elemento {
 			$colunaID->data_ncolunas = $this->ncolunas;
 		}
 		
+		// ID
+		$id 				= tdClass::Criar("input");
+		$id->value 			= 0;
+		$id->id 			= "id";
+		$id->name 			= "id";
+		$id->class 			= "form-control input-sm " . $this->gd;
+		$id->data_entidade 	= $entidadeCOL;
+
 		if ($this->exibirid){
-
 			// Form Group ID
-			$formgroupID = tdClass::Criar("div");
-			$formgroupID->class = "form-group";
+			$formgroupID 			= tdClass::Criar("div");
+			$formgroupID->class 	= "form-group";
 
-			$labelID = tdClass::Criar("label");
-			$labelID->for = "id";
-			$labelID->class = "control-label";
+			$labelID 			= tdClass::Criar("label");
+			$labelID->for 		= "id";
+			$labelID->class 	= "control-label";
 			$labelID->add("ID");
 
-			$inputGroup = tdClass::Criar("div");
-			$inputGroup->class = "input-group";
+			$inputGroup 		= tdClass::Criar("div");
+			$inputGroup->class 	= "input-group";
 
-			// ID 
-			$id = tdClass::Criar("input");
-			$id->type = "text";
-			$id->id = "id";
-			$id->name = "id";
-			$id->class = "form-control input-sm " . $this->gd;
-			$id->data_entidade = $entidadeCOL;
-
+			// Adicionando ID 
+			$id->type 			= "text";
 			$inputGroup->add($id);
 			$formgroupID->add($labelID,$inputGroup);
 		}else{
 
-			// ID 
-			$id = tdClass::Criar("input");
-			$id->type = "hidden";
-			$id->id = "id";
-			$id->name = "id";
-			$id->class = "form-control " . $this->gd;
-			$id->data_entidade = $entidadeCOL;
+			// Adicionando ID 
+			$id->type 			= "hidden";
 			$colunaID->add($id);
+		
 		}
-
 		$this->linhacampos->add($colunaID);		
 		foreach($colunas as $coluna){
 			$campo = tdClass::Criar("labeledit");
