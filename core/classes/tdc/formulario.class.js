@@ -41,19 +41,21 @@ tdFormulario.prototype.novo = function(){
 	let contextoListar 		= this.getContextoListar();
 	let contextoAdd 		= this.getContextoAdd();
 	let indicetemp          = 1;
+	let id_init_val			= 0;
 
 	if (this.textcase == 'uppercase'){	
 		$(".form-control").val().toUpperCase();
 	}
+
 	this.setaPrimeiraAba();
 	if (this.is_principal){
-		$(".form-control[id=id]",contextoAdd).val(""); // Limpa todos campos id
+		$(".form-control[id=id]",contextoAdd).val(id_init_val); // Limpa todos campos id
 		this.dados.splice(0,this.dados.length); // Limpa array "dados"
 		this.dadosatributodependencia.splice(0,this.dadosatributodependencia.length);
 		this.setaCkEditores(true);
 		$(".descricaoExibirEdicao").hide();
 	}else{
-		$(".form-control[id=id][data-entidade=" + this.entidade.id + "]").val("");
+		$('.form-control[id=id][data-entidade="' + this.entidade.id + '"]').val(id_init_val);
 	}
 	if (this.entidade != undefined){
 		if (this.entidade.registrounico){
@@ -67,7 +69,8 @@ tdFormulario.prototype.novo = function(){
 	this.setPermissoesAtributos('novo');		
 
 	// Percorre todos os campos do cadastro, incluindo as abas de relacionamento
-	$(".form-control",contextoAdd).each(function(){
+	// Os campos ID não podem ser alterados :not([id="id"])
+	$('.form-control:not([id="id"])',contextoAdd).each(function(){
 		let atributo 	= $(this).attr("id");
 		if (atributo == ""){
 			bootbox.alert('Existe um campo no formul\u00e1rio que n\u00e3o possui o atributo ID. Maiores detalhes no console do navegador');
@@ -114,20 +117,20 @@ tdFormulario.prototype.novo = function(){
 				$("#" + atributo,contextoAdd).val(valor);
 		}
 
-		if (parseInt(atributoID) != 0 && atributoID != "" && atributoID != undefined){			
-			let nomeEntidadeDados = td_entidade[td_atributo[atributoID].entidade].nomecompleto;
-			valor = td_atributo[atributoID].inicializacao;
-			obrigatorio = td_atributo[atributoID].nulo;
+		if (parseInt(atributoID) != 0 && atributoID != "" && atributoID != undefined){
 			if (td_atributo[atributoID].chaveestrangeira != "" && td_atributo[atributoID].tipohtml == "4"){
-				if (this.is_principal){ // Só carrega as listas se for acesso o botão novo do formulário principal
-					carregarListas(nomeEntidadeDados,atributoID,contextoAdd,valor);
+				// Só carrega as listas se for acesso o botão novo do formulário principal
+				if (this.is_principal){ 
+					carregarListas(entidadeAttr,atributoID,contextoAdd,valor);
 				}
 			}
-			if ($("#" + td_atributo[atributoID].nome + "[data-entidade="+nomeEntidadeDados+"]",contextoAdd).hasClass("checkbox-sn")){
-				$("#" + td_atributo[atributoID].nome + "[data-entidade="+nomeEntidadeDados+"]",contextoAdd).val(0);
+
+			let attr_selector = "#" + td_atributo[atributoID].nome + '[data-entidade="'+entidadeAttr+'"]';
+			if ($(attr_selector,contextoAdd).hasClass("checkbox-sn")){
+				$(attr_selector,contextoAdd).val(0);
 			}
-			if ($("#" + td_atributo[atributoID].nome + "[data-entidade="+nomeEntidadeDados+"]",contextoAdd).hasClass("td-file-hidden")){
-				$("#" + td_atributo[atributoID].nome + "[data-entidade="+nomeEntidadeDados+"]",contextoAdd).parents(".form-group").find("iframe").first().attr("src",getURLProject("index.php?controller=upload&atributo="+td_atributo[atributoID].id+"&valor=&id=" + indicetemp));
+			if ($(attr_selector,contextoAdd).hasClass("td-file-hidden")){
+				$(attr_selector,contextoAdd).parents(".form-group").find("iframe").first().attr("src",getURLProject("index.php?controller=upload&atributo="+td_atributo[atributoID].id+"&valor=&id=" + indicetemp));
 			}
 		}
 
@@ -413,13 +416,6 @@ tdFormulario.prototype.voltar = function(){
 tdFormulario.prototype.salvar = function(){
 	addLog("","",0,this.entidade_id,0,8, "");
 
-	// Preenche os campos que tem inicialização
-	this.entidade.atributos.forEach(function(e){
-		if (e.tipoinicializacao == 1 && e.inicializacao != ''){
-			$('#'+e.nome+'[data-entidade='+this.entidade.nomecompleto+']').val(e.inicializacao);
-		}
-	},this);
-
 	if (this.is_principal){
 		this.btn_salvar.attr("disabled",true);
 		this.btn_salvar.attr("readonly",true);
@@ -431,7 +427,7 @@ tdFormulario.prototype.salvar = function(){
 	}else{
 		contextoMsg = this.getContextoAdd() + " .msg-retorno-form-" + this.entidade.nomecompleto;
 	}
-	let idRegistro 				= $("#id[data-entidade="+this.entidade.nomecompleto+"]",this.getContextoAdd()).val();
+	let idRegistro 				= $('#id[data-entidade="'+this.entidade.nomecompleto+'"]',this.getContextoAdd()).val();
 	let currentrelacionamento 	= null;
 	if (this.is_principal){
 		if (idRegistro == 0){
@@ -499,7 +495,7 @@ tdFormulario.prototype.salvar = function(){
 
 		if (nomeEntidade == this.entidade.nomecompleto){
 			try{
-				let campoAttr 	= $("#" + td_atributo[a].nome + "[data-entidade="+this.entidade.nomecompleto+"]",this.getContextoAdd());
+				let campoAttr 	= $('#' + td_atributo[a].nome + '[data-entidade="'+this.entidade.nomecompleto+'"]',this.getContextoAdd());
 				let dataToSave 	= campoAttr.val();
 				if (td_atributo[a].tipo == "varchar" || td_atributo[a].tipo == "char"){
 					if (dataToSave.length > td_atributo[a].tamanho){
@@ -512,7 +508,7 @@ tdFormulario.prototype.salvar = function(){
 					}
 				}
 			}catch(e){
-				console.log("ERRO => #" + td_atributo[a].nome + "[data-entidade="+this.entidade.nomecompleto+"]");
+				console.log("ERRO => " + '#' + td_atributo[a].nome + '[data-entidade="'+this.entidade.nomecompleto+'"]');
 			}	
 		}
 	}
@@ -526,7 +522,7 @@ tdFormulario.prototype.salvar = function(){
 
 	// Monta a array dos campos obrigatórios
 	let campos_obrigatorios = [];
-	$(".form-control[required][data-entidade="+this.entidade.nomecompleto+"]",this.getContextoAdd()).each(function(){
+	$('.form-control[required][data-entidade="'+this.entidade.nomecompleto+'"]',this.getContextoAdd()).each(function(){
 		campos_obrigatorios[$(this).attr("name")] = $(this).val();
 	});
 
@@ -562,13 +558,13 @@ tdFormulario.prototype.salvar = function(){
 	let dados_obj = [];
 	this.entidade.atributos.forEach(function(e){
 		try{
-			var dataToSave = $("#" + e.nome + "[data-entidade="+this.entidade.nomecompleto+"]",this.getContextoAdd()).val();
+			var dataToSave = $('#' + e.nome + '[data-entidade="'+this.entidade.nomecompleto+'"]',this.getContextoAdd()).val();
 			if (this.textcase == 'uppercase'){
 				dataToSave.toUpperCase();
 			}
 			dados_obj.push({atributo:e.nome,valor:dataToSave});
 		}catch(error){
-			console.warn(error.getMessage() + " | ERRO => #" + e.nome + "[data-entidade="+this.entidade.nomecompleto+"]");
+			console.warn(error.getMessage() + " | ERRO => " + '#' + e.nome + '[data-entidade="'+this.entidade.nomecompleto+'"]');
 		}
 	},this);
 
@@ -619,30 +615,16 @@ tdFormulario.prototype.salvar = function(){
 	
 	// Salvar o formulário
 	if (this.is_principal){
-
-		let dadospreenviar = [];
+		let dadosenviar = [];
 
 		formulario.forEach(function(f){
 			f.dados.forEach(function(d){
-				dadospreenviar.push(d);
+				dadosenviar.push(d);
 			});
 		});
 
 		// O formulário principal tem que ser enviado em primeiro
-		if (idRegistro <= 0){
-			dadosenviar = dadospreenviar.reverse();
-		}else{
-			let primeiraarraydados 	= [];
-			let restoarraydados 	= [];
-			for (dp in dadospreenviar){
-				if (dadospreenviar[dp].fp){
-					primeiraarraydados.push(dadospreenviar[dp]);
-				}else{
-					restoarraydados.push(dadospreenviar[dp]);
-				}
-			}
-			dadosenviar = primeiraarraydados.concat(restoarraydados);
-		}
+		//dadosenviar.reverse();
 
 		// AJAX que envia os dados a serem salvos
 		$.ajax({
@@ -670,8 +652,7 @@ tdFormulario.prototype.salvar = function(){
 								case 3:
 									// Atualiza o ID do banco de dados no registro
 									formulario[getEntidadeId(entidades_retorno.entidade)].id = entidades_retorno.id;
-									$("#id[data-entidade="+entidades_retorno.entidade+"]").val(entidades_retorno.id);
-									debugger;
+									$('#id[data-entidade="'+entidades_retorno.entidade+'"]').val(entidades_retorno.id);
 								break;
 								default:
 								// Recarrega as grades de dados
@@ -715,7 +696,7 @@ tdFormulario.prototype.salvar = function(){
 			if (currentrelacionamento.cardinalidade == '1N' || currentrelacionamento.cardinalidade == 'NN'){
 				let linha_grade 	= [];
 				this.getGrade().attr_cabecalho_nome.forEach(function(atributo){
-					const elementoDOM = "#" + atributo + "[data-entidade="+this.entidade.nomecompleto+"]";
+					const elementoDOM = '#' + atributo + '[data-entidade="'+this.entidade.nomecompleto+'"]';
 					let tagName 	= $(elementoDOM,this.getContextoAdd()).prop("tagName");
 					let val			= '';
 					switch(tagName){
@@ -737,7 +718,7 @@ tdFormulario.prototype.salvar = function(){
 					linha_grade[atributo] = val;
 				},this);
 
-				const idEdicao = $("#id[data-entidade="+this.entidade.nomecompleto+"]",this.getContextoAdd()).val();
+				const idEdicao = $('#id[data-entidade="'+this.entidade.nomecompleto+'"]',this.getContextoAdd()).val();
 				this.getGrade().addLinha(idEdicao,linha_grade);
 				$(this.getContextoAdd()).hide();
 				$(this.getContextoListar()).show();
@@ -916,32 +897,31 @@ tdFormulario.prototype.setDados = function(dados){
 
 	// id do Formulário
 	$('#id[data-entidade='+entidade_nome+']',contextoAdd).val(id);
-	debugger;
 	formulario[dados.entidade].registro_id = id;
 
 	// Não prosseguir sem dados atributos
 	if (atributos == '' || atributos == undefined) return false;
-	debugger;
+
 	// Percorre os atributos do formulário
 	atributos.forEach(function(dado){
 		let valorDados 		= dado.valor;
 		let direto 			= true;
 		
-		if ($("#" + dado.atributo + "[data-entidade="+entidade_nome+"]",contextoAdd).prop("tagName") == "SELECT"){
+		if ($('#' + dado.atributo + '[data-entidade="'+entidade_nome+'"]',contextoAdd).prop("tagName") == "SELECT"){
 			if (td_atributo[getIdAtributo(dado.atributo,entidade_nome)].atributodependencia <= 0){										
 				carregarListas(entidade_nome,dado.atributo,contextoAdd,valorDados);
 				if (valorDados != "" && valorDados != undefined){
-					$("#" + dado.atributo + "[data-entidade="+entidade_nome+"]",contextoAdd).val(valorDados);
+					$('#' + dado.atributo + '[data-entidade="'+entidade_nome+'"]',contextoAdd).val(valorDados);
 				}else{
-					if ($("#" + dado.atributo + "[data-entidade="+entidade_nome+"]",contextoAdd).attr("required") == "required"){
+					if ($('#' + dado.atributo + '[data-entidade="'+entidade_nome+'"]',contextoAdd).attr("required") == "required"){
 						direto = false;
-						$("#" + dado.atributo + "[data-entidade="+entidade_nome+"]",contextoAdd).prop('selectedIndex', 0);
+						$('#' + dado.atributo + '[data-entidade="'+entidade_nome+'"]',contextoAdd).prop('selectedIndex', 0);
 					}
 				}
 			}else{
-				if ($("#" + dado.atributo + "[data-entidade="+entidade_nome+"]",contextoAdd).attr("required") == "required"){
+				if ($('#' + dado.atributo + '[data-entidade="'+entidade_nome+'"]',contextoAdd).attr("required") == "required"){
 					direto = false;
-					$("#" + dado.atributo + "[data-entidade="+entidade_nome+"]",contextoAdd).prop('selectedIndex', 0);
+					$('#' + dado.atributo + '[data-entidade="'+entidade_nome+'"]',contextoAdd).prop('selectedIndex', 0);
 				}
 				this.dadosatributodependencia.push({
 					entidade:entidade_nome,
@@ -958,32 +938,32 @@ tdFormulario.prototype.setDados = function(dados){
 					}
 				}
 				carregarListas(entidade_nome,dado.atributo,contextoAdd,valorDados,td_atributo[atributodependencia].nome+"^=^"+valorfiltro);
-				$("#" + dado.atributo + "[data-entidade="+entidade_nome+"]").removeAttr("readonly");
-				$("#" + dado.atributo + "[data-entidade="+entidade_nome+"]").removeAttr("disabled");
+				$('#' + dado.atributo + '[data-entidade="'+entidade_nome+'"]').removeAttr("readonly");
+				$('#' + dado.atributo + '[data-entidade="'+entidade_nome+'"]').removeAttr("disabled");
 			}
 		}
 
-		if ($("#" + dado.atributo + "[data-entidade="+entidade_nome+"]",contextoAdd).hasClass("termo-filtro")){
+		if ($('#' + dado.atributo + '[data-entidade="'+entidade_nome+'"]',contextoAdd).hasClass("termo-filtro")){
 			direto = false;
 			const nomeEntidadeReplace = td_entidade[td_atributo[dado.idatributo].chaveestrangeira].nomecompleto;
 			this.buscarFiltro(valorDados,nomeEntidadeReplace.replace("-","."),dado.atributo,"myModal-" + dado.atributo + " .modal-body p ",entidade_nome);
 		}
 
-		if ($("#" + dado.atributo + "[data-entidade="+entidade_nome+"]",contextoAdd).hasClass("checkbox-sn")){
+		if ($('#' + dado.atributo + '[data-entidade="'+entidade_nome+'"]',contextoAdd).hasClass("checkbox-sn")){
 			if (valorDados == 1){
-				$("#" + dado.atributo + "[data-entidade="+entidade_nome+"]",contextoAdd).parents(".form-group").find(".checkbox-s").addClass("active");
-				$("#" + dado.atributo + "[data-entidade="+entidade_nome+"]",contextoAdd).parents(".form-group").find(".checkbox-n").removeClass("active");
+				$('#' + dado.atributo + '[data-entidade="'+entidade_nome+'"]',contextoAdd).parents(".form-group").find(".checkbox-s").addClass("active");
+				$('#' + dado.atributo + '[data-entidade="'+entidade_nome+'"]',contextoAdd).parents(".form-group").find(".checkbox-n").removeClass("active");
 			}else{
-				$("#" + dado.atributo + "[data-entidade="+entidade_nome+"]",contextoAdd).parents(".form-group").find(".checkbox-n").addClass("active");
-				$("#" + dado.atributo + "[data-entidade="+entidade_nome+"]",contextoAdd).parents(".form-group").find(".checkbox-s").removeClass("active");
+				$('#' + dado.atributo + '[data-entidade="'+entidade_nome+'"]',contextoAdd).parents(".form-group").find(".checkbox-n").addClass("active");
+				$('#' + dado.atributo + '[data-entidade="'+entidade_nome+'"]',contextoAdd).parents(".form-group").find(".checkbox-s").removeClass("active");
 				valorDados = 0;
 			}									
 		}
 
-		if ($("#" + dado.atributo + "[data-entidade="+entidade_nome+"]",contextoAdd).hasClass("td-file-hidden")){
+		if ($('#' + dado.atributo + '[data-entidade="'+entidade_nome+'"]',contextoAdd).hasClass("td-file-hidden")){
 			const dadosRetornoJSON = JSON.parse(dado.valor);
 			if (dadosRetornoJSON.filename != ""){
-				$("#" + dado.atributo + "[data-entidade="+entidade_nome+"]",contextoAdd).parents(".form-group").find("iframe").first().attr("src",config.urluploadform + "&atributo="+dado.idatributo+"&valor="+dado.valor+"&id=" + id);
+				$('#' + dado.atributo + '[data-entidade="'+entidade_nome+'"]',contextoAdd).parents(".form-group").find("iframe").first().attr("src",config.urluploadform + "&atributo="+dado.idatributo+"&valor="+dado.valor+"&id=" + id);
 			}
 		}
 
@@ -991,11 +971,11 @@ tdFormulario.prototype.setDados = function(dados){
 			$("#select-generalizacao-multipla option[value="+retorno[r].entidade+"]").attr("selected","selected");
 		}
 
-		if ($("#" + dado.atributo + "[data-entidade="+entidade_nome+"]",contextoAdd).hasClass(".formato-moeda")){
+		if ($('#' + dado.atributo + '[data-entidade="'+entidade_nome+'"]',contextoAdd).hasClass(".formato-moeda")){
 			if (valorDados == 0) valorDados = "0,00";
 		}
 
-		if ($("#" + dado.atributo + "[data-entidade="+entidade_nome+"]",contextoAdd).hasClass("formato-ckeditor")){
+		if ($('#' + dado.atributo + '[data-entidade="'+entidade_nome+'"]',contextoAdd).hasClass("formato-ckeditor")){
 			try{
 				CKEditores[entidade_nome + "^" + dado.atributo].setData(valorDados);
 			}catch(e){
@@ -1005,7 +985,7 @@ tdFormulario.prototype.setDados = function(dados){
 		}
 
 		if (direto){
-			$("#" + dado.atributo + "[data-entidade="+entidade_nome+"]",contextoAdd).val(valorDados);
+			$('#' + dado.atributo + '[data-entidade="'+entidade_nome+'"]',contextoAdd).val(valorDados);
 		}
 	},this);
 }
@@ -1020,7 +1000,7 @@ tdFormulario.prototype.setGradeRelacionamento = function(entidade,id,dados){
 
 tdFormulario.prototype.buscarFiltro = function(termo,entidadeNome,nome,modalName,entidadeContexto){
 	if (termo == "" || termo == undefined){
-		$('#descricao-' + nome + "[data-entidade="+entidadeContexto+"]").val("");
+		$('#descricao-' + nome + '[data-entidade="'+entidadeContexto+'"]').val("");
 		this.habilitafiltro(nome,"",false);
 		return false;
 	}
@@ -1035,12 +1015,12 @@ tdFormulario.prototype.buscarFiltro = function(termo,entidadeNome,nome,modalName
 		instancia:this,
 		success:function(retorno){
 			if (retorno.trim() == ""){				
-				$('#descricao-' + nome + "[data-entidade="+entidadeContexto+"]").val("");
-				$('#' + nome + "[data-entidade="+entidadeContexto+"]").val("");
+				$('#descricao-' + nome + '[data-entidade="'+entidadeContexto+'"]').val("");
+				$('#' + nome + '[data-entidade="'+entidadeContexto+'"]').val("");
 				this.instancia.habilitafiltro(nome,"",false,entidadeContexto);
 			}else{
-				$('#descricao-' + nome + "[data-entidade="+entidadeContexto+"]").val(retorno.trim());
-				$('#' + nome + "[data-entidade="+entidadeContexto+"]").val(termo);
+				$('#descricao-' + nome + '[data-entidade="'+entidadeContexto+'"]').val(retorno.trim());
+				$('#' + nome + '[data-entidade="'+entidadeContexto+'"]').val(termo);
 				this.instancia.habilitafiltro(nome,"",true,entidadeContexto);
 			}
 			$('#' + modalName).modal('hide');

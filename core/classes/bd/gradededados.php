@@ -193,20 +193,18 @@ if ($filtroNN != ""){
     $sql->addFiltro("id","in",$ids);
 }
 
-#Debug::log($entidade->contexto->nome . " " . $sql->dump());
-
-$dataset = tdClass::Criar("repositorio",array($entidade->contexto->nome))->carregar($sql);
-$dados = "";
-$camposhtml = explode(",",$campos_html);
-$camposfk = explode(",",$campos_fk);
-$dados_array = $dados_array_reais = array();
-$idRegIndice = 1;
+$dataset 		= tdClass::Criar("repositorio",array($entidade->contexto->nome))->carregar($sql);
+$dados 			= "";
+$camposhtml 	= explode(",",$campos_html);
+$camposfk 		= explode(",",$campos_fk);
+$dados_array 	= $dados_array_reais = array();
+$idRegIndice 	= 1;
 foreach($dataset as $dado){
-	$array_campos_nome = explode(",",$campos_nome);
-	$campos_dados = $campos_dados_reais = array();
-	$campos_dados = array();
-	$i = $attrRel = 0;
-	$idRegistro = 0;
+	$array_campos_nome 	= explode(",",$campos_nome);
+	$campos_dados 		= $campos_dados_reais = array();
+	$campos_dados 		= array();
+	$i = $attrRel 		= 0;
+	$idRegistro 		= 0;
 	foreach($array_campos_nome as $c){
 		if ($camposfk[$i] != "0" && $camposfk[$i] != ""){
 			$entRel = tdClass::Criar("persistent",array(ENTIDADE,$camposfk[$i]));

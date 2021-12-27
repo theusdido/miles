@@ -599,9 +599,7 @@ html, body { margin:0; height: 100%;} /* Para funcionar altura dos elementos aut
 	float:right;
 	width:150px;
 }
-.gradededados .btn-editar-emmassa{
-	margin-right:10px;
-}
+
 .loading2{
 	display:none;
 }
@@ -764,5 +762,16 @@ header #menu {
 	float:right;
 	margin: 5px;
 	width:120px;
+}
+
+/* *****************************************************************
+* GRADE DE DADOS
+***************************************************************** */
+.paginacao-gradededados{
+	width: 100%;
+	float:left;
+}
+.gradededados .btn-editar-emmassa{
+	margin-right:10px;
 }
 -->

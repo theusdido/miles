@@ -1839,7 +1839,8 @@ function tdexplode($separador,$string,$returntype = "array"){
 }
 
 function getnocacheparams(){
-	return "nocahe=" . md5("td" . date("dmYHis"));
+	return '';
+	#return "nocahe=" . md5("td" . date("dmYHis"));
 }
 
 function getPHPVersion(){

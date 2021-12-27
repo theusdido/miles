@@ -129,6 +129,9 @@
 		// Caminho padrão para as páginas personalizadas
 		define("PATH_CURRENT_PAGE", PATH_CURRENT_PROJECT . "page/");
 
+		// Caminho padrão para os arquivos de log
+		define("PATH_CURRENT_LOG", PATH_CURRENT_PROJECT . "log/");		
+
 		// Caminho padrão para os arquivos do WebSite
 		define("PATH_CURRENT_WEBSITE",PATH_CURRENT_PROJECT . "website/");
 

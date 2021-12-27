@@ -109,8 +109,11 @@ final class Transacao{
 		Armazena uma mensagem no arquivo de log baseada na estratégia de log atual
 	*/			
 	public static function log($mensagem){
+		global $mjc;
 		if(self::$logger){
-			#self::$logger->escrever($mensagem);
+			if ($mjc->is_transaction_log){
+				self::$logger->escrever($mensagem);
+			}
 		}
-	}	
+	}
 }

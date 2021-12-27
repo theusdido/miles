@@ -668,10 +668,10 @@ function getURLProject(parametro = null){
 	let nocache = new Date().getTime();
 	if (parametro.indexOf("?") < 0 && typeof parametro == "string"){
 		if (parametro.indexOf(".html") > -1 || parametro.indexOf(".htm") > -1){
-			parametro = parametro + "?nocahe=" + nocache
+			//parametro = parametro + "?nocahe=" + nocache
 		}
 		return parametro;
-	} 
+	}
 	var urlproject 		= session.urlmiles.replace("index.php","") + "index.php";
 	var parmsProject 	= [];
 	parmsProject.push(getParamsOBJ("currentproject",session.projeto));

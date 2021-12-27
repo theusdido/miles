@@ -12,7 +12,7 @@ include PATH_BD . 'logger.class.php';
 class LoggerDATE extends BdLogger{
 
 	/*  
-		* MÈtodo escrever 
+		* MÔøΩtodo escrever 
 	    * Data de Criacao: 23/04/2020
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
@@ -20,7 +20,7 @@ class LoggerDATE extends BdLogger{
 	*/		
 	public function escrever($mensagem){
 		$datahora = date("d/m/Y H:i:s");
-		$usuario = "AutenticaÁ„o do Usu·rio";		
+		$usuario = "Autentica√ß√£o do Usu√°rio";		
 		if (Session::get()){
 			if (isset(Session::get()->username)){
 				$usuario = Session::get()->username;
@@ -30,13 +30,15 @@ class LoggerDATE extends BdLogger{
 		}
 		$texto  = "/* $datahora^{$usuario} */ $mensagem;
 ";
-		$pathlog = tdFile::pathDateDir(PATH_LOG);
+
+		$pathlog = tdFile::pathDateDir(PATH_CURRENT_LOG);
+
 		if ($pathlog != false){
 			$ref = fopen($pathlog . date("Y-d-m") . ".txt",'a+');
 			fwrite ($ref,$texto);
 			fclose($ref);
 		}else{
-			Debug::put("LoggerDATE->escrever: Ero ao criar o diretÛrio do log.");
+			Debug::put("LoggerDATE->escrever: Erro ao criar o diret√≥rio do log [".PATH_CURRENT_LOG."].");
 		}
 	}
 }

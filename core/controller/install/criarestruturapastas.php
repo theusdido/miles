@@ -12,6 +12,7 @@
     $path_current_tema          = $path_root_project.'tema/';
     $path_current_view          = $path_root_project.'view/';
     $path_current_website       = $path_root_project.'website/';
+    $path_current_log           = $path_root_project.'log/';
 
     $path_current_arquivos_temp         = $path_current_arquivos   .'temp/';
     $path_current_build_js              = $path_current_build      .'js/';
@@ -34,6 +35,7 @@
     tdFile::mkdir($path_current_tema,true);
     tdFile::mkdir($path_current_view,true);
     tdFile::mkdir($path_current_website,true);
+    tdFile::mkdir($path_current_log,true);
 
     tdFile::mkdir($path_current_arquivos_temp,true);
     tdFile::mkdir($path_current_build_js,true);

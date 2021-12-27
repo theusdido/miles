@@ -43,6 +43,7 @@ function GradeDeDados(entidade){
 	this.construct(entidade);
 	this.selecionados = [];
 	this.funcionalidade = 'cadastro';
+	this.indice_linha = -1;
 }
 GradeDeDados.prototype.construct = function(entidade){
 	if (entidade > 0) this.nomeEntidade = td_entidade[entidade].nomecompleto;
@@ -313,28 +314,28 @@ GradeDeDados.prototype.addCorpo = function(id,dadosColuna){
 }
 GradeDeDados.prototype.paginacao = function(){
 	if (this.totalRegistros > this.qtdeMaxRegistro){
-		var instancia = gradesdedados[this.contexto];
-		this.totalblocos = Math.ceil(this.totalRegistros / this.qtdeMaxRegistro);
-		if ($("center > ul.pagination",this.contexto).length > 0){
-			$("center > ul.pagination",this.contexto)[0].remove();
-		}
-		
-		var center = $("<center>");
-		var ul = $("<ul class='pagination'>");
-		var primeiro = $("<li><a class='primeiro' aria-label='Primeiro' href='#'><span class='fas fa-angle-double-left' aria-hidden='true'>«</span></a></li>");
+		let instancia 		= this;
+		this.totalblocos 	= Math.ceil(this.totalRegistros / this.qtdeMaxRegistro);
+		$("center",this.contexto)[0].remove();
+
+		let center 		= $("<center>");
+		let ul 			= $('<ul class="pagination">');
+		let primeiro 	= $("<li><a class='primeiro' aria-label='Primeiro' href='#'><span class='fas fa-angle-double-left' aria-hidden='true'></span></a></li>");
 		primeiro.click(function(e){
 			e.preventDefault();
 			e.stopPropagation();
 			instancia.irbloco(1);
 		});
-		var voltar = $("<li><a class='anterior' href='#'><span class='fas fa-angle-left' aria-hidden='true'></span></a></li>");
+
+		let voltar 		= $("<li><a class='anterior' href='#'><span class='fas fa-angle-left' aria-hidden='true'></span></a></li>");
 		voltar.click(function(e){
 			e.preventDefault();
 			e.stopPropagation();			
 			instancia.irbloco(parseInt(instancia.blocoatual)-1);
 		});
-		var li = $("<li>");
-		var irInput = $("<input type='text' class='irbloco-paginacao'>");
+
+		let li 		= $("<li>");
+		let irInput = $("<input type='text' class='irbloco-paginacao'>");
 		irInput.val(this.blocoatual);
 		irInput.keypress(function(e){
 			var tecla = e.which;
@@ -342,23 +343,25 @@ GradeDeDados.prototype.paginacao = function(){
 				instancia.irbloco(parseInt($(this).val()));
 			}
 		});
-		var ir = li.append(irInput);
-		var proximo = $("<li><a class='proximo' href='#'><span class='fas fa-angle-right' aria-hidden='true'></span></a></li>");
+
+		let ir 			= li.append(irInput);
+		let proximo 	= $("<li><a class='proximo' href='#'><span class='fas fa-angle-right' aria-hidden='true'></span></a></li>");
 		proximo.click(function(e){
 			e.preventDefault();
 			e.stopPropagation();			
 			instancia.irbloco(parseInt(instancia.blocoatual)+1);
 		});
-		var ultimo = $("<li><a class='ultimo' aria-label='Último' href='#'><span class='fas fa-angle-double-right' aria-hidden='true' ></span></a></li>");
+
+		let ultimo 		= $("<li><a class='ultimo' aria-label='Último' href='#'><span class='fas fa-angle-double-right' aria-hidden='true' ></span></a></li>");
 		ultimo.click(function(e){
 			e.preventDefault();
 			e.stopPropagation();			
 			instancia.irbloco(instancia.totalblocos);
 		});
-		
+
 		ul.append(primeiro);
 		ul.append(voltar);
-		
+
 		for (i=1;i<=10;i++){
 			var bloco = $("<li><a class='pagina' data-bloco='"+i+"' href='#' onclick="+this.instancia+"GD.irbloco("+i+")>"+i+"</a></li>");
 			if (5 == i){
@@ -368,10 +371,9 @@ GradeDeDados.prototype.paginacao = function(){
 		ul.append(proximo);
 		ul.append(ultimo);
 		center.append(ul);
-		var paginacaoGradededados = $("<div class='paginacao-gradededados'>").append(center);
+		let paginacaoGradededados = $("<div class='paginacao-gradededados'>").append(center);
 		$(this.contexto).append(paginacaoGradededados);
-		//
-		
+
 		if (this.blocoatual<=1){
 			$("ul.pagination li a.anterior").parent().addClass("disabled");		
 			$("ul.pagination li a.proximo").parent().removeClass("disabled");
@@ -394,7 +396,6 @@ GradeDeDados.prototype.paginacao = function(){
 GradeDeDados.prototype.irbloco = function(bloco){
 	if (bloco < 1 || bloco > this.totalblocos || this.blocoatual == bloco) return false;	
 	this.blocoatual = bloco;
-
 	this.reload();
 }
 GradeDeDados.prototype.pesquisa = function(){
@@ -733,20 +734,25 @@ GradeDeDados.prototype.loadDadosEdicao = function(id){
 		}
 	});
 }
-GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
+GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){	
+
 	let tr;
 	let tr_is_exists;
+	let tr_indice = id == 0 ? this.indice_linha : id;
 
-	if (this.table.find("tbody tr[idregistro="+id+"]").length > 0){
-		this.table.find("tbody tr[idregistro="+id+"] td").remove();
-		tr 				= this.table.find("tbody tr[idregistro="+id+"] ");
+	id = id == 0 ? '-' : id;
+
+	if (this.table.find("tbody tr[idregistro="+tr_indice+"]").length > 0){
+		this.table.find("tbody tr[idregistro="+tr_indice+"] td").remove();
+		tr 				= this.table.find("tbody tr[idregistro="+tr_indice+"] ");
 		tr_is_exists 	= true;
 	}else{
-		tr 				= $("<tr idregistro="+id+">");
+		tr 				= $("<tr idregistro="+tr_indice+">");
 		tr_is_exists 	= false;
+		this.indice_linha--;
 	}
 
-	linha['id'] 		= id;
+	linha['id'] 		= id <= 0 ? '-' : id;
 	linhareal['id'] 	= id;
 	for(n in this.attr_cabecalho_nome){
 
@@ -868,7 +874,7 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
 	let btnOutraJanela = "<td align='center'><span onclick=outrajanela(this,38978,'index.php?controller=crud&amp;id=38978&amp;op=add&amp;t=19&amp;filtro_rel_nn=&amp;modal=true'); class='botao fas fa-external-link-alt btn btn-default'></span></td>";
 
 	if (this.movimentacao != ""){
-		let spanMovimentacao = $("<span reg='"+id+"' class='botao fas fa-share btn btn-default' onclick=movimentacao('"+this.entidade+"','"+id+"',"+this.movimentacao+")></span>");
+		let spanMovimentacao = $("<span reg='"+tr_indice+"' class='botao fas fa-share btn btn-default' onclick=movimentacao('"+this.entidade+"','"+tr_indice+"',"+this.movimentacao+")></span>");
 	}
 
 	if (this.movimentacao != ""){
@@ -876,7 +882,7 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
 		btnMovimentacao.append(spanMovimentacao);
 	}
 	
-	let spanEditar = $("<span reg='"+id+"' data-entidade='"+this.entidade+"' data-funcionalidade='"+this.funcionalidade+"' class='botao fas fa-pencil-alt btn btn-default' ></span>");
+	let spanEditar = $("<span reg='"+tr_indice+"' data-entidade='"+this.entidade+"' data-funcionalidade='"+this.funcionalidade+"' class='botao fas fa-pencil-alt btn btn-default' ></span>");
 	spanEditar.on("click",function(){
 
 		let entidadeid 		= $(this).data("entidade");
@@ -891,7 +897,6 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
 			if ($(this).parents(".crud-contexto-listar").first().hasClass("fp")){
 				editarTDFormulario(entidadeid,id);
 			}else{
-				debugger;
 				editarFormulario(entidadeid,id);
 			}
 		}
