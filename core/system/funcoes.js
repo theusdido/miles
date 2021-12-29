@@ -764,7 +764,7 @@ function carregarListas(entidade,atributo,contextoAdd,valor){ // Argumento 4 é 
 				var opt = "<option value='"+entaux[ea].id+"'>" + ophtmlOPTt + "</option>";
 				$(".form-control[id=" + td_atributo[atributo].nome +"]",contextoAdd).append(opt);
 			}
-			if (valor != "" && valor != undefined){
+			if (valor != "" && valor != undefined && valor != 0){
 				$(".form-control[id=" + td_atributo[atributo].nome + "]",contextoAdd).val(valor);
 			}
 		}else{

@@ -35,6 +35,7 @@ tdFormulario.prototype.construct = function(entidade_id,registro_id = 0,entidade
 	this.setContexto();
 	this.setEntidadesFilho();
 	this.setBotoes();
+	this.emExecucao();
 }
 
 tdFormulario.prototype.novo = function(){
@@ -57,6 +58,7 @@ tdFormulario.prototype.novo = function(){
 	}else{
 		$('.form-control[id=id][data-entidade="' + this.entidade.id + '"]').val(id_init_val);
 	}
+
 	if (this.entidade != undefined){
 		if (this.entidade.registrounico){
 			$(contextoAdd).find(".b-voltar").first().hide();
@@ -201,26 +203,42 @@ tdFormulario.prototype.setaPrimeiraAba = function(){
 	$(".tab-content div:first-child"	,this.getContextoAdd()).addClass("active in"); 
 }
 
-tdFormulario.prototype.setaCkEditores = function(is_novo){
-	// Setando valores do CK Editor
-	for(c in this.CKEditores){
-		if (is_novo){
-			this.CKEditores[c].setData("");
-		}
-	}
+tdFormulario.prototype.setaCkEditores = function(){
 
 	let instancia = this;
 	$(".ckeditor").each(function(){
-		if (instancia.CKEditores[$(this).data("entidade") + "^" + $(this).attr("id")] != undefined) return false;
 
+		if (instancia.CKEditores[$(this).data("entidade") + "^" + $(this).attr("id")] != undefined) return false;
+	
 		let idCampo = "div-editor-" + $(this).attr("id") + "-" + $(this).data("entidade");
 		let config  = {};
 		let valor   = "";
 		
-		if (instancia.CKEDITOR != undefined){
-			const instanciaEditor = instancia.CKEDITOR.appendTo( idCampo , config, valor );
+		if (CKEDITOR == undefined){
+			console.warn('Biblioteca CKEDITOR não encontrada.');
+		}else{
+			const instanciaEditor = CKEDITOR.appendTo( idCampo , config, valor );
 			instancia.CKEditores[$(this).data("entidade") + "^" + $(this).attr("id")] = instanciaEditor;
 		}
+	});
+
+	$(".botao-ckeditor").click(function(e){
+		var modalname = $(this).data("modalname");
+		$("#" + modalname).find(".modal-body").css("height","350px");
+		$("#" + modalname).modal({
+			backdrop:false
+		});	
+		var campotexto = $(this).parents(".ckeditor-group").find(".formato-ckeditor").first();
+		instancia.CKEditores[campotexto.data("entidade") + "^" + campotexto.attr("id")].setData($("#" + campotexto.attr("id") + "[data-entidade="+campotexto.data("entidade")+"]").val());
+		$("#" + modalname).modal("show");
+		setTimeout( ()=> {
+			$("#" + modalname).removeAttr("tabindex");
+		},500);
+	});
+
+	$(".ckeditor-field").on('hidden.bs.modal', function (e){
+		var nomecompleto = $(this).data("nomecompleto").split("-");
+		$("#" + nomecompleto[0] + "[data-entidade="+nomecompleto[1]+"]").val(instancia.CKEditores[nomecompleto[1] + "^" + nomecompleto[0]].getData());
 	});	
 }
 
@@ -410,6 +428,7 @@ tdFormulario.prototype.loadGrade = function(){
 	this.getGrade().show();
 }
 tdFormulario.prototype.voltar = function(){	
+	this.gradesdados.reload();
 	$(this.getContextoAdd()).hide();
 	$(this.getContextoListar()).show();
 }
@@ -623,9 +642,6 @@ tdFormulario.prototype.salvar = function(){
 			});
 		});
 
-		// O formulário principal tem que ser enviado em primeiro
-		//dadosenviar.reverse();
-
 		// AJAX que envia os dados a serem salvos
 		$.ajax({
 			type:"POST",
@@ -674,7 +690,12 @@ tdFormulario.prototype.salvar = function(){
 				}
 				if (typeof afterSave === "function") afterSave(this.instancia.is_principal,this);
 				unLoaderSalvar();
-				parent.$("#modal-add-emexecucao").modal('hide');
+
+				// Retorna para o formulário que chamou o adição de registro
+				if (this.instancia.funcionalidade == 'add-emexecucao'){
+					parent.$(".modal[id='modal-add-emexecucao'] iframe[fk_entidade='"+this.instancia.entidade.nome+"']").attr("em_execucao_id",this.instancia.registro_id);
+					parent.$(".modal[id='modal-add-emexecucao']").modal('hide');
+				}
 			},
 			error:function(ret){
 				if (this.instancia.is_principal){
@@ -800,7 +821,7 @@ tdFormulario.prototype.editar = function(){
 				return false;
 			}
 
-			retorno.forEach(function(r){					
+			retorno.forEach(function(r){
 				let dadosRetorno 			= r.dados;
 				let entidadeDados 			= td_entidade[r.entidade];
 				let tipoRelacionamento 		= "";
@@ -865,18 +886,20 @@ tdFormulario.prototype.editar = function(){
 						$("#select-generalizacao-unica").change();
 					}
 				}
+
+				if ($('#select-generalizacao-multipla')){
+					$('#select-generalizacao-multipla').SumoSelect();
+					if (r.fp){
+						$("#select-generalizacao-multipla").change();
+					}
+				}
+				if (r.fp){
+					this.exibirDadosEdicao();
+					this.liberaBotaoSalvar()
+				}
 			},this.instancia);
 			
-			if ($('#select-generalizacao-multipla')){
-				$('#select-generalizacao-multipla').SumoSelect();
-				if (r.fp){
-					$("#select-generalizacao-multipla").change();
-				}
-			}
-			if (r.fp){
-				this.instancia.exibirDadosEdicao();
-				this.this.instancia.liberaBotaoSalvar()
-			}
+
 
 			// Permissão dos atributos
 			this.instancia.setPermissoesAtributos('edicao');
@@ -977,7 +1000,7 @@ tdFormulario.prototype.setDados = function(dados){
 
 		if ($('#' + dado.atributo + '[data-entidade="'+entidade_nome+'"]',contextoAdd).hasClass("formato-ckeditor")){
 			try{
-				CKEditores[entidade_nome + "^" + dado.atributo].setData(valorDados);
+				this.CKEditores[entidade_nome + "^" + dado.atributo].setData(valorDados);
 			}catch(e){
 				console.log("Erro ao abrir CKEditor no Celular");
 				console.log(e);
@@ -1091,4 +1114,40 @@ tdFormulario.prototype.habilitafiltro = function(atributo,contexto,habilita,enti
 			}
 		}		
 	}	
+}
+
+tdFormulario.prototype.emExecucao = function(){
+
+	let instancia = this;
+	$('.btn-add-emexecucao',this.getContextoAdd()).click(function(){
+
+		let contextoAdd	= instancia.getContextoAdd();
+		let modal 		= $("#modal-add-emexecucao",contextoAdd);
+		let campo 		= $(this).parents(".input-group").first().find(".form-control");
+		let atributo 	= campo.attr("atributo");
+		let fk			= td_atributo[atributo].chaveestrangeira;
+		let entidade	= campo.data("entidade");
+		let iframe		= $('#modal-add-emexecucao iframe[data-contexto="'+contextoAdd+'"]');
+		iframe.attr("em_execucao_id",0);
+		iframe.attr("fk_entidade",td_entidade[fk].nome);
+		iframe.attr("src",session.urlmiles + '?controller=htmlpage&entidade='+fk+'&op=cadastro');		
+
+		modal.on('hide.bs.modal', function (e) {
+			carregarListas(entidade,atributo,contextoAdd,iframe[0].attributes.em_execucao_id.value);
+		});
+	
+		modal.modal('show');
+	});
+}
+
+tdFormulario.prototype.setRegistroUnico = function(){
+	this.registrounico = true;
+
+	$(".b-voltar",this.getContextoAdd()).hide();
+	if (this.funcionalidade == "add-emexecucao"){
+		this.novo();
+	}else{
+		this.registro_id = 1;
+		this.editar();
+	}
 }

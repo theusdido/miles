@@ -31,6 +31,7 @@
 
 	// URL SYSTEM
 	Session::append("URL_SYSTEM",Session::Get('URL_CORE') . FOLDER_SYSTEM . '/');
+	define('URL_SYSTEM',URL_CORE. FOLDER_SYSTEM . '/');
 
 	// URL PAGE
 	Session::append("URL_PAGE",Session::Get('URL_CORE') . FOLDER_PAGE . '/');	

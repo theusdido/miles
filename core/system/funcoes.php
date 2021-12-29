@@ -2106,3 +2106,30 @@ function getTableName($tabela){
 function loadPage($page){
 	return getURL(URL_MILES . 'index.php?controller=page&page=' . $page);
 }
+
+/*
+	* exists_lista
+	* Data de Criacao: 28/12/2021
+	* @author Edilson Valentim dos Santos Bitencourt (Theusdido)
+	* Verifica se existe um registro na lista
+	* PARAMETROS
+	*	@params: Inteiro entidadepai:"Entidade Pai"
+	*	@params: Inteiro entidadefilho:"Entidade Filho"
+	*	@params: Inteiro regpai:"Registro Pai"
+	*	@params: Inteiro regfilho:"Registro Filho"
+	* RETORNO
+	*	@return: Boolean
+*/
+function exists_lista($entidadepai,$entidadefilho,$regpai,$regfilho){	
+	$sql = tdClass::Criar("sqlcriterio");
+	$sql->addFiltro("entidadepai"	,"=",$entidadepai);
+	$sql->addFiltro("entidadefilho"	,"=",$entidadefilho);
+	$sql->addFiltro("regpai"		,"=",$regpai);
+	$sql->addFiltro("regfilho"		,"=",$regfilho);
+
+	if (tdClass::Criar("repositorio",array(LISTA))->quantia($sql) <= 0){
+		return false;
+	}else{
+		return true;
+	}
+}

@@ -244,13 +244,14 @@ GradeDeDados.prototype.cabecalho = function(){
 				tr.append($("<th class='excluir-coluna-gradededados'><center>Excluir</center></th>"));
 			}			
 
-			var thSelTodos = $("<th>");
-			var thCenter = $("<center>")
-			var buttonSelTodos = $("<button data-sel='false' aria-label='Selecionar Todos' class='btn btn-link gd-sel-todos' type='button'><span aria-hidden='true' class='fas fa-check-square'></span></button>");
-			var nomeEntidade = this.nomeEntidade;
-			$(document).on("click", instancia.contexto + " .gd-sel-todos",function(){
+			var thSelTodos 		= $("<th>");
+			var thCenter 		= $("<center>");
+			var buttonSelTodos 	= $("<input type='checkbox' data-sel='false' aria-label='Selecionar Todos' class='gd-sel-todos' />");
+			var nomeEntidade 	= this.nomeEntidade;
+			$(buttonSelTodos).click(function(){
 				instancia.selecionarTodos(this);
 			});
+
 			thCenter.append(buttonSelTodos);
 			thSelTodos.append(thCenter);
 			if (this.exibireditar || this.exibirexcluir || this.exibiremmassa){
@@ -456,9 +457,9 @@ GradeDeDados.prototype.pesquisa = function(){
 }
 GradeDeDados.prototype.excluir = function(){	
 	if (typeof beforeDelete === "function") beforeDelete();
-	var entidade = this.entidade;
-	var instancia = gradesdedados[this.contexto];
-	var excluirRegistroUnico = (arguments.length > 0)?true:false;
+	let entidade = this.entidade;
+	let instancia = this;
+	let excluirRegistroUnico = (arguments.length > 0)?true:false;
 	
 	// Permissões
 	for (permissao in td_permissoes){
@@ -470,28 +471,31 @@ GradeDeDados.prototype.excluir = function(){
 		}
 	}
 	
+	let perguntaexclusao 		= '';
+	let registro 				= '';
+	let registrosselecioandos	= 0;
+	let btnExcluir;
+	let linhatable;
+	let loaderExcluir;
 	// Registro único ou em massa
 	if (excluirRegistroUnico){
-		var registro = arguments[0];
-		var btnExcluir = arguments[1];
-		var linhatable = arguments[1].parents("tr");
-		var loaderExcluir = btnExcluir.parents(".excluir-coluna-gradededados").find(".loader-excluir-gd");
-		var perguntaexclusao = 'Tem certeza que deseja excluir ?'
+		registro 			= arguments[0];
+		btnExcluir 			= arguments[1];
+		linhatable 			= arguments[1].parents("tr");
+		loaderExcluir 		= btnExcluir.parents(".excluir-coluna-gradededados").find(".loader-excluir-gd");
+		perguntaexclusao 	= 'Tem certeza que deseja excluir ?'
 	}else{
-		var registro = "";
-		var perguntaexclusao = 'Tem certeza que deseja excluir os registros selecionados ?';
-		var registrosselecioandos = instancia.getSelecionados();
+		registro					= "";
+		perguntaexclusao 			= 'Tem certeza que deseja excluir os registros selecionados ?';
+		registrosselecioandos 		= instancia.getSelecionados();
 		if (registrosselecioandos.length <= 0){
 			bootbox.alert("Nenhum Registro Selecionado");
 			return false;
 		}
 	}
 
-	var totalexcluidos = 0;
-	var entidadeNome = td_entidade[this.entidade].nomecompleto;
-	var irbloco = 0;
+	let totalexcluidos	= 0;
 	
-
 	bootbox.dialog({
 	  message:perguntaexclusao,
 	  title:'Aviso',
@@ -561,23 +565,22 @@ GradeDeDados.prototype.selecionarTodos = function(botaoSelAll){
 GradeDeDados.prototype.rodape = function(){
 	if (!this.retornaFiltro){
 		if (this.table.find("tfoot").length <= 0){
-			var qtdeTempReg = this.qtdeTempRegistro();
+			let qtdeTempReg 	= this.qtdeTempRegistro();
 			if (this.dadosCorpo.length > 0 || qtdeTempReg > 0){
-				var tfoot = $("<tfoot>");
-				var tr = $("<tr>");			
-				var td = $("<td colspan='"+(this.attr_cabecalho_nome.length+3)+"'>");
-				var instancia = gradesdedados[this.contexto];
-				
+				let tfoot 		= $("<tfoot>");
+				let tr 			= $("<tr>");			
+				let td 			= $("<td colspan='"+(this.attr_cabecalho_nome.length+3)+"'>");
+				let instancia 	= this;
 
 				// Excluir Selecionados
-				var btnExcluirTodos = $("<input type='button' style='float:right;' value='Excluir Selecionados' class='btn btn-default btn-excluir-selecionados'>");
-				btnExcluirTodos.on("click",".btn-excluir-selecionados",function(){
+				let btnExcluirTodos = $("<input type='button' style='float:right;' value='Excluir Selecionados' class='btn btn-default btn-excluir-selecionados'>");
+				btnExcluirTodos.click(function(){
 					instancia.excluir();
 				});
 				
 				// Editar em Massa
-				var btnEditarEmMassa = $('<button class="btn btn-warning btn-editar-emmassa">Em Massa</button>');
-				$(document).on("click",".btn-editar-emmassa",function(){
+				let btnEditarEmMassa = $('<button class="btn btn-warning btn-editar-emmassa">Em Massa</button>');
+				$(document).on("click",".btn-editar-emmassa:first",function(){
 					instancia.editarEmMassa();
 				});
 
@@ -911,7 +914,7 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
 	loaderExcluir.addClass('loader-excluir-gd');
 	loaderExcluir.css("display","none");
 	
-	let instancia = gradesdedados[this.contexto];
+	let instancia = this;
 	btnExcluir.click(function(){
 		instancia.excluir(id,$(this));
 	});
@@ -1082,15 +1085,15 @@ GradeDeDados.prototype.setCabecalhoAtributos = function(){
 	}
 }
 GradeDeDados.prototype.editarEmMassa = function(){
-	var modal 			= $('<div id="modal-emmassa" class="modal fade" tabindex="-1" role="dialog">');
-	var modalDialog 	= $('<div class="modal-dialog modal-lg" role="document">');
-	var modalContent	= $('<div class="modal-content">');
-	var modalHeader 	= $('<div class="modal-header">');
-	var botaoClose		= $('<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>');
-	var titulo			= $('<h4 class="modal-title">Edição Em Massa</h4>');
-	var modalBody		= $('<div class="modal-body">');
-	var modalFooter		= $('<div class="modal-footer">');
-	var botaoSalvar		= $('<button type="button" class="btn btn-primary">Atualizar</button>');
+	let modal 			= $('<div id="modal-emmassa" class="modal fade" tabindex="-1" role="dialog">');
+	let modalDialog 	= $('<div class="modal-dialog modal-lg" role="document">');
+	let modalContent	= $('<div class="modal-content">');
+	let modalHeader 	= $('<div class="modal-header">');
+	let botaoClose		= $('<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>');
+	let titulo			= $('<h4 class="modal-title">Edição Em Massa</h4>');
+	let modalBody		= $('<div class="modal-body">');
+	let modalFooter		= $('<div class="modal-footer">');
+	let botaoSalvar		= $('<button type="button" class="btn btn-primary">Atualizar</button>');
 	
 	modal.append(modalDialog);
 	modalDialog.append(modalContent);
@@ -1101,11 +1104,11 @@ GradeDeDados.prototype.editarEmMassa = function(){
 	modalHeader.append(botaoClose);
 	modalHeader.append(titulo);
 
-	var form 					= $("<form>");
-	var fgAtributos 			= $('<div class="form-group"></div>');
-	var selectAtributosLabel 	= $('<label for="emMassa-listaAtributos">Campos</label>');
-	var selectAtributos 		= $('<select class="form-control" id="emMassa-listaAtributos"></select>');
-	var entidadePai 			= this.entidade;
+	let form 					= $("<form>");
+	let fgAtributos 			= $('<div class="form-group"></div>');
+	let selectAtributosLabel 	= $('<label for="emMassa-listaAtributos">Campos</label>');
+	let selectAtributos 		= $('<select class="form-control" id="emMassa-listaAtributos"></select>');
+	let entidadePai 			= this.entidade;
 
 	selectAtributos.append($('<option value="0">Selecione</option>'));
 	addListaAtributos(entidadePai);
@@ -1128,8 +1131,7 @@ GradeDeDados.prototype.editarEmMassa = function(){
 	selectAtributos.change(function(e){
 		e.stopPropagation();
 		e.preventDefault();
-		var atributoOBJ = td_atributo[$(this).val()];	
-		//$("#relacionamento-EmMassa").val($(this).find("opt:selected").data("relacionamento"));
+		let atributoOBJ = td_atributo[$(this).val()];
 		$.ajax({
 			url:config.urlloadgradededados,
 			data:{
@@ -1152,10 +1154,10 @@ GradeDeDados.prototype.editarEmMassa = function(){
 						$('#modal-emmassa').on('hidden.bs.modal', function (e) {
 							$("#modal-emmassa .modal-content").css("height","");
 						});
-						var botaoFecharModal = $("#campo-atualizar-emmassa .modal-header .close");
+						let botaoFecharModal = $("#campo-atualizar-emmassa .modal-header .close");
 						botaoFecharModal.attr("data-dismiss","");
 						botaoFecharModal.click(function(){
-							var modalFecharID = $(this).parents(".modal").attr("id");
+							let modalFecharID = $(this).parents(".modal").attr("id");
 							$("#" + modalFecharID).modal('hide');
 						});
 					break;
@@ -1167,17 +1169,15 @@ GradeDeDados.prototype.editarEmMassa = function(){
 	fgAtributos.append(selectAtributosLabel);
 	fgAtributos.append(selectAtributos);	
 
-	var fgValor 	= $('<div class="form-group" id="campo-atualizar-emmassa">');
-	var valorLabel 	= $('<label for="emMassa-valor">Valor</label>');
-	var valorInput 	= $('<input type="text" class="form-control" id="emMassa-valor" placeholder="Valor">');
-	var idsInput 	= $('<input type="hidden" class="form-control" id="emMassa-ids">');
-	//var relInput 	= $('<input type="hidden" id="relacionamento-EmMassa">');
+	let fgValor 	= $('<div class="form-group" id="campo-atualizar-emmassa">');
+	let valorLabel 	= $('<label for="emMassa-valor">Valor</label>');
+	let valorInput 	= $('<input type="text" class="form-control" id="emMassa-valor" placeholder="Valor">');
+	let idsInput 	= $('<input type="hidden" class="form-control" id="emMassa-ids">');
 
 	fgValor.append(valorLabel);
 	fgValor.append(valorInput);
 
 	form.append(idsInput);
-	//form.append(relInput);
 	form.append(fgAtributos);
 	form.append(fgValor);
 
@@ -1185,6 +1185,7 @@ GradeDeDados.prototype.editarEmMassa = function(){
 	modalFooter.append(botaoSalvar);
 	modalFooter.append(getIMGLoader());
 
+	let instancia = this;
 	botaoSalvar.click(function(){
 		bootbox.confirm({
 			message:"Tem certeza que deseja atualizar todos os campos?",
@@ -1218,6 +1219,7 @@ GradeDeDados.prototype.editarEmMassa = function(){
 							var retorno = parseInt(ret.responseText);
 							if (retorno == 1){
 								bootbox.alert("Atualizado com Sucesso!");
+								instancia.reload();
 							}else{
 								bootbox.alert("Erro ao atualizar!");
 							}
@@ -1233,12 +1235,12 @@ GradeDeDados.prototype.editarEmMassa = function(){
 		$("body").append(modal);
 	}
 
-	var selecionados = this.getSelecionados();
+	let selecionados = this.getSelecionados();
 	if (selecionados.length <= 0){
 		bootbox.alert("Nenhum registro selecionado.");
 		return false;
 	}
-	var ids = [];
+	let ids = [];
 	selecionados.each(function(registro){
 		ids.push($(selecionados[registro]).val());
 	});

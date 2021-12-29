@@ -21,7 +21,7 @@
 	);
 
     // Criando Atributos
-    $produto        = criarAtributo($conn,$entidadeID,"produto","Produto","int",0,0,16,1,getEntidadeId("ecommerce_produto",$conn),0,"");
+    $produto        = criarAtributo($conn,$entidadeID,"produto","Produto","int",0,1,16,0,getEntidadeId("ecommerce_produto",$conn),0,"");
     $especificacao  = criarAtributo($conn,$entidadeID,"especificacao","Especificação","int",0,0,4,0,getEntidadeId("ecommerce_especificacaotecnica",$conn),1,"");
     $descricao      = criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar","1000",0,3,1,0,0,"");
 

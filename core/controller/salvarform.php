@@ -1,7 +1,6 @@
 <?php
-	$relacionamentos = $relIDS = $entidadesIDRetorno = array();
+	$relacionamentos = $entidadesIDRetorno = array();
 	$idRetorno = $entidadeRetorno = $entidadePrincipalNome = "";
-	$i = 0;
 	
 	// Salva os dados
 	foreach (tdClass::read("dados") as $linha){
@@ -20,10 +19,6 @@
 		
 		$tipo_relacionamento = $linha["fp"] == "true" ? 0 : (int)$linha['tiporel'];
 		array_push($entidadesIDRetorno,array("entidade" => $entidade_nome, "id" => $id , "tipo_relacionamento" => $tipo_relacionamento));
-		
-		// Seta os registros para fazer o relacionamento no final do salvamento
-		$relIDS[$entidade_nome] = $id;
-		$i++;
 
 		// Retorno para a requisição
 		if ($linha['fp'] == 'true'){
@@ -31,16 +26,26 @@
 			$entidadeRetorno 		= $entidade->getID();
 			$entidadePrincipalNome	= $entidade_nome;
 			$isfp = 1;
+
+			// Dados da entidade principal
+			$objMain 				= new stdClass;
+			$objMain->entidade 		= $entidade_nome;
+			$objMain->id			= $id;
+			$objMain->is_fp 		= $isfp;
+			$objMain->atributo		= $linha["relacionamento"]["atributo"];
+			$objMain->tipo_rel 		= $tipo_relacionamento;			
 		}else{
 			$isfp = 0;
-		}
 
-		// Dados para implementar a restrição de relacionamento
-		$objRel 			= new stdClass;
-		$objRel->entidade 	= $entidade_nome;
-		$objRel->id			= $id;
-		$objRel->is_fp 		= $isfp;
-		array_push($relacionamentos,$objRel);
+			// Dados para implementar a restrição de relacionamento
+			$objRel 			= new stdClass;
+			$objRel->entidade 	= $entidade_nome;
+			$objRel->id			= $id;
+			$objRel->is_fp 		= $isfp;
+			$objRel->atributo	= $linha["relacionamento"]["atributo"];
+			$objRel->tipo_rel 	= $tipo_relacionamento;
+			array_push($relacionamentos,$objRel);
+		}
 
 		foreach ($linha["dados"] as $dado){
 			if (isset($dado["valor"])){
@@ -59,58 +64,33 @@
 		}
 		$entidade->armazenar();
 
-		
 	}
 
-	$i = 0;
 	// Seta os relacionamentos
 	foreach($relacionamentos as $rel){
-		foreach (tdClass::read("dados") as $linha){
-			$atributo_relacionamento = isset($linha["relacionamento"]["atributo"])?$linha["relacionamento"]["atributo"]:0;
-			if ($linha["entidade"] == $rel->entidade && !$rel->is_fp){
-				if (!isset($linha["relacionamento"])){
-					echo 'Indice relacionamento não encontrado';
-					break;
-				}
 
-				// Dados da entidade principal
-				if ($linha["relacionamento"] != ""){
-					if ($conn = Transacao::get()){
-						if (!is_numeric($atributo_relacionamento) && $atributo_relacionamento != null){
-							try{
-								// Seta o atributo de relacionamento
-								$sqlUpdateRel = "UPDATE " . $linha["entidade"] . " SET " . $atributo_relacionamento . " = " . $relIDS[$entidadePrincipalNome] . " WHERE id = " . $relIDS[$rel->entidade];
-								var_dump($mjc->is_transaction_log);
-								Transacao::log($sqlUpdateRel);
-								$updater = $conn->exec($sqlUpdateRel);
-							}catch(Exception $e){
-								var_dump($conn->errorInfo());
-								echo $sqlUpdateRel;
-							}
-						}
+		if (!is_numeric($rel->atributo) && $rel->atributo != null && $rel->atributo != ''){
+				// Seta o atributo de relacionamento
+				$_entidade_rel 	= tdc::p($rel->entidade,$rel->id);
+				$_entidade_rel->{$rel->atributo} = $objMain->id;
+				$_entidade_rel->armazenar();
+		}
 
-                        // Seta na LISTA
-                        $entidadePai 		= getEntidadeId($linha["relacionamento"]["entidade"]);
-                        $entidadeFilho 		= getEntidadeId($linha["entidade"]);
-                        $regPai 			= isset($relIDS[$linha["relacionamento"]["entidade"]]) ? $relIDS[$linha["relacionamento"]["entidade"]] : '';
-                        $regFilho 			= isset($rel->id) ? $rel->id : '';
+		// Seta na LISTA
+		$entidadePai 		= getEntidadeId($objMain->entidade);
+		$entidadeFilho 		= getEntidadeId($rel->entidade);
+		$regPai 			= $objMain->id;
+		$regFilho 			= $rel->id;
 
-						if ($regPai != '' && $regFilho != ''){
-							$whereListaV 	= " WHERE entidadepai = {$entidadePai} AND entidadefilho = {$entidadeFilho} AND regpai = {$regPai} AND regfilho = {$regFilho}";
-							$sqlListaV 		= "SELECT id FROM " . LISTA . $whereListaV;
-							$queryListaV 	= $conn->query($sqlListaV);
-							if ($queryListaV->rowCount() <= 0 ){
-								$id = tdClass::Criar("persistent",array(LISTA))->contexto->getUltimo() + 1;
-								$sqlUpdateLista = "INSERT INTO " . LISTA . " (id,entidadepai,entidadefilho,regpai,regfilho) VALUES ({$id},{$entidadePai},{$entidadeFilho},{$regPai},{$regFilho});";
-								$conn->Exec($sqlUpdateLista);
-							}
-						}
-					}
-				}
-			}
+		if (!exists_lista($entidadePai,$entidadeFilho,$regPai,$regFilho)){
+			$lista 					= tdc::p(LISTA);
+			$lista->entidadepai 	= $entidadePai;
+			$lista->entidadefilho	= $entidadeFilho;
+			$lista->regpai 			= $regPai;
+			$lista->regfilho 		= $regFilho;
+			$lista->armazenar();
 		}
 	}
-	$i++;
-	Transacao::fechar();
+
 	// Retorno
 	echo json_encode(array("status" => 1 , "id" => $idRetorno , "entidade" => (int)$entidadeRetorno , "entidadesID" => $entidadesIDRetorno));

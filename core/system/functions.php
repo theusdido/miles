@@ -26,3 +26,45 @@ function removeBarraRoot($path){
 		return $path;
 	}
 }
+/*
+	* showMessage
+	* Data de Criacao: 28/12/2021
+	* @author Edilson Valentim dos Santos Bitencourt (Theusdido)
+	* Exibe uma mensagem em forma de alerta
+	* PARAMETROS
+	*	@params: String msg:required
+	*	@params: String tipo
+	* RETORNO
+	*	@return: void
+*/
+function showMessage($msg,$tipo = 'error'){
+
+	$dom 					= new DOMDocument('1.0','UTF-8');
+	$dom->formatOutput 		= true;
+
+	$_style 					= $dom->createElement("style");
+	$_style->textContent 		= preg_replace('/[^\S]+/i',' ', '
+			.td-showmessage{
+				float:left;
+				clear:left;
+				width:100%;
+				padding:15px;
+				box-sizing: border-box;
+				border-radius:10px;
+			}
+			.error{
+				background-color:#FF0000;
+				color:#FFF;
+				border:3px solid #D40100;
+			}
+	');
+	$_style->setAttribute("type","text/css");
+
+	$alert 					= $dom->createElement("div");
+	$alert->textContent 	= $msg;
+	$alert->setAttribute("class",'td-showmessage '.$tipo);
+
+	$dom->appendChild($_style);
+	$dom->appendChild($alert);		
+	echo preg_replace('/<\?xml.*?>/','',trim($dom->saveHTML()));
+}

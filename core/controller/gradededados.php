@@ -5,17 +5,17 @@ $op = tdc::r("op");
 if ($op == "get_form"){
 
 	// Validar JS
-	$jsValidar = tdClass::Criar("script");
-	$jsValidar->src = PATH_SYSTEM . "validar.js";
+	$jsValidar 			= tdClass::Criar("script");
+	$jsValidar->src 	= URL_SYSTEM . "validar.js";
 	$jsValidar->mostrar();
 
-	$jsScript = tdClass::Criar("script");
+	$jsScript 			= tdClass::Criar("script");
 	$jsScript->add('funcionalidade = "emmassa";');
 	$jsScript->mostrar();
 
 	// Formulário JS	
-	$jsFormulario = tdClass::Criar("script");
-	$jsFormulario->src = PATH_SYSTEM . "formulario.js";
+	$jsFormulario 		= tdClass::Criar("script");
+	$jsFormulario->src 	= URL_SYSTEM . "formulario.js";
 	$jsFormulario->mostrar();
 
 	$atributo = tdc::r("atributo");
@@ -74,26 +74,29 @@ if ($op == "atualizar_emmassa"){
 	echo 1;
 	exit;
 }
+
 if ($op == "get_atributos"){
 	echo json_encode(tdc::da(ATRIBUTO,tdc::f('entidade',"=",tdc::r("entidade"))));
 	exit;
 }
+
 if ($_POST["entidade"] == "" || (int)$_POST["entidade"] <= 0){
 	echo 'Entidade de chave estrangeira não configurada';
 	exit;
 }
 
-$entidade = tdClass::Criar("persistent",array(ENTIDADE,$_POST["entidade"]));
-$max_registros = tdc::r("qtdademaximaregistro",10);
-$bloco = tdClass::Read("bloco");
-$ini_reg = (($max_registros * $bloco) - $max_registros);
+
+$entidade 		= tdClass::Criar("persistent",array(ENTIDADE,$_POST["entidade"]));
+$max_registros 	= tdc::r("qtdademaximaregistro",10);
+$bloco 			= tdClass::Read("bloco");
+$ini_reg 		= (($max_registros * $bloco) - $max_registros);
 
 // Campos do Cabeçalho
-$sql = tdClass::Criar("sqlcriterio");
+$sql 			= tdClass::Criar("sqlcriterio");
 $sql->addFiltro('entidade',"=",$entidade->contexto->id);
 if (tdClass::Criar("persistent",array(CONFIG,1))->contexto->tipogradedados == "table"){
 	$sql->addFiltro("exibirgradededados","=",1);
-}	
+}
 $sql->setPropriedade("order","ordem ASC");
 $dataset 			= tdClass::Criar("repositorio",array(ATRIBUTO))->carregar($sql);
 $campos_nome 		= "id";
@@ -198,14 +201,12 @@ if ($filtroNN != ""){
     $sql->addFiltro("id","in",$ids);
 }
 
-#Debug::log($entidade->contexto->nome . " " . $sql->dump());
-
-$dataset = tdClass::Criar("repositorio",array($entidade->contexto->nome))->carregar($sql);
-$dados = "";
-$camposhtml = explode(",",$campos_html);
-$camposfk = explode(",",$campos_fk);
-$dados_array = $dados_array_reais = array();
-$idRegIndice = 1;
+$dataset 		= tdClass::Criar("repositorio",array($entidade->contexto->nome))->carregar($sql);
+$dados 			= "";
+$camposhtml 	= explode(",",$campos_html);
+$camposfk 		= explode(",",$campos_fk);
+$dados_array 	= $dados_array_reais = array();
+$idRegIndice 	= 1;
 foreach($dataset as $dado){
 	$array_campos_nome = explode(",",$campos_nome);
 	$campos_dados = $campos_dados_reais = array();

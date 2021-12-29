@@ -42,43 +42,43 @@ class Pagina Extends Html {
 	public function __construct(){		
 		parent::__construct();
 		
-		$this->config = tdClass::Criar("persistent",array(CONFIG,1))->contexto;
-		$this->lang = "pt-br";
-		$this->header = tdClass::Criar("header");
-		$this->head =  tdClass::Criar("head");
-		$this->body = tdClass::Criar("body");
+		$this->config 					= tdClass::Criar("persistent",array(CONFIG,1))->contexto;
+		$this->lang 					= "pt-br";
+		$this->header				 	= tdClass::Criar("header");
+		$this->head 					=  tdClass::Criar("head");
+		$this->body 					= tdClass::Criar("body");
 		
-		$bootstrap = tdClass::Criar("link");
-		$bootstrap->href = URL_LIB . 'bootstrap/3.3.1/css/bootstrap.css';
-		$bootstrap->rel = 'stylesheet';		
+		$bootstrap 						= tdClass::Criar("link");
+		$bootstrap->href 				= URL_LIB . 'bootstrap/3.3.1/css/bootstrap.css';
+		$bootstrap->rel 				= 'stylesheet';		
 		
-		$jquery = tdClass::Criar("script");
-		$jquery->src = URL_LIB . "jquery/jquery.js";
-		$jquery->language = "JavaScript";
+		$jquery 						= tdClass::Criar("script");
+		$jquery->src 					= URL_LIB . "jquery/jquery.js";
+		$jquery->language 				= "JavaScript";
 		
-		$bootstrap_js = tdClass::Criar("script");
-		$bootstrap_js->src = URL_LIB . "bootstrap/3.3.1/js/bootstrap.js";
-		$bootstrap_js->language = "JavaScript";
+		$bootstrap_js 					= tdClass::Criar("script");
+		$bootstrap_js->src 				= URL_LIB . "bootstrap/3.3.1/js/bootstrap.js";
+		$bootstrap_js->language 		= "JavaScript";
 				
 		$meta_charset = tdClass::Criar("meta");		
 		if ($this->ishtml5){
-			$meta_charset->charset = "utf-8";
+			$meta_charset->charset 		= "utf-8";
 		}else{	
-			$meta_charset->http_equiv = "Content-Type";
-			$meta_charset->content = "text/html; charset=utf-8";
+			$meta_charset->http_equiv 	= "Content-Type";
+			$meta_charset->content 		= "text/html; charset=utf-8";
 		}	
 
 		$meta_viewport 			= tdClass::Criar("meta");
 		$meta_viewport->name 	= "viewport";
 		$meta_viewport->content = "width=device-width, initial-scale=1";
 
-		$meta_robots = tdClass::Criar("meta");
-		$meta_robots->name = "robots";
-		$meta_robots->content = "noindex, nofollow";
+		$meta_robots 			= tdClass::Criar("meta");
+		$meta_robots->name	 	= "robots";
+		$meta_robots->content 	= "noindex, nofollow";
 		
-		$favicon = tdClass::Criar("link");
-		$favicon->id = "favicon";
-		$favicon->rel = "icon";
+		$favicon 		= tdClass::Criar("link");
+		$favicon->id 	= "favicon";
+		$favicon->rel 	= "icon";
 
 		$faviconSYSTEM	= Session::Get("URL_SYSTEM_THEME") . "logo-favicon.png";
 		$favicon->href = file_exists(PATH_CURRENT_FAVICON) ? Session::Get('URL_CURRENT_FAVICON') : $faviconSYSTEM;
@@ -87,11 +87,11 @@ class Pagina Extends Html {
 		$this->head->add($meta_charset,$meta_viewport,$meta_robots,$favicon,$bootstrap);
 		$this->body->add($jquery,$bootstrap_js);
 		if ($this->showJSLibSystem){
-			$jsFuncoes = tdClass::Criar("script");
-			$jsFuncoes->src = Session::Get('URL_SYSTEM') . "funcoes.js";
+			$jsFuncoes 			= tdClass::Criar("script");
+			$jsFuncoes->src 	= URL_SYSTEM . "funcoes.js";
 
-			$jsValidar = tdClass::Criar("script");
-			$jsValidar->src = Session::Get('URL_SYSTEM') . "validar.js";
+			$jsValidar 			= tdClass::Criar("script");
+			$jsValidar->src	 	= URL_SYSTEM . "validar.js";
 
 			$jsGradeDados = tdClass::Criar("script");
 			$jsGradeDados->src = Session::Get('URL_CLASS_TDC') . "gradededados.class.js";
