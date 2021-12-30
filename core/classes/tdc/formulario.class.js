@@ -31,13 +31,15 @@ tdFormulario.prototype.construct = function(entidade_id,registro_id = 0,entidade
 	this.entidade       = td_entidade[entidade_id];
 	this.entidade_pai 	= entidade_pai;
 	this.registro_id	= registro_id;
+	this.init();
+}
 
+tdFormulario.prototype.init = function(){
 	this.setContexto();
 	this.setEntidadesFilho();
 	this.setBotoes();
 	this.emExecucao();
 }
-
 tdFormulario.prototype.novo = function(){
 	let contextoListar 		= this.getContextoListar();
 	let contextoAdd 		= this.getContextoAdd();
@@ -53,7 +55,7 @@ tdFormulario.prototype.novo = function(){
 		$(".form-control[id=id]",contextoAdd).val(id_init_val); // Limpa todos campos id
 		this.dados.splice(0,this.dados.length); // Limpa array "dados"
 		this.dadosatributodependencia.splice(0,this.dadosatributodependencia.length);
-		this.setaCkEditores(true);
+		this.setCkEditores();
 		$(".descricaoExibirEdicao").hide();
 	}else{
 		$('.form-control[id=id][data-entidade="' + this.entidade.id + '"]').val(id_init_val);
@@ -203,7 +205,7 @@ tdFormulario.prototype.setaPrimeiraAba = function(){
 	$(".tab-content div:first-child"	,this.getContextoAdd()).addClass("active in"); 
 }
 
-tdFormulario.prototype.setaCkEditores = function(){
+tdFormulario.prototype.setCkEditores = function(){
 
 	let instancia = this;
 	$(".ckeditor").each(function(){
@@ -424,11 +426,11 @@ tdFormulario.prototype.setBotoes = function(){
 	});
 }
 
-tdFormulario.prototype.loadGrade = function(){	
+tdFormulario.prototype.loadGrade = function(){
 	this.getGrade().show();
 }
-tdFormulario.prototype.voltar = function(){	
-	this.gradesdados.reload();
+tdFormulario.prototype.voltar = function(){
+	this.getGrade().show();
 	$(this.getContextoAdd()).hide();
 	$(this.getContextoListar()).show();
 }
@@ -1151,3 +1153,56 @@ tdFormulario.prototype.setRegistroUnico = function(){
 		this.editar();
 	}
 }
+
+tdFormulario.prototype.setConsulta = function(id_consulta){
+
+	$("#form-consulta.tdform .form_campos .form-control").each(function(){
+		if ($(this).prop("tagName") == "SELECT"){
+			$(this).removeAttr("required");
+			carregarListas($(this).data("entidade"),$(this).attr("id"),"");
+		}
+	});
+
+	// Alinha os campos para consulta
+	$(".checkbox-s,.checkbox-n").removeClass("active");
+	$(".checkbox-s,.checkbox-n").parents(".form-group").find("input").val("");
+	$(".btn-add-emexecucao").parents(".input-group-btn").remove();
+	$(".asteriscoobrigatorio").hide();
+	this.setCkEditores();
+
+	let consulta = td_consulta[id_consulta];
+
+	// Monta os filtros
+	for (f in consulta.filtros){
+		var ft = td_consulta[id_consulta].filtros[f];
+		$("#form-consulta .form-control[atributo="+ft.atributo+"]").attr("data-operador",ft.operador);
+		$("#form-consulta .form-control[atributo="+ft.atributo+"]").attr("data-tipo",td_atributo[ft.atributo].tipo);
+	}
+
+	let instancia = this;
+	$("#pesquisa-consulta").click(function(){
+		instancia.getGrade().clear();
+		$("#form-consulta.tdform .form_campos .form-control").each(function(){
+			if ($(this).hasClass("input-sm") || $(this).hasClass("termo-filtro") || $(this).hasClass("checkbox-sn")){
+				if ($(this).val() != "" && $(this).val() != undefined && $(this).val() != null){
+					var operador 	= $(this).data("operador");
+					var tipo 		= $(this).data("tipo");
+					var atributo 	= $(this).attr("id");
+					instancia.getGrade().addFiltro(atributo,(operador == undefined?"=":operador),$(this).val(),(tipo == undefined?"int":tipo));
+				}
+			}
+		});
+		instancia.getGrade().qtdeMaxRegistro = 500;
+		instancia.getGrade().reload();
+	});
+
+	this.getGrade().consulta 		= id_consulta;
+	this.getGrade().funcionalidade	= 'consulta';
+	this.getGrade().movimentacao 	= consulta.movimentacao;
+	this.getGrade().exibireditar	= consulta.exibireditar;
+	this.getGrade().exibirexcluir	= consulta.exibirexcluir;
+	this.getGrade().exibiremmassa	= consulta.exibiremmassa;		
+	this.getGrade().exibirpesquisa 	= false;
+	this.getGrade().setOrder("id","DESC");
+	this.getGrade().show();
+}  

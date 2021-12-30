@@ -38,6 +38,7 @@ function GradeDeDados(entidade){
 	this.exibireditar = true;
 	this.exibirexcluir = true;
 	this.exibiremmassa = true;
+	this.exibirmovimentacao = false;
 	this.totalRegistroRetorno = 0;
 	this.order = [];
 	this.construct(entidade);
@@ -234,7 +235,7 @@ GradeDeDados.prototype.cabecalho = function(){
 			tr.append(th);
 		}
 		if (!this.retornaFiltro){
-			if (this.movimentacao != ""){
+			if (this.exibirmovimentacao){
 				tr.append($("<th class='movimentacao-coluna-gradededados'><center>Mov.</center></th>"));
 			}
 			if (this.exibireditar){
@@ -317,7 +318,7 @@ GradeDeDados.prototype.paginacao = function(){
 	if (this.totalRegistros > this.qtdeMaxRegistro){
 		let instancia 		= this;
 		this.totalblocos 	= Math.ceil(this.totalRegistros / this.qtdeMaxRegistro);
-		$("center",this.contexto)[0].remove();
+		$("center",this.contexto).remove();
 
 		let center 		= $("<center>");
 		let ul 			= $('<ul class="pagination">');
@@ -876,12 +877,10 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
 
 	let btnOutraJanela = "<td align='center'><span onclick=outrajanela(this,38978,'index.php?controller=crud&amp;id=38978&amp;op=add&amp;t=19&amp;filtro_rel_nn=&amp;modal=true'); class='botao fas fa-external-link-alt btn btn-default'></span></td>";
 
-	if (this.movimentacao != ""){
-		let spanMovimentacao = $("<span reg='"+tr_indice+"' class='botao fas fa-share btn btn-default' onclick=movimentacao('"+this.entidade+"','"+tr_indice+"',"+this.movimentacao+")></span>");
-	}
-
-	if (this.movimentacao != ""){
-		let btnMovimentacao = $("<td align='center' class='editar-coluna-gradededados'></td>");
+	let btnMovimentacao;
+	if (this.exibirmovimentacao){
+		let spanMovimentacao 	= $("<span reg='"+tr_indice+"' class='botao fas fa-share btn btn-default' onclick=movimentacao('"+this.entidade+"','"+tr_indice+"',"+this.movimentacao+")></span>");
+		btnMovimentacao 		= $("<td align='center' class='editar-coluna-gradededados'></td>");
 		btnMovimentacao.append(spanMovimentacao);
 	}
 	
@@ -891,14 +890,15 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
 		let entidadeid 		= $(this).data("entidade");
 		let id 				= $(this).attr("reg");
 		let funcionalidade 	= $(this).data("funcionalidade");
-
+	
 		if (funcionalidade == "cadastro"){
 			formulario[entidadeid].registro_id = id;
 			formulario[entidadeid].editar();
-			
 		}else if (funcionalidade == "consulta" || funcionalidade == "emmassa"){
 			if ($(this).parents(".crud-contexto-listar").first().hasClass("fp")){
-				editarTDFormulario(entidadeid,id);
+				carregar(session.folderprojectfiles + "files/cadastro/"+entidadeid+"/"+td_entidade[entidadeid].nomecompleto+".html",'#conteudoprincipal',function(){
+					carregarScriptCRUD('editarformulario',entidadeid,id);
+				});
 			}else{
 				editarFormulario(entidadeid,id);
 			}
@@ -925,7 +925,7 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
 
 	let checkExcluir = "<td align='center'><span align='center' class='grade-info'><input type='checkbox' value='"+id+"' class='gradededados-checkbox-excluir'></span></td>";	
 	if (!this.retornaFiltro){
-		if (this.movimentacao != ""){
+		if (this.exibirmovimentacao){
 			tr.append(btnMovimentacao);
 		}
 		if (this.exibireditar) tr.append(btnEditar);

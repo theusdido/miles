@@ -4,15 +4,16 @@
 
 	// Entidades do Sistema
 	fwrite($mdmJSCompile,'
-		var td_entidade = [];
-		var td_atributo = [];
-		var td_relacionamento = [];
-		var td_permissoes = [];
-		var td_filtroatributo = [];
-		var td_consulta = [];
-		var td_relatorio = [];
-		var td_status = [];	
-		var td_movimentacao = [];
+		var td_entidade 		= [];
+		var td_atributo 		= [];
+		var td_relacionamento 	= [];
+		var td_permissoes 		= [];
+		var td_filtroatributo 	= [];
+		var td_consulta 		= [];
+		var td_relatorio 		= [];
+		var td_status 			= [];	
+		var td_movimentacao 	= [];
+		var formulario          = [];
 	');
 	
 	$localCharset = 2;
@@ -157,6 +158,9 @@
 					entidade:'{$consultas->entidade}',
 					movimentacao:'{$consultas->movimentacao}',
 					descricao:'{$consultas->descricao}',
+					exibireditar:{$consultas->exibirbotaoeditar},
+					exibirexcluir:{$consultas->exibirbotaoexcluir},
+					exibiremmassa:{$consultas->exibirbotaoemmassa},
 					filtros:{
 			",$localCharset));			
 			$sqlFiltros = "SELECT id,operador,atributo FROM td_consultafiltro a WHERE consulta = " . $consultas->id;

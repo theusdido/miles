@@ -647,11 +647,8 @@ function moneyToFloat(valor){
 	return parseFloat(sempontos.replace(",","."));
 }
 function editarTDFormulario(entidade,id){
-	var funcionalidade = "editarformulario";
-	var EntidadePrincipalID = entidade;
-	var id = id;
-	$("#conteudoprincipal").load(session.folderprojectfiles + "files/cadastro/"+entidade+"/"+td_entidade[entidade].nomecompleto+".html",function(){
-		editarFormulario(entidade,id);
+	carregar(session.folderprojectfiles + "files/cadastro/"+entidade+"/"+td_entidade[entidade].nomecompleto+".html",'#conteudoprincipal',function(){
+		carregarScriptCRUD('editarformulario',entidade,id);
 	});
 }
 function getRelacionamento(entidadepai,entidadefilho){
@@ -814,4 +811,34 @@ function carregarListas(entidade,atributo,contextoAdd,valor){ // Argumento 4 é 
 function excluirArquivoUpload(dadosarquivos,entidade,atributo){
 	$("iframe[data-entidade="+entidade+"][data-atributo="+atributo+"]").attr("src",getURLProject("index.php?controller=upload&atributo="+atributo+"&valor="));
 	$("[atributo="+atributo+"]").val('{"op":"excluir","filename":"'+dadosarquivos.filename+'"}');
+}
+
+function carregarScriptCRUD(tipo,entidade,registro_id = 0){
+	formulario[entidade]				 	= new tdFormulario(entidade);
+	formulario[entidade].funcionalidade 	= tipo;
+	switch(tipo){
+		case 'cadastro':
+
+			// Registro Único
+			let is_registrounico = typeof registrounico == 'undefined' ? formulario[entidade].entidade.registrounico : registrounico;
+			if (is_registrounico){
+				formulario[entidade].setRegistroUnico();
+			}else{
+				formulario[entidade].loadGrade();
+			}
+
+			// Monta os formulários das entidades que compoem o relacionamento
+			formulario[entidade].entidades_filho.forEach((entidade_id)=>{
+				formulario[entidade_id] = new tdFormulario(entidade_id);
+				formulario[entidade_id].loadGrade();    
+			});
+		break;
+		case 'editarformulario':
+			formulario[entidade].registro_id 	= registro_id;
+			formulario[entidade].editar();
+		break;
+		case 'consulta':
+			formulario[entidade].setConsulta($('#consulta_id').val());
+		break;	
+	}
 }
