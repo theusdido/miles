@@ -14,7 +14,7 @@ class ListGroup Extends Elemento {
 	protected $itens = Array();
 	protected $titulo;
 	/*  
-		* Método construct 
+		* Mï¿½todo construct 
 	    * Data de Criacao: 24/06/2017
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
@@ -65,5 +65,10 @@ class ListGroup Extends Elemento {
 	}
 	public function setTitulo($titulo){
 		$this->titulo = $titulo;
+	}
+
+	public function addItemList($item){
+		$item->class = "list-group-item";
+		$this->add($item);
 	}
 }

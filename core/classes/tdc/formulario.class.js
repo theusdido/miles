@@ -1196,6 +1196,11 @@ tdFormulario.prototype.setConsulta = function(id_consulta){
 		instancia.getGrade().reload();
 	});
 
+	// Filtros Iniciais
+	consulta.filtros_iniciais.forEach(function(ft){
+		this.addFiltro(ft.atributo,ft.operador,ft.valor);
+	},this.getGrade());
+	
 	this.getGrade().consulta 		= id_consulta;
 	this.getGrade().funcionalidade	= 'consulta';
 	this.getGrade().movimentacao 	= consulta.movimentacao;

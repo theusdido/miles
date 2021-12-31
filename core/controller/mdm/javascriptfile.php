@@ -1,6 +1,6 @@
 <?php
 
-	$mdmJSCompile = fopen(PATH_MDM_JS_COMPILE,"w");
+	$mdmJSCompile = fopen(Asset::path('FILE_MDM_JS_COMPILE'),"w");
 
 	// Entidades do Sistema
 	fwrite($mdmJSCompile,'
@@ -11,14 +11,13 @@
 		var td_filtroatributo 	= [];
 		var td_consulta 		= [];
 		var td_relatorio 		= [];
-		var td_status 			= [];	
+		var td_status 			= [];
 		var td_movimentacao 	= [];
 		var formulario          = [];
 	');
 	
-	$localCharset = 2;
-
-	$dataset = tdClass::Criar("repositorio",array(ENTIDADE))->carregar();
+	$localCharset 	= 2;
+	$dataset 		= tdClass::Criar("repositorio",array(ENTIDADE))->carregar();
 	if ($dataset){
 		foreach ($dataset as $entidade){
 			$filtro_atributo = tdc::f();
@@ -186,7 +185,24 @@
 				$iAP++;
 			}
 			fwrite($mdmJSCompile,"
-					}
+					},
+					filtros_iniciais:[
+			");
+
+						$sqlCI 		= "SELECT id,atributo,operador,valor FROM td_consultafiltroinicial WHERE consulta = " . $consultas->id;
+						$queryCI 	= $conn->query($sqlCI);
+						$iCI 		= 1;
+						$tCI 		= $queryCI->rowcount();		
+						While ($linhaCI = $queryCI->fetch()){
+							fwrite($mdmJSCompile,'{
+								atributo:"'.tdc::a($linhaCI['atributo'])->nome.'",
+								operador:"'.$linhaCI['operador'].'",
+								valor:"'.$linhaCI['valor'].'"
+							}');
+							if ($iCI < $tCI) fwrite($mdmJSCompile,",");
+						}
+			fwrite($mdmJSCompile,"
+					]
 				};
 			");
 		}

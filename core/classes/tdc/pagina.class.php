@@ -279,11 +279,11 @@ class Pagina Extends Html {
 	private function jsInicial(){
 
 		// Arquivo de Codificação/Decoficação em JS
-		$jsDecode = tdClass::Criar("script");
-		$jsDecode->src = URL_LIB . "phpjs-master/functions/xml/utf8_decode.js";
+		$jsDecode 		= tdClass::Criar("script");
+		$jsDecode->src 	= URL_LIB . "phpjs-master/functions/xml/utf8_decode.js";
 
-		$cf = getCurrentConfigFile();
-		$jsSession = tdClass::Criar("script");
+		$cf 			= getCurrentConfigFile();
+		$jsSession 		= tdClass::Criar("script");
 		$jsSession->add('
 				function SystemSession(){
 					this.autenticado 				= "'.(isset(Session::get()->autenticado)?Session::get()->autenticado:"").'";
@@ -343,9 +343,9 @@ class Pagina Extends Html {
 		');
 
 		// Arquivo de Codificação/Decoficação em JS
-		if (file_exists(PATH_MDM_JS_COMPILE)){
-			$jsMDM = tdClass::Criar("script");
-			$jsMDM->src = URL_MDM_JS_COMPILE;
+		if (file_exists(Asset::path('FILE_MDM_JS_COMPILE'))){
+			$jsMDM 		= tdClass::Criar("script");
+			$jsMDM->src = Asset::url('FILE_MDM_JS_COMPILE') ;
 		}else{
 			$jsMDM = null;
 		}

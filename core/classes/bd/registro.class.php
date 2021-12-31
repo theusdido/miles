@@ -325,7 +325,7 @@ abstract class Registro {
 		if ($this->hasData()){
 			$sql = tdClass::Criar("sqlselecionar");		
 			$sql->setEntidade($this->getEntidade());
-			$sql->addColuna("*");
+			$sql->addColuna('*');
 			$criterio = tdClass::Criar("sqlcriterio");
 			$criterio->Add(tdClass::Criar("sqlfiltro",array("id","=",$this->id)));
 			$sql->setCriterio($criterio);

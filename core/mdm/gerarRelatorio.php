@@ -34,8 +34,8 @@
 		}
 	}
 
-	$id = $_GET["id"];
-	$entidade = $_GET["entidade"];
+	$id 		= $_GET["id"];
+	$entidade 	= $_GET["entidade"];
 ?>
 <html>
 	<head>
@@ -49,8 +49,6 @@
 				padding:15px;				
 			}
 		</style>
-		<script type="text/javascript" src="../../lib/jquery/jquery.mask.js"></script>
-		<script type="text/javascript" src="../../lib/jquery/jquery.maskMoney.js"></script>
 	</head>
 	<body>
 		<?php include 'menu_topo.php'; ?>
@@ -71,10 +69,11 @@
 								<div id="gravando-pagina"></div>
 								<input type="text" id="filename" name="filename" class="form-control" value="<?php echo $linha[0]["nome"]; ?>.html" style="float:right;width:89%;margin-right:1%;"/>
 								<input type="hidden" id="filenamejs" name="filenamejs" class="form-control" value="<?php echo $linha[0]["nome"]; ?>.js" style="float:right;width:89%;margin-right:1%;"/>
-								<!-- <textarea id="codigo" name="codigo" style="width:100%;height:400px;" class="form-control"> -->
+								<input type="hidden" id="filenamecss" name="filenamecss" value="<?php echo $linha[0]["nome"]; ?>.css" />
+								<input type="hidden" id="filenamehtm" name="filenamehtm" value="<?php echo $linha[0]["nome"]; ?>.htm" />								
 								<div id="relatorio-gerada"></div>
 							</div>
-						</fieldset>						
+						</fieldset>
 				</div>
 			</div>
 		</div>
@@ -99,16 +98,20 @@
 		});
 		function gerarRelatorio(html){
 			$.ajax({
-				url:"gerarRelatorio.php?op=salvar&currentproject=<?=$_SESSION["currentproject"]?>",
+				url:"../../index.php",
 				type:"POST",
 				data:{
+					controller:"mdm/componente",
 					op:"criarrelatorio",
 					html:html,
 					filename:$("#filename").val(),
 					filenamejs:$("#filenamejs").val(),
+					filenamecss:$("#filenamecss").val(),
+					filenamehtm:$("#filenamehtm").val(),
 					entidade:"<?=$entidade?>",
 					urlupload:$("#urlupload").val(),
-					currentproject:<?=$_SESSION["currentproject"]?>
+					currentproject:<?=$_SESSION["currentproject"]?>,
+					id:<?=$id?>
 				},
 				complete:function(){
 					$("#relatorio-gerada").html("Carregou");

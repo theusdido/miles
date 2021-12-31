@@ -1679,10 +1679,10 @@ function getTipoHTML($atributo,$entidade = null){
 function addCampoFormatadoDB($dados,$entidade){
 	// Entidade interna não precisa adicionar a formatação dos campos
 	// Futuramento criar um atributo para fazer esse controle
-
 	if ($entidade == RELACIONAMENTO){
 		return $dados;
 	}
+
 	foreach ($dados as $key => $value){
 		$tipohtml 	= getTipoHTML($key,$entidade);
 		$linha 		= array( $key => $value );
@@ -1697,6 +1697,8 @@ function addCampoFormatadoDB($dados,$entidade){
 				$registro 				= getRegistro(null,tdc::p(ENTIDADE,$atributoOBJ->chaveestrangeira)->nome,$campodescdefault->nome, "id={$valorfk}" , "limit 1");
 				$dados[$key . "_desc"] 	= $registro[$campodescdefault->nome];
 			}
+		}else if ($tipohtml == 19){
+			$dados[$key . '_src'] 		= URL_CURRENT_FILE . $key . '-' . getEntidadeId($entidade) . '-' . $dados['id'] . '.' . getExtensao($value);
 		}
 	}
 	return $dados;

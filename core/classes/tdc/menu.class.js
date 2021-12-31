@@ -81,7 +81,6 @@ Menu.prototype.menuprincipal = function(dados){
 			let instancia = this;
 			if (dados[d].target != "_blank"){
 				a.click(dados[d],function(handler){
-					console.log(handler.data.entidade);
 					let tipomenu = $(this).data("tipomenu");
 					if (!isNumeric(tipomenu)){
 						funcionalidade = tipomenu;
@@ -133,7 +132,6 @@ Menu.prototype.load = function(){
 }
 Menu.prototype.carregarpagina = function(path,target,dados_menu){
 	carregar(path,target,function(){
-		console.log(dados_menu);
 		carregarScriptCRUD(dados_menu.tipomenu,dados_menu.entidade);
 	});
 	let instancia = this;

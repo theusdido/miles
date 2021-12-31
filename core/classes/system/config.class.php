@@ -69,7 +69,7 @@ class Config {
 		*	@params: int id:"ID do registro"
 		* RETORNO
 		*	@return any: Valor formatado para salvamento
-	*/		
+	*/
 	public static function integridade($entidade,$atributo,$valor,$id){
 
 		$sql = tdClass::Criar("sqlcriterio");
@@ -167,10 +167,10 @@ class Config {
 			break;
 			case 23: # Data e Hora
 				if ($valor != ""){
-					$separador = (strpos($valor,"/") > 0)?"/":"-";
-					$data = explode(" ",$valor);
-					$hora = explode(" ",$valor);
-					$dt = explode($separador,$data[0]);
+					$separador 	= (strpos($valor,"/") > 0)?"/":"-";
+					$data 		= explode(" ",$valor);
+					$hora 		= explode(" ",$valor);
+					$dt 		= explode($separador,$data[0]);
 					return $dt[2] . "-" . $dt[1] . "-" . $dt[0] . (isset($data[1])?" " . $data[1]:"");
 				}else{
 					return null;
@@ -187,5 +187,6 @@ class Config {
 				$retorno = $valor;
 		}
 		return $retorno;
-	}	
+	}
+	
 }

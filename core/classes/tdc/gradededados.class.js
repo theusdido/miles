@@ -41,10 +41,11 @@ function GradeDeDados(entidade){
 	this.exibirmovimentacao = false;
 	this.totalRegistroRetorno = 0;
 	this.order = [];
-	this.construct(entidade);
 	this.selecionados = [];
 	this.funcionalidade = 'cadastro';
 	this.indice_linha = -1;
+
+	this.construct(entidade);
 }
 GradeDeDados.prototype.construct = function(entidade){
 	if (entidade > 0) this.nomeEntidade = td_entidade[entidade].nomecompleto;
@@ -64,7 +65,6 @@ GradeDeDados.prototype.show = function(){
 	if ($(this.contexto).find(".gradededados").length <= 0){
 		this.load();
 	}else{
-		this.clear();
 		this.reload();
 	}
 	this.setResponsivo();
@@ -115,13 +115,13 @@ GradeDeDados.prototype.getFiltrosNN = function(){
 	return str_filtros;
 }
 GradeDeDados.prototype.load = function(){
-	var instancia = this;
-	var camposNome = instancia.attr_cabecalho_nome[0];
-	var camposDescricao = "ID";
-	var camposTipo = "int";
-	var camposHTML = 3;
-	var camposFK = "0";
-	var camposID = "0";
+	var instancia 			= this;
+	var camposNome 			= instancia.attr_cabecalho_nome[0];
+	var camposDescricao 	= "ID";
+	var camposTipo 			= "int";
+	var camposHTML 			= 3;
+	var camposFK 			= "0";
+	var camposID 			= "0";
 
 	$.ajax({
 		type:"POST",
@@ -235,7 +235,7 @@ GradeDeDados.prototype.cabecalho = function(){
 			tr.append(th);
 		}
 		if (!this.retornaFiltro){
-			if (this.exibirmovimentacao){
+			if (this.isExibirMovimentacao()){
 				tr.append($("<th class='movimentacao-coluna-gradededados'><center>Mov.</center></th>"));
 			}
 			if (this.exibireditar){
@@ -790,8 +790,10 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
 					break;
 				}
 			}
+
 			if (typeof td_consulta[this.consulta] != "undefined"){
 				for (f in td_consulta[this.consulta].status){
+
 					let ft = td_consulta[this.consulta].status[f];
 					if (ft.atributo == idAtributo){
 						let operador = '';
@@ -878,7 +880,7 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
 	let btnOutraJanela = "<td align='center'><span onclick=outrajanela(this,38978,'index.php?controller=crud&amp;id=38978&amp;op=add&amp;t=19&amp;filtro_rel_nn=&amp;modal=true'); class='botao fas fa-external-link-alt btn btn-default'></span></td>";
 
 	let btnMovimentacao;
-	if (this.exibirmovimentacao){
+	if (this.isExibirMovimentacao()){
 		let spanMovimentacao 	= $("<span reg='"+tr_indice+"' class='botao fas fa-share btn btn-default' onclick=movimentacao('"+this.entidade+"','"+tr_indice+"',"+this.movimentacao+")></span>");
 		btnMovimentacao 		= $("<td align='center' class='editar-coluna-gradededados'></td>");
 		btnMovimentacao.append(spanMovimentacao);
@@ -925,7 +927,7 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
 
 	let checkExcluir = "<td align='center'><span align='center' class='grade-info'><input type='checkbox' value='"+id+"' class='gradededados-checkbox-excluir'></span></td>";	
 	if (!this.retornaFiltro){
-		if (this.exibirmovimentacao){
+		if (this.isExibirMovimentacao()){
 			tr.append(btnMovimentacao);
 		}
 		if (this.exibireditar) tr.append(btnEditar);
@@ -1219,7 +1221,7 @@ GradeDeDados.prototype.editarEmMassa = function(){
 							var retorno = parseInt(ret.responseText);
 							if (retorno == 1){
 								bootbox.alert("Atualizado com Sucesso!");
-								instancia.reload();
+								instancia.show();
 							}else{
 								bootbox.alert("Erro ao atualizar!");
 							}
@@ -1280,4 +1282,15 @@ GradeDeDados.prototype.addTBody = function(){
 		var tbody = $("<tbody>");
 		this.table.append(tbody);
 	}
+}
+GradeDeDados.prototype.isExibirMovimentacao = function(){
+	if (this.movimentacao == '' || this.movimentacao == 0){
+		return false;
+	}else{
+		return true;
+	}	
+}
+GradeDeDados.prototype.reset = function () {
+	this.clear();
+	this.reload();
 }

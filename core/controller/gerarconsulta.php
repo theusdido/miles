@@ -65,10 +65,10 @@
 	$btn_pesquisar->add($span_pesquisar," Pesquisar");
 
 	// Seleciona os campos do FILTRO da CONSULTA
-	$sql = tdClass::Criar("sqlcriterio");
+	$sql 						= tdClass::Criar("sqlcriterio");
 	$sql->add(tdClass::Criar("sqlfiltro",array("consulta",'=',$consulta->id)));
 	$sql->setPropriedade("order","id ASC");
-	$dataset = tdClass::Criar("repositorio",array(FILTROCONSULTA))->carregar($sql);
+	$dataset					= tdClass::Criar("repositorio",array(FILTROCONSULTA))->carregar($sql);
 
 	$arrayCamposAtributos = array();
 	$atributo = "";
@@ -109,50 +109,49 @@
 	}
 	
 	// Formulário Principal ( Personalizado )
-	$form = tdClass::Criar("tdformulario");
-	$form->id = "form-consulta";
-	$form->ncolunas = 3;
-	$form->exibirid = true;
-	$form->funcionalidade = "consulta";
+	$form 					= tdClass::Criar("tdformulario");
+	$form->id 				= "form-consulta";
+	$form->ncolunas 		= 3;
+	$form->exibirid 		= true;
+	$form->funcionalidade 	= "consulta";
 
 	if ($arrayCamposAtributos){
 		$form->camposHTML($arrayCamposAtributos);
 	}
 	
-	$blocoForm = tdClass::Criar("div");
-	$blocoForm->class = "col-md-12";
-	$blocoForm->id = "crud-contexto-add-" . $entidade->nome;
+	$blocoForm 			= tdClass::Criar("div");
+	$blocoForm->class 	= "col-md-12";
+	$blocoForm->id 		= "crud-contexto-add-" . $entidade->nome;
 	$blocoForm->add($btn_pesquisar,$form);
 	
-	$linhaForm = tdClass::Criar("div");
-	$linhaForm->class = "row";
+	$linhaForm 			= tdClass::Criar("div");
+	$linhaForm->class 	= "row";
 	$linhaForm->add($blocoForm);
 	$linhaForm->mostrar();
 
 	$divisao = tdClass::Criar("hr");
 	
-	$blocoDivisao = tdClass::Criar("div");
-	$blocoDivisao->class = "col-md-12";
+	$blocoDivisao 			= tdClass::Criar("div");
+	$blocoDivisao->class	= "col-md-12";
 	$blocoDivisao->add($divisao);
 
-	$linhaDivisao = tdClass::Criar("div");
-	$linhaDivisao->class = "row";
+	$linhaDivisao 			= tdClass::Criar("div");
+	$linhaDivisao->class 	= "row";
 	$linhaDivisao->add($blocoDivisao);
 	$linhaDivisao->mostrar();
-
 	
 	// Contexto LISTA ( Grade de Dados )
-	$contextoListarID = "crud-contexto-listar-" . $entidade->nome;
-	$contextoListar = tdClass::Criar("div");
-	$contextoListar->id = $contextoListarID;
-	$contextoListar->class = "crud-contexto-listar fp";
+	$contextoListarID 		= "crud-contexto-listar-" . $entidade->nome;
+	$contextoListar 		= tdClass::Criar("div");
+	$contextoListar->id 	= $contextoListarID;
+	$contextoListar->class 	= "crud-contexto-listar fp";
 	
-	$blocoGrade = tdClass::Criar("div");
-	$blocoGrade->class = "col-md-12";
+	$blocoGrade 			= tdClass::Criar("div");
+	$blocoGrade->class 		= "col-md-12";
 	$blocoGrade->add($contextoListar);
 
-	$linhaGrade = tdClass::Criar("div");
-	$linhaGrade->class = "row";
+	$linhaGrade 			= tdClass::Criar("div");
+	$linhaGrade->class		= "row";
 	$linhaGrade->add($blocoGrade);
 	$linhaGrade->mostrar();
 
