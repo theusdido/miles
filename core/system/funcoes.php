@@ -1691,11 +1691,14 @@ function addCampoFormatadoDB($dados,$entidade){
 			$dados["formated_" . $key] = $valorformatado;
 		}else if ($tipohtml == 4 || $tipohtml == 22){
 			if (is_numeric_natural($value)){
-				$atributoOBJ 			= tdc::p(ATRIBUTO,getAtributoId($entidade,$key));			
+				$atributoOBJ 			= tdc::p(ATRIBUTO,getAtributoId($entidade,$key));		
 				$campodescdefault 		= tdc::p(ATRIBUTO,getCampoDescricaoDefault($atributoOBJ->chaveestrangeira));
-				$valorfk 				= is_numeric_natural($value)?$value:0;
-				$registro 				= getRegistro(null,tdc::p(ENTIDADE,$atributoOBJ->chaveestrangeira)->nome,$campodescdefault->nome, "id={$valorfk}" , "limit 1");
-				$dados[$key . "_desc"] 	= $registro[$campodescdefault->nome];
+				$dados[$key . "_obj"]	= tdc::pj(tdc::e($atributoOBJ->chaveestrangeira)->nome,$value);//tdc::dj($entidade,tdc::f('id','=',$value));	
+				if ($campodescdefault->hasData()){
+					$valorfk 				= is_numeric_natural($value)?$value:0;
+					$registro 				= getRegistro(null,tdc::p(ENTIDADE,$atributoOBJ->chaveestrangeira)->nome,$campodescdefault->nome, "id={$valorfk}" , "limit 1");
+					$dados[$key . "_desc"] 	= $registro[$campodescdefault->nome];					
+				}
 			}
 		}else if ($tipohtml == 19){
 			$dados[$key . '_src'] 		= URL_CURRENT_FILE . $key . '-' . getEntidadeId($entidade) . '-' . $dados['id'] . '.' . getExtensao($value);

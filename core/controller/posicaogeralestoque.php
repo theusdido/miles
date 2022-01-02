@@ -16,4 +16,4 @@
 		$sqlInsert = "INSERT INTO td_erp_material_posicaogeralestoque (id,produto,saldo,datahora) VALUES (".getProxId("erp_material_posicaogeralestoque",$conn).",{$produto},{$quantidade},'{$datahora}');";
 		$queryInsert = $conn->query($sqlInsert);
 	}
-	Transacao::Fechar();
+	Transacao::Commit();

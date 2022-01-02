@@ -59,6 +59,7 @@
 	$itenscarrinho_descricao 			= criarAtributo($conn,$itenscarrinhoID,"descricao","Descrição","varchar",200,0,3,1,0,0,"");
 	$itenscarrinho_imgsrc 				= criarAtributo($conn,$itenscarrinhoID,"imgsrc","Imagem ( Caminho )","varchar",300,1,3,0,0,0,"");
 	$itenscarrinho_valor 				= criarAtributo($conn,$itenscarrinhoID,"valor","Valor","float",0,0,13,1,0,0,"");
+	$itenscarrinho_valortotal			= criarAtributo($conn,$itenscarrinhoID,"valortotal","Valor Total","float",0,0,13,1,0,0,"");
 	$itenscarrinho_variacaopeso 		= criarAtributo($conn,$itenscarrinhoID,"variacaopeso","Peso ( Variação )","int",0,1,22,0,getEntidadeId("ecommerce_peso"));
 	$itenscarrinho_variacaotamanho 		= criarAtributo($conn,$itenscarrinhoID,"variacaotamanho","Tamanho ( Variação )","int",0,1,22,0,getEntidadeId("ecommerce_tamanhoproduto"));
 

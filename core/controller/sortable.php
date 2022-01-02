@@ -10,7 +10,7 @@
 			$registro	= $o["id"];
 			$conn->exec("UPDATE {$entidade} SET {$atributo} = {$ordem} WHERE id = {$registro};");
 		}
-		Transacao::Fechar();
+		Transacao::Commit();
 		exit;
 	}
 ?>

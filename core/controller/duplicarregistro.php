@@ -30,6 +30,6 @@ if ($conn = Transacao::get()){
 				}	
 			}
 		}
-		Transacao::Fechar();
+		Transacao::Commit();
 }	
 echo json_encode(array("idclone" => $idclone));

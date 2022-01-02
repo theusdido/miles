@@ -13,11 +13,6 @@ if ($op == "get_form"){
 	$jsScript->add('funcionalidade = "emmassa";');
 	$jsScript->mostrar();
 
-	// Formulário JS	
-	$jsFormulario 		= tdClass::Criar("script");
-	$jsFormulario->src 	= URL_SYSTEM . "formulario.js";
-	$jsFormulario->mostrar();
-
 	$atributo = tdc::r("atributo");
 
 	$form = tdClass::Criar("tdformulario");
@@ -70,7 +65,7 @@ if ($op == "atualizar_emmassa"){
 	// Exclui o arquivo temporário
 	if ($atributo->tipohtml == 19) unlink($valorJSON->src);
 
-	$conn = Transacao::Fechar();
+	$conn = Transacao::Commit();
 	echo 1;
 	exit;
 }

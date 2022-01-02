@@ -22,7 +22,7 @@
 					$conn->query($sqlmov);
 				}
 			}
-			Transacao::Fechar();
+			Transacao::Commit();
 			exit;
 		}
 		if ($_GET["op"] == "salvaralterar"){
@@ -60,7 +60,7 @@
 				}
 			}
 			echo 1;
-			Transacao::Fechar();
+			Transacao::Commit();
 			exit;
 		}
 		if ($_GET["op"] == "salvarstatus"){
@@ -102,7 +102,7 @@
 					}
 				}
 			}
-			Transacao::Fechar();
+			Transacao::Commit();
 			exit;
 		}
 		

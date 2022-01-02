@@ -238,6 +238,7 @@ class tdc Extends tdClass{
 	*/	
 	public static function da($entidade,$sql = null){
 		$entidade = getTableName($entidade);
+
 		if (!$sql || $sql == null){
 			return tdClass::Criar("repositorio",array($entidade))->getDataArray();
 		}else{

@@ -5,6 +5,7 @@
       array(
         array('name' => 'carrinhocompras' , 'title' => 'Carrinho de Compras'),
         array('name' => 'cliente' , 'title' => 'Cliente'),
+        array('name' => 'endereco' , 'title' => 'Endereço'),
         array('name' => 'configuracoes' , 'title' => 'Configurações'),
         array('name' => 'recuperacaosenha' , 'title' => 'Recuperar Senha')
       )

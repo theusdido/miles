@@ -518,8 +518,9 @@ tdFormulario.prototype.salvar = function(){
 			try{
 				let campoAttr 	= $('#' + td_atributo[a].nome + '[data-entidade="'+this.entidade.nomecompleto+'"]',this.getContextoAdd());
 				let dataToSave 	= campoAttr.val();
-				if (td_atributo[a].tipo == "varchar" || td_atributo[a].tipo == "char"){
+				if ((td_atributo[a].tipo == "varchar" || td_atributo[a].tipo == "char") && td_atributo[a].tipohtml != 19){
 					if (dataToSave.length > td_atributo[a].tamanho){
+						console.log(dataToSave);
 						console.error("Quantidade de caracteres execido. Campo [ " + td_atributo[a].nome + " ] - Max => " + td_atributo[a].tamanho + " Len => " + dataToSave.length);
 						campoAttr.parent().addClass("has-error");
 						validacaotamanho = true;						

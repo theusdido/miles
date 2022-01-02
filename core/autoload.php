@@ -19,8 +19,8 @@
 
 	// Rotas
 	require PATH_SYSTEM .'rota.php';
-
+	
 	if (AMBIENTE == 'SISTEMA'){
 		// Fecha a transação com o banco de dados
-		Transacao::Fechar();
+		Transacao::Commit();
 	}

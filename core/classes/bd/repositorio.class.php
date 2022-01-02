@@ -32,7 +32,7 @@ final class Repositorio {
 		Recupera um conjunto de objetos(coleção) da base de dados através de uma critério de seleção, e instanciá-los em memória
 		@params criterio
 	*/		
-	public function carregar(){		
+	public function carregar(){
 		if (func_num_args() <= 0 || func_get_arg(0) == null){		
 			$criterio = tdClass::Criar("sqlcriterio");
 		}else{
@@ -129,12 +129,13 @@ final class Repositorio {
 		}else{
 			$criterio = func_get_arg(0);
 			if (gettype($criterio) != "object" && get_class($criterio) != "SqlCriterio"){
-				echo "Argumento inv�lido";
+				echo "Argumento inválido";
 				return false;
 			}
 		}
-		$resultados=array();
-		$sql = tdClass::Criar("sqlselecionar");
+
+		$resultados	= array();
+		$sql 		= tdClass::Criar("sqlselecionar");
 		$sql->setEntidade($this->classe);
 		$sql->addColuna("*");
 		$sql->setCriterio($criterio);
@@ -148,7 +149,7 @@ final class Repositorio {
 			}
 			return $resultados;
 		}else{			
-			throw new Exception("N�o h� transa��o ativa");
+			throw new Exception("Não há transação ativa");
 		}
 	}	
 }	

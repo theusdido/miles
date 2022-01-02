@@ -106,8 +106,18 @@
 		$registrounico = 0
 	);
 
-	criarAtributo($conn,$enderecoID,"bairro","Bairro","varchar","35",0,22,1,$bairroID,0,"");
+	criarAtributo($conn,$enderecoID,"bairro","Bairro",'int',0,1,22,0,$bairroID,0,"");
+	criarAtributo($conn,$enderecoID,"cidade","Cidade",'int',0,1,22,0,$cidadeID,0,"");
+	criarAtributo($conn,$enderecoID,"uf","Estado ( UF )",'int',0,1,22,0,$ufID,0,"");
+	criarAtributo($conn,$enderecoID,"pais","País",'int',0,1,22,0,$paisID,0,"");
+
 	criarAtributo($conn,$enderecoID,"logradouro","Logradouro","varchar","200",0,3,1,0,0,"");
 	criarAtributo($conn,$enderecoID,"numero","Número","varchar","5",0,3,1,0,0,"");
 	criarAtributo($conn,$enderecoID,"complemento","Complemento","varchar","200",0,3,1,0,0,"");
 	criarAtributo($conn,$enderecoID,"cep","CEP","varchar","10",0,9,1,0,0,"");
+	criarAtributo($conn,$enderecoID,"bairro_nome","Bairro ( Nome )","varchar",200,1,16,0,0,0,"");
+	criarAtributo($conn,$enderecoID,"cidade_nome","Cidade ( Nome )","varchar",200,1,16,0,0,0,"");
+	criarAtributo($conn,$enderecoID,"uf_sigla","UF ( Sigla )","char",2,1,16,0,0,0,"");
+	criarAtributo($conn,$enderecoID,"uf_nome","UF ( Nome )","varchar",200,1,16,0,0,0,"");
+	criarAtributo($conn,$enderecoID,"pais_nome","País ( Nome )","varchar",200,1,16,0,0,0,"");
+	criarAtributo($conn,$enderecoID,"pais_sigla","País ( Sigla )","char",2,1,16,0,0,0,"");
