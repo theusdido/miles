@@ -15,7 +15,7 @@
 	define('FILE_CURRENT_CONFIG_PROJECT',PATH_CURRENT_CONFIG_PROJECT. "current_config.inc");
 
 	// MDM Javascript File Compile
-	define("FILE_MDM_JS_COMPILE",FOLDER_BUILD . "/js/mdm.js");
+	define("FILE_MDM_JS_COMPILE", 'mdm.js');
 
 	// Logo padrão do sistema
     define('PATH_CURRENT_LOGO_PADRAO', PATH_CURRENT_PROJECT_THEME . FILE_LOGO );
@@ -25,10 +25,20 @@
 
     define('PATH_CURRENT_FAVICON', PATH_CURRENT_PROJECT_THEME . FILE_CURRENT_FAVICON);
     
-    define("PATH_MDM_JS_COMPILE", PATH_CURRENT_PROJECT  . FILE_MDM_JS_COMPILE);
+    
 
 	define('FILE_SYSTEM_FAVICON',Session::Get("URL_SYSTEM_THEME") . "logo-favicon.png");
 
 	define('URL_NOIMAGE', Session::Get('URL_CORE') . 'assets/img/noimage.png');
 
 	define('FILE_BACKGROUND','background.jpg');
+
+	Session::append("URL_CURRENT_LOGO_PADRAO",Session::Get("URL_CURRENT_PROJECT_THEME") . FILE_LOGO );
+
+	Session::append("URL_CURRENT_FAVICON",Session::Get("URL_CURRENT_PROJECT_THEME") . FILE_CURRENT_FAVICON);
+
+	Session::append("URL_FAVICON",Session::Get("URL_SYSTEM_THEME") . FILE_FAVICON);	
+
+
+	define('URL_LOGO', URL_SYSTEM_THEME . FILE_LOGO);
+	define('URL_BACKGROUND',URL_SYSTEM_THEME . FILE_BACKGROUND);	

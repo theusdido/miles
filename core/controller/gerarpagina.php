@@ -126,14 +126,11 @@
 			$js->src 	= $urlfilepage . $entidade->contexto->nome . ".js";
 			$bloco->add($js);
 
+			// Classe do formulário
 			$jsFormularioClass 			= tdClass::Criar("script");
 			$jsFormularioClass->src 	= Session::Get('URL_CLASS_TDC') . "formulario.class.js";
 			$bloco->add($jsFormularioClass);
-			
-			// Adiciona a página padrão de validação dos campos do formulário
-			$jsFormulario 		= tdClass::Criar("script");
-			$jsFormulario->src 	= Session::Get('URL_SYSTEM') . "formulario.js";		
-			$bloco->add($jsFormulario);
+
 		}
 
 		// HTML Personalizado
@@ -174,4 +171,4 @@
 			$bloco->mostrar();
 	}
 
-	Transacao::Fechar();
+	Transacao::Commit();

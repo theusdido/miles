@@ -94,12 +94,12 @@ if ($relacionamentos){
 					$fp_form = "";
 				break;
 				case 6:
-					$btnNovoType 	= "btn-default";
-					$btnNovoLabel 	= " Adicionar";
-					$btnSalvarType 	= "btn-default";
-					$atributo_relacionamento 	= tdClass::Criar("persistent",array(ATRIBUTO,$rel->atributo))->contexto->nome;
-					$entidade_pai_relacionamento= tdClass::Criar("persistent",array(ENTIDADE,$rel->pai))->contexto->nome;
-					$fp_form = "";
+					$btnNovoType 					= "btn-default";
+					$btnNovoLabel 					= " Adicionar";
+					$btnSalvarType 					= "btn-default";
+					$atributo_relacionamento 		= tdClass::Criar("persistent",array(ATRIBUTO,$rel->atributo))->contexto->nome;
+					$entidade_pai_relacionamento	= tdClass::Criar("persistent",array(ENTIDADE,$rel->pai))->contexto->nome;
+					$fp_form 						= "";
 				break;
 				case 7:
 

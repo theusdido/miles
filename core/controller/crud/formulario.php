@@ -80,18 +80,21 @@
 		return $form;
 	}
 
-	// Adicionar Registro em tempo de execução
-	$iframeEmExecucao 				= tdc::o("iframe");
-	$iframeEmExecucao->border 		= 0;
-	$iframeEmExecucao->frameborder 	= 0;
-	$iframeEmExecucao->width 		= "100%";
-	$iframeEmExecucao->height 		= "200";
-	$iframeEmExecucao->scrolling 	= "no";
+	if ($isprincipal){
+		// Adicionar Registro em tempo de execução
+		$iframeEmExecucao 					= tdc::o("iframe");
+		$iframeEmExecucao->border 			= 0;
+		$iframeEmExecucao->frameborder 		= 0;
+		$iframeEmExecucao->width 			= "100%";
+		$iframeEmExecucao->height 			= "200";
+		$iframeEmExecucao->scrolling 		= "no";
+		$iframeEmExecucao->data_contexto	= $contextoAdd;
 
-	$modalAddEmExecucao 			= tdClass::Criar("modal");
-	$modalAddEmExecucao->nome 		= "modal-add-emexecucao";
-	$modalAddEmExecucao->tamanho 	= "modal-lg";
-	$modalAddEmExecucao->addHeader("",null);
-	$modalAddEmExecucao->addBody($iframeEmExecucao);
-	$modalAddEmExecucao->addFooter("");
-	$crudAdd->add($modalAddEmExecucao);
+		$modalAddEmExecucao 			= tdClass::Criar("modal");
+		$modalAddEmExecucao->nome 		= "modal-add-emexecucao";
+		$modalAddEmExecucao->tamanho 	= "modal-lg";
+		$modalAddEmExecucao->addHeader("Adicionar Registro",null);
+		$modalAddEmExecucao->addBody($iframeEmExecucao);
+		$modalAddEmExecucao->addFooter("");
+		$crudAdd->add($modalAddEmExecucao);
+	}

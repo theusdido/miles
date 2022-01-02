@@ -5,7 +5,7 @@
 	// Seta as constantes
 	require PATH_MILES . 'core/system/constantes.php';
 
-	// Carrega biblioteca de funções estáticas
+	// Carrega biblioteca de funções independentes
 	require PATH_SYSTEM . 'functions.php';
 
 	// Carrega as configurações do arquivo miles.json
@@ -19,8 +19,8 @@
 
 	// Rotas
 	require PATH_SYSTEM .'rota.php';
-
+	
 	if (AMBIENTE == 'SISTEMA'){
 		// Fecha a transação com o banco de dados
-		Transacao::Fechar();
+		Transacao::Commit();
 	}

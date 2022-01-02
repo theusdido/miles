@@ -17,7 +17,7 @@ class Alert Extends Elemento {
 	public $alinhar = "right";
 	public $weight = "bold";
 	/*  
-		* M�todo construct 
+		* Método construct 
 	    * Data de Criacao: 17/03/2015
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
@@ -46,5 +46,19 @@ class Alert Extends Elemento {
 		$this->style = "text-align:{$this->alinhar};font-weight:{$this->weight}";
 		if ($this->exibirfechar) $this->add($this->botaoFechar());
 		parent::mostrar();
+	}
+	/*
+		* Método showMessage 
+	    * Data de Criacao: 28/12/2021
+	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
+	
+		Exibe uma mensagem
+	*/
+	public static function showMessage($msg, $tipo='alert-danger'){
+		$alert 					= tdc::o('alert',array($msg));
+		$alert->type 			= $tipo;
+		$alert->alinhar			= 'center';
+		$alert->exibirfechar 	= false;
+		$alert->mostrar();
 	}
 }

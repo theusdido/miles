@@ -31,12 +31,15 @@ tdFormulario.prototype.construct = function(entidade_id,registro_id = 0,entidade
 	this.entidade       = td_entidade[entidade_id];
 	this.entidade_pai 	= entidade_pai;
 	this.registro_id	= registro_id;
+	this.init();
+}
 
+tdFormulario.prototype.init = function(){
 	this.setContexto();
 	this.setEntidadesFilho();
 	this.setBotoes();
+	this.emExecucao();
 }
-
 tdFormulario.prototype.novo = function(){
 	let contextoListar 		= this.getContextoListar();
 	let contextoAdd 		= this.getContextoAdd();
@@ -52,11 +55,12 @@ tdFormulario.prototype.novo = function(){
 		$(".form-control[id=id]",contextoAdd).val(id_init_val); // Limpa todos campos id
 		this.dados.splice(0,this.dados.length); // Limpa array "dados"
 		this.dadosatributodependencia.splice(0,this.dadosatributodependencia.length);
-		this.setaCkEditores(true);
+		this.setCkEditores();
 		$(".descricaoExibirEdicao").hide();
 	}else{
 		$('.form-control[id=id][data-entidade="' + this.entidade.id + '"]').val(id_init_val);
 	}
+
 	if (this.entidade != undefined){
 		if (this.entidade.registrounico){
 			$(contextoAdd).find(".b-voltar").first().hide();
@@ -201,26 +205,42 @@ tdFormulario.prototype.setaPrimeiraAba = function(){
 	$(".tab-content div:first-child"	,this.getContextoAdd()).addClass("active in"); 
 }
 
-tdFormulario.prototype.setaCkEditores = function(is_novo){
-	// Setando valores do CK Editor
-	for(c in this.CKEditores){
-		if (is_novo){
-			this.CKEditores[c].setData("");
-		}
-	}
+tdFormulario.prototype.setCkEditores = function(){
 
 	let instancia = this;
 	$(".ckeditor").each(function(){
-		if (instancia.CKEditores[$(this).data("entidade") + "^" + $(this).attr("id")] != undefined) return false;
 
+		if (instancia.CKEditores[$(this).data("entidade") + "^" + $(this).attr("id")] != undefined) return false;
+	
 		let idCampo = "div-editor-" + $(this).attr("id") + "-" + $(this).data("entidade");
 		let config  = {};
 		let valor   = "";
 		
-		if (instancia.CKEDITOR != undefined){
-			const instanciaEditor = instancia.CKEDITOR.appendTo( idCampo , config, valor );
+		if (CKEDITOR == undefined){
+			console.warn('Biblioteca CKEDITOR não encontrada.');
+		}else{
+			const instanciaEditor = CKEDITOR.appendTo( idCampo , config, valor );
 			instancia.CKEditores[$(this).data("entidade") + "^" + $(this).attr("id")] = instanciaEditor;
 		}
+	});
+
+	$(".botao-ckeditor").click(function(e){
+		var modalname = $(this).data("modalname");
+		$("#" + modalname).find(".modal-body").css("height","350px");
+		$("#" + modalname).modal({
+			backdrop:false
+		});	
+		var campotexto = $(this).parents(".ckeditor-group").find(".formato-ckeditor").first();
+		instancia.CKEditores[campotexto.data("entidade") + "^" + campotexto.attr("id")].setData($("#" + campotexto.attr("id") + "[data-entidade="+campotexto.data("entidade")+"]").val());
+		$("#" + modalname).modal("show");
+		setTimeout( ()=> {
+			$("#" + modalname).removeAttr("tabindex");
+		},500);
+	});
+
+	$(".ckeditor-field").on('hidden.bs.modal', function (e){
+		var nomecompleto = $(this).data("nomecompleto").split("-");
+		$("#" + nomecompleto[0] + "[data-entidade="+nomecompleto[1]+"]").val(instancia.CKEditores[nomecompleto[1] + "^" + nomecompleto[0]].getData());
 	});	
 }
 
@@ -406,10 +426,11 @@ tdFormulario.prototype.setBotoes = function(){
 	});
 }
 
-tdFormulario.prototype.loadGrade = function(){	
+tdFormulario.prototype.loadGrade = function(){
 	this.getGrade().show();
 }
-tdFormulario.prototype.voltar = function(){	
+tdFormulario.prototype.voltar = function(){
+	this.getGrade().show();
 	$(this.getContextoAdd()).hide();
 	$(this.getContextoListar()).show();
 }
@@ -497,8 +518,9 @@ tdFormulario.prototype.salvar = function(){
 			try{
 				let campoAttr 	= $('#' + td_atributo[a].nome + '[data-entidade="'+this.entidade.nomecompleto+'"]',this.getContextoAdd());
 				let dataToSave 	= campoAttr.val();
-				if (td_atributo[a].tipo == "varchar" || td_atributo[a].tipo == "char"){
+				if ((td_atributo[a].tipo == "varchar" || td_atributo[a].tipo == "char") && td_atributo[a].tipohtml != 19){
 					if (dataToSave.length > td_atributo[a].tamanho){
+						console.log(dataToSave);
 						console.error("Quantidade de caracteres execido. Campo [ " + td_atributo[a].nome + " ] - Max => " + td_atributo[a].tamanho + " Len => " + dataToSave.length);
 						campoAttr.parent().addClass("has-error");
 						validacaotamanho = true;						
@@ -623,9 +645,6 @@ tdFormulario.prototype.salvar = function(){
 			});
 		});
 
-		// O formulário principal tem que ser enviado em primeiro
-		//dadosenviar.reverse();
-
 		// AJAX que envia os dados a serem salvos
 		$.ajax({
 			type:"POST",
@@ -674,7 +693,12 @@ tdFormulario.prototype.salvar = function(){
 				}
 				if (typeof afterSave === "function") afterSave(this.instancia.is_principal,this);
 				unLoaderSalvar();
-				parent.$("#modal-add-emexecucao").modal('hide');
+
+				// Retorna para o formulário que chamou o adição de registro
+				if (this.instancia.funcionalidade == 'add-emexecucao'){
+					parent.$(".modal[id='modal-add-emexecucao'] iframe[fk_entidade='"+this.instancia.entidade.nome+"']").attr("em_execucao_id",this.instancia.registro_id);
+					parent.$(".modal[id='modal-add-emexecucao']").modal('hide');
+				}
 			},
 			error:function(ret){
 				if (this.instancia.is_principal){
@@ -800,7 +824,7 @@ tdFormulario.prototype.editar = function(){
 				return false;
 			}
 
-			retorno.forEach(function(r){					
+			retorno.forEach(function(r){
 				let dadosRetorno 			= r.dados;
 				let entidadeDados 			= td_entidade[r.entidade];
 				let tipoRelacionamento 		= "";
@@ -865,18 +889,20 @@ tdFormulario.prototype.editar = function(){
 						$("#select-generalizacao-unica").change();
 					}
 				}
+
+				if ($('#select-generalizacao-multipla')){
+					$('#select-generalizacao-multipla').SumoSelect();
+					if (r.fp){
+						$("#select-generalizacao-multipla").change();
+					}
+				}
+				if (r.fp){
+					this.exibirDadosEdicao();
+					this.liberaBotaoSalvar()
+				}
 			},this.instancia);
 			
-			if ($('#select-generalizacao-multipla')){
-				$('#select-generalizacao-multipla').SumoSelect();
-				if (r.fp){
-					$("#select-generalizacao-multipla").change();
-				}
-			}
-			if (r.fp){
-				this.instancia.exibirDadosEdicao();
-				this.this.instancia.liberaBotaoSalvar()
-			}
+
 
 			// Permissão dos atributos
 			this.instancia.setPermissoesAtributos('edicao');
@@ -977,7 +1003,7 @@ tdFormulario.prototype.setDados = function(dados){
 
 		if ($('#' + dado.atributo + '[data-entidade="'+entidade_nome+'"]',contextoAdd).hasClass("formato-ckeditor")){
 			try{
-				CKEditores[entidade_nome + "^" + dado.atributo].setData(valorDados);
+				this.CKEditores[entidade_nome + "^" + dado.atributo].setData(valorDados);
 			}catch(e){
 				console.log("Erro ao abrir CKEditor no Celular");
 				console.log(e);
@@ -1092,3 +1118,97 @@ tdFormulario.prototype.habilitafiltro = function(atributo,contexto,habilita,enti
 		}		
 	}	
 }
+
+tdFormulario.prototype.emExecucao = function(){
+
+	let instancia = this;
+	$('.btn-add-emexecucao',this.getContextoAdd()).click(function(){
+
+		let contextoAdd	= instancia.getContextoAdd();
+		let modal 		= $("#modal-add-emexecucao",contextoAdd);
+		let campo 		= $(this).parents(".input-group").first().find(".form-control");
+		let atributo 	= campo.attr("atributo");
+		let fk			= td_atributo[atributo].chaveestrangeira;
+		let entidade	= campo.data("entidade");
+		let iframe		= $('#modal-add-emexecucao iframe[data-contexto="'+contextoAdd+'"]');
+		iframe.attr("em_execucao_id",0);
+		iframe.attr("fk_entidade",td_entidade[fk].nome);
+		iframe.attr("src",session.urlmiles + '?controller=htmlpage&entidade='+fk+'&op=cadastro');		
+
+		modal.on('hide.bs.modal', function (e) {
+			carregarListas(entidade,atributo,contextoAdd,iframe[0].attributes.em_execucao_id.value);
+		});
+	
+		modal.modal('show');
+	});
+}
+
+tdFormulario.prototype.setRegistroUnico = function(){
+	this.registrounico = true;
+
+	$(".b-voltar",this.getContextoAdd()).hide();
+	if (this.funcionalidade == "add-emexecucao"){
+		this.novo();
+	}else{
+		this.registro_id = 1;
+		this.editar();
+	}
+}
+
+tdFormulario.prototype.setConsulta = function(id_consulta){
+
+	$("#form-consulta.tdform .form_campos .form-control").each(function(){
+		if ($(this).prop("tagName") == "SELECT"){
+			$(this).removeAttr("required");
+			carregarListas($(this).data("entidade"),$(this).attr("id"),"");
+		}
+	});
+
+	// Alinha os campos para consulta
+	$(".checkbox-s,.checkbox-n").removeClass("active");
+	$(".checkbox-s,.checkbox-n").parents(".form-group").find("input").val("");
+	$(".btn-add-emexecucao").parents(".input-group-btn").remove();
+	$(".asteriscoobrigatorio").hide();
+	this.setCkEditores();
+
+	let consulta = td_consulta[id_consulta];
+
+	// Monta os filtros
+	for (f in consulta.filtros){
+		var ft = td_consulta[id_consulta].filtros[f];
+		$("#form-consulta .form-control[atributo="+ft.atributo+"]").attr("data-operador",ft.operador);
+		$("#form-consulta .form-control[atributo="+ft.atributo+"]").attr("data-tipo",td_atributo[ft.atributo].tipo);
+	}
+
+	let instancia = this;
+	$("#pesquisa-consulta").click(function(){
+		instancia.getGrade().clear();
+		$("#form-consulta.tdform .form_campos .form-control").each(function(){
+			if ($(this).hasClass("input-sm") || $(this).hasClass("termo-filtro") || $(this).hasClass("checkbox-sn")){
+				if ($(this).val() != "" && $(this).val() != undefined && $(this).val() != null){
+					var operador 	= $(this).data("operador");
+					var tipo 		= $(this).data("tipo");
+					var atributo 	= $(this).attr("id");
+					instancia.getGrade().addFiltro(atributo,(operador == undefined?"=":operador),$(this).val(),(tipo == undefined?"int":tipo));
+				}
+			}
+		});
+		instancia.getGrade().qtdeMaxRegistro = 500;
+		instancia.getGrade().reload();
+	});
+
+	// Filtros Iniciais
+	consulta.filtros_iniciais.forEach(function(ft){
+		this.addFiltro(ft.atributo,ft.operador,ft.valor);
+	},this.getGrade());
+	
+	this.getGrade().consulta 		= id_consulta;
+	this.getGrade().funcionalidade	= 'consulta';
+	this.getGrade().movimentacao 	= consulta.movimentacao;
+	this.getGrade().exibireditar	= consulta.exibireditar;
+	this.getGrade().exibirexcluir	= consulta.exibirexcluir;
+	this.getGrade().exibiremmassa	= consulta.exibiremmassa;		
+	this.getGrade().exibirpesquisa 	= false;
+	this.getGrade().setOrder("id","DESC");
+	this.getGrade().show();
+}  

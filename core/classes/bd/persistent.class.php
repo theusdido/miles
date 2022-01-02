@@ -13,7 +13,7 @@ class Persistent extends Registro {
 	public $contexto;
 	public $entidade;	
 	/*  
-		* MÈtodo construtor
+		* M√©todo construtor
 	    * Data de Criacao: 19/01/2012
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
@@ -22,7 +22,7 @@ class Persistent extends Registro {
 	*/
 	function __construct($entidade){
 		if ($entidade == "") {
-			echo 'Entidade n„o especificada ou n„o existe.';
+			echo 'Entidade n√£oo especificada ou n√£o existe.';
 			return null;
 		}
 		if(!class_exists($entidade)){

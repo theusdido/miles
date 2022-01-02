@@ -152,4 +152,9 @@
 
 		// Caminho dos arquivos de instalação de pacotes ( módulos )
 		define('PATH_CURRENT_PACKAGE', PATH_CURRENT_PROJECT . 'install/package/');
+		
+		// Caminho padrão para os arquivos do build do projeto
+		define("PATH_CURRENT_BUILD", PATH_CURRENT_PROJECT . FOLDER_BUILD . "/");
+
+		define("PATH_MDM_JS_COMPILE", PATH_CURRENT_PROJECT  . FOLDER_BUILD . "/js/");
 	}

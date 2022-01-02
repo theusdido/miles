@@ -42,43 +42,43 @@ class Pagina Extends Html {
 	public function __construct(){		
 		parent::__construct();
 		
-		$this->config = tdClass::Criar("persistent",array(CONFIG,1))->contexto;
-		$this->lang = "pt-br";
-		$this->header = tdClass::Criar("header");
-		$this->head =  tdClass::Criar("head");
-		$this->body = tdClass::Criar("body");
+		$this->config 					= tdClass::Criar("persistent",array(CONFIG,1))->contexto;
+		$this->lang 					= "pt-br";
+		$this->header				 	= tdClass::Criar("header");
+		$this->head 					=  tdClass::Criar("head");
+		$this->body 					= tdClass::Criar("body");
 		
-		$bootstrap = tdClass::Criar("link");
-		$bootstrap->href = URL_LIB . 'bootstrap/3.3.1/css/bootstrap.css';
-		$bootstrap->rel = 'stylesheet';		
+		$bootstrap 						= tdClass::Criar("link");
+		$bootstrap->href 				= URL_LIB . 'bootstrap/3.3.1/css/bootstrap.css';
+		$bootstrap->rel 				= 'stylesheet';		
 		
-		$jquery = tdClass::Criar("script");
-		$jquery->src = URL_LIB . "jquery/jquery.js";
-		$jquery->language = "JavaScript";
+		$jquery 						= tdClass::Criar("script");
+		$jquery->src 					= URL_LIB . "jquery/jquery.js";
+		$jquery->language 				= "JavaScript";
 		
-		$bootstrap_js = tdClass::Criar("script");
-		$bootstrap_js->src = URL_LIB . "bootstrap/3.3.1/js/bootstrap.js";
-		$bootstrap_js->language = "JavaScript";
+		$bootstrap_js 					= tdClass::Criar("script");
+		$bootstrap_js->src 				= URL_LIB . "bootstrap/3.3.1/js/bootstrap.js";
+		$bootstrap_js->language 		= "JavaScript";
 				
 		$meta_charset = tdClass::Criar("meta");		
 		if ($this->ishtml5){
-			$meta_charset->charset = "utf-8";
+			$meta_charset->charset 		= "utf-8";
 		}else{	
-			$meta_charset->http_equiv = "Content-Type";
-			$meta_charset->content = "text/html; charset=utf-8";
+			$meta_charset->http_equiv 	= "Content-Type";
+			$meta_charset->content 		= "text/html; charset=utf-8";
 		}	
 
 		$meta_viewport 			= tdClass::Criar("meta");
 		$meta_viewport->name 	= "viewport";
 		$meta_viewport->content = "width=device-width, initial-scale=1";
 
-		$meta_robots = tdClass::Criar("meta");
-		$meta_robots->name = "robots";
-		$meta_robots->content = "noindex, nofollow";
+		$meta_robots 			= tdClass::Criar("meta");
+		$meta_robots->name	 	= "robots";
+		$meta_robots->content 	= "noindex, nofollow";
 		
-		$favicon = tdClass::Criar("link");
-		$favicon->id = "favicon";
-		$favicon->rel = "icon";
+		$favicon 		= tdClass::Criar("link");
+		$favicon->id 	= "favicon";
+		$favicon->rel 	= "icon";
 
 		$faviconSYSTEM	= Session::Get("URL_SYSTEM_THEME") . "logo-favicon.png";
 		$favicon->href = file_exists(PATH_CURRENT_FAVICON) ? Session::Get('URL_CURRENT_FAVICON') : $faviconSYSTEM;
@@ -86,19 +86,30 @@ class Pagina Extends Html {
 		$this->setTitle();
 		$this->head->add($meta_charset,$meta_viewport,$meta_robots,$favicon,$bootstrap);
 		$this->body->add($jquery,$bootstrap_js);
+		
+		// Javascript inicial da página
+		$this->jsInicial();
+
 		if ($this->showJSLibSystem){
-			$jsFuncoes = tdClass::Criar("script");
-			$jsFuncoes->src = Session::Get('URL_SYSTEM') . "funcoes.js";
 
-			$jsValidar = tdClass::Criar("script");
-			$jsValidar->src = Session::Get('URL_SYSTEM') . "validar.js";
+			// Adiciona o arquivo de funções em JS
+			$jsFuncoes 			= tdClass::Criar("script");
+			$jsFuncoes->src 	= URL_SYSTEM . "funcoes.js";
 
+			// Adiciona a página padrão de validação dos campos do formulário
+			$jsValidar 			= tdClass::Criar("script");
+			$jsValidar->src	 	= URL_SYSTEM . "validar.js";
+
+			// Adiciona a classe Grade de Dados em JavaScript
 			$jsGradeDados = tdClass::Criar("script");
 			$jsGradeDados->src = Session::Get('URL_CLASS_TDC') . "gradededados.class.js";
 
-			$this->body->add($jsFuncoes,$jsValidar,$jsGradeDados);
+			// Classe do formulário
+			$jsFormularioClass 			= tdClass::Criar("script");
+			$jsFormularioClass->src 	= Session::Get('URL_CLASS_TDC') . "formulario.class.js";	
+
+			$this->body->add($jsFuncoes,$jsValidar,$jsGradeDados,$jsFormularioClass);
 		}
-		$this->jsInicial();
 	}
 
 	/*
@@ -108,7 +119,7 @@ class Pagina Extends Html {
 
 		Mostrar o conteúdo na página, sobreescreve o método da classe pai
 	*/			
-	public function mostrar(){		
+	public function mostrar(){
 		if ($this->showJSMask){
 			$jquery_mask = tdClass::Criar("script");
 			$jquery_mask->src = URL_LIB . "jquery/jquery.mask.js";
@@ -166,44 +177,44 @@ class Pagina Extends Html {
 		}
 
 		if ($this->showJSJqueryUI){
-			$jsJQueryUI = tdClass::Criar("script");
-			$jsJQueryUI->src = URL_LIB . "jquery/ui/jquery-ui.min.js";
+			$jsJQueryUI 			= tdClass::Criar("script");
+			$jsJQueryUI->src 		= URL_LIB . "jquery/ui/jquery-ui.min.js";
 
-			$cssJQueryUI = tdClass::Criar("link");
-			$cssJQueryUI->href = URL_LIB . "jquery/ui/jquery-ui.css";
-			$cssJQueryUI->rel = "stylesheet";
+			$cssJQueryUI 			= tdClass::Criar("link");
+			$cssJQueryUI->href 		= URL_LIB . "jquery/ui/jquery-ui.css";
+			$cssJQueryUI->rel 		= "stylesheet";
 
 			$this->body->add($cssJQueryUI,$jsJQueryUI);
 		}
 		
 		if ($this->showJSCKEditor){
-			$ckeditor = tdClass::Criar("script");
-			$ckeditor->language = "JavaScript";
-			$ckeditor->src = URL_LIB . "ckeditor/ckeditor.js";		
+			$ckeditor 				= tdClass::Criar("script");
+			$ckeditor->language 	= "JavaScript";
+			$ckeditor->src 			= URL_LIB . "ckeditor/ckeditor.js";		
 			
 			$this->body->add($ckeditor);
 		}
 		if ($this->showJSSumoSelect){
-			$jsJQueryUI = tdClass::Criar("script");
-			$jsJQueryUI->src = URL_LIB . "jquery/sumoselect/jquery.sumoselect.js";
+			$jsJQueryUI 			= tdClass::Criar("script");
+			$jsJQueryUI->src 		= URL_LIB . "jquery/sumoselect/jquery.sumoselect.js";
 
-			$cssJQueryUI = tdClass::Criar("link");
-			$cssJQueryUI->href = URL_LIB . "jquery/sumoselect/sumoselect.css";
-			$cssJQueryUI->rel = "stylesheet";
+			$cssJQueryUI 			= tdClass::Criar("link");
+			$cssJQueryUI->href 		= URL_LIB . "jquery/sumoselect/sumoselect.css";
+			$cssJQueryUI->rel 		= "stylesheet";
 
 			$this->body->add($cssJQueryUI,$jsJQueryUI);
 		}
 		
 		if ($this->ligthbox){
 
-			$lightboxCSS = tdClass::Criar("link");
-			$lightboxCSS->href = URL_LIB . 'lightbox2-master/src/css/lightbox.css';
-			$lightboxCSS->rel = 'stylesheet';
+			$lightboxCSS 			= tdClass::Criar("link");
+			$lightboxCSS->href 		= URL_LIB . 'lightbox2-master/src/css/lightbox.css';
+			$lightboxCSS->rel 		= 'stylesheet';
 			
 			$this->head->add($lightboxCSS);
 			
-			$lightboxJS = tdClass::Criar("script");
-			$lightboxJS->src = URL_LIB . "lightbox2-master/src/js/lightbox.js";
+			$lightboxJS 			= tdClass::Criar("script");
+			$lightboxJS->src 		= URL_LIB . "lightbox2-master/src/js/lightbox.js";
 			
 			$this->body->add($lightboxJS);
 		
@@ -211,47 +222,47 @@ class Pagina Extends Html {
 		
 		if ($this->dropzone){
 
-			$dropzoneCSS = tdClass::Criar("link");
-			$dropzoneCSS->href = URL_LIB . 'dropzone/dropzone.css';
-			$dropzoneCSS->rel = 'stylesheet';
+			$dropzoneCSS 			= tdClass::Criar("link");
+			$dropzoneCSS->href 		= URL_LIB . 'dropzone/dropzone.css';
+			$dropzoneCSS->rel 		= 'stylesheet';
 
 			$this->head->add($dropzoneCSS);
 
-			$dropzoneJS = tdClass::Criar("script");
-			$dropzoneJS->src = URL_LIB . "dropzone/dropzone.js";
+			$dropzoneJS				= tdClass::Criar("script");
+			$dropzoneJS->src 		= URL_LIB . "dropzone/dropzone.js";
 
 			$this->body->add($dropzoneJS);
 
 		}
 		
 		if ($this->popperjs){
-			$popperjs = tdClass::Criar("script");
-			$popperjs->src = "https://unpkg.com/@popperjs/core@2";			
+			$popperjs 				= tdClass::Criar("script");
+			$popperjs->src 			= "https://unpkg.com/@popperjs/core@2";			
 			$this->body->add($popperjs);
 		}	
 
 		if ($this->priceformatjs){
-			$priceFormatJS = tdClass::Criar("script");
-			$priceFormatJS->src = URL_LIB . "jquery/Jquery-Price-Format-master/jquery.priceformat.js";
+			$priceFormatJS 			= tdClass::Criar("script");
+			$priceFormatJS->src 	= URL_LIB . "jquery/Jquery-Price-Format-master/jquery.priceformat.js";
 			$this->body->add($priceFormatJS);
 		}
 
-		$smallModal = tdClass::Criar("script");
-		$smallModal->src = URL_LIB . "jquery/Small-Loading-Modal-Overlay-Plugin-With-jQuery-loadingBlock/assets/js/jquery.loading.block.js";
+		$smallModal 				= tdClass::Criar("script");
+		$smallModal->src 			= URL_LIB . "jquery/Small-Loading-Modal-Overlay-Plugin-With-jQuery-loadingBlock/assets/js/jquery.loading.block.js";
 		$this->body->add($smallModal);
 		
-		$fontAwesome = tdClass::Criar("script");
-		$fontAwesome->src = URL_LIB . "fontawesome/ea948eea7a.js";
+		$fontAwesome 				= tdClass::Criar("script");
+		$fontAwesome->src 			= URL_LIB . "fontawesome/ea948eea7a.js";
 		$this->head->add($fontAwesome);
 
 		if ($this->showMultiSelect){
-			$multiSelectCSS = tdClass::Criar("link");
-			$multiSelectCSS->href = URL_LIB . "jquery/multiselect-master/styles/multiselect.css";
-			$multiSelectCSS->rel = "stylesheet";
+			$multiSelectCSS 		= tdClass::Criar("link");
+			$multiSelectCSS->href 	= URL_LIB . "jquery/multiselect-master/styles/multiselect.css";
+			$multiSelectCSS->rel 	= "stylesheet";
 			$this->head->add($multiSelectCSS);
 
-			$multiSelectJS = tdClass::Criar("script");
-			$multiSelectJS->src = URL_LIB . "jquery/multiselect-master/multiselect.min.js";
+			$multiSelectJS 			= tdClass::Criar("script");
+			$multiSelectJS->src 	= URL_LIB . "jquery/multiselect-master/multiselect.min.js";
 			$this->head->add($multiSelectJS);
 		}
 
@@ -268,11 +279,11 @@ class Pagina Extends Html {
 	private function jsInicial(){
 
 		// Arquivo de Codificação/Decoficação em JS
-		$jsDecode = tdClass::Criar("script");
-		$jsDecode->src = URL_LIB . "phpjs-master/functions/xml/utf8_decode.js";
+		$jsDecode 		= tdClass::Criar("script");
+		$jsDecode->src 	= URL_LIB . "phpjs-master/functions/xml/utf8_decode.js";
 
-		$cf = getCurrentConfigFile();
-		$jsSession = tdClass::Criar("script");
+		$cf 			= getCurrentConfigFile();
+		$jsSession 		= tdClass::Criar("script");
 		$jsSession->add('
 				function SystemSession(){
 					this.autenticado 				= "'.(isset(Session::get()->autenticado)?Session::get()->autenticado:"").'";
@@ -332,9 +343,9 @@ class Pagina Extends Html {
 		');
 
 		// Arquivo de Codificação/Decoficação em JS
-		if (file_exists(PATH_MDM_JS_COMPILE)){
-			$jsMDM = tdClass::Criar("script");
-			$jsMDM->src = URL_MDM_JS_COMPILE;
+		if (file_exists(Asset::path('FILE_MDM_JS_COMPILE'))){
+			$jsMDM 		= tdClass::Criar("script");
+			$jsMDM->src = Asset::url('FILE_MDM_JS_COMPILE') ;
 		}else{
 			$jsMDM = null;
 		}

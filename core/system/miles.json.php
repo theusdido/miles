@@ -25,21 +25,25 @@
 	}
 
 	if (!isset($mjc->system->request_protocol)){
-		echo 'Parametro <b>system:"request_protocol"</b> em miles.json não especificado.';
+		showMessage('Parametro <b>system:"request_protocol"</b> em miles.json não especificado.');
 		exit;
 	}
 
 	if (!isset($mjc->system->package)){
-		echo 'Parametro <b>system:"package"</b> em miles.json não especificado.';
+		showMessage('Parametro <b>system:"package"</b> em miles.json não especificado.');
 		exit;
 	}
 	if (!isset($mjc->system->packages)){
-		echo 'Parametro <b>system:"packages"</b> em miles.json não especificado.';
+		showMessage('Parametro <b>system:"packages"</b> em miles.json não especificado.');
 		exit;
 	}
 
 	if (!isset($mjc->is_show_error_message)){
-		echo 'Parametro <b>is_show_error_message</b> em miles.json não especificado.';
+		showMessage('Parametro <b>is_show_error_message</b> em miles.json não especificado.');
 		exit;
 	}
-	
+
+	if (!isset($mjc->is_transaction_log)){
+		showMessage("Parametro <b>is_transaction_log</b> em miles.json não especificado.");
+		exit;
+	}

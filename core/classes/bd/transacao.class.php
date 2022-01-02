@@ -29,8 +29,8 @@ final class Transacao{
 		Abre uma transação com o banco de dados
 		@parms $banco	
 	*/		
-	public static function abrir($banco){		
-		if (!empty(self::$conn)){			
+	public static function abrir($banco){
+		if (!empty(self::$conn)){
 			self::fechar(); // Encerra a conexão ativa caso existir
 		}
 
@@ -63,7 +63,7 @@ final class Transacao{
 	    * Data de Criacao: 04/06/2012
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
-		Desfaz todas as coperações realizadas pela transação
+		Desfaz todas as operações realizadas pela transação
 	*/			
 	public static function rollback(){
 		if(self::$conn){
@@ -71,15 +71,15 @@ final class Transacao{
 			self::$conn = NULL;
 		}
 	}
-	
-	/*  
-		* Método rollback
+
+	/*
+		* Método commit
 	    * Data de Criacao: 04/06/2012
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
-		Aplica todas as coperações e fecha a transação
-	*/			
-	public static function fechar(){
+		Aplica todas as operações e fecha a transação
+	*/
+	public static function commit(){
 		if(self::$conn){
 			try{				
 				self::$conn->commit();

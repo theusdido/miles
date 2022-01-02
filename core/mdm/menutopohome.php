@@ -90,7 +90,8 @@
 		$link 				= $_POST["link"]==""?"'#'":"'" .$_POST["link"]. "'";
 		$target				= $_POST["target"]==""?"null":"'" .$_POST["target"]. "'";		
 		$pai				= isset($_POST["pai"])?$_POST["pai"]:0;
-		$tipomenu			= "'" . $_POST["tipomenu"] . "'";
+		$tp_menu			= $_POST["tipomenu"];
+		$tipomenu			= "'" . $tp_menu . "'";
 		$path				= "'" . $_POST["path"] . "'";
 		$icon				= "'" . $_POST["icon"] . "'";
 
@@ -100,6 +101,12 @@
 			$ordem = $_POST["ordem"];
 		}
 
+		if ($tp_menu == 'consulta'){
+			$sqlConsulta 	= 'SELECT entidade FROM td_consulta WHERE id = ' . $entidadeRequest;
+			$query 			= $conn->query($sqlConsulta);
+			$linhaConsulta	= $query->fetch();
+			$entidade		= $linhaConsulta['entidade'];
+		}
 		if ($id == ""){
 			$idNew = getProxIdMDM("menu");
 			$sql = "

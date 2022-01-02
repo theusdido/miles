@@ -36,7 +36,7 @@
 	$produto_altura 			= criarAtributo($conn,$entidadeID,"altura","Altura","float",0,1,26,0,0,0,"");
 	$produto_largura 			= criarAtributo($conn,$entidadeID,"largura","Largura","float",0,1,26,0,0,0,"");
 	$produto_diametro 			= criarAtributo($conn,$entidadeID,"diametro","Diametro","float",0,1,26,0,0,0,"");
-	$produto_referencia 		= criarAtributo($conn,$entidadeID,"referencia","Referência","varchar","50",0,3);
+	$produto_referencia 		= criarAtributo($conn,$entidadeID,"referencia","Referência","varchar","50",1,3);
 	$produto_destaque 			= criarAtributo($conn,$entidadeID,"destaque","Destaque","boolean","",0,7,0,0,0,"");
 
 	// Adiciando categoria em produto

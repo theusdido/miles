@@ -11,6 +11,9 @@
 		case 'criarmovimentacao':
 			$path 		= PATH_FILES_MOVIMENTACAO . tdc::r('id') . '/';
 		break;
+		case 'criarrelatorio':
+			$path 		= PATH_FILES_RELATORIO . tdc::r('id') . '/';	
+		break;
 	}
 
 	// Documentação

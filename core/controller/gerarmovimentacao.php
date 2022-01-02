@@ -22,7 +22,7 @@
 					$conn->query($sqlmov);
 				}
 			}
-			Transacao::Fechar();
+			Transacao::Commit();
 			exit;
 		}
 		if ($_GET["op"] == "salvaralterar"){
@@ -60,7 +60,7 @@
 				}
 			}
 			echo 1;
-			Transacao::Fechar();
+			Transacao::Commit();
 			exit;
 		}
 		if ($_GET["op"] == "salvarstatus"){
@@ -102,7 +102,7 @@
 					}
 				}
 			}
-			Transacao::Fechar();
+			Transacao::Commit();
 			exit;
 		}
 		
@@ -169,69 +169,54 @@
 	$funcionalidadeTD->value 	= "movimentacao";
 	$funcionalidadeTD->mostrar();
 
-	// JS Formulário
-	$jsFormulario 		= tdClass::Criar("script");
-	$jsFormulario->src 	= Session::Get('URL_SYSTEM') . "funcoes.js";
-	$jsFormulario->mostrar();
-
 	// Arquivo JS Incorporado
 	$jsIncorporado 		= tdClass::Criar("script");
 	$jsIncorporado->src = $url_files_movimentacao . $entidade->nome . ".js";
 	$jsIncorporado->mostrar();
-	
-	// JS Formulário
-	$jsFormulario 		= tdClass::Criar("script");
-	$jsFormulario->src 	= Session::Get('URL_SYSTEM') . "formulario.js";
-	$jsFormulario->mostrar();
-	
-	// JS Validar
-	$jsValidar = tdClass::Criar("script");
-	$jsValidar->src = Session::Get('URL_SYSTEM') . "validar.js";
-	$jsValidar->mostrar();
 
-	$blocoTitulo = tdClass::Criar("bloco");
-	$blocoTitulo->class = "col-md-12";
+	$blocoTitulo 			= tdClass::Criar("bloco");
+	$blocoTitulo->class 	= "col-md-12";
 	
 	// Titulo
 	if ($movimentacao->exibirtitulo == 1){
-		$titulo = tdClass::Criar("p");
-		$titulo->class = "titulo-pagina";
+		$titulo 			= tdClass::Criar("p");
+		$titulo->class 		= "titulo-pagina";
 		$titulo->add(utf8charset($movimentacao->descricao));
 		$blocoTitulo->add($titulo);
-		$linhaTitulo = tdClass::Criar("div");
+		$linhaTitulo 		= tdClass::Criar("div");
 		$linhaTitulo->class = "row";
 		$linhaTitulo->add($blocoTitulo);
 		$linhaTitulo->mostrar();
 	}
 	
 	// Mensagem de Retorno
-	$msgRetornoContexto = "msg-retorno-form-".$entidade->nome;
-	$msgSalvar = 'abrirAlerta("Salvo com Sucesso","alert-success",".'.$msgRetornoContexto.'");';
-	$retorno = tdClass::Criar("retorno");
-	$retorno->class = $msgRetornoContexto;
+	$msgRetornoContexto 	= "msg-retorno-form-".$entidade->nome;
+	$msgSalvar 				= 'abrirAlerta("Salvo com Sucesso","alert-success",".'.$msgRetornoContexto.'");';
+	$retorno 				= tdClass::Criar("retorno");
+	$retorno->class 		= $msgRetornoContexto;
 	
 	// Botão SALVAR
-	$btn_salvar = tdClass::Criar("button");
-	$btn_salvar->class = "btn btn-success b-salvar b-movimentacao";
-	$span_salvar = tdClass::Criar("span");
-	$span_salvar->class = "fas fa-check";	
+	$btn_salvar 			= tdClass::Criar("button");
+	$btn_salvar->class 		= "btn btn-success b-salvar b-movimentacao";
+	$span_salvar 			= tdClass::Criar("span");
+	$span_salvar->class 	= "fas fa-check";	
 	$btn_salvar->add($span_salvar," Salvar");	
 		
 	// Formulário Principal ( Personalizado )
-	$form = tdClass::Criar("tdformulario");
-	$form->id = "form-movimentacao";
-	$form->exibirid = true;
-	$form->funcionalidade = "movimentacao";
-	$form->exibirlegenda = false;
+	$form 					= tdClass::Criar("tdformulario");
+	$form->id 				= "form-movimentacao";
+	$form->exibirid 		= true;
+	$form->funcionalidade 	= "movimentacao";
+	$form->exibirlegenda 	= false;
 
 	// ***** HISTORICO de MOVIMENTACAO *****/
-	$sql = tdClass::Criar("sqlcriterio");
+	$sql 		= tdClass::Criar("sqlcriterio");
 	$sql->add(tdClass::Criar("sqlfiltro",array(MOVIMENTACAO,'=',$movimentacao->id)));
-	$dataset = tdClass::Criar("repositorio",array(HISTORICOMOVIMENTACAO))->carregar($sql);
+	$dataset 	= tdClass::Criar("repositorio",array(HISTORICOMOVIMENTACAO))->carregar($sql);
 
-	$arrayCamposAtributos = array();
-	$atributo = "";
-	$i =1;
+	$arrayCamposAtributos 	= array();
+	$atributo 				= "";
+	$i 						=1;
 	
 	if (sizeof($dataset) > 0){
 		foreach ($dataset as $ftMovimentacao){
@@ -270,7 +255,7 @@
 		}
 
 		$form->ncolunas = 3;
-		
+
 		if ($arrayCamposAtributos){
 			$form->camposHTML($arrayCamposAtributos);
 		}
@@ -448,7 +433,7 @@
 						}
 					}
 				});
-			},500);			
+			},500);
 			$("#motivo,#observacao").css("width","98%");
 			$("#salvar-movimentacao-alterar").click(function(){
 				var atributosID = "'.$atributosID.'";
@@ -508,23 +493,23 @@
 	// ***** ALTERAR MOVIMENTACAO *****/
 			
 	// Loader Salvar
-	$loader_salvar = tdClass::Criar("div");
-	$loader_salvar->class = "loader-salvar";
+	$loader_salvar 			= tdClass::Criar("div");
+	$loader_salvar->class 	= "loader-salvar";
 	
 	$btn_salvar->id = $btnIdSalvar;
 	
 	// Grupo de Botões
-	$grupo_botoes = tdClass::Criar("div");
-	$grupo_botoes->class = "form-grupo-botao";		
+	$grupo_botoes 			= tdClass::Criar("div");
+	$grupo_botoes->class 	= "form-grupo-botao";		
 	$grupo_botoes->add($loader_salvar,$btn_salvar,$retorno);
 	
-	$blocoForm = tdClass::Criar("div");
-	$blocoForm->class = "col-md-12";
-	$blocoForm->id = "crud-contexto-add-" . $entidade->nome;
+	$blocoForm 				= tdClass::Criar("div");
+	$blocoForm->class 		= "col-md-12";
+	$blocoForm->id 			= "crud-contexto-add-" . $entidade->nome;
 	$blocoForm->add($grupo_botoes,$form);
 
-	$linhaForm = tdClass::Criar("div");
-	$linhaForm->class = "row";
+	$linhaForm 				= tdClass::Criar("div");
+	$linhaForm->class 		= "row";
 	$linhaForm->add($blocoForm);
 	$linhaForm->mostrar();
 	

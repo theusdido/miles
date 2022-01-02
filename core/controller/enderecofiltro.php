@@ -53,7 +53,7 @@
 			$bairro->nome = $descricao;
 			$bairro->cidade = $cidade;
 			$salvar =  $bairro->armazenar();
-			Transacao::Fechar();
+			Transacao::Commit();
 			if ($salvar){
 
 				// Salva o bairro na "base" dos correios
@@ -110,7 +110,7 @@
 			$end->empresa = 1;
 			$end->projeto = 1;
 			$end->armazenar();
-			Transacao::Fechar();
+			Transacao::Commit();
 			echo $id;
 		}
 	}

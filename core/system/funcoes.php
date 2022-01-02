@@ -1679,10 +1679,10 @@ function getTipoHTML($atributo,$entidade = null){
 function addCampoFormatadoDB($dados,$entidade){
 	// Entidade interna não precisa adicionar a formatação dos campos
 	// Futuramento criar um atributo para fazer esse controle
-
 	if ($entidade == RELACIONAMENTO){
 		return $dados;
 	}
+
 	foreach ($dados as $key => $value){
 		$tipohtml 	= getTipoHTML($key,$entidade);
 		$linha 		= array( $key => $value );
@@ -1691,12 +1691,17 @@ function addCampoFormatadoDB($dados,$entidade){
 			$dados["formated_" . $key] = $valorformatado;
 		}else if ($tipohtml == 4 || $tipohtml == 22){
 			if (is_numeric_natural($value)){
-				$atributoOBJ 			= tdc::p(ATRIBUTO,getAtributoId($entidade,$key));			
+				$atributoOBJ 			= tdc::p(ATRIBUTO,getAtributoId($entidade,$key));		
 				$campodescdefault 		= tdc::p(ATRIBUTO,getCampoDescricaoDefault($atributoOBJ->chaveestrangeira));
-				$valorfk 				= is_numeric_natural($value)?$value:0;
-				$registro 				= getRegistro(null,tdc::p(ENTIDADE,$atributoOBJ->chaveestrangeira)->nome,$campodescdefault->nome, "id={$valorfk}" , "limit 1");
-				$dados[$key . "_desc"] 	= $registro[$campodescdefault->nome];
+				$dados[$key . "_obj"]	= tdc::pj(tdc::e($atributoOBJ->chaveestrangeira)->nome,$value);//tdc::dj($entidade,tdc::f('id','=',$value));	
+				if ($campodescdefault->hasData()){
+					$valorfk 				= is_numeric_natural($value)?$value:0;
+					$registro 				= getRegistro(null,tdc::p(ENTIDADE,$atributoOBJ->chaveestrangeira)->nome,$campodescdefault->nome, "id={$valorfk}" , "limit 1");
+					$dados[$key . "_desc"] 	= $registro[$campodescdefault->nome];					
+				}
 			}
+		}else if ($tipohtml == 19){
+			$dados[$key . '_src'] 		= URL_CURRENT_FILE . $key . '-' . getEntidadeId($entidade) . '-' . $dados['id'] . '.' . getExtensao($value);
 		}
 	}
 	return $dados;
@@ -2105,4 +2110,31 @@ function getTableName($tabela){
 */
 function loadPage($page){
 	return getURL(URL_MILES . 'index.php?controller=page&page=' . $page);
+}
+
+/*
+	* exists_lista
+	* Data de Criacao: 28/12/2021
+	* @author Edilson Valentim dos Santos Bitencourt (Theusdido)
+	* Verifica se existe um registro na lista
+	* PARAMETROS
+	*	@params: Inteiro entidadepai:"Entidade Pai"
+	*	@params: Inteiro entidadefilho:"Entidade Filho"
+	*	@params: Inteiro regpai:"Registro Pai"
+	*	@params: Inteiro regfilho:"Registro Filho"
+	* RETORNO
+	*	@return: Boolean
+*/
+function exists_lista($entidadepai,$entidadefilho,$regpai,$regfilho){	
+	$sql = tdClass::Criar("sqlcriterio");
+	$sql->addFiltro("entidadepai"	,"=",$entidadepai);
+	$sql->addFiltro("entidadefilho"	,"=",$entidadefilho);
+	$sql->addFiltro("regpai"		,"=",$regpai);
+	$sql->addFiltro("regfilho"		,"=",$regfilho);
+
+	if (tdClass::Criar("repositorio",array(LISTA))->quantia($sql) <= 0){
+		return false;
+	}else{
+		return true;
+	}
 }
