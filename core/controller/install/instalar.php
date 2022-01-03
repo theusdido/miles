@@ -27,7 +27,7 @@
         break;
         case 'instrucao':
             include 'core/install/' . tdc::r("instrucao");
-            echo 1;            
+            echo 1;
         break;
         case 'projeto':
             $query = $conn->exec("INSERT INTO ".PROJETO." (id,nome) VALUES (1,'".utf8_decode($_POST["nome"])."');");

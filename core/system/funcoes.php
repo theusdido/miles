@@ -2019,6 +2019,7 @@ function getSystemFKPreFixo($atributo = ""){
 */
 function ordenarAtributo($atributo){
 	$a = tdc::p(ATRIBUTO,$atributo);
+	if (!$a->ordem) return false;
 	if ($a->ordem <= 0 || $a->ordem == ''){
 		switch($a->tipohtml){
 			case 16:
