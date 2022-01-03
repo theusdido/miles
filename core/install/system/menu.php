@@ -1,4 +1,5 @@
 <?php
+
 	// Setando variáveis
 	$entidadeNome 		= "menu";
 	$entidadeDescricao 	= "Menu";
