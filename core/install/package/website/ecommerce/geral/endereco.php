@@ -62,7 +62,7 @@
 		$registrounico = 0
 	);
 	criarAtributo($conn,$cidadeID,"nome","Nome","varchar","200",0,3,1,0,0,"");
-	criarAtributo($conn,$cidadeID,"bairromapeado","Bairro Mapeado","tinyint",0,0,7,0,0,0,"");
+	criarAtributo($conn,$cidadeID,"bairromapeado","Bairro Mapeado","tinyint",0,1,7,0,0,0,"");
 	criarAtributo($conn,$cidadeID,"uf","UF","int",0,0,4,1,$ufID,0,"");
 
 

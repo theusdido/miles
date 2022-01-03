@@ -403,13 +403,14 @@ function retornar($str_var){
 	}
 }
 function isemail($email){
-	$conta = '/^[a-zA-Z0-9\._-]+?@';
-	$domino = '[a-zA-Z0-9_-]+?\.';
-	$gTLD = '[a-zA-Z]{2,6}'; //.com; .coop; .gov; .museum; etc.
-	$ccTLD = '((\.[a-zA-Z]{2,4}){0,1})$/'; //.br; .us; .scot; etc.
-	$pattern = $conta.$domino.$gTLD.$ccTLD;
- 
-	if (preg_match($pattern, $this->email))
+	
+	$conta 		= '/^[a-zA-Z0-9\._-]+?@';
+	$domino 	= '([a-zA-Z0-9_-]+?\.)*'; // dominio. ; subdominio.dominio. ;
+	$gTLD 		= '[a-zA-Z]{2,6}'; //.com; .coop; .gov; .museum; etc.
+	$ccTLD 		= '((\.[a-zA-Z]{2,4}){0,1})$/'; //.br; .us; .scot; etc.
+	$pattern 	= $conta.$domino.$gTLD.$ccTLD;
+	
+	if (preg_match($pattern, $email))
 		return true;
 	else
 		return false;

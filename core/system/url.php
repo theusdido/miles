@@ -49,6 +49,7 @@
 	Session::append('URL_CLASS_TDC',Session::Get('URL_CLASS') . 'tdc/');
 
 	Session::append("URL_CURRENT_PROJECT_THEME",Session::Get("URL_CURRENT_PROJECT") . PATH_THEME);
+	define('URL_CURRENT_PROJECT_THEME', Session::Get("URL_CURRENT_PROJECT") . PATH_THEME);
 
 	Session::append("URL_SYSTEM_THEME",Session::Get('URL_CORE') . PATH_THEME);
 	define('URL_SYSTEM_THEME', Session::Get('URL_CORE') . PATH_THEME);
