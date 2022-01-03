@@ -630,16 +630,16 @@ function criarEntidade(
 	$criarinativo = true, #14
 	$tipoaba = 'tabs' #15
 ){
-
 	$nome 		= getSystemPREFIXO() . $nome;
 	$descricao 	= utf8charset($descricao);
-
+	
 	$sqlExisteEntidade = "SELECT id,nome FROM " . ENTIDADE . " WHERE nome='{$nome}'";
 	$queryExisteEntidade = $conn->query($sqlExisteEntidade);
 	if (!$queryExisteEntidade){
 		echo $sqlExisteEntidade;
 		var_dump($conn->errorInfo());
 	}
+	
 	$linhaExisteEntidade = $queryExisteEntidade->fetch();
 
 	if ($queryExisteEntidade->rowCount() <= 0){
@@ -649,6 +649,7 @@ function criarEntidade(
 		$entidade = $linhaExisteEntidade["id"];
 		$sql = "UPDATE ".ENTIDADE." SET nome = '{$nome}',descricao = '".$descricao."',exibirmenuadministracao = {$exibirmenuadministracao},exibircabecalho = {$exibircabecalho},ncolunas = {$ncolunas},atributogeneralizacao = {$atributogeneralizacao},exibirlegenda = {$exibirlegenda},registrounico = {$registrounico},carregarlibjavascript={$carregarlibjavascript}, tipoaba='{$tipoaba}' WHERE id = {$entidade}";
 	}
+	
 	$query = $conn->query($sql);
 	if (!$query){
 		echo $sql;
@@ -657,6 +658,7 @@ function criarEntidade(
 	}
 	$sqlExisteFisicamente = "SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE UPPER(TABLE_NAME) = UPPER('".$nome."') AND UPPER(TABLE_SCHEMA) = UPPER('".SCHEMA."')";
 	$queryExisteFisicamente = $conn->query($sqlExisteFisicamente);
+	
 	if ($queryExisteFisicamente->rowCount() <= 0){
 		$sql = "CREATE TABLE IF NOT EXISTS {$nome}(id int not null primary key) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
 		$query = $conn->query($sql);
@@ -689,7 +691,7 @@ function criarEntidade(
 	}
 	
 	if ($criarinativo){
-		criarAtributo($conn,$entidade,'inativo','Inativo','boolean',null,1,7);
+		criarAtributo($conn,$entidade,'inativo','Inativo','boolean',0,1,7);
 	}
 	return $entidade;
 }
@@ -831,6 +833,7 @@ function criarAtributo(
 	}
 	
 	ordenarAtributo($id);
+
 	return $id;
 }
 function getProxId($entidade,$conn = null){
@@ -2019,8 +2022,10 @@ function getSystemFKPreFixo($atributo = ""){
 */
 function ordenarAtributo($atributo){
 	$a = tdc::p(ATRIBUTO,$atributo);
+	
 	if (!$a->ordem) return false;
 	if ($a->ordem <= 0 || $a->ordem == ''){
+		var_dump($a->ordem);
 		switch($a->tipohtml){
 			case 16:
 				$ordem = 1;

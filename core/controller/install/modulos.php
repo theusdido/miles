@@ -4,7 +4,7 @@
         case 'instalarcomponente':
             $componente = tdc::r('componente');
             if ($componente != ''){
-                $path = str_replace('-','/',$componente);
+                $path = str_replace('-','/', str_replace('--','-',$componente));
                 $componente_path = PATH_PACKAGE . $path. ".php";
                 if (file_exists($componente_path)){
                     include_once $componente_path;
