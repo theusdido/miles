@@ -814,11 +814,11 @@ function excluirArquivoUpload(dadosarquivos,entidade,atributo){
 }
 
 function carregarScriptCRUD(tipo,entidade,registro_id = 0){
+	debugger;
 	formulario[entidade]				 	= new tdFormulario(entidade);
 	formulario[entidade].funcionalidade 	= tipo;
 	switch(tipo){
 		case 'cadastro':
-
 			// Registro Único
 			let is_registrounico = typeof registrounico == 'undefined' ? formulario[entidade].entidade.registrounico : registrounico;
 			if (is_registrounico){
