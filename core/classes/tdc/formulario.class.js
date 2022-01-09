@@ -27,11 +27,15 @@ function tdFormulario (){
 }
 
 tdFormulario.prototype.construct = function(entidade_id,registro_id = 0,entidade_pai = 0){
-	this.entidade_id    = entidade_id;
-	this.entidade       = td_entidade[entidade_id];
-	this.entidade_pai 	= entidade_pai;
-	this.registro_id	= registro_id;
-	this.init();
+	if (td_entidade[entidade_id] != undefined){
+		this.entidade_id    = entidade_id;
+		this.entidade       = td_entidade[entidade_id];
+		this.entidade_pai 	= entidade_pai;
+		this.registro_id	= registro_id;
+		this.init();
+	}else{
+		console.warn('Entidade => ' + entidade_id + ' não existe em td_entidade.');
+	}
 }
 
 tdFormulario.prototype.init = function(){
@@ -179,7 +183,6 @@ tdFormulario.prototype.novo = function(){
 	$(contextoListar).hide();
 	if (typeof afterNew === "function") afterNew(contextoAdd);
 }
-
 
 tdFormulario.prototype.setContexto = function(){
 	let hierarquia 			= getHierarquia(this.entidade_pai,this.entidade.id);

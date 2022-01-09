@@ -20,7 +20,7 @@
         $registrounico = 0
     );
 
-    $dia = criarAtributo($conn, $entidadeID, "nome", "Nome", "varchar", 15, 1, 3);
+    $dia = criarAtributo($conn, $entidadeID, "nome", "Nome", "varchar", 50, 1, 3,1);
 
     // Criando Acesso
     $menu_webiste = addMenu($conn, 'Geral', '#', '', 0, 0, 'geral');

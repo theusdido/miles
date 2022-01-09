@@ -356,4 +356,16 @@ class tdc Extends tdClass{
 		}
 		return $retorno;
 	}
+	/*
+		* Método ru
+		* Data de Criacao: 08/01/2021
+		* @author Edilson Valentim dos Santos Bitencourt (Theusdido)
+
+		Retorna um objeto persistent do tipo único
+		$parametros: 	entidade_name [String]
+
+	*/
+	public static function ru($entidade_name,$registro_id = 1){
+		return tdc::p($entidade_name,$registro_id);
+	}
 }

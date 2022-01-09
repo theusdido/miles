@@ -11,7 +11,11 @@
         array('name' => 'menurodape'              ,'title' => 'Menu Rodapé'),
         array('name' => 'rodape'                  ,'title' => 'Rodapé'),
         array('name' => 'quemsomos'               ,'title' => 'Quem Somos'),
-        array('name' => 'politicaprivacidade'     ,'title' => 'Política de Privacidade')
+        array('name' => 'politicaprivacidade'     ,'title' => 'Política de Privacidade'),
+        array('name' => 'home'                    ,'title' => 'Home'),
+        array('name' => 'blog'                    ,'title' => 'Blog'),
+        array('name' => 'googlemaps'              ,'title' => 'Google Maps'),
+        array('name' => 'redessociais'              ,'title' => 'Redes Sociais')
       )
     )
   );

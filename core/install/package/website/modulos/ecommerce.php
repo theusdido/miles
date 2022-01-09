@@ -7,7 +7,8 @@
         array('name' => 'cliente' , 'title' => 'Cliente'),
         array('name' => 'endereco' , 'title' => 'Endereço'),
         array('name' => 'configuracoes' , 'title' => 'Configurações'),
-        array('name' => 'recuperacaosenha' , 'title' => 'Recuperar Senha')
+        array('name' => 'recuperacaosenha' , 'title' => 'Recuperar Senha'),
+        array('name' => 'loja'                    ,'title' => 'Loja')
       )
     ),
     array( "name" => "comercial", "title" => "Comercial", "components" => 

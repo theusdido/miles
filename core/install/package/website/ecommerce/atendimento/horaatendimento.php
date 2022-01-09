@@ -23,7 +23,7 @@
     $dia 			= criarAtributo($conn, $entidadeID,"diasemana","Dia","int",0,0,4,1,installDependencia("geral_diasemana","geral/datas/diasemana"));
 	$horainicial 	= criarAtributo($conn, $entidadeID,"horainicial","Hora Inicial","time",0,0,28);
 	$horafinal	 	= criarAtributo($conn, $entidadeID,"horafinal","Hora Final","time",0,0,28);
-	$observacao		= criarAtributo($conn, $entidadeID,"observacao","Observa��o","varchar",50,1,3);
+	$observacao		= criarAtributo($conn, $entidadeID,"observacao","Observação","varchar",50,1,3);
 	$isfechado		= criarAtributo($conn, $entidadeID,"isfechado","Fechado ?","boolean",0,1,7);
 
 
