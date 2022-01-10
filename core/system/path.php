@@ -129,6 +129,9 @@
 		// Caminho padrão para as páginas personalizadas
 		define("PATH_CURRENT_PAGE", PATH_CURRENT_PROJECT . "page/");
 
+		// Caminho padrão para os arquivos de log
+		define("PATH_CURRENT_LOG", PATH_CURRENT_PROJECT . "log/");		
+
 		// Caminho padrão para os arquivos do WebSite
 		define("PATH_CURRENT_WEBSITE",PATH_CURRENT_PROJECT . "website/");
 
@@ -149,4 +152,9 @@
 
 		// Caminho dos arquivos de instalação de pacotes ( módulos )
 		define('PATH_CURRENT_PACKAGE', PATH_CURRENT_PROJECT . 'install/package/');
+		
+		// Caminho padrão para os arquivos do build do projeto
+		define("PATH_CURRENT_BUILD", PATH_CURRENT_PROJECT . FOLDER_BUILD . "/");
+
+		define("PATH_MDM_JS_COMPILE", PATH_CURRENT_PROJECT  . FOLDER_BUILD . "/js/");
 	}

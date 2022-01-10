@@ -125,7 +125,6 @@ abstract class Registro {
 		Armazena os objetos na base de dados e retorna a quantidade de linhas afetas pelo SQL ( zero e um )
 	*/	
 	public function armazenar(){
-
 		if ($this->isnew){			
 			if ($this->isAutoIncrement){
 				$this->id = $this->getUltimo() + 1;
@@ -153,10 +152,10 @@ abstract class Registro {
 			if ($conn = Transacao::get()){
 				Transacao::log($sql->getInstrucao());
 				$resultado = $conn->exec($sql->getInstrucao());
-				return $resultado;
+				$status_operacao =  $resultado;
 			}else{
 				echo "Não há transação ativa: Registro Armazenar <br/>\n";
-				return false;
+				$status_operacao =  false;
 			}
 		}catch(Throwable $t){
 			if (IS_SHOW_ERROR_MESSAGE){
@@ -167,7 +166,9 @@ abstract class Registro {
 					$sql->getInstrucao()
 				),'Classe Registro - Método Armazenar');
 			}
-			return false;
+			$status_operacao =  false;
+		}finally{
+			return $status_operacao;
 		}
 	}
 	/*  
@@ -325,7 +326,7 @@ abstract class Registro {
 		if ($this->hasData()){
 			$sql = tdClass::Criar("sqlselecionar");		
 			$sql->setEntidade($this->getEntidade());
-			$sql->addColuna("*");
+			$sql->addColuna('*');
 			$criterio = tdClass::Criar("sqlcriterio");
 			$criterio->Add(tdClass::Criar("sqlfiltro",array("id","=",$this->id)));
 			$sql->setCriterio($criterio);

@@ -1,0 +1,8 @@
+miles.json
+**/projects
+**/lib
+vsc.bat
+winehq.key
+**/.vscode
+**/vendor
+**/node_modules

@@ -1,7 +1,7 @@
 <?php
 	// Setando variáveis
-	$entidadeNome = "erp_contabil_fonterenda";
-	$entidadeDescricao = "Fonte de Renda";
+	$entidadeNome 		= "erp_contabil_fonterenda";
+	$entidadeDescricao 	= "Fonte de Renda";
 	
 	// Criando Entidade
 	$entidadeID = criarEntidade(

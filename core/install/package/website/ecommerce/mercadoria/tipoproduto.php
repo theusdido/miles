@@ -1,8 +1,8 @@
 <?php
 
 	// Setando variáveis
-    $entidadeNome = "ecommerce_tipoproduto";
-	$entidadeDescricao = "Tipo de Produto";
+    $entidadeNome 		= "ecommerce_tipoproduto";
+	$entidadeDescricao 	= "Tipo de Produto";
 
 	// Categoria
     $entidadeID = criarEntidade(

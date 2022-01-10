@@ -35,6 +35,9 @@
 	// FOLDER PAGE
 	define("FOLDER_PAGE","page");
 
+	// FOLDER WEBSITE
+	define("FOLDER_WEBSITE","website");
+
 	include 'path.php';
 	
 	#***************************************

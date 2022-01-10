@@ -1,33 +1,52 @@
 <?php
-	$relacionamento = $relIDS = $entidadesIDRetorno = array();
-	$idRetorno = $entidadeRetorno = "";
-	$i = 0;
+	$relacionamentos = $entidadesIDRetorno = array();
+	$idRetorno = $entidadeRetorno = $entidadePrincipalNome = "";
 	
 	// Salva os dados
 	foreach (tdClass::read("dados") as $linha){
 		
-		if ($linha["id"] == ""){
-			$entidade = tdClass::Criar("persistent",array($linha["entidade"]))->contexto;
-			$id = $entidade->getUltimo()+1;
+		$id				= (int)$linha['id'];		
+		$entidade_nome	= $linha['entidade'];
+		$entidade 		= tdc::p($entidade_nome,$id);
+
+		// Verifica se está modo de edição
+		if ($entidade->hasData()){
+			$entidade->isUpdate();
 		}else{
-			$entidade = tdClass::Criar("persistent",array($linha["entidade"],$linha["id"]))->contexto;
-			$id = (int)$linha["id"];
+			$id 			= $entidade->getUltimo()+1;
+			$entidade->id 	= $id;
 		}
 		
 		$tipo_relacionamento = $linha["fp"] == "true" ? 0 : (int)$linha['tiporel'];
-		array_push($entidadesIDRetorno,array("entidade" => $linha["entidade"] ,"id" => $id , "tipo_relacionamento" => $tipo_relacionamento));
+		array_push($entidadesIDRetorno,array("entidade" => $entidade_nome, "id" => $id , "tipo_relacionamento" => $tipo_relacionamento));
 
-		$relIDS[$linha["entidade"]] = $id;
-		
-		$i++;
-		if ($linha["fp"] == "true"){
-			$idRetorno = $id;
-			$entidadeRetorno = $entidade->getID();
+		// Retorno para a requisição
+		if ($linha['fp'] == 'true'){
+			$idRetorno 				= $id;
+			$entidadeRetorno 		= $entidade->getID();
+			$entidadePrincipalNome	= $entidade_nome;
 			$isfp = 1;
+
+			// Dados da entidade principal
+			$objMain 				= new stdClass;
+			$objMain->entidade 		= $entidade_nome;
+			$objMain->id			= $id;
+			$objMain->is_fp 		= $isfp;
+			$objMain->atributo		= $linha["relacionamento"]["atributo"];
+			$objMain->tipo_rel 		= $tipo_relacionamento;			
 		}else{
 			$isfp = 0;
+
+			// Dados para implementar a restrição de relacionamento
+			$objRel 			= new stdClass;
+			$objRel->entidade 	= $entidade_nome;
+			$objRel->id			= $id;
+			$objRel->is_fp 		= $isfp;
+			$objRel->atributo	= $linha["relacionamento"]["atributo"];
+			$objRel->tipo_rel 	= $tipo_relacionamento;
+			array_push($relacionamentos,$objRel);
 		}
-		array_push($relacionamento,$linha["entidade"] . "^" . $id . "^" . $isfp);
+
 		foreach ($linha["dados"] as $dado){
 			if (isset($dado["valor"])){
 				if (
@@ -39,61 +58,39 @@
 				){
 					$entidade->{$dado["atributo"]} = 0;
 				}else{
-					$entidade->{$dado["atributo"]} = Campos::Integridade($entidade->getID(),$dado["atributo"],$dado["valor"],$id);
+					$entidade->{$dado["atributo"]} = Config::Integridade($entidade->getID(),$dado["atributo"],$dado["valor"],$id);
 				}
 			}
 		}
 		$entidade->armazenar();
+
 	}
 
-	$i = 0;
 	// Seta os relacionamentos
-	foreach($relacionamento as $rel){
-		$r = explode("^", $rel);
-		foreach (tdClass::read("dados") as $linha){
+	foreach($relacionamentos as $rel){
 
-			$atributo_relacionamento = isset($linha["relacionamento"]["atributo"])?$linha["relacionamento"]["atributo"]:0;
-			if ($linha["entidade"] == $r[0] && $r[2] == 0){
-				if (!isset($linha["relacionamento"])){
-					echo 'Indice relacionamento não encontrado';
-					break;
-				}
-				if ($linha["relacionamento"] != ""){					
-					if ($conn = Transacao::get()){
-						if (!is_numeric($atributo_relacionamento) && is_numeric($atributo_relacionamento) != null && is_numeric($atributo_relacionamento) != null){
-							try{
-								// Seta o atributo de relacionamento
-								$sqlUpdateRel = "UPDATE " . $linha["entidade"] . " SET " . $atributo_relacionamento . " = " . $relIDS[$linha["relacionamento"]["entidade"]] . " WHERE id = " . $r[1];
-								$updater = $conn->exec($sqlUpdateRel);
-							}catch(Exception $e){
-								var_dump($conn->errorInfo());
-								echo $sqlUpdateRel;
-							}
-						}
+		if (!is_numeric($rel->atributo) && $rel->atributo != null && $rel->atributo != ''){
+				// Seta o atributo de relacionamento
+				$_entidade_rel 	= tdc::p($rel->entidade,$rel->id);
+				$_entidade_rel->{$rel->atributo} = $objMain->id;
+				$_entidade_rel->armazenar();
+		}
 
-                        // Seta na LISTA
-                        $entidadePai 		= getEntidadeId($linha["relacionamento"]["entidade"]);
-                        $entidadeFilho 		= getEntidadeId($linha["entidade"]);
-                        $regPai 			= isset($relIDS[$linha["relacionamento"]["entidade"]]) ? $relIDS[$linha["relacionamento"]["entidade"]] : '';
-                        $regFilho 			= isset($r[1]) ? $r[1] : '';
+		// Seta na LISTA
+		$entidadePai 		= getEntidadeId($objMain->entidade);
+		$entidadeFilho 		= getEntidadeId($rel->entidade);
+		$regPai 			= $objMain->id;
+		$regFilho 			= $rel->id;
 
-						if ($regPai != '' && $regFilho != ''){
-							$whereListaV 	= " WHERE entidadepai = {$entidadePai} AND entidadefilho = {$entidadeFilho} AND regpai = {$regPai} AND regfilho = {$regFilho}";
-							$sqlListaV 		= "SELECT id FROM " . LISTA . $whereListaV;
-							var_dump($sqlListaV);
-							$queryListaV 	= $conn->query($sqlListaV);
-							if ($queryListaV->rowCount() <= 0 ){
-								$id = tdClass::Criar("persistent",array(LISTA))->contexto->getUltimo() + 1;
-								$sqlUpdateLista = "INSERT INTO " . LISTA . " (id,entidadepai,entidadefilho,regpai,regfilho) VALUES ({$id},{$entidadePai},{$entidadeFilho},{$regPai},{$regFilho});";
-								$conn->Exec($sqlUpdateLista);
-							}
-						}
-					}
-				}
-			}
+		if (!exists_lista($entidadePai,$entidadeFilho,$regPai,$regFilho)){
+			$lista 					= tdc::p(LISTA);
+			$lista->entidadepai 	= $entidadePai;
+			$lista->entidadefilho	= $entidadeFilho;
+			$lista->regpai 			= $regPai;
+			$lista->regfilho 		= $regFilho;
+			$lista->armazenar();
 		}
 	}
-	$i++;
-	Transacao::fechar();
+
 	// Retorno
 	echo json_encode(array("status" => 1 , "id" => $idRetorno , "entidade" => (int)$entidadeRetorno , "entidadesID" => $entidadesIDRetorno));

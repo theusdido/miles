@@ -8,7 +8,7 @@
 		$checkboxInstallAll->class 				= 'checkbox-componente-all';
 		$checkboxInstallAll->id					= $package->getName() . '-' . $m->getName();
 		
-		$checkboxRecordAll 					= tdc::o('checkbox');
+		$checkboxRecordAll 						= tdc::o('checkbox');
 		$checkboxRecordAll->class 				= 'checkbox-registro-all';
 		$checkboxRecordAll->id					= $package->getName() . '-' . $m->getName();
 

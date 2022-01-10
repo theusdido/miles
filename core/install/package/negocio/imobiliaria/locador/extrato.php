@@ -4,7 +4,7 @@
 	
 	// Atributos
 	$proprietario	= $entidade->addAttr(
-		array("nome" => "proprietario" , "descricao" => "Proprietario" , "tipohtml" => "numero_inteiro" , "chave_estrangeira" => installDependencia("erp_geral_pessoa"))
+		array("nome" => "proprietario" , "descricao" => "Proprietario" , "tipohtml" => "numero_inteiro" , "chave_estrangeira" => installDependencia("erp_pessoa",'package/sistema/erp/pessoa/pessoa'))
 	);
 
 	$referencia	    = $entidade->addAttr(
@@ -20,7 +20,7 @@
 	);
 
 	$tipo_pagamento	= $entidade->addAttr(
-		array("nome" => "tipo_pagamento" , "descricao" => "Tipo de Pagamento" , "tipohtml" => "numero_inteiro" , "chave_estrangeira" => installDependencia("erp_financeiro_formapagamento"))
+		array("nome" => "tipo_pagamento" , "descricao" => "Tipo de Pagamento" , "tipohtml" => "numero_inteiro" , "chave_estrangeira" => installDependencia("erp_financeiro_formapagamento",'package/sistema/erp/financeiro/formapagamento'))
 	);
 
 	$is_negativo	= $entidade->addAttr(

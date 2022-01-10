@@ -1,7 +1,7 @@
 <?php
 	// Setando variáveis
-	$entidadeNome = "erp_imobiliaria_imovelfoto";
-	$entidadeDescricao = "Imóvel Foto";
+	$entidadeNome 		= "imobiliaria_imovelfoto";
+	$entidadeDescricao 	= "Imóvel Foto";
 
 	// Criando Entidade
 	$entidadeID = criarEntidade(
@@ -21,15 +21,15 @@
 	);
 
 	// Criando Atributos
-	$imovel = criarAtributo($conn,$entidadeID,"imovel","Imóvel","int",0,1,16,0,installDependencia($conn,'erp_imobiliaria_imovel'),0,"",1,0);
-	$foto = criarAtributo($conn,$entidadeID,"foto","Foto","int",0,1,16,0,installDependencia($conn,'erp_geral_foto'),0,"",1,0);
+	$imovel = criarAtributo($conn,$entidadeID,"imovel","Imóvel","int",0,1,16,0,installDependencia('imobiliaria_imovel','package/negocio/imobiliaria/imovel'),0,"",1,0);
+	$foto 	= criarAtributo($conn,$entidadeID,"foto","Foto","int",0,1,16,0,installDependencia('erp_geral_foto','package/sistema/erp/geral/foto'),0,"",1,0);
 
 	// Criando Relacionamento
 	criarRelacionamento(
 		$conn,
 		6,
-		installDependencia($conn,'erp_imobiliaria_imovel'),
-		installDependencia($conn,'erp_geral_foto'),
+		$imovel,
+		$foto,
 		"Fotos",
 		$imovel
 	);

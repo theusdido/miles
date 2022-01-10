@@ -42,14 +42,3 @@
 		$js->src 	= URL_CURRENT_PAGE . $_page . '.js';
 		$js->mostrar();
 	}
-
-	// Carrega arquivo PHP
-	$phpFile = PATH_SYSTEM_PAGE . $_page . '.php';
-	if (file_exists($phpFile)){
-		include $phpFile;
-	}
-
-	$phpFile = PATH_CURRENT_PAGE . $_page . '.php';
-	if (file_exists($phpFile)){
-		include $phpFile;
-	}

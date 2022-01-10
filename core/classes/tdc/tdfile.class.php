@@ -132,8 +132,8 @@ class tdFile {
 	*/
 	public static function uploadTDForm($files,$atributo){
 		foreach($files as $f){
-			$hashtemp	= md5($f["tmp_name"] . session_id() . "-" . $atributo->nome . "-" . $atributo->entidade);
-			$filenametemp 		= $hashtemp . "." . getExtensao($f["name"]);
+			$hashtemp		= md5($f["tmp_name"] . session_id() . "-" . $atributo->nome . "-" . $atributo->entidade);
+			$filenametemp 	= $hashtemp . "." . getExtensao($f["name"]);
 			$pathtdtempfile = PATH_CURRENT_FILE_TEMP . $filenametemp;
 			$urltdtempfile	= Session::Get('URL_CURRENT_FILE_TEMP') . $filenametemp;
 			

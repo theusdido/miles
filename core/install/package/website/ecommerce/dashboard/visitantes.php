@@ -1,7 +1,7 @@
 <?php
     // Setando vari�veis
-    $entidadeNome = "ecommerce_visitantes";
-    $entidadeDescricao = "Visitantes";
+    $entidadeNome       = "ecommerce_visitantes";
+    $entidadeDescricao  = "Visitantes";
 
     // Criando Entidade
     $entidadeID = criarEntidade(

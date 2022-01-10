@@ -38,11 +38,14 @@ function GradeDeDados(entidade){
 	this.exibireditar = true;
 	this.exibirexcluir = true;
 	this.exibiremmassa = true;
+	this.exibirmovimentacao = false;
 	this.totalRegistroRetorno = 0;
 	this.order = [];
-	this.construct(entidade);
 	this.selecionados = [];
 	this.funcionalidade = 'cadastro';
+	this.indice_linha = -1;
+
+	this.construct(entidade);
 }
 GradeDeDados.prototype.construct = function(entidade){
 	if (entidade > 0) this.nomeEntidade = td_entidade[entidade].nomecompleto;
@@ -62,7 +65,6 @@ GradeDeDados.prototype.show = function(){
 	if ($(this.contexto).find(".gradededados").length <= 0){
 		this.load();
 	}else{
-		this.clear();
 		this.reload();
 	}
 	this.setResponsivo();
@@ -113,13 +115,13 @@ GradeDeDados.prototype.getFiltrosNN = function(){
 	return str_filtros;
 }
 GradeDeDados.prototype.load = function(){
-	var instancia = this;
-	var camposNome = instancia.attr_cabecalho_nome[0];
-	var camposDescricao = "ID";
-	var camposTipo = "int";
-	var camposHTML = 3;
-	var camposFK = "0";
-	var camposID = "0";
+	var instancia 			= this;
+	var camposNome 			= instancia.attr_cabecalho_nome[0];
+	var camposDescricao 	= "ID";
+	var camposTipo 			= "int";
+	var camposHTML 			= 3;
+	var camposFK 			= "0";
+	var camposID 			= "0";
 
 	$.ajax({
 		type:"POST",
@@ -233,7 +235,7 @@ GradeDeDados.prototype.cabecalho = function(){
 			tr.append(th);
 		}
 		if (!this.retornaFiltro){
-			if (this.movimentacao != ""){
+			if (this.isExibirMovimentacao()){
 				tr.append($("<th class='movimentacao-coluna-gradededados'><center>Mov.</center></th>"));
 			}
 			if (this.exibireditar){
@@ -243,13 +245,14 @@ GradeDeDados.prototype.cabecalho = function(){
 				tr.append($("<th class='excluir-coluna-gradededados'><center>Excluir</center></th>"));
 			}			
 
-			var thSelTodos = $("<th>");
-			var thCenter = $("<center>")
-			var buttonSelTodos = $("<button data-sel='false' aria-label='Selecionar Todos' class='btn btn-link gd-sel-todos' type='button'><span aria-hidden='true' class='fas fa-check-square'></span></button>");
-			var nomeEntidade = this.nomeEntidade;
-			$(document).on("click", instancia.contexto + " .gd-sel-todos",function(){
+			var thSelTodos 		= $("<th>");
+			var thCenter 		= $("<center>");
+			var buttonSelTodos 	= $("<input type='checkbox' data-sel='false' aria-label='Selecionar Todos' class='gd-sel-todos' />");
+			var nomeEntidade 	= this.nomeEntidade;
+			$(buttonSelTodos).click(function(){
 				instancia.selecionarTodos(this);
 			});
+
 			thCenter.append(buttonSelTodos);
 			thSelTodos.append(thCenter);
 			if (this.exibireditar || this.exibirexcluir || this.exibiremmassa){
@@ -313,28 +316,28 @@ GradeDeDados.prototype.addCorpo = function(id,dadosColuna){
 }
 GradeDeDados.prototype.paginacao = function(){
 	if (this.totalRegistros > this.qtdeMaxRegistro){
-		var instancia = gradesdedados[this.contexto];
-		this.totalblocos = Math.ceil(this.totalRegistros / this.qtdeMaxRegistro);
-		if ($("center > ul.pagination",this.contexto).length > 0){
-			$("center > ul.pagination",this.contexto)[0].remove();
-		}
-		
-		var center = $("<center>");
-		var ul = $("<ul class='pagination'>");
-		var primeiro = $("<li><a class='primeiro' aria-label='Primeiro' href='#'><span class='fas fa-angle-double-left' aria-hidden='true'>«</span></a></li>");
+		let instancia 		= this;
+		this.totalblocos 	= Math.ceil(this.totalRegistros / this.qtdeMaxRegistro);
+		$("center",this.contexto).remove();
+
+		let center 		= $("<center>");
+		let ul 			= $('<ul class="pagination">');
+		let primeiro 	= $("<li><a class='primeiro' aria-label='Primeiro' href='#'><span class='fas fa-angle-double-left' aria-hidden='true'></span></a></li>");
 		primeiro.click(function(e){
 			e.preventDefault();
 			e.stopPropagation();
 			instancia.irbloco(1);
 		});
-		var voltar = $("<li><a class='anterior' href='#'><span class='fas fa-angle-left' aria-hidden='true'></span></a></li>");
+
+		let voltar 		= $("<li><a class='anterior' href='#'><span class='fas fa-angle-left' aria-hidden='true'></span></a></li>");
 		voltar.click(function(e){
 			e.preventDefault();
 			e.stopPropagation();			
 			instancia.irbloco(parseInt(instancia.blocoatual)-1);
 		});
-		var li = $("<li>");
-		var irInput = $("<input type='text' class='irbloco-paginacao'>");
+
+		let li 		= $("<li>");
+		let irInput = $("<input type='text' class='irbloco-paginacao'>");
 		irInput.val(this.blocoatual);
 		irInput.keypress(function(e){
 			var tecla = e.which;
@@ -342,23 +345,25 @@ GradeDeDados.prototype.paginacao = function(){
 				instancia.irbloco(parseInt($(this).val()));
 			}
 		});
-		var ir = li.append(irInput);
-		var proximo = $("<li><a class='proximo' href='#'><span class='fas fa-angle-right' aria-hidden='true'></span></a></li>");
+
+		let ir 			= li.append(irInput);
+		let proximo 	= $("<li><a class='proximo' href='#'><span class='fas fa-angle-right' aria-hidden='true'></span></a></li>");
 		proximo.click(function(e){
 			e.preventDefault();
 			e.stopPropagation();			
 			instancia.irbloco(parseInt(instancia.blocoatual)+1);
 		});
-		var ultimo = $("<li><a class='ultimo' aria-label='Último' href='#'><span class='fas fa-angle-double-right' aria-hidden='true' ></span></a></li>");
+
+		let ultimo 		= $("<li><a class='ultimo' aria-label='Último' href='#'><span class='fas fa-angle-double-right' aria-hidden='true' ></span></a></li>");
 		ultimo.click(function(e){
 			e.preventDefault();
 			e.stopPropagation();			
 			instancia.irbloco(instancia.totalblocos);
 		});
-		
+
 		ul.append(primeiro);
 		ul.append(voltar);
-		
+
 		for (i=1;i<=10;i++){
 			var bloco = $("<li><a class='pagina' data-bloco='"+i+"' href='#' onclick="+this.instancia+"GD.irbloco("+i+")>"+i+"</a></li>");
 			if (5 == i){
@@ -368,10 +373,9 @@ GradeDeDados.prototype.paginacao = function(){
 		ul.append(proximo);
 		ul.append(ultimo);
 		center.append(ul);
-		var paginacaoGradededados = $("<div class='paginacao-gradededados'>").append(center);
+		let paginacaoGradededados = $("<div class='paginacao-gradededados'>").append(center);
 		$(this.contexto).append(paginacaoGradededados);
-		//
-		
+
 		if (this.blocoatual<=1){
 			$("ul.pagination li a.anterior").parent().addClass("disabled");		
 			$("ul.pagination li a.proximo").parent().removeClass("disabled");
@@ -394,7 +398,6 @@ GradeDeDados.prototype.paginacao = function(){
 GradeDeDados.prototype.irbloco = function(bloco){
 	if (bloco < 1 || bloco > this.totalblocos || this.blocoatual == bloco) return false;	
 	this.blocoatual = bloco;
-
 	this.reload();
 }
 GradeDeDados.prototype.pesquisa = function(){
@@ -455,9 +458,9 @@ GradeDeDados.prototype.pesquisa = function(){
 }
 GradeDeDados.prototype.excluir = function(){	
 	if (typeof beforeDelete === "function") beforeDelete();
-	var entidade = this.entidade;
-	var instancia = gradesdedados[this.contexto];
-	var excluirRegistroUnico = (arguments.length > 0)?true:false;
+	let entidade = this.entidade;
+	let instancia = this;
+	let excluirRegistroUnico = (arguments.length > 0)?true:false;
 	
 	// Permissões
 	for (permissao in td_permissoes){
@@ -469,28 +472,31 @@ GradeDeDados.prototype.excluir = function(){
 		}
 	}
 	
+	let perguntaexclusao 		= '';
+	let registro 				= '';
+	let registrosselecioandos	= 0;
+	let btnExcluir;
+	let linhatable;
+	let loaderExcluir;
 	// Registro único ou em massa
 	if (excluirRegistroUnico){
-		var registro = arguments[0];
-		var btnExcluir = arguments[1];
-		var linhatable = arguments[1].parents("tr");
-		var loaderExcluir = btnExcluir.parents(".excluir-coluna-gradededados").find(".loader-excluir-gd");
-		var perguntaexclusao = 'Tem certeza que deseja excluir ?'
+		registro 			= arguments[0];
+		btnExcluir 			= arguments[1];
+		linhatable 			= arguments[1].parents("tr");
+		loaderExcluir 		= btnExcluir.parents(".excluir-coluna-gradededados").find(".loader-excluir-gd");
+		perguntaexclusao 	= 'Tem certeza que deseja excluir ?'
 	}else{
-		var registro = "";
-		var perguntaexclusao = 'Tem certeza que deseja excluir os registros selecionados ?';
-		var registrosselecioandos = instancia.getSelecionados();
+		registro					= "";
+		perguntaexclusao 			= 'Tem certeza que deseja excluir os registros selecionados ?';
+		registrosselecioandos 		= instancia.getSelecionados();
 		if (registrosselecioandos.length <= 0){
 			bootbox.alert("Nenhum Registro Selecionado");
 			return false;
 		}
 	}
 
-	var totalexcluidos = 0;
-	var entidadeNome = td_entidade[this.entidade].nomecompleto;
-	var irbloco = 0;
+	let totalexcluidos	= 0;
 	
-
 	bootbox.dialog({
 	  message:perguntaexclusao,
 	  title:'Aviso',
@@ -560,23 +566,22 @@ GradeDeDados.prototype.selecionarTodos = function(botaoSelAll){
 GradeDeDados.prototype.rodape = function(){
 	if (!this.retornaFiltro){
 		if (this.table.find("tfoot").length <= 0){
-			var qtdeTempReg = this.qtdeTempRegistro();
+			let qtdeTempReg 	= this.qtdeTempRegistro();
 			if (this.dadosCorpo.length > 0 || qtdeTempReg > 0){
-				var tfoot = $("<tfoot>");
-				var tr = $("<tr>");			
-				var td = $("<td colspan='"+(this.attr_cabecalho_nome.length+3)+"'>");
-				var instancia = gradesdedados[this.contexto];
-				
+				let tfoot 		= $("<tfoot>");
+				let tr 			= $("<tr>");			
+				let td 			= $("<td colspan='"+(this.attr_cabecalho_nome.length+3)+"'>");
+				let instancia 	= this;
 
 				// Excluir Selecionados
-				var btnExcluirTodos = $("<input type='button' style='float:right;' value='Excluir Selecionados' class='btn btn-default btn-excluir-selecionados'>");
-				btnExcluirTodos.on("click",".btn-excluir-selecionados",function(){
+				let btnExcluirTodos = $("<input type='button' style='float:right;' value='Excluir Selecionados' class='btn btn-default btn-excluir-selecionados'>");
+				btnExcluirTodos.click(function(){
 					instancia.excluir();
 				});
 				
 				// Editar em Massa
-				var btnEditarEmMassa = $('<button class="btn btn-warning btn-editar-emmassa">Em Massa</button>');
-				$(document).on("click",".btn-editar-emmassa",function(){
+				let btnEditarEmMassa = $('<button class="btn btn-warning btn-editar-emmassa">Em Massa</button>');
+				$(document).on("click",".btn-editar-emmassa:first",function(){
 					instancia.editarEmMassa();
 				});
 
@@ -733,20 +738,25 @@ GradeDeDados.prototype.loadDadosEdicao = function(id){
 		}
 	});
 }
-GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
+GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){	
+
 	let tr;
 	let tr_is_exists;
+	let tr_indice = id == 0 ? this.indice_linha : id;
 
-	if (this.table.find("tbody tr[idregistro="+id+"]").length > 0){
-		this.table.find("tbody tr[idregistro="+id+"] td").remove();
-		tr 				= this.table.find("tbody tr[idregistro="+id+"] ");
+	id = id == 0 ? '-' : id;
+
+	if (this.table.find("tbody tr[idregistro="+tr_indice+"]").length > 0){
+		this.table.find("tbody tr[idregistro="+tr_indice+"] td").remove();
+		tr 				= this.table.find("tbody tr[idregistro="+tr_indice+"] ");
 		tr_is_exists 	= true;
 	}else{
-		tr 				= $("<tr idregistro="+id+">");
+		tr 				= $("<tr idregistro="+tr_indice+">");
 		tr_is_exists 	= false;
+		this.indice_linha--;
 	}
 
-	linha['id'] 		= id;
+	linha['id'] 		= id <= 0 ? '-' : id;
 	linhareal['id'] 	= id;
 	for(n in this.attr_cabecalho_nome){
 
@@ -758,7 +768,7 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
 				switch(parseInt(td_atributo[idAtributo].tipohtml)){
 					case 7:
 						if (parseInt(valor) == 0){
-							valor = (td_atributo[idAtributo].labelzerocheckbox == ""?"Não":td_atributo[idAtributo].labelzerocheckbox.replace('NÃ£o','Não'));
+							valor = (td_atributo[idAtributo].labelzerocheckbox == ""?"Não":td_atributo[idAtributo].labelzerocheckbox);
 						}else if(parseInt(valor) == 1){
 							valor = (td_atributo[idAtributo].labelumcheckbox == ""?"Sim":td_atributo[idAtributo].labelumcheckbox);
 						}
@@ -780,8 +790,10 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
 					break;
 				}
 			}
+
 			if (typeof td_consulta[this.consulta] != "undefined"){
 				for (f in td_consulta[this.consulta].status){
+
 					let ft = td_consulta[this.consulta].status[f];
 					if (ft.atributo == idAtributo){
 						let operador = '';
@@ -867,29 +879,28 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
 
 	let btnOutraJanela = "<td align='center'><span onclick=outrajanela(this,38978,'index.php?controller=crud&amp;id=38978&amp;op=add&amp;t=19&amp;filtro_rel_nn=&amp;modal=true'); class='botao fas fa-external-link-alt btn btn-default'></span></td>";
 
-	if (this.movimentacao != ""){
-		let spanMovimentacao = $("<span reg='"+id+"' class='botao fas fa-share btn btn-default' onclick=movimentacao('"+this.entidade+"','"+id+"',"+this.movimentacao+")></span>");
-	}
-
-	if (this.movimentacao != ""){
-		let btnMovimentacao = $("<td align='center' class='editar-coluna-gradededados'></td>");
+	let btnMovimentacao;
+	if (this.isExibirMovimentacao()){
+		let spanMovimentacao 	= $("<span reg='"+tr_indice+"' class='botao fas fa-share btn btn-default' onclick=movimentacao('"+this.entidade+"','"+tr_indice+"',"+this.movimentacao+")></span>");
+		btnMovimentacao 		= $("<td align='center' class='editar-coluna-gradededados'></td>");
 		btnMovimentacao.append(spanMovimentacao);
 	}
 	
-	let spanEditar = $("<span reg='"+id+"' data-entidade='"+this.entidade+"' data-funcionalidade='"+this.funcionalidade+"' class='botao fas fa-pencil-alt btn btn-default' ></span>");
+	let spanEditar = $("<span reg='"+tr_indice+"' data-entidade='"+this.entidade+"' data-funcionalidade='"+this.funcionalidade+"' class='botao fas fa-pencil-alt btn btn-default' ></span>");
 	spanEditar.on("click",function(){
 
 		let entidadeid 		= $(this).data("entidade");
 		let id 				= $(this).attr("reg");
 		let funcionalidade 	= $(this).data("funcionalidade");
-
+	
 		if (funcionalidade == "cadastro"){
 			formulario[entidadeid].registro_id = id;
 			formulario[entidadeid].editar();
-			
 		}else if (funcionalidade == "consulta" || funcionalidade == "emmassa"){
 			if ($(this).parents(".crud-contexto-listar").first().hasClass("fp")){
-				editarTDFormulario(entidadeid,id);
+				carregar(session.folderprojectfiles + "files/cadastro/"+entidadeid+"/"+td_entidade[entidadeid].nomecompleto+".html",'#conteudoprincipal',function(){
+					carregarScriptCRUD('editarformulario',entidadeid,id);
+				});
 			}else{
 				editarFormulario(entidadeid,id);
 			}
@@ -905,7 +916,7 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
 	loaderExcluir.addClass('loader-excluir-gd');
 	loaderExcluir.css("display","none");
 	
-	let instancia = gradesdedados[this.contexto];
+	let instancia = this;
 	btnExcluir.click(function(){
 		instancia.excluir(id,$(this));
 	});
@@ -916,7 +927,7 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
 
 	let checkExcluir = "<td align='center'><span align='center' class='grade-info'><input type='checkbox' value='"+id+"' class='gradededados-checkbox-excluir'></span></td>";	
 	if (!this.retornaFiltro){
-		if (this.movimentacao != ""){
+		if (this.isExibirMovimentacao()){
 			tr.append(btnMovimentacao);
 		}
 		if (this.exibireditar) tr.append(btnEditar);
@@ -1076,15 +1087,15 @@ GradeDeDados.prototype.setCabecalhoAtributos = function(){
 	}
 }
 GradeDeDados.prototype.editarEmMassa = function(){
-	var modal 			= $('<div id="modal-emmassa" class="modal fade" tabindex="-1" role="dialog">');
-	var modalDialog 	= $('<div class="modal-dialog modal-lg" role="document">');
-	var modalContent	= $('<div class="modal-content">');
-	var modalHeader 	= $('<div class="modal-header">');
-	var botaoClose		= $('<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>');
-	var titulo			= $('<h4 class="modal-title">Edição Em Massa</h4>');
-	var modalBody		= $('<div class="modal-body">');
-	var modalFooter		= $('<div class="modal-footer">');
-	var botaoSalvar		= $('<button type="button" class="btn btn-primary">Atualizar</button>');
+	let modal 			= $('<div id="modal-emmassa" class="modal fade" tabindex="-1" role="dialog">');
+	let modalDialog 	= $('<div class="modal-dialog modal-lg" role="document">');
+	let modalContent	= $('<div class="modal-content">');
+	let modalHeader 	= $('<div class="modal-header">');
+	let botaoClose		= $('<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>');
+	let titulo			= $('<h4 class="modal-title">Edição Em Massa</h4>');
+	let modalBody		= $('<div class="modal-body">');
+	let modalFooter		= $('<div class="modal-footer">');
+	let botaoSalvar		= $('<button type="button" class="btn btn-primary">Atualizar</button>');
 	
 	modal.append(modalDialog);
 	modalDialog.append(modalContent);
@@ -1095,11 +1106,11 @@ GradeDeDados.prototype.editarEmMassa = function(){
 	modalHeader.append(botaoClose);
 	modalHeader.append(titulo);
 
-	var form 					= $("<form>");
-	var fgAtributos 			= $('<div class="form-group"></div>');
-	var selectAtributosLabel 	= $('<label for="emMassa-listaAtributos">Campos</label>');
-	var selectAtributos 		= $('<select class="form-control" id="emMassa-listaAtributos"></select>');
-	var entidadePai 			= this.entidade;
+	let form 					= $("<form>");
+	let fgAtributos 			= $('<div class="form-group"></div>');
+	let selectAtributosLabel 	= $('<label for="emMassa-listaAtributos">Campos</label>');
+	let selectAtributos 		= $('<select class="form-control" id="emMassa-listaAtributos"></select>');
+	let entidadePai 			= this.entidade;
 
 	selectAtributos.append($('<option value="0">Selecione</option>'));
 	addListaAtributos(entidadePai);
@@ -1122,8 +1133,7 @@ GradeDeDados.prototype.editarEmMassa = function(){
 	selectAtributos.change(function(e){
 		e.stopPropagation();
 		e.preventDefault();
-		var atributoOBJ = td_atributo[$(this).val()];	
-		//$("#relacionamento-EmMassa").val($(this).find("opt:selected").data("relacionamento"));
+		let atributoOBJ = td_atributo[$(this).val()];
 		$.ajax({
 			url:config.urlloadgradededados,
 			data:{
@@ -1146,10 +1156,10 @@ GradeDeDados.prototype.editarEmMassa = function(){
 						$('#modal-emmassa').on('hidden.bs.modal', function (e) {
 							$("#modal-emmassa .modal-content").css("height","");
 						});
-						var botaoFecharModal = $("#campo-atualizar-emmassa .modal-header .close");
+						let botaoFecharModal = $("#campo-atualizar-emmassa .modal-header .close");
 						botaoFecharModal.attr("data-dismiss","");
 						botaoFecharModal.click(function(){
-							var modalFecharID = $(this).parents(".modal").attr("id");
+							let modalFecharID = $(this).parents(".modal").attr("id");
 							$("#" + modalFecharID).modal('hide');
 						});
 					break;
@@ -1161,17 +1171,15 @@ GradeDeDados.prototype.editarEmMassa = function(){
 	fgAtributos.append(selectAtributosLabel);
 	fgAtributos.append(selectAtributos);	
 
-	var fgValor 	= $('<div class="form-group" id="campo-atualizar-emmassa">');
-	var valorLabel 	= $('<label for="emMassa-valor">Valor</label>');
-	var valorInput 	= $('<input type="text" class="form-control" id="emMassa-valor" placeholder="Valor">');
-	var idsInput 	= $('<input type="hidden" class="form-control" id="emMassa-ids">');
-	//var relInput 	= $('<input type="hidden" id="relacionamento-EmMassa">');
+	let fgValor 	= $('<div class="form-group" id="campo-atualizar-emmassa">');
+	let valorLabel 	= $('<label for="emMassa-valor">Valor</label>');
+	let valorInput 	= $('<input type="text" class="form-control" id="emMassa-valor" placeholder="Valor">');
+	let idsInput 	= $('<input type="hidden" class="form-control" id="emMassa-ids">');
 
 	fgValor.append(valorLabel);
 	fgValor.append(valorInput);
 
 	form.append(idsInput);
-	//form.append(relInput);
 	form.append(fgAtributos);
 	form.append(fgValor);
 
@@ -1179,6 +1187,7 @@ GradeDeDados.prototype.editarEmMassa = function(){
 	modalFooter.append(botaoSalvar);
 	modalFooter.append(getIMGLoader());
 
+	let instancia = this;
 	botaoSalvar.click(function(){
 		bootbox.confirm({
 			message:"Tem certeza que deseja atualizar todos os campos?",
@@ -1212,6 +1221,7 @@ GradeDeDados.prototype.editarEmMassa = function(){
 							var retorno = parseInt(ret.responseText);
 							if (retorno == 1){
 								bootbox.alert("Atualizado com Sucesso!");
+								instancia.show();
 							}else{
 								bootbox.alert("Erro ao atualizar!");
 							}
@@ -1227,12 +1237,12 @@ GradeDeDados.prototype.editarEmMassa = function(){
 		$("body").append(modal);
 	}
 
-	var selecionados = this.getSelecionados();
+	let selecionados = this.getSelecionados();
 	if (selecionados.length <= 0){
 		bootbox.alert("Nenhum registro selecionado.");
 		return false;
 	}
-	var ids = [];
+	let ids = [];
 	selecionados.each(function(registro){
 		ids.push($(selecionados[registro]).val());
 	});
@@ -1272,4 +1282,15 @@ GradeDeDados.prototype.addTBody = function(){
 		var tbody = $("<tbody>");
 		this.table.append(tbody);
 	}
+}
+GradeDeDados.prototype.isExibirMovimentacao = function(){
+	if (this.movimentacao == '' || this.movimentacao == 0){
+		return false;
+	}else{
+		return true;
+	}	
+}
+GradeDeDados.prototype.reset = function () {
+	this.clear();
+	this.reload();
 }

@@ -1,7 +1,7 @@
 <?php
 	// Setando variáveis
-	$entidadeNome = "ecommerce_carrinhocompras";
-	$entidadeDescricao = "Carrinho de Compras";
+	$entidadeNome 		= "ecommerce_carrinhocompras";
+	$entidadeDescricao 	= "Carrinho de Compras";
 
 	// Criando Entidade
 	$entidadeID = criarEntidade(
@@ -31,7 +31,7 @@
 	$carrinho_valortotal 			= criarAtributo($conn,$entidadeID,"valortotal","Valor Total","float",0,1,13,1,0,0,"");
 	$carrinho_qtdetotaldeitens 		= criarAtributo($conn,$entidadeID,"qtdetotaldeitens","Qtde Total de Itens","int",0,1,25,0,0,0,"");
 	$carrinho_valorfrete 			= criarAtributo($conn,$entidadeID,"valorfrete","Valor Frete","float",0,1,13,1,0,0,"");
-	$carrinho_transportadora 		= criarAtributo($conn,$entidadeID,"transportadora","Transportadora","int",0,1,22,0,installDependencia($conn,"ecommerce_transportadora","package/website/ecommerce/envio/transportadora"));
+	$carrinho_transportadora 		= criarAtributo($conn,$entidadeID,"transportadora","Transportadora","int",0,1,22,0,installDependencia("ecommerce_transportadora","package/website/ecommerce/envio/transportadora"));
 
 	// Criando Acesso
 	$menu_webiste = addMenu($conn,'E-Commerce','#','',0,0,'ecommerce');
@@ -59,6 +59,7 @@
 	$itenscarrinho_descricao 			= criarAtributo($conn,$itenscarrinhoID,"descricao","Descrição","varchar",200,0,3,1,0,0,"");
 	$itenscarrinho_imgsrc 				= criarAtributo($conn,$itenscarrinhoID,"imgsrc","Imagem ( Caminho )","varchar",300,1,3,0,0,0,"");
 	$itenscarrinho_valor 				= criarAtributo($conn,$itenscarrinhoID,"valor","Valor","float",0,0,13,1,0,0,"");
+	$itenscarrinho_valortotal			= criarAtributo($conn,$itenscarrinhoID,"valortotal","Valor Total","float",0,0,13,1,0,0,"");
 	$itenscarrinho_variacaopeso 		= criarAtributo($conn,$itenscarrinhoID,"variacaopeso","Peso ( Variação )","int",0,1,22,0,getEntidadeId("ecommerce_peso"));
 	$itenscarrinho_variacaotamanho 		= criarAtributo($conn,$itenscarrinhoID,"variacaotamanho","Tamanho ( Variação )","int",0,1,22,0,getEntidadeId("ecommerce_tamanhoproduto"));
 

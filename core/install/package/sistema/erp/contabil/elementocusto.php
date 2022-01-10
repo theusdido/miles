@@ -1,7 +1,7 @@
 <?php
 	// Setando variáveis
-	$entidadeNome = "erp_contabil_elementocusto";
-	$entidadeDescricao = "Elemento de Custo";
+	$entidadeNome 			= "erp_contabil_elementocusto";
+	$entidadeDescricao 		= "Elemento de Custo";
 	
 	// Criando Entidade
 	$entidadeID = criarEntidade(
@@ -21,8 +21,8 @@
 	);
 	
 	// Criando Atributos
-	$descricao = criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar","200",0,3,1,0,0,"");
-	$centrocusto = criarAtributo($conn,$entidadeID,"centrocusto","Centro de Custo","int",0,0,22,1,installDependencia($conn,"erp_contabil_centrocusto"),0,"",0,0);
+	$descricao 		= criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar","200",0,3,1,0,0,"");
+	$centrocusto 	= criarAtributo($conn,$entidadeID,"centrocusto","Centro de Custo","int",0,0,22,1,installDependencia("erp_contabil_centrocusto",'package/sistema/erp/contabil/centrocusto'),0,"",0,0);
 
 	// Criando Acesso
 	$menu_webiste = addMenu($conn,'Contábil','#','',0,0,'contabil');

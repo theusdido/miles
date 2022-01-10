@@ -1,7 +1,7 @@
 <?php
 	// Setando variáveis
-	$entidadeNome = "erp_imobiliaria_pessoarelacao";
-	$entidadeDescricao = "Pessoa Relação";
+	$entidadeNome 		= "imobiliaria_pessoarelacao";
+	$entidadeDescricao 	= "Pessoa Relação";
 
 	// Criando Entidade
 	$entidadeID = criarEntidade(
@@ -21,14 +21,14 @@
 	);
 
 	// Criando Atributos
-	$pessoa = criarAtributo($conn,$entidadeID,"pessoa","Pessoa","int",0,0,16,0,getEntidadeId('erp_imobiliaria_pessoa',$conn),0,"",1,0);
-	$relacao = criarAtributo($conn,$entidadeID,"relacao","Relação","int",0,0,4,0,getEntidadeId('erp_geral_relacao',$conn),0,"",1,0);
-	$pessoarelacao = criarAtributo($conn,$entidadeID,"pessoarelacao","Pessoa","int",0,0,22,0,getEntidadeId('erp_imobiliaria_pessoa',$conn),0,"",1,0);
+	$pessoa 			= criarAtributo($conn,$entidadeID,"pessoa","Pessoa","int",0,0,16,0,getEntidadeId('imobiliaria_pessoa',$conn),0,"",1,0);
+	$relacao 			= criarAtributo($conn,$entidadeID,"relacao","Relação","int",0,0,4,0,getEntidadeId('erp_pessoa_relacao',$conn),0,"",1,0);
+	$pessoarelacao 		= criarAtributo($conn,$entidadeID,"pessoarelacao","Pessoa","int",0,0,22,0,getEntidadeId('imobiliaria_pessoa',$conn),0,"",1,0);
 
 	criarRelacionamento(
 		$conn,
 		6,
-		getEntidadeId("erp_imobiliaria_pessoa",$conn),
+		getEntidadeId("imobiliaria_pessoa",$conn),
 		$entidadeID,
 		"Relação",
 		$pessoa

@@ -1,4 +1,5 @@
 <?php
+
 	// Setando variáveis
 	$entidadeNome 		= "menu";
 	$entidadeDescricao 	= "Menu";
@@ -11,7 +12,7 @@
 		$ncolunas=3,
 		$exibirmenuadministracao = 1,
 		$exibircabecalho = 1,
-		$campodescchave = "''",
+		$campodescchave = 0,
 		$atributogeneralizacao = 0,
 		$exibirlegenda = 1,
 		$criarprojeto = 0,

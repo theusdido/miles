@@ -34,6 +34,5 @@ class Theme {
         }else{
             return URL_LOGO;
         }
-
     }
 }

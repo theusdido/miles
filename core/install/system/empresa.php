@@ -31,4 +31,4 @@
 	$email 					= criarAtributo($conn,$entidadeID,"email","E-Mail","varchar",200,1,12);
 
 	// Cria Relacionamento com endereco
-	criarRelacionamento($conn,1,$entidadeID,installDependencia($conn,"endereco","system/endereco"),"Endereço",0);
+	criarRelacionamento($conn,1,$entidadeID,installDependencia("endereco","system/endereco"),"Endereço",0);

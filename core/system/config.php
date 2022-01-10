@@ -123,10 +123,12 @@
 	spl_autoload_register(array($AutoLoad, "load"));	
 
 	// Inclui os arquivos de funções do sistema
-	require PATH_SYSTEM . 'funcoes.php';	
-	require PATH_SYSTEM . 'path.php';
-	require PATH_SYSTEM . 'file.php';
+	require PATH_SYSTEM . 'funcoes.php';
 	require PATH_SYSTEM . 'estaticas.php';
+	require PATH_SYSTEM . 'path.php';
+	require PATH_SYSTEM . 'url.php';
+	require PATH_SYSTEM . 'file.php';
+	require PATH_SYSTEM . 'entidade.php';
 
 	// Dados de Sessão do Projeto
 	Session::setName($sessionName);
@@ -137,8 +139,8 @@
 	// Código do Cliente
 	define ("CODIGOCLIENTE",isset($config["CODIGOCLIENTE"])?$config["CODIGOCLIENTE"]:0);
 
-	require PATH_SYSTEM . 'url.php';	
-	require PATH_SYSTEM . 'entidade.php';
+		
+	
 
 	// Define a imagem de loader de contexto
 	define("LOADERCONTEXTO",'<img class="loadercontexto" width="32" align="middle" src="'.Session::Get("URL_LOADING2").'">');

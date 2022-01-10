@@ -746,7 +746,7 @@
 			$ticket->status = 4;
 			if ($ticket->armazenar()){
 				$status = "success";
-				Transacao::Fechar();
+				Transacao::Commit();
 			}else{
 				$status = "error";
 			}

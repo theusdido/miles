@@ -20,8 +20,8 @@
 	$significado = criarAtributo($conn,$statuspedidoID,"significado","Significado","varchar",1000,0,3,1,0,0,"");
 
 	// Setando variáveis
-	$entidadeNome = "ecommerce_pedido";
-	$entidadeDescricao = "Pedido";
+	$entidadeNome 		= "ecommerce_pedido";
+	$entidadeDescricao 	= "Pedido";
 	
 	// Criando Entidade
 	$entidadeID = criarEntidade(

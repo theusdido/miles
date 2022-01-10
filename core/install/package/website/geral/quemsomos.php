@@ -1,6 +1,6 @@
 <?php
-	$entidadeNome = "website_geral_quemsomos";
-	$entidadeDescricao = "Quem Somos";
+	$entidadeNome 		= "website_geral_quemsomos";
+	$entidadeDescricao 	= "Quem Somos";
 
 	$entidadeID = criarEntidade(
 		$conn,
@@ -25,4 +25,4 @@
 	$menu_webiste = addMenu($conn,'WebSite','#','',0,0,'website');
 
 	// 4 PASSO
-	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'website',$menu_webiste,0,'',$entidadeID,'cadastro');
+	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,5,'website-'.$entidadeNome,$entidadeID,'cadastro');

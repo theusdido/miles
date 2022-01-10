@@ -22,10 +22,10 @@
 	
 	// Criando Atributos
 	$descricao 			= criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar",200,0,3,1);
-	$fornecedor 		= criarAtributo($conn,$entidadeID,"fornecedor","Fornecedor","int",0,0,22,0,installDependencia($conn,"erp_contabil_elementocusto"),0,"",0,0);
-	$elementocusto 		= criarAtributo($conn,$entidadeID,"elementocusto","Elemento de Custo","int",0,1,4,0,installDependencia($conn,"erp_contabil_elementocusto"),0,"",0,0);
+	$fornecedor 		= criarAtributo($conn,$entidadeID,"fornecedor","Fornecedor","int",0,0,22,0,installDependencia("erp_pessoa",'package/sistema/erp/pessoa/pessoa'),0,"",0,0);
+	$elementocusto 		= criarAtributo($conn,$entidadeID,"elementocusto","Elemento de Custo","int",0,1,4,0,installDependencia("erp_contabil_elementocusto",'package/sistema/erp/contabil/elementocusto'),0,"",0,0);
 	$valor 				= criarAtributo($conn,$entidadeID,"valor","Valor","float",0,1,13,0,0,0,"",0,0);
-	$formapagamento 	= criarAtributo($conn,$entidadeID,"formapagamento","Forma de Pagamento","int",0,1,4,0,installDependencia($conn,"erp_financeiro_formapagamento"),0,"",0,0);
+	$formapagamento 	= criarAtributo($conn,$entidadeID,"formapagamento","Forma de Pagamento","int",0,1,4,0,installDependencia("erp_financeiro_formapagamento",'package/sistema/erp/financeiro/formapagamento'),0,"",0,0);
 	$despesafixa 		= criarAtributo($conn,$entidadeID,"despesafixa","Despesa Fixa","tinyint",0,1,7,0,0,0,"",0,0);
 
 	// Criando Acesso

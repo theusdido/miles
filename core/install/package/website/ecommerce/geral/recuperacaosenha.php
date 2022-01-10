@@ -1,7 +1,7 @@
 <?php
 	// Setando variáveis
-	$entidadeNome = "ecommerce_recuperacaosenha";
-	$entidadeDescricao = "Recuperacao de Senha";
+	$entidadeNome 		= "ecommerce_recuperacaosenha";
+	$entidadeDescricao 	= "Recuperacao de Senha";
 
 	// Criando Entidade
 	$entidadeID = criarEntidade(

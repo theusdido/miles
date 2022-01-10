@@ -32,4 +32,4 @@
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_redesocial,1,'redesocial-' . $entidadeNome);
 	
 	// Instalando a entidade das fotos
-	$fotos = installDependencia($conn,"website_redesocial_foto");
+	$fotos = installDependencia("website_redesocial_foto",'package/website/redesocial/foto');

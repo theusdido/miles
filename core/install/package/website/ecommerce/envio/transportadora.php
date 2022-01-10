@@ -1,7 +1,7 @@
 <?php
 	// Setando variáveis
-	$entidadeNome = "ecommerce_transportadora";
-	$entidadeDescricao = "Transportadora";
+	$entidadeNome 		= "ecommerce_transportadora";
+	$entidadeDescricao 	= "Transportadora";
 
 	// Criando Entidade
 	$entidadeID = criarEntidade(
@@ -21,8 +21,8 @@
 	);
 	
 	// Criando Atributos
-	$nome 	= criarAtributo($conn,$entidadeID,"nome","Nome","varchar","200",0,3,1,0,0,"");	
-	$logo   = criarAtributo($conn,$entidadeID,"logo","Logo","varchar","200",1,19,1);
+	$nome 	= criarAtributo($conn,$entidadeID,"nome","Nome","varchar",200,0,3,1,0,0,"");	
+	$logo   = criarAtributo($conn,$entidadeID,"logo","Logo","varchar",200,1,19,0);
 
 	// Criando Acesso
 	$menu_webiste = addMenu($conn,'E-Commerce','#','',0,0,'ecommerce');

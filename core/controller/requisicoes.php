@@ -80,7 +80,7 @@ switch($op){
 		
 		foreach($_POST["dados"] as $chave => $valor){
 			if ($chave!="undefined"){				
-				$dados->contexto->{$chave} = Campos::Integridade($entidade->contexto->id,$chave,$valor,($id>0?$id:($dados->contexto->getUltimo()+1)));
+				$dados->contexto->{$chave} = Config::Integridade($entidade->contexto->id,$chave,$valor,($id>0?$id:($dados->contexto->getUltimo()+1)));
 			}	
 		}
 		try{
@@ -142,7 +142,7 @@ switch($op){
 					$conn->exec("UPDATE {$filho->contexto->nome} SET {$atributo} = {$dados->contexto->id} WHERE {$atributo} = '".session_id()."'");
 				}
 			}			
-			Transacao::fechar();
+			Transacao::Commit();
 		}catch(Exception $e){
 			echo $e->getMessage();
 			Transacao::rollback();
@@ -437,7 +437,7 @@ switch($op){
 					$filho->deletar();
 				}				
 			}
-			Transacao::fechar();
+			Transacao::Commit();
 		}catch(Exception $e){
 			Transacao::rollback();
 			echo $e->getMessage();
@@ -655,7 +655,7 @@ switch($op){
 					$queryUpdateMenuPermissao = $conn->query($sqlUpdateMenuPermissao);
 				}		
 			}
-			Transacao::fechar();
+			Transacao::Commit();
 		}else{
 			echo 'Não há conexão com o banco de dados';
 		}		
@@ -751,7 +751,7 @@ switch($op){
 				$queryInsertMenuPermissao = $conn->query($sqlInsertMenuPermissao);
 			}
 
-			Transacao::Fechar();
+			Transacao::Commit();
 		}else{
 			echo 'Sem conexão com o banco de dados';
 		}
@@ -768,7 +768,7 @@ switch($op){
 			$log->datahora		= date("Y-m-d H:i:s");
 			$log->acao 			= 4;
 			$log->armazenar();
-			Transacao::Fechar();
+			Transacao::Commit();
 		}	
 	break;
 	case "createprojetct":

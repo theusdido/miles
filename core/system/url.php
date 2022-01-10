@@ -1,21 +1,18 @@
 <?php
     // URL ROOT
-	Session::append("URL_ROOT",REQUEST_PROTOCOL . HTTP_HOST . "/" . PROJETO_FOLDER . "/");
-	define('URL_ROOT', REQUEST_PROTOCOL . HTTP_HOST . "/" . PROJETO_FOLDER . "/");
+	Session::append("URL_ROOT",REQUEST_PROTOCOL . HTTP_HOST . "/" . FOLDER_PROJECT . "/");
+	define('URL_ROOT', REQUEST_PROTOCOL . HTTP_HOST . "/" . FOLDER_PROJECT . "/");
 
 	// URL ALIAS
 	if (isset($_GET["alias"])) Session::append("URL_ALIAS",REQUES_PROTOCOL . HTTP_HOST . "/" . $_GET["alias"]);
 
-	if (AMBIENTE == 'SISTEMA'){
-		if (isset($mjc->folder)){
-			$request_uri_dir 	= '/' . $mjc->folder;
-		}else{
-			$ruri 				= $_SERVER['REQUEST_URI'];
-			$request_uri 		= explode('?',(strpos($ruri,'index.php') > -1 ? dirname($ruri).'/' : $ruri));
-			$request_uri_dir	= str_replace("index.php","",$request_uri[0]);
-		}
-	}else{		
-		$request_uri_dir = '/' . PROJETO_FOLDER;
+
+	if (isset($mjc->folder)){
+		$request_uri_dir 	= '/' . $mjc->folder;
+	}else{
+		$ruri 				= $_SERVER['REQUEST_URI'];
+		$request_uri 		= explode('?',(strpos($ruri,'index.php') > -1 ? dirname($ruri).'/' : $ruri));
+		$request_uri_dir	= str_replace("index.php","",$request_uri[0]);
 	}
 
 	// URL MILES
@@ -31,6 +28,7 @@
 
 	// URL SYSTEM
 	Session::append("URL_SYSTEM",Session::Get('URL_CORE') . FOLDER_SYSTEM . '/');
+	define('URL_SYSTEM',URL_CORE. FOLDER_SYSTEM . '/');
 
 	// URL PAGE
 	Session::append("URL_PAGE",Session::Get('URL_CORE') . FOLDER_PAGE . '/');	
@@ -51,15 +49,10 @@
 	Session::append('URL_CLASS_TDC',Session::Get('URL_CLASS') . 'tdc/');
 
 	Session::append("URL_CURRENT_PROJECT_THEME",Session::Get("URL_CURRENT_PROJECT") . PATH_THEME);
+	define('URL_CURRENT_PROJECT_THEME', Session::Get("URL_CURRENT_PROJECT") . PATH_THEME);
 
 	Session::append("URL_SYSTEM_THEME",Session::Get('URL_CORE') . PATH_THEME);
 	define('URL_SYSTEM_THEME', Session::Get('URL_CORE') . PATH_THEME);
-    
-	Session::append("URL_CURRENT_LOGO_PADRAO",Session::Get("URL_CURRENT_PROJECT_THEME") . FILE_LOGO );
-    
-	Session::append("URL_CURRENT_FAVICON",Session::Get("URL_CURRENT_PROJECT_THEME") . FILE_CURRENT_FAVICON);
-
-	Session::append("URL_FAVICON",Session::Get("URL_SYSTEM_THEME") . FILE_FAVICON);	
     
 	Session::append("URL_CURRENT_CONFIG_PROJECT",Session::Get("URL_CURRENT_PROJECT"). FOLDER_CONFIG . "/");
     
@@ -91,12 +84,11 @@
 	Session::append("URL_LOADING2", Session::Get("URL_SYSTEM_THEME") . 'loading2.gif');
 	define('URL_LOADING2', Session::Get("URL_SYSTEM_THEME") . 'loading2.gif');
 
-	// Arquivo MDM JavaScript Compilado
-    define("URL_MDM_JS_COMPILE",Session::Get("URL_CURRENT_PROJECT") . FILE_MDM_JS_COMPILE);
-
 	// URL SYSTEM ECOMMERCE
 	Session::append('URL_ECOMMERCE',Session::Get('URL_CORE') . 'controller/website/ecommerce' . '/');
 
-	define('URL_LOGO', URL_SYSTEM_THEME . FILE_LOGO);
-	define('URL_BACKGROUND',URL_SYSTEM_THEME . FILE_BACKGROUND);
+	// Arquivo MDM JavaScript Compilado
+    define("URL_MDM_JS_COMPILE",Session::Get("URL_CURRENT_PROJECT") . FOLDER_BUILD . '/js/');
+
+	define('URL_CURRENT_BUILD',Session::Get('URL_CURRENT_PROJECT') . FOLDER_BUILD . '/');
 	

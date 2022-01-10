@@ -238,6 +238,7 @@ class tdc Extends tdClass{
 	*/	
 	public static function da($entidade,$sql = null){
 		$entidade = getTableName($entidade);
+
 		if (!$sql || $sql == null){
 			return tdClass::Criar("repositorio",array($entidade))->getDataArray();
 		}else{
@@ -315,6 +316,24 @@ class tdc Extends tdClass{
 		return $retorno;
 	}
 	/*
+		* Método pj
+		* Data de Criacao: 31/12/2021
+		* @author Edilson Valentim dos Santos Bitencourt (Theusdido)
+		
+		Retorna um registro persistente do banco no formato de JSON
+		$parametros: 1, Entidade:String. 2, id:Int
+	*/
+	public static function pj(string $entidade,int $id){
+		$retorno = array();
+		if ($id > 0 && $entidade != ""){
+			$registro = json_decode(tdc::dj($entidade,tdc::f("id","=",$id)));
+			if (sizeof($registro) > 0){
+				$retorno = $registro[0];
+			}
+		}
+		return $retorno;
+	}	
+	/*
 		* Método opt
 		* Data de Criacao: 10/12/2021
 		* @author Edilson Valentim dos Santos Bitencourt (Theusdido)
@@ -336,5 +355,17 @@ class tdc Extends tdClass{
 			array_push($retorno,$option);
 		}
 		return $retorno;
+	}
+	/*
+		* Método ru
+		* Data de Criacao: 08/01/2021
+		* @author Edilson Valentim dos Santos Bitencourt (Theusdido)
+
+		Retorna um objeto persistent do tipo único
+		$parametros: 	entidade_name [String]
+
+	*/
+	public static function ru($entidade_name,$registro_id = 1){
+		return tdc::p($entidade_name,$registro_id);
 	}
 }

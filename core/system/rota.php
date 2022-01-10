@@ -15,10 +15,10 @@
 	if (strpos($_page,"/") > -1){
 		$_page_e		= explode("/",$_page);
 		$_page			= $_page . "/" . end($_page_e);
-	}
+	}	
 	$_systempage		= PATH_SYSTEM_PAGE . $_page . ".php";
 	$_custumpage		= PATH_CURRENT_PAGE . $_page . ".php";
-
+	
 	$systemview 		= '';
 	$customview			= '';
 
@@ -40,7 +40,5 @@
 		}else{
 			if (file_exists($customcontroller)) include $customcontroller;
 			if (file_exists($systemcontroller)) include $systemcontroller;
-			if (file_exists($_custumpage)) include $_custumpage;
-			if (file_exists($_systempage)) include $_systempage;			
 		}
 	}

@@ -22,7 +22,7 @@
 
 	// Criando Atributos
 	$cresi = criarAtributo($conn,$entidadeID,"cresi","CRESI","varchar",15,0,2);
-	$pessoa = criarAtributo($conn,$entidadeID,"pessoa","Pessoa","int",0,1,16,installDependencia($conn,"erp_imobiliaria_pessoa"));
+	$pessoa = criarAtributo($conn,$entidadeID,"pessoa","Pessoa","int",0,1,16,installDependencia("imobiliaria_pessoa",'package/negocio/imobiliaria/pessoa'));
 	
 	// Criando Acesso
 	$menu_webiste = addMenu($conn,'CRM','#','',0,0,'crm');
@@ -31,4 +31,4 @@
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,8,'crm-' . $entidadeNome);
 
 	// Relacionamento
-	$relacionamento = criarRelacionamento($conn,3,installDependencia($conn,"erp_imobiliaria_pessoa"),$entidadeID,"Corretor",$pessoa,$entidadeID,'cadastro');
+	$relacionamento = criarRelacionamento($conn,3,installDependencia("imobiliaria_pessoa",'package/negocio/imobiliaria/pessoa'),$entidadeID,"Corretor",$pessoa,$entidadeID,'cadastro');

@@ -1,6 +1,6 @@
 <?php
 	// Setando variáveis
-	$entidadeNome = "erp_imobiliaria_listainteresse";
+	$entidadeNome = "imobiliaria_listainteresse";
 	$entidadeDescricao = "Lista de Interesse";
 
 	// Criando Entidade
@@ -21,11 +21,10 @@
 	);
 
 	// Criando Atributosf
-	$pessoainteresse = criarAtributo($conn,$entidadeID,"pessoainteresse","Pessoa","int",0,1,4,0,installDependencia($conn,'erp_imobiliaria_pessoa'),0,"",1,0);
-	$nome = criarAtributo($conn,$entidadeID,"nome","Nome","varchar","200",1,3,1,0,0,"");
-	$cpfj = criarAtributo($conn,$entidadeID,"cpfj","CPF/CNPJ","varchar","25",0,17,1,0,0,"",1,0);
-	$rg = criarAtributo($conn,$entidadeID,"rg","RG","varchar","35",1,3,1,0,0,"");
-	$telefone = criarAtributo($conn,$entidadeID,"telefone","Telefone","varchar","25",1,8,1,0,0,"");
+	$pessoainteresse 		= criarAtributo($conn,$entidadeID,"pessoainteresse","Pessoa","int",0,1,4,0,installDependencia('imobiliaria_pessoa','package/negocio/imobiliaria/pessoa'),0,"",1,0);
+	$nome 					= criarAtributo($conn,$entidadeID,"nome","Nome","varchar","200",1,3,1,0,0,"");
+	$cpfj 					= criarAtributo($conn,$entidadeID,"cpfj","CPF/CNPJ","varchar","25",0,17,1,0,0,"",1,0);
+	$rg 					= criarAtributo($conn,$entidadeID,"rg","RG","varchar","35",1,3,1,0,0,"");
+	$telefone 				= criarAtributo($conn,$entidadeID,"telefone","Telefone","varchar","25",1,8,1,0,0,"");
 	
-	$listainteresseimovel = installDependencia($conn,'erp_imobiliaria_listainteresseimovel');
-	
+	$listainteresseimovel 	= installDependencia('imobiliaria_listainteresseimovel','package/negocio/imobiliaria/listainteresseimovel');

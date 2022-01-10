@@ -23,10 +23,10 @@
 	// Criando Atributos	
 	$hora = criarAtributo($conn,$entidadeID,"hora","Hora","time",0,0,28);
 	$data = criarAtributo($conn,$entidadeID,"data","Data","date",0,0,11);
-	$cliente = criarAtributo($conn,$entidadeID,"cliente","Cliente","int",0,0,4,0,installDependencia($conn,"erp_imobiliaria_pessoa"));
-	$atendente = criarAtributo($conn,$entidadeID,"atendente","Atendente","int",0,0,4,0,installDependencia($conn,"erp_imobiliaria_atendente"));
+	$cliente = criarAtributo($conn,$entidadeID,"cliente","Cliente","int",0,0,4,0,installDependencia("imobiliaria_pessoa",'package/negocio/imobiliaria/pessoa'));
+	$atendente = criarAtributo($conn,$entidadeID,"atendente","Atendente","int",0,0,4,0,installDependencia("imobiliaria_atendente",'package/negocio/imobiliaria/atendente'));
 	$passivo = criarAtributo($conn,$entidadeID,"passivo","Passivo","tinyint",0,0,7);
-	$tipoatendimento = criarAtributo($conn,$entidadeID,"tipoatendimento","Tipo Atendimento","int",0,0,4,0,installDependencia($conn,"crm_imobiliaria_tipoatendimento"));
+	$tipoatendimento = criarAtributo($conn,$entidadeID,"tipoatendimento","Tipo Atendimento","int",0,0,4,0,installDependencia("imobiliaria_tipoatendimento",'package/negocio/imobiliaria/tipoatendimento'));
 	$descricao = criarAtributo($conn,$entidadeID,"descricao","Descrição","text",0,0,21);
 
 	// Criando Acesso

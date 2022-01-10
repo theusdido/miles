@@ -1,23 +1,23 @@
 <?php
 
-	$mdmJSCompile = fopen(PATH_MDM_JS_COMPILE,"w");
+	$mdmJSCompile = fopen(Asset::path('FILE_MDM_JS_COMPILE'),"w");
 
 	// Entidades do Sistema
 	fwrite($mdmJSCompile,'
-		var td_entidade = [];
-		var td_atributo = [];
-		var td_relacionamento = [];
-		var td_permissoes = [];
-		var td_filtroatributo = [];
-		var td_consulta = [];
-		var td_relatorio = [];
-		var td_status = [];	
-		var td_movimentacao = [];
+		var td_entidade 		= [];
+		var td_atributo 		= [];
+		var td_relacionamento 	= [];
+		var td_permissoes 		= [];
+		var td_filtroatributo 	= [];
+		var td_consulta 		= [];
+		var td_relatorio 		= [];
+		var td_status 			= [];
+		var td_movimentacao 	= [];
+		var formulario          = [];
 	');
 	
-	$localCharset = 2;
-
-	$dataset = tdClass::Criar("repositorio",array(ENTIDADE))->carregar();
+	$localCharset 	= 2;
+	$dataset 		= tdClass::Criar("repositorio",array(ENTIDADE))->carregar();
 	if ($dataset){
 		foreach ($dataset as $entidade){
 			$filtro_atributo = tdc::f();
@@ -157,6 +157,9 @@
 					entidade:'{$consultas->entidade}',
 					movimentacao:'{$consultas->movimentacao}',
 					descricao:'{$consultas->descricao}',
+					exibireditar:{$consultas->exibirbotaoeditar},
+					exibirexcluir:{$consultas->exibirbotaoexcluir},
+					exibiremmassa:{$consultas->exibirbotaoemmassa},
 					filtros:{
 			",$localCharset));			
 			$sqlFiltros = "SELECT id,operador,atributo FROM td_consultafiltro a WHERE consulta = " . $consultas->id;
@@ -182,7 +185,24 @@
 				$iAP++;
 			}
 			fwrite($mdmJSCompile,"
-					}
+					},
+					filtros_iniciais:[
+			");
+
+						$sqlCI 		= "SELECT id,atributo,operador,valor FROM td_consultafiltroinicial WHERE consulta = " . $consultas->id;
+						$queryCI 	= $conn->query($sqlCI);
+						$iCI 		= 1;
+						$tCI 		= $queryCI->rowcount();		
+						While ($linhaCI = $queryCI->fetch()){
+							fwrite($mdmJSCompile,'{
+								atributo:"'.tdc::a($linhaCI['atributo'])->nome.'",
+								operador:"'.$linhaCI['operador'].'",
+								valor:"'.$linhaCI['valor'].'"
+							}');
+							if ($iCI < $tCI) fwrite($mdmJSCompile,",");
+						}
+			fwrite($mdmJSCompile,"
+					]
 				};
 			");
 		}

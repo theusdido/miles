@@ -1,4 +1,4 @@
-﻿<!--
+<!--
 /*
     * Framework MILES
     * @license : tEIA
@@ -512,11 +512,6 @@ html, body { margin:0; height: 100%;} /* Para funcionar altura dos elementos aut
 	font-size:12px;
 	margin:2px 10px;
 }
-.formgroup-buttons-tdform{
-	width:120px;
-	float: right;
-    margin: 0px 10px 10px 0px;	
-}
 .crud-contexto-add , .crud-contexto-listar {
 	display:none;
 }
@@ -604,9 +599,7 @@ html, body { margin:0; height: 100%;} /* Para funcionar altura dos elementos aut
 	float:right;
 	width:150px;
 }
-.gradededados .btn-editar-emmassa{
-	margin-right:10px;
-}
+
 .loading2{
 	display:none;
 }
@@ -756,5 +749,29 @@ header #menu {
 }
 .modal-header * {
 	color:#FFF;
+}
+/* *****************************************************************
+* TDFORM
+***************************************************************** */
+.tdform .td-btn-group {
+	padding:5px !important;
+	display: block !important;
+	height: 50px;
+}
+.tdform .td-btn-group .button, .tdform .td-btn-group input[type=button]{
+	float:right;
+	margin: 5px;
+	width:120px;
+}
+
+/* *****************************************************************
+* GRADE DE DADOS
+***************************************************************** */
+.paginacao-gradededados{
+	width: 100%;
+	float:left;
+}
+.gradededados .btn-editar-emmassa{
+	margin-right:10px;
 }
 -->

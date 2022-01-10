@@ -1,7 +1,7 @@
 <?php
 	// Setando variáveis
-	$entidadeNome = "grupousuario";
-	$entidadeDescricao = "Grupo de Usuário";
+	$entidadeNome 		= "grupousuario";
+	$entidadeDescricao 	= "Grupo de Usuário";
 	
 	// Criando Entidade
 	$entidadeID = criarEntidade(
@@ -22,3 +22,5 @@
 
 	// Criando Atributos
 	$descricao = criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar",200,0,3,1,0,0,"");
+	
+	Entity::setDescriptionField($conn,$entidadeID,$descricao,true);

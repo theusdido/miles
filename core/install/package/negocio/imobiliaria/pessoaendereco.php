@@ -1,6 +1,6 @@
 <?php
 	// Setando variáveis
-	$entidadeNome = "erp_imobiliaria_pessoaendereco";
+	$entidadeNome = "imobiliaria_pessoaendereco";
 	$entidadeDescricao = "Pessoa Endereço";
 
 	// Criando Entidade
@@ -21,17 +21,17 @@
 	);
 
 	// Criando Atributos
-	$endereco = criarAtributo($conn,$entidadeID,"endereco","Endereço","int",0,1,24,1,installDependencia($conn,'erp_imobiliaria_endereco'),0,"",1,0);
+	$endereco = criarAtributo($conn,$entidadeID,"endereco","Endereço","int",0,1,24,1,installDependencia('imobiliaria_endereco','package/negocio/imobiliaria/endereco'),0,"",1,0);
 	$numero = criarAtributo($conn,$entidadeID,"numero","Número","varchar","5",1,3,1,0,0,"");
 	$complemento = criarAtributo($conn,$entidadeID,"complemento","Complemento","varchar","200",1,3,1,0,0,"");
-	$tipoendereco = criarAtributo($conn,$entidadeID,"tipoendereco","Tipo de Endereço","int",0,1,4,0,installDependencia($conn,'erp_imobiliaria_tipoendereco'),0,"",1,0);
-	$pessoa = criarAtributo($conn,$entidadeID,"pessoa","Pessoa","int",0,1,16,0,installDependencia($conn,'erp_imobiliaria_pessoa'),0,"",1,0);	
+	$tipoendereco = criarAtributo($conn,$entidadeID,"tipoendereco","Tipo de Endereço","int",0,1,4,0,installDependencia('imobiliaria_tipoendereco','package/negocio/imobiliaria/tipoendereco'),0,"",1,0);
+	$pessoa = criarAtributo($conn,$entidadeID,"pessoa","Pessoa","int",0,1,16,0,installDependencia('imobiliaria_pessoa','package/negocio/imobiliaria/pessoa'),0,"",1,0);	
 	
 	// Criando Relacionamento
 	criarRelacionamento(
 		$conn,
 		2,
-		installDependencia($conn,'erp_imobiliaria_pessoa'),
+		installDependencia('imobiliaria_pessoa','package/negocio/imobiliaria/pessoa'),
 		$entidadeID,
 		"Endereço",
 		$pessoa

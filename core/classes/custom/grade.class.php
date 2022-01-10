@@ -250,10 +250,10 @@ class Grade {
 		$idRegIndice 	= 1;
 		$registros		= array();
 		foreach($dataset as $dado){
-			$valores = array();
-			$array_campos_nome = $cabecalho["nome"];
-			$campos_dados = $campos_dados_reais = $campos_dados = array();
-			$i = $attrRel = $idRegistro = 0;
+			$valores			= array();
+			$array_campos_nome 	= $cabecalho["nome"];
+			$campos_dados 		= $campos_dados_reais = $campos_dados = array();
+			$i = $attrRel 		= $idRegistro = 0;
 			foreach($array_campos_nome as $c){
 				if ($camposfk[$i] != "0" && $camposfk[$i] != ""){
 					$entRel = tdClass::Criar("persistent",array(ENTIDADE,$camposfk[$i]));

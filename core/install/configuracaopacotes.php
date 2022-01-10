@@ -43,11 +43,11 @@
 										<div class="panel-body">
 											<div class="list-group">
 												<a href="#" class="list-group-item carregar-componentes" data-pacote="website" data-componente="geral">Geral</a>
-												<a href="#" class="list-group-item carregar-componentes" data-pacote="website" data-componente="institucional">Institucional</a>
+												<a href="#" class="list-group-item carregar-componentes disabled" data-pacote="website" data-componente="institucional">Institucional</a>
 												<a href="#" class="list-group-item carregar-componentes" data-pacote="website" data-componente="ecommerce">E-Commerce</a>
 												<a href="#" class="list-group-item carregar-componentes" data-pacote="website" data-componente="blog">Blog</a>
-												<a href="#" class="list-group-item carregar-componentes" data-pacote="website" data-componente="landpage">LandPage</a>
-												<a href="#" class="list-group-item carregar-componentes" data-pacote="website" data-componente="redesocial">Rede Social</a>
+												<a href="#" class="list-group-item carregar-componentes disabled" data-pacote="website" data-componente="landpage">LandPage</a>
+												<a href="#" class="list-group-item carregar-componentes disabled" data-pacote="website" data-componente="redesocial">Rede Social</a>
 											</div>
 										</div>
 									</div>
@@ -58,8 +58,8 @@
 										<div class="panel-body">
 											<div class="list-group">
 												<a href="#" class="list-group-item carregar-componentes" data-pacote="sistema" data-componente="erp">ERP - Enterprise Resource Planning</a>
-												<a href="#" class="list-group-item carregar-componentes" data-pacote="sistema" data-componente="crm">CRM - Customer Relationship Management</a>
-												<a href="#" class="list-group-item carregar-componentes" data-pacote="sistema" data-componente="bi">BI - Business Intelligence</a>								  								  
+												<a href="#" class="list-group-item carregar-componentes disabled" data-pacote="sistema" data-componente="crm">CRM - Customer Relationship Management</a>
+												<a href="#" class="list-group-item carregar-componentes disabled" data-pacote="sistema" data-componente="bi">BI - Business Intelligence</a>								  								  
 											</div>
 										</div>
 									</div>
@@ -111,7 +111,9 @@
 						url:"<?=$_SESSION["URL_MILES"]?>",
 						data:{
 							currentproject:<?=$_SESSION["currentproject"]?>,
-							controller:'install/componentes',
+							//controller:'install/componentes',
+							controller:'page',
+							page:'install/component',
 							package:package_selecionado,
 							component:modulo_selecionado
 						},
@@ -218,6 +220,7 @@
 					
 				}	
 				function instalarregistros(){
+					if (registros[indiceRegistro] == undefined) return false;
 					$.ajax({
 						url:"<?=$_SESSION['URL_MILES']?>",
 						type:"POST",

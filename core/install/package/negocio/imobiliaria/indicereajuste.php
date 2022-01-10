@@ -1,6 +1,6 @@
 <?php
 	// Setando variáveis
-	$entidadeNome = "erp_imobiliaria_indicereajuste";
+	$entidadeNome = "imobiliaria_indicereajuste";
 	$entidadeDescricao = "Índice de Reajuste";
 	// Criando Entidade
 	$entidadeID = criarEntidade(
@@ -22,7 +22,7 @@
 	// Criando Atributos
 	$descricao = criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar",200,0,3);
 	$anomesreferencia = criarAtributo($conn,$entidadeID,"anomesreferencia","Ano Mês de Referêcia","varchar",200,0,3);
-	$periodicidade = criarAtributo($conn,$entidadeID,"periodicidade","Periodicidade","Int",0,0,4,0,getEntidadeId("erp_imobiliaria_periodicidade",$conn));
+	$periodicidade = criarAtributo($conn,$entidadeID,"periodicidade","Periodicidade","Int",0,0,4,0,getEntidadeId("imobiliaria_periodicidade",$conn));
 	$valorindice = criarAtributo($conn,$entidadeID,"valorindice","Valor do Índice","float",0,0,13);
 	// Criando Acesso
 	$menu_webiste = addMenu($conn,'Geral','#','',0,0,'Geral');

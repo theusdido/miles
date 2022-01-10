@@ -32,7 +32,7 @@
 	);
 
 	$locatario	= $entidade->addAttr(
-		array("nome" => "locatario" , "descricao" => "Locatário" , "tipohtml" => "numero_inteiro" , "chave_estrangeira" => installDependencia("erp_geral_pessoa"))
+		array("nome" => "locatario" , "descricao" => "Locatário" , "tipohtml" => "numero_inteiro" , "chave_estrangeira" => installDependencia("erp_pessoa",'package/sistema/erp/pessoa/pessoa'))
 	);
 	
 	$endereco	= $entidade->addAttr(

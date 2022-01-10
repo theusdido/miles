@@ -1,6 +1,6 @@
 <?php
 	// Setando variáveis
-	$entidadeNome = "erp_imobiliaria_edficil";
+	$entidadeNome = "imobiliaria_edficil";
 	$entidadeDescricao = "Edfícil";
 	// Criando Entidade
 	$entidadeID = criarEntidade(
@@ -22,7 +22,7 @@
 	// Criando Atributos
 	$dataregistro = criarAtributo($conn,$entidadeID,"dataregistro","Data registro","date",0,0,11);
 	$nome = criarAtributo($conn,$entidadeID,"nome","Nome","varchar",200,0,3);
-	$enderecoedficil = criarAtributo($conn,$entidadeID,"enderecoedficil","Endereço do Edfícil","Int",0,0,4,0,getEntidadeId("erp_imobiliaria_enderecoedficil",$conn));
+	$enderecoedficil = criarAtributo($conn,$entidadeID,"enderecoedficil","Endereço do Edfícil","Int",0,0,4,0,getEntidadeId("imobiliaria_enderecoedficil",$conn));
 	
 	// Criando Acesso
 	$menu_webiste = addMenu($conn,'Geral','#','',0,0,'Geral');

@@ -30,4 +30,4 @@
 		$queryInsert = $conn->query($sqlInsert);
 	}
 
-	Transacao::Fechar();
+	Transacao::Commit();

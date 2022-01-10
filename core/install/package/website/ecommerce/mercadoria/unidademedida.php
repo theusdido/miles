@@ -1,7 +1,7 @@
 <?php
 	// Setando variáveis
-	$entidadeNome = "ecommerce_unidademedida";
-	$entidadeDescricao = "Unidade de Medida";
+	$entidadeNome 		= "ecommerce_unidademedida";
+	$entidadeDescricao 	= "Unidade de Medida";
 
 	// Criando Entidade
 	$entidadeID = criarEntidade(

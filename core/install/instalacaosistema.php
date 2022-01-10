@@ -152,9 +152,9 @@
 				componentes['aplicativo.dispositivo']		= 'aplicativo/dispositivo.php';
 				componentes['aplicativo.usuario'] 			= 'aplicativo/usuario.php';
 				// Geral
-				componentes['geral.mes']					= 'geral/mes.php';
-				componentes['geral.diasemana']				= 'geral/diasemana.php';
-				componentes['geral.feriado'] 				= 'geral/feriado.php';
+				componentes['geral.mes']					= 'geral/datas/mes.php';
+				componentes['geral.diasemana']				= 'geral/datas/diasemana.php';
+				componentes['geral.feriado'] 				= 'geral/datas/feriado.php';
 
 				var totalinstrucao = 0;
 				var progressaoatual = 0;

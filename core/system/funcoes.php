@@ -403,13 +403,14 @@ function retornar($str_var){
 	}
 }
 function isemail($email){
-	$conta = '/^[a-zA-Z0-9\._-]+?@';
-	$domino = '[a-zA-Z0-9_-]+?\.';
-	$gTLD = '[a-zA-Z]{2,6}'; //.com; .coop; .gov; .museum; etc.
-	$ccTLD = '((\.[a-zA-Z]{2,4}){0,1})$/'; //.br; .us; .scot; etc.
-	$pattern = $conta.$domino.$gTLD.$ccTLD;
- 
-	if (preg_match($pattern, $this->email))
+	
+	$conta 		= '/^[a-zA-Z0-9\._-]+?@';
+	$domino 	= '([a-zA-Z0-9_-]+?\.)*'; // dominio. ; subdominio.dominio. ;
+	$gTLD 		= '[a-zA-Z]{2,6}'; //.com; .coop; .gov; .museum; etc.
+	$ccTLD 		= '((\.[a-zA-Z]{2,4}){0,1})$/'; //.br; .us; .scot; etc.
+	$pattern 	= $conta.$domino.$gTLD.$ccTLD;
+	
+	if (preg_match($pattern, $email))
 		return true;
 	else
 		return false;
@@ -417,7 +418,11 @@ function isemail($email){
 
 function getExtensao($str){
 	$array = explode(".", $str);
-	return strtolower(end($array));
+	if (sizeof($array) > 1){
+		return strtolower(end($array));
+	}else{
+		return '';
+	}
 }
 function getUrl($url,$opcoes = null){
 	if ($opcoes != null){
@@ -625,16 +630,16 @@ function criarEntidade(
 	$criarinativo = true, #14
 	$tipoaba = 'tabs' #15
 ){
-
 	$nome 		= getSystemPREFIXO() . $nome;
 	$descricao 	= utf8charset($descricao);
-
+	
 	$sqlExisteEntidade = "SELECT id,nome FROM " . ENTIDADE . " WHERE nome='{$nome}'";
 	$queryExisteEntidade = $conn->query($sqlExisteEntidade);
 	if (!$queryExisteEntidade){
 		echo $sqlExisteEntidade;
 		var_dump($conn->errorInfo());
 	}
+	
 	$linhaExisteEntidade = $queryExisteEntidade->fetch();
 
 	if ($queryExisteEntidade->rowCount() <= 0){
@@ -644,6 +649,7 @@ function criarEntidade(
 		$entidade = $linhaExisteEntidade["id"];
 		$sql = "UPDATE ".ENTIDADE." SET nome = '{$nome}',descricao = '".$descricao."',exibirmenuadministracao = {$exibirmenuadministracao},exibircabecalho = {$exibircabecalho},ncolunas = {$ncolunas},atributogeneralizacao = {$atributogeneralizacao},exibirlegenda = {$exibirlegenda},registrounico = {$registrounico},carregarlibjavascript={$carregarlibjavascript}, tipoaba='{$tipoaba}' WHERE id = {$entidade}";
 	}
+	
 	$query = $conn->query($sql);
 	if (!$query){
 		echo $sql;
@@ -652,6 +658,7 @@ function criarEntidade(
 	}
 	$sqlExisteFisicamente = "SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE UPPER(TABLE_NAME) = UPPER('".$nome."') AND UPPER(TABLE_SCHEMA) = UPPER('".SCHEMA."')";
 	$queryExisteFisicamente = $conn->query($sqlExisteFisicamente);
+	
 	if ($queryExisteFisicamente->rowCount() <= 0){
 		$sql = "CREATE TABLE IF NOT EXISTS {$nome}(id int not null primary key) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
 		$query = $conn->query($sql);
@@ -672,10 +679,10 @@ function criarEntidade(
 	}
 	
 	if ($criarprojeto == 1){
-		criarAtributo($conn,$entidade,'projeto','Projeto','smallint',0,1,'16',0,installDependencia($conn,"projeto","system/projeto"),0,'session.projeto',1);
+		criarAtributo($conn,$entidade,'projeto','Projeto','smallint',0,1,'16',0,installDependencia("projeto","system/projeto"),0,'session.projeto',1);
 	}
 	if ($criarempresa == 1){
-		criarAtributo($conn,$entidade,'empresa','Empresa','smallint',0,1,'16',0,installDependencia($conn,"empresa","system/empresa"),0,'session.empresa',1);
+		criarAtributo($conn,$entidade,'empresa','Empresa','smallint',0,1,'16',0,installDependencia("empresa","system/empresa"),0,'session.empresa',1);
 	}
 	
 	if ($criarauth == 1){
@@ -684,7 +691,7 @@ function criarEntidade(
 	}
 	
 	if ($criarinativo){
-		criarAtributo($conn,$entidade,'inativo','Inativo','boolean',null,1,7);
+		criarAtributo($conn,$entidade,'inativo','Inativo','boolean',0,1,7);
 	}
 	return $entidade;
 }
@@ -826,6 +833,7 @@ function criarAtributo(
 	}
 	
 	ordenarAtributo($id);
+
 	return $id;
 }
 function getProxId($entidade,$conn = null){
@@ -1438,23 +1446,14 @@ function setAtributoGeneralizacao($conn,$entidade,$atributo){
 }
 
 // Inclui e instala uma entidade na instalação
-function installDependencia($conn,$entidade_nome_install = "",$package = "package/sistema/"){
-	// Se o primeiro parametro for uma string, passando o nome da entidade. Pega a conexão global
-	if (gettype($conn) == "string"){
-		if ($entidade_nome_install != ""){
-			$package = $entidade_nome_install;
-		}
-		$entidade_nome_install = $conn;
-		global $conn;
-	}
-
+function installDependencia($entidade_nome_install = "",$package = "package/sistema/"){
+	global $conn;
 	$pathfile = PATH_INSTALL . $package . ".php";
-	//var_dump($pathfile);
 	if (file_exists($pathfile)){	
 		include_once $pathfile;
 		return getEntidadeId($entidade_nome_install,$conn);
 	}else{
-		echo 'Arquivo não encotrado => ' . $pathfile . '<br/>\n';
+		echo 'Arquivo da entidade [ <b>'.$entidade_nome_install.'</b> ] não encotrado => ' . $pathfile . '<br/>\n';
 		return 0;
 	}
 }
@@ -1682,31 +1681,31 @@ function getTipoHTML($atributo,$entidade = null){
 	return $tipohtml;
 }
 function addCampoFormatadoDB($dados,$entidade){
-	if (is_object($dados)){
-	#	var_dump($dados->id);
-		
-		foreach($dados->toArray() as $key => $d){
-			echo $key . " => " . $entidade . " = ".getTipoHTML($key,$entidade)." <br/>";
-			#$tipohtml = getTipoHTML($key,$entidade);
-			#var_dump($tipohtml);
-	#		$tipohtml = getTipoHTML($key,$entidade);
-		}
+	// Entidade interna não precisa adicionar a formatação dos campos
+	// Futuramento criar um atributo para fazer esse controle
+	if ($entidade == RELACIONAMENTO){
+		return $dados;
 	}
 
 	foreach ($dados as $key => $value){
-		$tipohtml = getTipoHTML($key,$entidade);
-		$linha = array( $key => $value );
+		$tipohtml 	= getTipoHTML($key,$entidade);
+		$linha 		= array( $key => $value );
 		if ($tipohtml == 13 ){
 			$valorformatado = getHTMLTipoFormato( $tipohtml , $value );
 			$dados["formated_" . $key] = $valorformatado;
 		}else if ($tipohtml == 4 || $tipohtml == 22){
 			if (is_numeric_natural($value)){
-				$atributoOBJ 			= tdc::p(ATRIBUTO,getAtributoId($entidade,$key));			
+				$atributoOBJ 			= tdc::p(ATRIBUTO,getAtributoId($entidade,$key));		
 				$campodescdefault 		= tdc::p(ATRIBUTO,getCampoDescricaoDefault($atributoOBJ->chaveestrangeira));
-				$valorfk 				= is_numeric_natural($value)?$value:0;
-				$registro 				= getRegistro(null,tdc::p(ENTIDADE,$atributoOBJ->chaveestrangeira)->nome,$campodescdefault->nome, "id={$valorfk}" , "limit 1");
-				$dados[$key . "_desc"] 	= $registro[$campodescdefault->nome];
+				$dados[$key . "_obj"]	= tdc::pj(tdc::e($atributoOBJ->chaveestrangeira)->nome,$value);//tdc::dj($entidade,tdc::f('id','=',$value));	
+				if ($campodescdefault->hasData()){
+					$valorfk 				= is_numeric_natural($value)?$value:0;
+					$registro 				= getRegistro(null,tdc::p(ENTIDADE,$atributoOBJ->chaveestrangeira)->nome,$campodescdefault->nome, "id={$valorfk}" , "limit 1");
+					$dados[$key . "_desc"] 	= $registro[$campodescdefault->nome];					
+				}
 			}
+		}else if ($tipohtml == 19){
+			$dados[$key . '_src'] 		= URL_CURRENT_FILE . $key . '-' . getEntidadeId($entidade) . '-' . $dados['id'] . '.' . getExtensao($value);
 		}
 	}
 	return $dados;
@@ -1851,7 +1850,8 @@ function tdexplode($separador,$string,$returntype = "array"){
 }
 
 function getnocacheparams(){
-	return "nocahe=" . md5("td" . date("dmYHis"));
+	return '';
+	#return "nocahe=" . md5("td" . date("dmYHis"));
 }
 
 function getPHPVersion(){
@@ -2024,7 +2024,10 @@ function getSystemFKPreFixo($atributo = ""){
 */
 function ordenarAtributo($atributo){
 	$a = tdc::p(ATRIBUTO,$atributo);
+	
+	if (!$a->ordem) return false;
 	if ($a->ordem <= 0 || $a->ordem == ''){
+		var_dump($a->ordem);
 		switch($a->tipohtml){
 			case 16:
 				$ordem = 1;
@@ -2116,4 +2119,31 @@ function getTableName($tabela){
 */
 function loadPage($page){
 	return getURL(URL_MILES . 'index.php?controller=page&page=' . $page);
+}
+
+/*
+	* exists_lista
+	* Data de Criacao: 28/12/2021
+	* @author Edilson Valentim dos Santos Bitencourt (Theusdido)
+	* Verifica se existe um registro na lista
+	* PARAMETROS
+	*	@params: Inteiro entidadepai:"Entidade Pai"
+	*	@params: Inteiro entidadefilho:"Entidade Filho"
+	*	@params: Inteiro regpai:"Registro Pai"
+	*	@params: Inteiro regfilho:"Registro Filho"
+	* RETORNO
+	*	@return: Boolean
+*/
+function exists_lista($entidadepai,$entidadefilho,$regpai,$regfilho){	
+	$sql = tdClass::Criar("sqlcriterio");
+	$sql->addFiltro("entidadepai"	,"=",$entidadepai);
+	$sql->addFiltro("entidadefilho"	,"=",$entidadefilho);
+	$sql->addFiltro("regpai"		,"=",$regpai);
+	$sql->addFiltro("regfilho"		,"=",$regfilho);
+
+	if (tdClass::Criar("repositorio",array(LISTA))->quantia($sql) <= 0){
+		return false;
+	}else{
+		return true;
+	}
 }

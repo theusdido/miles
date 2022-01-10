@@ -21,9 +21,9 @@
 	);
 
 	// Criando Atributos
-	$imoveis = criarAtributo($conn,$entidadeID,"imovel","Imóvel","int",0,0,4,0,installDependencia($conn,"erp_imobiliaria_imovel"));
+	$imoveis = criarAtributo($conn,$entidadeID,"imovel","Imóvel","int",0,0,4,0,installDependencia("imobiliaria_imovel",'package/negocio/imobiliaria/imovel'));
 	$interessado = criarAtributo($conn,$entidadeID,"interessado","Interessado ?","tinyint",0,0,7);
-	$motivonaointerese = criarAtributo($conn,$entidadeID,"motivonaointerese","Motivo de Não Interesse","int",0,0,4,0,installDependencia($conn,"crm_imobiliaria_motivonaointeresse"));
+	$motivonaointerese = criarAtributo($conn,$entidadeID,"motivonaointerese","Motivo de Não Interesse","int",0,0,4,0,installDependencia("imobiliaria_motivonaointeresse",'package/negocio/imobiliaria/motivointeresse'));
 	$observacao = criarAtributo($conn,$entidadeID,"observacao","Observação","varchar",1000,0,3);
 
 	// Criando Acesso

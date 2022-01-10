@@ -1,7 +1,7 @@
 <?php
 	// Setando variáveis
-	$entidadeNome = "ecommerce_posicaogeralestoque";
-	$entidadeDescricao = "Posição Geral Estoque";
+	$entidadeNome 		= "ecommerce_posicaogeralestoque";
+	$entidadeDescricao 	= "Posição Geral Estoque";
 
 	// Criando Entidade
 	$entidadeID = criarEntidade(
@@ -21,7 +21,7 @@
 	);
 
 	// Criando Atributos
-	$produto 		= criarAtributo($conn,$entidadeID,"produto","Produto","int",0,0,22,1,installDependencia($conn,"ecommerce_produto","package/website/ecommerce/mercadoria/produto"));
+	$produto 		= criarAtributo($conn,$entidadeID,"produto","Produto","int",0,0,22,1,installDependencia("ecommerce_produto","package/website/ecommerce/mercadoria/produto"));
 	$saldo 			= criarAtributo($conn,$entidadeID,"saldo","Saldo","int",0,1,25,1);
 	$data 			= criarAtributo($conn,$entidadeID,"datahora","Data/Hora","datetime",0,1,23,1);
 
