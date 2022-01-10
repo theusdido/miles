@@ -1767,6 +1767,8 @@ function getCategoriaArquivo($filename){
 	switch(strtolower(getExtensao($filename))){
 		case 'jpg':
 		case 'jpeg':
+		case 'png':
+		case 'gif':
 			return "imagem";
 			break;
 		default:

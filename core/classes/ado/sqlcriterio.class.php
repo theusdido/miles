@@ -5,7 +5,7 @@ require_once PATH_ADO . 'sqlexpressao.class.php';
     * @license : Estilo Site Ltda.
     * @link http://www.estilosite.com.br
 		
-    * Classe que cria os critérios (filtros) de uma consulta SQL 
+    * Classe que cria os critÃ©rios (filtros) de uma consulta SQL 
     * Data de Criacao: 28/06/2012
     * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 */	
@@ -17,39 +17,39 @@ class SqlCriterio extends SqlExpressao {
 	public $propriedade;
 	
 	/*  
-		* Método Add
+		* MÃ©todo Add
 	    * Data de Criacao: 28/06/2012
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
-		Adiciona uma expressão ao critério
+		Adiciona uma expressÃ£o ao critÃ©rio
 		@parms $expressao (Objeto SqlExpressao)
-		@parms $operador Operador Lógico da expressão
+		@parms $operador Operador LÃ³gico da expressÃ£o
 		
 	*/		
 	public function add(SqlExpressao $expressao,$operador = self::E_OPERADOR){
-		// Na primeira vez não precisa de operador lógica para concatenar
+		// Na primeira vez nÃ£o precisa de operador lÃ³gica para concatenar
 		if (empty($this->expressao)){
 			unset($operador);
 		}
 		
-		// Vai dar um erro a primeira vez pois o mesmo não tem operador
+		// Vai dar um erro a primeira vez pois o mesmo nï¿½o tem operador
 		@$this->operador[] = $operador;
 		
-		// Agrega o resultado da expressão a lista de expressões
+		// Agrega o resultado da expressï¿½o a lista de expressï¿½es
 		$this->expressao[] = $expressao;
 		
 	}
 	
 	/*  
-		* Método Dump 
+		* MÃ©todo Dump 
 	    * Data de Criacao: 28/06/2012
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
-		Retorna a expressão final
+		Retorna a expressÃ£o final
 	*/		
 	public function dump(){
 		$result = "";
-		// Concatena a lista de expressões
+		// Concatena a lista de expressï¿½es
 		if (is_array($this->expressao)){
 			foreach($this->expressao as $i => $expressao){
 				$operador = $this->operador[$i];
@@ -57,7 +57,7 @@ class SqlCriterio extends SqlExpressao {
 				$aRetirar = array("'RETIRAR","RETIRAR'");
 				$dump = str_replace($aRetirar,"",$expressao->dump());
 				
-				// Concatena os operadores com a respectiva expressão
+				// Concatena os operadores com a respectiva expressï¿½o
 				$result .= $operador . $dump . ' ';
 			}
 			$result = trim($result);
@@ -66,7 +66,7 @@ class SqlCriterio extends SqlExpressao {
 	}
 
 	/*  
-		* Método setPropriedade 
+		* MÃ©todo setPropriedade 
 	    * Data de Criacao: 28/06/2012
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
@@ -79,7 +79,7 @@ class SqlCriterio extends SqlExpressao {
 	}
 	
 	/*  
-		* Método getPropriedade 
+		* MÃ©todo getPropriedade 
 	    * Data de Criacao: 28/06/2012
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
@@ -94,11 +94,11 @@ class SqlCriterio extends SqlExpressao {
 	}
 	
 	/*  
-		* Método addFiltro 
+		* MÃ©todo addFiltro 
 	    * Data de Criacao: 28/05/2015
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
-		Adiciona uma expressão sem precsar criar o objeto "sqlfiltro" na chamada do método
+		Adiciona uma expressÃ£o sem precsar criar o objeto "sqlfiltro" na chamada do mÃ©todo
 		@parms $atributo 
 		@parms $operador
 		@parms $valor
@@ -111,11 +111,11 @@ class SqlCriterio extends SqlExpressao {
 	}
 	
 	/*  
-		* Método isactive 
+		* MÃ©todo isactive 
 	    * Data de Criacao: 27/06/2020
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
-		Retorno um filtro padrão para listar apenas os registros ativos
+		Retorno um filtro padrï¿½o para listar apenas os registros ativos
 	*/		
 	public function isactive(){
 		$sql = tdClass::Criar("sqlcriterio");
@@ -128,17 +128,17 @@ class SqlCriterio extends SqlExpressao {
 	}
 	
 	/*  
-		* Método registrounico 
+		* MÃ©todo registrounico 
 	    * Data de Criacao: 27/06/2020
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
-		Retorno um filtro padrão para listar apenas um registro
+		Retorno um filtro padrï¿½o para listar apenas um registro
 	*/		
 	public function registrounico(){
 		$this->setPropriedade("limit",1);
 	}
 	/*  
-		* Método desc 
+		* MÃ©todo desc 
 	    * Data de Criacao: 27/06/2020
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
@@ -148,7 +148,7 @@ class SqlCriterio extends SqlExpressao {
 		$this->setPropriedade("order",$atributo . " DESC");
 	}
 	/*  
-		* Método asc 
+		* MÃ©todo asc 
 	    * Data de Criacao: 27/06/2020
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
@@ -157,4 +157,14 @@ class SqlCriterio extends SqlExpressao {
 	public function asc($atributo = "id"){
 		$this->setPropriedade("order",$atributo . " ASC");
 	}	
+	/*  
+		* MÃ©todo limit 
+	    * Data de Criacao: 15/12/2021
+	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
+
+		Limita a quantidade e a posiÃ§Ã£o inicial do registro
+	*/
+	public function limit($length,$init = 0){
+		$this->setPropriedade("limit","$init,$length");
+	}
 }

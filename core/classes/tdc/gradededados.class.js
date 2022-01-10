@@ -758,7 +758,7 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
 				switch(parseInt(td_atributo[idAtributo].tipohtml)){
 					case 7:
 						if (parseInt(valor) == 0){
-							valor = (td_atributo[idAtributo].labelzerocheckbox == ""?"Não":td_atributo[idAtributo].labelzerocheckbox);
+							valor = (td_atributo[idAtributo].labelzerocheckbox == ""?"Não":td_atributo[idAtributo].labelzerocheckbox.replace('NÃ£o','Não'));
 						}else if(parseInt(valor) == 1){
 							valor = (td_atributo[idAtributo].labelumcheckbox == ""?"Sim":td_atributo[idAtributo].labelumcheckbox);
 						}
