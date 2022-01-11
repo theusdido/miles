@@ -154,17 +154,17 @@ legend {
 	width:100%;
 	padding:10px;
 }
-.coluna{
+.tdform .coluna{
 	float:left;
 	padding-left:10px;
 }
-.coluna[data-ncolunas="1"]{
+.tdform .coluna[data-ncolunas="1"]{
 	width:53%;
 }	
-.coluna[data-ncolunas="2"]{
+.tdform .coluna[data-ncolunas="2"]{
 	width:43%;
 }	
-.coluna[data-ncolunas="3"]{
+.tdform .coluna[data-ncolunas="3"]{
 	width:33%;
 }	
 
@@ -244,7 +244,7 @@ legend {
 #menu .btn .caret,.pesquisa-grade .btn .caret{
 	margin-left:7px;
 }
-.coluna > .form-group > .input-group .input-group-btn .add_list{
+.tdform .coluna > .form-group > .input-group .input-group-btn .add_list{
     height: 30px;
 }
 .titulo-pagina{
@@ -274,16 +274,16 @@ border: 1px solid #ddd;
     width: 50px;
 	color:#337ab7;
 }
-.coluna[data-ncolunas="1"] > .form-group > select{
+.tdform .coluna[data-ncolunas="1"] > .form-group > select{
 	width:91%;
 }
-.coluna[data-ncolunas="2"] > .form-group > select{
+.tdform .coluna[data-ncolunas="2"] > .form-group > select{
 	width:92%;
 }
-.coluna[data-ncolunas="3"] > .form-group > select{
+.tdform .coluna[data-ncolunas="3"] > .form-group > select{
 	width:86%;
 }
-.coluna .form-group iframe{
+.tdform .coluna .form-group iframe{
 	float:left;
 	clear:left;
 	width:100%;
@@ -327,12 +327,12 @@ border: 1px solid #ddd;
 	float:left;
 	width:100%;
 }
-.coluna .form-group{
+.tdform .coluna .form-group{
 	height:50px;
 	width:100%;
 }
 
-.coluna .form-group .input-group{
+.tdform .coluna .form-group .input-group{
 	width:100%;
 	float:left;
 	clear:left;	

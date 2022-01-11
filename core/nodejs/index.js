@@ -58,9 +58,13 @@ app.get('/pesquisarextrato', cors(), function(req,res){
         let params          = url.parse(req.url, true).query;
 
         if (!is_empty(params.locador)){
-            filtros['proprietario.codigo'] = params.locador;
+            if (new RegExp('[0-9]+','g').exec(params.locador) == null){
+                filtros['proprietario.nome'] = eval('/' + params.locador + '/i');
+            }else{
+                filtros['proprietario.codigo'] = params.locador;
+            }
         }
-        
+
         let p_referencia = params['referencia[]'];
         if (!is_empty(p_referencia)){
             let referencia  = typeof p_referencia === 'string' ? [p_referencia] : p_referencia;
@@ -72,7 +76,7 @@ app.get('/pesquisarextrato', cors(), function(req,res){
         }
 
         if (!is_empty(params.pendente)){
-            filtros['cabecalho.pendente'] = params.pendente == 0 ? 'N' : 'Ss';
+            filtros['cabecalho.pendente'] = params.pendente == 0 ? 'N' : 'S';
         }
 
         if (!is_empty(params.dataliberacao)){
