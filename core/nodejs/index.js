@@ -112,7 +112,10 @@ app.get('/pesquisarextrato', cors(), function(req,res){
         // Filtro inativos
         filtros['cabecalho.inativo'] = false;
 
-        dbo.collection('extrato').find(filtros).toArray(function(err,result){
+        dbo.collection('extrato')
+        .find(filtros)
+        .sort({'proprietario.nome':1})
+        .toArray(function(err,result){
             retorno = result;
             resposta.json(retorno);
             res.end();
