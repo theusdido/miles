@@ -75,8 +75,8 @@ app.get('/pesquisarextrato', cors(), function(req,res){
             filtros['cabecalho.dia'] = params.diapagamento;
         }
 
-        if (!is_empty(params.pendente)){
-            filtros['cabecalho.pendente'] = params.pendente == 0 ? 'N' : 'S';
+        if (params.pendente == 1){
+            filtros['cabecalho.pendente'] = 'S';
         }
 
         if (!is_empty(params.dataliberacao)){
