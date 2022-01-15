@@ -1,4 +1,5 @@
 <?php
+
 	if (isset($_GET["controller"])){
 		if ($_GET["controller"] == "autentica"){
 			$login = tdc::r("login");
@@ -20,16 +21,27 @@
 				$sql->add($sqlCriterio2);
 				$dataset = tdClass::Criar("repositorio",array(USUARIO))->carregar($sql);
 				if ($dataset){
+					/*
 					$session = new stdClass;
-					$session->autenticado 		= true;
-					$session->userid 			= $dataset[0]->id;
-					$session->username	 		= $dataset[0]->nome;
-					$session->empresa			= 1;
+					$session->autenticado 				= true;
+					$session->userid 					= $dataset[0]->id;
+					$session->username	 				= $dataset[0]->nome;
+					$session->empresa					= 1;
 					
 					$session->permitirexclusao			= ($dataset[0]->permitirexclusao==""?0:$dataset[0]->permitirexclusao);
 					$session->permitirtrocarempresa		= ($dataset[0]->permitirtrocarempresa==""?0:$dataset[0]->permitirtrocarempresa);
-					$session->usergroup 				=  $dataset[0]->grupousuario;
+					$session->usergroup 				= $dataset[0]->grupousuario;
 					Session::set($session);
+					*/
+
+					Session::append('autenticado'				,true);
+					Session::append('userid'					,$dataset[0]->id);
+					Session::append('username'					,$dataset[0]->nome);
+					Session::append('empresa'					,1);
+					Session::append('permitirexclusao'			,$dataset[0]->permitirexclusao==""?0:$dataset[0]->permitirexclusao);
+					Session::append('permitirtrocarempresa'		,$dataset[0]->permitirtrocarempresa==""?0:$dataset[0]->permitirtrocarempresa);
+					Session::append('usergroup'					,$dataset[0]->grupousuario);
+
 
 					$retorno = array(
 						"error_code" => 0,

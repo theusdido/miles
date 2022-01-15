@@ -22,7 +22,7 @@
 	$systemview 		= '';
 	$customview			= '';
 
-	if ($controller == "gerarpagina" || tdClass::Read("key") == "k"){
+	if ($controller == "gerarcadastro" || tdClass::Read("key") == "k"){
 		if (file_exists($customcontroller)) include $customcontroller;
 		if (file_exists($systemcontroller)) include $systemcontroller;
 		exit;

@@ -1,8 +1,9 @@
 <?php
+
 	$entidade 		= tdc::e(tdc::r('entidade'));
 	$descricao_doc 	= $entidade->id . " - " . $entidade->descricao . "[ ".$entidade->nome." ]";
 	switch(tdc::r('op')){
-		case 'criarpagina':
+		case 'criarcadatro':
 			$path 		= PATH_FILES_CADASTRO . $entidade->id . "/";
 		break;
 		case 'criarconsulta':
@@ -16,6 +17,8 @@
 		break;
 	}
 
+	var_dump($_SESSION);
+	exit;
 	// Documentação
 	$datacriacaodoc = "* @Data de Criacao: ".date("d/m/Y H:i:s");
 	$authordoc 		= "* @Criado por: ".$_SESSION["username"].", @id: ".$_SESSION["userid"];
