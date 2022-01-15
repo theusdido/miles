@@ -356,4 +356,29 @@ abstract class Registro {
 	public function isUpdate(){
 		$this->isnew = false;
 	}
+
+	/*  
+		* Método append
+	    * Data de Criacao: 14/01/2022
+	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
+
+		Adiciona um registro caso não exista
+	*/
+	public function append($atributo,$operador,$valor){
+		$dataset = tdc::d($this->getEntidade(),tdc::f($atributo,$operador,$valor));
+		if (sizeof($dataset) <= 0 || $valor == ''){
+			
+			$entidade = tdc::p($this->getEntidade());		
+			if ($valor == ''){
+				$entidade->id = 0;
+			}else{
+				$entidade->{$atributo} = $valor;
+				$entidade->armazenar();
+			}
+			return $entidade;
+		}else{
+			$dataset[0]->isUpdate();
+			return $dataset[0];
+		}
+	}
 }

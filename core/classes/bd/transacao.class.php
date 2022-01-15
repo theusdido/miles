@@ -28,10 +28,10 @@ final class Transacao{
 		
 		Abre uma transação com o banco de dados
 		@parms $banco	
-	*/		
+	*/
 	public static function abrir($banco){
 		if (!empty(self::$conn)){
-			self::fechar(); // Encerra a conexão ativa caso existir
+			self::rollback(); // Encerra a conexão ativa caso existir
 		}
 
 		// Carrega o arquivo da classe de conexão com o banco de dados

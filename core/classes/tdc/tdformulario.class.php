@@ -37,7 +37,7 @@ class TdFormulario Extends Elemento {
 		$this->legenda 				= tdClass::Criar("legend");		
 		$this->class 				= "form-horizontal tdform";
 		$this->linhacampos 			= tdClass::Criar("div");
-		$this->linhacampos->class 	= "row-fluid form_campos";
+		$this->linhacampos->class 	= "row-fluid form_campos tdform";
 		$this->grupo_botoes			= tdc::html("div" , array("class" => "form-grupo-botao"));
 	}
 	/*  
