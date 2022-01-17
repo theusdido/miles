@@ -1,0 +1,855 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="edf50214-316d-46e7-81ff-d8980a339f22" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/Miles - WebService.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/config/current_config.inc" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/config/current_config.inc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/config/current_mysql.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/config/default_config.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/config/default_mysql.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/config/desenv_mysql.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/config/estilosite_mysql.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/config/homologacao_mysql.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/config/producao_mysql.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/debug.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/docs/TipoHTML.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/docs/TipoHTML.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/docs/TipoRELACIONAMENTO.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/docs/TipoRELACIONAMENTO.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/docs/criarEntidadePARAMETROS.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/docs/criarEntidadePARAMETROS.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/conexao.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/conexao.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/configuracaopacotes.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/configuracaopacotes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/criarbase.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/criarbase.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/guia.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/guia.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/head.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/head.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/instalacaosistema.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/instalacaosistema.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/componentes.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/componentes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/financeiro/contabancaria.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/financeiro/contabancaria.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/financeiro/contasapagar.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/financeiro/contasapagar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/financeiro/contasareceber.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/financeiro/contasareceber.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/financeiro/formapagamento.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/financeiro/formapagamento.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/geral/categoriaproduto.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/geral/email.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/geral/email.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/geral/foto.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/geral/foto.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/geral/nacionalidade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/geral/nacionalidade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/geral/pessoa.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/geral/pessoa.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/geral/pessoajuridica.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/geral/pessoajuridica.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/geral/produto.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/geral/profissao.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/geral/profissao.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/geral/telefone.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/geral/telefone.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/atendente.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/atendente.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/bairro.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/bairro.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/cidade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/cidade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/condicaopagamento.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/condicaopagamento.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/contrato.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/contrato.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/edficil.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/edficil.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/edficilendereco.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/edficilendereco.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/empresas.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/empresas.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/endereco.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/endereco.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/estado.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/estado.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/estadocivil.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/estadocivil.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/evento.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/evento.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/feriado.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/feriado.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/formapagamento.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/formapagamento.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/imovel.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/imovel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/imovelendereco.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/imovelendereco.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/imovelproprietario.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/imovelproprietario.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/iptu.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/iptu.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/mobiliado.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/mobiliado.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/motivoavisoentregaimovel.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/motivoavisoentregaimovel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/motivodesocupacao.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/motivodesocupacao.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/motivoexclusaoboletos.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/motivoexclusaoboletos.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/motivonaolocacao.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/motivonaolocacao.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/motivoretiradaimovel.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/motivoretiradaimovel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/movimentacaomensal.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/movimentacaomensal.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/movimentacaomensalevento.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/movimentacaomensalevento.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/movimentacaomensaltipoevento.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/movimentacaomensaltipoevento.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/operacaoevento.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/operacaoevento.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/operadoratelefone.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/operadoratelefone.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/operadorcaixa.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/operadorcaixa.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/pais.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/pais.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/periodicidade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/periodicidade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/pessoa.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/pessoa.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/pessoaendereco.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/pessoaendereco.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/pessoafisica.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/pessoafisica.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/profissao.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/profissao.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/ramoatividade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/ramoatividade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/tipochave.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/tipochave.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/tipodespesa.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/tipodespesa.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/tipodocumento.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/tipodocumento.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/tipodocumentoidentificacao.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/tipodocumentoidentificacao.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/tipoendereco.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/tipoendereco.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/tipoimovel.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/tipoimovel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/tipomoeda.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/tipomoeda.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/tipopessoa.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/tipopessoa.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/tipopiso.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/tipopiso.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/tipotelefone.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/tipotelefone.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/unidadeimovel.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/unidadeimovel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/unidadesimovel.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/sistema/erp/imobiliaria/unidadesimovel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/website/ecommerce/carrinhocompras.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/website/ecommerce/carrinhocompras.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/website/ecommerce/cliente.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/website/ecommerce/cliente.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/website/ecommerce/comissao.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/website/ecommerce/comissao.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/website/ecommerce/componentes.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/website/ecommerce/componentes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/website/ecommerce/pagseguro.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/website/ecommerce/pagseguro.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/website/ecommerce/pedido.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/website/ecommerce/pedido.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/website/ecommerce/pontuacao.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/website/ecommerce/pontuacao.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/website/ecommerce/produtovenda.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/website/ecommerce/representante.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/website/ecommerce/representante.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/website/ecommerce/tabelapreco.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/website/ecommerce/tabelapreco.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/website/ecommerce/taxaentrega.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/website/ecommerce/taxaentrega.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/website/geral/componentes.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/website/geral/componentes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/website/geral/newsletter.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/website/geral/newsletter.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/package/website/geral/slider.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/package/website/geral/slider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/system/abas.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/system/abas.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/system/atributo.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/system/atributo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/system/atributoFiltro.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/system/atributoFiltro.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/system/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/system/config.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/system/connectiondatabase.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/system/connectiondatabase.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/system/connectionftp.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/system/connectionftp.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/system/empresa.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/system/empresa.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/system/entidade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/system/entidade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/system/grupousuario.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/system/grupousuario.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/system/historicoatividade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/system/historicoatividade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/system/install.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/system/menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/system/menu.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/system/menuPermissoes.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/system/menuPermissoes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/system/projeto.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/system/projeto.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/system/relacionamento.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/system/relacionamento.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/system/status.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/system/status.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/system/tags.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/system/tags.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/system/tipoaviso.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/system/tipoaviso.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/system/typeconnectiondatabase.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/system/typeconnectiondatabase.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/install/system/usuario.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/install/system/usuario.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/bootstrap/3.3.1/css/bootstrap-theme.css" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/bootstrap/3.3.1/css/bootstrap-theme.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/bootstrap/3.3.1/css/bootstrap-theme.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/bootstrap/3.3.1/css/bootstrap-theme.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/bootstrap/3.3.1/css/bootstrap-theme.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/bootstrap/3.3.1/css/bootstrap-theme.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/bootstrap/3.3.1/css/bootstrap.css" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/bootstrap/3.3.1/css/bootstrap.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/bootstrap/3.3.1/css/bootstrap.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/bootstrap/3.3.1/css/bootstrap.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/bootstrap/3.3.1/css/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/bootstrap/3.3.1/css/bootstrap.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/bootstrap/3.3.1/fonts/glyphicons-halflings-regular.eot" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/bootstrap/3.3.1/fonts/glyphicons-halflings-regular.eot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/bootstrap/3.3.1/fonts/glyphicons-halflings-regular.svg" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/bootstrap/3.3.1/fonts/glyphicons-halflings-regular.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/bootstrap/3.3.1/fonts/glyphicons-halflings-regular.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/bootstrap/3.3.1/fonts/glyphicons-halflings-regular.ttf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/bootstrap/3.3.1/fonts/glyphicons-halflings-regular.woff" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/bootstrap/3.3.1/fonts/glyphicons-halflings-regular.woff" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/CHANGES.md" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/CHANGES.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/LICENSE.md" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/LICENSE.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/adapters/jquery.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/adapters/jquery.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/build-config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/ckeditor.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/ckeditor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/contents.css" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/contents.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/af.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/af.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/ar.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/ar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/bg.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/bg.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/bn.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/bn.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/bs.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/bs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/ca.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/ca.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/cs.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/cs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/cy.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/cy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/da.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/da.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/de.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/de.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/el.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/el.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/en-au.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/en-au.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/en-ca.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/en-ca.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/en-gb.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/en-gb.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/en.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/en.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/eo.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/eo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/es.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/es.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/et.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/et.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/eu.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/eu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/fa.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/fa.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/fi.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/fi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/fo.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/fo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/fr-ca.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/fr-ca.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/fr.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/fr.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/gl.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/gl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/gu.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/gu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/he.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/he.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/hi.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/hi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/hr.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/hr.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/hu.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/hu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/id.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/id.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/is.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/is.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/it.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/it.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/ja.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/ja.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/ka.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/ka.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/km.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/km.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/ko.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/ko.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/ku.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/ku.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/lt.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/lt.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/lv.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/lv.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/mk.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/mk.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/mn.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/mn.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/ms.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/ms.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/nb.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/nb.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/nl.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/nl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/no.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/no.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/pl.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/pl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/pt-br.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/pt-br.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/pt.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/pt.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/ro.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/ro.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/ru.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/ru.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/si.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/si.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/sk.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/sk.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/sl.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/sl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/sq.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/sq.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/sr-latn.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/sr-latn.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/sr.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/sr.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/sv.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/sv.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/th.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/th.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/tr.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/tr.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/tt.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/tt.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/ug.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/ug.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/uk.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/uk.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/vi.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/vi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/zh-cn.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/zh-cn.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/zh.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/lang/zh.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/a11yhelp.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/a11yhelp.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/_translationstatus.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/_translationstatus.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/af.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/af.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/ar.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/ar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/bg.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/bg.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/ca.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/ca.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/cs.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/cs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/cy.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/cy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/da.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/da.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/de.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/de.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/el.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/el.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/en-gb.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/en-gb.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/en.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/en.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/eo.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/eo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/es.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/es.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/et.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/et.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/fa.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/fa.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/fi.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/fi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/fr-ca.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/fr-ca.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/fr.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/fr.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/gl.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/gl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/gu.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/gu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/he.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/he.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/hi.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/hi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/hr.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/hr.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/hu.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/hu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/id.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/id.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/it.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/it.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/ja.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/ja.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/km.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/km.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/ko.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/ko.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/ku.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/ku.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/lt.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/lt.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/lv.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/lv.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/mk.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/mk.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/mn.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/mn.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/nb.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/nb.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/nl.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/nl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/no.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/no.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/pl.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/pl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/pt-br.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/pt-br.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/pt.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/pt.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/ro.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/ro.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/ru.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/ru.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/si.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/si.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/sk.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/sk.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/sl.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/sl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/sq.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/sq.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/sr-latn.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/sr-latn.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/sr.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/sr.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/sv.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/sv.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/th.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/th.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/tr.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/tr.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/tt.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/tt.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/ug.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/ug.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/uk.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/uk.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/vi.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/vi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/zh-cn.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/zh-cn.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/zh.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/a11yhelp/dialogs/lang/zh.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/about/dialogs/about.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/about/dialogs/about.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/about/dialogs/hidpi/logo_ckeditor.png" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/about/dialogs/hidpi/logo_ckeditor.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/about/dialogs/logo_ckeditor.png" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/about/dialogs/logo_ckeditor.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/clipboard/dialogs/paste.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/clipboard/dialogs/paste.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/dialog/dialogDefinition.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/dialog/dialogDefinition.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/icons.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/icons_hidpi.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/image/dialogs/image.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/image/dialogs/image.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/image/images/noimage.png" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/image/images/noimage.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/link/dialogs/anchor.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/link/dialogs/anchor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/link/dialogs/link.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/link/dialogs/link.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/link/images/anchor.png" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/link/images/anchor.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/link/images/hidpi/anchor.png" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/link/images/hidpi/anchor.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/pastefromword/filter/default.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/pastefromword/filter/default.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/scayt/LICENSE.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/scayt/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/scayt/dialogs/options.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/scayt/dialogs/toolbar.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/_translationstatus.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/_translationstatus.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/af.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/af.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/ar.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/ar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/bg.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/bg.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/ca.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/ca.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/cs.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/cs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/cy.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/cy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/da.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/da.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/de.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/de.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/el.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/el.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/en-gb.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/en-gb.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/en.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/en.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/eo.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/eo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/es.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/es.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/et.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/et.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/fa.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/fa.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/fi.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/fi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/fr-ca.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/fr-ca.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/fr.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/fr.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/gl.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/gl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/he.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/he.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/hr.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/hr.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/hu.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/hu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/id.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/id.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/it.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/it.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/ja.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/ja.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/km.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/km.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/ku.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/ku.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/lt.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/lt.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/lv.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/lv.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/nb.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/nb.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/nl.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/nl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/no.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/no.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/pl.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/pl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/pt-br.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/pt-br.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/pt.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/pt.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/ru.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/ru.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/si.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/si.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/sk.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/sk.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/sl.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/sl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/sq.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/sq.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/sv.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/sv.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/th.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/th.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/tr.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/tr.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/tt.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/tt.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/ug.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/ug.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/uk.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/uk.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/vi.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/vi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/zh-cn.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/zh-cn.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/zh.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/lang/zh.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/specialchar.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/specialchar/dialogs/specialchar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/table/dialogs/table.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/table/dialogs/table.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/tabletools/dialogs/tableCell.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/tabletools/dialogs/tableCell.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/wsc/LICENSE.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/wsc/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/wsc/dialogs/ciframe.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/wsc/dialogs/tmpFrameset.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/wsc/dialogs/wsc.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/wsc/dialogs/wsc.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/plugins/wsc/dialogs/wsc_ie.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/samples/ajax.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/samples/api.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/samples/appendto.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/samples/assets/inlineall/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/samples/assets/outputxhtml/outputxhtml.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/samples/assets/posteddata.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/samples/assets/sample.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/samples/assets/uilanguages/languages.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/samples/datafiltering.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/samples/divreplace.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/samples/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/samples/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/samples/inlineall.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/samples/inlinebycode.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/samples/inlinetextarea.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/samples/jquery.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/samples/plugins/dialog/assets/my_dialog.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/samples/plugins/dialog/dialog.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/samples/plugins/enterkey/enterkey.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/samples/plugins/htmlwriter/assets/outputforflash/outputforflash.fla" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/samples/plugins/htmlwriter/assets/outputforflash/outputforflash.swf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/samples/plugins/htmlwriter/assets/outputforflash/swfobject.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/samples/plugins/htmlwriter/outputforflash.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/samples/plugins/htmlwriter/outputhtml.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/samples/plugins/magicline/magicline.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/samples/plugins/toolbar/toolbar.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/samples/plugins/wysiwygarea/fullpage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/samples/readonly.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/samples/replacebyclass.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/samples/replacebycode.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/samples/sample.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/samples/sample.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/samples/sample_posteddata.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/samples/tabindex.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/samples/uicolor.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/samples/uilanguages.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/samples/xhtmlstyle.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/skins/moono/dialog.css" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/skins/moono/dialog.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/skins/moono/dialog_ie.css" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/skins/moono/dialog_ie.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/skins/moono/dialog_ie7.css" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/skins/moono/dialog_ie7.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/skins/moono/dialog_ie8.css" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/skins/moono/dialog_ie8.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/skins/moono/dialog_iequirks.css" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/skins/moono/dialog_iequirks.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/skins/moono/editor.css" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/skins/moono/editor.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/skins/moono/editor_gecko.css" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/skins/moono/editor_gecko.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/skins/moono/editor_ie.css" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/skins/moono/editor_ie.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/skins/moono/editor_ie7.css" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/skins/moono/editor_ie7.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/skins/moono/editor_ie8.css" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/skins/moono/editor_ie8.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/skins/moono/editor_iequirks.css" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/skins/moono/editor_iequirks.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/skins/moono/icons.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/skins/moono/icons_hidpi.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/skins/moono/images/close.png" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/skins/moono/images/close.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/skins/moono/images/hidpi/close.png" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/skins/moono/images/hidpi/close.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/skins/moono/images/hidpi/lock-open.png" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/skins/moono/images/hidpi/lock-open.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/skins/moono/images/hidpi/lock.png" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/skins/moono/images/hidpi/lock.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/skins/moono/images/hidpi/refresh.png" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/skins/moono/images/hidpi/refresh.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/skins/moono/images/lock-open.png" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/skins/moono/images/lock-open.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/skins/moono/images/lock.png" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/skins/moono/images/lock.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/skins/moono/images/refresh.png" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/skins/moono/images/refresh.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/skins/moono/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/skins/moono/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/ckeditor/styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/ckeditor/styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/jquery/multizoom/multizoom.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/jquery/multizoom/multizoom.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/lib/phpmailer/PHPMailerAutoload.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/lib/phpmailer/PHPMailerAutoload.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/1/files/cadastro/2/td_projeto.html" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/projects/1/files/cadastro/2/td_projeto.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/1/files/cadastro/2/td_projeto.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/projects/1/files/cadastro/2/td_projeto.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/1/tema/padrao/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/projects/1/tema/padrao/logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/1/tema/padrao/rodape.png" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/projects/1/tema/padrao/rodape.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/10/controller/AndroidPusher.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/projects/10/controller/AndroidPusher.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/10/controller/push.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/projects/10/controller/push.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/10/files/cadastro/48/td_resultadoexame.html" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/projects/10/files/cadastro/48/td_resultadoexame.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/10/files/cadastro/48/td_resultadoexame.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/projects/10/files/cadastro/48/td_resultadoexame.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/10/files/cadastro/66/td_agendarvacina.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/projects/10/files/cadastro/66/td_agendarvacina.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/10/files/cadastro/67/td_agendarbanhotosa.html" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/projects/10/files/cadastro/67/td_agendarbanhotosa.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/10/files/cadastro/67/td_agendarbanhotosa.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/projects/10/files/cadastro/67/td_agendarbanhotosa.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/12/controller/ofertaimoveis.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/projects/12/controller/ofertaimoveis.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/14/files/cadastro/1/td_projeto.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/14/files/cadastro/1/td_projeto.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/14/files/cadastro/2/td_projeto.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/14/files/cadastro/2/td_projeto.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/14/files/cadastro/47/td_connectionftp.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/14/files/cadastro/47/td_connectionftp.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/14/files/cadastro/48/td_erp_financeiro_formapagamento.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/14/files/cadastro/48/td_erp_financeiro_formapagamento.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/14/files/cadastro/49/td_erp_financeiro_contasapagar.html" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/projects/14/files/cadastro/49/td_erp_financeiro_contasapagar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/14/files/cadastro/50/td_erp_contabil_elementocusto.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/14/files/cadastro/50/td_erp_contabil_elementocusto.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/14/files/cadastro/51/td_erp_contabil_centrocusto.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/14/files/cadastro/51/td_erp_contabil_centrocusto.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/14/files/cadastro/52/td_erp_financeiro_contasareceber.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/14/files/cadastro/52/td_erp_financeiro_contasareceber.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/14/files/cadastro/53/td_produto.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/14/files/cadastro/53/td_produto.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/14/files/cadastro/55/td_erp_geral_pessoa.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/14/files/cadastro/55/td_erp_geral_pessoa.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/2/controller/arquivosassembleia.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/projects/2/controller/arquivosassembleia.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/2/controller/edital.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/projects/2/controller/edital.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/2/controller/envioardigital.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/projects/2/controller/envioardigital.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/2/controller/excluircredores.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/projects/2/controller/excluircredores.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/2/controller/gerarardigital.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/projects/2/controller/gerarardigital.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/2/controller/gerarcapa.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/projects/2/controller/gerarcapa.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/2/controller/gerarcomunicacao.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/projects/2/controller/gerarcomunicacao.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/2/controller/habilitacaodivergencia.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/projects/2/controller/habilitacaodivergencia.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/2/controller/importarRelacaoCredoresExecel.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/projects/2/controller/importarRelacaoCredoresExecel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/2/controller/impressaocomunicacao.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/projects/2/controller/impressaocomunicacao.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/2/controller/impressaoedital.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/projects/2/controller/impressaoedital.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/2/files/cadastro/43/td_origemcredor.html" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/projects/2/files/cadastro/43/td_origemcredor.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/3/controller/conciliarcelesc.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/projects/3/controller/conciliarcelesc.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/3/controller/integracaocelesc.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/projects/3/controller/integracaocelesc.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/4/config/current_config.inc" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/projects/4/config/current_config.inc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/4/config/current_mysql.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/4/config/default_config.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/4/config/default_mysql.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/4/config/desenv_mysql.ini" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/projects/4/config/desenv_mysql.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/4/config/estilosite_mysql.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/4/config/homologacao_mysql.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/4/config/log-mdm.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/4/config/log.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/4/files/page/43/td_ligamosdevolta.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/4/files/page/43/td_ligamosdevolta.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/4/files/page/44/td_post.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/4/files/page/44/td_post.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/4/tema/padrao/geral.css" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/projects/4/tema/padrao/geral.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/projects/6/files/page/91/td_operacaoestoque.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/projects/6/files/page/91/td_operacaoestoque.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/classes/ado/sqlatualizar.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/classes/ado/sqlatualizar.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/classes/ado/sqlcriterio.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/classes/ado/sqlcriterio.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/classes/ado/sqldeletar.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/classes/ado/sqldeletar.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/classes/ado/sqlfiltro.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/classes/ado/sqlfiltro.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/classes/ado/sqlinserir.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/classes/ado/sqlinserir.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/classes/bd/conexao.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/classes/bd/conexao.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/classes/bd/logger.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/classes/bd/logger.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/classes/bd/persistent.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/classes/bd/persistent.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/classes/bd/registro.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/classes/bd/registro.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/classes/bd/repositorio.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/classes/bd/repositorio.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/classes/bd/transacao.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/classes/bd/transacao.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/classes/tdc/AutoLoad.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/classes/tdc/AutoLoad.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/classes/tdc/campos.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/classes/tdc/campos.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/classes/tdc/debug.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/classes/tdc/debug.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/classes/tdc/elemento.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/classes/tdc/elemento.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/classes/tdc/gradededados.class.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/classes/tdc/gradededados.class.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/classes/tdc/install.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/classes/tdc/layout.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/classes/tdc/layout.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/classes/tdc/menu.class.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/classes/tdc/menu.class.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/classes/tdc/pagina.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/classes/tdc/pagina.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/classes/tdc/pesquisa.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/classes/tdc/pesquisa.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/classes/tdc/session.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/classes/tdc/session.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/classes/tdc/tdclass.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/classes/tdc/tdclass.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/classes/tdc/tdformulario.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/classes/tdc/tdformulario.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/classes/widgets/bootstrap/modal.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/classes/widgets/bootstrap/modal.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/classes/widgets/bootstrap/panel.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/classes/widgets/bootstrap/panel.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/classes/widgets/tfooter.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/config.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/controller/JSinicial.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/controller/JSinicial.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/controller/autentica.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/controller/autentica.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/controller/aviso.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/controller/aviso.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/controller/backup.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/controller/backup.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/controller/chamado.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/controller/chamado.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/controller/crud/add.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/controller/crud/add.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/controller/crud/agregacao11.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/controller/crud/agregacao11.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/controller/crud/agregacao1N.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/controller/crud/agregacao1N.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/controller/crud/agregacaoNN.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/controller/crud/agregacaoNN.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/controller/crud/composicao11.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/controller/crud/composicao11.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/controller/crud/composicao1N.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/controller/crud/composicao1N.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/controller/crud/composicaoNN.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/controller/crud/composicaoNN.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/controller/crud/formulario.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/controller/crud/formulario.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/controller/crud/generalizacao11.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/controller/crud/generalizacao11.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/controller/crud/generalizacao1N.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/controller/crud/generalizacao1N.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/controller/crud/generalizacaoMultipla11.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/controller/crud/generalizacaoMultipla11.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/controller/crud/relacionamento.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/controller/crud/relacionamento.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/controller/editor.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/controller/editor.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/controller/editor/editor.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/controller/editor/editor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/controller/editor/salvareditor.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/controller/editor/salvareditor.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/controller/enderecofiltro.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/controller/enderecofiltro.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/controller/excluirregistros.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/controller/excluirregistros.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/controller/executaSQL.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/controller/executaSQL.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/controller/favorito.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/controller/favorito.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/controller/gerarconsulta.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/controller/gerarconsulta.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/controller/gerarmovimentacao.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/controller/gerarmovimentacao.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/controller/gerarpagina.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/controller/gerarpagina.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/controller/gerarrelatorio.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/controller/gerarrelatorio.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/controller/gradededados.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/controller/gradededados.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/controller/headersystem.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/controller/headersystem.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/controller/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/controller/home.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/controller/info.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/controller/info.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/controller/loadform.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/controller/loadform.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/controller/logo.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/controller/logo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/controller/logon.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/controller/logon.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/controller/logout.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/controller/logout.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/controller/menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/controller/menu.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/controller/relatorio.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/controller/relatorio.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/controller/requisicoes.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/controller/requisicoes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/controller/rodape.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/controller/rodape.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/controller/salvarform.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/controller/salvarform.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/controller/teste/instalacao.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/controller/teste/instalacao.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/controller/upload.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/controller/upload.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/controller/website/ecommerce/pedido.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/controller/website/ecommerce/pedido.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/formulario.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/formulario.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/funcoes.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/funcoes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/funcoes.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/funcoes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/mdm/acoes.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/mdm/acoes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/mdm/atualizar.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/mdm/atualizar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/mdm/cabecalho.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/mdm/cabecalho.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/mdm/conexao.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/mdm/conexao.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/mdm/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/mdm/config.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/mdm/criarAba.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/mdm/criarAba.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/mdm/criarAcoes.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/mdm/criarAcoes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/mdm/criarAtributo.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/mdm/criarAtributo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/mdm/criarConsulta.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/mdm/criarConsulta.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/mdm/criarEntidade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/mdm/criarEntidade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/mdm/criarMenucrud.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/mdm/criarMenucrud.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/mdm/criarRelacionamento.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/mdm/criarRelacionamento.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/mdm/criarRelatorio.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/mdm/criarRelatorio.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/mdm/deleteAtributo.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/mdm/deleteAtributo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/mdm/excluirEntidade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/mdm/excluirEntidade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/mdm/filtroAtributo.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/mdm/filtroAtributo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/mdm/gerarConsulta.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/mdm/gerarConsulta.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/mdm/gerarMovimentacao.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/mdm/gerarMovimentacao.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/mdm/gerarPagina.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/mdm/gerarPagina.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/mdm/gerarRelatorio.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/mdm/gerarRelatorio.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/mdm/head.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/mdm/head.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/mdm/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/mdm/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/mdm/listarAtributo.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/mdm/listarAtributo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/mdm/listarConsulta.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/mdm/listarConsulta.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/mdm/listarEntidade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/mdm/listarEntidade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/mdm/listarRelatorio.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/mdm/listarRelatorio.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/mdm/log.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/mdm/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/mdm/menu_entidade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/mdm/menu_entidade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/mdm/menu_topo.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/mdm/menu_topo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/mdm/menutopohome.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/mdm/menutopohome.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/mdm/permissoes.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/mdm/permissoes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/rota.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/rota.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/tema/padrao/editor.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/tema/padrao/geral.css" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/tema/padrao/geral.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/tema/padrao/geral.css.bak" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/validar.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/validar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/view/autentica.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/view/autentica.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/view/executaSQL.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sistema/system/view/executaSQL.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/view/home.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/system/view/logo.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/view/home.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sistema/view/logo.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/.htaccess" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/components/bootstrap-slider-default/bootstrap-slider-default.tpl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/components/bootstrap-slider-default/slide1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/components/bootstrap-slider-default/slide2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/components/bootstrap-slider-default/slide3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/components/footer-default/footer-default.tpl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/components/grid-product/grid-product.tpl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/components/grid-product/produto1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/components/grid-product/produto2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/components/grid-product/produto3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/components/grid-product/produto4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/components/grid-product/produto5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/components/grid-product/produto6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/components/grid-product/produto7.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/components/grid-product/produto8.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/components/head/head.tpl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/components/menu-footer/menu-footer.tpl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/components/menu-footer/menu-footer.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/components/newsletter-default/newsletter-default.tpl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/components/scripts/scripts.tpl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/components/top-banner-static/anuncio1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/components/top-banner-static/anuncio2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/components/top-banner-static/top-banner-static.tpl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/components/top-form-authentication/top-form-authentication.tpl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/components/top-logo/top-logo.tpl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/components/top-menu-horizontal/top-menu-horizontal.tpl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/components/top-shopping-cart/top-shopping-cart.tpl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/composer.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/composer.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/core/Estrutura.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/core/Init.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/core/controllers/Index.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/core/views/index/empresa.phtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/core/views/index/home.phtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/core/views/layout.phtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/estrutura.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/../site/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/layouts/tdc-ecommerce-categoria.tpl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/layouts/tdc-ecommerce-padrao.tpl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/bootstrap/3.3.1/css/bootstrap-theme.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/bootstrap/3.3.1/css/bootstrap-theme.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/bootstrap/3.3.1/css/bootstrap-theme.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/bootstrap/3.3.1/css/bootstrap.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/bootstrap/3.3.1/css/bootstrap.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/bootstrap/3.3.1/css/bootstrap.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/bootstrap/3.3.1/fonts/glyphicons-halflings-regular.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/bootstrap/3.3.1/fonts/glyphicons-halflings-regular.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/bootstrap/3.3.1/fonts/glyphicons-halflings-regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/bootstrap/3.3.1/fonts/glyphicons-halflings-regular.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/bootstrap/3.3.1/js/bootstrap-button.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/bootstrap/3.3.1/js/bootstrap.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/bootstrap/3.3.1/js/bootstrap.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/bootstrap/3.3.1/js/npm.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/filestyle/css/jquery-filestyle.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/filestyle/css/jquery-filestyle.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/filestyle/img/Thumbs.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/filestyle/img/glyphicons-halflings-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/filestyle/img/glyphicons-halflings.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/filestyle/js/jquery-filestyle.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/filestyle/js/jquery-filestyle.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/jquery-bootbox.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/jquery-upload-file-master/MIT-License.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/jquery-upload-file-master/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/jquery-upload-file-master/css/uploadfile.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/jquery-upload-file-master/css/uploadfile.custom.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/jquery-upload-file-master/demo/demo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/jquery-upload-file-master/js/jquery.uploadfile.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/jquery-upload-file-master/js/jquery.uploadfile.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/jquery-upload-file-master/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/jquery-upload-file-master/php/delete.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/jquery-upload-file-master/php/download.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/jquery-upload-file-master/php/load.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/jquery-upload-file-master/php/upload.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/jquery-upload-file-master/uploadfile.jquery.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/jquery.ajb.allpages.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/jquery.ajb.subpages.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/jquery.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/jquery.mask.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/jquery.maskMoney.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/jquery.payment-master/.github/CONTRIBUTING.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/jquery.payment-master/.github/ISSUE_TEMPLATE.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/jquery.payment-master/.github/PULL_REQUEST_TEMPLATE.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/jquery.payment-master/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/jquery.payment-master/.travis.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/jquery.payment-master/Cakefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/jquery.payment-master/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/jquery.payment-master/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/jquery.payment-master/bower.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/jquery.payment-master/example/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/jquery.payment-master/lib/jquery.payment.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/jquery.payment-master/lib/jquery.payment.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/jquery.payment-master/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/jquery.payment-master/payment.jquery.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/jquery.payment-master/src/jquery.payment.coffee" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/jquery.payment-master/test/jquery.coffee" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/jquery.payment-master/test/specs.coffee" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/jquery.payment-master/test/zepto.coffee" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/multizoom/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/multizoom/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/multizoom/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/multizoom/angelina.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/multizoom/angelina_tmb.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/multizoom/angelinasmall.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/multizoom/featuredimagezoomer.jquery.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/multizoom/hayden.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/multizoom/hayden_tmb.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/multizoom/haydensmall.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/multizoom/index.htm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/multizoom/jaguar.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/multizoom/jaguar_tmb.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/multizoom/jaguarsmall.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/multizoom/listen_tmb.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/multizoom/listenmusic.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/multizoom/listenmusic_thumb.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/multizoom/milla.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/multizoom/milla_tmb.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/multizoom/millasmall.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/multizoom/multizoom.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/multizoom/multizoom.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/multizoom/saleen.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/multizoom/saleen_tmb.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/multizoom/saleensmall.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/multizoom/spinningred.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/shortcut/Documentação.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/shortcut/shortcut.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/sumoselect/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/sumoselect/bower.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/sumoselect/jquery.sumoselect.jquery.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/sumoselect/jquery.sumoselect.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/sumoselect/jquery.sumoselect.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/sumoselect/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/sumoselect/select_responsive.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/sumoselect/sumoselect.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/ui/external/jquery/jquery.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/ui/images/ui-bg_diagonals-thick_18_b81900_40x40.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/ui/images/ui-bg_diagonals-thick_20_666666_40x40.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/ui/images/ui-bg_flat_0_aaaaaa_40x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/ui/images/ui-bg_flat_10_000000_40x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/ui/images/ui-bg_flat_55_fbec88_40x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/ui/images/ui-bg_glass_100_f6f6f6_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/ui/images/ui-bg_glass_100_fdf5ce_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/ui/images/ui-bg_glass_65_ffffff_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/ui/images/ui-bg_glass_75_d0e5f5_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/ui/images/ui-bg_glass_85_dfeffc_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/ui/images/ui-bg_glass_95_fef1ec_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/ui/images/ui-bg_gloss-wave_35_f6a828_500x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/ui/images/ui-bg_gloss-wave_55_5c9ccc_500x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/ui/images/ui-bg_highlight-soft_100_eeeeee_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/ui/images/ui-bg_highlight-soft_75_ffe45c_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/ui/images/ui-bg_inset-hard_100_f5f8f9_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/ui/images/ui-bg_inset-hard_100_fcfdfd_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/ui/images/ui-icons_217bc0_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/ui/images/ui-icons_222222_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/ui/images/ui-icons_228ef1_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/ui/images/ui-icons_2e83ff_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/ui/images/ui-icons_469bdd_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/ui/images/ui-icons_6da8d5_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/ui/images/ui-icons_cd0a0a_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/ui/images/ui-icons_d8e7f3_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/ui/images/ui-icons_ef8c08_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/ui/images/ui-icons_f9bd01_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/ui/images/ui-icons_ffd27a_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/ui/images/ui-icons_ffffff_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/ui/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/ui/jquery-ui.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/ui/jquery-ui.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/ui/jquery-ui.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/ui/jquery-ui.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/ui/jquery-ui.structure.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/ui/jquery-ui.structure.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/ui/jquery-ui.theme.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/lib/jquery/ui/jquery-ui.theme.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/resources/images/-background.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/resources/images/background.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/resources/images/favicon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/resources/images/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/themes/tdc-ecommerce-padrao.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/themes/tdc-ecommerce-padrao.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/vendor/autoload.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/vendor/composer/ClassLoader.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/vendor/composer/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/vendor/composer/autoload_classmap.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/vendor/composer/autoload_namespaces.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/vendor/composer/autoload_psr4.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/vendor/composer/autoload_real.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/vendor/composer/autoload_static.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/vendor/composer/installed.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/vendor/tdc/init/Rotas.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/vendor/tdc/layout.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/vendor/tdc/template.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/vendor/tdc/theme.php" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1h9xkjo1UYBvkYTbpwtiPLgtu5f" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="edf50214-316d-46e7-81ff-d8980a339f22" name="Default Changelist" comment="" />
+      <created>1599437253428</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1599437253428</updated>
+      <workItem from="1599437254446" duration="4847000" />
+      <workItem from="1600259044690" duration="7080000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="516" y="287" key="NewPhpFileDialog" timestamp="1600259136305">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="516" y="287" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1600259136305" />
+  </component>
+</project>

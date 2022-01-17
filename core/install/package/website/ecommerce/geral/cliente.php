@@ -22,6 +22,7 @@
 	);
 
 	// Criando Atributos
+	$codigo				= criarAtributo($conn,$entidadeID,"codigo","Código","varchar",200,1,3,1,0,0,"");
 	$nome 				= criarAtributo($conn,$entidadeID,"nome","Nome","varchar","200",0,3,1,0,0,"");
 	$genero 			= criarAtributo($conn,$entidadeID,"genero","Gênero","tinyint",1,1,7,1,0,0,"");
 	$datanascimento 	= criarAtributo($conn,$entidadeID,"datanascimento","Data de Nascimento","date",0,1,11,0,0,0,"");
@@ -39,7 +40,7 @@
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,8,'ecommerce-' . $entidadeNome,$entidadeID,'cadastro');
 	
 	// Criar Aba
-	$camposAba = array($nome,$genero,$datanascimento,$email,$senha,$telefone,$cpf);
+	$camposAba = array($codigo,$nome,$genero,$datanascimento,$email,$senha,$telefone,$cpf);
 	criarAba($conn,$entidadeID,"Capa",implode(",",$camposAba));
 
 	/* *** ENDEREÇO *** */

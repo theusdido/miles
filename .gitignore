@@ -1,9 +1,9 @@
 miles.json
-**/projects
-**/lib
 vsc.bat
 winehq.key
-**/.vscode
-**/vendor
-**/node_modules
 **/frameworks
+**/node_modules
+**/vendor
+**/projects
+**/lib
+**/.vscode

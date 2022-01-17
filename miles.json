@@ -6,7 +6,7 @@
         "url":{
             "lib":"https://teia.tec.br/miles/sistema/lib/"
         },
-        "request_protocol":"https",
+        "request_protocol":"http",
         "package":"erp",
         "packages":[]
     },
