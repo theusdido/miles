@@ -1,6 +1,6 @@
-./miles.json
-./vsc.bat
-./winehq.key
+miles.json
+vsc.bat
+winehq.key
 **/frameworks
 **/node_modules
 **/vendor
