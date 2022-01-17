@@ -1705,7 +1705,10 @@ function addCampoFormatadoDB($dados,$entidade){
 				}
 			}
 		}else if ($tipohtml == 19){
-			$dados[$key . '_src'] 		= URL_CURRENT_FILE . $key . '-' . getEntidadeId($entidade) . '-' . $dados['id'] . '.' . getExtensao($value);
+			$file						= $key . '-' . getEntidadeId($entidade) . '-' . $dados['id'] . '.' . getExtensao($value);
+			$url_file 					= URL_CURRENT_FILE . $file;
+			$path_file					= PATH_CURRENT_FILE . $file;
+			$dados[$key . '_src'] 		= file_exists($path_file) ? $url_file : URL_ASSETS . 'img/noimage.png';
 		}
 	}
 	return $dados;
