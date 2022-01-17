@@ -381,4 +381,21 @@ abstract class Registro {
 			return $dataset[0];
 		}
 	}
+	/*  
+		* Método newNotExists
+	    * Data de Criacao: 17/01/2022
+	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
+
+		Retorna o registro vazio caso ou não encontre na condição
+	*/
+	public function newNotExists($atributo,$operador,$valor){
+		$dataset = tdc::d($this->getEntidade(),tdc::f($atributo,$operador,$valor));
+		if (sizeof($dataset) <= 0 || $valor == ''){
+			$entidade = tdc::p($this->getEntidade());
+			return $entidade;
+		}else{
+			$dataset[0]->isUpdate();
+			return $dataset[0];
+		}
+	}
 }

@@ -86,7 +86,7 @@
 			type:"POST",
 			data:{
 				controller:"mdm/componente",
-				op:"criarpagina",
+				op:"criarcadastro",
 				html:html,
 				filename:$("#filename").val(),
 				filenamejs:$("#filenamejs").val(),
