@@ -7,3 +7,4 @@ winehq.key
 **/projects
 **/lib
 **/.vscode
+**/webservice/servicos/pagseguro/log

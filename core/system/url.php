@@ -92,3 +92,4 @@
 
 	define('URL_CURRENT_BUILD',Session::Get('URL_CURRENT_PROJECT') . FOLDER_BUILD . '/');
 	
+	define('URL_TDWEBSERVICE', URL_MILES . 'webservice/');
