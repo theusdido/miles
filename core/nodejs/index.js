@@ -75,12 +75,12 @@ app.get('/pesquisarextrato', cors(), function(req,res){
             filtros['cabecalho.dia'] = params.diapagamento;
         }
 
-        if (!is_empty(params.pendente)){
-            filtros['cabecalho.pendente'] = params.pendente == 0 ? 'N' : 'S';
+        if (params.pendente == 1){
+            filtros['cabecalho.pendente'] = 'S';
         }
 
         if (!is_empty(params.dataliberacao)){
-            filtros['titulo.datageracao'] = params.dataliberacao;
+            filtros['titulo.data_geracao'] = params.dataliberacao;
         }
 
         if (!is_empty(params.titulo)){
@@ -98,17 +98,24 @@ app.get('/pesquisarextrato', cors(), function(req,res){
             filtros['cabecalho.gerador'] = { $in: geracao};
         }
 
-        let p_formapagamento = params['formapagamento[]'];
+        let p_formapagamento = params['forma_pagamento[]'];
         if (!is_empty(p_formapagamento)){
             let formapagamento  = typeof p_formapagamento === 'string' ? [p_formapagamento] : p_formapagamento;
-            filtros['formapagamento.codigo'] = { $in: formapagamento};
+            filtros['forma_pagamento.codigo'] = { $in: formapagamento};
         }
 
         let p_negativo = params['negativo'];
         if (!is_empty(p_negativo) && p_negativo != '-1'){
-            filtros['cabecalho.isnegativo'] = p_negativo;
+            filtros['cabecalho.is_negativo'] = p_negativo;
         }
-        dbo.collection('extrato').find(filtros).toArray(function(err,result){
+
+        // Filtro inativos
+        filtros['cabecalho.inativo'] = false;
+
+        dbo.collection('extrato')
+        .find(filtros)
+        .sort({'proprietario.nome':1})
+        .toArray(function(err,result){
             retorno = result;
             resposta.json(retorno);
             res.end();

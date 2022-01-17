@@ -3,17 +3,21 @@
 		case 'html':
 			$entidade 		= tdc::e(tdc::r("entidade"));
 			$path_html_file = PATH_FILES_CADASTRO . $entidade->id . "/" . $entidade->nome . ".html";
-			if (file_exists($path_html_file)){
-				$js = tdc::o("script");
-				$js->add('
-					var registrounico 	= true;
-					var funcionalidade 	= "add-emexecucao";
-				');
-				$js->mostrar();
-				include $path_html_file;
-			}else{
-				Alert::showMessage('Arquivo HTML não encontrado.');
+			if (!file_exists($path_html_file)){
+				$mdm = new MDM($entidade->id);
+				$mdm->gerarhtml();
 			}
+			$js = tdc::o("script");
+			$js->add('
+				formulario['.$entidade->id.']				 			= new tdFormulario('.$entidade->id.');
+				formulario['.$entidade->id.'].funcionalidade 	= "add-emexecucao";
+				formulario['.$entidade->id.'].setRegistroUnico();
+			');
+
+
+
+			$js->mostrar();
+			include $path_html_file;
 		break;
 		case 'cadastro':
 			$pagina 	= tdClass::Criar("pagina");

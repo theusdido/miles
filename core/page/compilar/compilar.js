@@ -43,7 +43,7 @@ function compilarConceito(){
         $.ajax({
             url:session.urlsystem,
             data:{
-                controller:"gerarpagina",
+                controller:"gerarcadastro",
                 entidade:id,
                 principal:"",
                 acao:"compilar"

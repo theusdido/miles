@@ -6,3 +6,4 @@ winehq.key
 **/.vscode
 **/vendor
 **/node_modules
+**/frameworks

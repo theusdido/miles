@@ -11,6 +11,7 @@
 */	
 final class Repositorio {
 	private $classe;
+	private $registros = array();
 	/*  
 		* Método construct 
 	    * Data de Criacao: 29/08/2012
@@ -42,8 +43,8 @@ final class Repositorio {
 				return false;
 			}
 		}
-		$resultados=array();
-		$sql = tdClass::Criar("sqlselecionar");
+		$resultados	= array();
+		$sql 		= tdClass::Criar("sqlselecionar");
 		$sql->setEntidade($this->classe);
 		$sql->addColuna("*");
 		$sql->setCriterio($criterio);
@@ -57,8 +58,9 @@ final class Repositorio {
 					}
 				}
 			}catch(Exception $e){
-				
+
 			}
+			$this->registros = $resultados;
 			return $resultados;
 		}else{		
 			throw new Exception("Não há transação ativa: Repositorio Carrgar");
@@ -112,7 +114,7 @@ final class Repositorio {
 			}
 			return $quantia;
 		}else{
-			throw new Exception("N�o h� transa��o ativa");
+			throw new Exception("Não há transação ativa");
 		}
 	}
 	
@@ -150,6 +152,20 @@ final class Repositorio {
 			return $resultados;
 		}else{			
 			throw new Exception("Não há transação ativa");
+		}
+	}	
+	/*  
+		* Método hasData()
+	    * Data de Criacao: 14/01/2022
+	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
+		
+		Retorna se existe dados no repositório
+	*/
+	public function hasData(){
+		if (sizeof($this->registros) <= 0){
+			return false;
+		}else{
+			return true;
 		}
 	}	
 }	

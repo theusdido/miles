@@ -21,7 +21,7 @@
 		}
 	}
 
-	// Sessão do Sistema
+	// Sessão do Sistema	
 	$sessionName = "miles_" . AMBIENTE . "_" . $currentProject;
 
 	// Verificar se a sessão não já está aberta.
@@ -35,6 +35,7 @@
 			define('SCHEMA',$_SESSION["db_base"]);
 		}
 	}
+
 	// Seta o ID do projeto atual
 	$_SESSION["currentproject"] = $currentProject;
 

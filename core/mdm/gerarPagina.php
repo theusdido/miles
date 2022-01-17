@@ -65,7 +65,7 @@
 		$.ajax({
 			url:"../../index.php",
 			data:{
-				controller:"gerarpagina",
+				controller:"gerarcadastro",
 				entidade:<?=$entidade?>,
 				principal:true,
 				currentproject:"<?=$_SESSION["currentproject"]?>",
