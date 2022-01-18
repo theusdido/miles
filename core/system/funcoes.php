@@ -1825,10 +1825,11 @@ function isvalidnamedir($dirname){
 }
 function formatURLAmigavel($url){
 	$url  		= retirarAcentos(trim($url));
-	
+
 	$url 	= str_replace(" ","-",$url);
 	$url	= str_replace(".","-",$url);
 	$url	= str_replace("'","",$url);
+	$url	= str_replace('%','',$url);
 	$url	= str_replace(array("(",")"),"",$url);
 	$url	= str_replace(array("c/","C/"),"com",$url);
 	$url	= strtolower($url);
