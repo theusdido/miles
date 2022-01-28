@@ -8,3 +8,4 @@ winehq.key
 **/lib
 **/.vscode
 **/webservice/servicos/pagseguro/log
+**/core/nodejs/node_modules/
