@@ -8,11 +8,11 @@
 	if (!defined("AMBIENTE")) define("AMBIENTE","BIBLIOTECA");
 	
 	// Porta para chamadas via URL
-	define('PORT', '');
+	define('PORT', $_SERVER['SERVER_PORT']);
 
 	// HTTP HOST - URL da chamada da aplicação
 	define("HTTP_HOST", isset($_SERVER["HTTP_HOST"]) ? preg_replace('/:[0-9]+/i','',$_SERVER["HTTP_HOST"])  : '');
-
+	
 	#***************************************
 	# FOLDER
 	#*************************************** 

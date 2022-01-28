@@ -3,13 +3,16 @@
 const express               = require('express');
 const http                  = require('http');
 const reload                = require('reload');
+
 // Cria aplicação Express
 const app                   = express();
 const url                   = require('url');
-
 const XMLHttpRequest        = require('xhr2');
+
 var xhr                     = new XMLHttpRequest();
 var cors                    = require('cors');
+
+// MongoDB
 var mongo                   = require('mongodb').MongoClient;
 const mongo_host            = 'mongodb://localhost:27017';
 const mongo_db              = 'locativa';
@@ -31,6 +34,13 @@ app.get('/importarextratojson', function(req,res){
     res.end();
 });
 
+// Importação de Extrato
+app.get('/importarextratoirrf', function(req,res){
+    var extrato = require('../../projects/1/controller/importarextratoirrf.js');
+    extrato.importar(url.parse(req.url, true).query,xhr);
+    res.end();
+});
+
 // Cria o banco
 app.get('/createdatabase', (req,res) =>{
     let resposta = res;
@@ -39,10 +49,15 @@ app.get('/createdatabase', (req,res) =>{
         let msg = 'Database => ' + mongo_db + ' created!';
         console.log(msg);
         resposta.send(msg);
-        let dbo = db.db(mongo_db);
-        dbo.createCollection('extrato', (err,res) => {
-            console.log('Collection => extrato created!');
-            db.close();
+        let collections = [ 'extrato' , 'extrato_impostorenda' ];
+        
+        collections.forEach( (collection) =>
+        {
+            let dbo = db.db(mongo_db);
+            dbo.createCollection(collection, (err,res) => {
+                console.log('Collection => [ '+ collection +' ] created!');
+                db.close();
+            });
         });
     });
 });
@@ -125,7 +140,7 @@ app.get('/pesquisarextrato', cors(), function(req,res){
 });
 
 const server = http.createServer(app);
-server.listen(2711 , () => {
+server.listen(2711, () => {
     console.log('NodeJS App Miles Avaiable !');
 });
 

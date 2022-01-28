@@ -27,7 +27,7 @@
 		if (file_exists($systemcontroller)) include $systemcontroller;
 		exit;
 	}
-
+	
 	if ($controller == "permissaoinicial"){
 		if (file_exists($systemrequisicoes)) include $systemrequisicoes;
 		exit;
