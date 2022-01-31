@@ -169,6 +169,11 @@ function dateToMysqlFormat($str_date,$invertido=false){
 	if ($str_date=="" || $str_date == null) return "";
 	if (is_date_mysql($str_date) && !$invertido) return $str_date;
 
+	// Retira a hora
+	if (strpos($str_date,' ') !== false){
+		$str_date = explode(' ',$str_date)[0];
+	}
+
 	if (!$invertido){
 		if (strpos($str_date,"/") > 0){ // O strpos eu testo se existe alguma barra
 			$dt = explode("/",$str_date);  // Quebra a string com a barra e transforma em array ( dia,mes,ano )
@@ -952,14 +957,18 @@ function getEntidadeId($entidadeString,$conn = null){
 	if ($entidadeString == "" || $entidadeString == null){
 		return 0;
 	}else{
-		if ($PREFIXO == substr($entidadeString,0,3)) $PREFIXO = '';
-		$sql = "SELECT id FROM ".ENTIDADE." WHERE nome = '".$PREFIXO.$entidadeString."'";
-		$query = $conn->query($sql);
-		if ($query->rowCount() > 0){
-			$linha = $query->fetch();
-			return $linha["id"];
-		}else{
-			return 0;
+		try{
+			if ($PREFIXO == substr($entidadeString,0,3)) $PREFIXO = '';
+			$sql = "SELECT id FROM ".ENTIDADE." WHERE nome = '".$PREFIXO.$entidadeString."';";
+			$query = $conn->query($sql);
+			if ($query->rowCount() > 0){
+				$linha = $query->fetch();
+				return $linha["id"];
+			}else{
+				return 0;
+			}
+		}catch(Throwable $t){
+			echo $sql . "<br/>";
 		}
 	}
 }
@@ -2150,4 +2159,19 @@ function exists_lista($entidadepai,$entidadefilho,$regpai,$regfilho){
 	}else{
 		return true;
 	}
+}
+
+/*
+	* consoleJS
+	* Data de Criacao: 19/01/2022
+	* @author Edilson Valentim dos Santos Bitencourt (Theusdido)
+	* Exibi uma mensagem no console do navegador via JavaScript
+	* PARAMETROS
+	*	@params: Literal mensagem:"Mensagem a ser exibida"
+	*	@params: Literal tipo:" log | warn | error "
+	* RETORNO
+	*	@return: void
+*/
+function consoleJS($mensagem,$tipo = 'log'){
+	echo '<script type="text/javascript">console.'.$tipo.'(\''.$log.'\');</script>';
 }

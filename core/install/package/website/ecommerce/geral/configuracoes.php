@@ -32,6 +32,7 @@
 	$valorminimoentrega 		= criarAtributo($conn,$entidadeID,"valorminimoentrega","Valor Mínimo de Entrega","float",0,1,13);
 	$prazominimoentrega			= criarAtributo($conn,$entidadeID,"prazominimoentrega","Prazo Mínimo de Entrega","int",0,1,25);
 	$emailenviopedido			= criarAtributo($conn,$entidadeID,"emailenviopedido","E-Mail Envio Pedido","varchar",200,1,12);
+	$is_show_price_only_logged	= criarAtributo($conn,$entidadeID,"is_show_price_only_logged","Exibir Preço Apenas Logado ?","boolean",0,1,7);
 
 	// Criando Acesso
 	$menu_webiste = addMenu($conn,'E-Commerce','#','',0,0,'ecommerce');

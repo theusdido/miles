@@ -7,7 +7,7 @@
     * Classe que implementa a interface para o FTP
     * Data de Criacao: 12/11/2020
     * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
-*/	
+*/
 class FTP {
 	
 	private $host;

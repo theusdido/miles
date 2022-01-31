@@ -1,7 +1,8 @@
 <?php
+
     // URL ROOT
 	Session::append("URL_ROOT",REQUEST_PROTOCOL . HTTP_HOST . "/" . FOLDER_PROJECT . "/");
-	define('URL_ROOT', REQUEST_PROTOCOL . HTTP_HOST . "/" . FOLDER_PROJECT . "/");
+	define('URL_ROOT', REQUEST_PROTOCOL . HTTP_HOST . ':' . PORT . "/" . FOLDER_PROJECT . "/");
 
 	// URL ALIAS
 	if (isset($_GET["alias"])) Session::append("URL_ALIAS",REQUES_PROTOCOL . HTTP_HOST . "/" . $_GET["alias"]);
@@ -16,8 +17,9 @@
 	}
 
 	// URL MILES
-	Session::append("URL_MILES",REQUEST_PROTOCOL . HTTP_HOST . $request_uri_dir);
-	define('URL_MILES',REQUEST_PROTOCOL . HTTP_HOST . $request_uri_dir);
+	$_url_miles	= REQUEST_PROTOCOL . HTTP_HOST . ':' . PORT .  $request_uri_dir;
+	Session::append("URL_MILES",$_url_miles);
+	define('URL_MILES',$_url_miles);
 
 	// URL NODEJS
 	define('URL_NODEJS', REQUEST_PROTOCOL . HTTP_HOST . ':2711/');
@@ -91,7 +93,7 @@
     define("URL_MDM_JS_COMPILE",Session::Get("URL_CURRENT_PROJECT") . FOLDER_BUILD . '/js/');
 
 	define('URL_CURRENT_BUILD',Session::Get('URL_CURRENT_PROJECT') . FOLDER_BUILD . '/');
-	
+
 	define('URL_TDWEBSERVICE', URL_MILES . 'webservice/');
 
 	define('URL_ASSETS' , URL_CORE . 'assets/');

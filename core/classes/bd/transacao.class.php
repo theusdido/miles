@@ -101,7 +101,7 @@ final class Transacao{
 		self::$logger = $logger;
 	}
 	
-	/*  
+	/* 
 		* Método log
 	    * Data de Criacao: 04/06/2012
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
@@ -109,9 +109,8 @@ final class Transacao{
 		Armazena uma mensagem no arquivo de log baseada na estratégia de log atual
 	*/			
 	public static function log($mensagem){
-		global $mjc;
 		if(self::$logger){
-			if ($mjc->is_transaction_log){
+			if (IS_TRANSACTION_LOG){
 				self::$logger->escrever($mensagem);
 			}
 		}

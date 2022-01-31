@@ -111,13 +111,13 @@ class SqlCriterio extends SqlExpressao {
 	}
 	
 	/*  
-		* Método isactive 
+		* Método onlyActive 
 	    * Data de Criacao: 27/06/2020
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
-		Retorno um filtro padr�o para listar apenas os registros ativos
+		Retorno um filtro padrão para listar apenas os registros ativos
 	*/		
-	public function isactive(){
+	public function onlyActive(){
 		$sql = tdClass::Criar("sqlcriterio");
 		$filtroZero = tdClass::Criar("sqlfiltro",array("inativo","=",0));
 		$filtroNull = tdClass::Criar("sqlfiltro",array("inativo","IS",NULL));
@@ -128,13 +128,13 @@ class SqlCriterio extends SqlExpressao {
 	}
 	
 	/*  
-		* Método registrounico 
+		* Método onlyOne 
 	    * Data de Criacao: 27/06/2020
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
-		Retorno um filtro padr�o para listar apenas um registro
-	*/		
-	public function registrounico(){
+		Retorno um filtro padrão para listar apenas um registro
+	*/
+	public function onlyOne(){
 		$this->setPropriedade("limit",1);
 	}
 	/*  
@@ -167,4 +167,34 @@ class SqlCriterio extends SqlExpressao {
 	public function limit($length,$init = 0){
 		$this->setPropriedade("limit","$init,$length");
 	}
+
+	/*  
+		* Método isTrue
+	    * Data de Criacao: 31/01/2022
+	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
+
+		Filtra um atributo booleano para true
+	*/
+	public function isTrue($atributo,$isnull = false){
+		// true = 1
+		$this->addFiltro($atributo,"=",1);
+
+		// Filtra os nulos
+		if ($isnull) $this->addFiltro($atributo,"IS",NULL);
+	}
+
+	/*  
+		* Método isFalse
+	    * Data de Criacao: 31/01/2022
+	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
+
+		Filtra um atributo booleano para false
+	*/
+	public function isFalse($atributo,$isnull = true){
+		// false = 0
+		$this->addFiltro($atributo,"=",0);
+
+		// Filtra os nulos
+		if ($isnull) $this->addFiltro($atributo,"IS",NULL);
+	}	
 }

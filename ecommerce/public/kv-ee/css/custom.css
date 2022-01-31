@@ -1,0 +1,237 @@
+.kv-ee-image-container img {
+    max-width: 100% !important;
+  }
+
+.kv-main section a {
+    color:#FFF;
+    text-decoration: none !important;
+}
+
+.td-btn{
+    padding: 10px;
+    display: block !important;
+}
+
+.td-buttons-group {
+    padding-top:5px;
+    display: block;
+    height: 40px;
+}
+
+input, textarea, select {
+    width: 100%;
+    border-width: 1px;
+    border-style: solid;
+    color: var(--kv-ee-text1-card-rgb);
+    border-color:
+     rgba(var(--kv-ee-text1-card-rgb),.6);
+    background-color: rgba(var(--kv-ee-card-rgb),.6);
+}
+
+.td-buttons-group a{
+    display: flex;
+}
+.td-buttons-group .i-comprar {
+    font-size:18px;
+    margin-right:5px;
+}
+
+.products-column .product-name {
+    padding-top:20px !important;
+}
+
+.products-more {
+    margin-top:30px;
+}
+
+.image-product-thumbs-track{
+    height: 50px;
+}
+
+.product-details {
+    padding:0 20px;
+}
+
+.product-details .quantity .pro-qty {
+    width: 123px;
+    height: 46px;
+    border: 2px solid #ebebeb;
+    padding: 0 15px;
+    float: left;
+    margin-right: 14px;
+}
+
+.product-details .quantity {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-bottom: 33px;
+}
+
+.product-details .quantity .pro-qty .qtybtn.dec {
+    font-size: 30px;
+}
+.product-details .quantity .pro-qty .qtybtn {
+    font-size: 24px;
+    color: #b2b2b2;
+    float: left;
+    line-height: 38px;
+    cursor: pointer;
+    width: 18px;
+}
+
+.product-details .quantity .pro-qty input {
+    text-align: center;
+    width: 52px;
+    font-size: 14px;
+    font-weight: 700;
+    border: none;
+    color: #4c4c4c;
+    line-height: 40px;
+    float: left;
+}
+
+.product-details .quantity .pro-qty .qtybtn {
+    font-size: 24px;
+    color: #b2b2b2;
+    float: left;
+    line-height: 38px;
+    cursor: pointer;
+    width: 18px;
+}
+
+.product-details .quantity .primary-btn.pd-cart {
+    padding: 14px 70px 10px;
+}
+.products-column {
+    padding: 15px 5px;
+    background-color: #333;    
+}
+
+#etapas-checkout button{
+    float:left;
+    width:20%;
+    font-size: 12px;
+}
+
+.btn-etapa {
+    background-color: #333 !important;
+    border:0 !important;
+    float:right;
+}
+
+.texto-etapas{
+    float: left;
+    height: 35px;
+    line-height: 35px;
+    margin: 0px;
+}
+.div-cabecalho-atapas{
+    margin: 10px 0 !important;
+    float: left;
+    width: 100%;
+}
+
+.conteudo-produto-resumo {
+    font-size:12px;
+}
+
+#finalizar-checkout{
+    width:100% !important;
+}
+
+#linha-autenticacao-cliente{
+    margin: 30px 0;
+}
+#lista-transportadoras-checkout , #pagamento-etapa-checkout{
+    float:left;
+    width:100%;
+}
+
+.msg-error-formgroup {
+    display:none;
+}
+
+
+input, textarea, select:active{
+    background-color: #333;
+}
+
+select{
+    padding:5px !important;
+    -webkit-appearance:auto;
+    border:1px solid #b2b2b2 !important;
+}
+
+#btns-metodo-pagamento{
+    margin:20px 0;
+}
+
+.titularidade-pagamento .radio-inline{
+    
+    margin: 20px !important;
+}
+
+#politicaprivacidade{
+    text-align:center;
+}
+
+.td-carrinho-topo {
+    display:none;
+    position: absolute;
+    right: 5px;
+    top:45px;
+    list-style: none;    
+    padding: 15px;
+    min-width: 250px;
+    border: 1px solid rgb(46, 46, 46);
+    background-color:rgba(0,0,0,0.8);
+    border-radius: 10px;
+}
+
+#itens-carrinhodecompras img {
+    height: 50px !important;
+}
+
+.td-carrinho-valor-produto {
+    margin: 5px 0 !important;
+}
+
+.select-total {
+    border-top:1px solid #333;
+    text-align:right;
+}
+
+.td-valortotal-carrinho{
+    font-size:16px !important;
+    font-weight: bold;
+}
+.td-carrinho-finalizar-pedido{
+    width:100%;
+}
+
+.td-carrinho-item-dados{
+    padding-left:5px !important;
+}
+
+.td-carrinho-qtdade-itens{
+    color:#000;
+    border-radius: 10px;
+    font-size:12px;
+    position: absolute;
+    top:-11px;
+    right:3px;
+    padding:3px;
+}
+
+.td-carrinho-excluir-item {
+    font-size:12px;
+}
+
+.td-blog-img , .td-image-galeria{
+    max-width:100%;
+}
+
+#section-content{
+    background-color: rgb(45,45,45);
+}

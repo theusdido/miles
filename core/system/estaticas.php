@@ -1,9 +1,11 @@
 <?php
+
 	// Carrega as classes que não são instânciadas
-	include_once PATH_BD . 'transacao.class.php';	
-	include_once PATH_TDC . 'tdclass.class.php';
-	include_once PATH_TDC . 'campos.class.php';
-	include_once PATH_TDC . 'debug.class.php';
-	include_once PATH_TDC . 'session.class.php';
-	include_once PATH_TDC . 'tdfile.class.php';
-	include_once PATH_CLASS_INSTALL . 'install.class.php';
+	include_once $_path_classes . 'bd/transacao.class.php';	
+	include_once $_path_classes . 'tdc/tdclass.class.php';
+	include_once $_path_classes . 'tdc/campos.class.php';
+	include_once $_path_classes . 'tdc/debug.class.php';
+	include_once $_path_classes . 'tdc/session.class.php';
+	include_once $_path_classes . 'tdc/tdfile.class.php';
+	include_once $_path_classes . 'install/install.class.php';
+	include_once $_path_classes . 'interface/cookie.class.php';

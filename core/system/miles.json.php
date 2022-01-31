@@ -1,5 +1,7 @@
 <?php	
-	$uri 					= isset($_SERVER["SCRIPT_URI"]) ? $_SERVER["SCRIPT_URI"] : $_SERVER["REQUEST_URI"];
+	$script_uri				= isset($_SERVER["SCRIPT_URI"]) ? $_SERVER["SCRIPT_URI"] : '';
+	$request_uri			= isset($_SERVER["REQUEST_URI"]) ? $_SERVER["REQUEST_URI"] : '';
+	$uri 					= $script_uri != '' ? $script_uri : $request_uri;
 	$path_miles_json 		= PATH_MILES . "miles.json";
 
 	if (!file_exists($path_miles_json)){

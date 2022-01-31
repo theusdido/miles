@@ -51,7 +51,7 @@ class Alert Extends Elemento {
 		* Método showMessage 
 	    * Data de Criacao: 28/12/2021
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
-	
+
 		Exibe uma mensagem
 	*/
 	public static function showMessage($msg, $tipo='alert-danger'){

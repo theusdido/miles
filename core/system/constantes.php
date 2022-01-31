@@ -7,9 +7,12 @@
 	// Seta o ambiente da requisição
 	if (!defined("AMBIENTE")) define("AMBIENTE","BIBLIOTECA");
 	
+	// Porta para chamadas via URL
+	define('PORT', '80');
+
 	// HTTP HOST - URL da chamada da aplicação
-	define("HTTP_HOST",$_SERVER["HTTP_HOST"]);
-	
+	define("HTTP_HOST", isset($_SERVER["HTTP_HOST"]) ? preg_replace('/:[0-9]+/i','',$_SERVER["HTTP_HOST"])  : '');
+
 	#***************************************
 	# FOLDER
 	#*************************************** 
@@ -38,7 +41,7 @@
 	// FOLDER WEBSITE
 	define("FOLDER_WEBSITE","website");
 
-	include 'path.php';
+	#include 'path.php';
 	
 	#***************************************
 	# SQL
