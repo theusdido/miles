@@ -9,6 +9,6 @@ class Transportadora {
     }
 
     public static function getLogo($transportora){
-        return $_SESSION["PATH_TDECOMMERCE"] . "/img/beedelivery/logo.png";
+        return URL_TDECOMMERCE . "/img/beedelivery/logo.png";
     }
 }
