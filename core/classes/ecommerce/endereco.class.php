@@ -162,7 +162,7 @@ class Endereco {
 				AND regpai = ".$this->cliente."
 				LIMIT 1
 			;";
-			$query = $this->conn->query($sql);
+			$query = $conn->query($sql);
 			if ($query->rowCount() > 0){
 				$linha = $query->fetch();
 				return $linha["regfilho"];
