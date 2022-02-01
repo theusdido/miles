@@ -102,7 +102,7 @@ class Endereco {
 			AND entidadefilho = ".$this->entidadeendereco."
 			AND regpai = ".$this->cliente."
 		;";
-		$query = $this->conn->query($sql);
+		$query = $conn->query($sql);
 		if ($query->rowCount() > 0){
 			return true;
 		}else{
