@@ -93,5 +93,109 @@ class Endereco {
 
 		return getListaRegFilhoObject($entidadepai,$entidadefilho,$regpai);
 	}
-	
+
+	public function isExiste(){
+		$sql = "
+			SELECT 1 FROM td_lista
+			WHERE entidadepai = ".$this->entidadecliente."
+			AND entidadefilho = ".$this->entidadeendereco."
+			AND regpai = ".$this->cliente."
+		;";
+		$query = $this->conn->query($sql);
+		if ($query->rowCount() > 0){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	public function getDados(){
+		$sql = "
+			SELECT
+				a.logradouro,
+				a.numero,
+				a.complemento,
+				a.cep,
+				a.bairro bairroid,
+				bairro bairrodesc,
+				c.id cidadeid,
+				c.nome cidadedesc,
+				c.uf ufid,
+				(SELECT nome FROM td_ecommerce_uf u WHERE c.uf = u.id LIMIT 1) ufdesc,
+				(SELECT sigla FROM td_ecommerce_uf u WHERE c.uf = u.id LIMIT 1) ufsigla
+			FROM td_ecommerce_endereco a 
+			INNER JOIN td_ecommerce_cidade c ON a.cidade = c.id
+			WHERE a.id = ".$this->getRegFilhoLista()."
+			ORDER BY a.id DESC
+			LIMIT 1;
+		";
+		$query = $this->conn->query($sql);
+		if ($query->rowCount() > 0){
+			if ($linha = $query->fetch()){
+				return array(
+					"logradouro" 	=> $linha["logradouro"],
+					"numero"	 	=> $linha["numero"],
+					"complemento" 	=> $linha["complemento"],
+					"cep" 			=> $linha["cep"],
+					"bairroid" 		=> $linha["bairroid"],
+					"bairrodesc"	=> $linha["bairrodesc"],
+					"cidadeid" 		=> $linha["cidadeid"],
+					"cidadedesc"	=> $linha["cidadedesc"],
+					"ufid"			=> $linha["ufid"],
+					"ufdesc"		=> $linha["ufdesc"],
+					"ufsigla"		=> $linha["ufsigla"]
+				);
+			}
+		}
+		return false;
+	}
+
+	public function getRegFilhoLista(){
+		try{
+			$sql = "
+				SELECT regfilho FROM td_lista
+				WHERE entidadepai = ".$this->entidadecliente."
+				AND entidadefilho = ".$this->entidadeendereco."
+				AND regpai = ".$this->cliente."
+				LIMIT 1
+			;";
+			$query = $this->conn->query($sql);
+			if ($query->rowCount() > 0){
+				$linha = $query->fetch();
+				return $linha["regfilho"];
+			}else{
+				return 0;
+			}
+		}catch(Exception $e){
+			echo $e->getMessage();
+			echo $sql;
+		}
+	}
+
+	public function excluir(){
+		$this->conn->begintransaction();
+		try{
+			$sql = "
+				SELECT regfilho FROM td_lista
+				WHERE entidadepai = ".$this->entidadecliente."
+				AND entidadefilho = ".$this->entidadeendereco."
+				AND regpai = ".$this->cliente."
+			;";
+			$query = $this->conn->query($sql);
+			if($query->rowCount() > 0){
+				while ($linha = $query->fetch()){
+					$this->conn->exec("DELETE FROM td_ecommerce_endereco WHERE id = " . $linha["regfilho"]);
+				}
+			}
+			$sqlExcluirLista = "DELETE FROM td_lista WHERE entidadepai = 60 AND entidadefilho = 64 AND regpai = {$this->cliente};";
+			$this->conn->exec($sqlExcluirLista);
+			$this->conn->commit();
+			$sucesso = true;
+		}catch(Exception $e){
+			$this->conn->rollback();
+			$sucesso = false;
+		}finally{
+			return $sucesso;
+		}
+	}	
 }
