@@ -95,6 +95,7 @@ class Endereco {
 	}
 
 	public function isExiste(){
+		global $conn;
 		$sql = "
 			SELECT 1 FROM td_lista
 			WHERE entidadepai = ".$this->entidadecliente."
@@ -110,6 +111,7 @@ class Endereco {
 	}
 
 	public function getDados(){
+		global $conn;
 		$sql = "
 			SELECT
 				a.logradouro,
@@ -152,6 +154,7 @@ class Endereco {
 
 	public function getRegFilhoLista(){
 		try{
+			global $conn;
 			$sql = "
 				SELECT regfilho FROM td_lista
 				WHERE entidadepai = ".$this->entidadecliente."
@@ -173,7 +176,9 @@ class Endereco {
 	}
 
 	public function excluir(){
-		$this->conn->begintransaction();
+		/*
+		global $conn;
+		$conn->begintransaction();
 		try{
 			$sql = "
 				SELECT regfilho FROM td_lista
@@ -197,5 +202,6 @@ class Endereco {
 		}finally{
 			return $sucesso;
 		}
+		*/
 	}	
 }
