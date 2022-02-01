@@ -131,7 +131,7 @@ class Endereco {
 			ORDER BY a.id DESC
 			LIMIT 1;
 		";
-		$query = $this->conn->query($sql);
+		$query = $conn->query($sql);
 		if ($query->rowCount() > 0){
 			if ($linha = $query->fetch()){
 				return array(
