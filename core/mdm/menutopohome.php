@@ -279,7 +279,9 @@
 					}else{
 						configuracaoInicial();
 					}
-					if ($("#entidade").val() != "" && $("#entidade").val() != 0){
+					if ($('#tipomenu').val() == 'personalizado'){
+						$("#link").attr("readonly",false);
+					}else{
 						$("#link").attr("readonly",true);
 					}
 				}
@@ -342,12 +344,11 @@
 				}				
 			}
 			function configuracaoPersonalizado(){
-				
 				$("#entidade").attr("readonly",true);
 				$("#entidade").attr("disabled",true);
 				$("#pai").attr("readonly",false);
 				$("#pai").attr("disabled",false);
-				
+
 				if ($("#id").val() == ""){
 					$("#entidade,#pai").val(0);
 					$("#descricao").val("");
@@ -364,6 +365,7 @@
 				$("#entidade,#pai").attr("readonly",true);
 				$("#entidade,#pai").attr("disabled",true);
 				$("#descricao,#link,#target,id,entidade,ordem,pai").val("");
+
 				$("#descricao,#link").removeAttr("readonly");
 				$("#entidade").load("menutopohome.php?op=carregaentidade&<?=getURLParamsProject()?>");
 				$("#link").val("#");

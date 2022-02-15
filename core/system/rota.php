@@ -13,9 +13,14 @@
 	// Tratamento para requisição a uma página - by @theusdido 02/10/2021
 	$_page				= tdc::r("page");
 	if (strpos($_page,"/") > -1){
-		$_page_e		= explode("/",$_page);
-		$_page			= $_page . "/" . end($_page_e);
-	}	
+		if (preg_match("/{{[a-z)]+}}/i",$_page,$match)){
+			$_page			= str_replace(array('{{','}}'),'',$_page);
+		}else{
+			$_page_e		= explode("/",$_page);
+			$_page			= $_page . "/" . end($_page_e);
+		}
+	}
+
 	$_systempage		= PATH_SYSTEM_PAGE . $_page . ".php";
 	$_custumpage		= PATH_CURRENT_PAGE . $_page . ".php";
 

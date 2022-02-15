@@ -139,6 +139,88 @@ app.get('/pesquisarextrato', cors(), function(req,res){
     });
 });
 
+app.get('/pesquisarextratoirrf', cors(), function(req,res){   
+    
+    let retorno                 = [];
+    let resposta                = res;               
+    mongo.connect(mongo_selected_db, function(err, db) {
+        if (err) throw err;
+        let dbo             = db.db(mongo_db);
+        let filtros         = {};
+        let params          = url.parse(req.url, true).query;
+
+        /*
+        if (!is_empty(params.locador)){
+            if (new RegExp('[0-9]+','g').exec(params.locador) == null){
+                filtros['proprietario.nome'] = eval('/' + params.locador + '/i');
+            }else{
+                filtros['proprietario.codigo'] = params.locador;
+            }
+        }
+
+        let p_referencia = params['referencia[]'];
+        if (!is_empty(p_referencia)){
+            let referencia  = typeof p_referencia === 'string' ? [p_referencia] : p_referencia;
+            filtros['cabecalho.referencia'] = { $in: referencia};
+        }
+
+        if (!is_empty(params.diapagamento)){
+            filtros['cabecalho.dia'] = params.diapagamento;
+        }
+
+        if (params.pendente == 1){
+            filtros['cabecalho.pendente'] = 'S';
+        }
+
+        if (!is_empty(params.dataliberacao)){
+            filtros['titulo.data_geracao'] = params.dataliberacao;
+        }
+
+        if (!is_empty(params.titulo)){
+            filtros['titulo.numero'] = params.titulo;            
+        }
+
+        let p_istitulo = params.comtitulo;
+        if (!is_empty(p_istitulo) && p_istitulo == 0){
+            filtros['titulo.comtitulo'] = { $ne : '' };
+        }
+
+        let p_geracao = params['geracao[]'];
+        if (!is_empty(p_geracao)){
+            let geracao  = typeof p_geracao === 'string' ? [p_geracao] : p_geracao;
+            filtros['cabecalho.gerador'] = { $in: geracao};
+        }
+
+        let p_formapagamento = params['forma_pagamento[]'];
+        if (!is_empty(p_formapagamento)){
+            let formapagamento  = typeof p_formapagamento === 'string' ? [p_formapagamento] : p_formapagamento;
+            filtros['forma_pagamento.codigo'] = { $in: formapagamento};
+        }
+
+        let p_negativo = params['negativo'];
+        if (!is_empty(p_negativo) && p_negativo != '-1'){
+            filtros['cabecalho.is_negativo'] = p_negativo;
+        }
+
+        // Filtro inativos
+        filtros['cabecalho.inativo'] = false;
+        */
+
+        filtros['contrato.numero'] = '40473';
+
+        dbo.collection('extrato_impostorenda')
+        .find({})
+        .limit(1)
+        .sort({'proprietario.nome':1})
+        .toArray(function(err,result){
+            retorno = result;
+            resposta.json(retorno);
+            res.end();
+            db.close();
+        });
+    });
+});
+
 const server = http.createServer(app);
 server.listen(2711, () => {
     console.log('NodeJS App Miles Avaiable !');

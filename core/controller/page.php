@@ -1,5 +1,4 @@
 <?php
-
 	// Carrega o arquivo CSS
 	$cssFile = PATH_SYSTEM_PAGE . $_page . '.css';
 	if (file_exists($cssFile)){
@@ -20,6 +19,7 @@
 	// Carrega o HTML antes por causa do file_get_contents, erro de cabeçaho
 	$htmlFile 	= PATH_SYSTEM_PAGE . $_page . '.html';
 	if (file_exists($htmlFile)){
+		//var_dump(Session::Get("URL_PAGE") . $_page . '.html');
 		echo @getUrl(Session::Get("URL_PAGE") . $_page . '.html');
 	}
 
