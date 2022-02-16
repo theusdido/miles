@@ -11,7 +11,7 @@
     "xmlhttprequest": "^1.8.0"
   },
   "scripts": {
-    "start": "nodemon index.js -e ejs,js",
+    "start": "nodemon projects/nodejs/index.js -e ejs,js",
     "watch": "nodemon --ext *"
   },
   "devDependencies": {
