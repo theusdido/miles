@@ -9,3 +9,4 @@ winehq.key
 **/.vscode
 **/webservice/servicos/pagseguro/log
 **/ecommerce
+**/webservice
