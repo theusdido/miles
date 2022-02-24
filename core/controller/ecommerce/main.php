@@ -10,6 +10,7 @@
     include PATH_CLASS_ECOMMERCE    . 'produto.class.php';
     include PATH_CLASS_ECOMMERCE    . 'transportadora.class.php';
 
+    
     // Entidades ID
     $_entidade_unidademedida_id     = getEntidadeId("ecommerce_unidademedida");
 	$_entidade_categoria_id			= tdc::r('categoria');
@@ -21,9 +22,9 @@
     $website_geral_configuracoes    = tdc::pj('td_website_geral_configuracoes',1);
     // Ecommerce - Configurações
     $ecommerce_configuracoes        = new EcommerceConfiguracoes();	
-    
+
     // Carrinho de Compras
-    $ecommerce_carrinho                 = new CarrinhoCompras();    
+    $ecommerce_carrinho                 = new CarrinhoCompras();        
     $carrinho_id                        = $ecommerce_carrinho->getId();
 
     // Cliente
@@ -34,7 +35,7 @@
 	$endereco_cliente->cliente				= $cliente_id;
 	$endereco_cliente->entidadecliente 	    = $_entidade_cliente_id;
 	$endereco_cliente->entidadeendereco 	= $_entidade_endereco_id;
-  
+
 	$controller 		= tdc::r('controller');
 	$paginacontroller 	= tdc::r('pagina');
 
@@ -45,7 +46,6 @@
 		if ($controller == ''){	
 			$pc = array();
 			#include 'template.php';
-
 		}else{
 			$pc = array($controller);
 			#include $controller . ".php";

@@ -25,12 +25,12 @@
             }
         }
 
-        if (!SQL::entity_exists('td_ecommerce_itenspedido')){
+        if (!SQL::entity_exists('td_ecommerce_carrinhoitem')){
             // Nome da entidade de itens do pedido
-            $instrucao = "ALTER TABLE td_ecommerce_itenspedido RENAME TO td_ecommerce_pedidoitem;";
+            $instrucao = "ALTER TABLE td_ecommerce_carrinhoitem RENAME TO td_ecommerce_pedidoitem;";
             $execute = $conn->exec($instrucao);
             if ($execute){
-                $pedidoitem = tdc::d(ENTIDADE,tdc::f('nome','=','td_ecommerce_itenspedido'));
+                $pedidoitem = tdc::d(ENTIDADE,tdc::f('nome','=','td_ecommerce_carrinhoitem'));
                 $pedidoitem->nome = 'td_ecommerce_pedidoitem';
                 $pedidoitem->armazenar();
             }

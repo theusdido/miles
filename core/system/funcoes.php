@@ -2175,3 +2175,13 @@ function exists_lista($entidadepai,$entidadefilho,$regpai,$regfilho){
 function consoleJS($mensagem,$tipo = 'log'){
 	echo '<script type="text/javascript">console.'.$tipo.'(\''.$log.'\');</script>';
 }
+
+// Anti Injection SQL
+function anti_injection($sql)
+{
+   $sql = preg_replace("/(from|select|insert|delete|where|drop table|show tables|drop database|#|\*|--|\\\\)/i","",$sql);
+   $sql = trim($sql);
+   $sql = strip_tags($sql);
+   $sql = (get_magic_quotes_gpc()) ? $sql : addslashes($sql);
+   return $sql;
+}
