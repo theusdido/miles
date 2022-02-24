@@ -54,6 +54,7 @@ final class Repositorio {
 				$resultado = $conn->query($sql->getInstrucao());
 				if($resultado){				
 					while ($linha = $resultado->fetchObject($this->classe)){
+						$linha->setIsNew(false); // Os registros são marcados para serem atualizados 
 						$resultados[] = $linha;
 					}
 				}

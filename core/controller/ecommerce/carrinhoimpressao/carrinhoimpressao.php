@@ -104,7 +104,7 @@ $thTotal 	= $tabela->add("th",array("propriedades" => array( "innerhtml" => "Tot
 
 $ft = tdc::f("carrinho","=",$pedido->id);
 $ft->setPropriedade("order","descricao");
-$itens 		= tdc::d("td_ecommerce_itenscarrinho",$ft);
+$itens 		= tdc::d("td_ecommerce_carrinhoitem",$ft);
 
 
 foreach($itens as $item){

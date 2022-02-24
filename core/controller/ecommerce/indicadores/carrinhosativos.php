@@ -64,7 +64,7 @@ $thValorTotal   = $tabela->add("th",array("propriedades" => array( "innerhtml" =
 
 $conn = Transacao::get();
 $sqlTotalAcessos = "SELECT * FROM td_ecommerce_carrinhocompras a 
-                            WHERE EXISTS( SELECT 1 FROM td_ecommerce_itenscarrinho b WHERE a.id = b.carrinho ) 
+                            WHERE EXISTS( SELECT 1 FROM td_ecommerce_carrinhoitem b WHERE a.id = b.carrinho ) 
                             AND (inativo = false OR inativo IS NULL)
                             AND datahoracriacao BETWEEN NOW() - INTERVAL 30 DAY AND NOW();";
 $queryTotalAcessos = $conn->query($sqlTotalAcessos);

@@ -20,7 +20,7 @@
 		}
 
 		public function setQtdadeTotalItens(){
-			$sql 	= "SELECT sum(qtde) total FROM td_ecommerce_itenscarrinho WHERE td_carrinho = " . $this->getID();
+			$sql 	= "SELECT sum(qtde) total FROM td_ecommerce_carrinhoitem WHERE carrinho = " . $this->getID();
 			$query 	= $this->conn->query($sql);
 			$linha 	= $query->fetch();
 			$this->totalitens = $linha["total"];
@@ -29,10 +29,10 @@
 
 		public function atualizarValorTotalItem(){
 			$sql = "
-				UPDATE td_ecommerce_itenscarrinho i
-				SET i.valor = ( SELECT t.valor FROM td_ecommerce_tamanhoproduto t WHERE t.id = i.td_produto ) ,
+				UPDATE td_ecommerce_carrinhoitem i
+				SET i.valor = ( SELECT t.valor FROM td_ecommerce_tamanhoproduto t WHERE t.id = i.produto ) ,
 				i.valortotal = i.qtde * i.valor
-				WHERE i.td_carrinho = " . $this->getID() . ";
+				WHERE i.carrinho = " . $this->getID() . ";
 			";
 			$query = $this->conn->exec($sql);
 		}
@@ -41,7 +41,7 @@
 			$sql = "
 				UPDATE td_ecommerce_carrinhodecompras c 
 				SET c.valortotal = ( 
-					SELECT sum(i.valortotal) FROM td_ecommerce_itenscarrinho i WHERE id = " .$this->getID() ." 
+					SELECT sum(i.valortotal) FROM td_ecommerce_carrinhoitem i WHERE id = " .$this->getID() ." 
 				) + c.valorfrete;
 			";
 			$this->conn->exec($sql);

@@ -384,6 +384,7 @@ abstract class Registro {
 			return $dataset[0];
 		}
 	}
+
 	/*  
 		* Método newNotExists
 	    * Data de Criacao: 17/01/2022
@@ -400,5 +401,17 @@ abstract class Registro {
 			$dataset[0]->isUpdate();
 			return $dataset[0];
 		}
+	}
+
+	/*  
+		* Método setIsNew
+		* Data de Criacao: 21/02/2022
+		* @author Edilson Valentim dos Santos Bitencourt (Theusdido)
+
+		Set se o registro é novo
+	*/
+	public function setIsNew($valor = true)
+	{
+		$this->isnew = $valor;
 	}
 }
