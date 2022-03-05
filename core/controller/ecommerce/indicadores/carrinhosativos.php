@@ -4,7 +4,7 @@
     * @license : Teia Online.
     * @link http://www.teia.online
 
-    * Classe que implementa a gera��o de impress�o de pedido
+    * Carrinhos Ativos [ E-Commerce ]
     * Data de Criacao: 14/08/2020
     * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 */
@@ -16,9 +16,9 @@ $body			= tdc::o("body");
 $empresa		= tdc::p("td_empresa",Session::Get()->empresa);
 $enderecoempresa= tdc::p("td_endereco",@(int)getListaRegFilho(getEntidadeId("empresa"),getEntidadeId("endereco"),Session::Get()->empresa)[0]->regfilho);
 
-$style		= tdc::o("link");
-$style->href= PATH_ECOMMERCE . "indicadores/indicadores.css";
-$style->rel	= "stylesheet";
+$style		    = tdc::o("link");
+$style->href    = Session::Get('URL_ECOMMERCE') . "indicadores/indicadores.css";
+$style->rel	    = "stylesheet";
 
 // Div Topo
 $topo		= new Dom("div" , array("class" => "topo"));
@@ -26,7 +26,7 @@ $topo		= new Dom("div" , array("class" => "topo"));
 // Div da Logo
 $divlogo 	= $topo->add("div" , array("propriedades" => array ("class" => "div-logo")));
 $logo		= $topo->add("img",array(
-    "propriedades" => array( "id" => "logo" , "src" => Session::get("PATH_CURRENT_LOGO_PADRAO")) ,
+    "propriedades" => array( "id" => "logo" , "src" => Session::get("URL_CURRENT_LOGO_PADRAO")) ,
     "elementopai" => $divlogo
 ));
 
@@ -81,7 +81,7 @@ foreach($itens as $item){
     $tdQtdade 	    = $tabela->add("td",array("propriedades" => array( "innerhtml" => $item->qtdetotaldeitens ,  "align" => "center" ) , "elementopai" => $trBody));
     $tdValorTotal   = $tabela->add("td",array("propriedades" => array( "innerhtml" => "R$ " . moneyToFloat($item->valortotal,true) , "align" => "right") , "elementopai" => $trBody));
 	$tdItens 	    = $tabela->add("td",array("propriedades" => array( "align" => "center" ) , "elementopai" => $trBody));
-	$linkItens		= $tabela->add("a", array("propriedades" => array( "innerhtml" => "Itens" , "href" => getURLProject('index.php?controller=website/ecommerce/carrinhoimpressao/carrinhoimpressao&registro='.$item->id) , "target" => '_blank' ) , "elementopai" => $tdItens));
+	$linkItens		= $tabela->add("a", array("propriedades" => array( "innerhtml" => "Itens" , "href" => getURLProject('index.php?controller=ecommerce/carrinhoimpressao/carrinhoimpressao&registro='.$item->id) , "target" => '_blank' ) , "elementopai" => $tdItens));
 }
 
 // RODAPÉ

@@ -48,6 +48,10 @@
 #label-id-atributo small {
 	font-size:14px;
 }
+#btn-edit-id-entidade
+{
+	height: 34px;
+}
 </style>
 <script type="text/javascript" src="<?=$_SESSION["URL_LIB"]?>jquery/jquery.js"></script>
 <script type="text/javascript" src="<?=$_SESSION["URL_LIB"]?>bootstrap/3.3.1/js/bootstrap.js"></script>

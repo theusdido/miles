@@ -4,7 +4,7 @@
     * @license : Teia Online.
     * @link http://www.teia.online
 
-    * Classe que implementa a gera��o de impress�o de pedido
+    * Produtos Esgotados [ E-Commerce ]
     * Data de Criacao: 14/08/2020
     * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 */
@@ -16,9 +16,9 @@ $body			= tdc::o("body");
 $empresa		= tdc::p("td_empresa",Session::Get()->empresa);
 $enderecoempresa= tdc::p("td_endereco",@(int)getListaRegFilho(getEntidadeId("empresa"),getEntidadeId("endereco"),Session::Get()->empresa)[0]->regfilho);
 
-$style		= tdc::o("link");
-$style->href= PATH_ECOMMERCE . "indicadores/indicadores.css";
-$style->rel	= "stylesheet";
+$style		    = tdc::o("link");
+$style->href    = Session::Get('URL_ECOMMERCE') . "indicadores/indicadores.css";
+$style->rel	    = "stylesheet";
 
 // Div Topo
 $topo		= new Dom("div" , array("class" => "topo"));
@@ -26,7 +26,7 @@ $topo		= new Dom("div" , array("class" => "topo"));
 // Div da Logo
 $divlogo 	= $topo->add("div" , array("propriedades" => array ("class" => "div-logo")));
 $logo		= $topo->add("img",array(
-    "propriedades" => array( "id" => "logo" , "src" => Session::get("PATH_CURRENT_LOGO_PADRAO")) ,
+    "propriedades" => array( "id" => "logo" , "src" => Session::get("URL_CURRENT_LOGO_PADRAO")) ,
     "elementopai" => $divlogo
 ));
 
@@ -62,7 +62,7 @@ $thValorFrete   = $tabela->add("th",array("propriedades" => array( "innerhtml" =
 
 $conn               = Transacao::get();
 $sqlSaldo           = "
-	SELECT * FROM td_ecommerce_posicaogeralestoque 
+	SELECT * FROM td_erp_material_posicaogeralestoque 
 	WHERE saldo <= 0 
 	ORDER BY datahora DESC
 	LIMIT 1;

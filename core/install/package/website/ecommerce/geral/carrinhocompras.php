@@ -23,7 +23,7 @@
 	// Criando Atributos
 	$carrinho_cliente 				= criarAtributo($conn,$entidadeID,"cliente","Cliente","int",0,1,22,1,getEntidadeId("ecommerce_cliente",$conn),0,'',1,0);
 	$carrinho_datahoracriacao		= criarAtributo($conn,$entidadeID,"datahoracriacao","Data/Hora Criação","datetime",0,0,23,1,0,0,"");
-	$carrinho_datahoraultimoacesso 	= criarAtributo($conn,$entidadeID,"datahoraultimoacesso","Data/Hora Último Acesso","datetime",0,0,23,1,0,0,"");
+	$carrinho_datahoraultimoacesso 	= criarAtributo($conn,$entidadeID,"datahoraultimoacesso","Data/Hora Último Acesso","datetime",0,1,23,1,0,0,"");
 	$carrinho_sessionid 			= criarAtributo($conn,$entidadeID,"sessionid","ID da Sessão","varchar",100,1,3,0,0,0,"");
 	$carrinho_representante 		= criarAtributo($conn,$entidadeID,"representante","Representante","int",0,1,22,1,getEntidadeId("ecommerce_representante",$conn),0,"",0,0);
 	$carrinho_isrepresentante 		= criarAtributo($conn,$entidadeID,"isrepresentante","Representante ?","tinyint",0,1,7,0,0,0,'',1,0);
@@ -59,9 +59,10 @@
 	$itenscarrinho_descricao 			= criarAtributo($conn,$itenscarrinhoID,"descricao","Descrição","varchar",200,0,3,1,0,0,"");
 	$itenscarrinho_imgsrc 				= criarAtributo($conn,$itenscarrinhoID,"imgsrc","Imagem ( Caminho )","varchar",300,1,3,0,0,0,"");
 	$itenscarrinho_valor 				= criarAtributo($conn,$itenscarrinhoID,"valor","Valor","float",0,0,13,1,0,0,"");
-	$itenscarrinho_valortotal			= criarAtributo($conn,$itenscarrinhoID,"valortotal","Valor Total","float",0,0,13,1,0,0,"");
 	$itenscarrinho_variacaopeso 		= criarAtributo($conn,$itenscarrinhoID,"variacaopeso","Peso ( Variação )","int",0,1,22,0,getEntidadeId("ecommerce_peso"));
 	$itenscarrinho_variacaotamanho 		= criarAtributo($conn,$itenscarrinhoID,"variacaotamanho","Tamanho ( Variação )","int",0,1,22,0,getEntidadeId("ecommerce_tamanhoproduto"));
+	$itenscarrinho_qtdetotalitens 		= criarAtributo($conn,$itenscarrinhoID,"qtdetotalitens","Quantidade Total de Itens","tinyint",0,1,26,1,0,0,"");
+	$itenscarrinho_valortotal			= criarAtributo($conn,$itenscarrinhoID,"valortotal","Valor Total","float",0,1,13,1,0,0,"");	
 
 	// Adicionando Menu
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,7,'ecommerce-' . $entidadeNome,$entidadeID,'cadastro');

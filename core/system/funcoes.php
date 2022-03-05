@@ -750,10 +750,10 @@ function criarAtributo(
 	$tamanho 					= $tamanho == ''?0:$tamanho;	
 	$entidadeentidadedefault 	= ENTIDADE;
 	$entidadeatributodefault 	= ATRIBUTO;
-	
-	$PREFIXO = getSystemPREFIXO();
-	$sqlExisteAtributo = "SELECT id FROM {$entidadeatributodefault} WHERE nome='{$nome}' AND entidade={$entidade};";
-	$queryExisteAtributo = $conn->query($sqlExisteAtributo);
+	$PREFIXO 					= getSystemPREFIXO();
+
+	$sqlExisteAtributo 			= "SELECT id FROM {$entidadeatributodefault} WHERE nome='{$nome}' AND entidade={$entidade};";
+	$queryExisteAtributo 		= $conn->query($sqlExisteAtributo);
 	if (!$queryExisteAtributo){
 		echo $sqlExisteAtributo;
 		var_dump($conn->errorInfo());
@@ -775,8 +775,12 @@ function criarAtributo(
 		$sql = "INSERT INTO {$entidadeatributodefault} (id,entidade,nome,descricao,tipo,tamanho,nulo,tipohtml,exibirgradededados,chaveestrangeira,dataretroativa,inicializacao,tipoinicializacao,labelzerocheckbox,labelumcheckbox,readonly,legenda) VALUES (".$id.",{$entidade},'{$nome}','".$descricao."','{$tipo}','{$tamanho}',{$nulo},'{$tipohtml}',{$exibirgradededados},{$chaveestrangeira},{$dataretroativa},'{$inicializacao}',{$tipoinicializacao},'{$labelzerocheckbox}','{$labelumcheckbox}',{$readonly},'{$legenda}');";
 		$query = $conn->query($sql);
 		if ($query){
-			$sql = "ALTER TABLE {$linha[0]["nome"]} ADD COLUMN {$nome} {$tipo}{$tamanhoSQL} {$nuloSQL};";
-			$criar = $conn->query($sql);
+			try{
+				$sql = "ALTER TABLE {$linha[0]["nome"]} ADD COLUMN {$nome} {$tipo}{$tamanhoSQL} {$nuloSQL};";
+				$criar = $conn->query($sql);
+			}catch(Throwable $t){
+
+			}
 		}else{
 			echo $sql;
 			var_dump($conn->errorInfo());
@@ -1315,7 +1319,7 @@ function createDirectory($dir){
 		for($i=0;$i<sizeof($dirpart);$i++){
 			$dircreate .=  $dirpart[$i] . "/";
 			if (!file_exists($dircreate)){
-				if (!mkdir($dircreate)){
+				if (!tdFile::mkdir($dircreate)){
 					echo 'Erro ao criar diretório => ' . $dircreate;
 				}
 			}
@@ -1379,7 +1383,7 @@ function setCurrentConfigFile($atualizar,$replace = true){
 	$fileconfig = "current_config.inc";
 	$pathfinal	= $pathconfig . $fileconfig;
 	if (!file_exists($pathconfig)){
-		mkdir($pathconfig);
+		tdFile::mkdir($pathconfig);
 	}
 	if ($replace){
 		$fp = fopen($pathfinal,"w");
@@ -1639,7 +1643,7 @@ function copiardiretorio($origem,$destino,$criardiretoriodestino = true,$retirar
 	}
 	if (!file_exists($destino)){
 		if ($criardiretoriodestino){
-			mkdir($destino);
+			tdFile::mkdir($destino);
 		}
 	}
 	

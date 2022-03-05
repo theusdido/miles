@@ -47,7 +47,7 @@
 	$pedido_carrinho 			= criarAtributo($conn,$entidadeID,"carrinhocompras","Carrinho de Compra","int",0,0,22,0,getEntidadeId("ecommerce_carrinhocompras",$conn),0,"");
 	$pedido_status 				= criarAtributo($conn,$entidadeID,"status","Status","tinyint",0,0,4,1,getEntidadeId("ecommerce_statuspedido",$conn),0,"");
 	$pedido_metodopagamento 	= criarAtributo($conn,$entidadeID,"metodopagamento","Método de Pagamento","int",0,1,4,0,getEntidadeId("ecommerce_metodopagamento",$conn),0,"");
-	$pedido_qtdetotaldeitens 	= criarAtributo($conn,$entidadeID,"qtdetotaldeitens","Qtde Total de Itens","int",0,1,3,0,0,0,"");
+	$pedido_qtdetotalitens 		= criarAtributo($conn,$entidadeID,"qtdetotalitens","Qtde Total de Itens","int",0,1,3,0,0,0,"");
 	$pedido_valortotal 			= criarAtributo($conn,$entidadeID,"valortotal","Valor Total","float",0,1,13,1,0,0,"");
 	$pedido_representante 		= criarAtributo($conn,$entidadeID,"representante","Representante","int",0,1,22,0,getEntidadeId("ecommerce_representante",$conn),0,"",0,0);
 	$pedido_isrepresentante 	= criarAtributo($conn,$entidadeID,"isrepresentante","Representante ?","tinyint",0,1,7,0,0,0,'',1,0);
@@ -55,7 +55,7 @@
 	$pedido_isfinalizado		= criarAtributo($conn,$entidadeID,"isfinalizado","Finalizado ?","tinyint",0,1,7,0,0,0,'',1,0);
 
 	criarAba($conn,$entidadeID,"Capa", implode(",",array(
-		$pedido_cliente,$pedido_datahoraenvio,$pedido_datahoraretorno,$pedido_carrinho,$pedido_status,$pedido_metodopagamento,$pedido_qtdetotaldeitens,
+		$pedido_cliente,$pedido_datahoraenvio,$pedido_datahoraretorno,$pedido_carrinho,$pedido_status,$pedido_metodopagamento,$pedido_qtdetotalitens,
 		$pedido_valortotal,$pedido_representante,$pedido_representante
 	)));
 

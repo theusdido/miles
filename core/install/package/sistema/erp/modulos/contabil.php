@@ -44,6 +44,11 @@
 								'descricao' 	=> 'Nota Fiscal de Serviço Eletrônica.',
 								'componente' 	=> 'nfse'
 							),
+							array(
+								'nome' 			=> 'Situação Tributária',
+								'descricao' 	=> 'O Código de Situação Tributária (CST) é uma sequência numérica que determina a tributação aplicada aos produtos.',
+								'componente' 	=> 'situacaotributaria'
+							),							
 						);
 
 						foreach($pacotes as $p){

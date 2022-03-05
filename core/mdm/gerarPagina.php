@@ -100,7 +100,8 @@
 				id:<?=$id?>
 			},
 			complete:function(){
-				$("#pagina-gerada").html("Carregou");;
+				let url = '../../projects/<?=$_SESSION["currentproject"]?>/files/cadastro/<?=$id?>/' + $("#filename").val();
+				$("#pagina-gerada").html('<center><h3>Carregou</h3><a href="'+url+'" target="_blank">Abrir ( HTML )</a></center>');
 			}
 		});
 	}

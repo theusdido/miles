@@ -404,7 +404,7 @@ class TdFormulario Extends Elemento {
 				// Área de Texto
 				case "14":
 					$campo = Campos::TextArea($coluna->nome,$coluna->nome,utf8charset($coluna->descricao,7),$initialValue,$entidadeCOL);
-					$campo->label->add($asteriscoobrigatorio);
+					//$campo->label->add($asteriscoobrigatorio);
 					$campo->data_entidade = $entidadeCOL;
 					if ($this->fp != "") $campo->class = $this->fp;
 					if ($coluna->exibirgradededados ==1) $campo->class = $this->gd;
@@ -572,14 +572,6 @@ class TdFormulario Extends Elemento {
 					);
 					if ($this->fp != "") $campo->class = $this->fp;
 					$campo->atributo = $coluna->id;
-
-					if ($initialValue != ""){
-						$js = tdClass::Criar("script");
-						$js->add('
-							buscarFiltro('.$initialValue.');
-						');
-						$campo->add($js);
-					}
 				break;
 				// Data e Hora
 				case "23":

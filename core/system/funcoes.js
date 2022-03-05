@@ -474,7 +474,8 @@ function retornaDadoFormatadoCampo(campo,nomeEntidadeDados,contextoAdd,valorDado
 	if ($("#" + campo + "[data-entidade="+nomeEntidadeDados+"]",contextoAdd).hasClass("termo-filtro")){
 		direto = false;
 		var nomeEntidadeReplace = td_entidade[td_atributo[getIdAtributo(campo,nomeEntidadeDados)].chaveestrangeira].nomecompleto;
-		buscarFiltro(valorDados,nomeEntidadeReplace.replace("-","."),campo,pModalName + campo + cmodal,nomeEntidadeDados);
+		debugger;
+		//buscarFiltro(valorDados,nomeEntidadeReplace.replace("-","."),campo,pModalName + campo + cmodal,nomeEntidadeDados);
 	}
 	if ($("#" + campo + "[data-entidade="+nomeEntidadeDados+"]",contextoAdd).hasClass("checkbox-sn")){
 		if (valorDados == 1){

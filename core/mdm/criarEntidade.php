@@ -8,6 +8,13 @@
 	$campodescchave = $atributogeneralizacao = 0;
 	$ncolunas = 1;
 
+	if (isset($_GET['op'])){
+		if ($_GET['op'] == 'alterar_id'){
+			$conn->exec('UPDATE td_atributo SET entidade=' . $_GET['entidade_new'] . ' WHERE entidade = ' . $_GET['entidade']);
+			$conn->exec('UPDATE td_entidade SET id=' . $_GET['entidade_new'] . ' WHERE id = ' . $_GET['entidade']);
+			exit;
+		}
+	}
 	if (isset($_GET["entidade"])){
 		$id = $_GET["entidade"];
 		$entidade = $id;
@@ -35,10 +42,9 @@
 		$carregarlibjavascript		= isset($_POST["carregarlibjavascript"])?1:0;
 		$tipoaba					= isset($_POST["tipoaba"])?$_POST["tipoaba"]:'';
 
-
 		if ($_POST["id"] == ""){
 			if ($bancodados == "mysql"){
-				$nome = PREFIXO . $nome;
+				$nome = PREFIXO . str_replace('td_','',$nome);
 				$atributos_iniciais = "";
 				if ($criarprojeto == 1){
 					$atributos_iniciais .= ",projeto int not null";				
@@ -53,32 +59,36 @@
 				$sql = "CREATE TABLE IF NOT EXISTS {$nome}(id int not null primary key{$atributos_iniciais}) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
 				$criar = $conn->query($sql);
 				if ($criar){
+
 					// ID Última entidade
-					$linha_ultimo = $conn->query("SELECT MAX(id)+1 id FROM ".PREFIXO."entidade")->fetchAll();
-					$prox = $linha_ultimo[0]['id'];
-					$sql = "INSERT INTO ".PREFIXO."entidade (id,nome,descricao,exibirmenuadministracao,exibircabecalho,ncolunas,atributogeneralizacao,exibirlegenda,registrounico,carregarlibjavascript,tipoaba) VALUES ({$prox},'{$nome}','{$descricao}',{$exibirmenuadministracao},{$exibircabecalho},{$ncolunas},{$atributogeneralizacao},{$exibirlegenda},{$registrounico},{$carregarlibjavascript},'{$tipoaba}');";
-					$query = $conn->query($sql);
+					$linha_ultimo 	= $conn->query("SELECT MAX(id)+1 id FROM ".PREFIXO."entidade")->fetchAll();
+					$prox 			= $linha_ultimo[0]['id'];
+					$sql 			= "INSERT INTO ".PREFIXO."entidade (id,nome,descricao,exibirmenuadministracao,exibircabecalho,ncolunas,atributogeneralizacao,exibirlegenda,registrounico,carregarlibjavascript,tipoaba) VALUES ({$prox},'{$nome}','{$descricao}',{$exibirmenuadministracao},{$exibircabecalho},{$ncolunas},{$atributogeneralizacao},{$exibirlegenda},{$registrounico},{$carregarlibjavascript},'{$tipoaba}');";
+					$query 			= $conn->query($sql);
+
 					if($query){
+
 						// ID Última entidade
-						$linha_ultimo_attr = $conn->query("SELECT MAX(id)+1 id FROM ".PREFIXO."atributo")->fetchAll();
-						$prox_attr = $linha_ultimo_attr[0]['id'];
-						
+						$linha_ultimo_attr 	= $conn->query("SELECT MAX(id)+1 id FROM ".PREFIXO."atributo")->fetchAll();
+						$prox_attr 			= $linha_ultimo_attr[0]['id'];
+
 						if ($criarprojeto == 1){
-							$sql_projeto = "INSERT INTO ".PREFIXO."atributo (id,".PREFIXO."entidade,nome,descricao,tipo,tamanho,nulo,tipohtml,exibirgradededados,chaveestrangeira,dataretroativa,inicializacao) VALUES ({$prox_attr},{$prox},'projeto','Projeto','smallint','',0,'16',0,3,0,'session.projeto');";
+							$sql_projeto = "INSERT INTO ".PREFIXO."atributo (id,entidade,nome,descricao,tipo,tamanho,nulo,tipohtml,exibirgradededados,chaveestrangeira,dataretroativa,inicializacao) VALUES ({$prox_attr},{$prox},'projeto','Projeto','smallint','',0,'16',0,3,0,'session.projeto');";
 							$conn->exec($sql_projeto);
 							$prox_attr++;
 						}
+
 						if ($criarempresa == 1){
-							$sql_empresa = "INSERT INTO ".PREFIXO."atributo (id,".PREFIXO."entidade,nome,descricao,tipo,tamanho,nulo,tipohtml,exibirgradededados,chaveestrangeira,dataretroativa,inicializacao) VALUES ({$prox_attr},{$prox},'empresa','Empresa','smallint','',0,'16',0,4,0,'session.empresa');";
+							$sql_empresa = "INSERT INTO ".PREFIXO."atributo (id,entidade,nome,descricao,tipo,tamanho,nulo,tipohtml,exibirgradededados,chaveestrangeira,dataretroativa,inicializacao) VALUES ({$prox_attr},{$prox},'empresa','Empresa','smallint','',0,'16',0,4,0,'session.empresa');";
 							$conn->exec($sql_empresa);
 							$prox_attr++;
 						}
 						if ($criarauth == 1){
-							$sql_auth = "INSERT INTO ".PREFIXO."atributo (id,".PREFIXO."entidade,nome,descricao,tipo,tamanho,nulo,tipohtml,exibirgradededados,chaveestrangeira,dataretroativa) VALUES ({$prox_attr},{$prox},'auth','Auth','varchar','45',0,'16',0,null,0);";
+							$sql_auth = "INSERT INTO ".PREFIXO."atributo (id,entidade,nome,descricao,tipo,tamanho,nulo,tipohtml,exibirgradededados,chaveestrangeira,dataretroativa) VALUES ({$prox_attr},{$prox},'auth','Auth','varchar','45',0,'16',0,null,0);";
 							$conn->exec($sql_auth);
 							$prox_attr++;
 							
-							$sql_auth0 = "INSERT INTO ".PREFIXO."atributo (id,".PREFIXO."entidade,nome,descricao,tipo,tamanho,nulo,tipohtml,exibirgradededados,chaveestrangeira,dataretroativa) VALUES ({$prox_attr},{$prox},'auth0','Auth0','varchar','45',0,'16',0,null,0);";
+							$sql_auth0 = "INSERT INTO ".PREFIXO."atributo (id,entidade,nome,descricao,tipo,tamanho,nulo,tipohtml,exibirgradededados,chaveestrangeira,dataretroativa) VALUES ({$prox_attr},{$prox},'auth0','Auth0','varchar','45',0,'16',0,null,0);";
 							$conn->exec($sql_auth0);
 							$prox_attr++;
 						}					
@@ -86,27 +96,28 @@
 				}
 			}else{
 				// ID Última entidade
-				$linha_ultimo = $conn->query("SELECT MAX(id)+1 id FROM ".PREFIXO."entidade")->fetchAll();
-				$prox = $linha_ultimo[0]['id'];
-				$sql = "INSERT INTO entidade (id,nome,descricao,exibirmenuadministracao,exibircabecalho,ncolunas,atributogeneralizacao,exibirlegenda,registrounico,carregarlibjavascript,tipoaba) VALUES ({$prox},'{$nome}','{$descricao}',{$exibirmenuadministracao},{$exibircabecalho},{$ncolunas},{$atributogeneralizacao},{$exibirlegenda},{$registrounico},{$carregarlibjavascript},'{$tipoaba}');";
-				$query = $conn->query($sql);
+				$linha_ultimo 	= $conn->query("SELECT MAX(id)+1 id FROM ".PREFIXO."entidade")->fetchAll();
+				$prox 			= $linha_ultimo[0]['id'];
+				$sql 			= "INSERT INTO entidade (id,nome,descricao,exibirmenuadministracao,exibircabecalho,ncolunas,atributogeneralizacao,exibirlegenda,registrounico,carregarlibjavascript,tipoaba) VALUES ({$prox},'{$nome}','{$descricao}',{$exibirmenuadministracao},{$exibircabecalho},{$ncolunas},{$atributogeneralizacao},{$exibirlegenda},{$registrounico},{$carregarlibjavascript},'{$tipoaba}');";
+				$query 			= $conn->query($sql);
 			}	
 		}else{
 			if ($bancodados == "mysql"){
-				$sql_ent_nome = "SELECT nome FROM " . PREFIXO ."entidade WHERE id = " . $id;
-				$linha_ent_nome = $conn->query($sql_ent_nome)->fetchAll();
+				$sql_ent_nome 		= "SELECT nome FROM " . PREFIXO ."entidade WHERE id = " . $id;
+				$linha_ent_nome 	= $conn->query($sql_ent_nome)->fetchAll();
 				if ($linha_ent_nome[0]["nome"] != $nome){				
 					$sql_update = "RENAME TABLE {$linha_ent_nome[0]["nome"]} TO {$nome};";
 				}				
 			}			
 
-			$prox = $_POST["id"];
-			$sql = "UPDATE ".PREFIXO."entidade SET nome = '{$nome}' , descricao = '{$descricao}' , ncolunas = {$ncolunas} , exibirmenuadministracao = {$exibirmenuadministracao} , exibircabecalho = {$exibircabecalho} , campodescchave = {$campodescchave} , atributogeneralizacao = {$atributogeneralizacao} , exibirlegenda = {$exibirlegenda} , registrounico = {$registrounico} , carregarlibjavascript = {$carregarlibjavascript}, tipoaba = '{$tipoaba}' WHERE id = ".$_POST['id'].";";
-			$query = $conn->query($sql);
+			$prox 	= $_POST["id"];
+			$sql 	= "UPDATE ".PREFIXO."entidade SET nome = '{$nome}' , descricao = '{$descricao}' , ncolunas = {$ncolunas} , exibirmenuadministracao = {$exibirmenuadministracao} , exibircabecalho = {$exibircabecalho} , campodescchave = {$campodescchave} , atributogeneralizacao = {$atributogeneralizacao} , exibirlegenda = {$exibirlegenda} , registrounico = {$registrounico} , carregarlibjavascript = {$carregarlibjavascript}, tipoaba = '{$tipoaba}' WHERE id = ".$_POST['id'].";";
+			$query 	= $conn->query($sql);
 		}
 		header("Location: criarEntidade.php?entidade=" . $prox . "&" . getURLParamsProject());
 	}
-	if (isset($_GET["entidade"])){		
+
+	if (isset($_GET["entidade"])){
 		$sql = "SELECT nome,descricao,exibirmenuadministracao,exibircabecalho,ncolunas,campodescchave,atributogeneralizacao,exibirlegenda,registrounico,carregarlibjavascript,tipoaba FROM ".PREFIXO."entidade WHERE id = {$id};";
 
 		$query = $conn->query($sql);
@@ -191,8 +202,20 @@
 							Entidade
 						</legend>
 						<fieldset>
-							<input type="hidden" id="id" name="id">
 							<input type="hidden" id="currentproject" name="currentproject" value="<?=$_SESSION["currentproject"]?>">
+
+							<div class="form-group">
+							<label for="nome">ID</label>
+								<div class="input-group">
+									<input type="text" class="form-control" id="id" name="id" readonly />
+									<span class="input-group-btn">
+										<button class="btn btn-info" type="button" id="btn-edit-id-entidade">
+											<span class="fas fa-pencil-alt" aria-hidden="true"></span>
+										</button>
+									</span>
+								</div>
+							</div>		
+
 							<div class="form-group">
 								<label for="nome">Nome</label>
 								<input type="text" name="nome" id="nome" class="form-control"> 
@@ -323,6 +346,41 @@
 					</form>					
 				</div>
 			</div>
-		</div>		
+		</div>
+		<script type="text/javascript">
+			let is_edit_id = false;
+			$('#btn-edit-id-entidade').click(function(){
+
+				if (is_edit_id){
+					alterarIdEntidade();
+				}else{
+					$('#id').removeAttr('disabled');
+					$('#id').removeAttr('readonly');
+					$('#id').focus();
+					$(this).find('.fas').removeClass('fa-pencil-alt');
+					$(this).find('.fas').addClass('fa-save');
+					is_edit_id = true;
+				}
+
+
+
+			});
+
+			function alterarIdEntidade()
+			{
+				$.ajax({
+					url:"criarEntidade.php",
+					data:{
+						op:'alterar_id',
+						entidade:<?=$entidade?>,
+						entidade_new:$('#id').val(),
+						currentproject:<?=$_SESSION["currentproject"]?>
+					},
+					success:function(){
+						location.href = "criarEntidade.php?currentproject=<?=$_SESSION["currentproject"]?>&entidade=" + $('#id').val();
+					}
+				});
+			}
+		</script>
 	</body>
 </html>

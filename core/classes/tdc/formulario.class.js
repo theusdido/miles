@@ -23,6 +23,8 @@ function tdFormulario (){
 	this.btn_salvar					= null;
 	this.composicao					= [];
 	this.entidades					= []; // Usada para carregar os dados na edição
+	this.cmodal						= ' .modal-body p'; // Complemento Modal
+
     this.construct(arguments[0], arguments[1] , arguments[2]);
 }
 
@@ -43,6 +45,8 @@ tdFormulario.prototype.init = function(){
 	this.setEntidadesFilho();
 	this.setBotoes();
 	this.emExecucao();
+	this.setBuscaFiltro();
+	this.addHTMLPersonalizado();
 }
 tdFormulario.prototype.novo = function(){
 	let contextoListar 		= this.getContextoListar();
@@ -74,11 +78,14 @@ tdFormulario.prototype.novo = function(){
 	}
 
 	// Permissão dos atributos
-	this.setPermissoesAtributos('novo');		
+	this.setPermissoesAtributos('novo');
+
+	let instancia = this;
 
 	// Percorre todos os campos do cadastro, incluindo as abas de relacionamento
 	// Os campos ID não podem ser alterados :not([id="id"])
-	$('.form-control:not([id="id"])',contextoAdd).each(function(){
+	$('.form-control:not([id="id"])',contextoAdd).each(function()
+	{
 		let atributo 	= $(this).attr("id");
 		if (atributo == ""){
 			bootbox.alert('Existe um campo no formul\u00e1rio que n\u00e3o possui o atributo ID. Maiores detalhes no console do navegador');
@@ -128,7 +135,7 @@ tdFormulario.prototype.novo = function(){
 		if (parseInt(atributoID) != 0 && atributoID != "" && atributoID != undefined){
 			if (td_atributo[atributoID].chaveestrangeira != "" && td_atributo[atributoID].tipohtml == "4"){
 				// Só carrega as listas se for acesso o botão novo do formulário principal
-				if (this.is_principal){ 
+				if (instancia.is_principal){ 
 					carregarListas(entidadeAttr,atributoID,contextoAdd,valor);
 				}
 			}
@@ -145,7 +152,7 @@ tdFormulario.prototype.novo = function(){
 		$(".checkbox-s",contextoAdd).removeClass("active");
 		$(".checkbox-n",contextoAdd).addClass("active");
 
-		if (this.is_principal){
+		if (instancia.is_principal){
 			if ($('#select-generalizacao-multipla').length > 0){
 				$('#select-generalizacao-multipla').SumoSelect({placeholder: 'Selecione'});
 				$('#select-generalizacao-multipla option').removeAttr("selected");
@@ -159,12 +166,13 @@ tdFormulario.prototype.novo = function(){
 	$(".form-group",contextoAdd).removeClass("has-success");
 	$(".form-control-feedback").remove();
 
-	if ($("#select-generalizacao-unica",contextoAdd)){
-		if (this.is_principal){
+	if ($("#select-generalizacao-unica",contextoAdd))
+	{
+		if (instancia.is_principal){
 			$("#select-generalizacao-unica",contextoAdd).removeAttr("readonly");
 			$("#select-generalizacao-unica",contextoAdd).removeAttr("disabled");
 		}
-		this.setaLayoutGeneralizao();
+		instancia.setaLayoutGeneralizao();
 	}
 	
 	this.setarformdadospreenchido();
@@ -917,7 +925,6 @@ tdFormulario.prototype.editar = function(){
 }
 
 tdFormulario.prototype.setDados = function(dados){
-
 	let form	 		= formulario[dados.entidade];
 	let entidade_nome 	= form.entidade.nome;
 	let contextoAdd		= form.contexto_add;
@@ -937,7 +944,7 @@ tdFormulario.prototype.setDados = function(dados){
 		let direto 			= true;
 		
 		if ($('#' + dado.atributo + '[data-entidade="'+entidade_nome+'"]',contextoAdd).prop("tagName") == "SELECT"){
-			if (td_atributo[getIdAtributo(dado.atributo,entidade_nome)].atributodependencia <= 0){										
+			if (td_atributo[getIdAtributo(dado.atributo,entidade_nome)].atributodependencia <= 0){
 				carregarListas(entidade_nome,dado.atributo,contextoAdd,valorDados);
 				if (valorDados != "" && valorDados != undefined){
 					$('#' + dado.atributo + '[data-entidade="'+entidade_nome+'"]',contextoAdd).val(valorDados);
@@ -973,9 +980,14 @@ tdFormulario.prototype.setDados = function(dados){
 		}
 
 		if ($('#' + dado.atributo + '[data-entidade="'+entidade_nome+'"]',contextoAdd).hasClass("termo-filtro")){
-			direto = false;
-			const nomeEntidadeReplace = td_entidade[td_atributo[dado.idatributo].chaveestrangeira].nomecompleto;
-			this.buscarFiltro(valorDados,nomeEntidadeReplace.replace("-","."),dado.atributo,"myModal-" + dado.atributo + " .modal-body p ",entidade_nome);
+			try{
+				direto = false;
+				const nomeEntidadeReplace = td_entidade[td_atributo[dado.idatributo].chaveestrangeira].nomecompleto;
+				this.buscarFiltro(valorDados,nomeEntidadeReplace.replace("-","."),dado.atributo,"myModal-" + dado.atributo + " .modal-body p ",entidade_nome);				
+			}catch(e){
+				console.warn('ID => atributo => ' + dado.idatributo);
+			}
+
 		}
 
 		if ($('#' + dado.atributo + '[data-entidade="'+entidade_nome+'"]',contextoAdd).hasClass("checkbox-sn")){
@@ -1214,4 +1226,72 @@ tdFormulario.prototype.setConsulta = function(id_consulta){
 	this.getGrade().exibirpesquisa 	= false;
 	this.getGrade().setOrder("id","DESC");
 	this.getGrade().show();
-}  
+}
+/* 
+	*********** FILTRO ************* 
+	Configuração dos campos tipo filtro
+*/
+tdFormulario.prototype.setBuscaFiltro = function()
+{
+	let instancia = this;
+	td_entidade[this.entidade_id].atributos.forEach(
+		(atributo) =>{
+			if (atributo.tipohtml == 22){
+
+				$('.termo-filtro[atributo='+atributo.id+']',this.getContextoAdd()).each(function(){
+
+					$(this).blur(function(){
+						let termo 				= this.value;
+						let entidadeNome 		= $(this).data("fk");
+						let nome 				= $(this).prop("id");	
+						let modalName 			= $(this).parents(".filtro-pesquisa").data("modalname");
+						let entidadeContexto 	= $(this).data("entidade");
+						instancia.buscarFiltro(termo,entidadeNome,nome,modalName,entidadeContexto);
+					});
+
+					$(this).parent('.input-group').find('.botao-filtro').click(function(){
+						let modalName 			= $(this).parents(".filtro-pesquisa").data("modalname");
+						let chaveestrangeira 	= $(this).data("fk");
+						let atributo 			= $(this).parents(".filtro-pesquisa").find(".termo-filtro").attr("id");
+						let contextoGrade 		= '#' + modalName + instancia.cmodal;
+
+						// Atributo uma grade de dados
+						let gd_filtro 					= new GradeDeDados(chaveestrangeira);
+						gd_filtro.contexto 				= contextoGrade;
+						gd_filtro.pesquisar				= true;
+						gd_filtro.retornaFiltro 		= true;
+						gd_filtro.atributoRetorno 		= atributo;
+						gd_filtro.modalName 			= modalName;
+						gd_filtro.entidadeContexto 		= $(this).data("entidade");
+						gd_filtro.entidade_contexto_id 	= instancia.entidade_id;
+
+						gd_filtro.show();
+
+						$('#'+modalName+' .modal-footer').css('border','0px');
+						$('#'+modalName).modal({
+							backdrop:false
+						});
+						console.log('#'+modalName);
+						$('#'+modalName).modal('show');
+
+					});
+
+				});
+
+			}
+		}
+	);
+}
+
+
+tdFormulario.prototype.addHTMLPersonalizado = function()
+{
+	$("#div-htmlpersonalizado").load(
+		session.folderprojectfiles + 
+		"files/cadastro/" + 
+		this.entidade_id + 
+		"/" + 
+		this.entidade.nome + 
+		".htm"
+	);
+}

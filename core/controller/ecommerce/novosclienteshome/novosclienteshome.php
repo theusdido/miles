@@ -6,16 +6,16 @@
 			margin-bottom: 3px;
 		}
 	');
-	$bloco_novosclientes = tdClass::Criar("bloco");
+	$bloco_novosclientes 		= tdClass::Criar("bloco");
 	$bloco_novosclientes->class = "col-md-6";
 
-	$panel = tdClass::Criar("panel");
+	$panel 			= tdClass::Criar("panel");
 	$panel->head("Novos Clientes");
-	$panel->tipo = "info";
+	$panel->tipo 	= "info";
 
-	$listaNovosClientes = tdClass::Criar("div");
-	$listaNovosClientes->class = "list-group";
-	$listaNovosClientes->id = "listanovosclienteshome";
+	$listaNovosClientes 		= tdClass::Criar("div");
+	$listaNovosClientes->class 	= "list-group";
+	$listaNovosClientes->id 	= "listanovosclienteshome";
 
 	$sql = tdClass::Criar("sqlcriterio");
 	$sql->setPropriedade("limit",5);
@@ -28,9 +28,9 @@
 		}else{
 			$descatarsinativo = 'list-group-item-success';
 		}
-		$a->class="list-group-item ". $descatarsinativo;
-		$a->href = "#";
-		$a->onclick = "editarTDFormulario(".$cliente->getID().",".$cliente->id.");";
+		$a->class		= "list-group-item ". $descatarsinativo;
+		$a->href 		= "#";
+		$a->onclick 	= "editarTDFormulario(".$cliente->getID().",".$cliente->id.");";
 		$a->add("ID: " . $cliente->id . " - " . substr($cliente->nome,0,50));
 		$listaNovosClientes->add($a);
 	}

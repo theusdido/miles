@@ -47,7 +47,7 @@ if ($conn = Transacao::get()){
 			$valor 			= isset($dado["valor"]) ? $dado["valor"] : '';
 			$atributoNome 	= isset($dado["atributo"]) ? $dado["atributo"] : '';
 
-			if ($atributoNome != ""){
+			if ($atributoNome != "" && $atributoNome != 0){
 				$buscaPorValor 	= true;
 				$whereBusca 	= ($valor!='') ? " WHERE {$atributoNome} = {$valor} " : '';
 			}else{
@@ -76,7 +76,7 @@ if ($conn = Transacao::get()){
 					$IDs .= ($IDs=="")?$l->regfilho:"," . $l->regfilho;
 				}
 				if ($IDs == "") continue;
-				$sql = "SELECT * FROM {$entidadeNome} WHERE id in ({$IDs})";
+				$sql = "SELECT * FROM {$entidadeNome} WHERE id in ({$IDs})";				
 			}
 			try{
 				$query = $conn->query($sql);	

@@ -14,9 +14,10 @@ class Aba Extends Elemento {
 	private $conteudo;
 	private $menu;
 	private $indice 	= 0;
-	public $nome 		= "";
 	public $contexto 	= "";
 	private $tipo 		= "tabs";
+	private $idkey		= '';
+
 	/*  
 		* Método construct 
 	    * Data de Criacao: 31/01/2015
@@ -24,17 +25,21 @@ class Aba Extends Elemento {
 		
 		Cria o componente ABA
 	*/
-	public function __construct(){		
+	public function __construct($id = ''){
 		parent::__construct('div');
-		$this->role 	= "tabpanel";
-		$this->class	= "td-aba";
+
+		$this->idkey			= $id;
+		$this->data_id 			= $id;
+		$this->role 			= "tabpanel";
+		$this->class			= "td-aba";
 
 		$this->menu = tdClass::Criar("ul");
-		$this->menu->class = "nav";
-		$this->menu->role = "tablist";
+		$this->menu->class 		= "nav";
+		$this->menu->role 		= "tablist";		
 
-		$this->conteudo = tdClass::Criar("div");
-		$this->conteudo->class = "tab-content";	
+		$this->conteudo 		= tdClass::Criar("div");
+		$this->conteudo->class 	= "tab-content";
+		
 	}
 
 	public function addItem($item,$conteudo="",$classABA = "",$indiceAba = ""){
@@ -50,19 +55,19 @@ class Aba Extends Elemento {
 		
 		$a = tdClass::Criar("hyperlink");
 		$a->add($item);
-		$a->href= '#'.$id;
-		$a->data_toggle="tab";
-		$a->role = "tab";
-		$a->aria_controls= $id;
-		$a->aria_expanded = ($this->indice==0)?"true":"false";
+		$a->href				= '#'.$id;
+		$a->data_toggle			= "tab";
+		$a->role 				= "tab";
+		$a->aria_controls		= $id;
+		$a->aria_expanded 		= ($this->indice==0)?"true":"false";
 		$li->add($a);
 		$this->menu->add($li);
 
-		$div = tdClass::Criar("div");
-		$div->id = $id;
-		$div->role = "tabpanel";
-		$div->class = "tab-pane fade in ";
-		$div->aria_labelledby= $id;
+		$div 					= tdClass::Criar("div");
+		$div->id 				= $id;
+		$div->role 				= "tabpanel";
+		$div->class 			= "tab-pane fade in ";
+		$div->aria_labelledby	= $id;
 		$div->add($conteudo);
 
 		switch($this->getTipo()){
@@ -90,7 +95,7 @@ class Aba Extends Elemento {
 		return $camposOBJ;
 	}
 
-	public function mostrar(){
+	public function mostrar(){		
 		$this->menu->class = 'nav-' . $this->getTipo() . ($this->getTipo() == 'pills'? ' nav-stacked': '');
 		$this->add($this->menu,$this->conteudo,$this->jsscript());
 		parent::mostrar();
@@ -98,7 +103,9 @@ class Aba Extends Elemento {
 
 	public function jsscript(){
 		$script = tdClass::Criar("script");
-		$script->add('$("#--conteudo-aba0").addClass("active");');
+		$script->add('
+			$(".nav-tabs li:first, .tab-content div:first","[data-id=\"'.$this->idkey.'\"]").addClass("active in");
+		');
 		return $script;
 	}
 

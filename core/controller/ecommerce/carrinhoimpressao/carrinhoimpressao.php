@@ -20,9 +20,9 @@ $cliente 		= tdc::p("td_ecommerce_cliente",$pedido->cliente);
 $enderecliente 	= tdc::p("td_ecommerce_endereco",@(int)getListaRegFilho(getEntidadeId("ecommerce_cliente"),getEntidadeId("ecommerce_endereco"),$cliente->id)[0]->regfilho);
 $enderecoempresa= tdc::p("td_endereco",@(int)getListaRegFilho(getEntidadeId("empresa"),getEntidadeId("endereco"),Session::Get()->empresa)[0]->regfilho);
 
-$style		= tdc::o("link");
-$style->href= PATH_ECOMMERCE . "pedidoimpressao/pedidoimpressao.css";
-$style->rel	= "stylesheet";
+$style			= tdc::o("link");
+$style->href	= Session::Get('URL_ECOMMERCE') . "pedidoimpressao/pedidoimpressao.css";
+$style->rel		= "stylesheet";
 
 // Div Topo
 $topo		= new Dom("div" , array("class" => "topo"));
@@ -30,7 +30,7 @@ $topo		= new Dom("div" , array("class" => "topo"));
 // Div da Logo
 $divlogo 	= $topo->add("div" , array("propriedades" => array ("class" => "div-logo")));
 $logo		= $topo->add("img",array(
-	"propriedades" => array( "id" => "logo" , "src" => Session::get("PATH_CURRENT_LOGO_PADRAO")) ,
+	"propriedades" => array( "id" => "logo" , "src" => Session::get("URL_CURRENT_LOGO_PADRAO")) ,
 	"elementopai" => $divlogo
 ));
 

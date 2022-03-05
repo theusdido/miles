@@ -65,7 +65,7 @@
 	define('PATH_PROJECT',PATH_MILES . FOLDER_PROJECT . '/');		
 
 	// Caminho padrão para arquivos do E-Commerce
-	define('PATH_ECOMMERCE', PATH_MVC_CONTROLLER . "website/ecommerce/");
+	define('PATH_ECOMMERCE', PATH_MVC_CONTROLLER . "ecommerce/");
 
 	// Caminho padrão para os arquivos de classe Interface
 	define('PATH_CLASS_INTERFACE',PATH_CLASS.'interface/');

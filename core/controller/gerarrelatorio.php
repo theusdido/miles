@@ -9,7 +9,7 @@
 
 	// Cria diretório
 	if (!file_exists($pathfilerelatorio)){
-		mkdir($pathfilerelatorio);
+		tdFile::mkdir($pathfilerelatorio);
 	}
 	
 	// Seta Cookie Diretório

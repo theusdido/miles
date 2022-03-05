@@ -277,7 +277,7 @@ $jscarrinho->add('
 		$.ajax({
 			url:"index.php",
 			data:{
-				controller:"website/ecommerce/alterarstatuscarrinho",
+				controller:"ecommerce/alterarstatuscarrinho",
 				carrinho:'.$carrinhoID.',
 				status:$("#carrinho-listastatus").val()
 			},
@@ -289,7 +289,7 @@ $jscarrinho->add('
 		});
 	});
 	$("#btn-imptimir-carrinho").click(function(){
-		window.open(getURLProject("index.php?controller=website/ecommerce/carrinhoimpressao/carrinhoimpressao&registro='.$carrinho->id.'"),"_blank");
+		window.open(getURLProject("index.php?controller=ecommerce/carrinhoimpressao/carrinhoimpressao&registro='.$carrinho->id.'"),"_blank");
 	});	
 ');
 $jscarrinho->mostrar();

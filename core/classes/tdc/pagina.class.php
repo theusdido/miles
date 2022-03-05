@@ -308,7 +308,8 @@ class Pagina Extends Html {
 					this.urlmiles					= "'.Session::Get("URL_MILES").'index.php";
 					this.folderprojectfiles 		= "'.Session::Get('URL_CURRENT_PROJECT').'";
 					this.urlnodejs					= "'.URL_NODEJS.'";
-					this.curdate					= "'.date('d/m/Y').'";					
+					this.curdate					= "'.date('d/m/Y').'";
+					this.urlcontrollerecommerce		= "'.Session::Get('URL_ECOMMERCE').'";
 				}
 				var session = new SystemSession();
 			

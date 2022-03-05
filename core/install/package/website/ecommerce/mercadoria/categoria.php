@@ -20,7 +20,8 @@
 		$registrounico = 0
     );
 
-	$descricao = criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar",200,0,3,1,0,0,"");
+	$descricao 	= criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar",200,0,3,1,0,0,"");
+	$imagem 	= criarAtributo($conn,$entidadeID,"imagem","Imagem","text",0,1,19,0,0,0,"");
 
 	Entity::setDescriptionField($conn,$entidadeID,$descricao,false);
 

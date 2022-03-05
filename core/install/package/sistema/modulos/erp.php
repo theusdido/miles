@@ -20,9 +20,10 @@
     // Contábil
     array( "name" => "contabil", "title" => "Contábil", "components" => 
       array(
-        array('name' => 'centrocusto'     ,'title' => 'Centro de Custo'),
-        array('name' => 'elementocusto'   ,'title' => 'Elemento de Custo'),
-        array('name' => 'fonterenda'      ,'title' => 'Fonte de Renda')
+        array('name' => 'centrocusto'         ,'title' => 'Centro de Custo'),
+        array('name' => 'elementocusto'       ,'title' => 'Elemento de Custo'),
+        array('name' => 'fonterenda'          ,'title' => 'Fonte de Renda'),
+        array('name' => 'situacaotributaria'  ,'title' => 'Situação Tributária')
       )
     ),
 

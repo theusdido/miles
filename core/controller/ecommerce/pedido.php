@@ -331,7 +331,7 @@ $jsPedido->add('
 		$.ajax({
 			url:"index.php",
 			data:{
-				controller:"website/ecommerce/alterarstatuspedido",
+				controller:"ecommerce/alterarstatuspedido",
 				pedido:'.$pedidoID.',
 				status:$("#pedido-listastatus").val()
 			},
@@ -343,7 +343,7 @@ $jsPedido->add('
 		});
 	});
 	$("#btn-imptimir-pedido").click(function(){
-		window.open(getURLProject("index.php?controller=website/ecommerce/pedidoimpressao/pedidoimpressao&registro='.$pedido->id.'"),"_blank");
+		window.open(getURLProject("index.php?controller=ecommerce/pedidoimpressao/pedidoimpressao&registro='.$pedido->id.'"),"_blank");
 	});
 ');
 $linha3->add($colPagamento,$colEntrega,$colEndereco,$jsPedido);

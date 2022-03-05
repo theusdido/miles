@@ -777,85 +777,85 @@ switch($op){
 		$pathdir = PATH_PROJECT . $idproject;
 		if (!file_exists($pathdir)){
 			// Cria a pasta do projeto
-			mkdir($pathdir,755);
+			tdFile::mkdir($pathdir,755);
 		}
 
 		$pathdirarquivos = $pathdir . "/arquivos";
 		if (!file_exists($pathdirarquivos)){
 			// Cria a pasta de arquivos dentro do projeto
-			mkdir($pathdirarquivos,755);
+			tdFile::mkdir($pathdirarquivos,755);
 		}
 
 		$pathdirfilestemp = $pathdir . "/arquivos/temp";
 		if (!file_exists($pathdirfilestemp)){
 			// Cria a pasta temp dentro de arquivos dentro do projeto
-			mkdir($pathdirfilestemp,755);
+			tdFile::mkdir($pathdirfilestemp,755);
 		}
 
 		$pathdirconfig = $pathdir . "/config";
 		if (!file_exists($pathdirconfig)){
 			// Cria a pasta config
-			mkdir($pathdirconfig,755);
+			tdFile::mkdir($pathdirconfig,755);
 		}
 	
 		$pathdircontroller = $pathdir . "/controller";
 		if (!file_exists($pathdircontroller)){
 			// Cria a pasta controller
-			mkdir($pathdircontroller,755);
+			tdFile::mkdir($pathdircontroller,755);
 		}
 
 		$pathdirfiles = $pathdir . "/files";
 		if (!file_exists($pathdirfiles)){
 			// Cria a pasta files
-			mkdir($pathdirfiles,755);
+			tdFile::mkdir($pathdirfiles,755);
 		}
 
 		$pathdirfilespage = $pathdir . "/cadastro/page";
 		if (!file_exists($pathdirfilespage)){
 			// Cria a pasta page dentro da pasta files
-			mkdir($pathdirfilespage,755);
+			tdFile::mkdir($pathdirfilespage,755);
 		}
 		
 		$pathdirfilesconsulta = $pathdir . "/files/consulta";
 		if (!file_exists($pathdirfilesconsulta)){
 			// Cria a pasta consulta dentro da pasta files
-			mkdir($pathdirfilesconsulta,755);
+			tdFile::mkdir($pathdirfilesconsulta,755);
 		}
 
 		$pathdirfilesmovimentacao = $pathdir . "/files/movimentacao";
 		if (!file_exists($pathdirfilesmovimentacao)){
 			// Cria a pasta movimentacao dentro da pasta files
-			mkdir($pathdirfilesmovimentacao,755);
+			tdFile::mkdir($pathdirfilesmovimentacao,755);
 		}
 
 		$pathdirfilesrelatorio = $pathdir . "/files/relatorio";
 		if (!file_exists($pathdirfilesrelatorio)){
 			// Cria a pasta relatorio dentro da pasta files
-			mkdir($pathdirfilesrelatorio,755);
+			tdFile::mkdir($pathdirfilesrelatorio,755);
 		}
 
 		$pathdirimagens = $pathdir . "/imagens";
 		if (!file_exists($pathdirimagens)){
 			// Cria a pasta controller
-			mkdir($pathdirimagens,755);
+			tdFile::mkdir($pathdirimagens,755);
 		}
 
 		$pathdirmodel = $pathdir . "/model";
 		if (!file_exists($pathdirmodel)){
 			// Cria a pasta controller
-			mkdir($pathdirmodel,755);
+			tdFile::mkdir($pathdirmodel,755);
 		}
 
 		$pathdirtema = $pathdir . "/tema";
 		if (!file_exists($pathdirtema)){
 			// Cria a pasta controller
-			mkdir($pathdirtema,755);
+			tdFile::mkdir($pathdirtema,755);
 		}
 
 		$pathdirview = $pathdir . "/tema";
 		if (!file_exists($pathdirview)){
 			// Cria a pasta controller
-			mkdir($pathdirview,755);
+			tdFile::mkdir($pathdirview,755);
 		}
 	break;
 	case "alterproject":

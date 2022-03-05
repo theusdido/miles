@@ -108,20 +108,19 @@
 			Campo Texarea
 		*/	
 		public static function TextArea($id,$nome,$descricao,$valor=null,$coluna_entidade=""){
-			$campo = tdClass::Criar("div");
-			$campo->class = "form-group";
+			$campo 			= tdClass::Criar("div");
+			$campo->class 	= "form-group";
 
-			$textarea = tdClass::Criar("textarea");
-			$textarea->id = $id;
-			$textarea->name = $nome;
-			$textarea->class = "form-control";
-			$textarea->data_entidade = $coluna_entidade;
+			$textarea 					= tdClass::Criar("textarea");
+			$textarea->id 				= $id;
+			$textarea->name 			= $nome;
+			$textarea->class 			= "form-control";
+			$textarea->data_entidade 	= $coluna_entidade;
 
-			$label = tdClass::Criar("label");
+			$label 						= tdClass::Criar("label");
+			$label->for 				= $id;
+			$label->class 				= "control-label";
 			$label->add(utf8charset($descricao));
-			$label->for = $id;
-			$label->class = "control-label";		
-
 
 			if (!empty($valor)) $textarea->add(utf8charset($valor),4);
 			$campo->add($label,$textarea);
@@ -167,71 +166,70 @@
 			}
 			$entidadePK = tdClass::Criar("persistent",array(ENTIDADE,$chaveestrangeira));
 			
-			$campo = tdClass::Criar("div");
-			$campo->class = "filtro-pesquisa form-group";
-			$campo->data_modalname = $modalName;
+			$campo 					= tdClass::Criar("div");
+			$campo->class 			= "filtro-pesquisa form-group";
+			$campo->data_modalname 	= $modalName;
 			
-			$label = tdClass::Criar("label");
+			$label 					= tdClass::Criar("label");
+			$label->for 			= $nome;
+			$label->class 			= "control-label";
 			$label->add(utf8charset($descricao));
-			$label->for = $nome;
-			$label->class = "control-label";				
-			
-			$input_group = tdClass::Criar("div");
-			$input_group->class = "input-group";
-			
-			$input_group_btn = tdClass::Criar("span");
+
+			$input_group 			= tdClass::Criar("div");
+			$input_group->class 	= "input-group";
+
+			$input_group_btn 		= tdClass::Criar("span");
 			$input_group_btn->class = "input-group-btn";
-							
-			$button = tdClass::Criar("button");
-			$button->class = "btn btn-default botao-filtro";
-			$button->id = "pesquisa-" . $nome;
-			$button->name = $nome;
-			$button->data_fk = $chaveestrangeira;
-			$button->data_entidade = $entidade;
-			$span_icon_procura = tdClass::Criar("span");
-			$span_icon_procura->class = "fas fa-search";
+
+			$button 					= tdClass::Criar("button");
+			$button->class 				= "btn btn-default botao-filtro";
+			$button->id 				= "pesquisa-" . $nome;
+			$button->name 				= $nome;
+			$button->data_fk 			= $chaveestrangeira;
+			$button->data_entidade 		= $entidade;
+			$span_icon_procura 			= tdClass::Criar("span");
+			$span_icon_procura->class 	= "fas fa-search";
+			$button->add($span_icon_procura);
 			
-			$button->add($span_icon_procura);		
-			
-			$termo = tdClass::Criar("input");
-			$termo->type = "text";
-			$termo->class = "form-control termo-filtro {$gd}";
-			$termo->id = $nome;
-			$termo->name = $nome;
-			$termo->data_fk = $entidadePK->contexto->nome;
+			$termo 				= tdClass::Criar("input");
+			$termo->type 		= "text";
+			$termo->class 		= "form-control termo-filtro {$gd}";
+			$termo->id 			= $nome;
+			$termo->name 		= $nome;
+			$termo->data_fk 	= $entidadePK->contexto->nome;
 			if ($obrigatorio != null){
 				$termo->required = "true";
 				$label->add($obrigatorio);
 			}
-			$termo->data_entidade = $entidade;
-			$termo->atributo = getAtributoId($entidade,$nome,Transacao::Get());
-			
-			$descricao_resultado = tdClass::Criar("input");
-			$descricao_resultado->type = "text";
-			$descricao_resultado->readonly = "true";
-			$descricao_resultado->class = "form-control descricao-filtro";
-			$descricao_resultado->id = "descricao-".$nome;
-			$descricao_resultado->name = "descricao-".$nome;
+			$termo->data_entidade 	= $entidade;
+			$termo->atributo 		= getAtributoId($entidade,$nome,Transacao::Get());
+
+			$descricao_resultado 				= tdClass::Criar("input");
+			$descricao_resultado->type 			= "text";
+			$descricao_resultado->readonly 		= "true";
+			$descricao_resultado->class 		= "form-control descricao-filtro";
+			$descricao_resultado->id 			= "descricao-".$nome;
+			$descricao_resultado->name 			= "descricao-".$nome;
 			$descricao_resultado->data_entidade = $entidade;
-			
-			$icon_add	= tdc::o("i");
-			$icon_add->class = "fas fa-plus";
-	
-			$button_add = tdc::o("button");
-			$button_add->type = "button";
-			$button_add->class = "btn btn-default btn-add-emexecucao";
+
+			$icon_add				= tdc::o("i");
+			$icon_add->class 		= "fas fa-plus";
+
+			$button_add 			= tdc::o("button");
+			$button_add->type 		= "button";
+			$button_add->class 		= "btn btn-default btn-add-emexecucao";
 			$button_add->add($icon_add);
-	
+
 			$input_group_btn->add($button,$button_add);
 			$input_group->add($termo,$descricao_resultado,$input_group_btn);
 					
-			$modal = tdClass::Criar("modal");
-			$modal->nome = $modalName;
-			$modal->tamanho = "modal-lg";
+			$modal 					= tdClass::Criar("modal");
+			$modal->nome 			= $modalName;
+			$modal->tamanho 		= "modal-lg";
 			$modal->addHeader("Pesquisa de " . $entidadePK->contexto->descricao,null);
 			$modal->addBody("");
 			$modal->addFooter("");
-		
+
 			$campo->add($label,$input_group,$modal);
 			return $campo;
 		}

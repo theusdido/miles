@@ -110,7 +110,7 @@
 						
 						/*
 						$data = array(
-							"controller" => "website/ecommerce/posicaogeralestoque",
+							"controller" => "ecommerce/posicaogeralestoque",
 							"key" => "k",
 							"quantidade" => $linhaItensCarrinho["qtde"],
 							"operacao" => $tipooepracaoestoque,

@@ -42,7 +42,7 @@ if ($conn = Transacao::get()){
         $queryPedidosDevolvidos->closeCursor();
 
         // Produtos Esgotados
-        $sqlProdutosEsgotados = "SELECT * FROM td_ecommerce_posicaogeralestoque WHERE saldo <= 0;";
+        $sqlProdutosEsgotados = "SELECT * FROM td_erp_material_posicaogeralestoque WHERE saldo <= 0;";
         $queryProdutosEsgotados = $conn->query($sqlProdutosEsgotados);
         $produtosEsgotados = $queryProdutosEsgotados->rowCount();
         $queryProdutosEsgotados->closeCursor();

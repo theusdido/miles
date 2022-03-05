@@ -147,7 +147,7 @@
 
 	// Cria diretório
 	if (!file_exists($path_files_movimentacao)){
-		mkdir($path_files_movimentacao);
+		tdFile::mkdir($path_files_movimentacao);
 	}
 
 	// Seta Cookie Diretório

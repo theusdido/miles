@@ -31,6 +31,7 @@ function GradeDeDados(entidade){
 	this.atributoRetorno = "";
 	this.modalName = "";
 	this.entidadeContexto = "";
+	this.entidade_contexto_id = 0;
 	this.consulta;
 	this.movimentacao = "";
 	this.funcaoretorno = "";
@@ -43,8 +44,9 @@ function GradeDeDados(entidade){
 	this.order = [];
 	this.selecionados = [];
 	this.funcionalidade = 'cadastro';
-	this.indice_linha = -1;
-
+	this.indice_linha = -1;	
+	
+	// Método Construtor
 	this.construct(entidade);
 }
 GradeDeDados.prototype.construct = function(entidade){
@@ -60,7 +62,7 @@ GradeDeDados.prototype.setTable = function(){
 	}
 	$(this.contexto).append(this.table);
 }
-GradeDeDados.prototype.show = function(){
+GradeDeDados.prototype.show = function(){	
 	this.setTable();
 	if ($(this.contexto).find(".gradededados").length <= 0){
 		this.load();
@@ -161,20 +163,17 @@ GradeDeDados.prototype.load = function(){
 				console.log("contexto => " + instancia.contexto);
 				console.log(error);
 			}
-
+			let dadosLoad = [];
 			if (ret.responseText != ""){
 				try {
-					var retorno = JSON.parse(ret.responseText);
+					dadosLoad = JSON.parse(ret.responseText);
 				}catch(err){
 					console.log("Erro: ");
 					console.log(ret.responseText);
     				console.log(err.message);
 				}
-			}else{
-				var retorno = [];
 			}
-			dadosLoad = retorno;
-			
+
 			// Seta os atributos do cabeçalho
 			instancia.setCabecalhoAtributos();
 
@@ -598,8 +597,8 @@ GradeDeDados.prototype.retornaid = function(termo){
 	if (this.retornaFiltro && this.funcaoretorno != ""){
 		eval(this.funcaoretorno + "("+termo+");");
 	}else{
-		var entidade = (td_entidade[this.entidade].pacote==""?"":td_entidade[this.entidade].pacote + ".") + td_entidade[this.entidade].nome;
-		buscarFiltro(termo,entidade,this.atributoRetorno,this.modalName,this.entidadeContexto);
+		let entidade = (td_entidade[this.entidade].pacote==""?"":td_entidade[this.entidade].pacote + ".") + td_entidade[this.entidade].nome;
+		formulario[this.entidade_contexto_id].buscarFiltro(termo,entidade,this.atributoRetorno,this.modalName,this.entidadeContexto);
 	}
 }
 GradeDeDados.prototype.reload = function(){
@@ -888,7 +887,6 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
 	
 	let spanEditar = $("<span reg='"+tr_indice+"' data-entidade='"+this.entidade+"' data-funcionalidade='"+this.funcionalidade+"' class='botao fas fa-pencil-alt btn btn-default' ></span>");
 	spanEditar.on("click",function(){
-
 		let entidadeid 		= $(this).data("entidade");
 		let id 				= $(this).attr("reg");
 		let funcionalidade 	= $(this).data("funcionalidade");
@@ -902,7 +900,7 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
 					carregarScriptCRUD('editarformulario',entidadeid,id);
 				});
 			}else{
-				editarFormulario(entidadeid,id);
+				carregarScriptCRUD('editarformulario',entidadeid,id);
 			}
 		}
 	});

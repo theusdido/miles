@@ -248,11 +248,19 @@ class Entity {
 		Verifica se a entidade existe no banco de dados e na tabela td_entidade
 		@params: $entidade ( String | Integer )
 	*/
-	public static function isExists($entidade){
-		switch(gettype($entidade)){
+	public static function isExists($entidade)
+	{
+		if ($entidade === '') return false;
+		$type_entidade 	= gettype($entidade);
+		if (is_numeric($entidade)){
+			$type_entidade = 'number';
+		}
+
+		switch($type_entidade){
 			case 'string':
 				$where = "nome = '{$entidade}'";
 			break;
+			case 'number':
 			default:
 				$where = "id = {$entidade}";
 		}

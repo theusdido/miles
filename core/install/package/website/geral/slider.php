@@ -23,6 +23,7 @@
 	criarAtributo($conn,$entidadeID,"imagem","Imagem"	,"text","",1,19	,0,0,0,"");
 	criarAtributo($conn,$entidadeID,"html"	,"HTML"		,"text","",1,21	,0,0,0,"");
 	criarAtributo($conn,$entidadeID,"exibir","Exibir"	,"tinyint","",1,7);
+	criarAtributo($conn,$entidadeID,"ordem" ,"Ordem"	,"tinyint","",1,25);
 	
 	// 3º PASSO
 	$menu_webiste = addMenu($conn,'WebSite','#','',0,0,'website');

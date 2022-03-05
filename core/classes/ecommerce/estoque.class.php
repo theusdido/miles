@@ -19,7 +19,7 @@ class Estoque
         while ($linha = $query->fetch()){
             $produto = $linha["td_produto"];
             $variacao = $linha["id"];
-            $conn->exec("INSERT INTO td_ecommerce_posicaogeralestoque VALUES (default,0,{$produto},60,NOW(),{$variacao});");
+            $conn->exec("INSERT INTO td_erp_material_posicaogeralestoque VALUES (default,0,{$produto},60,NOW(),{$variacao});");
         }
     }
     

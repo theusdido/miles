@@ -20,7 +20,7 @@
 
 	$a = tdClass::Criar("hyperlink");
 	$a->class="list-group-item";
-	$a->href = getURLProject("index.php?controller=website/ecommerce/indicadores/totalvisitas");
+	$a->href = getURLProject("index.php?controller=ecommerce/indicadores/totalvisitas");
 	$a->target = "_blank";
 		$badge = tdClass::Criar("span");
 		$badge->class = "badge";
@@ -30,7 +30,7 @@
 
 	$a = tdClass::Criar("hyperlink");
 	$a->class="list-group-item";
-    $a->href = getURLProject("index.php?controller=website/ecommerce/indicadores/carrinhosativos&currentproject=" . $_SESSION["currentproject"]);
+    $a->href = getURLProject("index.php?controller=ecommerce/indicadores/carrinhosativos&currentproject=" . $_SESSION["currentproject"]);
     $a->target = "_blank";
 		$badge = tdClass::Criar("span");
 		$badge->class = "badge";
@@ -44,7 +44,7 @@
 
 	$a = tdClass::Criar("hyperlink");
 	$a->class="list-group-item";
-    $a->href = getURLProject("index.php?controller=website/ecommerce/indicadores/carrinhosabandonados");
+    $a->href = getURLProject("index.php?controller=ecommerce/indicadores/carrinhosabandonados");
     $a->target = "_blank";
 		$badge = tdClass::Criar("span");
 		$badge->class = "badge";
@@ -55,7 +55,7 @@
 
 	$a = tdClass::Criar("hyperlink");
 	$a->class="list-group-item";
-    $a->href = getURLProject("index.php?controller=website/ecommerce/indicadores/devolucoesetrocas");
+    $a->href = getURLProject("index.php?controller=ecommerce/indicadores/devolucoesetrocas");
     $a->target = "_blank";
 		$badge = tdClass::Criar("span");
 		$badge->class = "badge";
@@ -65,7 +65,7 @@
 
 	$a = tdClass::Criar("hyperlink");
 	$a->class="list-group-item";
-    $a->href = getURLProject("index.php?controller=website/ecommerce/indicadores/produtosesgotados");
+    $a->href = getURLProject("index.php?controller=ecommerce/indicadores/produtosesgotados");
     $a->target = "_blank";
 		$badge = tdClass::Criar("span");
 		$badge->class = "badge";

@@ -36,7 +36,7 @@
 			$chaveestrangeira = ($_POST["chaveestrangeira"]=="")?0:($_POST["chaveestrangeira"]);
 		}else{
 			$chaveestrangeira = 0;
-		}	
+		}
 		$indice = $_POST["indice"];
 		$tipoinicializacao = $_POST["tipoinicializacao"];
 		if (isset($_POST["atributodependencia"])){
@@ -83,9 +83,7 @@
 		$error = $conn->errorInfo();
 		if ($error[0] != "00000"){
 			var_dump($error);
-			$conn->rollback();
 		}else{
-			$conn->commit();
 			header('Location: criarAtributo.php?entidade=' . $_POST["entidade"] . "&id=" . $idRetorno . getURLParamsProject("&"));
 		}
 		exit;

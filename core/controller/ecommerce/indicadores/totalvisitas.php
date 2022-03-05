@@ -4,7 +4,7 @@
     * @license : Teia Online.
     * @link http://www.teia.online
 
-    * Classe que implementa a gera��o de impress�o de pedido
+    * Total de Visitas [ E-Commerce ]
     * Data de Criacao: 14/08/2020
     * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 */
@@ -16,9 +16,9 @@ $body			= tdc::o("body");
 $empresa		= tdc::p("td_empresa",Session::Get()->empresa);
 $enderecoempresa= tdc::p("td_endereco",@(int)getListaRegFilho(getEntidadeId("empresa"),getEntidadeId("endereco"),Session::Get()->empresa)[0]->regfilho);
 
-$style		= tdc::o("link");
-$style->href= PATH_ECOMMERCE . "indicadores/indicadores.css";
-$style->rel	= "stylesheet";
+$style		    = tdc::o("link");
+$style->href    = Session::Get('URL_ECOMMERCE') . "indicadores/indicadores.css";
+$style->rel	    = "stylesheet";
 
 // Div Topo
 $topo		= new Dom("div" , array("class" => "topo"));
@@ -26,7 +26,7 @@ $topo		= new Dom("div" , array("class" => "topo"));
 // Div da Logo
 $divlogo 	= $topo->add("div" , array("propriedades" => array ("class" => "div-logo")));
 $logo		= $topo->add("img",array(
-    "propriedades" => array( "id" => "logo" , "src" => Session::get("PATH_CURRENT_LOGO_PADRAO")) ,
+    "propriedades" => array( "id" => "logo" , "src" => Session::get("URL_CURRENT_LOGO_PADRAO")) ,
     "elementopai" => $divlogo
 ));
 
@@ -52,7 +52,7 @@ $thead	 	= $tabela->add("thead");
 $tbody		= $tabela->add("tbody");
 $tfoot		= $tabela->add("tfoot");
 
-// CABE�ALHO
+// CABEÇALHO
 $trHead		= $tabela->add("tr",array( "elementopai" => $thead));
 
 $thCliente  = $tabela->add("th",array("propriedades" => array( "innerhtml" => "Cliente" , "align" => "left" , "width" => "40%" ) , "elementopai" => $trHead));
@@ -84,13 +84,12 @@ foreach($itens as $item){
 
 }
 
-// RODAP�
+// RODAPÉ
 $trFoot				= $tabela->add("tr");
 $tdFoot				= $tabela->add("td",array("propriedades" => array("colspan" => "6") , "elementopai" => $trFoot));
 $divRodape			= $tabela->add("div", array( "propriedades" => array("class" => "div-rodape") , "elementopai" => $tdFoot));
 $emitidopor			= $tabela->add("div", array( "propriedades" => array("innerhtml" => "Impresso por " . Session::Get()->username , "class" => "div-emitidopor") , "elementopai" =>  $divRodape));
 $datahoraemissao	= $tabela->add("div", array( "propriedades" => array("innerhtml" => "Impresso em " . date("d/m/Y H:i:s") , "class" => "div-datahora-emissao") , "elementopai" =>  $divRodape));
-
 
 $head->add($style);
 $body->add($topo->getHTML());

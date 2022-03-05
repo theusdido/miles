@@ -69,7 +69,7 @@ class mdm
         // Cria o diretório do registro caso não exista
         if (!file_exists($path)){
             $old = umask(0);
-            mkdir($path,0777 , true);
+            tdFile::mkdir($path,0777 , true);
             umask($old);
         }
     

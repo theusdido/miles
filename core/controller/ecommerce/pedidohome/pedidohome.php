@@ -16,16 +16,15 @@
 	$divCarrinhoCompras->id = "carrinho-compras-home";
 
 	# Abas
-	$aba = tdClass::Criar("aba");
-	$aba->nome = "pedidoshome";
-	$aba->contexto = $pedidoBlocoId;
+	$aba 				= tdClass::Criar("aba", ["tabs-ecommerce-pedidoshome"]);
+	$aba->contexto 		= $pedidoBlocoId;
 	$aba->addItem("Aberto",$divPedidoAberto,"","pd-aberto");
 	#$aba->addItem("Finalizado","Pedidos Finalizados","","pd-finalizado");
 	$aba->addItem("Carrinho",$divCarrinhoCompras,"","pd-carrinho");
 	$panel->body($aba);
 
-	$objGradeDados = tdClass::Criar("script");	
-	$objGradeDados->src = Session::Get('URL_ECOMMERCE') . "pedidohome/pedidohome.js";
+	$objGradeDados 			= tdClass::Criar("script");	
+	$objGradeDados->src 	= Session::Get('URL_ECOMMERCE') . "pedidohome/pedidohome.js";
 
 	$bloco_pedido->add($panel,$objGradeDados);
 	$bloco_pedido->mostrar();

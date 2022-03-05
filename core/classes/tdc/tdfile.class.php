@@ -29,15 +29,15 @@ class tdFile {
 				
 				$pathano = $dirinicial . $ano . "/";
 				if (!file_exists($pathano)){
-					mkdir($pathano);
+					self::mkdir($pathano);
 				}
 				$pathmes = $pathano . $mes . "/" ;
 				if (!file_exists($pathmes)){				
-					mkdir($pathmes);
+					self::mkdir($pathmes);
 				}
 				$pathdia = $pathmes . $dia . "/";
 				if (!file_exists($pathdia)){
-					mkdir($pathdia);
+					self::mkdir($pathdia);
 				}
 				return $pathdia;
 			}else{
@@ -90,7 +90,7 @@ class tdFile {
 			array_pop($diretorios);
 			foreach($diretorios as $d){
 				$diretorioagredado .= $diretorioagredado==""?$d:"/".$d;
-				self::mkdir($diretorioagredado,true);
+				self::mkdir($diretorioagredado,0777,true,true);
 			}
 			self::add($diretorioagredado . "/" . $arquivo, file_get_contents($remotopathfile));
 		}catch(Exception $e){
@@ -105,20 +105,21 @@ class tdFile {
 		Criar e adiciona um diretório.
 		@path: Caminho absoluto do diretório
 	*/
-	public static function mkdir($path,$force = false){
+	public static function mkdir($path,$permissao = 0777,$recursivo = true,$force = false){
+		$res = false;
 		if ($force){
 			$folder 	= '';
 			$folders 	= explode("/",$path);
 			foreach($folders as $f){
 				$folder .= $f . "/";
-				self::mkdir($folder);
+				$res = self::mkdir($folder);
 			}
-
 		}else{
 			if (!file_exists($path)){
-				mkdir($path);
+				$res = mkdir($path,$permissao,$recursivo);
 			}
 		}
+		return $res;
 	}
 
 	/*

@@ -1,7 +1,7 @@
 <?php
 
 	if (!file_exists(PATH_CURRENT_FILE_TEMP)){
-		mkdir(PATH_CURRENT_FILE_TEMP);
+		tdFile::mkdir(PATH_CURRENT_FILE_TEMP);
 		exit;
 	}
 

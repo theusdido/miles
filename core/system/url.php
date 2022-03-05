@@ -87,7 +87,7 @@
 	define('URL_LOADING2', Session::Get("URL_SYSTEM_THEME") . 'loading2.gif');
 
 	// URL SYSTEM ECOMMERCE
-	Session::append('URL_ECOMMERCE',Session::Get('URL_CORE') . 'controller/website/ecommerce' . '/');
+	Session::append('URL_ECOMMERCE',Session::Get('URL_CORE') . 'controller/ecommerce' . '/');
 
 	// Arquivo MDM JavaScript Compilado
     define("URL_MDM_JS_COMPILE",Session::Get("URL_CURRENT_PROJECT") . FOLDER_BUILD . '/js/');

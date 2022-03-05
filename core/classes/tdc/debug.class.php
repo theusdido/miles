@@ -52,7 +52,7 @@ class Debug Extends Elemento {
     public static function put($msg){
 		if (!file_exists(PATH_DEBUG)){
 			try{
-				mkdir(PATH_DEBUG);
+				tdFile::mkdir(PATH_DEBUG);
 			}catch(Exception $e){
 				echo 'Não foi possível criar diretório debug. Motivo => ' . $e->getMessage();
 				return false;
@@ -61,7 +61,7 @@ class Debug Extends Elemento {
 		$sessionpath = PATH_DEBUG . "session/";
 		if (!file_exists($sessionpath)){
 			try{
-				mkdir($sessionpath);
+				tdFile::mkdir($sessionpath);
 			}catch(Exception $e){
 				echo 'Não foi possível criar diretório debug/session. Motivo => ' . $e->getMessage();
 				return false;
