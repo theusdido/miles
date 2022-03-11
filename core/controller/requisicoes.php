@@ -706,10 +706,10 @@ switch($op){
 			$queryEntidade = $conn->query($sqlEntidade);
 			while($linhaEntidade = $queryEntidade->fetch()){
 				
-				$sqlDelEntidadePermissao = "DELETE FROM ".MENUPERMISSOES." WHERE entidade = " . $linhaEntidade["id"] . " AND usuario = " . $usuario;
+				$sqlDelEntidadePermissao = "DELETE FROM ".PERMISSOES." WHERE entidade = " . $linhaEntidade["id"] . " AND usuario = " . $usuario;
 				$queryDelEntidadePermissao = $conn->query($sqlDelEntidadePermissao);
 
-				$sqlInsertEntidadePermissao = "INSERT INTO ".MENUPERMISSOES." (id,entidade,usuario,inserir,excluir,editar,visualizar) VALUES (
+				$sqlInsertEntidadePermissao = "INSERT INTO ".PERMISSOES." (id,entidade,usuario,inserir,excluir,editar,visualizar) VALUES (
 				".getProxId("entidadepermissoes",$conn).",".$linhaEntidade["id"].",".$usuario.",".$_GET["permissao"].",".$_GET["permissao"].",".$_GET["permissao"].",".$_GET["permissao"].");";
 				$queryInsertEntidadePermissao = $conn->query($sqlInsertEntidadePermissao);
 

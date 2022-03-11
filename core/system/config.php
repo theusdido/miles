@@ -73,7 +73,8 @@
 	}else if (AMBIENTE == "WEBSERVICE" || AMBIENTE == "WEBSITE"){
 		$currentConfigFile = PATH_MILES .'projects/'.PROJETO_CONSUMIDOR.'/config/current_config.inc';
 	}
-	
+
+
 	if (file_exists($currentConfigFile)){
 		// Current File Config
 		$config = parse_ini_file($currentConfigFile);
@@ -197,3 +198,6 @@
 
 	// Seta o tempo limite para 5 minutos
 	set_time_limit(300);
+
+	// Permite recuperar abrir pela URL
+	ini_set('allow_url_fopen','On');

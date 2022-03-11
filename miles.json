@@ -2,12 +2,12 @@
         {
             "version":2.0,
             "currentproject":1,
-            "folder":"bixoferpa.com.br/miles/",
+            "folder":"miles/",
             "system":{
                 "url":{
                     "lib":"https://teia.tec.br/miles/sistema/lib/"
                 },
-                "request_protocol":"http",
+                "request_protocol":"https",
                 "package":"erp",
                 "packages":["ecommerce"]
             },
@@ -16,4 +16,3 @@
             "is_show_error_message":true,
             "is_transaction_log":false
         }
-    
