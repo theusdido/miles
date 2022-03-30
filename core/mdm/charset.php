@@ -2,68 +2,6 @@
 	require 'conexao.php';
 	require 'prefixo.php';
 	require 'funcoes.php';
-
-	if (isset($_GET["op"])){
-		if ($_GET["op"] == "setar"){
-			$id = $_GET["id"];
-			$charset = $_GET["charset"];
-			$sql  = "UPDATE td_charset SET charset = '{$charset}' WHERE id = {$id};";
-			$query = $conn->exec($sql);			
-		}
-		
-		if ($_GET["op"] == "listaratributo"){
-			
-			$entidade = $_GET["entidade"];
-			
-			if (is_numeric($entidade)){
-				$sqlT = "SELECT id,nome,descricao FROM ".PREFIXO."atributo WHERE ".PREFIXO."entidade = {$entidade} AND tipohtml in (1,2,3,14,16,21,27) AND tipo IN ('varchar','char','text');";
-				$queryT = $conn->query($sqlT);
-				$linhaT = $queryT->fetchAll();
-				foreach($linhaT as $dado){
-					echo '<option value="'.$dado["id"].'">'. executefunction('utf8charset',array($dado["descricao"],5)) .' [ '.$dado["nome"].' ]</option>';
-				}
-			}else{
-				echo '<option value="descricao"> Descrição [ descricao ]</option>';
-			}
-		}
-		
-		if ($_GET["op"] == "corrigir"){
-			//return ord($linhaVCharset["testecharset"]) == 195 ? false : true;
-			
-			$entidade = $_GET["entidade"];
-			$atributo = $_GET["atributo"];
-			
-			if (is_numeric($entidade)){
-				$sqle = "SELECT nome FROM td_entidade WHERE id = {$entidade};";
-				$querye = $conn->query($sqle);
-				$linhae = $querye->fetch();
-				$entidade = $linhae["nome"];
-			}
-			
-			if (is_numeric($atributo)){
-				$sqla = "SELECT nome FROM td_atributo WHERE id = {$atributo};";
-				$querya = $conn->query($sqla);
-				$linhaa = $querya->fetch();
-				$atributo = $linhaa["nome"];				
-			}
-			
-			$sqlv = "SELECT id,{$atributo} valor FROM {$entidade};";
-			$queryv = $conn->query($sqlv);
-			while ($linhav = $queryv->fetch()){
-				if (executefunction("isutf8",array($linhav["valor"]))){
-					try {
-						$valor = utf8_decode($linhav["valor"]); //Só funcionou com o comando nativo
-						$sql = 'UPDATE '.$entidade.' SET '.$atributo.' = "'.$valor.'" WHERE id = ' . $linhav["id"]. ';';
-						$query = $conn->query($sql);
-					}catch(Throwable $t){
-						echo $t->getMessage();
-					}
-				}
-			}
-		}
-		exit;
-	}
-	
 ?>
 <html>
 	<head>
@@ -72,8 +10,9 @@
 		<script type="text/javascript">
 		function setCharset(id,obj){
 			$.ajax({
-				url:"charset.php",
+				url:"<?=URL_MILES?>",
 				data:{
+					controller:'mdm/charset',
 					op:"setar",
 					id:id,
 					charset:obj.value,
@@ -84,8 +23,9 @@
 		
 		function carregarAtributo(entidade){
 			$.ajax({
-				url:"charset.php",
+				url:"<?=URL_MILES?>",
 				data:{
+					controller:'mdm/charset',
 					op:"listaratributo",
 					entidade:entidade,
 					currentproject:<?=$_SESSION["currentproject"]?>
@@ -110,8 +50,9 @@
 			
 			$("#btn-corrigir-charset").click(function(){
 				$.ajax({
-					url:"charset.php",
+					url:"<?=URL_MILES?>",
 					data:{
+						controller:'mdm/charset',
 						op:"corrigir",
 						entidade:$("#entidadelista").val(),
 						atributo:$("#atributolista").val(),

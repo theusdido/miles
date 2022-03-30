@@ -1,4 +1,4 @@
-<?php
+ hp
 	require 'conexao.php';
 	require 'prefixo.php';	
 	include 'log.php';	

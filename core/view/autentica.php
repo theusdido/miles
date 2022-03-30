@@ -146,10 +146,12 @@
 		}
 	}
 
-	$urlBackground = Session::Get('URL_CURRENT_PROJECT_THEME') . FILE_BACKGROUND;
-	if (!file_exists($urlBackground)){
+	$urlBackground 		= URL_CURRENT_PROJECT_THEME . FILE_BACKGROUND;
+	$path_background	= PATH_CURRENT_PROJECT_THEME . FILE_BACKGROUND;
+	if (!file_exists($path_background)){
 		$urlBackground = URL_BACKGROUND;
 	}
+
 	$style->add('
 		#retorno{
 			display:none;

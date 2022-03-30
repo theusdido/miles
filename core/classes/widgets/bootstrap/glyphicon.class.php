@@ -15,7 +15,7 @@ class GlyphIcon Extends Span {
 	public $icon;
 	public $span;
 	/*  
-		* Método construct 
+		* Mï¿½todo construct 
 	    * Data de Criacao: 11/06/2015
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
@@ -28,7 +28,7 @@ class GlyphIcon Extends Span {
 		$this->type_format = $type;
 	}
 	/*  
-		* Método construct 
+		* Mï¿½todo construct 
 	    * Data de Criacao: 11/06/2015
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		

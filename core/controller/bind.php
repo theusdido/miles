@@ -1,4 +1,4 @@
-<?php
+ <?php
 	$entidade = "";
 	$id = tdc::r("id");
 	$binds = array();

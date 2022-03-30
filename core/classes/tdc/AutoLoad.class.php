@@ -35,7 +35,7 @@ class AutoLoad
 		foreach ($pacote as &$p){
 			$className = strtolower($className);
 			$pacoteclassfile = "{$p}{$className}.class.php";
-			if (file_exists($pacoteclassfile)){
+			if (file_exists($pacoteclassfile) && !class_exists($className)){
 				include_once $pacoteclassfile;
 				$this->class_instanciadas[$className] = null;
 			}

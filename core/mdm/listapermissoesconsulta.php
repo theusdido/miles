@@ -21,8 +21,9 @@
                 $sql = "
                     SELECT a.id,b.descricao 
                     FROM td_menu a
-                    INNER JOIN td_consulta b ON a.entidade = b.id
-                    WHERE a.tipomenu = 'consulta';";
+                    INNER JOIN td_consulta b ON a.entidade = b.entidade
+                    WHERE a.tipomenu = 'consulta'
+                ;";
                 $rs = $conn->query($sql);
                 while ($linha = $rs->fetch()){
                     $descricao = utf8_encode($linha["descricao"]);

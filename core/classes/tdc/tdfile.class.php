@@ -1,4 +1,4 @@
-<?php
+ <?php
 /*
     * Framework MILES
     * @license : Teia Online.
@@ -116,7 +116,8 @@ class tdFile {
 			}
 		}else{
 			if (!file_exists($path)){
-				$res = mkdir($path,$permissao,$recursivo);
+				$res 	= mkdir($path,$permissao,$recursivo);
+				$chmod 	= chmod($path, $permissao);
 			}
 		}
 		return $res;

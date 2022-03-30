@@ -1,4 +1,4 @@
-<?php	
+ <?php	
 include_once PATH_TDC . 'elemento.class.php';
 /*
     * Framework MILES
@@ -12,11 +12,11 @@ include_once PATH_TDC . 'elemento.class.php';
 */	
 class Script Extends Elemento {
 	/*  
-		* Método construct 
+		* Mï¿½todo construct 
 	    * Data de Criacao: 11/09/2012
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
-		Cria um link para uma página de script externa
+		Cria um link para uma pï¿½gina de script externa
 	*/		
 	public function __construct($type="text/javascript"){	
 		parent::__construct('script');

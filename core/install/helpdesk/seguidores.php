@@ -1,4 +1,4 @@
-<?php
+ <?php
 	$entidadeNome = "ticketseguidores";
 	$entidadeDescricao = "Seguidores";
 	

@@ -1,22 +1,22 @@
-<?php	
+ <?php	
 include_once PATH_TDC . 'elemento.class.php';
 /*
     * Framework MILES
     * @license : Estilo Site Ltda.
     * @link http://www.estilosite.com.br
 		
-    * Classe Paragráfo
+    * Classe Paragrï¿½fo
     * Data de Criacao: 31/08/2012
     * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
 */	
 class P Extends Elemento {
 	/*  
-		* Método construct 
+		* Mï¿½todo construct 
 	    * Data de Criacao: 31/08/2012
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
-		Instância o objeto parágrafo
+		Instï¿½ncia o objeto parï¿½grafo
 	*/		
 	public function __construct(){		
 		parent::__construct('p');		

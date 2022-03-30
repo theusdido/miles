@@ -1,4 +1,4 @@
-<?php 
+ <?php 
 include_once PATH_TDC . 'elemento.class.php';
 /*
     * Framework MILES
@@ -12,7 +12,7 @@ include_once PATH_TDC . 'elemento.class.php';
 */	
 class Meta Extends Elemento {
 	/*  
-		* Método construct 
+		* Mï¿½todo construct 
 	    * Data de Criacao: 15/01/2015
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		

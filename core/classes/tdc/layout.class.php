@@ -1,4 +1,4 @@
-<?php 
+ <?php 
 include_once PATH_WIDGETS . 'div.class.php';	
 /*
     * Framework MILES

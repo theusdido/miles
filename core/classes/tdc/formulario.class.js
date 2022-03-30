@@ -1,5 +1,4 @@
-
-function tdFormulario (){
+ function tdFormulario (){
 	this.registro_id				= 0;
     this.entidade_id                = 0;
     this.entidade                   = null;
@@ -508,7 +507,7 @@ tdFormulario.prototype.salvar = function(){
 	if (entidadepairel != "" && tiporelacionamentopai == 1){
 		// Caso seja Agregação 1:1 e se o usário não digitou nada no form então não enviar o formulário
 		let tdform = $(this.getContextoAdd() + " .tdform");
-		if (!isalteracaoform(this.entidade_id,tdform)){
+		if (!this.isalteracaoform(this.entidade_id,tdform)){
 			tdform.find(".form-control").parent(".form-group").removeClass("has-error");
 			return false;
 		}
@@ -945,7 +944,7 @@ tdFormulario.prototype.setDados = function(dados){
 		
 		if ($('#' + dado.atributo + '[data-entidade="'+entidade_nome+'"]',contextoAdd).prop("tagName") == "SELECT"){
 			if (td_atributo[getIdAtributo(dado.atributo,entidade_nome)].atributodependencia <= 0){
-				carregarListas(entidade_nome,dado.atributo,contextoAdd,valorDados);
+				//carregarListas(entidade_nome,dado.atributo,contextoAdd,valorDados);
 				if (valorDados != "" && valorDados != undefined){
 					$('#' + dado.atributo + '[data-entidade="'+entidade_nome+'"]',contextoAdd).val(valorDados);
 				}else{
@@ -1135,7 +1134,6 @@ tdFormulario.prototype.habilitafiltro = function(atributo,contexto,habilita,enti
 }
 
 tdFormulario.prototype.emExecucao = function(){
-
 	let instancia = this;
 	$('.btn-add-emexecucao',this.getContextoAdd()).click(function(){
 
@@ -1153,7 +1151,6 @@ tdFormulario.prototype.emExecucao = function(){
 		modal.on('hide.bs.modal', function (e) {
 			carregarListas(entidade,atributo,contextoAdd,iframe[0].attributes.em_execucao_id.value);
 		});
-	
 		modal.modal('show');
 	});
 }
@@ -1294,4 +1291,8 @@ tdFormulario.prototype.addHTMLPersonalizado = function()
 		this.entidade.nome + 
 		".htm"
 	);
+}
+
+tdFormulario.prototype.isalteracaoform = function(){
+	return true;
 }

@@ -5,7 +5,7 @@ require_once PATH_ADO . 'sqlinstrucao.class.php';
     * @license : Estilo Site Ltda.
     * @link http://www.estilosite.com.br
 		
-    * Classe que implementa a instrução DELETE do SQL
+    * Classe que implementa a instruÃ§Ã£o DELETE do SQL
     * Data de Criacao: 28/06/2012
     * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 */	
@@ -13,11 +13,11 @@ require_once PATH_ADO . 'sqlinstrucao.class.php';
 final class SqlDeletar extends sqlInstrucao{
 
 	/*  
-		* Método getInstrucao 
+		* MÃ©todo getInstrucao 
 	    * Data de Criacao: 03/07/2012
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
-		Monta e retorna a instrução SQL		
+		Monta e retorna a instruÃ§Ã£o SQL		
 	*/		
 	public function getInstrucao(){
 		$valores = $colunas = "";

@@ -1,4 +1,4 @@
-<?php
+ <?php
 	// Setando variáveis
 	$entidadeNome = "charset";
 	$entidadeDescricao = "CharSet";

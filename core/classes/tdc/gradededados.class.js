@@ -1,4 +1,4 @@
-﻿if (typeof gradesdedados === "undefined"){
+if (typeof gradesdedados === "undefined"){
 	var gradesdedados = [];
 }
 if (typeof dados_temp === "undefined"){
@@ -45,7 +45,7 @@ function GradeDeDados(entidade){
 	this.selecionados = [];
 	this.funcionalidade = 'cadastro';
 	this.indice_linha = -1;	
-	
+	this.btnEditarEmMassa = null; // Elemento DOM do botão para editar em massa
 	// Método Construtor
 	this.construct(entidade);
 }
@@ -219,17 +219,16 @@ GradeDeDados.prototype.load = function(){
 	});
 }
 GradeDeDados.prototype.cabecalho = function(){
-	var instancia = this;
+	let instancia = this;
 	if (this.table.find("thead").length <= 0){
-		var thead = $("<thead>");
-		var tr = $("<tr>");
-		var cabatributos = this.attr_cabecalho_nome;
+		let thead 			= $("<thead>");
+		let tr 				= $("<tr>");
 
 		// atualiza os atributos do cabeçalho
 		this.setCabecalhoAtributos();
 		
 		for(c in this.attr_cabecalho_descricao){
-			var th = $("<th>");
+			let th = $("<th>");
 			th.append(this.attr_cabecalho_descricao[c]);
 			tr.append(th);
 		}
@@ -242,21 +241,19 @@ GradeDeDados.prototype.cabecalho = function(){
 			}
 			if (this.exibirexcluir){
 				tr.append($("<th class='excluir-coluna-gradededados'><center>Excluir</center></th>"));
-			}			
+			}
 
-			var thSelTodos 		= $("<th>");
-			var thCenter 		= $("<center>");
-			var buttonSelTodos 	= $("<input type='checkbox' data-sel='false' aria-label='Selecionar Todos' class='gd-sel-todos' />");
-			var nomeEntidade 	= this.nomeEntidade;
+			let thSelTodos 		= $("<th class='selectall-coluna-gradededados'>");
+			let buttonSelTodos 	= $("<input type='checkbox' data-sel='false' aria-label='Selecionar Todos' class='gd-sel-todos' />");
+
 			$(buttonSelTodos).click(function(){
 				instancia.selecionarTodos(this);
 			});
 
-			thCenter.append(buttonSelTodos);
-			thSelTodos.append(thCenter);
+			thSelTodos.append(buttonSelTodos);
 			if (this.exibireditar || this.exibirexcluir || this.exibiremmassa){
 				tr.append(thSelTodos);
-			}
+			}			
 		}
 		thead.append(tr);
 		this.table.append(thead);
@@ -400,6 +397,7 @@ GradeDeDados.prototype.irbloco = function(bloco){
 	this.reload();
 }
 GradeDeDados.prototype.pesquisa = function(){
+	let instancia = this;
 	if ($(this.contexto).find(".pesquisa-grade").length <= 0 && this.exibirpesquisa){
 		let div 			= $("<div class='pesquisa-grade'>");
 		let label 			= $("<label>Pesquisar</label>");
@@ -422,14 +420,14 @@ GradeDeDados.prototype.pesquisa = function(){
 			ul.append(li);
 		}
 		let btnbuscargd 	= $("<button class='btn btn-default'>Pesquisar</button>");
-		btnbuscargd.click(this,function(){
+		btnbuscargd.click(function(){
 			if (input.val() != ""){				
-				this.filtroPesquisa = spanSalvar.attr("data-atributopesquisa") + "^" + input.val() + "^" + spanSalvar.attr("data-atributotipo");
+				instancia.filtroPesquisa = spanSalvar.attr("data-atributopesquisa") + "^" + input.val() + "^" + spanSalvar.attr("data-atributotipo");
 			}else{
-				this.filtroPesquisa = '';
+				instancia.filtroPesquisa = '';
 			}
-			addLog("", "", 0, this.entidade,0, 6, "Pesquisado =>" +spanSalvar.attr("data-atributopesquisa") + "=" + input.val());
-			this.show();			
+			addLog("", "", 0, instancia.entidade,0, 6, "Pesquisado =>" +spanSalvar.attr("data-atributopesquisa") + "=" + input.val());
+			instancia.show();			
 		});
 		input.keypress(function(e){
 			if ( e.which == 13 ){			
@@ -577,15 +575,15 @@ GradeDeDados.prototype.rodape = function(){
 				btnExcluirTodos.click(function(){
 					instancia.excluir();
 				});
-				
+
 				// Editar em Massa
-				let btnEditarEmMassa = $('<button class="btn btn-warning btn-editar-emmassa">Em Massa</button>');
-				$(document).on("click",".btn-editar-emmassa:first",function(){
+				this.btnEditarEmMassa = $('<button class="btn btn-warning btn-editar-emmassa">Em Massa</button>');
+				this.btnEditarEmMassa.click(function(){
 					instancia.editarEmMassa();
 				});
 
 				if (this.exibirexcluir) td.append(btnExcluirTodos);
-				if (this.exibiremmassa) td.append(btnEditarEmMassa);
+				if (this.exibiremmassa) td.append(this.btnEditarEmMassa);
 				tr.append(td);
 				tfoot.append(tr);
 				this.table.append(tfoot);
@@ -1085,6 +1083,13 @@ GradeDeDados.prototype.setCabecalhoAtributos = function(){
 	}
 }
 GradeDeDados.prototype.editarEmMassa = function(){
+
+	let selecionados = this.getSelecionados();
+	if (selecionados.length <= 0){
+		bootbox.alert("Nenhum registro selecionado.");
+		return false;
+	}
+	
 	let modal 			= $('<div id="modal-emmassa" class="modal fade" tabindex="-1" role="dialog">');
 	let modalDialog 	= $('<div class="modal-dialog modal-lg" role="document">');
 	let modalContent	= $('<div class="modal-content">');
@@ -1235,11 +1240,6 @@ GradeDeDados.prototype.editarEmMassa = function(){
 		$("body").append(modal);
 	}
 
-	let selecionados = this.getSelecionados();
-	if (selecionados.length <= 0){
-		bootbox.alert("Nenhum registro selecionado.");
-		return false;
-	}
 	let ids = [];
 	selecionados.each(function(registro){
 		ids.push($(selecionados[registro]).val());

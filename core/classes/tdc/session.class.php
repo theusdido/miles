@@ -1,4 +1,4 @@
-<?php	
+ <?php	
 	class Session {
 		private static $sessionName;		
 		public static function get($indice = null){

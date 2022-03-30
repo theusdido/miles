@@ -5,7 +5,7 @@
 	define('URL_ROOT', REQUEST_PROTOCOL . HTTP_HOST . ':' . PORT . "/" . FOLDER_PROJECT . "/");
 
 	// URL ALIAS
-	if (isset($_GET["alias"])) Session::append("URL_ALIAS",REQUES_PROTOCOL . HTTP_HOST . "/" . $_GET["alias"]);
+	if (isset($_GET["alias"])) Session::append("URL_ALIAS",REQUEST_PROTOCOL . HTTP_HOST . "/" . $_GET["alias"]);
 
 
 	if (isset($mjc->folder)){
@@ -17,7 +17,7 @@
 	}
 
 	// URL MILES
-	$_url_miles	= REQUEST_PROTOCOL . HTTP_HOST . ':' . PORT .  $request_uri_dir;
+	$_url_miles	= REQUEST_PROTOCOL . HTTP_HOST . (PORT==''?'':':'.PORT) .  $request_uri_dir;
 	Session::append("URL_MILES",$_url_miles);
 	define('URL_MILES',$_url_miles);
 
@@ -26,14 +26,15 @@
 
 	// URL CORE
 	Session::append("URL_CORE",Session::Get('URL_MILES') . FOLDER_CORE . '/');
-	define('URL_CORE', Session::Get('URL_MILES') . FOLDER_CORE . '/');
+	define('URL_CORE', URL_MILES . FOLDER_CORE . '/');
 
 	// URL SYSTEM
 	Session::append("URL_SYSTEM",Session::Get('URL_CORE') . FOLDER_SYSTEM . '/');
 	define('URL_SYSTEM',URL_CORE. FOLDER_SYSTEM . '/');
 
 	// URL PAGE
-	Session::append("URL_PAGE",Session::Get('URL_CORE') . FOLDER_PAGE . '/');	
+	Session::append("URL_PAGE",Session::Get('URL_CORE') . FOLDER_PAGE . '/');
+	define('URL_PAGE', URL_CORE . FOLDER_PAGE . '/');
 
 	Session::append("URL_CURRENT_PROJECT",Session::Get("URL_MILES") . FOLDER_PROJECT . '/' . CURRENT_PROJECT_ID . "/");
 	define('URL_PROJECT',Session::Get("URL_MILES") . FOLDER_PROJECT . '/');

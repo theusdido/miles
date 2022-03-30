@@ -1,4 +1,4 @@
-<?php 
+ <?php 
 	/*
 		* Framework MILES
 		* @license : Estilo Site Ltda.
@@ -100,7 +100,7 @@
 			}
 			return $campo;	
 		}
-		/*  
+		/*
 			* Método Texarea
 			* Data de Criacao: 25/03/2015
 			* @author Edilson Valentim dos Santos Bitencourt (Theusdido)

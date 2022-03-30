@@ -1,4 +1,4 @@
-<?php
+ <?php
 	// Setando variáveis
 	$entidadeNome = "erp_financeiro_formarecebimento";
 	$entidadeDescricao = "Forma de Recebimento";

@@ -1,4 +1,4 @@
-<?php
+ <?php
 	$op = tdc::r("op");
 	if ($op == "get_form"){
 
@@ -223,13 +223,13 @@
 					}
 				}
 				if ($dado->{$c} != ""){
-					$valor_campo = tdClass::Criar("persistent",array($entRel->contexto->nome,$dado->{$c}))->contexto->{$attrRel};
+					$valor_campo =  tdClass::Criar("persistent",array($entRel->contexto->nome, $dado->{$c} ))->contexto->{$attrRel};
 				}
 			}else{
 				$valor_campo = $dado->{$c};
 			}
-			$campos_dados[$c] = getHTMLTipoFormato($camposhtml[$i],$valor_campo,$entidade->contexto->id,$c,$dado->id);
-			$campos_dados_reais[$c] = $dado->{$c};
+			$campos_dados[$c] 		= getHTMLTipoFormato($camposhtml[$i],utf8charset($valor_campo,5),$entidade->contexto->id,$c,$dado->id);
+			$campos_dados_reais[$c] = utf8charset($dado->{$c},5);
 			$i++;
 		}
 		$dados_array[$idRegIndice] 			= $campos_dados;
@@ -243,6 +243,5 @@
 	$retorno["dados"] 			= $dados_array;
 	$retorno["dadosreais"] 		= $dados_array_reais;
 	$retorno["total"] 			= $total_registros;
-
 
 	echo json_encode($retorno);

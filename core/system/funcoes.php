@@ -869,9 +869,10 @@ function addMenu(
 	$entidade = 0, #7
 	$tipomenu = "" #8
 ){
-	$descricao = utf8charset($descricao);
-	$sql = "SELECT id FROM " . MENU. " WHERE fixo = '".$fixo."';";
-	$query = $conn->query($sql);
+	$pai		= $pai == '' ? 0 : $pai;
+	$descricao 	= utf8charset($descricao);
+	$sql 		= "SELECT id FROM " . MENU. " WHERE fixo = '".$fixo."';";
+	$query 		= $conn->query($sql);
 	if ($query->rowCount() > 0){
 		$linha = $query->fetch();
 		$menu_webiste = $linha["id"];
@@ -1551,7 +1552,7 @@ function utf8charset($texto, $local = null, $decodificacao = null , $convert = n
 		}
 	}else{
 		if (is_numeric($local)){
-			$charset = tdClass::Criar("persistent",array("charset",$local))->contexto->charset;
+			$charset = tdClass::Criar("persistent",array(CHARSET,$local))->contexto->charset;
 			switch($charset){
 				case 'N': return $texto; break;
 				case 'D': return utf8decode($texto); break;
@@ -1697,6 +1698,11 @@ function addCampoFormatadoDB($dados,$entidade){
 	// Entidade interna não precisa adicionar a formatação dos campos
 	// Futuramento criar um atributo para fazer esse controle
 	if ($entidade == RELACIONAMENTO){
+		foreach ($dados as $key => $value){
+			if ($key == 'descricao'){
+				$dados[$key] = utf8charset($value, 8);
+			}
+		}
 		return $dados;
 	}
 
@@ -1710,7 +1716,7 @@ function addCampoFormatadoDB($dados,$entidade){
 			if (is_numeric_natural($value)){
 				$atributoOBJ 			= tdc::p(ATRIBUTO,getAtributoId($entidade,$key));		
 				$campodescdefault 		= tdc::p(ATRIBUTO,getCampoDescricaoDefault($atributoOBJ->chaveestrangeira));
-				$dados[$key . "_obj"]	= tdc::pj(tdc::e($atributoOBJ->chaveestrangeira)->nome,$value);//tdc::dj($entidade,tdc::f('id','=',$value));	
+				$dados[$key . "_obj"]	= tdc::pj(tdc::e($atributoOBJ->chaveestrangeira)->nome,$value);
 				if ($campodescdefault->hasData()){
 					$valorfk 				= is_numeric_natural($value)?$value:0;
 					$registro 				= getRegistro(null,tdc::p(ENTIDADE,$atributoOBJ->chaveestrangeira)->nome,$campodescdefault->nome, "id={$valorfk}" , "limit 1");

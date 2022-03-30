@@ -19,13 +19,13 @@
 	// Carrega o HTML antes por causa do file_get_contents, erro de cabeçaho
 	$htmlFile 	= PATH_SYSTEM_PAGE . $_page . '.html';
 	if (file_exists($htmlFile)){
-		//var_dump(Session::Get("URL_PAGE") . $_page . '.html');
-		echo @getUrl(Session::Get("URL_PAGE") . $_page . '.html');
+		var_dump(getUrl(str_replace(':443','',Session::Get("URL_PAGE")) . $_page . '.html'));
+		//echo @getUrl(str_replace(':443','',Session::Get("URL_PAGE")) . $_page . '.html');
 	}
 
 	$htmlFile 	= PATH_CURRENT_PAGE . $_page . '.html';
 	if (file_exists($htmlFile)){
-		echo @getUrl(URL_CURRENT_PAGE . $_page . '.html');
+		//echo @getUrl(URL_CURRENT_PAGE . $_page . '.html');
 	}
 
 	// Carrega arquivo JavaScript

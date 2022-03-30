@@ -1,4 +1,4 @@
-<?php 
+ <?php 
 include_once PATH_WIDGETS . 'div.class.php';
 /*
     * Framework MILES
@@ -12,7 +12,7 @@ include_once PATH_WIDGETS . 'div.class.php';
 */	
 class Retorno extends Div {
 	/*  
-		* Método construct 
+		* Mï¿½todo construct 
 	    * Data de Criacao: 17/03/2015
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 				

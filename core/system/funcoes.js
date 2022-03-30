@@ -11,7 +11,7 @@ function carregar(arquivo,elemento_retorno = "",callback_function = null){
 				addLoaderGeral();
 			}else{
 				loader(elemento_retorno);
-			}	
+			}
 		},		
 		complete:function(retorno){
 			$(elemento_retorno).html(retorno.responseText);
@@ -474,7 +474,6 @@ function retornaDadoFormatadoCampo(campo,nomeEntidadeDados,contextoAdd,valorDado
 	if ($("#" + campo + "[data-entidade="+nomeEntidadeDados+"]",contextoAdd).hasClass("termo-filtro")){
 		direto = false;
 		var nomeEntidadeReplace = td_entidade[td_atributo[getIdAtributo(campo,nomeEntidadeDados)].chaveestrangeira].nomecompleto;
-		debugger;
 		//buscarFiltro(valorDados,nomeEntidadeReplace.replace("-","."),campo,pModalName + campo + cmodal,nomeEntidadeDados);
 	}
 	if ($("#" + campo + "[data-entidade="+nomeEntidadeDados+"]",contextoAdd).hasClass("checkbox-sn")){
@@ -648,7 +647,9 @@ function moneyToFloat(valor){
 	return parseFloat(sempontos.replace(",","."));
 }
 function editarTDFormulario(entidade,id){
+	
 	carregar(session.folderprojectfiles + "files/cadastro/"+entidade+"/"+td_entidade[entidade].nomecompleto+".html",'#conteudoprincipal',function(){
+		
 		carregarScriptCRUD('editarformulario',entidade,id);
 	});
 }
@@ -815,6 +816,7 @@ function excluirArquivoUpload(dadosarquivos,entidade,atributo){
 }
 
 function carregarScriptCRUD(tipo,entidade,registro_id = 0){
+	
 	formulario[entidade]				 	= new tdFormulario(entidade);
 	formulario[entidade].funcionalidade 	= tipo;
 	switch(tipo){

@@ -1,4 +1,4 @@
-<?php
+ <?php
 	// Setando variáveis
 	$entidadeNome = "imobiliaria_dadosadicionais";
 	$entidadeDescricao = "Dados Adicionais";

@@ -1,4 +1,3 @@
-
 var EntidadePrincipalID                 = $("#entidadeprincipalid").val();
 formulario[EntidadePrincipalID]         = new tdFormulario(EntidadePrincipalID);
 

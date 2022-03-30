@@ -1,4 +1,4 @@
-<?php
+ <?php
 	$bloco_aviso = tdClass::Criar("bloco");
 	$bloco_aviso->class = "col-md-12";
 

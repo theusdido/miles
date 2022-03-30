@@ -1,4 +1,4 @@
-<?php
+ <?php
 if (isset($_GET["function"])){
 	$params = '';
 	$retornojson = array();

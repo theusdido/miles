@@ -1,4 +1,4 @@
-<?php
+ <?php
 include_once PATH_WIDGETS . 'nav.class.php';
 /*
     * Framework MILES
@@ -11,22 +11,22 @@ include_once PATH_WIDGETS . 'nav.class.php';
 		
 */	
 class Paginacao extends Nav {
-	public $qbloco 				= 10; 			# Quantidade de registros por bloco (página)
+	public $qbloco 				= 10; 			# Quantidade de registros por bloco (pï¿½gina)
 	protected $inicio 			= 0; 			# Controla o registro de inicio do bloco
 	public $qtde_registros		= 0;
 	public $filtros_rel_nn 		= array();
 	public $filtros_externo 	= array();
-	public $exibirnavegacao 	= true;			# Exibe o controle de navegação
+	public $exibirnavegacao 	= true;			# Exibe o controle de navegaï¿½ï¿½o
 	public $contexto 			= "";
 	public $retornaregistro 	= "";	
-	public $repositorio; 						# Conjunto de dados que será usado para montar a página
-	public $entidade; 							# Usado para montar a grade de dados ( não deveria ser assim )
+	public $repositorio; 						# Conjunto de dados que serï¿½ usado para montar a pï¿½gina
+	public $entidade; 							# Usado para montar a grade de dados ( nï¿½o deveria ser assim )
 	protected $total_blocos; 					# Total de blocos
 	public $filtro_externo;	
-	private $filtro_rel_nn; 					# Filtro para relacionamento de agregação N:N
+	private $filtro_rel_nn; 					# Filtro para relacionamento de agregaï¿½ï¿½o N:N
 	
 	/*  
-		* Método construct 
+		* Mï¿½todo construct 
 		* Data de Criacao: 27/02/2015
 		* @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
@@ -37,15 +37,15 @@ class Paginacao extends Nav {
 		
 	}	
 	/*  
-		* Método construct 
+		* Mï¿½todo construct 
 	    * Data de Criacao: 27/02/2015
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
-		Retorna o elemento NAV com os as páginas da navegação
+		Retorna o elemento NAV com os as pï¿½ginas da navegaï¿½ï¿½o
 	*/			
 	public function navegacao(){
 		$this->pesquisar(); # Adiciona a bloco de pesquisa
-		#$this->setDados(); # Seta informações da páginação referente ao grupo de dados
+		#$this->setDados(); # Seta informaï¿½ï¿½es da pï¿½ginaï¿½ï¿½o referente ao grupo de dados
 		$ul = tdClass::Criar("ul");
 		$ul->class = "pagination";
 		
@@ -146,7 +146,7 @@ class Paginacao extends Nav {
 				if (total_bloco == 0){
 					carregar("'.tdClass::Criar("persistent",array(CONFIG,1))->contexto->url_requicoes.'&op=paginacao&bloco=1&max_bloco='.$this->qbloco.'&entidade=" + entidade + "&total_registros=" + '.$this->qtde_registros.' + filtro_externo + "'.($this->filtro_rel_nn!=""?"&filtro_rel_nn=".trim($this->filtro_rel_nn):'').'&contexto='.$this->contexto.'","#'.$this->contexto.' .paginacao-bloco");
 				}else{
-					// Carrega o cabeçalho da grade de dados
+					// Carrega o cabeï¿½alho da grade de dados
 					carregar("'.tdClass::Criar("persistent",array(CONFIG,1))->contexto->url_requicoes.'&op=paginacao&dados=no&entidade=" + entidade + "&total_registros=" + filtro_externo + "'.($this->filtro_rel_nn!=""?"&filtro_rel_nn=".trim($this->filtro_rel_nn):'').'&contexto='.$this->contexto.'","#'.$this->contexto.' .paginacao-bloco");
 					for(b=1;b<=total_bloco;b++){
 						// Carrega o primeiro bloco de dados		
@@ -320,7 +320,7 @@ class Paginacao extends Nav {
 		}
 	}
 	/*
-		* Método addFiltro 
+		* Mï¿½todo addFiltro 
 	    * Data de Criacao: 12/05/2015
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
@@ -333,11 +333,11 @@ class Paginacao extends Nav {
 		#$this->filtro_externo = trim($fe[0])."^".str_replace("'","",trim($fe[1]));		
 	}
 	/*
-		* Método addFiltroRelNN 
+		* Mï¿½todo addFiltroRelNN 
 	    * Data de Criacao: 12/05/2015
 			* @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 			
-		Adiciona filtros para implementar o relacionamento de agregação N:N
+		Adiciona filtros para implementar o relacionamento de agregaï¿½ï¿½o N:N
 	*/		
 	public function addFiltroRelNN(sqlfiltro $filtro){
 		$this->filtros_rel_nn[] = $filtro;

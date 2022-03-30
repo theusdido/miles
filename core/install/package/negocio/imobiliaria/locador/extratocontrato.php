@@ -1,4 +1,4 @@
-<?php
+ <?php
 	// Cria Entidade
 	$entidade 	= new Entity("imobiliaria_locador_extratocontrato","Extrato Contrato");
 	

@@ -1,4 +1,4 @@
-<?php
+ <?php
 	// Setando variáveis
 	$entidadeNome = "erp_geral_genero";
 	$entidadeDescricao = "Gênero";

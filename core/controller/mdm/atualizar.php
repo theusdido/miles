@@ -1,4 +1,4 @@
-<?php
+ <?php
 	$op = tdc::r("op");
 	
 	if ($op == "desenvolvimentotoproducao"){

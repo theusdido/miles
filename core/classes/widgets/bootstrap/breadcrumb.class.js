@@ -1,4 +1,4 @@
-function Breadcrumb (objtext){
+ function Breadcrumb (objtext){
 	this.elemento;
 	this.construct(objtext);
 }

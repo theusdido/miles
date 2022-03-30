@@ -4,11 +4,11 @@
     * @license : Estilo Site Ltda.
     * @link http://www.estilosite.com.br
 		
-    * Sql Instrução
+    * Sql Instruï¿½ï¿½o
     * Data de Criacao: 28/06/2012
     * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 	
-	Super classe que da suporte para as instruções SQL ( INSERT, UPDATE , DELETE e SELECT ) 
+	Super classe que da suporte para as instruï¿½ï¿½es SQL ( INSERT, UPDATE , DELETE e SELECT ) 
 */	
 
 abstract class SqlInstrucao {
@@ -16,7 +16,7 @@ abstract class SqlInstrucao {
 	protected $criterio;
 
 	/*  
-		* Método setEntidade 
+		* Mï¿½todo setEntidade 
 	    * Data de Criacao: 28/06/2012
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
@@ -28,7 +28,7 @@ abstract class SqlInstrucao {
 	}
 	
 	/*  
-		* Método getEntidade 
+		* Mï¿½todo getEntidade 
 	    * Data de Criacao: 28/06/2012
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
@@ -39,11 +39,11 @@ abstract class SqlInstrucao {
 	}
 	
 	/*  
-		* Método setCriterio
+		* Mï¿½todo setCriterio
 	    * Data de Criacao: 28/06/2012
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
-		Define um critério de seleção dos dados através da compasição de um objeto do tipo sqlCriterio, que oferece uma interface para a definição de critério
+		Define um critï¿½rio de seleï¿½ï¿½o dos dados atravï¿½s da compasiï¿½ï¿½o de um objeto do tipo sqlCriterio, que oferece uma interface para a definiï¿½ï¿½o de critï¿½rio
 		@parms $criterio = objeto do tipo sqlCriterio() 
 	*/	
 	public function setCriterio(SqlCriterio $criterio){
@@ -51,11 +51,11 @@ abstract class SqlInstrucao {
 	}
 	
 	/*  
-		* Método getInstrucao 
+		* Mï¿½todo getInstrucao 
 	    * Data de Criacao: 28/06/2012
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
-		Colocado como abstrato obrigamos sua declaração nas classes filhas, uma vez seu comportamento será distinto, configurando poliformismo
+		Colocado como abstrato obrigamos sua declaraï¿½ï¿½o nas classes filhas, uma vez seu comportamento serï¿½ distinto, configurando poliformismo
 	*/		
 	abstract function getInstrucao();
 }

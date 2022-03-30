@@ -1,4 +1,4 @@
-<?php
+ <?php
     include_once PATH_TDC . 'elemento.class.php';
     /*
         * Framework MILES

@@ -24,7 +24,7 @@
 	
 	// Cria o diretório do registro caso não exista
 	if (!file_exists($path)){
-		tdFile::mkdir($path,777);
+		tdFile::mkdir($path,0777);
 	}
 
 	// Cria o arquivo HTML

@@ -12,7 +12,7 @@ include_once PATH_TDC . 'elemento.class.php';
 */	
 class Strong Extends Elemento {
 	/*  
-		* Método construct 
+		* Mï¿½todo construct 
 	    * Data de Criacao: 17/03/2015
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		

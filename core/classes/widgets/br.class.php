@@ -13,7 +13,7 @@ include_once PATH_TDC . 'elemento.class.php';
 */
 class Br Extends Elemento {
 	/*
-		* Método construct
+		* Mï¿½todo construct
 	    * Data de Criacao: 20/01/2015
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		

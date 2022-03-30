@@ -1,4 +1,4 @@
-<?php
+ <?php
 	// Atualização da estrutura
 	if ($conn = Transacao::get()){
 		$sqlEntidade = "SELECT nome FROM td_entidade";

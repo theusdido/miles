@@ -26,7 +26,6 @@
 
 			$filtro_relacionamento	= tdc::f();
 			$filtro_relacionamento->addFiltro("pai","=",$entidade->id);
-
 			fwrite($mdmJSCompile,utf8charset("
 				td_entidade[{$entidade->id}] = {
 					id:{$entidade->id},
@@ -53,13 +52,12 @@
 	$dataset = tdClass::Criar("repositorio",array(ATRIBUTO))->carregar();	
 	if ($dataset){
 		foreach ($dataset as $atributo){
-			$descricaoAtributo = utf8charset($atributo->descricao,8);
 			fwrite($mdmJSCompile,utf8charset("
 				td_atributo[{$atributo->id}] = {
 					id:{$atributo->id},
 					entidade:'{$atributo->entidade}',
 					nome:'{$atributo->nome}',
-					descricao:'".$descricaoAtributo."',
+					descricao:'".$atributo->descricao."',
 					tipo:'{$atributo->tipo}',
 					tamanho:'{$atributo->tamanho}',
 					omissao:'{$atributo->omissao}',
@@ -146,9 +144,16 @@
 		}
 	}
 
+	// Consultas 
 	$dataset = tdClass::Criar("repositorio",array(CONSULTA))->carregar();		
 	if ($dataset){
 		foreach ($dataset as $consultas){
+
+			// json_encode força o retorno de um boleano em string
+			$exibirbotaoeditar		= json_encode($consultas->exibirbotaoeditar);
+			$exibirbotaoexcluir		= json_encode($consultas->exibirbotaoexcluir);
+			$exibirbotaoemmassa		= json_encode($consultas->exibirbotaoemmassa);
+
 			fwrite($mdmJSCompile,utf8charset("
 				td_consulta[{$consultas->id}] = {
 					id:'{$consultas->id}',
@@ -157,9 +162,9 @@
 					entidade:'{$consultas->entidade}',
 					movimentacao:'{$consultas->movimentacao}',
 					descricao:'{$consultas->descricao}',
-					exibireditar:{$consultas->exibirbotaoeditar},
-					exibirexcluir:{$consultas->exibirbotaoexcluir},
-					exibiremmassa:{$consultas->exibirbotaoemmassa},
+					exibireditar:{$exibirbotaoeditar},
+					exibirexcluir:{$exibirbotaoexcluir},
+					exibiremmassa:{$exibirbotaoemmassa},
 					filtros:{
 			",$localCharset));			
 			$sqlFiltros = "SELECT id,operador,atributo FROM td_consultafiltro a WHERE consulta = " . $consultas->id;

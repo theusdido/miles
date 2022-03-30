@@ -1,4 +1,4 @@
-<?php	
+ <?php	
 include_once PATH_TDC . 'elemento.class.php';
 /*
     * Framework MILES
@@ -12,11 +12,11 @@ include_once PATH_TDC . 'elemento.class.php';
 */	
 class TabelaCelula Extends Elemento {
 	/*  
-		* Método construct 
+		* Mï¿½todo construct 
 	    * Data de Criacao: 31/08/2012
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
-		Instância uma nova celula
+		Instï¿½ncia uma nova celula
 	*/		
 	public function __construct(){		
 		parent::__construct('td');

@@ -24,8 +24,8 @@
 	}
 
 	// Bloco (BOOTSTRAP)
-	$bloco = tdClass::Criar("bloco");
-	$bloco->class = "crud-contexto";
+	$bloco 			= tdClass::Criar("bloco");
+	$bloco->class 	= "crud-contexto";
 
 	// Relacionamentos
 	if (tdc::r("relacionamento") != ''){

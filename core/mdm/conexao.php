@@ -5,7 +5,6 @@
 		session_name("miles_SISTEMA_" . $currentProjectParams);
 		session_start();
 	}
-	
 	if (isset($_SESSION["currentproject"])){
 		$currentproject = $_SESSION["currentproject"];
 	}else{
@@ -66,11 +65,13 @@
 	$sqlCurrentDB = "SELECT * from td_connectiondatabase WHERE projeto = {$currentproject} AND type = {$type}";
 	$queryCurrentDB = $connMiles->query($sqlCurrentDB);
 	if ($linhaCurrentDB = $queryCurrentDB->fetch()){
-		$tipo = "mysql";
-		$host = $linhaCurrentDB["host"];
-		$porta = $linhaCurrentDB["port"];
-		$base = $linhaCurrentDB["base"];
-		$usuario = $linhaCurrentDB["user"];
-		$senha = $linhaCurrentDB["password"];
-		$conn = new PDO("$tipo:host=$host;port=$porta;dbname=$base",$usuario,$senha);
+		$tipo 		= "mysql";
+		$host 		= $linhaCurrentDB["host"];
+		$porta 		= $linhaCurrentDB["port"];
+		$base		= $linhaCurrentDB["base"];
+		$usuario 	= $linhaCurrentDB["user"];
+		$senha 		= $linhaCurrentDB["password"];
+		$conn 		= new PDO("$tipo:host=$host;port=$porta;dbname=$base",$usuario,$senha);
 	}
+
+	define('URL_MILES',$_SESSION['URL_MILES']);

@@ -1,4 +1,4 @@
-<?php
+ <?php
 /*
     * Framework MILES
     * @license : Teia Tecnologia WEB.

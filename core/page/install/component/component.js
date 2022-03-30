@@ -1,17 +1,5 @@
 $(".checkbox-componente").click(function(){
-    var componentPath		= $(this).attr("id");
-    var componenteNome 		= $(this).data("modulonome");
-    var componenteDescricao	= $(this).data("modulodescricao");
-
-    if (this.checked){
-        addComponente({
-            path:componentPath,
-            nome:componenteNome,
-            descricao:componenteDescricao
-        });
-    }else{
-        excluirComponenteLista(componenteNome);
-    }
+    addElementComponent( this );
 });
 
 $(".checkbox-registro").click(function(){
@@ -25,6 +13,24 @@ $(".checkbox-registro").click(function(){
     }else{
         excluirRegistroLista(registroName);
     }
+});
+
+$(document).on('click','.checkbox-componente-all', function() {
+    let is_add_component    = $(this).is(':checked');
+    let contexto            = $(this).attr('id');
+    let selector            = '.checkbox-componente[data-module-id="'+contexto+'"]:visible';
+    console.log(selector);
+    $(selector).attr('checked',is_add_component);
+
+    $(selector).each(function(){
+        if (is_add_component){
+            addElementComponent( this );
+        }else{
+
+        }
+    });
+
+
 });
 
 $(".checkbox-modulo-all").click(function(){
@@ -50,3 +56,27 @@ $(document).ready(function(){
         }
     });
 });
+
+// Adiciona o componente para instala��o via componente HTML
+function addElementComponent( element  )
+{
+    console.log(element);
+    var componentPath		= $(element).attr("id");
+    var componenteNome 		= $(element).data("module-name");
+    var componenteDescricao	= $(element).data("module-description");
+
+    if (element.checked){
+        addComponente({
+            path:componentPath,
+            nome:componenteNome,
+            descricao:componenteDescricao
+        });
+    }else{
+        excluirComponenteLista(componenteNome);
+    }
+}
+
+function removeElementComponent( element )
+{
+
+}

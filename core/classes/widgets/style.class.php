@@ -12,7 +12,7 @@ include_once PATH_TDC . 'elemento.class.php';
 */	
 class Style Extends Elemento {
 	/*  
-		* Método construct 
+		* Mï¿½todo construct 
 	    * Data de Criacao: 30/08/2012
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		

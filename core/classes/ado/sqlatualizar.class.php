@@ -14,11 +14,11 @@ include_once PATH_SYSTEM . 'funcoes.php';
 final class SqlAtualizar extends sqlInstrucao{
 
 	/*  
-		* M�todo setLinha 
+		* Método setLinha 
 	    * Data de Criacao: 29/06/2012
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
-		Atribui valoresa � determinadas colunas no banco de dados que ser�o inseridas
+		Atribui valores a determinadas colunas no banco de dados que serão inseridas
 		@parms $coluna
 		@parms $valor	
 	*/	
@@ -43,11 +43,11 @@ final class SqlAtualizar extends sqlInstrucao{
 		}
 	}	
 	/*  
-		* M�todo getInstrucao 
+		* Método getInstrucao 
 	    * Data de Criacao: 29/06/2012
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
-		
-		Monta e retorna a instru��o SQL		
+
+		Monta e retorna a instrução SQL
 	*/		
 	public function getInstrucao(){
 		$valores = $colunas = "";

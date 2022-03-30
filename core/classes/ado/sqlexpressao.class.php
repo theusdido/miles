@@ -4,15 +4,15 @@
     * @license : Estilo Site Ltda.
     * @link http://www.estilosite.com.br
 		
-    * Classe abstrata para gerenciar expressıes do SQL
+    * Classe abstrata para gerenciar express√µes do SQL
     * Data de Criacao: 28/06/2012
     * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 */	
 
 abstract class SqlExpressao{
-	# OPeradores LÛgicos
+	# OPeradores L√≥gicos
 	const E_OPERADOR = "AND ";
 	const OU_OPERADOR = "OR ";
-	# Retorno da express„o
+	# Retorno da express√£o
 	abstract public function dump();
 }

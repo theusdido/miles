@@ -1,4 +1,4 @@
-<?php
+ <?php
 	// Adiciona a entidade de gênero
 	include 'genero.php';
 	

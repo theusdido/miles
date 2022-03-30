@@ -1,4 +1,4 @@
-<?php
+ <?php
 	// Setando variáveis
 	$entidadeNome = "erp_material_tipooperacaoestoque";
 	$entidadeDescricao = "Tipo de Operação de Estoque";

@@ -32,6 +32,7 @@
 	define("LOG",					$prefixo_format . "log");
 	define('CONNECTIONDATABASE',	$prefixo_format . 'connectiondatabase');
 	define('AVISO',					$prefixo_format . 'aviso');
+	define('CHARSET',				$prefixo_format . 'charset');
 
 	// Formato do prefixo para pacotes
 	$prefixo_package = $prefixo_format .  $mjc->system->package . '_';

@@ -1,4 +1,4 @@
-<?php	
+ <?php	
 include_once PATH_TDC . 'elemento.class.php';
 /*
     * Framework MILES
@@ -14,11 +14,11 @@ class Imagem Extends Elemento {
 	private $src;
 
 	/*  
-		* Método construct 
+		* Mï¿½todo construct 
 	    * Data de Criacao: 31/08/2012
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
-		Localização da imagem
+		Localizaï¿½ï¿½o da imagem
 		@params src
 	*/		
 	public function __construct(){		
