@@ -20,7 +20,7 @@
 	
 	// Carrega os arquivos de configuração do sistema	
 	require $_path_system . 'config.php';
-	
+
 	// Arquivo de compatibilidade entre versões
 	include $_path_system . 'compatibilidade.php';
 
@@ -31,4 +31,3 @@
 		// Fecha a transação com o banco de dados
 		Transacao::Commit();
 	}
-	

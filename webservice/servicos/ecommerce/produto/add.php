@@ -1,18 +1,45 @@
 <?php
-	$codigo 	= tdc::r("codigo"); 
-	$produto 	= tdc::p("td_ecommerce_produto");
-	if (is_numeric_natural($codigo)){
-		$dsProduto = tdc::d("td_ecommerce_produto",tdc::f("codigo","=",$codigo));
+
+	foreach($_POST as $k => $v){
+		Debug::Log($k . '=>' . $v);
+	}
+
+	$sku			= tdc::r('sku');
+	$criterio 		= tdc::f();
+	$dados			= json_decode(tdc::r('dados'));
+	$produto 		= tdc::p("td_ecommerce_produto");
+	$unidademedida	= tdc::p("td_ecommerce_unidademedida");
+	$marca 			= tdc::r('marca');
+
+	if (is_numeric_natural($sku))
+	{
+		$dsProduto = tdc::d("td_ecommerce_produto",tdc::f("sku","=",$sku));
 		if (sizeof($dsProduto) > 0){
-			$produto = $dsProduto[0];
+			$produto 		= $dsProduto[0];
+			$produto->sku 	= $sku;
 			$produto->isUpdate();
-			$produto->codigo = $codigo;
 		}
 	}
 
-	foreach($dados as $d){
-		foreach($d as $k => $v){
-			$produto->{$k} = $v;
+	$registros = [];
+	if ($dados == '' && count($_POST) > 0)
+	{
+		$registros = $_POST;
+	}else{
+		foreach($dados as $d){
+			foreach($d as $k => $v)
+				$registros[$k] = $v;
 		}
 	}
-	$produto->armazenar();
+
+	foreach($registros as $k => $v){
+		$produto->{$k} = $v;
+	}
+
+	if ($produto->armazenar()){
+		$retorno['status'] 	= 1;
+		$retorno['msg']		= 'Salvo com Sucesso';
+	}else{
+		$retorno['status'] 	= 0;
+		$retorno['msg']		= 'Não foi possível salvar o registro';
+	}

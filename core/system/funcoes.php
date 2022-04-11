@@ -1091,21 +1091,22 @@ function inserirRegistro($conn,$tabela,$id,$atributos,$valores,$criarnovoregistr
 		if ($criarnovoregistro){
 			// Força a criação do registro, independentemente do ID
 			$id = getProxId(str_replace("td_","",$tabela),$conn);
+
+			try{
+				$sqlInserir = "INSERT " . $tabela . " (id,".implode(",",$atributos).") VALUES (".$id.",".utf8charset(implode(",",$valores)).");";
+				$query = $conn->query($sqlInserir);
+				return $id;
+			}catch(Throwable $t){
+				echo $sqlInserir;
+				var_dump($conn->errorInfo());
+				return 0;
+			}
+			
 		}else{
 			// Atualiza a informação caso o ID já exista
             atualizarRegistro($conn,$tabela,$id,$atributos,$valores);
-            return true;
+            return $id;
 		}
-	}
-
-	try{
-		$sqlInserir = "INSERT " . $tabela . " (id,".implode(",",$atributos).") VALUES (".$id.",".utf8charset(implode(",",$valores)).");";
-		$query = $conn->query($sqlInserir);
-		return true;
-	}catch(Throwable $t){
-        echo $sqlInserir;
-        var_dump($conn->errorInfo());
-        return false;
 	}
 }
 function atualizarRegistro($conn,$tabela,$id = "",$atributos,$valores,$atualizarnulo=false){

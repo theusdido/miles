@@ -1,14 +1,15 @@
 <?php
-	$codigo = tdc::r("codigo"); 
-	if (is_numeric_natural($codigo)){
-		try{
-			$produto = tdc::da("td_ecommerce_produto",tdc::f("codigo","=",$codigo));
-			if (sizeof($produto) > 0){
-				$retorno["dados"] = $produto[0];
-			}else{
-				$retorno["dados"] = [];
-			}
-		}catch(Throwable $t){
-			
-		}
+	$id			= tdc::r('id');
+	$codigo 	= tdc::r("codigo");
+	$sku		= tdc::r('sku');
+	$criterio 	= tdc::f();
+
+	if ($id != '') $criterio->addFiltro('id','=',$id);
+	if ($codigo != '') $criterio->addFiltro('codigo','=',$codigo);
+	if ($sku != '') $criterio->addFiltro('sku','=',$sku);
+
+	try{
+		$retorno["dados"] 	= tdc::da("td_ecommerce_produto",$criterio);
+	}catch(Throwable $t){
+		$retorno['dados']	= [];
 	}
