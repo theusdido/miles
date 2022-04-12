@@ -1,17 +1,17 @@
 <?php
-	
+
 	// Define o caminho absoluto da raiz do MILES
 	define('PATH_MILES',dirname(__DIR__) . '/');		
 
 	// Seta as constantes
 	require PATH_MILES . 'core/system/constantes.php';
-	
+
 	// Diretório de sistema para carregar as principais funcionaliades
 	$_path_core 	= PATH_MILES . '/' . FOLDER_CORE . '/';
 	$_path_system	= $_path_core . FOLDER_SYSTEM . '/';
 	$_path_config	= $_path_core . FOLDER_CONFIG . '/';
 	$_path_classes	= $_path_core . FOLDER_CLASSES . '/';
-	
+
 	// Carrega biblioteca de funções independentes
 	require $_path_system . 'functions.php';
 	

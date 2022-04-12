@@ -1,37 +1,11 @@
 <?php
-	
+
 	// Classe de Configuração do sistema
-	require $_path_core . 'classes/system/config.class.php';
+	require 'core/classes/system/config.class.php';
 
-	// Variável global do projeto atual
-	$currentProject = Config::currentProject();
-	$_phpversion 	= explode('.',phpversion());
-	$phpversion 	= (int)$_phpversion[0];
-	$phpbuild 		= (int)$_phpversion[1];
-	$phpcompilation	= isset($_phpversion[2])?(int)$_phpversion[2]:0;
+	// Session Controller
+	require 'core/controller/session.php';
 
-	$_session_isactive = false;
-	if ($phpversion >= 5 && $phpbuild > 3){
-		if (session_status() === PHP_SESSION_ACTIVE) {
-			$_session_isactive = true;
-		}
-	}else{
-		if(session_id() != '') {
-			$_session_isactive = true;
-		}
-	}
-
-	// Sessão do Sistema
-	$sessionName = "miles_" . AMBIENTE . "_" . $currentProject;
-
-	// Verificar se a sessão não já está aberta.
-	if (!$_session_isactive){
-
-		// Cria uma nova sessão
-		session_name($sessionName);
-		session_start();
-	}
-	
 	if (!defined('SCHEMA')){
 		if (isset($_SESSION["db_base"])){
 			define('SCHEMA',$_SESSION["db_base"]);

@@ -16,7 +16,8 @@
             "theme":"desktop",
             "prefix":"td",
             "is_show_error_message":false,
-            "is_transaction_log":false
+            "is_transaction_log":false,
+            "database_current":"desenv"
         }
     ');
     fclose($fpMilesJSON);
