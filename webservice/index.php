@@ -3,7 +3,7 @@
 		* Framework MILES
 		* @license : Teia Online.
 		* @link http://www.teia.online
-			
+
 		* Index do Webservice
 		* Data de Criacao: 24/04/2020
 		* @author Edilson Valentim dos Santos Bitencourt (Theusdido)
@@ -23,7 +23,7 @@
 
 	// Aumenta o tempo de execução da página
 	set_time_limit(3600);
-		
+
 	// Seta o ambiente da requisição
 	define("AMBIENTE","WEBSERVICE");
 
