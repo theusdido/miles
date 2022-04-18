@@ -442,10 +442,19 @@ function getUrl($url,$opcoes = null){
 			'method'	=> 'GET'
 		)
 	);
-	session_write_close(); //Desboqueia o arquivo de sessão
-	$context 	= stream_context_create($opts);
-	$conteudo 	= file_get_contents($url,false,$context);
-	session_start(); //Bloqueia o arquivo de sessão
+	try{
+		#session_write_close(); //Desboqueia o arquivo de sessão
+		$context 	= stream_context_create($opts);
+		$conteudo 	= file_get_contents($url,false,$context);
+		#@session_start(); //Bloqueia o arquivo de sessão
+	}catch(Throwable $t){
+		if (IS_SHOW_ERROR_MESSAGE)
+		{
+			echo $t->getMessage();
+		}
+	}finally{
+
+	}
 	return $conteudo;
 }
 function getHTMLTipoFormato($htmltipo,$valor,$entidade=0,$atributo=0,$id=0){
@@ -1483,8 +1492,8 @@ function htmlespecialcaracteres($string,$tipo){
 	$retorno = "";
 	if ($tipo == 1){
 		
-		$primeiraletra = substr($string,0,1);
-		$ultimaletra = substr($string,(strlen($string)-1),1);
+		$primeiraletra	= substr($string,0,1);
+		$ultimaletra 	= substr($string,(strlen($string)-1),1);
 		$istag = false;
 		if ($primeiraletra == '<' && $ultimaletra == '>'){
 			$istag = true;

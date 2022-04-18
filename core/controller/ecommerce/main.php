@@ -24,11 +24,7 @@
     $ecommerce_configuracoes        = new EcommerceConfiguracoes();	
 
     // Carrinho de Compras
-<<<<<<< HEAD
     $ecommerce_carrinho                 = new CarrinhoCompras();        
-=======
-    $ecommerce_carrinho                 = new CarrinhoCompras();
->>>>>>> 5db39b5 (final de semana de finalizações na Granu)
     $carrinho_id                        = $ecommerce_carrinho->getId();
 
     // Cliente

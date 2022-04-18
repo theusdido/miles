@@ -161,9 +161,9 @@
 			echo 1;
 
 			// Cria o arquivo HTML
-			$fp = fopen($pathfilepage . $entidade->contexto->nome . ".html" ,'w');
-			fwrite($fp,$bloco->toString());
-			fclose($fp);
+			#$fp = fopen($pathfilepage . $entidade->contexto->nome . ".html" ,'w');
+			#fwrite($fp,$bloco->toString());
+			#fclose($fp);
 
 		break;
 		default:

@@ -29,7 +29,7 @@
 
 	// Cria o arquivo HTML
 	$fp = fopen($path . tdc::r('filename') ,'w');
-	fwrite($fp,htmlespecialcaracteres($_POST["html"],1));
+	fwrite($fp,htmlespecialcaracteres(trim($_POST["html"]),1));
 	fclose($fp);
 
 	// Cria o arquivo HTML Embutido Dinâmico

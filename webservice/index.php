@@ -102,8 +102,9 @@
 		// Retorna os dados da requisição em JSON
 		header("Content-Type: application/json", true);
 
-		// Retorna a requisição
+		// Retorna a requisição em formatado de Array
 		echo json_encode( [$retorno] );
+
 	}catch(Exeception $e){
 		echo json_encode($e->getMessage());
 	}
