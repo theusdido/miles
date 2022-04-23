@@ -12,6 +12,9 @@
 	// Permite que qualquer site acesse (destinada a apis públicas)
 	header("Access-Control-Allow-Origin: *");
 
+	// Retorna os dados da requisição em JSON
+	//header("Content-Type: application/json", true);
+
 	// Projeto Consumidor
 	$projetoconsumidor = isset($_GET["project"]) ? $_GET["project"] : ( isset($_POST["project"]) ? $_POST["project"] : '' );
 	if ($projetoconsumidor == ''){
@@ -34,7 +37,8 @@
 	require '../core/autoload.php';
 
 	// Variavél de retorno
-	$retorno["status"] = "success";
+	$retorno 			= [];
+	$retorno["status"] 	= "success";
 
 	$tokenparms = tdc::r('token');
 	if ($tokenparms == ""){
@@ -99,11 +103,9 @@
 		// Fecha a transação com o banco de dados
 		Transacao::Commit();
 
-		// Retorna os dados da requisição em JSON
-		header("Content-Type: application/json", true);
-
-		// Retorna a requisição
+		// Retorna a requisição em formatado de Array
 		echo json_encode( [$retorno] );
+
 	}catch(Exeception $e){
 		echo json_encode($e->getMessage());
 	}

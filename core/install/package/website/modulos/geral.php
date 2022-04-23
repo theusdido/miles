@@ -15,11 +15,16 @@
     ),
     array( "name" => "pagina", "title" => "Página", "components" => 
       array(
-        array('name' => 'quemsomos'               ,'title' => 'Quem Somos'),
-        array('name' => 'politicaprivacidade'     ,'title' => 'Política de Privacidade'),
+        array('name' => 'quemsomos'               ,'title' => 'Quem Somos'),        
         array('name' => 'home'                    ,'title' => 'Home'),
         array('name' => 'blog'                    ,'title' => 'Blog')
       )
+  ),
+  array( "name" => "politicas", "title" => "Políticas", "components" => 
+    array(
+      array('name' => 'politicaprivacidade'     ,'title' => 'Política de Privacidade'),
+      array('name' => 'politicacookies'         ,'title' => 'Política de Cookies')
+    )
   ),
   array( "name" => "componente", "title" => "Componente", "components" => 
       array(

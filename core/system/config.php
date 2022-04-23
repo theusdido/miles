@@ -1,10 +1,10 @@
 <?php
 
 	// Classe de Configuração do sistema
-	require 'core/classes/system/config.class.php';
+	require $_path_core . 'classes/system/config.class.php';
 
 	// Session Controller
-	require 'core/controller/session.php';
+	require $_path_core . 'controller/session.php';
 
 	if (!defined('SCHEMA')){
 		if (isset($_SESSION["db_base"])){

@@ -49,3 +49,7 @@
 		showMessage("Parametro <b>is_transaction_log</b> em miles.json não especificado.");
 		exit;
 	}
+	if (!isset($mjc->port)){
+		showMessage("Parametro <b>port</b> em miles.json não especificado.");
+		exit;
+	}

@@ -16,8 +16,16 @@
 		$request_uri_dir	= str_replace("index.php","",$request_uri[0]);
 	}
 
+	// PORTA
+	switch($mjc->port){
+		case 'auto': $_port_request = ''; break;
+		case 'server': $_port_request = PORT; break;
+		case 'default': '80'; break;
+		default: $_port_request = $mjc->port;
+	}
+
 	// URL MILES
-	$_url_miles	= REQUEST_PROTOCOL . HTTP_HOST . (PORT==''?'':':'.PORT) .  $request_uri_dir;
+	$_url_miles	= REQUEST_PROTOCOL . HTTP_HOST . $_port_request .  $request_uri_dir;
 	Session::append("URL_MILES",$_url_miles);
 	define('URL_MILES',$_url_miles);
 
