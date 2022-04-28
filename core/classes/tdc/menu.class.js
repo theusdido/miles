@@ -131,7 +131,6 @@ Menu.prototype.load = function() {
     });
 }
 Menu.prototype.carregarpagina = function(path, target, dados_menu) {
-    debugger;
     carregar(path, target, function() {
         carregarScriptCRUD(dados_menu.tipomenu, dados_menu.entidade);
     });

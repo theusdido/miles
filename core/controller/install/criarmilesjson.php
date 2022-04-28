@@ -7,10 +7,10 @@
             "folder":"'.removeBarraRoot($uri).'",
             "system":{
                 "url":{
-                    "lib":"https://teia.tec.br/miles/sistema/lib/"
+                    "lib":"https://teia.tec.br/miles/repository/lib/"
                 },
-                "request_protocol":"https",
-                "package":"erp",
+                "request_protocol":"http",
+                "package":"",
                 "packages":[]
             },
             "theme":"desktop",

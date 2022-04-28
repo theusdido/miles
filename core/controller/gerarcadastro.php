@@ -121,17 +121,17 @@
 			$jsValidar->src = Session::Get('URL_SYSTEM') . "validar.js";
 			$bloco->add($jsValidar);
 
-			// Arquivo JS Incorporado
-			$js 		= tdClass::Criar("script");
-			$js->src 	= $urlfilepage . $entidade->contexto->nome . ".js";
-			$bloco->add($js);
-
 			// Classe do formulário
 			$jsFormularioClass 			= tdClass::Criar("script");
 			$jsFormularioClass->src 	= Session::Get('URL_CLASS_TDC') . "formulario.class.js";
 			$bloco->add($jsFormularioClass);
 
 		}
+
+		// Arquivo JS Incorporado
+		$js 		= tdClass::Criar("script");
+		$js->src 	= $urlfilepage . $entidade->contexto->nome . ".js";
+		$bloco->add($js);
 
 		// HTML Personalizado
 		$htmlPersonalizado 		= tdClass::Criar("div");
@@ -161,9 +161,9 @@
 			echo 1;
 
 			// Cria o arquivo HTML
-			#$fp = fopen($pathfilepage . $entidade->contexto->nome . ".html" ,'w');
-			#fwrite($fp,$bloco->toString());
-			#fclose($fp);
+			$fp = fopen($pathfilepage . $entidade->contexto->nome . ".html" ,'w');
+			fwrite($fp,$bloco->toString());
+			fclose($fp);
 
 		break;
 		default:

@@ -39,6 +39,9 @@ class TdFormulario Extends Elemento {
 		$this->linhacampos 			= tdClass::Criar("div");
 		$this->linhacampos->class 	= "row-fluid form_campos tdform";
 		$this->grupo_botoes			= tdc::html("div" , array("class" => "form-grupo-botao"));
+
+		// Return false é por que causa do CKEditor que envia o formulário quando é chamado.
+		$this->onsubmit				= "return false;";
 	}
 	/*  
 		* Método CamposHTML 
