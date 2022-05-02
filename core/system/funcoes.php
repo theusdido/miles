@@ -238,7 +238,11 @@ function moneyToFloat($str,$invertido=false){
 		$str = str_replace(",",".",$str);
 		return $str;
 	}else{
-		return number_format($str, 2, ',', '.');
+		if (is_numeric($str)){
+			return number_format($str, 2, ',', '.');
+		}else{
+			return 0;
+		}
 	}
 }
 function completaString($input,$pad_length,$pad_string="0",$pad_type = STR_PAD_LEFT,$encoding = 'UTF-8'){

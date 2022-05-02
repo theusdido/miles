@@ -52,7 +52,7 @@ $thead	 	= $tabela->add("thead");
 $tbody		= $tabela->add("tbody");
 $tfoot		= $tabela->add("tfoot");
 
-// CABE�ALHO
+// CABEÇALHO
 $trHead		= $tabela->add("tr",array( "elementopai" => $thead));
 
 $thCarrinho     = $tabela->add("th",array("propriedades" => array( "innerhtml" => "Carrinho" , "align" => "left" , "width" => "10%" ) , "elementopai" => $trHead));
@@ -71,18 +71,18 @@ $itens = $queryTotalAcessos->fetchAll(PDO::FETCH_OBJ);
 foreach($itens as $item){
     $trBody		    = $tabela->add("tr",array("elementopai" => $tbody));
 
-    $cliente        = $item->cliente == 0? utf8_encode("N�o Logado") : $item->cliente . " - " . tdc::p("td_ecommerce_cliente",$item->cliente)->nome;
+    $cliente        = $item->cliente == 0? utf8_encode("Não Logado") : $item->cliente . " - " . tdc::p("td_ecommerce_cliente",$item->cliente)->nome;
     $frete          = $item->valorfrete == 0?" - ":"R$ " . moneyToFloat($item->valorfrete,true);
 
     $tdCarrinho   	= $tabela->add("td",array("propriedades" => array( "innerhtml" => $item->id) , "elementopai" => $trBody));
     $tdCliente   	= $tabela->add("td",array("propriedades" => array( "innerhtml" => $cliente) , "elementopai" => $trBody));
     $tdValorFrete   = $tabela->add("td",array("propriedades" => array( "innerhtml" => $frete , "align" => "right") , "elementopai" => $trBody));
-    $tdQtdade 	    = $tabela->add("td",array("propriedades" => array( "innerhtml" => $item->qtdetotaldeitens ,  "align" => "center" ) , "elementopai" => $trBody));
+    $tdQtdade 	    = $tabela->add("td",array("propriedades" => array( "innerhtml" => $item->qtdetotalitens ,  "align" => "center" ) , "elementopai" => $trBody));
     $tdValorTotal   = $tabela->add("td",array("propriedades" => array( "innerhtml" => "R$ " . moneyToFloat($item->valortotal,true) , "align" => "right") , "elementopai" => $trBody));
 
 }
 
-// RODAP�
+// RODAPÉ
 $trFoot				= $tabela->add("tr");
 $tdFoot				= $tabela->add("td",array("propriedades" => array("colspan" => "6") , "elementopai" => $trFoot));
 $divRodape			= $tabela->add("div", array( "propriedades" => array("class" => "div-rodape") , "elementopai" => $tdFoot));

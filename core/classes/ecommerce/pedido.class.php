@@ -62,9 +62,12 @@ class Pedido {
                 "tamanho"       => $tamanho,
                 "quantidade"    => $item->qtde,
                 "valor"         => $item->valor,
+				"produtonome"	=> $item->produtonome,
+				"referencia"	=> $item->referencia,
+				"tamanho"		=> $item->tamanho,
                 "total"         => $valorTotal
             ));
-        }        
+        }
     }
 	/* 
 		* Método quantidadeItens 
