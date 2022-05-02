@@ -43,7 +43,7 @@ $titulo		= $topo->add("h1",array(
 
 // Lista Dados da Empresa
 $listadadosempresa 	= $topo->node("ul");
-$liNomeEmpresa 		= $topo->add("li", array("propriedades" => array("innerhtml" => $empresa->razaosocial) , "elementopai" => $listadadosempresa )); 
+$liNomeEmpresa 		= $topo->add("li", array("propriedades" => array("innerhtml" => utf8charset($empresa->razaosocial,5)) , "elementopai" => $listadadosempresa )); 
 $liCNPJEmpresa		= $topo->add("li", array("propriedades" => array("innerhtml" => "CNPJ: " . $empresa->cnpj) , "elementopai" => $listadadosempresa )); 
 $liTelefoneEmpresa	= $topo->add("li", array("propriedades" => array("innerhtml" => "TELEFONE: ".$empresa->telefone) , "elementopai" => $listadadosempresa )); 
 $liEMailEmpresa		= $topo->add("li", array("propriedades" => array("innerhtml" => "E-MAIL: ". $empresa->email) , "elementopai" => $listadadosempresa )); 
@@ -69,13 +69,13 @@ $divdadoscliente 	= $topo->add("div", array("propriedades" => array("class" => "
 
 // Div Dados do Endereço do Cliente
 $divdadosenderecocliente	= $topo->add("div", array("propriedades" => array( "class" => "div-dados-endereco" , "innerhtml" => array(
-	$topo->node("div", array("innerhtml" => "Logradouro: " . $enderecliente->logradouro , "class" => "div-enderecocliente-logradouro" )) ,
-	$topo->node("div", array("innerhtml" => "Complemento: " . $enderecliente->complemento , "class" => "div-enderecocliente-complemento")) ,
-	$topo->node("div", array("innerhtml" => "Bairro: " . $enderecliente->bairro , "class" => "div-enderecocliente-bairro"))
+	$topo->node("div", array("innerhtml" => "Logradouro: " . utf8charset($enderecliente->logradouro,5) , "class" => "div-enderecocliente-logradouro" )) ,
+	$topo->node("div", array("innerhtml" => "Complemento: " . utf8charset($enderecliente->complemento,5) , "class" => "div-enderecocliente-complemento")) ,
+	$topo->node("div", array("innerhtml" => "Bairro: " . utf8charset($enderecliente->bairro,5) , "class" => "div-enderecocliente-bairro"))
 ))));
 
 $divdadosenderecocliente2	= $topo->add("div", array("propriedades" => array( "class" => "div-dados-endereco" , "innerhtml" => array(
-	$topo->node("div", array("innerhtml" => "Cidade: " . $enderecliente->cidade , "class" => "div-enderecocliente-cidade")),
+	$topo->node("div", array("innerhtml" => "Cidade: " . utf8charset($enderecliente->cidade,5) , "class" => "div-enderecocliente-cidade")),
 	$topo->node("div", array("innerhtml" => "CEP: " . $enderecliente->cep , "class" => "div-enderecocliente-cep"))	
 ))));
 
@@ -114,8 +114,8 @@ foreach($itens as $item){
     $referencia     = $produto->referencia!="" ? " - Ref.: " . $produto->referencia : '';
 
 	$tdID   	= $tabela->add("td",array("propriedades" => array( "innerhtml" => $produto->id ) , "elementopai" => $trBody));
-	$tdProduto 	= $tabela->add("td",array("propriedades" => array( "innerhtml" => $produto->nome . $referencia ) , "elementopai" => $trBody));
-	$tdTamanho 	= $tabela->add("td",array("propriedades" => array( "innerhtml" => $tamanhoproduto->descricao ) , "elementopai" => $trBody));
+	$tdProduto 	= $tabela->add("td",array("propriedades" => array( "innerhtml" => utf8charset($produto->nome . $referencia,5) ) , "elementopai" => $trBody));
+	$tdTamanho 	= $tabela->add("td",array("propriedades" => array( "innerhtml" => utf8charset($tamanhoproduto->descricao,5) ) , "elementopai" => $trBody));
 	$tdQtdade 	= $tabela->add("td",array("propriedades" => array( "innerhtml" => $item->qtde  , "align" => "center") , "elementopai" => $trBody));
 	$tdValor 	= $tabela->add("td",array("propriedades" => array( "innerhtml" => "R$ " . moneyToFloat($item->valor,true)  , "align" => "right") , "elementopai" => $trBody));
 	$tdTotal 	= $tabela->add("td",array("propriedades" => array( "innerhtml" => "R$ " . moneyToFloat($item->valortotal,true)  , "align" => "right") , "elementopai" => $trBody));
