@@ -34,24 +34,22 @@ class Pedido {
     public function itens(){
         $ft = tdc::f("pedido","=",$this->id);
         $ft->setPropriedade("order","descricao");
-        foreach(tdc::d(getEntidadeEcommercePedidoItem(),$ft) as $item){
+        foreach(tdc::d('td_ecommerce_pedidoitem',$ft) as $item){
             if ($this->isVariacaoTamanho){
                 $tamanhoproduto = tdc::p("td_ecommerce_tamanhoproduto",$item->produto);
                 $id             = $tamanhoproduto->id;
                 $produto		= tdc::p("td_ecommerce_produto",$tamanhoproduto->produto);
-                if ($this->isReferenciaProduto){
-                    $referencia     = $produto->referencia != "" ? " - Ref.: " . $produto->referencia : '';
-                }else{
-                    $referencia     = '';
-                }
-                $descricao      = $produto->nome . $referencia;
                 $tamanho        = $tamanhoproduto->descricao;
+                $descricao      = $produto->nome . ' ' . $tamanho;
             }else{
                 $produto		= tdc::p("td_ecommerce_produto",$item->produto);
                 $id             = $produto->id;
                 $descricao      = $produto->nome;
                 $tamanho        = '';
             }
+
+            // Referência
+            $referencia                 = $this->isReferenciaProduto ? $produto->referencia : '';
             $valorTotal                 = $item->qtde * $item->valor;
             $this->quantidadeTotalItens = $this->quantidadeTotalItens + $item->qtde;
             $this->somaValor            = $this->somaValor + $item->valor;
@@ -60,11 +58,10 @@ class Pedido {
                 "id"            => $id,
                 "descricao"     => $descricao,
                 "tamanho"       => $tamanho,
+                "produtonome"   => $item->produtonome,
+                "referencia"    => $item->referencia,
                 "quantidade"    => $item->qtde,
                 "valor"         => $item->valor,
-				"produtonome"	=> $item->produtonome,
-				"referencia"	=> $item->referencia,
-				"tamanho"		=> $item->tamanho,
                 "total"         => $valorTotal
             ));
         }
@@ -107,7 +104,7 @@ class Pedido {
 		*	[ float ] - Valor total do pedido
 	*/
     public function getValorTotal(){
-        return $this->somaValorTotal() - $this->getValorFrete();
+        return $this->somaValorTotal() + $this->getValorFrete();
     }
 	/* 
 		* Método getValorFrete

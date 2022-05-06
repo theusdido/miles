@@ -20,11 +20,11 @@
         $registrounico = 0
     );
 
-    $descricao = criarAtributo($conn, $entidadeID, "descricao", "Descri��o", "varchar", 200, 0, 3, 1, 0, 0, "");
+    $descricao = criarAtributo($conn, $entidadeID, "descricao", "Descrição", "varchar", 200, 0, 3, 1, 0, 0, "");
     $categoria = criarAtributo($conn, $entidadeID,"categoria","Categoria","int",0,0,4,1,installDependencia("ecommerce_categoria","package/website/ecommerce/mercadoria/categoria"));
 
     // Criando Acesso
-    $menu_webiste = addMenu($conn, 'E-Commerce', '#', '', '', '', 'ecommerce');
+    $menu_webiste = addMenu($conn, 'E-Commerce', '#', '', 0, 0, 'ecommerce');
 
     // Adicionando Menu
     addMenu($conn, $entidadeDescricao, "files/cadastro/" . $entidadeID . "/" . PREFIXO . $entidadeNome . ".html", '', $menu_webiste, 0, 'ecommerce-' . $entidadeNome, $entidadeID, 'cadastro');

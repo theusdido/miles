@@ -52,7 +52,7 @@ $thead	 	= $tabela->add("thead");
 $tbody		= $tabela->add("tbody");
 $tfoot		= $tabela->add("tfoot");
 
-// CABE�ALHO
+// CABEÇALHO
 $trHead		= $tabela->add("tr",array( "elementopai" => $thead));
 
 $thPedido     = $tabela->add("th",array("propriedades" => array( "innerhtml" => "Pedido" , "align" => "left" , "width" => "10%" ) , "elementopai" => $trHead));
@@ -85,7 +85,7 @@ if (sizeof($itens) > 0) {
     $tdPedido = $tabela->add("td", array("propriedades" => array("innerhtml" => "Nenhum Registro Encontrado" , "colspan" => 5 , "align" => "center"), "elementopai" => $trBody));
 }
 
-// RODAP�
+// RODAPÉ
 $trFoot				= $tabela->add("tr");
 $tdFoot				= $tabela->add("td",array("propriedades" => array("colspan" => "6") , "elementopai" => $trFoot));
 $divRodape			= $tabela->add("div", array( "propriedades" => array("class" => "div-rodape") , "elementopai" => $tdFoot));

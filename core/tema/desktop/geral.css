@@ -266,10 +266,10 @@ legend {
 	padding:20px;
 }
 .irbloco-paginacao{
-border: 1px solid #ddd;
+	border: 1px solid #ddd;
     float: left;
     font-weight: bold;
-	height: 33px;
+	height: 34px;
     text-align: center;
     width: 50px;
 	color:#337ab7;

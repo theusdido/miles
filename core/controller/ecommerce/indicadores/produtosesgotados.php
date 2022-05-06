@@ -52,24 +52,14 @@ $thead	 	= $tabela->add("thead");
 $tbody		= $tabela->add("tbody");
 $tfoot		= $tabela->add("tfoot");
 
-// CABE�ALHO
+// CABEÇALHO
 $trHead		= $tabela->add("tr",array( "elementopai" => $thead));
 
 $thPedido       = $tabela->add("th",array("propriedades" => array( "innerhtml" => "ID" , "align" => "left" , "width" => "20%" ) , "elementopai" => $trHead));
 $thCliente 	    = $tabela->add("th",array("propriedades" => array( "innerhtml" => "Nome" , "align" => "left" , "width" => "40%" ) , "elementopai" => $trHead));
 $thValorFrete   = $tabela->add("th",array("propriedades" => array( "innerhtml" => "Tamanho" , "align" => "left" , "width" => "40%" ) , "elementopai" => $trHead));
 
-
-$conn               = Transacao::get();
-$sqlSaldo           = "
-	SELECT * FROM td_erp_material_posicaogeralestoque 
-	WHERE saldo <= 0 
-	ORDER BY datahora DESC
-	LIMIT 1;
-";
-$querySaldo         = $conn->query($sqlSaldo);
-$itens              = $querySaldo->fetchAll(PDO::FETCH_OBJ);
-
+$itens          = Estoque::produtosEsgotados();
 if (sizeof($itens) > 0) {
     foreach ($itens as $item) {
         $trBody     = $tabela->add("tr", array("elementopai" => $tbody));
@@ -82,11 +72,11 @@ if (sizeof($itens) > 0) {
         $tdValorFrete   = $tabela->add("td", array("propriedades" => array("innerhtml" => $tamanho->descricao, "align" => "left"), "elementopai" => $trBody));
     }
 }else{
-    $trBody = $tabela->add("tr", array("elementopai" => $tbody));
-    $tdPedido = $tabela->add("td", array("propriedades" => array("innerhtml" => "Nenhum Registro Encontrado" , "colspan" => 3 , "align" => "center"), "elementopai" => $trBody));
+    $trBody     = $tabela->add("tr", array("elementopai" => $tbody));
+    $tdPedido   = $tabela->add("td", array("propriedades" => array("innerhtml" => "Nenhum Registro Encontrado" , "colspan" => 3 , "align" => "center"), "elementopai" => $trBody));
 }
 
-// RODAP�
+// RODAPÉ
 $trFoot				= $tabela->add("tr");
 $tdFoot				= $tabela->add("td",array("propriedades" => array("colspan" => "6") , "elementopai" => $trFoot));
 $divRodape			= $tabela->add("div", array( "propriedades" => array("class" => "div-rodape") , "elementopai" => $tdFoot));

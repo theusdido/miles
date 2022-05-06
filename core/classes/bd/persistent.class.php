@@ -1,4 +1,4 @@
- <?php
+<?php
 include_once PATH_BD . 'registro.class.php';
 /*
     * Framework MILES

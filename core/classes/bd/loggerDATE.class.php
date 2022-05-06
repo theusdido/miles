@@ -12,7 +12,7 @@ include PATH_BD . 'logger.class.php';
 class LoggerDATE extends BdLogger{
 
 	/*  
-		* M�todo escrever 
+		* Método escrever 
 	    * Data de Criacao: 23/04/2020
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		

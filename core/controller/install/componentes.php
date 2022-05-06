@@ -4,13 +4,14 @@
 	$listComponents->class	= 'accordion-install';
 
 	foreach($package->getModule() as $m){
+		$module_id								= $package->getName() . '-' . $m->getName();
 		$checkboxInstallAll 					= tdc::o('checkbox');
 		$checkboxInstallAll->class 				= 'checkbox-componente-all';
-		$checkboxInstallAll->id					= $package->getName() . '-' . $m->getName();
+		$checkboxInstallAll->id					= $module_id;
 		
 		$checkboxRecordAll 						= tdc::o('checkbox');
 		$checkboxRecordAll->class 				= 'checkbox-registro-all';
-		$checkboxRecordAll->id					= $package->getName() . '-' . $m->getName();
+		$checkboxRecordAll->id					= $module_id;
 
 		$table 			= tdc::o('table');
 		$table->class 	= 'table table-hover table-install-component';
@@ -19,17 +20,18 @@
 		$trAll->class 	= 'tr-all';
 
 		foreach($m->getComponent() as $c){
-			$path										= $package->getName() . '-' . $m->getName();
 			$checkboxInstall 							= tdc::o('checkbox');
 			$checkboxInstall->class 					= 'checkbox-componente';
-			$checkboxInstall->id						= $path . '-' . $c->getName();
+			$checkboxInstall->id						= $module_id . '-' . $c->getName();
 			$checkboxInstall->data_module_name			= $m->getName();
 			$checkboxInstall->data_module_description	= $m->getTitle();
+			$checkboxInstall->data_module_name			= $m->getName();
+			$checkboxInstall->data_module_id			= $module_id;
 
 			$checkboxRecord								= tdc::o('checkbox');
 			$checkboxRecord->class						= 'checkbox-registro';
 			$checkboxRecord->data_file					= $c->getName();
-			$checkboxRecord->data_path					= $path;
+			$checkboxRecord->data_path					= $module_id;
 
 			$table->addBodyTR($c->getTitle() , $checkboxRecord , $checkboxInstall);
 		}

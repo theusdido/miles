@@ -154,6 +154,9 @@
 			inserirRegistro($conn,getSystemPREFIXO() . "charset",6, array("local","charset"), array("'MDM Salvar Form com Submit'","'E'"));
 			inserirRegistro($conn,getSystemPREFIXO() . "charset",7, array("local","charset"), array("'Gerar HTML no CRUD'","'D'"));
 			inserirRegistro($conn,getSystemPREFIXO() . "charset",8, array("local","charset"), array("'Javascript Embutido no PHP'","'D'"));
+			inserirRegistro($conn,getSystemPREFIXO() . "charset",9, array("local","charset"), array("'Javascript mdm.js'","'E'"));
+			inserirRegistro($conn,getSystemPREFIXO() . "charset",10, array("local","charset"), array("'Javascript mdm.js ( Relacionamento ) em funcoes.php'","'E'"));
+			
 			
 			//  Tipo de Ticket
 			inserirRegistro($conn,getSystemPREFIXO() . "tickettipo",1, array("descricao"), array("'Alterar"));

@@ -216,4 +216,9 @@ class Elemento {
 		$obj["filhos"] = $filhos;
 		Session::append("JSONOBJECT[{$this->sessionid}]",$obj);
 	}
+
+	public function getFilhos()
+	{
+		return $this->filhos;
+	}
 }

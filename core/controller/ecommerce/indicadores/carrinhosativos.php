@@ -60,7 +60,7 @@ $thCliente 	    = $tabela->add("th",array("propriedades" => array( "innerhtml" =
 $thValorFrete   = $tabela->add("th",array("propriedades" => array( "innerhtml" => "Frete" , "align" => "right" , "width" => "10%" ) , "elementopai" => $trHead));
 $thQuantidade   = $tabela->add("th",array("propriedades" => array( "innerhtml" => "Qtdade." , "align" => "center" , "width" => "10%" ) , "elementopai" => $trHead));
 $thValorTotal   = $tabela->add("th",array("propriedades" => array( "innerhtml" => "Total" , "align" => "right" , "width" => "10%" ) , "elementopai" => $trHead));
-$thValorTotal   = $tabela->add("th",array("propriedades" => array( "innerhtml" => "#" , "align" => "center" , "width" => "10%" ) , "elementopai" => $trHead));
+$thItens        = $tabela->add("th",array("propriedades" => array( "innerhtml" => "#" , "align" => "center" , "width" => "10%" ) , "elementopai" => $trHead));
 
 $conn = Transacao::get();
 $sqlTotalAcessos = "SELECT * FROM td_ecommerce_carrinhocompras a 

@@ -1,7 +1,7 @@
 /* Funções Padrão do Sistema */
 function carregar(arquivo,elemento_retorno = "",callback_function = null){
-	let url 			= arquivo.replace(" ","");
-	session.urlloaded 	= url;
+	var url = arquivo.replace(" ","");
+	session.urlloaded = url;
 	$.ajax({
 		type:"GET",
 		url:getURLProject(url),
@@ -12,11 +12,9 @@ function carregar(arquivo,elemento_retorno = "",callback_function = null){
 			}else{
 				loader(elemento_retorno);
 			}
-		},
-		complete:function(retorno,status){
-			if (status == 'success'){
-				$(elemento_retorno).html(retorno.responseText);
-			}
+		},		
+		complete:function(retorno){
+			$(elemento_retorno).html(retorno.responseText);
 			if (elemento_retorno == "") unLoaderGeral();
 			if (typeof callback_function == "function") callback_function();
 		},
@@ -26,17 +24,12 @@ function carregar(arquivo,elemento_retorno = "",callback_function = null){
 			}else{
 				$(elemento_retorno).html("ERRO ao carregar página => " + ret.responseText);
 			}
-		},
-		statusCode:{
-			404:function(){
-				$(elemento_retorno).html('Página não encontrada.');
-			}
 		}
 	});
 }
 function anexar(arquivo,elemento_retorno){
-	let url 			= arquivo.replace(" ","");
-	session.urlloaded 	= url;
+	var url = arquivo.replace(" ","");
+	session.urlloaded = url;
 	$.ajax({
 		type:"GET",
 		url:getURLProject(url),
@@ -654,7 +647,9 @@ function moneyToFloat(valor){
 	return parseFloat(sempontos.replace(",","."));
 }
 function editarTDFormulario(entidade,id){
+	
 	carregar(session.folderprojectfiles + "files/cadastro/"+entidade+"/"+td_entidade[entidade].nomecompleto+".html",'#conteudoprincipal',function(){
+		
 		carregarScriptCRUD('editarformulario',entidade,id);
 	});
 }
@@ -821,6 +816,7 @@ function excluirArquivoUpload(dadosarquivos,entidade,atributo){
 }
 
 function carregarScriptCRUD(tipo,entidade,registro_id = 0){
+	
 	formulario[entidade]				 	= new tdFormulario(entidade);
 	formulario[entidade].funcionalidade 	= tipo;
 	switch(tipo){
@@ -832,6 +828,12 @@ function carregarScriptCRUD(tipo,entidade,registro_id = 0){
 			}else{
 				formulario[entidade].loadGrade();
 			}
+
+			// Monta os formulários das entidades que compoem o relacionamento
+			formulario[entidade].entidades_filho.forEach((entidade_id)=>{
+				formulario[entidade_id] = new tdFormulario(entidade_id);
+				formulario[entidade_id].loadGrade();    
+			});
 		break;
 		case 'editarformulario':
 			formulario[entidade].registro_id 	= registro_id;

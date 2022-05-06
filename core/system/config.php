@@ -1,11 +1,37 @@
 <?php
-
+	
 	// Classe de Configuração do sistema
 	require $_path_core . 'classes/system/config.class.php';
 
-	// Session Controller
-	require $_path_core . 'controller/session.php';
+	// Variável global do projeto atual
+	$currentProject = Config::currentProject();
+	$_phpversion 	= explode('.',phpversion());
+	$phpversion 	= (int)$_phpversion[0];
+	$phpbuild 		= (int)$_phpversion[1];
+	$phpcompilation	= isset($_phpversion[2])?(int)$_phpversion[2]:0;
 
+	$_session_isactive = false;
+	if ($phpversion >= 5 && $phpbuild > 3){
+		if (session_status() === PHP_SESSION_ACTIVE) {
+			$_session_isactive = true;
+		}
+	}else{
+		if(session_id() != '') {
+			$_session_isactive = true;
+		}
+	}
+	
+	// Sessão do Sistema
+	$sessionName = "miles_" . AMBIENTE . "_" . $currentProject;
+	
+	// Verificar se a sessão não já está aberta.
+	if (!$_session_isactive){
+
+		// Cria uma nova sessão
+		session_name($sessionName);
+		session_start();
+	}
+	
 	if (!defined('SCHEMA')){
 		if (isset($_SESSION["db_base"])){
 			define('SCHEMA',$_SESSION["db_base"]);
@@ -26,7 +52,7 @@
 	
 	// Configurando timezone
 	date_default_timezone_set('America/Sao_Paulo');
-
+	
 	// Consumo especíco a um controller do sistema
 	$consumoespecifico  = isset($_GET["key"]) == '' ? false : true;
 
@@ -47,6 +73,7 @@
 	}else if (AMBIENTE == "WEBSERVICE" || AMBIENTE == "WEBSITE"){
 		$currentConfigFile = PATH_MILES .'projects/'.PROJETO_CONSUMIDOR.'/config/current_config.inc';
 	}
+
 
 	if (file_exists($currentConfigFile)){
 		// Current File Config
@@ -101,12 +128,11 @@
 	require $_path_system . 'url.php';
 	require $_path_system . 'file.php';
 	require $_path_system . 'entidade.php';
-	
 
 	// Inclui a classe AutoLoad
 	require PATH_MILES . $strutuct->auto_load_class;	
 	$AutoLoad = new AutoLoad();	
-	
+
 	// Carrega o arquivo da classe quando o objeto for invocado	
 	spl_autoload_register(array($AutoLoad, "load"));
 
@@ -150,10 +176,11 @@
 	define('BROWSER', getNavegador());
 
 	// Database Connection do Projeto
-	if (!defined("DATABASECONNECTION")) define("DATABASECONNECTION",$mjc->database_current);
+	if (!defined("DATABASECONNECTION")) define("DATABASECONNECTION",(isset($_SESSION["currenttypedatabase"])?$_SESSION["currenttypedatabase"]:(isset($config["CURRENT_DATABASE"])?$config["CURRENT_DATABASE"]:'desenv')));
 
 	// Abre a transação atual do banco de dados do projeto
 	if (!Transacao::abrir("current") && (tdc::r('controller') == '' || tdc::r('controller') == 'install') && AMBIENTE == 'SISTEMA'){
+
 		// Redireciona o sistema para instalação do sistema
 		include PATH_MVC_CONTROLLER . 'install.php';
 		exit;

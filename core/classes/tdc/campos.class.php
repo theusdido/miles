@@ -75,11 +75,11 @@
 		public static function CPF($id,$nome,$descricao,$valor=null){
 			$campo = tdClass::Criar("labeledit");	
 			$campo->label->add(utf8charset($descricao));
-			$campo->label->for = $id;
-			$campo->label->class = "control-label";
-			$campo->input->id = $id;
-			$campo->input->name = $nome;
-			$campo->input->class = "form-control input-sm formato-cpf";
+			$campo->label->for 		= $id;
+			$campo->label->class 	= "control-label";
+			$campo->input->id 		= $id;
+			$campo->input->name 	= $nome;
+			$campo->input->class 	= "form-control input-sm formato-cpf";
 			if (!empty($valor)) $campo->input->value = utf8charset($valor,4);		
 			return $campo;
 		}

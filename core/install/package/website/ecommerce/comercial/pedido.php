@@ -78,12 +78,18 @@
 		$criarauth = 0,
 		$registrounico = 0
 	);
+
 	$itenspedido_pedido 		= criarAtributo($conn,$itenspedidoID,"pedido","Pedido","int",0,0,16,0,$entidadeID,0,"");
+	$itenspedido_carrinhoitem	= criarAtributo($conn,$itenspedidoID,"carrinhoitem","Item do Carrinho","int",0,0,22,1,getEntidadeId("ecommerce_carrinhoitem",$conn),0,"");
 	$itenspedido_produto 		= criarAtributo($conn,$itenspedidoID,"produto","Produto","int",0,0,22,1,getEntidadeId("ecommerce_produto",$conn),0,"");
 	$itenspedido_qtde 			= criarAtributo($conn,$itenspedidoID,"qtde","Quantidade","tinyint",0,0,26,1,0,0,"");
 	$itenspedido_descricao 		= criarAtributo($conn,$itenspedidoID,"descricao","Descrição","varchar",200,0,3,1,0,0,"");
 	$itenspedido_valor 			= criarAtributo($conn,$itenspedidoID,"valor","Valor","float",0,0,13,1,0,0,"");	
 	$itenspedido_valortotal 	= criarAtributo($conn,$itenspedidoID,"valortotal","Valor Total","float",0,1,13,1,0,0,"");
+	$itenspedido_produtonome	= criarAtributo($conn,$itenspedidoID,"produtonome","Produto","varchar",200,1,3,1,0,0,"");
+	$itenspedido_referencia		= criarAtributo($conn,$itenspedidoID,"referencia","Referência","varchar",200,1,3,1,0,0,"");
+	$itenspedido_tamanho 		= criarAtributo($conn,$itenspedidoID,"tamanho","Tamanho","varchar",200,1,3,1,0,0,"");
+	$itenspedido_variacao 		= criarAtributo($conn,$itenspedidoID,"variacao","Variação","varchar",200,1,3,1,0,0,"");
 
 	// Adicionando Menu
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,7,'ecommerce-' . $entidadeNome,$entidadeID,'cadastro');

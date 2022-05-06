@@ -17,10 +17,19 @@ class Estoque
         $sql = "SELECT * FROM td_ecommerce_tamanhoproduto;";
         $query = $conn->query($sql);
         while ($linha = $query->fetch()){
-            $produto = $linha["td_produto"];
+            $produto = $linha["produto"];
             $variacao = $linha["id"];
-            $conn->exec("INSERT INTO td_erp_material_posicaogeralestoque VALUES (default,0,{$produto},60,NOW(),{$variacao});");
+            $conn->exec("INSERT INTO td_ecommerce_posicaogeralestoque VALUES (default,0,{$produto},60,NOW(),{$variacao});");
         }
     }
-    
+
+    public static function produtosEsgotados()
+    {
+        return tdc::d('td_ecommerce_posicaogeralestoque',tdc::f('saldo','<=',0));
+    }
+
+    public static function qtdeProdutosEsgotados()
+    {   
+        return sizeof(self::produtosEsgotados());
+    }
 }

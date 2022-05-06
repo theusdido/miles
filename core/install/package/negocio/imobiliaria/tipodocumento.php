@@ -1,4 +1,4 @@
- <?php
+<?php
 	// Setando variáveis
 	$entidadeNome = "imobiliaria_tipodocumento";
 	$entidadeDescricao = "Tipo de Documento";

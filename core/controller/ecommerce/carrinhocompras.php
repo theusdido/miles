@@ -92,20 +92,20 @@ $titulo->add("Carrinho de Compras");
 $titulo->mostrar();
 
 // Linha 1
-$linha1 = tdClass::Criar("div");
-$linha1->class = "row-fluid";
-$colDadosCliente = tdClass::Criar("div");
-$colDadosCliente->class = "col-md-8";
-$colDadoscarrinho = tdClass::Criar("div");
-$colDadoscarrinho->class = "col-md-4";
+$linha1 					= tdClass::Criar("div");
+$linha1->class 				= "row-fluid";
+$colDadosCliente 			= tdClass::Criar("div");
+$colDadosCliente->class 	= "col-md-8";
+$colDadoscarrinho 			= tdClass::Criar("div");
+$colDadoscarrinho->class 	= "col-md-4";
 
 // Botão Imprimir Carrinho
-$btnImprimirCarrinho = '<button id="btn-imptimir-carrinho" type="button" class="btn btn-default" aria-label="Imprimir Carrinho"><span class="fas fa-print" aria-hidden="true"></span></button>';
+$btnImprimirCarrinho 		= '<button id="btn-imptimir-carrinho" type="button" class="btn btn-default" aria-label="Imprimir Carrinho"><span class="fas fa-print" aria-hidden="true"></span></button>';
 
 // Panel carrinho
-$panelDadoscarrinho = tdClass::Criar("panel");
-$panelDadoscarrinho->id = "dados-carrinho";
-$panelDadoscarrinho->tipo = "default";
+$panelDadoscarrinho 			= tdClass::Criar("panel");
+$panelDadoscarrinho->id 		= "dados-carrinho";
+$panelDadoscarrinho->tipo 		= "default";
 $panelDadoscarrinho->head("Dados do Carrinho" . $btnImprimirCarrinho);
 $panelDadoscarrinho->body($totalcarrinho . $datadocarrinho . $horadocarrinho . $listaStatuscarrinho . $btnAlterarStatus);
 $colDadoscarrinho->add($panelDadoscarrinho);
@@ -113,9 +113,9 @@ $linha1->add($colDadoscarrinho);
 
 
 // Panel Cliente
-$panelDadosCliente = tdClass::Criar("panel");
-$panelDadosCliente->id = "dados-cliente-carrinho";
-$panelDadosCliente->tipo = "success";
+$panelDadosCliente 				= tdClass::Criar("panel");
+$panelDadosCliente->id 			= "dados-cliente-carrinho";
+$panelDadosCliente->tipo 		= "success";
 $panelDadosCliente->head("<b>".($clienteNome==''?'Cliente':$clienteNome)."</b>");
 $panelDadosCliente->body($dadosClientePanel);
 $colDadosCliente->add($panelDadosCliente);
@@ -124,78 +124,138 @@ $linha1->add($colDadosCliente);
 $linha1->mostrar();
 
 // Linha 2
-$linha2 = tdClass::Criar("div");
-$linha2->class = "row-fluid";
+$linha2 					= tdClass::Criar("div");
+$linha2->class 				= "row-fluid";
 
-$colItenscarrinho = tdClass::Criar("div");
-$colItenscarrinho->class = "col-md-12";
+$colItenscarrinho 			= tdClass::Criar("div");
+$colItenscarrinho->class 	= "col-md-12";
 
 // Itens do carrinho
 if ($conn = Transacao::Get()){
-	$tItens = tdClass::Criar("tabela");
-	$tItens->class = "table table-hover";
-	$tItensHead = tdClass::Criar("thead");;
-	$tItensTR = tdClass::Criar("tabelalinha");
+	$tItens 			= tdClass::Criar("tabela");
+	$tItens->class 		= "table table-hover";
+	$tItensHead 		= tdClass::Criar("thead");;
+	$tItensTR 			= tdClass::Criar("tabelalinha");
 
 	// ID Itens
 	$tdItensId = tdClass::Criar("tabelahead");
 	$tdItensId->add('ID');
 	$tItensTR->add($tdItensId);
 
-	// Descrição
-	$tdItensDescricao = tdClass::Criar("tabelahead");
-	$tdItensDescricao->add('Descrição');
-	$tItensTR->add($tdItensDescricao);
+	// Produto
+	$tdItensProduto = tdClass::Criar("tabelahead");
+	$tdItensProduto->add('Produto');
+	$tItensTR->add($tdItensProduto);
+
+	// Para exibir as colunas
+	$is_variacaotamanho = false;
+	$is_referencia		= false;
+
+	// Forma o colspan da tabela na linha de totalização
+	$colspan_qtde_colunas	= 5;
+	$colspan_linha_total 	= 2;
+
+	// Referência
+	if ($is_referencia)
+	{
+		$tdItensReferencia = tdClass::Criar("tabelahead");
+		$tdItensReferencia->add('Referência');
+		$tItensTR->add($tdItensReferencia);
+
+		$colspan_linha_total++;
+		$colspan_qtde_colunas++;
+	}
+
+	// Tamanho
+	if ($is_variacaotamanho)
+	{
+		$tdItensTamanho = tdClass::Criar("tabelahead");
+		$tdItensTamanho->add('Tamanho');
+		$tItensTR->add($tdItensTamanho);
+
+		$colspan_linha_total++;
+		$colspan_qtde_colunas++;
+	}
 
 	// Qtde
-	$tdItensQtde = tdClass::Criar("tabelahead");
+	$tdItensQtde 			= tdClass::Criar("tabelahead");	
+	$tdItensQtde->class 	= "text-center";
 	$tdItensQtde->add('Qtde');
-	$tdItensQtde->class = "text-center";
 	$tItensTR->add($tdItensQtde);
 
 	// Valor
-	$tdItensValor = tdClass::Criar("tabelahead");
+	$tdItensValor 			= tdClass::Criar("tabelahead");
+	$tdItensValor->class 	= "text-center";
 	$tdItensValor->add('Valor');
-	$tdItensValor->class = "text-center";
 	$tItensTR->add($tdItensValor);
 
 	// Total
-	$tdItensTotal = tdClass::Criar("tabelahead");
+	$tdItensTotal 			= tdClass::Criar("tabelahead");	
+	$tdItensTotal->class 	= "text-center";
 	$tdItensTotal->add('Total');
-	$tdItensTotal->class = "text-center";
-
 	$tItensTR->add($tdItensTotal);
 
-	$tBody = tdClass::Criar("tbody");
-	
-	$totalquantidade = $totalvalorunitario = $totalgeral = 0;
-	$sqlItens = "SELECT id,qtde,valor,descricao FROM td_ecommerce_carrinhoitem WHERE carrinho = " .$carrinhoID;
+	$tBody 				= tdClass::Criar("tbody");
+	$totalquantidade 	= $totalvalorunitario = $totalgeral = 0;
+	$sqlItens = "
+		SELECT 
+			id,
+			qtde,
+			valor,
+			descricao,
+			referencia,
+			produtonome,
+			tamanho 
+		FROM td_ecommerce_carrinhoitem 
+		WHERE carrinho = " .$carrinhoID . ";
+	";
 	$queryItens = $conn->query($sqlItens);
 	while ($linhaItens = $queryItens->fetch()){
 		$tr = tdClass::Criar("tabelalinha");
 
+		// ID
 		$td = tdClass::Criar("tabelacelula");
 		$td->add($linhaItens["id"]);
 		$tr->add($td);
 
+		// Nome do Produto
 		$td = tdClass::Criar("tabelacelula");
-		$td->add($linhaItens["descricao"]);		
+		$td->add($linhaItens["produtonome"]);		
 		$tr->add($td);
+		
+		// Referência
+		if ($is_referencia)
+		{
+			$td = tdClass::Criar("tabelacelula");
+			$td->add($linhaItens["referencia"]);
+			$tr->add($td);
+		}
+
+		// Tamanho
+		if ($is_variacaotamanho)
+		{
+			$td = tdClass::Criar("tabelacelula");
+			$td->add($linhaItens["tamanho"]);
+			$tr->add($td);
+		}
 		
 		$qtde 				= $linhaItens["qtde"];
 		$valorunitario 		= $linhaItens["valor"];
 		$valortotal			= $qtde * $valorunitario;
-		
+
+		// Quantidade
 		$td = tdClass::Criar("tabelacelula");
 		$td->add($qtde);
 		$td->class = "text-center";
 		$tr->add($td);
 
+		// Valor
 		$td = tdClass::Criar("tabelacelula");
 		$td->add("R$ " . moneyToFloat($valorunitario,true));
 		$td->class = "text-center";
 		$tr->add($td);
 
+		// Valor total
 		$td = tdClass::Criar("tabelacelula");
 		$td->add("R$ " . moneyToFloat($valortotal,true));
 		$td->class = "text-center";
@@ -203,17 +263,17 @@ if ($conn = Transacao::Get()){
 
 		$tBody->add($tr);
 		
-		$totalquantidade += $qtde;
-		$totalvalorunitario += $valorunitario;
-		$totalgeral += $valortotal;
+		$totalquantidade 		+= $qtde;
+		$totalvalorunitario 	+= $valorunitario;
+		$totalgeral 			+= $valortotal;
 	}
 	
 	if ($queryItens->rowCount() <= 0){
 
-		$td = tdClass::Criar("tabelacelula");
+		$td 			= tdClass::Criar("tabelacelula");
 		$td->add("Nenhum item adicionado ao carrinho.");
-		$td->colspan = "5";
-		$td->class = "text-center";
+		$td->colspan 	= $colspan_qtde_colunas;
+		$td->class 		= "text-center";
 
 		$tr = tdClass::Criar("tabelalinha");
 		$tr->class = "warning";		
@@ -223,31 +283,31 @@ if ($conn = Transacao::Get()){
 		$tFoot = null;
 	}else{
 
-		$tFoot = tdClass::Criar("tfoot");
-		$trFoot = tdClass::Criar("tabelalinha");
-		$trFoot->class = "success";
+		$tFoot 			= tdClass::Criar("tfoot");
+		$trFoot 		= tdClass::Criar("tabelalinha");
+		$trFoot->class 	= "success";
 
-		$td = tdClass::Criar("tabelahead");
+		$td 			= tdClass::Criar("tabelahead");
+		$td->class 		= "text-left";
+		$td->colspan 	= $colspan_linha_total;	
 		$td->add("<b>TOTAL</b>");
-		$td->class = "text-left";
-		$td->colspan = "2";
 		$trFoot->add($td);
 		
-		$td = tdClass::Criar("tabelahead");
+		$td 			= tdClass::Criar("tabelahead");
+		$td->class 		= "text-center";
 		$td->add($totalquantidade);
-		$td->class = "text-center";
 		$trFoot->add($td);
 		
-		$td = tdClass::Criar("tabelahead");
+		$td 			= tdClass::Criar("tabelahead");
+		$td->class 		= "text-center";
 		$td->add("R$ " . moneyToFloat($totalvalorunitario,true));
-		$td->class = "text-center";
 		$trFoot->add($td);
-		
-		$td = tdClass::Criar("tabelahead");
+
+		$td 			= tdClass::Criar("tabelahead");		
+		$td->class 		= "text-center";
 		$td->add("R$ " . moneyToFloat($totalgeral,true));
-		$td->class = "text-center";
 		$trFoot->add($td);
-		
+
 		$tFoot->add($trFoot);
 	}
 	
@@ -255,9 +315,9 @@ if ($conn = Transacao::Get()){
 	$tItens->add($tItensHead,$tBody,$tFoot);
 }
 // Panel Cliente
-$panelItenscarrinho = tdClass::Criar("panel");
-$panelItenscarrinho->id = "dados-itens-carrinho";
-$panelItenscarrinho->tipo = "info";
+$panelItenscarrinho 			= tdClass::Criar("panel");
+$panelItenscarrinho->id 		= "dados-itens-carrinho";
+$panelItenscarrinho->tipo 		= "info";
 $panelItenscarrinho->head("Itens do carrinho ( Produtos ) ");
 $panelItenscarrinho->body($tItens);
 $colItenscarrinho->add($panelItenscarrinho);

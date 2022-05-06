@@ -14,7 +14,7 @@ class ListGroup Extends Elemento {
 	protected $itens = Array();
 	protected $titulo;
 	/*  
-		* M�todo construct 
+		* Método construct 
 	    * Data de Criacao: 24/06/2017
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		

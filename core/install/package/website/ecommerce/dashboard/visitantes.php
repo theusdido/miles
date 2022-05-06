@@ -1,5 +1,5 @@
 <?php
-    // Setando vari�veis
+    // Setando variáveis
     $entidadeNome       = "ecommerce_visitantes";
     $entidadeDescricao  = "Visitantes";
 

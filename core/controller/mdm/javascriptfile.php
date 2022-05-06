@@ -16,7 +16,7 @@
 		var formulario          = [];
 	');
 	
-	$localCharset 	= 2;
+	$localCharset 	= 9;
 	$dataset 		= tdClass::Criar("repositorio",array(ENTIDADE))->carregar();
 	if ($dataset){
 		foreach ($dataset as $entidade){

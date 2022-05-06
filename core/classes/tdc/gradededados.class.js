@@ -621,9 +621,9 @@ GradeDeDados.prototype.clear = function(){
 	
 }
 GradeDeDados.prototype.loadDadosEdicao = function(id){
-	let entidadeGD 		= this.nomeEntidade;
-	let contextoAdd 	= ".crud-contexto-add-" + entidadeGD;
-	let contextoListar 	= ".crud-contexto-listar-" + entidadeGD;
+	var entidadeGD = this.nomeEntidade;
+	var contextoAdd = ".crud-contexto-add-" + entidadeGD;
+	var contextoListar = ".crud-contexto-listar-" + entidadeGD;
 	$.ajax({
 		url:config.urlloadform,
 		data:{
@@ -716,7 +716,7 @@ GradeDeDados.prototype.loadDadosEdicao = function(id){
 						$(".div-relacionamento-generalizacao",contextoAdd)[0].style.display = "";
 					}
 				}
-
+				
 				var entidadesREL = "";
 				$.ajax({
 					url:config.url_requisicoes,

@@ -238,11 +238,7 @@ function moneyToFloat($str,$invertido=false){
 		$str = str_replace(",",".",$str);
 		return $str;
 	}else{
-		if (is_numeric($str)){
-			return number_format($str, 2, ',', '.');
-		}else{
-			return 0;
-		}
+		return number_format($str, 2, ',', '.');
 	}
 }
 function completaString($input,$pad_length,$pad_string="0",$pad_type = STR_PAD_LEFT,$encoding = 'UTF-8'){
@@ -446,19 +442,10 @@ function getUrl($url,$opcoes = null){
 			'method'	=> 'GET'
 		)
 	);
-	try{
-		#session_write_close(); //Desboqueia o arquivo de sessão
-		$context 	= stream_context_create($opts);
-		$conteudo 	= file_get_contents($url,false,$context);
-		#@session_start(); //Bloqueia o arquivo de sessão
-	}catch(Throwable $t){
-		if (IS_SHOW_ERROR_MESSAGE)
-		{
-			echo $t->getMessage();
-		}
-	}finally{
-
-	}
+	session_write_close(); //Desboqueia o arquivo de sessão
+	$context 	= stream_context_create($opts);
+	$conteudo 	= file_get_contents($url,false,$context);
+	session_start(); //Bloqueia o arquivo de sessão
 	return $conteudo;
 }
 function getHTMLTipoFormato($htmltipo,$valor,$entidade=0,$atributo=0,$id=0){
@@ -1104,22 +1091,21 @@ function inserirRegistro($conn,$tabela,$id,$atributos,$valores,$criarnovoregistr
 		if ($criarnovoregistro){
 			// Força a criação do registro, independentemente do ID
 			$id = getProxId(str_replace("td_","",$tabela),$conn);
-
-			try{
-				$sqlInserir = "INSERT " . $tabela . " (id,".implode(",",$atributos).") VALUES (".$id.",".utf8charset(implode(",",$valores)).");";
-				$query = $conn->query($sqlInserir);
-				return $id;
-			}catch(Throwable $t){
-				echo $sqlInserir;
-				var_dump($conn->errorInfo());
-				return 0;
-			}
-			
 		}else{
 			// Atualiza a informação caso o ID já exista
             atualizarRegistro($conn,$tabela,$id,$atributos,$valores);
-            return $id;
+            return true;
 		}
+	}
+
+	try{
+		$sqlInserir = "INSERT " . $tabela . " (id,".implode(",",$atributos).") VALUES (".$id.",".utf8charset(implode(",",$valores)).");";
+		$query = $conn->query($sqlInserir);
+		return true;
+	}catch(Throwable $t){
+        echo $sqlInserir;
+        var_dump($conn->errorInfo());
+        return false;
 	}
 }
 function atualizarRegistro($conn,$tabela,$id = "",$atributos,$valores,$atualizarnulo=false){
@@ -1496,8 +1482,8 @@ function htmlespecialcaracteres($string,$tipo){
 	$retorno = "";
 	if ($tipo == 1){
 		
-		$primeiraletra	= substr($string,0,1);
-		$ultimaletra 	= substr($string,(strlen($string)-1),1);
+		$primeiraletra = substr($string,0,1);
+		$ultimaletra = substr($string,(strlen($string)-1),1);
 		$istag = false;
 		if ($primeiraletra == '<' && $ultimaletra == '>'){
 			$istag = true;
@@ -1569,8 +1555,8 @@ function utf8charset($texto, $local = null, $decodificacao = null , $convert = n
 			$charset = tdClass::Criar("persistent",array(CHARSET,$local))->contexto->charset;
 			switch($charset){
 				case 'N': return $texto; break;
-				case 'D': return utf8decode($texto); break;
-				case 'E': return utf8encode($texto); break;
+				case 'D': return utf8decode($texto,'d'); break;
+				case 'E': return utf8encode($texto,'e'); break;
 				default: return $texto;
 			}
 		}else{
@@ -1714,7 +1700,7 @@ function addCampoFormatadoDB($dados,$entidade){
 	if ($entidade == RELACIONAMENTO){
 		foreach ($dados as $key => $value){
 			if ($key == 'descricao'){
-				$dados[$key] = utf8charset($value, 8);
+				$dados[$key] = utf8charset($value, 10);
 			}
 		}
 		return $dados;

@@ -11,7 +11,7 @@
 		$_SESSION["currentproject"] = $currentProjectParams;
 		$currentproject 			= $currentProjectParams;
 	}
-
+	
 	$config_path = "../../projects/".$currentproject."/config/";
 	$config_file = $config_path . "current_config.inc";
 

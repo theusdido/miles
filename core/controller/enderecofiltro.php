@@ -1,4 +1,4 @@
- <?php
+<?php
 	$op = tdClass::Read("op");
 	$conn = Transacao::Get();
 	$connCorreios = Conexao::Abrir("correios");

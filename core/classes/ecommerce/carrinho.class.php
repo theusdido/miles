@@ -20,30 +20,32 @@
 		}
 
 		public function setQtdadeTotalItens(){
-			$sql 	= "SELECT sum(qtde) total FROM td_ecommerce_carrinhoitem WHERE carrinho = " . $this->getID();
+			$sql 	= "SELECT IFNULL(SUM(qtde),0) total FROM td_ecommerce_carrinhoitem WHERE carrinho = " . $this->getID();
 			$query 	= $this->conn->query($sql);
 			$linha 	= $query->fetch();
 			$this->totalitens = $linha["total"];
-			$this->conn->exec("UPDATE td_ecommerce_carrinhodecompras SET qtdetotaldeitens = {$this->totalitens} WHERE id = " . $this->getID());
+			$this->conn->exec("UPDATE td_ecommerce_carrinhocompras SET qtdetotaldeitens = {$this->totalitens} WHERE id = " . $this->getID());
 		}
 
 		public function atualizarValorTotalItem(){
 			$sql = "
 				UPDATE td_ecommerce_carrinhoitem i
-				SET i.valor = ( SELECT t.valor FROM td_ecommerce_tamanhoproduto t WHERE t.id = i.produto ) ,
-				i.valortotal = i.qtde * i.valor
+				SET i.valortotal = IFNULL(i.qtde,0) * IFNULL(i.valor,0)
 				WHERE i.carrinho = " . $this->getID() . ";
 			";
+			addDebug($sql,'ATUALIZAR VALOR TOTAL ITEM DO CARRINHO');
 			$query = $this->conn->exec($sql);
 		}
 
 		public function atualizarValorTotalCarrinho(){
 			$sql = "
-				UPDATE td_ecommerce_carrinhodecompras c 
+				UPDATE td_ecommerce_carrinhocompras c 
 				SET c.valortotal = ( 
-					SELECT sum(i.valortotal) FROM td_ecommerce_carrinhoitem i WHERE id = " .$this->getID() ." 
-				) + c.valorfrete;
+					SELECT IFNULL(SUM(i.valortotal),0) FROM td_ecommerce_carrinhoitem i WHERE carrinho = " . $this->getID() . "
+				) + c.valorfrete
+				WHERE c.id = " . $this->getID() . ";
 			";
+			addDebug($sql,'ATUALIZAR VALOR TOTAL CARRINHO');
 			$this->conn->exec($sql);
 		}
 
@@ -62,7 +64,9 @@
 			}
 		}
 
-		function getIdCarrinho(){
+		function getIdCarrinho()
+		{
+			var_dump($_SESSION);
 			if (isset($_SESSION["carrinhoid"])){
 				return $_SESSION["carrinhoid"];
 			}else{

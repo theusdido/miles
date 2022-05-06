@@ -12,7 +12,7 @@ abstract class Registro {
 	protected $dados;
 	private $dadosarray;
 	public $isAutoIncrement = true;
-	private $isnew 			= true;
+	private $isnew = true;
 
 	/*
 		* Método construct
@@ -149,8 +149,9 @@ abstract class Registro {
 				if($key != "id") $sql->setLinha($key,$valor);
 			}
 		}
-
+		
 		try{
+			
 			if ($conn = Transacao::get()){
 				Transacao::log($sql->getInstrucao());
 				$resultado = $conn->exec($sql->getInstrucao());
@@ -383,7 +384,8 @@ abstract class Registro {
 			return $dataset[0];
 		}
 	}
-	/*
+
+	/*  
 		* Método newNotExists
 	    * Data de Criacao: 17/01/2022
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)

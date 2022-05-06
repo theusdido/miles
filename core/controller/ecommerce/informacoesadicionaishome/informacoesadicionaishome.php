@@ -35,7 +35,7 @@
 		$badge = tdClass::Criar("span");
 		$badge->class = "badge";
 		$badge->add($carrinhosAtivos);
-	$a->add($badge,"Carrinhos Ativos 2");
+	$a->add($badge,"Carrinhos Ativos");
 	$listaInfoLeft->add($a);
 
 	$listaInfoRight= tdClass::Criar("div");

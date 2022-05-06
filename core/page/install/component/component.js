@@ -19,9 +19,8 @@ $(document).on('click','.checkbox-componente-all', function() {
     let is_add_component    = $(this).is(':checked');
     let contexto            = $(this).attr('id');
     let selector            = '.checkbox-componente[data-module-id="'+contexto+'"]:visible';
-    console.log(selector);
-    $(selector).attr('checked',is_add_component);
 
+    $(selector).attr('checked',is_add_component);
     $(selector).each(function(){
         if (is_add_component){
             addElementComponent( this );
@@ -57,7 +56,7 @@ $(document).ready(function(){
     });
 });
 
-// Adiciona o componente para instala��o via componente HTML
+// Adiciona o componente para instalação via componente HTML
 function addElementComponent( element  )
 {
     console.log(element);

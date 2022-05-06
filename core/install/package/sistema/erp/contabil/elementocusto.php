@@ -1,4 +1,4 @@
- <?php
+<?php
 	// Setando variáveis
 	$entidadeNome 			= "erp_contabil_elementocusto";
 	$entidadeDescricao 		= "Elemento de Custo";

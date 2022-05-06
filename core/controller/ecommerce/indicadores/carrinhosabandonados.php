@@ -62,23 +62,33 @@ $thQuantidade   = $tabela->add("th",array("propriedades" => array( "innerhtml" =
 $thValorTotal   = $tabela->add("th",array("propriedades" => array( "innerhtml" => "Total" , "align" => "right" , "width" => "10%" ) , "elementopai" => $trHead));
 
 $conn = Transacao::get();
-$sqlTotalAcessos = "SELECT * FROM td_ecommerce_carrinhocompras a 
-                            WHERE EXISTS( SELECT 1 FROM td_ecommerce_carrinhoitem b WHERE a.id = b.carrinho ) 
-                            AND (inativo = false OR inativo IS NULL)
-                            AND datahoracriacao < NOW() - INTERVAL 30 DAY;";
+$sqlTotalAcessos = "
+    SELECT 
+        (SUM(b.valor) * SUM(b.qtde)) valortotal,
+        SUM(b.qtde) qtdetotalitens,
+        a.id,
+        a.cliente cliente,
+        a.valorfrete valorfrete
+    FROM td_ecommerce_carrinhocompras a 
+    INNER JOIN td_ecommerce_carrinhoitem b ON a.id = b.carrinho
+    WHERE (a.inativo = false OR a.inativo IS NULL)
+    AND a.datahoracriacao < NOW() - INTERVAL 30 DAY
+    GROUP BY a.id
+";
 $queryTotalAcessos = $conn->query($sqlTotalAcessos);
 $itens = $queryTotalAcessos->fetchAll(PDO::FETCH_OBJ);
 foreach($itens as $item){
     $trBody		    = $tabela->add("tr",array("elementopai" => $tbody));
 
-    $cliente        = $item->cliente == 0? utf8_encode("Não Logado") : $item->cliente . " - " . tdc::p("td_ecommerce_cliente",$item->cliente)->nome;
+    $cliente        = $item->cliente == 0? utf8_encode("Não Logado") : $item->cliente . " - " . utf8charset(tdc::p("td_ecommerce_cliente",$item->cliente)->nome ,2);
     $frete          = $item->valorfrete == 0?" - ":"R$ " . moneyToFloat($item->valorfrete,true);
+    $valor_total    = $item->qtdetotalitens <= 0 ? '0,00' : $item->valortotal;
 
     $tdCarrinho   	= $tabela->add("td",array("propriedades" => array( "innerhtml" => $item->id) , "elementopai" => $trBody));
     $tdCliente   	= $tabela->add("td",array("propriedades" => array( "innerhtml" => $cliente) , "elementopai" => $trBody));
     $tdValorFrete   = $tabela->add("td",array("propriedades" => array( "innerhtml" => $frete , "align" => "right") , "elementopai" => $trBody));
     $tdQtdade 	    = $tabela->add("td",array("propriedades" => array( "innerhtml" => $item->qtdetotalitens ,  "align" => "center" ) , "elementopai" => $trBody));
-    $tdValorTotal   = $tabela->add("td",array("propriedades" => array( "innerhtml" => "R$ " . moneyToFloat($item->valortotal,true) , "align" => "right") , "elementopai" => $trBody));
+    $tdValorTotal   = $tabela->add("td",array("propriedades" => array( "innerhtml" => "R$ " . moneyToFloat($valor_total,true) , "align" => "right") , "elementopai" => $trBody));
 
 }
 

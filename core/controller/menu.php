@@ -1,4 +1,4 @@
- <?php
+<?php
 if (isset($_GET["op"])){
 	if ($_GET["op"] == "retorna_dados"){
 		$userid 	= Usuario::id();

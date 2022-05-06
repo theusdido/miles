@@ -1,27 +1,14 @@
 <?php
-    class Transportadora 
-    {
-        // Entidade Id da tabela transportadora
-        private $entidade_id    = 0;
+class Transportadora {
 
-        // Nome da Entidade
-        private $entidade_name  = 'td_ecommerce_transportadora';
-
-        // Método Construtor
-        public function __construct()
-        {
-            $this->entidade_id = getEntidadeId($this->entidade_name);
-        }
-
-        // Retorna lista de Transportadoras
-        public function all()
-        {
-            return tdc::dj($this->entidade_name,tdc::f()->onlyActive(),null,'decode');
-        }
-
-        // Retorna o logo da transportadora
-        public function getLogo($transportora)
-        {
-            return URL_CURRENT_FILE . "/img/beedelivery/logo.png";
-        }
+    // Retorna lista de Transportadoras
+    public static function getTransportadoras(){
+        $sql = "SELECT * FROM td_ecommerce_transportadora WHERE inativo <> 1;";
+        $query = Transacao::get()->query($sql);
+        return $query->fetchAll();
     }
+
+    public static function getLogo($transportora){
+        return URL_TDECOMMERCE . "/img/beedelivery/logo.png";
+    }
+}

@@ -126,30 +126,29 @@ $titulo->add("Pedido de Venda");
 $titulo->mostrar();
 
 // Linha 1
-$linha1 = tdClass::Criar("div");
-$linha1->class = "row-fluid";
-$colDadosCliente = tdClass::Criar("div");
-$colDadosCliente->class = "col-md-8";
-$colDadosPedido = tdClass::Criar("div");
-$colDadosPedido->class = "col-md-4";
+$linha1 					= tdClass::Criar("div");
+$linha1->class 				= "row-fluid";
+$colDadosCliente 			= tdClass::Criar("div");
+$colDadosCliente->class 	= "col-md-8";
+$colDadosPedido 			= tdClass::Criar("div");
+$colDadosPedido->class 		= "col-md-4";
 
 // Botão Imprimir Pedido
 $btnImprimirPedido = '<button id="btn-imptimir-pedido" type="button" class="btn btn-default" aria-label="Imprimir Pedido"><span class="fas fa-print" aria-hidden="true"></span></button>';
 
 // Panel Pedido
-$panelDadosPedido = tdClass::Criar("panel");
-$panelDadosPedido->id = "dados-pedido";
-$panelDadosPedido->tipo = "default";
+$panelDadosPedido 			= tdClass::Criar("panel");
+$panelDadosPedido->id 		= "dados-pedido";
+$panelDadosPedido->tipo 	= "default";
 $panelDadosPedido->head("Dados do Pedido " . $btnImprimirPedido);
 $panelDadosPedido->body($totalpedido . $datadopedido . $horadopedido . $listaStatusPedido . $btnAlterarStatus);
 $colDadosPedido->add($panelDadosPedido);
 $linha1->add($colDadosPedido);
 
-
 // Panel Cliente
-$panelDadosCliente = tdClass::Criar("panel");
-$panelDadosCliente->id = "dados-cliente-pedido";
-$panelDadosCliente->tipo = "success";
+$panelDadosCliente 			= tdClass::Criar("panel");
+$panelDadosCliente->id 		= "dados-cliente-pedido";
+$panelDadosCliente->tipo 	= "success";
 $panelDadosCliente->head("<b>".strtoupper($cliente->nome)."</b>");
 $panelDadosCliente->body($cnpj . $telefone . $nomefantasia . $email . $btnAlterarDadosCliente);
 $colDadosCliente->add($panelDadosCliente);
@@ -158,28 +157,56 @@ $linha1->add($colDadosCliente);
 $linha1->mostrar();
 
 // Linha 2
-$linha2 = tdClass::Criar("div");
-$linha2->class = "row-fluid";
+$linha2 					= tdClass::Criar("div");
+$linha2->class 				= "row-fluid";
 
-$colItensPedido = tdClass::Criar("div");
-$colItensPedido->class = "col-md-12";
+$colItensPedido 			= tdClass::Criar("div");
+$colItensPedido->class 		= "col-md-12";
 
 // Itens do Pedido
 if ($conn = Transacao::Get()){
-	$tItens = tdClass::Criar("tabela");
-	$tItens->class = "table table-hover";
-	$tItensHead = tdClass::Criar("thead");;
-	$tItensTR = tdClass::Criar("tabelalinha");
+
+	$tItens 			= tdClass::Criar("tabela");
+	$tItens->class 		= "table table-hover";
+	$tItensHead 		= tdClass::Criar("thead");;
+	$tItensTR 			= tdClass::Criar("tabelalinha");
 
 	// ID Itens
 	$tdItensId = tdClass::Criar("tabelahead");
 	$tdItensId->add('ID');
 	$tItensTR->add($tdItensId);
 
-	// Descrição
-	$tdItensDescricao = tdClass::Criar("tabelahead");
-	$tdItensDescricao->add('Descrição');
-	$tItensTR->add($tdItensDescricao);
+	// Produto
+	$tdItensProduto = tdClass::Criar("tabelahead");
+	$tdItensProduto->add('Produto');
+	$tItensTR->add($tdItensProduto);
+
+	// Para exibir as colunas
+	$is_variacaotamanho = false;
+	$is_referencia		= false;
+
+	// Forma o colspan da tabela na linha de totalização
+	$colspan_linha_total 	= 2;
+
+	// Referência
+	if ($is_referencia)
+	{
+		$tdItensReferencia = tdClass::Criar("tabelahead");
+		$tdItensReferencia->add('Referência');
+		$tItensTR->add($tdItensReferencia);
+
+		$colspan_linha_total++;
+	}
+
+	// Tamanho
+	if ($is_variacaotamanho)
+	{
+		$tdItensTamanho = tdClass::Criar("tabelahead");
+		$tdItensTamanho->add('Tamanho');
+		$tItensTR->add($tdItensTamanho);
+
+		$colspan_linha_total++;
+	}
 
 	// Qtde
 	$tdItensQtde = tdClass::Criar("tabelahead");
@@ -190,13 +217,13 @@ if ($conn = Transacao::Get()){
 	// Valor
 	$tdItensValor = tdClass::Criar("tabelahead");
 	$tdItensValor->add('Valor');
-	$tdItensValor->class = "text-center";
+	$tdItensValor->class = "text-right";
 	$tItensTR->add($tdItensValor);
 
 	// Total
 	$tdItensTotal = tdClass::Criar("tabelahead");
 	$tdItensTotal->add('Total');
-	$tdItensTotal->class = "text-center";
+	$tdItensTotal->class = "text-right";
 
 	$tItensTR->add($tdItensTotal);
 
@@ -204,76 +231,102 @@ if ($conn = Transacao::Get()){
 	
 	$totalquantidade = $totalvalorunitario = $totalgeral = 0;
 	$sqlItens = "
-		SELECT id,qtde,valor,descricao,produto 
+		SELECT 
+			id,
+			qtde,
+			valor,
+			descricao,
+			produto,
+			referencia,
+			produtonome,
+			tamanho
 		FROM ".getEntidadeEcommercePedidoItem()." 
 		WHERE pedido = " .$pedidoID."
 		ORDER BY descricao;
 	";
+
 	$queryItens = $conn->query($sqlItens);
 	while ($linhaItens = $queryItens->fetch()){
 		$tr = tdClass::Criar("tabelalinha");
 
+		// ID do Produto
 		$td = tdClass::Criar("tabelacelula");
-		$td->add($linhaItens["produto"]);
+		$td->add($linhaItens["id"]);
 		$tr->add($td);
 
+		// Nome do Produto
 		$td = tdClass::Criar("tabelacelula");
-		$td->add($linhaItens["descricao"]);		
+		$td->add($linhaItens["produtonome"]);		
 		$tr->add($td);
 		
+		// Referência
+		if ($is_referencia)
+		{
+			$td = tdClass::Criar("tabelacelula");
+			$td->add($linhaItens["referencia"]);
+			$tr->add($td);
+		}
+
+		// Tamanho
+		if ($is_variacaotamanho)
+		{
+			$td = tdClass::Criar("tabelacelula");
+			$td->add($linhaItens["tamanho"]);
+			$tr->add($td);
+		}
+
 		$qtde 				= $linhaItens["qtde"];
 		$valorunitario 		= $linhaItens["valor"];
 		$valortotal			= $qtde * $valorunitario;
-		
-		$td = tdClass::Criar("tabelacelula");
+
+		$td 		= tdClass::Criar("tabelacelula");
+		$td->class 	= "text-center";
 		$td->add($qtde);
-		$td->class = "text-center";
 		$tr->add($td);
 
 		$td = tdClass::Criar("tabelacelula");
 		$td->add("R$ " . moneyToFloat($valorunitario,true));
-		$td->class = "text-center";
+		$td->class = "text-right";
 		$tr->add($td);
 
 		$td = tdClass::Criar("tabelacelula");
 		$td->add("R$ " . moneyToFloat($valortotal,true));
-		$td->class = "text-center";
+		$td->class = "text-right";
 		$tr->add($td);
 
 		$tBody->add($tr);
-		
-		$totalquantidade += $qtde;
+
+		$totalquantidade 	+= $qtde;
 		$totalvalorunitario += $valorunitario;
-		$totalgeral += $valortotal;
+		$totalgeral 		+= $valortotal;
 	}
 	
-	$tFoot = tdClass::Criar("tfoot");
-	$trFoot = tdClass::Criar("tabelalinha");
-	$trFoot->class = "success";
+	$tFoot 			= tdClass::Criar("tfoot");
+	$trFoot 		= tdClass::Criar("tabelalinha");
+	$trFoot->class 	= "success";
 
-	$td = tdClass::Criar("tabelahead");
+	$td 			= tdClass::Criar("tabelahead");
+	$td->class 		= "text-left";
+	$td->colspan 	= $colspan_linha_total;	
 	$td->add("<b>TOTAL</b>");
-	$td->class = "text-left";
-	$td->colspan = "2";
 	$trFoot->add($td);
-	
-	$td = tdClass::Criar("tabelahead");
+
+	$td 			= tdClass::Criar("tabelahead");
+	$td->class 		= "text-center";
 	$td->add($totalquantidade);
-	$td->class = "text-center";
 	$trFoot->add($td);
 	
-	$td = tdClass::Criar("tabelahead");
+	$td 			= tdClass::Criar("tabelahead");
+	$td->class 		= "text-right";
 	$td->add("R$ " . moneyToFloat($totalvalorunitario,true));
-	$td->class = "text-center";
 	$trFoot->add($td);
 	
-	$td = tdClass::Criar("tabelahead");
+	$td 			= tdClass::Criar("tabelahead");
+	$td->class 		= "text-right";
 	$td->add("R$ " . moneyToFloat($totalgeral,true));
-	$td->class = "text-center";
 	$trFoot->add($td);
-	
-	$tFoot->add($trFoot);
-	
+
+	$tFoot->add($trFoot);	
 	$tItensHead->add($tItensTR);
 	$tItens->add($tItensHead,$tBody,$tFoot);
 }

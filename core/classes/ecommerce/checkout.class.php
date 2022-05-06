@@ -29,13 +29,18 @@ class Checkout {
 		return $etapa;
 	}
 	public function isResumo(){		
-		$sql = "SELECT 1 FROM td_ecommerce_carrinhoitem WHERE carrinho = " . $this->getCarrinho();
-		$query = $this->conn->query($sql);
-		if ($query->rowCount() > 0){
-			return true;
-		}else{
-			return false;
-		}
+		$sql = "
+		SELECT 1 FROM td_ecommerce_carrinhoitem a
+		INNER JOIN td_ecommerce_carrinhocompras b ON a.carrinho = b.id
+		WHERE b.cliente = " . $_SESSION["userid"] . "
+		AND (b.inativo = false OR b.inativo IS NULL);
+	";
+	$query = $this->conn->query($sql);
+	if ($query->rowCount() > 0){
+		return true;
+	}else{
+		return false;
+	}
 	}
 	public function isAutenticacao(){
 		$autenticado = false;
@@ -47,8 +52,13 @@ class Checkout {
 		return $autenticado;
 	}
 	public function isEndereco(){
-		global $enderecoClass;
-		return $enderecoClass->isExiste();
+		$sqlListaEndereco = "SELECT regfilho FROM td_lista WHERE entidadepai = ".getEntidadeId("ecommerce_cliente")." AND entidadefilho = ".getEntidadeId("ecommerce_endereco")." AND regpai = " . $_SESSION["userid"];
+		$queryListaEndereco = $this->conn->query($sqlListaEndereco);
+		if ($queryListaEndereco->rowcount() > 0){
+			return true;
+		}else{
+			return false;
+		}
 	}
 	public function isEntrega(){
 		return true;
