@@ -1,19 +1,19 @@
 {
     "version": 2.0,
     "currentproject": 1,
-    "folder": "granuemporio.com.br/miles/",
+    "folder": "miles/",
     "system": {
         "url": {
-            "lib": "http://localhost/miles/repository/lib/"
+            "lib": "https://teia.tec.br/miles/repository/lib/"
         },
-        "request_protocol": "http",
+        "request_protocol": "https",
         "package": "ecommerce",
-        "packages": []
+        "packages": [ "ecommerce" ]
     },
     "theme": "desktop",
     "prefix": "td",
     "is_show_error_message": false,
     "is_transaction_log": false,
-    "database_current": "desenv",
+    "database_current": "producao",
     "port": "auto"
 }

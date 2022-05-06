@@ -133,7 +133,7 @@ tdFormulario.prototype.novo = function(){
 
 		if (parseInt(atributoID) != 0 && atributoID != "" && atributoID != undefined){
 			if (td_atributo[atributoID].chaveestrangeira != "" && td_atributo[atributoID].tipohtml == "4"){
-				// Só carrega as listas se for acesso o botão novo do formulário principal
+				// Só carrega as listas se for acessado o botão novo do formulário principal
 				if (instancia.is_principal){ 
 					carregarListas(entidadeAttr,atributoID,contextoAdd,valor);
 				}
@@ -282,33 +282,57 @@ tdFormulario.prototype.setPermissoesAtributos = function(funcao){
 		}
 	}
 	// Tem que ser depois de setar as permissões
-	this.setaAtributoGeneralizacaoLista();
+	//this.setaAtributoGeneralizacaoLista();
+	debugger;
 }
 
+// -- Campo do tipo lista <select>
 tdFormulario.prototype.setaAtributoGeneralizacaoLista = function(){
-	if ($("#select-generalizacao-unica").length == 0 && $("#select-generalizacao-multipla").length == 0) return false;
+	let instancia = this;
 	$(".form-control",this.getContextoAdd()).each(function(){
 		if ($(this).attr("atributo") != undefined){
 			var idatributo = $(this).attr("atributo");
 			if (td_atributo[idatributo] == undefined) return false;
-			if (td_atributo[idatributo].atributodependencia != "" && td_atributo[idatributo].atributodependencia > 0 && td_atributo[idatributo].atributodependencia != undefined){
-				
-				$("#" + td_atributo[idatributo].nome,this.getContextoAdd()).attr("disabled",true);
-				$("#" + td_atributo[idatributo].nome,this.getContextoAdd()).parents(".filtro-pesquisa").find(".descricao-filtro").val("");
-				$("#" + td_atributo[idatributo].nome,this.getContextoAdd()).parents(".filtro-pesquisa").find(".botao-filtro").hide();
+			if (
+				td_atributo[idatributo].atributodependencia != "" && 
+				td_atributo[idatributo].atributodependencia > 0 && 
+				td_atributo[idatributo].atributodependencia != undefined
+			){
+
+				let $_atributo = $("#" + td_atributo[idatributo].nome,instancia.getContextoAdd());
+				$("#" + td_atributo[idatributo].nome,instancia.getContextoAdd()).attr("disabled",true);
+				$("#" + td_atributo[idatributo].nome,instancia.getContextoAdd()).parents(".filtro-pesquisa").find(".descricao-filtro").val("");
+				$("#" + td_atributo[idatributo].nome,instancia.getContextoAdd()).parents(".filtro-pesquisa").find(".botao-filtro").hide();
 				if ($(this).prop("tagName") == "SELECT"){
 					$("#" + td_atributo[idatributo].nome,this.getContextoAdd()).html("<option value=''>Selecione</option>");
 				}
-				var atributodependencia = td_atributo[td_atributo[idatributo].atributodependencia];
-				$("#" + atributodependencia.nome,this.getContextoAdd()).change(function(){
-					var atributofiltro = "";
-					for (a in td_atributo){
-						if (td_atributo[a].entidade == td_atributo[idatributo].chaveestrangeira){
-							if (atributodependencia.chaveestrangeira == td_atributo[a].chaveestrangeira){
-								atributofiltro = td_atributo[a].nome;
-								break;
+				let atributodependencia = td_atributo[td_atributo[idatributo].atributodependencia];
+				$("#" + atributodependencia.nome,instancia.getContextoAdd()).change(function(){
+					let _valor = $(this).val();
+					if (_valor == ''){
+						$_atributo.html("<option value=''>-- Selecione --</option>");
+					}else{
+						let atributofiltro = "";
+						for (a in td_atributo){
+							if (td_atributo[a].entidade == td_atributo[idatributo].chaveestrangeira){
+								if (atributodependencia.chaveestrangeira == td_atributo[a].chaveestrangeira){
+									atributofiltro = td_atributo[a].nome;
+									break;
+								}
 							}
 						}
+
+						let valordependencia = "";
+						for(dap in this.dadosatributodependencia){
+							let d = dadosatributodependencia[dap];
+							if (td_entidade[td_atributo[idatributo].entidade].nomecompleto == d.entidade && td_atributo[idatributo].nome == d.atributo){
+								valordependencia = d.valor;
+							}
+						}
+
+						$("#" + td_atributo[idatributo].nome).removeAttr("disabled");
+						let filtro = atributofiltro!=""?atributofiltro+ "^=^" + $(this).val():"";
+						carregarListas(td_entidade[td_atributo[idatributo].entidade].nomecompleto,td_atributo[idatributo].nome,instancia.getContextoAdd(),valordependencia,filtro);
 					}
 					let valordependencia = "";
 					for(dap in this.dadosatributodependencia){
@@ -891,6 +915,7 @@ tdFormulario.prototype.editar = function(){
 					$(formulario[r.entidade].getContextoAdd(),this.getContextoAdd()).hide();
 					$(formulario[r.entidade].getContextoListar(),this.getContextoAdd()).show();
 				}
+
 				if ($("#select-generalizacao-unica")){
 					$("#select-generalizacao-unica").attr("readonly","true");
 					$("#select-generalizacao-unica").attr("disabled","true");
@@ -942,40 +967,56 @@ tdFormulario.prototype.setDados = function(dados){
 		let valorDados 		= dado.valor;
 		let direto 			= true;
 		
+		// Apenas os campos do tipo SELECT <select>
 		if ($('#' + dado.atributo + '[data-entidade="'+entidade_nome+'"]',contextoAdd).prop("tagName") == "SELECT"){
-			if (td_atributo[getIdAtributo(dado.atributo,entidade_nome)].atributodependencia <= 0){
-				//carregarListas(entidade_nome,dado.atributo,contextoAdd,valorDados);
-				if (valorDados != "" && valorDados != undefined){
-					$('#' + dado.atributo + '[data-entidade="'+entidade_nome+'"]',contextoAdd).val(valorDados);
-				}else{
-					if ($('#' + dado.atributo + '[data-entidade="'+entidade_nome+'"]',contextoAdd).attr("required") == "required"){
-						direto = false;
-						$('#' + dado.atributo + '[data-entidade="'+entidade_nome+'"]',contextoAdd).prop('selectedIndex', 0);
-					}
-				}
-			}else{
+			let atributodependencia_id 	= td_atributo[getIdAtributo(dado.atributo,entidade_nome)].atributodependencia;
+			atributodependencia_id		= atributodependencia_id == '' ? 0 : atributodependencia_id;
+			// Trata-se de um atributo dependente
+			if (atributodependencia_id > 0){
+				/*
 				if ($('#' + dado.atributo + '[data-entidade="'+entidade_nome+'"]',contextoAdd).attr("required") == "required"){
 					direto = false;
 					$('#' + dado.atributo + '[data-entidade="'+entidade_nome+'"]',contextoAdd).prop('selectedIndex', 0);
 				}
+				*/
+
+				// Adiciona na lista de atributos dependentes
 				this.dadosatributodependencia.push({
 					entidade:entidade_nome,
 					atributo:dado.atributo,
 					contexto:contextoAdd,
 					valor:valorDados
 				});
-				const atributodependencia	 = td_atributo[getAtributoId(entidade_nome,dado.atributo)].atributodependencia;
+
+				/*
+				const atributodependencia	= td_atributo[getAtributoId(entidade_nome,dado.atributo)].atributodependencia;
+				const atributodependente	= td_atributo[atributodependencia];
 				const valorfiltro 			= 0;
-				for (dr in dado){
-					if (dado[dr].atributo == td_atributo[atributodependencia].nome){
+				if (atributodependencia != '' && dado.atributo != ''){
+					if (dado.atributo == atributodependente.nome){
 						valorfiltro = dado[dr].valor;
-						break;
+						carregarListas(entidade_nome,dado.atributo,contextoAdd,valorDados,atributodependente.nome+"^=^"+valorfiltro);
 					}
 				}
-				carregarListas(entidade_nome,dado.atributo,contextoAdd,valorDados,td_atributo[atributodependencia].nome+"^=^"+valorfiltro);
+				*/
+			}else{
+				//carregarListas(entidade_nome,dado.atributo,contextoAdd,valorDados);
+				if (valorDados != "" && valorDados != undefined){
+					$('#' + dado.atributo + '[data-entidade="'+entidade_nome+'"]',contextoAdd).val(valorDados);
+
+				}else{
+					if ($('#' + dado.atributo + '[data-entidade="'+entidade_nome+'"]',contextoAdd).attr("required") == "required"){
+						direto = false;
+						$('#' + dado.atributo + '[data-entidade="'+entidade_nome+'"]',contextoAdd).prop('selectedIndex', 0);
+					}
+				}
+			}
+			/*
+			if (dado.nulo == 1){
 				$('#' + dado.atributo + '[data-entidade="'+entidade_nome+'"]').removeAttr("readonly");
 				$('#' + dado.atributo + '[data-entidade="'+entidade_nome+'"]').removeAttr("disabled");
 			}
+			*/			
 		}
 
 		if ($('#' + dado.atributo + '[data-entidade="'+entidade_nome+'"]',contextoAdd).hasClass("termo-filtro")){
@@ -997,7 +1038,7 @@ tdFormulario.prototype.setDados = function(dados){
 				$('#' + dado.atributo + '[data-entidade="'+entidade_nome+'"]',contextoAdd).parents(".form-group").find(".checkbox-n").addClass("active");
 				$('#' + dado.atributo + '[data-entidade="'+entidade_nome+'"]',contextoAdd).parents(".form-group").find(".checkbox-s").removeClass("active");
 				valorDados = 0;
-			}									
+			}
 		}
 
 		if ($('#' + dado.atributo + '[data-entidade="'+entidade_nome+'"]',contextoAdd).hasClass("td-file-hidden")){
@@ -1073,11 +1114,11 @@ tdFormulario.prototype.buscarFiltro = function(termo,entidadeNome,nome,modalName
 tdFormulario.prototype.habilitafiltro = function(atributo,contexto,habilita,entidadeContexto){
 	for (e in td_atributo){
 		if (td_atributo[e].atributodependencia != "" && td_atributo[e].atributodependencia != 0){
-		
-			var dep = td_atributo[td_atributo[e].atributodependencia];
-			var attr = td_atributo[e];
-			var entidade = td_entidade[attr.entidade];
-			var entidadeAtributo = td_entidade[td_atributo[e].entidade];
+
+			var dep 				= td_atributo[td_atributo[e].atributodependencia];
+			var attr 				= td_atributo[e];
+			var entidade 			= td_entidade[attr.entidade];
+			var entidadeAtributo 	= td_entidade[td_atributo[e].entidade];
 
 			if (dep.nome == atributo && entidadeAtributo.nomecompleto == entidadeContexto){
 				// Limpa o campo a cada alteração
@@ -1102,7 +1143,7 @@ tdFormulario.prototype.habilitafiltro = function(atributo,contexto,habilita,enti
 									valordependencia = d.valor;
 								}
 							}
-							carregarListas(entidadeFiltro.nomecompleto,attr.nome,contexto,valordependencia,campofiltro + "^=^" + $("#" + campofiltro).val());
+							//carregarListas(entidadeFiltro.nomecompleto,attr.nome,contexto,valordependencia,campofiltro + "^=^" + $("#" + campofiltro).val());
 						}else{					
 
 							$("#" + attr.nome).parents(".filtro-pesquisa").find(".botao-filtro").show();
