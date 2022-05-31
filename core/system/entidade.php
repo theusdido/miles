@@ -35,7 +35,7 @@
 	define('CHARSET',				$prefixo_format . 'charset');
 
 	// Formato do prefixo para pacotes
-	$prefixo_package = $prefixo_format .  $mjc->system->package . '_';
+	$prefixo_package = $prefixo_format . '_';
 
 	// ENTIDADES PERSONALIZADAS
 	define('TD_PRODUTO',$prefixo_package . 'produto');

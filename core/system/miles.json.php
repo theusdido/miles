@@ -18,7 +18,7 @@
 
 		// MILES JSON CONFIG
 		$mjc = json_decode($miles_json);
-		
+
 		// Seta o projeto no MILES 
 		define('MILES_PROJECT',$mjc->currentproject);
 		
@@ -31,10 +31,6 @@
 		exit;
 	}
 
-	if (!isset($mjc->system->package)){
-		showMessage('Parametro <b>system:"package"</b> em miles.json não especificado.');
-		exit;
-	}
 	if (!isset($mjc->system->packages)){
 		showMessage('Parametro <b>system:"packages"</b> em miles.json não especificado.');
 		exit;
