@@ -1,4 +1,4 @@
- hp
+<?php
 	// Setando variáveis
 	$entidadeNome = "tagsattributes";
 	$entidadeDescricao = "Tags Atributos";
