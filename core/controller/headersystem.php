@@ -109,11 +109,11 @@
 
 	// Informações adicionais do sistema	
 	$headersystem = array();
-	$headersystem_col = 'col-md-2 headersystem-col';
+	$headersystem_col = 'headersystem-col';
 	
 	// Gerenciamento das Configurações
 	$colBlocoGerenciamento 			= tdClass::Criar("bloco");
-	$colBlocoGerenciamento->class 	= $headersystem_col;
+	$colBlocoGerenciamento->class 	= 'col-md-4 ' . $headersystem_col;
 	
 	$confighome 		= tdClass::Criar("div");
 	$confighome->id 	= "config-home";
@@ -131,25 +131,9 @@
 
 	$colBlocoGerenciamento->add($confighome);	
 	
-	// Alterar Projeto
-	$colBlocoAlterarProjeto	= tdClass::Criar("bloco");
-	$colBlocoAlterarProjeto->class 		= $headersystem_col;
-
-	$iconConfigHome = tdClass::Criar("span");
-	$iconConfigHome->class = "fas fa-exchange-alt";
-	$iconConfigHome->aria_hidden = "true";
-	$colBlocoAlterarProjeto->add($iconConfigHome);
-
-	$aAlterProject = tdClass::Criar("hyperlink");
-	$aAlterProject->href = "#";
-	$aAlterProject->target = "_blank";
-	$aAlterProject->add("Alternar Projeto");
-	$aAlterProject->id = "link-alter-project";
-	$colBlocoAlterarProjeto->add($aAlterProject);	
-	
 	// Instalação
 	$colBlocoIntalacao 			= tdClass::Criar("bloco");
-	$colBlocoIntalacao->class 	= $headersystem_col;
+	$colBlocoIntalacao->class 	= 'col-md-4 ' . $headersystem_col;
 
 	$iconInstallHome = tdClass::Criar("span");
 	$iconInstallHome->class = "fas fa-cogs";
@@ -159,25 +143,9 @@
 	$aInstallHome = tdClass::Criar("hyperlink");
 	$aInstallHome->href = Session::Get("URL_MILES") . "index.php?controller=install";
 	$aInstallHome->target = "_blank";
-	$aInstallHome->add("Instalação/Atualização");
+	$aInstallHome->add("Pacotes");
 	$aInstallHome->id = "link-install-home";
 	$colBlocoIntalacao->add($aInstallHome);
-			
-	// Aplicação
-	$colBlocoAplicacao = tdClass::Criar("bloco");
-	$colBlocoAplicacao->class = $headersystem_col;
-	
-	$iconAplicacao = tdClass::Criar("span");
-	$iconAplicacao->class = "fas fa-file-code";
-	$iconAplicacao->aria_hidden = "true";
-	$colBlocoAplicacao->add($iconAplicacao);
-	
-	$aAplicacao = tdClass::Criar("hyperlink");
-	$aAplicacao->href = "#";
-	$aAplicacao->target = "_blank";
-	$aAplicacao->add("Aplicação");
-	$aAplicacao->id = "link-aplicacao-home";
-	$colBlocoAplicacao->add($aAplicacao);	
 	
 	$tempoSessaoHome = tdClass::Criar("div");
 	$tempoSessaoHome->id = "temposessao-home";
@@ -207,104 +175,16 @@
 	$dataHome->add($spanDataHome);
 	
 	$colBlocoTempoSessao 			= tdClass::Criar("bloco");
-	$colBlocoTempoSessao->class 	= $headersystem_col;
+	$colBlocoTempoSessao->class 	= 'col-md-2 ' . $headersystem_col;
 	$colBlocoTempoSessao->add($tempoSessaoHome);
 	
 	$colBlocoClock 			= tdClass::Criar("bloco");
-	$colBlocoClock->class 	= $headersystem_col;	
+	$colBlocoClock->class 	= 'col-md-2 ' . $headersystem_col;	
 	$colBlocoClock->add($horaHome,$dataHome);
-
-	$modal = tdClass::Criar("modal");
-	$modal->addHeader("Selecionar Projeto");
-	$modal->nome = "modal-select-projects";
-	$modal->addFooter("<small class='text-info'>Digite <b>*</b> para ver todos os projetos</small>");
-	$modal->addBody("Carregando ...");
-	$js = tdClass::Criar("script");
-	$js->add('		
-		$("#link-alter-project").click(function(e){
-			e.preventDefault();
-			e.stopPropagation();
-			$("#modal-select-projects .modal-body p").load(getURLProject("index.php?controller=headersystem&op=listarprojetos"));
-			$("#modal-select-projects").modal("show");
-		});
-		function alterProject(project,tipo,databaseid){
-			$.ajax({
-				url:config.urlrequisicoes,
-				data:{
-					op:"alterproject",
-					project:project,
-					typedatabase:tipo,
-					databaseid:databaseid
-				},
-				beforeSend:function(){					
-					statusPesquisa("disabled");
-					loader("#div-retorno-pesquisa-projeto");
-				},	
-				complete:function(ret){
-					switch(parseInt(ret.responseText)){
-						case 1:
-							location.href = "index.php";
-						break;
-						case 2:							
-							$("#div-retorno-pesquisa-projeto").html("<div role=\'alert\' class=\'alert alert-danger\'>Sistema não instalado.</div>");
-						break;
-						default:
-							$("#div-retorno-pesquisa-projeto").html("<div role=\'alert\' class=\'alert alert-danger\'>Erro ao alterar projeto.</div>");
-							console.log(ret.responseText);							
-					}
-					statusPesquisa("enabled");
-					unloader();
-				},
-				error:function(){
-					unloader();
-					$("#div-retorno-pesquisa-projeto").html("<div class=\'alert alert-danger\'>Erro ao carregar projeto!</div>");
-				}				
-			});
-		}
-		
-		function statusPesquisa(status){
-			if (status == "disabled"){
-				$("#inputgroup-pesquisa-projeto-headersystem *").attr("disabled",true);
-			}else if(status == "enabled"){
-				$("#inputgroup-pesquisa-projeto-headersystem *").removeAttr("disabled");
-			}	
-		}
-		
-		$("#link-aplicacao-home").click(function(e){
-			e.preventDefault();
-			e.stopPropagation();
-			//$("#modal-aplicacao-home .modal-body p").load("index.php?controller=headersystem&op=listarprojetos");
-			$("#modal-aplicacao-home").modal("show");
-		});
-		
-		$("#btn-criar-aplicacao").click(function(){
-			$("#barra-progresso-aplicacao").show();
-		});
-	');	
-
-	$modalAplicacao 		= tdClass::Criar("modal");	
-	$modalAplicacao->nome 	= "modal-aplicacao-home";
-	$modalAplicacao->addHeader("Aplicação");
-	/*
-	$modalAplicacao->addBody('
-		<div class="progress" id="barra-progresso-aplicacao" style="visibility:hidden">
-			<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
-				<span class="sr-only">Criando Aplicação ...</span>
-			</div>
-		</div>
-	');
-	*/
-	$modalAplicacao->addFooter('<button class="btn btn-primary" type="button" id="btn-criar-aplicacao">Criar</button>');
-	array_push($headersystem, $modal);
-	array_push($headersystem, $modalAplicacao);
-	array_push($headersystem, $js);
-
 
 	if (Session::get("usergroup") == 1 || Session::get("currentproject") == 1){	
 		array_push($headersystem, $colBlocoGerenciamento);
-		array_push($headersystem, $colBlocoAlterarProjeto);
 		array_push($headersystem, $colBlocoIntalacao);
-		array_push($headersystem, $colBlocoAplicacao);
 	}else{
 		$colBlocoOffset = tdClass::Criar("bloco");
 		$colBlocoOffset->class = 'col-md-8 headersystem-col';

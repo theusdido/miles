@@ -65,7 +65,8 @@
 	define('URL_CURRENT_FILE',Session::Get("URL_CURRENT_PROJECT") . "arquivos/");
     
 	Session::append("URL_CURRENT_FILE_TEMP",Session::Get("URL_CURRENT_FILE") . "temp/");
-    
+	define('URL_CURRENT_FILE_TEMP', URL_CURRENT_FILE . 'temp/');
+
 	define('URL_CURRENT_PAGE',Session::Get("URL_CURRENT_PROJECT") . "page/");
 	define('URL_CURRENT_IMG',Session::Get("URL_CURRENT_PROJECT") . "images/");
 

@@ -478,10 +478,10 @@ function getHTMLTipoFormato($htmltipo,$valor,$entidade=0,$atributo=0,$id=0){
 			$tipoarquivo 		= $valor==''?'imagem':getCategoriaArquivo($valor);
 			$srcFileName		= $atributonome . "-" . $entidade . "-" . $id . "." . getExtensao($valor);
 			$srcFile 			= PATH_CURRENT_FILE . $srcFileName;
-			$urlFile			= Session::Get("URL_CURRENT_FILE") . $srcFileName;
+			$urlFile			= PATH_CURRENT_FILE . $srcFileName;
 			$srcFileNameTemp	= $atributonome . "-" . $entidade . "-" . session_id() . "." . getExtensao($valor);
 			$srcFileTemp 		= PATH_CURRENT_FILE_TEMP . $srcFileNameTemp;
-			$urlFileTemp		= Session::Get("URL_CURRENT_FILE_TEMP") . $srcFileNameTemp;
+			$urlFileTemp		= PATH_CURRENT_FILE . $srcFileNameTemp;
 			
 			if (file_exists($srcFileTemp)){
 				$dadosarquivo = array(

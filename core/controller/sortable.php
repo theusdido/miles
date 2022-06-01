@@ -51,7 +51,7 @@
 			//$filenametemp		= $src;
 			$id					= $linha["id"];
 			$filenamefixed		= "imagem-48-{$id}.jpg";
-			$pathfile       	= Session::Get("PATH_CURRENT_FILE") . $filenamefixed;
+			$pathfile       	= PATH_CURRENT_FILE . $filenamefixed;
 			
 			if (!file_exists($pathfile)){
 				$pathfile = PATH_IMG . "semimagem.jpg";

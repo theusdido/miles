@@ -27,6 +27,7 @@
 	$systemview 		= '';
 	$customview			= '';
 
+
 	if ($controller == "gerarcadastro" || tdClass::Read("key") == "k"){
 		if (file_exists($customcontroller)) include $customcontroller;
 		if (file_exists($systemcontroller)) include $systemcontroller;
