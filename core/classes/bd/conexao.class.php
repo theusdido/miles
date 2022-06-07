@@ -108,8 +108,13 @@ final class Conexao{
 			Tratamento para a transação principal do sistema.
 			Nesse caso deve chamar o arquivo do projeto selecionado
 		*/
+<<<<<<< HEAD
 		$database 	= ($banco == '' || $banco == 'current') ? DATABASECONNECTION : $banco;
 		$arq_config = PATH_CURRENT_CONFIG_PROJECT.$database."_mysql.ini";
+=======
+		$banco		= DATABASECONNECTION;
+		$arq_config = PATH_CURRENT_CONFIG_PROJECT.DATABASECONNECTION."_mysql.ini";
+>>>>>>> aa5207b (#goes alinhamento)
 		if (!file_exists($arq_config)){
 			if (IS_SHOW_ERROR_MESSAGE){
 				echo "Arquivo <b>{$database}</b> de configuração com o banco de dados não existe. => " . $arq_config . " <= ";
