@@ -38,6 +38,11 @@
 		}
 	}
 
+	if (!defined('SCHEMA')){
+		if (isset($_SESSION["db_base"])){
+			define('SCHEMA',$_SESSION["db_base"]);
+		}
+	}
 	// Seta o ID do projeto atual
 	$_SESSION["currentproject"] = $currentProject;
 
@@ -78,10 +83,20 @@
 	if (file_exists($currentConfigFile)){
 		// Current File Config
 		$config = parse_ini_file($currentConfigFile);
+<<<<<<< HEAD
 
 		// Folder do Projeto
 		define ("PROJETO_FOLDER",$config["PROJETO_FOLDER"]);
 
+=======
+				
+		// Constantes de inicialização do sistema
+		switch(AMBIENTE){
+			case 'SISTEMA': 	define ("PROJETO_FOLDER",$config["PROJETO_FOLDER"]."/sistema"); break;
+			case 'WEBSERVICE': 	define ("PROJETO_FOLDER",$config["PROJETO_FOLDER"]."/webservice"); break;
+			case 'WEBSITE':		define ("PROJETO_FOLDER",$config["PROJETO_FOLDER"].'/site'); break;
+		}		
+>>>>>>> 287b430 (instalação góes)
 		// Pega o PREFIXO
 		define("PREFIXO",$config["PREFIXO"]);
 

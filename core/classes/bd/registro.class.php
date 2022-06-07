@@ -157,7 +157,11 @@ abstract class Registro {
 				$status_operacao =  $resultado;
 			}else{
 				echo "Não há transação ativa: Registro Armazenar <br/>\n";
+<<<<<<< HEAD
 				$status_operacao =  false;
+=======
+				return false;
+>>>>>>> 287b430 (instalação góes)
 			}
 		}catch(Throwable $t){
 			if (IS_SHOW_ERROR_MESSAGE){

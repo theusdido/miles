@@ -5,12 +5,18 @@
 	$path_miles_json 		= PATH_MILES . "miles.json";
 
 	if (!file_exists($path_miles_json)){
+<<<<<<< HEAD
 		include PATH_MILES . 'core/controller/install/criarmilesjson.php';
 	}
 
 	if (sizeof(file($path_miles_json)) <= 0){
 		echo 'Arquivo <strong>miles.json</strong> está comrrompido.';
 		exit;
+=======
+		include 'core/controller/install/criarmilesjson.php';
+		#echo 'Arquivo <b>miles.json</b> não encontrado no diretório raiz';
+		#exit;
+>>>>>>> 287b430 (instalação góes)
 	}
 
 	$miles_json = file_get_contents($path_miles_json);

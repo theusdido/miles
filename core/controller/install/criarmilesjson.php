@@ -2,6 +2,7 @@
     $fpMilesJSON = fopen($path_miles_json,"w");
     fwrite($fpMilesJSON,'
         {
+<<<<<<< HEAD
             "version":2.0,
             "currentproject":1,
             "folder":"'.removeBarraRoot($uri).'",
@@ -18,6 +19,19 @@
             "is_transaction_log":false,
             "database_current": "desenv",
             "port": "auto"
+=======
+            "currentproject":1,
+            "folder":"miles/",
+            "system":{
+                "url":{
+                    "lib":"http://teia.tec.br/miles/sistema/lib/"
+                },
+                "request_protocol":"http",
+                "package":"erp"
+            },
+            "theme":"desktop",
+            "prefix":"td"
+>>>>>>> 287b430 (instalação góes)
         }
     ');
     fclose($fpMilesJSON);

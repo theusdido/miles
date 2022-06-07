@@ -1,7 +1,8 @@
  <?php
+
 	// Nome da Entidade
 	$entidade = getSystemPREFIXO()  . "entidade";
-	
+
 	// Criando Entidade
 	criarTabelaDicionario($conn,$entidade);
 
