@@ -103,6 +103,8 @@
 				var package_selecionado	= '';
 				var modulo_selecionado	= '';
 				$(".carregar-componentes").click(function(){
+
+					// Icon abrir
 					$("#view-componente .modal-title").html($(this).html() + " <small>( Componentes )</small>");
 					package_selecionado	= $(this).data("pacote");
 					modulo_selecionado	= $(this).data("componente");

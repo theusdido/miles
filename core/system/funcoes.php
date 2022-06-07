@@ -430,23 +430,30 @@ function getExtensao($str){
 	}
 }
 function getUrl($url,$opcoes = null){
-	if ($opcoes != null){
-		if (isset($opcoes["params"])){
-			$url .= (strpos($url,'?') === false ? '?' : '&') . http_build_query($opcoes["params"]);
+	try{
+		if ($opcoes != null){
+			if (isset($opcoes["params"])){
+				$url .= (strpos($url,'?') === false ? '?' : '&') . http_build_query($opcoes["params"]);
+			}
 		}
+		$cookie = isset($_SERVER['HTTP_COOKIE']) ? $_SERVER['HTTP_COOKIE'] : '';
+		$opts 	= array(
+			'http' => array(
+				'header'		=> 'Cookie: ' .  $cookie ."\r\n",
+				'method'		=> 'GET',
+				'ignore_errors' => true
+			)
+		);
+		session_write_close(); //Desboqueia o arquivo de sessão
+		$context 	= stream_context_create($opts);
+		$conteudo 	= file_get_contents($url,false,$context);
+		session_start(); //Bloqueia o arquivo de sessão
+	}catch(Exception $e){
+		var_dump($e);
+		$conteudo = '';
+	}finally{
+		return $conteudo;
 	}
-	$cookie = isset($_SERVER['HTTP_COOKIE']) ? $_SERVER['HTTP_COOKIE'] : '';
-	$opts 	= array(
-		REQUEST_PROTOCOL => array(
-			'header'	=> 'Cookie: ' .  $cookie ."\r\n",
-			'method'	=> 'GET'
-		)
-	);
-	session_write_close(); //Desboqueia o arquivo de sessão
-	$context 	= stream_context_create($opts);
-	$conteudo 	= file_get_contents($url,false,$context);
-	session_start(); //Bloqueia o arquivo de sessão
-	return $conteudo;
 }
 function getHTMLTipoFormato($htmltipo,$valor,$entidade=0,$atributo=0,$id=0){
 	
