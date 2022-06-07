@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ./miles.json
 ./vsc.bat
 ./winehq.key
@@ -12,7 +11,3 @@
 **/ecommerce
 **/webservice
 **/core/nodejs
-=======
-projects/**
-/miles.json
->>>>>>> 6dc23bf (ignore)
