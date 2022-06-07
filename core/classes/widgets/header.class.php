@@ -12,7 +12,7 @@ include_once PATH_TDC . 'elemento.class.php';
 */	
 class Header Extends Elemento {
 	/*  
-		* M�todo construct 
+		* Método construct 
 	    * Data de Criacao: 14/01/2015
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		

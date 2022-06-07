@@ -1,4 +1,4 @@
- <?php
+<?php
 	// Cria Entidade
 	$entidade 	= new Entity("erp_nfse_intermediario","Intermediário");
 

@@ -685,7 +685,6 @@ GradeDeDados.prototype.loadDadosEdicao = function(id){
 					$(".form-grupo-botao",contextoListarRel).first().hide();
 					$(".select-flag-generalizacao",contextoAdd).val(entidadeREL);
 					$(".select-flag-generalizacao").attr("readonly",true);
-
 					indice = dados.length;
 					var val = valores.split("id=");
 					for(v in val){
@@ -790,10 +789,8 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
 
 			if (typeof td_consulta[this.consulta] != "undefined"){
 				for (f in td_consulta[this.consulta].status){
-
-					let ft = td_consulta[this.consulta].status[f];
+					var ft = td_consulta[this.consulta].status[f];
 					if (ft.atributo == idAtributo){
-						let operador = '';
 						switch (ft.operador){
 							case "=": operador = "=="; break;
 							case "!": operador = "!="; break;

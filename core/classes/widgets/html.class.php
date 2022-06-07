@@ -1,4 +1,4 @@
- <?php 
+<?php 
 include_once PATH_TDC . 'elemento.class.php';
 /*
     * Framework MILES
@@ -14,7 +14,7 @@ class Html Extends Elemento {
 	public $head;
 	public $body;
 	/*  
-		* M�todo construct 
+		* Método construct 
 	    * Data de Criacao: 14/01/2015
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		

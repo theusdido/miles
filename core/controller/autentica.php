@@ -1,5 +1,4 @@
 <?php
-
 	if (isset($_GET["controller"])){
 		if ($_GET["controller"] == "autentica"){
 			$login = tdc::r("login");
@@ -15,7 +14,6 @@
 				}
 				$sqlCriterio2->add(tdClass::Criar("sqlfiltro",array("perfilusuario",'<>',1)));
 				$sqlCriterio2->add(tdClass::Criar("sqlfiltro",array("perfilusuario",'is',null)),OU);
-
 				$sql = tdClass::Criar("sqlcriterio");
 				$sql->add($sqlCriterio1);
 				$sql->add($sqlCriterio2);

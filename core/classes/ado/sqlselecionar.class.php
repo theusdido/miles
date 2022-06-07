@@ -5,7 +5,7 @@ require_once PATH_ADO . 'sqlinstrucao.class.php';
     * @license : Estilo Site Ltda.
     * @link http://www.estilosite.com.br
 		
-    * Classe que implementa a instru��o SELECT do SQL
+    * Classe que implementa a instrução SELECT do SQL
     * Data de Criacao: 28/06/2012
     * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 */	
@@ -13,23 +13,23 @@ require_once PATH_ADO . 'sqlinstrucao.class.php';
 final class SqlSelecionar extends sqlInstrucao{
 	private $colunas = array();
 	/*  
-		* M�todo addColuna 
+		* Método addColuna 
 	    * Data de Criacao: 03/07/2012
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
 		Adiciona uma coluna a ser adiciona pelo SELECT
-		@coluna = Coluna que ser� retornada
+		@coluna = Coluna que será retornada
 	*/		
 	public function addColuna($coluna){
 		array_push($this->colunas,$coluna);
 	}
 	
 	/*  
-		* M�todo getInstrucao 
+		* Método getInstrucao 
 	    * Data de Criacao: 03/07/2012
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
-		Monta e retorna a instru��o SQL		
+		Monta e retorna a instrução SQL		
 	*/		
 	public function getInstrucao(){
 		$this->sql = 'SELECT ';

@@ -77,7 +77,6 @@
 		$valorjson = json_decode($valor);
 		if (is_object($valorjson)){
 			$nomeexibicaoarquivo = $valorjson->filename;
-
 			// Verifica se é um registro novo e está em modo de edição no formulário
 			if ($valorjson->tipo == "" && ($valorjson->filename == null || $valorjson->filename == "null")){
 				$isnew = true;
@@ -180,7 +179,6 @@
 
 	$form->add($group,$atributo,$registro,$file_oculto,$input_idregistro,$currentProject);
 	$form->mostrar();
-
 	$script = tdClass::Criar("script");
 	$script->add('		
 		$("#'.$id_input.'").change(function(){

@@ -1,4 +1,4 @@
-  <?php
+ <?php
 
 	// Nome da Entidade
 	$entidade = getSystemPREFIXO()  . "entidade";

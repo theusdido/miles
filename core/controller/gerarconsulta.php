@@ -4,7 +4,6 @@
 		echo 'Parametro "ID" não foi enviado.';
 		exit;
 	}
-
 	$pathfileconsulta = PATH_FILES_CONSULTA . $id;
 	
 	// Cria diretório

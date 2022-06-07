@@ -83,7 +83,9 @@
 		$error = $conn->errorInfo();
 		if ($error[0] != "00000"){
 			var_dump($error);
+			$conn->rollback();
 		}else{
+			$conn->commit();
 			header('Location: criarAtributo.php?entidade=' . $_POST["entidade"] . "&id=" . $idRetorno . getURLParamsProject("&"));
 		}
 		exit;

@@ -15,7 +15,7 @@ class Collapse Extends Div {
 	private $tabs = array();
 	private $icollapse = 0;
 	/*  
-		* M�todo construct 
+		* Método construct 
 	    * Data de Criacao: 12/03/2015
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		

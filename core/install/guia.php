@@ -5,15 +5,15 @@
 
 
 <div class="list-group">
-	<a href="<?=$_SESSION["URL_MILES"]?>?controller=install" class="list-group-item">
+	<a href="<?=URL_MILES?>?controller=install" class="list-group-item">
 		Criar Banco de Dados
 		<img src="<?=$check_criarbase?>" class="check-no" id="guia-pacote"/>
 	</a>
-	<a href="<?=$_SESSION["URL_MILES"]?>?controller=install/pacotes" class="list-group-item">
+	<a href="<?=URL_MILES?>?controller=install/pacotes" class="list-group-item">
 		Instalação do Sistema
 		<img src="<?=$check_instalacaosistema?>" class="check-no" id="guia-instalacao"/>
 	</a>
-	<a href="<?=$_SESSION["URL_MILES"]?>?controller=install/modulos" class="list-group-item">
+	<a href="<?=URL_MILES?>?controller=install/modulos" class="list-group-item">
 		Configuração dos Pacotes
 		<img src="<?=$check_pacoteconfigurado?>" class="check-no" id="guia-pacote"/>
 	</a>

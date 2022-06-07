@@ -96,12 +96,9 @@
 				nomeentidade:"<?=$nomeEntidadePrincipal?>",
 				descricaoentidade:"<?=$descricaoEntidadePrincipal?>",
 				urlupload:$("#urlupload").val(),
-				currentproject:<?=$_SESSION["currentproject"]?>,
-				id:<?=$id?>
 			},
 			complete:function(){
-				let url = '../../projects/<?=$_SESSION["currentproject"]?>/files/cadastro/<?=$id?>/' + $("#filename").val();
-				$("#pagina-gerada").html('<center><h3>Carregou</h3><a href="'+url+'" target="_blank">Abrir ( HTML )</a></center>');
+				$("#pagina-gerada").html("Carregou");
 			}
 		});
 	}

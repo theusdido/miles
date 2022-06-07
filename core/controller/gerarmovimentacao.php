@@ -169,6 +169,11 @@
 	$funcionalidadeTD->value 	= "movimentacao";
 	$funcionalidadeTD->mostrar();
 
+	// JS Formulário
+	$jsFormulario 		= tdClass::Criar("script");
+	$jsFormulario->src 	= Session::Get('URL_SYSTEM') . "funcoes.js";
+	$jsFormulario->mostrar();
+
 	// Arquivo JS Incorporado
 	$jsIncorporado 		= tdClass::Criar("script");
 	$jsIncorporado->src = $url_files_movimentacao . $entidade->nome . ".js";
@@ -255,7 +260,6 @@
 		}
 
 		$form->ncolunas = 3;
-
 		if ($arrayCamposAtributos){
 			$form->camposHTML($arrayCamposAtributos);
 		}

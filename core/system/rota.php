@@ -1,5 +1,4 @@
 <?php
-
 	$controller 		= tdc::r("controller");
 	$systemcontroller 	= PATH_MVC_CONTROLLER . $controller .  '.php';	
 	$systemrequisicoes	= PATH_MVC_CONTROLLER . 'requisicoes.php';
@@ -21,6 +20,15 @@
 		}
 	}
 
+	$_systempage		= PATH_SYSTEM_PAGE . $_page . ".php";
+	$_custumpage		= PATH_CURRENT_PAGE . $_page . ".php";
+
+	// Tratamento para requisição a uma página - by @theusdido 02/10/2021
+	$_page				= tdc::r("page");
+	if (strpos($_page,"/") > -1){
+		$_page_e		= explode("/",$_page);
+		$_page			= $_page . "/" . end($_page_e);
+	}
 	$_systempage		= PATH_SYSTEM_PAGE . $_page . ".php";
 	$_custumpage		= PATH_CURRENT_PAGE . $_page . ".php";
 

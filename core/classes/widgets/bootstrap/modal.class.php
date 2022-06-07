@@ -18,7 +18,7 @@ class Modal Extends Elemento {
 	public $tamanho = "";
 	public $nome = "";
 	/*  
-		* M�todo construct 
+		* Método construct 
 	    * Data de Criacao: 16/03/2015
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		

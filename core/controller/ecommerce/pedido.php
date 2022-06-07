@@ -3,6 +3,7 @@
 // Dados do Pedido
 $pedidoID 		= $_GET["pedido"];
 $pedido 		= tdClass::Criar("persistent",array("td_ecommerce_pedido",$pedidoID))->contexto;
+
 $pedidoClass	= new Pedido($pedidoID);
 $datahorapedido = explode(" ",$pedido->datahoraretorno);
 $datadopedido 	= '<div id="data-pedido"><span class="fas fa-calendar-alt" aria-hidden="true"></span><span>'.dateToMysqlFormat($datahorapedido[0],true).'</span></div>';

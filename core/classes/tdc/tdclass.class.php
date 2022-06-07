@@ -1,4 +1,4 @@
- <?php
+<?php
 include PATH_ADO . 'sqlfiltro.class.php';
 /*
     * Framework MILES

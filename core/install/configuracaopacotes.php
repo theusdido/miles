@@ -70,10 +70,23 @@
 										<div class="panel-body">
 											<div class="list-group">
 												<a href="#" class="list-group-item carregar-componentes" data-pacote="negocio" data-componente="imobiliaria">Imobiliária</a>
+												<a href="#" class="list-group-item carregar-componentes" data-pacote="negocio" data-componente="escola">Escola</a>
+												<a href="#" class="list-group-item carregar-componentes" data-pacote="negocio" data-componente="associacao">Associação</a>
+												<a href="#" class="list-group-item carregar-componentes" data-pacote="negocio" data-componente="livraria">Livraria</a>
 											</div>
 										</div>
 									</div>
-								</div>					
+								</div>
+								<div class="col-md-6 col-sm-6">
+									<div class="panel panel-default panel-pacote">
+										<div class="panel-heading">Competição</div>
+										<div class="panel-body">
+											<div class="list-group">
+												<a href="#" class="list-group-item carregar-componentes" data-pacote="competicao" data-componente="cultural">Cultural</a>
+											</div>
+										</div>
+									</div>
+								</div>								
 							</div>
 						</fieldset>	  
 					</form>		
@@ -103,6 +116,8 @@
 				var package_selecionado	= '';
 				var modulo_selecionado	= '';
 				$(".carregar-componentes").click(function(){
+
+					// Icon abrir
 					$("#view-componente .modal-title").html($(this).html() + " <small>( Componentes )</small>");
 					package_selecionado	= $(this).data("pacote");
 					modulo_selecionado	= $(this).data("componente");
@@ -168,7 +183,7 @@
 					}
 
 					$.ajax({
-						url:"<?=$_SESSION['URL_MILES']?>",
+						url:"<?=URL_MILES?>",
 						type:"POST",
 						data:{
 							controller:'install/modulos',
@@ -189,7 +204,7 @@
 									instalarcomponentes();
 								}else{
 									$.ajax({
-										url:"<?=$_SESSION['URL_MILES']?>",
+										url:"<?=URL_MILES?>",
 										type:"POST",
 										data:{
 											controller:'install/modulos',
@@ -222,7 +237,7 @@
 				function instalarregistros(){
 					if (registros[indiceRegistro] == undefined) return false;
 					$.ajax({
-						url:"<?=$_SESSION['URL_MILES']?>",
+						url:"<?=URL_MILES?>",
 						type:"POST",
 						data:{
 							controller:'install/modulos',
@@ -253,11 +268,9 @@
 				$(document).ready(function(){
 					$("#retorno").hide();
 				});
-				$																				("#retorno .close").click(function(){
+				$("#retorno .close").click(function(){
 					$(this).parents(".alert").hide();
 				});
-
-
 				function addComponente(component){
 					if (component != undefined && component != ''){
 						componentes.push(component);

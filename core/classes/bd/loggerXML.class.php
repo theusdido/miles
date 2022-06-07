@@ -1,4 +1,4 @@
- <?php	
+<?php	
 include PATH_BD . 'logger.class.php';
 /*
     * Framework MILES
@@ -12,7 +12,7 @@ include PATH_BD . 'logger.class.php';
 class BdLoggerXML extends BdLogger{
 
 	/*  
-		* M�todo escrever 
+		* Método escrever 
 	    * Data de Criacao: 04/06/2012
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		

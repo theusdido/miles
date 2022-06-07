@@ -1,4 +1,4 @@
- <?php 
+<?php 
 include_once PATH_TDC . 'elemento.class.php';
 /*
     * Framework MILES
@@ -12,7 +12,7 @@ include_once PATH_TDC . 'elemento.class.php';
 */	
 class OptGroup Extends Elemento {
 	/*  
-		* M�todo construct 
+		* Método construct 
 	    * Data de Criacao: 11/07/2016
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		

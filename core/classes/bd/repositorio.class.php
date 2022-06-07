@@ -64,7 +64,7 @@ final class Repositorio {
 			$this->registros = $resultados;
 			return $resultados;
 		}else{		
-			throw new Exception("Não há transação ativa: Repositorio Carrgar");
+			throw new Exception("Não há transação ativa: Repositorio Carregar");
 		}
 	}
 

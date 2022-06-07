@@ -1,4 +1,4 @@
- <?php 
+<?php 
 include_once PATH_WIDGETS . 'div.class.php';	
 /*
     * Framework MILES
@@ -100,9 +100,12 @@ class Layout extends Div {
 					include (PATH_SYSTEM . PATH_MVC_CONTROLLER . $b . '.php');	
 				}
 			}
-			$this->addCabecalho($logo,$info,$logon,$dadosconfigprojeto);
+			$this->addCabecalho($logo,$info,$logon);
+			$this->fluido = true;
+			$this->addCabecalho($dadosconfigprojeto);
+			$this->fluido = false;
 			$this->addCabecalho($menu);
-			$this->addCabecalho($headersystem);
+			$this->addCabecalho(@$headersystem);
 			$this->addRodape($rodape);
 			$this->addRodape($JSinicial);
 		}	

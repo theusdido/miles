@@ -5,6 +5,9 @@
 	// Nome do arquivo do Favicon do sistema
 	define('FILE_FAVICON','logo-favicon.png');
 
+	// Nome do arquivo do Favicon do sistema
+	define('FILE_FAVICON','logo-favicon.png');
+
 	// Logo Padrão
 	define("FILE_LOGO", 'logo.png');
 
@@ -23,9 +26,7 @@
 	// Imagem de rodapé padrão do sistema
     define('PATH_IMG_RODAPE_PADRAO', FILE_LOGO_RODAPE);
 
-    define('PATH_CURRENT_FAVICON', PATH_CURRENT_PROJECT_THEME . FILE_CURRENT_FAVICON);
-    
-    
+    define('PATH_CURRENT_FAVICON', PATH_CURRENT_PROJECT_THEME . FILE_CURRENT_FAVICON);  
 
 	define('FILE_SYSTEM_FAVICON',Session::Get("URL_SYSTEM_THEME") . "logo-favicon.png");
 

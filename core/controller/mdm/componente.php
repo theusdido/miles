@@ -21,15 +21,15 @@
 	$datacriacaodoc = "* @Data de Criacao: ".date("d/m/Y H:i:s");
 	$authordoc 		= "* @Criado por: ".$_SESSION["username"].", @id: ".$_SESSION["userid"];
 	$paginadoc 		= "* @Página: {$descricao_doc}";
-	
+
 	// Cria o diretório do registro caso não exista
 	if (!file_exists($path)){
-		tdFile::mkdir($path,0777);
+		mkdir($path,777);
 	}
 
 	// Cria o arquivo HTML
 	$fp = fopen($path . tdc::r('filename') ,'w');
-	fwrite($fp,htmlespecialcaracteres($_POST["html"],2));
+	fwrite($fp,htmlespecialcaracteres($_POST["html"],1));
 	fclose($fp);
 
 	// Cria o arquivo HTML Embutido Dinâmico

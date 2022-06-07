@@ -1,17 +1,17 @@
- <?php 		
+<?php 		
 	requerer('classes/htmlobject.php',false);
 	class Botao Extends HtmlObject {
 		private $tipo;
 		private $valor;
 		
-		// M�TODOS GET
+		// MÉTODOS GET
 		public function getTipo(){
 			return $this->tipo;
 		}
 		public function getValor(){
 			return $this->valor;
 		}		
-		// M�TODOS SET
+		// MÉTODOS SET
 		public function setTipo($pTipo){
 			if (func_num_args() > 0){
 				$this->tipo = $pTipo;
@@ -33,7 +33,7 @@
 					'.(($this->getId()!="")?'id="'.$this->getId().'"':"").' 
 					'.(($this->getNome()!="")?'name="'.$this->getNome().'"':"").'
 					'.(($this->getClasse()!="")?'class="'.$this->getClasse().'"':"").'
-					'.(($this->getValor()!="")?'value="'.$this->getValor().'"':"Bot�o").'
+					'.(($this->getValor()!="")?'value="'.$this->getValor().'"':"Botão").'
 					/>';
 		}
 	}

@@ -3,7 +3,7 @@
     switch($op){
         case 'upload':
             set_time_limit(3600);
-            $link = PATH_CURRENT_FILE_TEMP . date('Y-m-d_h-i-s') . ".xml";
+            $link = PATH_CURRENT_FILE_TEMP . date('Y-m-d h:i:s') . ".xml";
             Session::append("NFSE_XML_FILE",$link);
             if (file_exists($link)){
                 unlink($link);

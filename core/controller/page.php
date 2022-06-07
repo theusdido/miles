@@ -1,4 +1,5 @@
 <?php
+
 	// Carrega o arquivo CSS
 	$cssFile = PATH_SYSTEM_PAGE . $_page . '.css';
 	if (file_exists($cssFile)){
@@ -15,7 +16,7 @@
 		$css->rel 	= "stylesheet";
 		$css->mostrar();
 	}
-
+		
 	// Carrega o HTML antes por causa do file_get_contents, erro de cabeçaho
 	$htmlFile 	= PATH_SYSTEM_PAGE . $_page . '.html';
 	if (file_exists($htmlFile)){
@@ -24,7 +25,7 @@
 
 	$htmlFile 	= PATH_CURRENT_PAGE . $_page . '.html';
 	if (file_exists($htmlFile)){
-		//echo @getUrl(URL_CURRENT_PAGE . $_page . '.html');
+		echo @getUrl(URL_CURRENT_PAGE . $_page . '.html');
 	}
 
 	// Carrega arquivo JavaScript

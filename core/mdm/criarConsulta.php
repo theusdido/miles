@@ -34,6 +34,7 @@
 				$query_prox = $conn->query("SELECT IFNULL(MAX(id),0)+1 FROM ".PREFIXO."consulta");
 				$prox = $query_prox->fetch();
 				$id = $prox[0];
+
 				$sql = "INSERT INTO ".PREFIXO."consulta (id,descricao,entidade,movimentacao,exibirbotaoeditar,exibirbotaoexcluir,exibirbotaoemmassa) VALUES ({$id},'{$descricao}',{$entidade},{$movimentacao},{$exibirbotaoeditar},{$exibirbotaoexcluir},{$exibirbotaoemmassa});";
 			}else{
 				$sql = "UPDATE ".PREFIXO."consulta SET entidade = {$entidade} , descricao = '{$descricao}' , movimentacao = {$movimentacao} , exibirbotaoeditar = {$exibirbotaoeditar} , exibirbotaoexcluir = {$exibirbotaoexcluir} , exibirbotaoemmassa = {$exibirbotaoemmassa} WHERE id = {$id};";

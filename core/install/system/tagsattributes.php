@@ -1,8 +1,8 @@
 <?php
 	// Setando variáveis
-	$entidadeNome = "tagsattributes";
-	$entidadeDescricao = "Tags Atributos";
-	
+	$entidadeNome 		= "tagsattributes";
+	$entidadeDescricao 	= "Tags Atributos";
+
 	// Criando Entidade
 	$entidadeID = criarEntidade(
 		$conn,
@@ -21,7 +21,7 @@
 	);
 
 	// Criando Atributos
-	$tags = criarAtributo($conn,$entidadeID,"tags","Tags","int",0,0,4,0,getEntidadeId("tags",$conn),0,"");	
-	$atributo = criarAtributo($conn,$entidadeID,"atributo","Atributo","varchar",50,0,3,1,0,0,"");
-	$valor = criarAtributo($conn,$entidadeID,"valor","Valor","varchar",150,0,3,1,0,0,"");
-	$tagpai = criarAtributo($conn,$entidadeID,"tagpai","Tag ( Pai )","int",0,0,3,1,0,0,"");
+	$tags 			= criarAtributo($conn,$entidadeID,"tags","Tags","int",0,0,4,0,getEntidadeId("tags",$conn),0,"");	
+	$atributo 		= criarAtributo($conn,$entidadeID,"atributo","Atributo","varchar",50,0,3,1,0,0,"");
+	$valor 			= criarAtributo($conn,$entidadeID,"valor","Valor","varchar",150,0,3,1,0,0,"");
+	$tagpai 		= criarAtributo($conn,$entidadeID,"tagpai","Tag ( Pai )","int",0,0,3,1,0,0,"");

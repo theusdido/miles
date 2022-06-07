@@ -1,4 +1,4 @@
- <?php 
+<?php 
 	/*
 		* Framework MILES
 		* @license : Estilo Site Ltda.
@@ -229,7 +229,7 @@
 			$modal->addHeader("Pesquisa de " . $entidadePK->contexto->descricao,null);
 			$modal->addBody("");
 			$modal->addFooter("");
-
+		
 			$campo->add($label,$input_group,$modal);
 			return $campo;
 		}

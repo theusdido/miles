@@ -22,7 +22,7 @@ class GradedeDados extends Tabela{
 	public $retornaregistro = false;
 	public $funcaoretornaregistro;
 	public $retornoCarregar;
-	public $filtro_rel_nn=""; #colacar o filtro de relacionamento quando for N:N em agrega��o
+	public $filtro_rel_nn=""; #colacar o filtro de relacionamento quando for N:N em agregação
 	public $filtro="";
 	public $exibircorpo = true; # Corpo com os dados
 	public $exibircabecalho = true;
@@ -32,7 +32,7 @@ class GradedeDados extends Tabela{
 	private $qtde_caracteres_colunas = 25;
 	public $exibirId = true;
 	/*  
-		* M�todo construct 
+		* Método construct 
 		* Data de Criacao: 03/01/2015
 		* @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
@@ -44,11 +44,11 @@ class GradedeDados extends Tabela{
 		$this->class = "table table-hover gradededados";		
 	}
 	/*  
-		* M�todo thead 
+		* Método thead 
 		* Data de Criacao: 03/01/2015
 		* @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
-		Criar o cabelha�o da grade de dados
+		Criar o cabelhaço da grade de dados
 	*/						
 	public function thead(){		
 		$thead = tdClass::Criar("thead");
@@ -132,7 +132,7 @@ class GradedeDados extends Tabela{
 		$this->add($thead);
 	}	
 	/*  
-		* M�todo tbody 
+		* Método tbody 
 		* Data de Criacao: 03/01/2015
 		* @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
@@ -143,23 +143,23 @@ class GradedeDados extends Tabela{
 		$this->add($tbody);
 	}
 	/*  
-		* M�todo tfooter 
+		* Método tfooter 
 		* Data de Criacao: 20/02/2015
 		* @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
-		Cria o rodap� da grade de dados		
+		Cria o rodapé da grade de dados		
 	*/
 	public function tfoot(){
 		$tfooter = tdClass::Criar("tfoot");
 		$this->add($tfooter);
 	}
 	/*
-		* M�todo mostrar 
+		* Método mostrar 
 		* Data de Criacao: 03/01/2015
 		* @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 
 		Exibi a grade de dados
-		Sobreescreve o m�todo pai
+		Sobreescreve o método pai
 	*/
 	function mostrar(){
 		$this->colunas();
@@ -170,7 +170,7 @@ class GradedeDados extends Tabela{
 		parent::mostrar();
 	}
 	/*
-		* M�todo colunas
+		* Método colunas
 		* Data de Criacao: 03/01/2015
 		* @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 
@@ -180,7 +180,7 @@ class GradedeDados extends Tabela{
 	protected function colunas(){
 		$sql = tdClass::Criar("sqlcriterio");
 		$sql->add(tdClass::Criar("sqlfiltro",array("exibirgradededados","=",1)));
-		$sql->add(tdClass::Criar("sqlfiltro",array(ENTIDADE,'=",$this->entidade->contexto->id)));
+		$sql->add(tdClass::Criar("sqlfiltro",array(ENTIDADE,'=',$this->entidade->contexto->id)));
 		
 		$dataset = tdClass::Criar("repositorio",array(ATRIBUTO));
 		$this->colunas = $dataset->carregar($sql);

@@ -187,6 +187,11 @@ class Entity {
 								$tipo 		= 'varchar';
 								$tamanho  	= 200;
 							break;
+							case 'datahora':
+								$tipohtml	= 23;
+								$tipo 		= 'datetime';
+								$tamanho  	= 0;
+							break;							
 						}
 					}
 					$is_obrigatorio 		= isset($attr['is_obrigatorio']) ? $attr['is_obrigatorio'] : 1;

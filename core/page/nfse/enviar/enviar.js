@@ -1,5 +1,4 @@
 var notas_enviar = [];
-var indice = 0;
 
 $("#load-pesquisar").attr("src",session.urlloading2);
 $("#pesquisar").click( ()=> {    
@@ -27,7 +26,7 @@ function pesquisar(){
                 for (r in notas_enviar ){
                     
                     var nota        = notas_enviar[r];
-                    var tr          = $("<tr data-indice='"+r+"'>");
+                    var tr          = $("<tr>");
                     var tdNumero    = $('<td class="text-center">'+nota.rpsnumero+'</td>');
                     var tdSerie     = $('<td class="text-center">'+nota.rpsserie+'</td>');
                     var tdTipo      = $('<td class="text-center">'+nota.rpstipo+'</td>');
@@ -69,33 +68,19 @@ function pesquisar(){
 
 $("#data").mask("99/99/9999");
 
-function enviar(){
-    if (indice < notas_enviar.length){
-        $.ajax({
-            url:session.urlmiles + "?page=nfse/enviar",
-            data:{
-                op:'enviar',
-                nota:notas_enviar[indice]
-            },
-            complete:function(ret){
-                var retorno = parseInt(ret.responseText);
-                if (retorno == 100){
-                    var bg = 'bg-success';
-                }else{
-                    var bg = 'bg-danger';
-                }
-                $('tr[data-indice='+indice+']').addClass(bg);
-                indice++;
-                enviar();
-            }
-        });
-    }else{
-        bootbox.alert('Envio Encerrado !');
-        $('#progress-send').hide();
-    }
+function enviar(indice = 0){
+    $.ajax({
+        url:session.urlmiles + "?page=nfse/enviar",
+        data:{
+            op:'enviar',
+            nota:notas_enviar[indice]
+        },
+        complete:function(ret){
+
+        }
+    });
 }
 
 $("#btn-enviar").click( () => {
-    $('#progress-send').show();
-    enviar();
+    enviar(0);
 });

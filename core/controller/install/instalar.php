@@ -22,7 +22,7 @@
 
 			include 'core/controller/install/criarestruturapastas.php';
 			include 'core/controller/install/criarmysqlini.php';
-			include 'core/controller/install/criarcurrentconfig.php';			
+			include 'core/controller/install/criarcurrentconfig.php';
             echo 1;
         break;
         case 'instrucao':
@@ -38,7 +38,7 @@
         case 'inserirregistros':
 
 			// Usuários
-			inserirRegistro($conn,USUARIO,1, array("nome","email","login","senha","permitirexclusao","permitirtrocarempresa","grupousuario","perfilusuario","perfil"), array("'ROOT'","'root@localhost'","'root'","'63a9f0ea7bb98050796b649e85481845'",1,1,1,0,"null"));
+			inserirRegistro($conn,USUARIO,1, array("nome","email","login","senha","permitirexclusao","permitirtrocarempresa","grupousuario","perfilusuario","perfil"), array("'ROOT'","'root@localhost'","'root'","'63a9f0ea7bb98050796b649e85481845'",1,1,1,0,"null"),true);
 
 			// Menu
 			inserirRegistro($conn,MENU,1, array("descricao","link","target","pai","ordem","fixo","entidade","tipomenu"), array("'Administração'","'#'","''",0,1,"'adm'",0,"'cadastro'"));
