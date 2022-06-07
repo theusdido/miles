@@ -24,7 +24,7 @@
 
 	$htmlFile 	= PATH_CURRENT_PAGE . $_page . '.html';
 	if (file_exists($htmlFile)){
-		//echo @getUrl(URL_CURRENT_PAGE . $_page . '.html');
+		echo @getUrl(URL_CURRENT_PAGE . $_page . '.html');
 	}
 
 	// Carrega arquivo JavaScript
