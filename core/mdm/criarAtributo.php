@@ -56,12 +56,17 @@
 		$query = $conn->query("SELECT nome FROM ".PREFIXO."entidade WHERE id = {$_POST["entidade"]}");
 		$linha = $query->fetchAll();
 		if ($_POST["id"] == ""){
+			$sql = "ALTER TABLE {$linha[0]["nome"]} ADD COLUMN {$nome} {$tipo}{$tamanho} {$nulo};";
 			$criar = $conn->query($sql);
-			$linha_ultimo = $query_ultimo->fetchAll();
-			$idRetorno = $linha_ultimo[0]["id"];
-
-			$sql = "INSERT INTO ".PREFIXO."atributo (id,entidade,nome,descricao,tipo,tamanho,nulo,tipohtml,exibirgradededados,chaveestrangeira,dataretroativa,inicializacao,readonly,indice,tipoinicializacao,atributodependencia,labelzerocheckbox,labelumcheckbox,legenda,desabilitar,criarsomatoriogradededados,naoexibircampo) VALUES ({$idRetorno},'{$_POST["entidade"]}','{$nome}','{$descricao}','{$tipo}',".$tamanhoSQL.",".((isset($_POST["nulo"]))?1:0).",'{$tipohtml}',{$exibirgradededados},{$chaveestrangeira},{$dataretroativa},'{$inicializacao}',{$readonly},'{$indice}',{$tipoinicializacao},{$atributodependencia},'{$labelzerocheckbox}','{$labelumcheckbox}','{$legenda}','{$desabilitar}',{$criarsomatoriogradededados},{$naoexibircampo});";
-			$query = $conn->query($sql);
+			if ($criar){
+				// ID Último atributo
+				$query_ultimo = $conn->query("SELECT IFNULL(MAX(id),0)+1 id FROM ".PREFIXO."atributo");
+				$linha_ultimo = $query_ultimo->fetchAll();
+				$idRetorno = $linha_ultimo[0]["id"];				
+				
+				$sql = "INSERT INTO ".PREFIXO."atributo (id,entidade,nome,descricao,tipo,tamanho,nulo,tipohtml,exibirgradededados,chaveestrangeira,dataretroativa,inicializacao,readonly,indice,tipoinicializacao,atributodependencia,labelzerocheckbox,labelumcheckbox,legenda,desabilitar,criarsomatoriogradededados,naoexibircampo) VALUES ({$idRetorno},'{$_POST["entidade"]}','{$nome}','{$descricao}','{$tipo}',".$tamanhoSQL.",".((isset($_POST["nulo"]))?1:0).",'{$tipohtml}',{$exibirgradededados},{$chaveestrangeira},{$dataretroativa},'{$inicializacao}',{$readonly},'{$indice}',{$tipoinicializacao},{$atributodependencia},'{$labelzerocheckbox}','{$labelumcheckbox}','{$legenda}','{$desabilitar}',{$criarsomatoriogradededados},{$naoexibircampo});";
+				$query = $conn->query($sql);
+			}
 		}else{
 			$idRetorno = $_POST['id'];
 			$sql_old = "SELECT nome FROM ".PREFIXO."atributo WHERE id = {$_POST['id']}";
@@ -72,10 +77,15 @@
 			if ($atualizar){
 				$sql = ("UPDATE ".PREFIXO."atributo SET entidade='{$_POST["entidade"]}',nome='{$nome}',descricao='{$descricao}',tipo='{$tipo}',tamanho={$tamanhoSQL},nulo=".((isset($_POST["nulo"]))?1:0).", tipohtml = '{$tipohtml}', exibirgradededados = {$exibirgradededados} , chaveestrangeira = {$chaveestrangeira} , dataretroativa = {$dataretroativa}, inicializacao = '{$inicializacao}', readonly = {$readonly}, indice = '{$indice}', tipoinicializacao = {$tipoinicializacao}, atributodependencia = {$atributodependencia}, labelzerocheckbox = '{$labelzerocheckbox}' , labelumcheckbox = '{$labelumcheckbox}' , legenda = '{$legenda}' , desabilitar = '{$desabilitar}' , criarsomatoriogradededados = '{$criarsomatoriogradededados}' , naoexibircampo = {$naoexibircampo} WHERE id = {$_POST["id"]};");
 				$query = $conn->query($sql);
+			}
+		}
+		
 		$error = $conn->errorInfo();
 		if ($error[0] != "00000"){
 			var_dump($error);
+			$conn->rollback();
 		}else{
+			$conn->commit();
 			header('Location: criarAtributo.php?entidade=' . $_POST["entidade"] . "&id=" . $idRetorno . getURLParamsProject("&"));
 		}
 		exit;
