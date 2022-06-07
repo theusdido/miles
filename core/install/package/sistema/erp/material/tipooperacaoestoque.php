@@ -27,6 +27,9 @@
 	// Adiciona o campo de descrição
 	Entity::setDescriptionField($conn,$entidadeID,$descricao,true);
 
+	// Adiciona o campo de descrição
+	Entity::setDescriptionField($conn,$entidadeID,$descricao,true);
+
 	// Criando Acesso
 	$menu_webiste = addMenu($conn,'Material','#','',0,0,'material');
 
