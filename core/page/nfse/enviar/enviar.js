@@ -72,6 +72,7 @@ function enviar(indice = 0){
     $.ajax({
         url:session.urlmiles + "?page=nfse/enviar",
         data:{
+            op:'enviar',
             nota:notas_enviar[indice]
         },
         complete:function(ret){
@@ -79,8 +80,7 @@ function enviar(indice = 0){
         }
     });
 }
-/*
+
 $("#btn-enviar").click( () => {
     enviar(0);
 });
-*/
