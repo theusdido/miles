@@ -1,6 +1,6 @@
 <?php    
     // **** VERSÃO 2.0 ****
-    /*
+	/*
     try{
         // Altera o campo td_entidade para entidade na tabela td_atributo
         $instrucao  = "ALTER TABLE ".ATRIBUTO." CHANGE td_entidade entidade INT NOT NULL;";
@@ -12,9 +12,10 @@
         }
     }
     */
-
+	
     try{
         // Retira o td_ do campo de chave estrangeira
+		/*
         foreach (tdc::d(ATRIBUTO) as $atributo){               
             $entidade = tdc::e($atributo->entidade);
             if (substr($atributo->nome,0,3) == 'td_'){
@@ -32,7 +33,8 @@
                 }
             }
         }
-
+		*/
+		/*
         if (!SQL::entity_exists('td_ecommerce_carrinhoitem')){
             // Nome da entidade de itens do pedido
             $instrucao = "ALTER TABLE td_ecommerce_carrinhoitem RENAME TO td_ecommerce_pedidoitem;";
@@ -43,11 +45,12 @@
                 $pedidoitem->armazenar();
             }
         }
-
+		*/
+		/*
         // Adiciona tipo aba na entidade
         $instrucao  = "ALTER TABLE td_entidade ADD COLUMN tipoaba VARCHAR(25) NULL;";
         $execute    = $conn->exec($instrucao);
-
+		*/
     }catch(Throwable $t){
         transacao::rollback();
         if (IS_SHOW_ERROR_MESSAGE){
