@@ -1,4 +1,5 @@
 <?php
+
 	// Carrega o arquivo CSS
 	$cssFile = PATH_SYSTEM_PAGE . $_page . '.css';
 	if (file_exists($cssFile)){
