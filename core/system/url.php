@@ -36,8 +36,8 @@
 	Session::append("URL_PAGE",Session::Get('URL_CORE') . FOLDER_PAGE . '/');
 	define('URL_PAGE', URL_CORE . FOLDER_PAGE . '/');
 
-	// URL PAGE
-	Session::append("URL_PAGE",Session::Get('URL_CORE') . FOLDER_PAGE . '/');	
+	// URL IMAGE
+	define('URL_IMG', URL_CORE . FOLDER_IMAGES . '/');
 
 	Session::append("URL_CURRENT_PROJECT",Session::Get("URL_MILES") . FOLDER_PROJECT . '/' . CURRENT_PROJECT_ID . "/");
 	define('URL_PROJECT',Session::Get("URL_MILES") . FOLDER_PROJECT . '/');
@@ -71,7 +71,7 @@
 	define('URL_CURRENT_FILE_TEMP', URL_CURRENT_FILE . 'temp/');
 
 	define('URL_CURRENT_PAGE',Session::Get("URL_CURRENT_PROJECT") . "page/");
-	define('URL_CURRENT_IMG',Session::Get("URL_CURRENT_PROJECT") . "images/");
+	define('URL_CURRENT_IMG',Session::Get("URL_CURRENT_PROJECT") . FOLDER_IMAGES . "/");
 
 	// URL da Biblioteca
 	define('URL_LIB',$mjc->system->url->lib);
