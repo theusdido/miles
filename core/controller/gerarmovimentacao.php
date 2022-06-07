@@ -255,7 +255,6 @@
 		}
 
 		$form->ncolunas = 3;
-
 		if ($arrayCamposAtributos){
 			$form->camposHTML($arrayCamposAtributos);
 		}

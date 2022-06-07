@@ -1,24 +1,24 @@
- <?php	
+<?php	
 /*
     * Framework MILES
     * @license : Teia Online.
     * @link http://www.teia.online
 		
-    * Classe que implementa conex�o com o banco de dados ODBC e retorna (simula) conexx�o PDO
+    * Classe que implementa conexão com o banco de dados ODBC e retorna (simula) conexão PDO
     * Data de Criacao: 17/07/2019
     * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 */	
 class ODBCPDO{
 	private $conn;
 	/*  
-		* M�todo construtor 
+		* Método construtor 
 	    * Data de Criacao: 17/07/2019
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
-		Cria uma conex�o ODBC 
+		Cria uma conexão ODBC 
 	*/	
 	public function __construct($host,$user,$pwd){			
-		$this->conn = odbc_connect($host,$user,$pwd); // Cria conex�o ODBC CACH�
+		$this->conn = odbc_connect($host,$user,$pwd); // Cria conexão ODBC CACHÉ
 		return $this->conn;
 	}
 	public function query($sql){

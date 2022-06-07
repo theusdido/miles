@@ -6,7 +6,7 @@ include_once PATH_SYSTEM . 'funcoes.php';
     * @license : Estilo Site Ltda.
     * @link http://www.estilosite.com.br
 		
-    * Classe que implementa a instru��o INSERT do SQL
+    * Classe que implementa a instrução INSERT do SQL
     * Data de Criacao: 28/06/2012
     * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 */	
@@ -14,11 +14,11 @@ include_once PATH_SYSTEM . 'funcoes.php';
 final class SqlInserir extends sqlInstrucao{
 
 	/*  
-		* M�todo setLinha 
+		* Método setLinha 
 	    * Data de Criacao: 29/06/2012
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
-		Atribui valoresa � determinadas colunas no banco de dados que ser�o inseridas
+		Atribui valores a determinadas colunas no banco de dados que serão inseridas
 		@parms $coluna
 		@parms $valor	
 	*/	
@@ -44,15 +44,15 @@ final class SqlInserir extends sqlInstrucao{
 	}
 	
 	/*  
-		* M�todo setCriterio 
+		* Método setCriterio 
 	    * Data de Criacao: 29/06/2012
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
-		N�o existe no contexto dessa classe, logo, ir� lan�ar um erro quando executado
+		Não existe no contexto dessa classe, logo, irá lançar um erro quando executado
 		@parms $criterio - Objeto SQL Criterio
 	*/		
 	public function setCriterio(SqlCriterio $criterio){
-		throw new Exepection ("N�o pode chamar Criterio de " . __CLASS__);
+		throw new Exepection ("Não pode chamar Criterio de " . __CLASS__);
 	}
 	
 	/*  
@@ -60,7 +60,7 @@ final class SqlInserir extends sqlInstrucao{
 	    * Data de Criacao: 29/06/2012
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
-		Monta e retorna a instru��o SQL		
+		Monta e retorna a instrução SQL		
 	*/			
 	public function getInstrucao(){
 		$valores = $colunas = "";

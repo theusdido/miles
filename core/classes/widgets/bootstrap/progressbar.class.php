@@ -18,7 +18,7 @@ include_once PATH_TDC . 'elemento.class.php';
 */	
 class ProgressBar Extends Elemento {
 	/*  
-		* M�todo construct 
+		* Método construct 
 	    * Data de Criacao: 18/10/2018
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 

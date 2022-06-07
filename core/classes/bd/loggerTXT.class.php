@@ -1,4 +1,4 @@
- <?php	
+<?php	
 include PATH_BD . 'logger.class.php';
 /*
     * Framework MILES
@@ -12,7 +12,7 @@ include PATH_BD . 'logger.class.php';
 class BdLoggerTXT extends BdLogger{
 
 	/*  
-		* M�todo escrever 
+		* Método escrever 
 	    * Data de Criacao: 04/06/2012
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
@@ -20,7 +20,7 @@ class BdLoggerTXT extends BdLogger{
 	*/		
 	public function escrever($mensagem){		
 		$datahora = date("d/m/Y H:i:s");
-		$usuario = "Autentica��o do Usu�rio";		
+		$usuario = "Autenticação do Usuário";		
 		if (Session::get()){
 			if (isset(Session::get()->username)){
 				$usuario = Session::get()->username;

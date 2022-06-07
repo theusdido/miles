@@ -1,4 +1,4 @@
- <?php
+<?php
 	if (isset($_GET["controller"])){
 		if ($_GET["controller"] == "executaSQL"){
 			// Adiciona o modelo se existir			

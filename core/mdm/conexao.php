@@ -5,6 +5,7 @@
 		session_name("miles_SISTEMA_" . $currentProjectParams);
 		session_start();
 	}
+	
 	if (isset($_SESSION["currentproject"])){
 		$currentproject = $_SESSION["currentproject"];
 	}else{

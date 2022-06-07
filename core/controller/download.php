@@ -1,4 +1,4 @@
- <?php
+<?php
 
 $format     = tdc::r("format");
 $filename   = tdc::r("filename");

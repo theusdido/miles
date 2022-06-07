@@ -1,4 +1,4 @@
- <?php 
+<?php 
 include_once PATH_TDC . 'elemento.class.php';
 /*
     * Framework MILES
@@ -12,7 +12,7 @@ include_once PATH_TDC . 'elemento.class.php';
 */	
 class Hr Extends Elemento {
 	/*  
-		* M�todo construct 
+		* Método construct 
 	    * Data de Criacao: 23/02/2016
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		

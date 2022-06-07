@@ -685,7 +685,6 @@ GradeDeDados.prototype.loadDadosEdicao = function(id){
 					$(".form-grupo-botao",contextoListarRel).first().hide();
 					$(".select-flag-generalizacao",contextoAdd).val(entidadeREL);
 					$(".select-flag-generalizacao").attr("readonly",true);
-
 					indice = dados.length;
 					var val = valores.split("id=");
 					for(v in val){

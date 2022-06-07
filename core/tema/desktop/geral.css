@@ -102,7 +102,6 @@ header, article{
 .navbar-default .navbar-brand:hover{
 	color:#999;
 }
-
 .b-novo,.b-salvar,.b-cancelar,.b-pesquisar,.b-executar,.b-gerar,.b-imprimir {
 	float:right;
 	margin: 0px 10px 10px 0px;
@@ -599,7 +598,6 @@ html, body { margin:0; height: 100%;} /* Para funcionar altura dos elementos aut
 	float:right;
 	width:150px;
 }
-
 .loading2{
 	display:none;
 }

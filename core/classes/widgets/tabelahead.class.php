@@ -1,4 +1,4 @@
- <?php	
+<?php	
 include_once PATH_TDC . 'elemento.class.php';
 /*
     * Framework MILES
@@ -12,11 +12,11 @@ include_once PATH_TDC . 'elemento.class.php';
 */	
 class TabelaHead Extends Elemento {
 	/*  
-		* M�todo construct 
+		* Método construct 
 	    * Data de Criacao: 12/01/2015
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
-		Inst�ncia uma nova linha do tipo Head
+		Instância uma nova linha do tipo Head
 	*/		
 	public function __construct(){		
 		parent::__construct('th');

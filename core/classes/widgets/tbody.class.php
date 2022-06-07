@@ -12,7 +12,7 @@ include_once PATH_TDC . 'elemento.class.php';
 */	
 class TBody Extends Elemento {
 	/*  
-		* M�todo construct 
+		* Método construct 
 	    * Data de Criacao: 05/01/2015
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		

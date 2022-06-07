@@ -11,7 +11,7 @@ include PATH_ADO . 'sqlexpressao.class.php';
 */	
 class BdLoggerHTML extends BdLogger{	
 	/*  
-		* M�todo escrever 
+		* Método escrever 
 	    * Data de Criacao: 04/06/2012
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		

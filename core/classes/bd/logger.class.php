@@ -1,17 +1,17 @@
- <?php	
+<?php	
 /*
     * Framework MILES
     * @license : Estilo Site Ltda.
     * @link http://www.estilosite.com.br
 		
-    * Classe que implementa a interface para defini��o de registro de log
+    * Classe que implementa a interface para definição de registro de log
     * Data de Criacao: 04/06/2012
     * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 */	
 abstract class BdLogger{
 	protected $arquivo;
 	/*  
-		* M�todo construtor 
+		* Método construtor 
 	    * Data de Criacao: 04/06/2012
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
@@ -23,11 +23,11 @@ abstract class BdLogger{
 	}	
 	
 	/*  
-		* M�todo escrever 
+		* Método escrever 
 	    * Data de Criacao: 04/06/2012
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
-		Ser� criado como abstrado para ser implementado nas classes filhas
+		Será criado como abstrado para ser implementado nas classes filhas
 	*/
 	abstract function escrever($mensagem);
 }

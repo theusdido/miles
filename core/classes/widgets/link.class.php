@@ -1,4 +1,4 @@
- <?php	
+<?php	
 include_once PATH_TDC . 'elemento.class.php';
 /*
     * Framework MILES
@@ -12,11 +12,11 @@ include_once PATH_TDC . 'elemento.class.php';
 */	
 class Link Extends Elemento {
 	/*  
-		* M�todo construct 
+		* Método construct 
 	    * Data de Criacao: 11/09/2012
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
-		Cria um link para uma p�gina externa
+		Cria um link para uma página externa
 	*/		
 	public function __construct(){	
 		parent::__construct('link');

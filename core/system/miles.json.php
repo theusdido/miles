@@ -18,7 +18,6 @@
 
 		// MILES JSON CONFIG
 		$mjc = json_decode($miles_json);
-
 		// Seta o projeto no MILES 
 		define('MILES_PROJECT',$mjc->currentproject);
 		

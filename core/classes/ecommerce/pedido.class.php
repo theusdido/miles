@@ -24,7 +24,11 @@ class Pedido {
         $this->valorfrete = $this->pedido->valorfrete;
         $this->itens();
     }
+<<<<<<< HEAD
 	/*
+=======
+	/* 
+>>>>>>> 99681f1 (baixando versao cedup)
 		* Método itens 
 	    * Data de Criacao: 02/06/2021
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
@@ -33,23 +37,43 @@ class Pedido {
 	*/
     public function itens(){
         $ft = tdc::f("pedido","=",$this->id);
+<<<<<<< HEAD
         $ft->setPropriedade("order","descricao");
         foreach(tdc::d('td_ecommerce_pedidoitem',$ft) as $item){
+=======
+        $ft->setPropriedade("order","descricao");        
+
+        foreach(tdc::d(getEntidadeEcommercePedidoItem(),$ft) as $item){
+>>>>>>> 99681f1 (baixando versao cedup)
             if ($this->isVariacaoTamanho){
                 $tamanhoproduto = tdc::p("td_ecommerce_tamanhoproduto",$item->produto);
                 $id             = $tamanhoproduto->id;
                 $produto		= tdc::p("td_ecommerce_produto",$tamanhoproduto->produto);
+<<<<<<< HEAD
                 $tamanho        = $tamanhoproduto->descricao;
                 $descricao      = $produto->nome . ' ' . $tamanho;
+=======
+                if ($this->isReferenciaProduto){
+                    $referencia     = $produto->referencia != "" ? " - Ref.: " . $produto->referencia : '';
+                }else{
+                    $referencia     = '';
+                }
+                $descricao      = $produto->nome . $referencia;
+                $tamanho        = $tamanhoproduto->descricao;
+                
+>>>>>>> 99681f1 (baixando versao cedup)
             }else{
                 $produto		= tdc::p("td_ecommerce_produto",$item->produto);
                 $id             = $produto->id;
                 $descricao      = $produto->nome;
                 $tamanho        = '';
             }
+<<<<<<< HEAD
 
             // Referência
             $referencia                 = $this->isReferenciaProduto ? $produto->referencia : '';
+=======
+>>>>>>> 99681f1 (baixando versao cedup)
             $valorTotal                 = $item->qtde * $item->valor;
             $this->quantidadeTotalItens = $this->quantidadeTotalItens + $item->qtde;
             $this->somaValor            = $this->somaValor + $item->valor;
@@ -58,13 +82,20 @@ class Pedido {
                 "id"            => $id,
                 "descricao"     => $descricao,
                 "tamanho"       => $tamanho,
+<<<<<<< HEAD
                 "produtonome"   => $item->produtonome,
                 "referencia"    => $item->referencia,
+=======
+>>>>>>> 99681f1 (baixando versao cedup)
                 "quantidade"    => $item->qtde,
                 "valor"         => $item->valor,
                 "total"         => $valorTotal
             ));
+<<<<<<< HEAD
         }
+=======
+        }        
+>>>>>>> 99681f1 (baixando versao cedup)
     }
 	/* 
 		* Método quantidadeItens 
@@ -104,7 +135,11 @@ class Pedido {
 		*	[ float ] - Valor total do pedido
 	*/
     public function getValorTotal(){
+<<<<<<< HEAD
         return $this->somaValorTotal() + $this->getValorFrete();
+=======
+        return $this->somaValorTotal() - $this->getValorFrete();
+>>>>>>> 99681f1 (baixando versao cedup)
     }
 	/* 
 		* Método getValorFrete

@@ -718,7 +718,6 @@ function criarAtributo(
 	$readonly = 0, #13
 	$legenda = ''
 ){
-
 	if ($tipohtml == 7){
 		if (getType($descricao) == "array"){			
 			$labelzerocheckbox 	= $descricao[1];
@@ -996,7 +995,6 @@ function getAtributoId($entidadeString,$atributoString,$conn = null){
 	}
 }
 function criarRelacionamento($conn,$tipo,$entidadePai,$entidadeFilho,$descricao = "",$atributo = 0){
-
 	$cardinalidade 	= getCardinalidade($tipo);
 	$sqlVerifica 	= "SELECT id FROM ".RELACIONAMENTO." WHERE pai = " . $entidadePai . " AND filho = " . $entidadeFilho . " AND tipo = " . $tipo;
 	$queryVerifica 	= $conn->query($sqlVerifica);

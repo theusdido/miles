@@ -1,5 +1,4 @@
 <?php
-
 	$controller 		= tdc::r("controller");
 	$systemcontroller 	= PATH_MVC_CONTROLLER . $controller .  '.php';	
 	$systemrequisicoes	= PATH_MVC_CONTROLLER . 'requisicoes.php';

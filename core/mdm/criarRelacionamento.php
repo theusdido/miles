@@ -2,7 +2,6 @@
 	require 'conexao.php';
 	require 'prefixo.php';	
 	require_once 'funcoes.php';
-
 	if (isset($_GET["op"])){		
 		if ($_GET["op"] == "lista_atributos"){
 			echo '<option value="0"></option>';		

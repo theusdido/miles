@@ -14,7 +14,7 @@ class LabelEdit Extends Elemento{
 	public $label;
 	public $input;	
 	/*  
-		* M�todo construct 
+		* Método construct 
 		* Data de Criacao: 30/08/2012
 		* @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
