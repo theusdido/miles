@@ -1,5 +1,6 @@
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
     "version": 2.0,
     "currentproject": 1,
     "folder":"miles/",
@@ -18,6 +19,9 @@
     "port": "auto"
 =======
 	"currentproject":2,
+=======
+	"currentproject":1,
+>>>>>>> 967f31d (subindo ignore miles.json)
 	"folder":"miles/",
 	"system":{
 		"url":{
