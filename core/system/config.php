@@ -109,7 +109,7 @@
 	
 	// Inclui os arquivos de funções do sistema
 	require 'funcoes.php';
-
+	
 	// Arquivos que fazem parte da estrutura do sistema
 	$strutuct = json_decode(file_get_contents($_path_config . 'estrutura.json'));
 
