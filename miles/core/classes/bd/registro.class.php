@@ -149,15 +149,21 @@ abstract class Registro {
 				if($key != "id") $sql->setLinha($key,$valor);
 			}
 		}
-
-		if ($conn = Transacao::get()){
-			Transacao::log($sql->getInstrucao());
-			$resultado = $conn->exec($sql->getInstrucao());
-			return $resultado;
-		}else{
-			throw new Exception("Não há transação ativa");
+		try{
+			if ($conn = Transacao::get()){
+				Transacao::log($sql->getInstrucao());
+				$resultado = $conn->exec($sql->getInstrucao());
+				return $resultado;
+			}else{
+				echo "Não há transação ativa <br/>\n";
+				return false;
+			}
+		}catch(Throwable $t){
+			if (IS_SHOW_ERROR_MESSAGE){
+				echo $sql->getInstrucao();
+			}
+			return false;
 		}
-
 	}
 	/*  
 		* Método carregar 

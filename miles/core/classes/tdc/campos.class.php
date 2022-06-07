@@ -11,7 +11,7 @@
 */	
 class Campos {
 	/*  
-		* M�todo TextoCurto
+		* Método TextoCurto
 	    * Data de Criacao: 12/03/2015
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
@@ -29,11 +29,11 @@ class Campos {
 		return $campo;
 	}
 	/*  
-		* M�todo TextoMedio
+		* Método TextoMedio
 	    * Data de Criacao: 12/03/2015
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
-		Campo de texto m�dio
+		Campo de texto médio
 	*/	
 	public static function TextoMedio($id,$nome,$descricao,$valor=null){		
 		$campo = tdClass::Criar("labeledit");
@@ -47,7 +47,7 @@ class Campos {
 		return $campo;
 	}
 	/*  
-		* M�todo TextoLongo
+		* Método TextoLongo
 	    * Data de Criacao: 12/03/2015
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
@@ -66,7 +66,7 @@ class Campos {
 	}	
 
 	/*  
-		* M�todo CPF
+		* Método CPF
 	    * Data de Criacao: 12/03/2015
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
@@ -84,7 +84,7 @@ class Campos {
 		return $campo;
 	}
 	/*  
-		* M�todo OCULTO
+		* Método OCULTO
 	    * Data de Criacao: 25/03/2015
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
@@ -101,7 +101,7 @@ class Campos {
 		return $campo;	
 	}
 	/*  
-		* M�todo Texarea
+		* Método Texarea
 	    * Data de Criacao: 25/03/2015
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
@@ -128,7 +128,7 @@ class Campos {
 		return $campo;
 	}
 	/*
-		* M�todo NumeroProcessoJudicial
+		* Método NumeroProcessoJudicial
 	    * Data de Criacao: 09/05/2015
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
@@ -162,10 +162,10 @@ class Campos {
 		*	@return any: Valor formatado para salvamento
 	*/		
 	public static function integridade($entidade,$atributo,$valor,$id){
-		
+
 		$sql = tdClass::Criar("sqlcriterio");
 		$sql->addFiltro("nome","=",$atributo);
-		$sql->addFiltro(PREFIXO . "_entidade","=",$entidade);		
+		$sql->addFiltro("entidade","=",$entidade);
 		$dataset = tdClass::Criar("repositorio",array(ATRIBUTO))->carregar($sql);
 		if (sizeof($dataset) <= 0) return $valor;
 		switch((int)$dataset[0]->tipohtml){
@@ -175,7 +175,7 @@ class Campos {
 			case 6: # Senha
 				$retorno = strlen($valor) == 32 ? $valor : md5($valor);
 			break;
-			case 7:
+			case 7:				
 				$retorno = $valor == "" ? 0 : $valor;
 			break;
 			case 10:
@@ -259,7 +259,7 @@ class Campos {
 					return null;
 				}	
 			break;
-			case 24: # Filtro (Endere�o)
+			case 24: # Filtro (Endereço)
 				if ($valor == "" || $valor == null){
 					return 0;
 				}else{
@@ -482,11 +482,11 @@ class Campos {
 	}
 
 	/*
-		* M�todo Lista
+		* Método Lista
 	    * Data de Criacao: 20/08/2019
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
-		Campo de lista �nica
+		Campo de lista única
 	*/
 	public static function Lista($id, $nome, $descricao, $opcoes = null){
 		$label = tdClass::Criar("label");
@@ -511,11 +511,11 @@ class Campos {
 	}
 	
 	/*
-		* M�todo InteiroBotao
+		* Método InteiroBotao
 	    * Data de Criacao: 20/08/2019
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
-		Campo de n�mero inteiro com bot�es
+		Campo de número inteiro com botões
 	*/
 	public static function InteiroBotao($id,$descricao){
 		$formgroup = tdClass::Criar("div");
@@ -555,11 +555,11 @@ class Campos {
 	}
 	
 	/*
-		* M�todo NumeroDecimal
+		* Método NumeroDecimal
 	    * Data de Criacao: 20/08/2019
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
-		Campo de n�mero decimal
+		Campo de número decimal
 	*/
 	public static function NumeroDecimal($id,$descricao,$valor=null){
 		$campo = tdClass::Criar("labeledit");
@@ -573,11 +573,11 @@ class Campos {
 	}
 	
 	/*
-		* M�todo Monet�rio
+		* Método Monetário
 	    * Data de Criacao: 20/08/2019
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
-		Campo de valor monet�rio
+		Campo de valor monetário
 	*/
 	public static function Monetario($id,$descricao,$valor=null){
 		$campo = tdClass::Criar("labeledit");

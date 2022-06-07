@@ -14,10 +14,12 @@
 		$campodescchave = 0,
 		$atributogeneralizacao = 0,
 		$exibirlegenda = 0,
-		$criarprojeto = 1,
-		$criarempresa = 1,
+		$criarprojeto = 0,
+		$criarempresa = 0,
 		$criarauth = 0,
-		$registrounico = 0
+		$registrounico = 0,
+		0,
+		false
 	);
 
 	// Criando Atributos

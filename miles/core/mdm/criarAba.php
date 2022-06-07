@@ -24,7 +24,7 @@
 		$descricao = executefunction("utf8charset",array($_POST["descricao"]));
 		$atributos = implode(",",$_POST["atributos"]);
 		if ($_POST["id"] == ""){
-			$sql = "INSERT INTO ".PREFIXO."abas (id,".PREFIXO."entidade,descricao,atributos) values ({$idRetorno},{$entidade},'{$descricao}','{$atributos}');";
+			$sql = "INSERT INTO ".PREFIXO."abas (id,entidade,descricao,atributos) values ({$idRetorno},{$entidade},'{$descricao}','{$atributos}');";
 			$id = $idRetorno;
 		}else{
 			$id = $_POST["id"];
@@ -83,11 +83,11 @@
 									$superclasse = "";
 									if ($query){
 										foreach($query->fetchAll() as $linha){
-											$superclasse = " OR ".PREFIXO."entidade = " . $linha["filho"];
+											$superclasse = " OR entidade = " . $linha["filho"];
 										}	
 									}
 									
-									$sql = "SELECT id,descricao,nome FROM ".PREFIXO."atributo WHERE ".PREFIXO."entidade = {$entidade} ORDER BY ordem ASC,id ASC";
+									$sql = "SELECT id,descricao,nome FROM ".PREFIXO."atributo WHERE entidade = {$entidade} ORDER BY ordem ASC,id ASC";
 									$query = $conn->query($sql);
 									foreach($query->fetchAll() as $linha){
 										$selected = "";
@@ -110,7 +110,7 @@
 					</form>
 					<div class="list-group">
 					<?php
-						$sql = "SELECT id,descricao,atributos FROM ".PREFIXO."abas WHERE ".PREFIXO."entidade = {$entidade}";
+						$sql = "SELECT id,descricao,atributos FROM ".PREFIXO."abas WHERE entidade = {$entidade}";
 						$query = $conn->query($sql);
 						foreach($query->fetchAll() as $linha){
 							$descricao = executefunction("utf8charset",array($linha['descricao']));

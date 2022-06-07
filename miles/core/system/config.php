@@ -104,7 +104,7 @@
 	define("REQUEST_PROTOCOL",$mjc->system->request_protocol."://");
 	
 	// Exibir mensagem de erro
-	define("IS_SHOW_ERROR_MESSAGE",false);
+	define("IS_SHOW_ERROR_MESSAGE",true);
 	
 	// Inclui os arquivos de funções do sistema
 	require 'funcoes.php';

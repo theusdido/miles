@@ -52,17 +52,11 @@
 		$criarsomatoriogradededados = isset($_POST["criarsomatoriogradededados"])?1:0;
 		$naoexibircampo				= isset($_POST["naoexibircampo"])?1:0;
 		
-		// Adiciona o PREFIXO caso o atributo seja uma chave estrangeira
-		if ($chaveestrangeira != null && $chaveestrangeira != "" && !empty($chaveestrangeira) && $chaveestrangeira!="null" && $chaveestrangeira!=0){
-			$nome_PREFIXO = PREFIXO;
-		}else{
-			$nome_PREFIXO = "";
-		}
 		$inicializacao = str_replace("'","\'",$_POST["inicializacao"]);
 		$query = $conn->query("SELECT nome FROM ".PREFIXO."entidade WHERE id = {$_POST["entidade"]}");
 		$linha = $query->fetchAll();
 		if ($_POST["id"] == ""){
-			$sql = "ALTER TABLE {$linha[0]["nome"]} ADD COLUMN {$nome_PREFIXO}{$nome} {$tipo}{$tamanho} {$nulo};";
+			$sql = "ALTER TABLE {$linha[0]["nome"]} ADD COLUMN {$nome} {$tipo}{$tamanho} {$nulo};";
 			$criar = $conn->query($sql);
 			if ($criar){
 				// ID Último atributo
@@ -70,7 +64,7 @@
 				$linha_ultimo = $query_ultimo->fetchAll();
 				$idRetorno = $linha_ultimo[0]["id"];				
 				
-				$sql = "INSERT INTO ".PREFIXO."atributo (id,".PREFIXO."entidade,nome,descricao,tipo,tamanho,nulo,tipohtml,exibirgradededados,chaveestrangeira,dataretroativa,inicializacao,readonly,indice,tipoinicializacao,atributodependencia,labelzerocheckbox,labelumcheckbox,legenda,desabilitar,criarsomatoriogradededados,naoexibircampo) VALUES ({$idRetorno},'{$_POST["entidade"]}','{$nome_PREFIXO}{$nome}','{$descricao}','{$tipo}',".$tamanhoSQL.",".((isset($_POST["nulo"]))?1:0).",'{$tipohtml}',{$exibirgradededados},{$chaveestrangeira},{$dataretroativa},'{$inicializacao}',{$readonly},'{$indice}',{$tipoinicializacao},{$atributodependencia},'{$labelzerocheckbox}','{$labelumcheckbox}','{$legenda}','{$desabilitar}',{$criarsomatoriogradededados},{$naoexibircampo});";
+				$sql = "INSERT INTO ".PREFIXO."atributo (id,entidade,nome,descricao,tipo,tamanho,nulo,tipohtml,exibirgradededados,chaveestrangeira,dataretroativa,inicializacao,readonly,indice,tipoinicializacao,atributodependencia,labelzerocheckbox,labelumcheckbox,legenda,desabilitar,criarsomatoriogradededados,naoexibircampo) VALUES ({$idRetorno},'{$_POST["entidade"]}','{$nome}','{$descricao}','{$tipo}',".$tamanhoSQL.",".((isset($_POST["nulo"]))?1:0).",'{$tipohtml}',{$exibirgradededados},{$chaveestrangeira},{$dataretroativa},'{$inicializacao}',{$readonly},'{$indice}',{$tipoinicializacao},{$atributodependencia},'{$labelzerocheckbox}','{$labelumcheckbox}','{$legenda}','{$desabilitar}',{$criarsomatoriogradededados},{$naoexibircampo});";
 				$query = $conn->query($sql);
 			}
 		}else{
@@ -82,7 +76,7 @@
 			$sql = "ALTER TABLE {$linha[0]["nome"]} CHANGE {$linha_old[0]['nome']} {$nome} {$tipo}{$tamanho} {$nulo};";			
 			$atualizar = $conn->query($sql);
 			if ($atualizar){
-				$sql = ("UPDATE ".PREFIXO."atributo SET ".PREFIXO."entidade='{$_POST["entidade"]}',nome='{$nome}',descricao='{$descricao}',tipo='{$tipo}',tamanho={$tamanhoSQL},nulo=".((isset($_POST["nulo"]))?1:0).", tipohtml = '{$tipohtml}', exibirgradededados = {$exibirgradededados} , chaveestrangeira = {$chaveestrangeira} , dataretroativa = {$dataretroativa}, inicializacao = '{$inicializacao}', readonly = {$readonly}, indice = '{$indice}', tipoinicializacao = {$tipoinicializacao}, atributodependencia = {$atributodependencia}, labelzerocheckbox = '{$labelzerocheckbox}' , labelumcheckbox = '{$labelumcheckbox}' , legenda = '{$legenda}' , desabilitar = '{$desabilitar}' , criarsomatoriogradededados = '{$criarsomatoriogradededados}' , naoexibircampo = {$naoexibircampo} WHERE id = {$_POST["id"]};");
+				$sql = ("UPDATE ".PREFIXO."atributo SET entidade='{$_POST["entidade"]}',nome='{$nome}',descricao='{$descricao}',tipo='{$tipo}',tamanho={$tamanhoSQL},nulo=".((isset($_POST["nulo"]))?1:0).", tipohtml = '{$tipohtml}', exibirgradededados = {$exibirgradededados} , chaveestrangeira = {$chaveestrangeira} , dataretroativa = {$dataretroativa}, inicializacao = '{$inicializacao}', readonly = {$readonly}, indice = '{$indice}', tipoinicializacao = {$tipoinicializacao}, atributodependencia = {$atributodependencia}, labelzerocheckbox = '{$labelzerocheckbox}' , labelumcheckbox = '{$labelumcheckbox}' , legenda = '{$legenda}' , desabilitar = '{$desabilitar}' , criarsomatoriogradededados = '{$criarsomatoriogradededados}' , naoexibircampo = {$naoexibircampo} WHERE id = {$_POST["id"]};");
 				$query = $conn->query($sql);
 			}
 		}
@@ -852,7 +846,7 @@
 								<select id="atributodependencia" name="atributodependencia" class="form-control">
 									<option value="" selected>Escolha a Atributo</option>
 									<?php
-										$sql = "SELECT id,descricao FROM ".PREFIXO."atributo WHERE ".PREFIXO."entidade = " . $entidade  . (isset($_GET["id"])?" and id <> " . $id:"");
+										$sql = "SELECT id,descricao FROM ".PREFIXO."atributo WHERE entidade = " . $entidade  . (isset($_GET["id"])?" and id <> " . $id:"");
 										$query = $conn->query($sql);
 										foreach($query->fetchAll() as $linha){
 											echo '<option value="'.$linha["id"].'">'.($linha["id"]<10?"0":"") . $linha["id"] ." - ".executefunction("utf8charset",array($linha["descricao"])).'</option>';

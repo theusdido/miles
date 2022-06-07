@@ -17,7 +17,7 @@
 		$criarprojeto = 1,
 		$criarempresa = 1,
 		$criarauth = 0,
-		$registrounico = 0
+		$registrounico = 0		
 	);
 
 	// Criando Atributos

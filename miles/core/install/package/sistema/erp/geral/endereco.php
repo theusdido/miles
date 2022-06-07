@@ -39,10 +39,11 @@
 		$criarauth = 0,
 		$registrounico = 0
 	);
-	criarAtributo($conn,$ufID,"nome","Nome","varchar","200",0,3,1,0,0,"");
-	criarAtributo($conn,$ufID,"sigla","Sigla","char","2",0,3,1,0,0,"");
-	criarAtributo($conn,$ufID,"pais","País","int",0,0,4,1,$paisID,0,"");
-	
+	$uf_nome 	= criarAtributo($conn,$ufID,"nome","Nome","varchar","200",0,3,1,0,0,"");
+	$uf_sigla 	= criarAtributo($conn,$ufID,"sigla","Sigla","char","2",0,3,1,0,0,"");
+	$uf_pais 	= criarAtributo($conn,$ufID,"pais","País","int",0,0,4,1,$paisID,0,"");
+	Entity::setDescriptionField($conn,$ufID ,$uf_nome,true);
+
 	// Adicionando Menu
 	addMenu($conn,$entidadeDescricaoUF,"files/cadastro/".$ufID."/".getSystemPREFIXO().$entidadeNomeUF.".html",'',$menu_geral,0,'geral-uf',$ufID,'cadastro');
 

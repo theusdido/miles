@@ -6,7 +6,7 @@
 	if (isset($_GET["op"])){		
 		if ($_GET["op"] == "lista_atributos"){
 			echo '<option value="0"></option>';		
-			$sql = "SELECT id,descricao,nome FROM ".PREFIXO."atributo WHERE ".PREFIXO."entidade = " . $_GET["entidade"];
+			$sql = "SELECT id,descricao,nome FROM ".PREFIXO."atributo WHERE entidade = " . $_GET["entidade"];
 			$query = $conn->query($sql);
 			foreach($query->fetchAll() as $linha){
 				echo '<option value="'.$linha["id"].'">'.executefunction("utf8charset",array($linha["descricao"])).' [ '.$linha["nome"].' ]</option>';
@@ -50,9 +50,9 @@
 		if ($id == ""){
 			$query_prox = $conn->query("SELECT IFNULL(MAX(id),0)+1 FROM ".PREFIXO."relacionamento");
 			$prox = $query_prox->fetch();
-			$sql = "INSERT INTO ".PREFIXO."relacionamento (id,pai,tipo,filho,".PREFIXO."atributo,descricao,cardinalidade) VALUES ({$prox[0]},{$entidade},'{$tipo}','{$entidadefilho}',{$atributo},'{$descricao}','{$cardinalidade}');";
+			$sql = "INSERT INTO ".PREFIXO."relacionamento (id,pai,tipo,filho,atributo,descricao,cardinalidade) VALUES ({$prox[0]},{$entidade},'{$tipo}','{$entidadefilho}',{$atributo},'{$descricao}','{$cardinalidade}');";
 		}else{
-			$sql = "UPDATE ".PREFIXO."relacionamento SET pai = {$entidade} , tipo = {$tipo} , filho = {$entidadefilho} , ".PREFIXO."atributo = {$atributo} , descricao = '{$descricao}' , cardinalidade = '{$cardinalidade}' WHERE id = {$id};";
+			$sql = "UPDATE ".PREFIXO."relacionamento SET pai = {$entidade} , tipo = {$tipo} , filho = {$entidadefilho} , atributo = {$atributo} , descricao = '{$descricao}' , cardinalidade = '{$cardinalidade}' WHERE id = {$id};";
 		}
 
 		$query = $conn->query($sql);
@@ -65,11 +65,11 @@
 		}
 	}
 	if ($id != ""){
-		$sql = "SELECT filho,tipo,pai,".PREFIXO."atributo,descricao,atributo FROM ".PREFIXO."relacionamento WHERE id = {$id}";
+		$sql = "SELECT filho,tipo,pai,atributo,descricao,atributo FROM ".PREFIXO."relacionamento WHERE id = {$id}";
 		$query = $conn->query($sql);
 		foreach ($query->fetchAll() as $linha){			
 			$tipo 			= $linha["tipo"];			
-			$atributo		= $linha[PREFIXO."atributo"];
+			$atributo		= $linha["atributo"];
 			$descricao		= executefunction("utf8encode",array($linha["descricao"]));
 			$entidadefilho 	= $linha["filho"];
 		}

@@ -13,7 +13,7 @@ include_once PATH_TDC . 'elemento.class.php';
 class TdFormulario Extends Elemento {
 	public $fieldset;
 	public $legenda;
-	protected $dados;
+	protected $dados = array();
 	public $ncolunas = 3;
 	public $fp;
 	public $gd = "gd";
@@ -23,11 +23,11 @@ class TdFormulario Extends Elemento {
 	public $exibirlegenda = true;
 
 	/*  
-		* M�todo construct 
+		* Método construct 
 	    * Data de Criacao: 27/12/2014
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
-		Formul�rio padr�o
+		Formulário padrão
 	*/		
 	function __construct(){
 		parent::__construct('form');
@@ -38,7 +38,7 @@ class TdFormulario Extends Elemento {
 		$this->linhacampos->class = "row-fluid form_campos";
 	}
 	/*  
-		* M�todo CamposHTML 
+		* Método CamposHTML 
 	    * Data de Criacao: 03/01/2015
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
@@ -107,17 +107,11 @@ class TdFormulario Extends Elemento {
 			}else{
 				$asteriscoobrigatorio = null;
 			}
+			$initialValue = $this->initialValue($coluna);
 			switch($coluna->tipohtml){
 				// Campo de Texto ( Longo )
 				case "3":
-					if (isset($this->dados[$i])){
-						$valor = $this->dados[$i]->{$coluna->nome};
-					}else if ($coluna->inicializacao != ""){
-						$valor = "";
-					}else{
-						$valor = "";
-					}
-					$campo = Campos::TextoLongo($coluna->nome,$coluna->nome,utf8charset($coluna->descricao,7),$valor);
+					$campo = Campos::TextoLongo($coluna->nome,$coluna->nome,utf8charset($coluna->descricao,7),$initialValue);
 					$campo->label->add($asteriscoobrigatorio);
 					$campo->input->data_entidade = $entidadeCOL;
 					if ($this->fp != "") $campo->input->class = $this->fp;
@@ -127,7 +121,7 @@ class TdFormulario Extends Elemento {
 					if ($coluna->nulo==0) $campo->input->required = "true";
 					$campo->input->atributo = $coluna->id;
 				break;
-				// Lista de Sele��o �nica
+				// Lista de Seleção única
 				case "4":
 					$label = tdClass::Criar("label");
 					$label->for = $coluna->nome;
@@ -167,7 +161,7 @@ class TdFormulario Extends Elemento {
 					$campo->add($label,$input_group);
 						
 				break;
-				// Lista de Sele��o M�ltipla
+				// Lista de Seleção Múltipla
 				case "5":
 					$label = tdClass::Criar("label");
 					$label->for = $coluna->nome;
@@ -186,7 +180,7 @@ class TdFormulario Extends Elemento {
 					$select->size = 0;
 					if ((int)$coluna->nulo == 1){
 						$op = tdClass::Criar("option");
-						$op->add(("-- Selecione uma op��o --"));
+						$op->add(("-- Selecione uma opção --"));
 						$op->value = "";
 						$select->add($op);
 					}
@@ -219,7 +213,7 @@ class TdFormulario Extends Elemento {
 					if ($coluna->nulo==0) $campo->input->required = "true";
 					$campo->input->data_entidade = $entidadeCOL;
 					$campo->input->atributo = $coluna->id;
-					if (!empty($this->dados)) $campo->input->value = utf8_encode($this->dados[$i]->{$coluna->nome});
+					$campo->input->value = $initialValue;
 				break;
 				// Checkbox
 				case "7":
@@ -267,9 +261,9 @@ class TdFormulario Extends Elemento {
 					$nao->add($nao_input);			
 					
 					if (!empty($this->dados)){
-						if ((int)$this->dados[$i]->{$coluna->nome} == 0) $nao->class = "active";
+						if ($initialValue == 0) $nao->class = "active";
 						else $sim->class="active";
-						$campo->input->value = $this->dados[$i]->{$coluna->nome};						
+						$campo->input->value = $initialValue;
 					}else{
 						$campo->input->value = 0;
 						$nao->class = "active";
@@ -294,7 +288,7 @@ class TdFormulario Extends Elemento {
 					if ($coluna->readonly) $campo->input->readonly = "true";
 					if ($coluna->desabilitar) $campo->input->disabled = "true";
 					if ($coluna->nulo==0) $campo->input->required = "true";
-					if (!empty($this->dados)) $campo->input->value = utf8_encode($this->dados[$i]->{$coluna->nome});		
+					$campo->input->value = $initialValue;
 				break;
 				// CEP (xxxxx-xxx)
 				case "9":
@@ -310,12 +304,12 @@ class TdFormulario Extends Elemento {
 					if ($coluna->readonly) $campo->input->readonly = "true";
 					if ($coluna->desabilitar) $campo->input->disabled = "true";
 					if ($coluna->nulo==0) $campo->input->required = "true";
-					if (!empty($this->dados)) $campo->input->value = utf8_encode($this->dados[$i]->{$coluna->nome});
+					$campo->input->value = $initialValue;
 					$campo->input->atributo = $coluna->id;
 				break;
 				// CPF (xxx.xxx.xxx-xx)
 				case "10":
-					$campo = Campos::CPF($coluna->nome,$coluna->nome,utf8charset($coluna->descricao,7),($this->dados[$i]?$this->dados[$i]->{$coluna->nome}:''));
+					$campo = Campos::CPF($coluna->nome,$coluna->nome,utf8charset($coluna->descricao,7),$initialValue);
 					$campo->input->data_entidade = $entidadeCOL;
 					$campo->label->add($asteriscoobrigatorio);
 					if ($this->fp != "") $campo->input->class = $this->fp;
@@ -327,15 +321,6 @@ class TdFormulario Extends Elemento {
 				break;
 				// Data (dd/mm/aaaa)
 				case "11":
-					if ($this->dados){
-						$valor = $this->dados[$i]->{$coluna->nome};
-					}else if($coluna->inicializacao != ""){
-						#eval('$valor = ' . $coluna->inicializacao . ';');
-						$valor = "";
-					}else{						
-						$valor = "";
-					}
-					
 					$campo = tdClass::Criar("div");
 					$campo->class = "form-group";
 					$input_group = tdClass::Criar("div");
@@ -358,8 +343,7 @@ class TdFormulario Extends Elemento {
 					$input->class = "form-control input-sm formato-data formato-calendario " . ($coluna->dataretroativa==1?'data-retroativa ':'') .  ($this->fp != ""?$this->fp:"");
 					if ($coluna->exibirgradededados ==1) $input->class = $this->gd;
 					if ($coluna->nulo==0) $input->required = "true";
-					//if ($valor != "")
-					$input->value = dateToMysqlFormat($valor,true);
+					$input->value = dateToMysqlFormat($initialValue,true);
 					
 					
 					$input_group_btn = tdClass::Criar("span");
@@ -390,10 +374,10 @@ class TdFormulario Extends Elemento {
 					if ($coluna->readonly) $campo->input->readonly = "true";
 					if ($coluna->desabilitar) $campo->input->disabled = "true";
 					if ($coluna->nulo==0) $campo->input->required = "true";
-					if (!empty($this->dados)) $campo->input->value = $this->dados[$i]->{$coluna->nome};
+					$campo->input->value = $initialValue;
 					$campo->input->atributo = $coluna->id;
 				break;
-				// Monet�rio R$
+				// Monetário R$
 				case "13":
 					$campo->label->add(utf8charset($coluna->descricao,7));
 					$campo->label->for = $coluna->nome;
@@ -407,12 +391,12 @@ class TdFormulario Extends Elemento {
 					if ($coluna->readonly) $campo->input->readonly = "true";
 					if ($coluna->desabilitar) $campo->input->disabled = "true";
 					if ($coluna->nulo==0) $campo->input->required = "true";
-					if (!empty($this->dados)) $campo->input->value = moneyToFloat($this->dados[$i]->{$coluna->nome},true);
+					$campo->input->value = moneyToFloat($initialValue,true);
 					$campo->input->atributo = $coluna->id;
 				break;
-				// �rea de Texto
+				// Área de Texto
 				case "14":
-					$campo = Campos::TextArea($coluna->nome,$coluna->nome,utf8charset($coluna->descricao,7),($this->dados[$i]?$this->dados[$i]->{$coluna->nome}:''),$entidadeCOL);
+					$campo = Campos::TextArea($coluna->nome,$coluna->nome,utf8charset($coluna->descricao,7),$initialValue,$entidadeCOL);
 					$campo->label->add($asteriscoobrigatorio);
 					$campo->data_entidade = $entidadeCOL;
 					if ($this->fp != "") $campo->class = $this->fp;
@@ -434,7 +418,7 @@ class TdFormulario Extends Elemento {
 					if ($coluna->readonly) $campo->input->readonly = "true";
 					if ($coluna->desabilitar) $campo->input->disabled = "true";
 					if ($coluna->nulo==0) $campo->input->required = "true";
-					if (!empty($this->dados)) $campo->input->value = utf8_encode($this->dados[$i]->{$coluna->nome});
+					$campo->input->value = $initialValue;
 					$campo->input->atributo = $coluna->id;
 				break;
 				// Oculto
@@ -460,12 +444,12 @@ class TdFormulario Extends Elemento {
 					if ($coluna->readonly) $campo->input->readonly = "true";
 					if ($coluna->desabilitar) $campo->input->disabled = "true";
 					if ($coluna->nulo==0) $campo->input->required = "true";
-					if (!empty($this->dados)) $campo->input->value = utf8_encode($this->dados[$i]->{$coluna->nome});
+					$campo->input->value = $initialValue;
 					$campo->input->atributo = $coluna->id;
 				break;
-				// N�mero Processo Judicial
+				// Número Processo Judicial
 				case "18":					
-					$campo = Campos::NumeroProcessoJudicial($coluna->nome,utf8charset($coluna->descricao,7),($this->dados[$i]?$this->dados[$i]->{$coluna->nome}:''),$entidadeCOL,$coluna->nulo);
+					$campo = Campos::NumeroProcessoJudicial($coluna->nome,utf8charset($coluna->descricao,7),$initialValue,$entidadeCOL,$coluna->nulo);
 					$campo->label->add($asteriscoobrigatorio);
 					if ($this->fp != "") $campo->input->class = $this->fp;
 					if ($coluna->exibirgradededados ==1) $campo->input->class = $this->gd;
@@ -483,30 +467,17 @@ class TdFormulario Extends Elemento {
 					$label->add(utf8charset($coluna->descricao,7));
 					$label->add($asteriscoobrigatorio);
 					
-					if ($this->dados){
-						$valor = $this->dados[$i]->{$coluna->nome};
-					}else if($coluna->inicializacao != ""){
-						#eval('$valor = ' . $coluna->inicializacao . ';');
-						$valor = "";
-					}else{						
-						$valor = "";
-					}
-					
 					$input = Campos::Oculto($coluna->nome,$coluna->nome,'');
 					$input->data_entidade = $entidadeCOL;
 					$input->class = "form-control td-file-hidden " . ($this->fp != ""?$this->fp:"");
 					if ($coluna->exibirgradededados ==1) $input->class = $this->gd;
 					if ($coluna->nulo==0) $input->required = "true";					
-					if ($this->dados){
-						if ($valor!=""){
-							//$input->value = $valor . "^" . $coluna->nome . "-" . $this->dados[$i]->id .".". getExtensao($valor);
-						}
-					}
+
 					$input->atributo = $coluna->id;
 					$iframe = tdClass::Criar("iframe");
 					$iframe->data_entidade = $coluna->{ENTIDADE};
 					$iframe->data_atributo=$coluna->id;
-					$iframe->src = tdClass::Criar("persistent",array(CONFIG,1))->contexto->urlupload . "&atributo={$coluna->id}&valor={$valor}&id=" . (isset($this->dados)?$this->dados[$i]->id:-1) . "&currentproject=" . Session::Get()->projeto;
+					$iframe->src = tdClass::Criar("persistent",array(CONFIG,1))->contexto->urlupload . "&atributo={$coluna->id}&valor={$initialValue}&id=" . (isset($this->dados)?$this->dados[$i]->id:-1) . "&currentproject=" . Session::Get()->projeto;
 					$campo->add($input,$label,$iframe);
 				break;
 				// CK Editor - Editor de Texto
@@ -516,7 +487,7 @@ class TdFormulario Extends Elemento {
 					$campoCKEDITOR = tdClass::Criar("div");
 					$idCampo = "div-editor-" . $nomeCompleto;
 					$campoCKEDITOR->id = $idCampo;
-					$dadosHTML = $this->dados[$i]?$this->dados[$i]->{$coluna->nome}:'';
+					$dadosHTML = $initialValue;
 					$oculto = Campos::Oculto($coluna->nome,$coluna->nome,$dadosHTML);
 					$oculto->data_entidade = $entidadeCOL;
 					$oculto->data_instanciaCKEDITOR = $instanciaEditor;
@@ -595,32 +566,18 @@ class TdFormulario Extends Elemento {
 					);
 					if ($this->fp != "") $campo->class = $this->fp;
 					$campo->atributo = $coluna->id;
-					if ($this->dados){
-						$valor = $this->dados[$i]->{$coluna->nome};
-					}else if($coluna->inicializacao != ""){
-						#eval('$valor = ' . $coluna->inicializacao . ';');
-						$valor = "";
-					}else{						
-						$valor = "";
-					}
-					if ($valor != ""){
+
+					if ($initialValue != ""){
 						$js = tdClass::Criar("script");
 						$js->add('
-							buscarFiltro('.$valor.');
+							buscarFiltro('.$initialValue.');
 						');
 						$campo->add($js);
 					}
 				break;
 				// Data e Hora
 				case "23":
-					if ($this->dados){
-						$valor = $this->dados[$i]->{$coluna->nome};
-					}else if($coluna->inicializacao != ""){
-						#eval('$valor = ' . $coluna->inicializacao . ';');
-						$valor = "";
-					}else{						
-						$valor = "";
-					}				
+				
 					$campo->label->add(utf8charset($coluna->descricao,7));
 					$campo->label->for = $coluna->nome;
 					$campo->label->class = "control-label";
@@ -634,9 +591,9 @@ class TdFormulario Extends Elemento {
 					if ($coluna->exibirgradededados ==1) $campo->input->class = $this->gd;
 					if ($coluna->nulo==0) $campo->input->required = "true";
 					$campo->input->atributo = $coluna->id;
-					$campo->input->value = utf8_encode($valor);					
+					$campo->input->value = $initialValue;
 				break;
-				// Filtro ( Endere�o Google )
+				// Filtro ( Endereço Google )
 				case "24":				
 					$campo = Campos::filtroEnderecoFiltro($coluna->nome,utf8charset($coluna->descricao,7),$coluna->chaveestrangeira,$asteriscoobrigatorio,$entidadeCOL
 						,($this->fp != "")?$this->fp:""
@@ -646,18 +603,11 @@ class TdFormulario Extends Elemento {
 					);
 					$campo->atributo = $coluna->id;
 				break;
-				// N�mero ( Inteiro )	
+				// Número ( Inteiro )	
 				case "25":
-					if ($this->dados){
-						$valor = $this->dados[$i]->{$coluna->nome};
-					}else if($coluna->inicializacao != ""){
-						#eval('$valor = ' . $coluna->inicializacao . ';');
-						$valor = "";
-					}else{						
-						$valor = "";
-					}
+
 					$campo = tdClass::Criar("div");
-					$input = Campos::TextoLongo($coluna->nome,$coluna->nome,utf8charset($coluna->descricao,7),$valor);
+					$input = Campos::TextoLongo($coluna->nome,$coluna->nome,utf8charset($coluna->descricao,7),$initialValue);
 					$input->label->add($asteriscoobrigatorio);
 					$input->input->data_entidade = $entidadeCOL;
 					$input->input->class = "formato-numerointeiro";
@@ -671,16 +621,8 @@ class TdFormulario Extends Elemento {
 				break;
 				// Número ( Decimal )
 				case "26":
-					if ($this->dados){
-						$valor = $this->dados[$i]->{$coluna->nome};
-					}else if($coluna->inicializacao != ""){
-						#eval('$valor = ' . $coluna->inicializacao . ';');
-						$valor = "";
-					}else{						
-						$valor = "";
-					}
 					$campo = tdClass::Criar("div");
-					$input = Campos::TextoLongo($coluna->nome,$coluna->nome,utf8charset($coluna->descricao,7),$valor);
+					$input = Campos::TextoLongo($coluna->nome,$coluna->nome,utf8charset($coluna->descricao,7),$initialValue);
 					$input->label->add($asteriscoobrigatorio);
 					$input->input->data_entidade = $entidadeCOL;
 					$input->input->class = "formato-numerodecimal";
@@ -737,21 +679,14 @@ class TdFormulario Extends Elemento {
 					
 					$modal->addHeader($coluna->descricao,null);
 					$modal->addBody("<textarea class='textarea-modal'></textarea>");
-					$modal->addFooter("<small>* <b>Quebra de Linha</b> n�o considerada.</small>");
+					$modal->addFooter("<small>* <b>Quebra de Linha</b> não considerada.</small>");
 
 					$campo->add($label,$input_group,$modal);
 				break;
 				// Hora
 				case "28":
-					if ($this->dados){
-						$valor = $this->dados[$i]->{$coluna->nome};
-					}else if($coluna->inicializacao != ""){
-						$valor = "";
-					}else{
-						$valor = "";
-					}
 					$campo = tdClass::Criar("div");
-					$input = Campos::TextoLongo($coluna->nome,$coluna->nome,utf8charset($coluna->descricao,7),$valor);
+					$input = Campos::TextoLongo($coluna->nome,$coluna->nome,utf8charset($coluna->descricao,7),$initialValue);
 					$input->label->add($asteriscoobrigatorio);
 					$input->input->data_entidade = $entidadeCOL;
 					$input->input->class = "formato-hora";
@@ -777,7 +712,7 @@ class TdFormulario Extends Elemento {
 					if ($coluna->readonly) $campo->input->readonly = "true";
 					if ($coluna->desabilitar) $campo->input->disabled = "true";
 					if ($coluna->nulo==0) $campo->input->required = "true";
-					if (!empty($this->dados)) $campo->input->value = utf8charset($this->dados[$i]->{$coluna->nome},null,'d');
+					$campo->input->value = $initialValue;
 					$campo->input->atributo = $coluna->id;				
 				break;
 				// Is Null e Is Empty
@@ -841,7 +776,7 @@ class TdFormulario Extends Elemento {
 					$campo->input->class = "form-control input-sm "  . ($this->fp != ""?$this->fp:"");
 					if ($coluna->exibirgradededados ==1) $campo->input->class = $this->gd;
 					if ($coluna->nulo==0) $campo->input->required = "true";
-					if (!empty($this->dados)) $campo->input->value = utf8charset($this->dados[$i]->{$coluna->nome},null,'d');
+					$campo->input->value = $initialValue;
 					$campo->input->atributo = $coluna->id;
 				break;	
 			}
@@ -873,11 +808,11 @@ class TdFormulario Extends Elemento {
 		}
 	}
 	/*
-		* M�todo Dados 
+		* Método Dados 
 	    * Data de Criacao: 12/01/2015
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 	
-		Seta o valor da propriedade $dados, utilizado para preencher as informa��es na hora da montagem do formul�rio
+		Seta o valor da propriedade $dados, utilizado para preencher as informações na hora da montagem do formulário
 		@params $dados ( Objeto DataSet )
 	*/			
 	public function dados($dados){
@@ -888,13 +823,13 @@ class TdFormulario Extends Elemento {
 		}
 	}
 	/*  
-		* M�todo CamposObrigatorio 
+		* Método CamposObrigatorio 
 	    * Data de Criacao: 20/01/2015
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 	
-		Retorna os campos que s�o obrigatorios
+		Retorna os campos que são obrigatorios
 		@params $dados ( Objeto DataSet )
-	*/			
+	*/
 	public function camposObrigatorio($dados){	
 		$retorno = "";
 		foreach($dados as $dado){
@@ -985,7 +920,7 @@ class TdFormulario Extends Elemento {
 	public static function getEntidadesRelacionamento($entidade){
 		$sql = tdClass::Criar("sqlcriterio");
 		$sql->add(tdClass::Criar("sqlfiltro",array("pai","=",$entidade)));
-		$sql->add(tdClass::Criar("sqlfiltro",array("tipo",'<>',3))); // N�o seleciona relacionamento de Generaliza��o
+		$sql->add(tdClass::Criar("sqlfiltro",array("tipo",'<>',3))); // Não seleciona relacionamento de Generalização
 		
 		// Carrega os dados da ENTIDADE
 		$dataset = tdClass::Criar("repositorio",array(RELACIONAMENTO))->carregar($sql);
@@ -1038,7 +973,7 @@ class TdFormulario Extends Elemento {
 		$registro = tdClass::Criar("repositorio",array($entidadeOBJ->contexto->nome))->carregar($sql);
 		if ($registro){
 			foreach ($registro as $dado){
-				$dados .= ($dados=="")?"id=".$dado->id:"�id=".$dado->id;
+				$dados .= ($dados=="")?"id=".$dado->id:"&id=".$dado->id;
 				foreach($campos as $c){
 					foreach($c as $key => $val){						
 						if (is_string($key)){							
@@ -1046,7 +981,7 @@ class TdFormulario Extends Elemento {
 								$htmltipo = $val;
 							}
 							if ($key != "tipohtml"){
-								$dados .= "�" . $val . "=" . getHTMLTipoFormato($htmltipo,$dado->{$val});
+								$dados .= "&" . $val . "=" . getHTMLTipoFormato($htmltipo,$dado->{$val});
 							}
 						}
 					}
@@ -1079,6 +1014,15 @@ class TdFormulario Extends Elemento {
 		}
 		return $entidadesRelGrades;
 	}
+	/*
+		* Método isNumberDataType
+	    * Data de Criacao: 27/12/2014
+	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
+
+		Retorna se o atributo é do tipo número
+		@params $atributo ( ID do atributo)
+	*/
+
 	public static function isNumberDataType($atributo){
 		$numberdatatype = false;
 		switch(getDataType($atributo)){
@@ -1088,5 +1032,29 @@ class TdFormulario Extends Elemento {
 			break;
 		}
 		return $numberdatatype;
+	}
+	/*
+		* Método initialValue
+	    * Data de Criacao: 07/09/2021
+	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
+
+		Retorna o valor da inicialização do campo
+		@params $coluna
+	*/
+	private function initialValue($coluna){
+		if ($coluna->inicializacao != ''){
+			return utf8charset($coluna->inicializacao);
+		}
+		if (sizeof($this->dados) > 0){
+			if (isset($this->dados[0]->{$coluna->nome})){
+				return utf8charset($this->dados[0]->{$coluna->nome});
+			}
+		}
+
+		if (tdFormulario::isNumberDataType($coluna->id)){
+			return 0;
+		}else{
+			return '';
+		}
 	}
 }
