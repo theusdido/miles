@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
     "version": 2.0,
     "currentproject": 1,
     "folder":"miles/",
@@ -16,17 +15,4 @@
     "is_transaction_log": false,
     "database_current": "desenv",
     "port": "auto"
-=======
-	"currentproject":1,
-	"folder":"miles/",
-	"system":{
-		"url":{
-			"lib":"http://teia.tec.br/miles/sistema/lib/"
-		},
-		"request_protocol":"http",
-		"package":"erp"
-	},
-	"theme":"desktop",
-	"prefix":"td"
->>>>>>> 94897ab (ignore)
 }
