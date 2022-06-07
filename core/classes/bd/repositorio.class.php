@@ -64,11 +64,7 @@ final class Repositorio {
 			$this->registros = $resultados;
 			return $resultados;
 		}else{		
-<<<<<<< HEAD
 			throw new Exception("Não há transação ativa: Repositorio Carregar");
-=======
-			throw new Exception("Não há transação ativa: Repositorio Carrgar");
->>>>>>> 287b430 (instalação góes)
 		}
 	}
 
