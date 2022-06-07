@@ -27,7 +27,7 @@
 	$diapagamento 	= criarAtributo($conn,$entidadeID,"diapagamento","Dia do Pagamento","tinyint",0,1,25,1);
 
 	// Criando Acesso
-	$menu = addMenu($conn,'Associação','#','',0,0,'associacao');	
+	$menu = addMenu($conn,'Associação','#','',0,0,'associacao');
 
 	// Adicionando Menu
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu,1,'associacao-' . $entidadeNome,$entidadeID,'cadastro');
