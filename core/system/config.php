@@ -1,15 +1,15 @@
 <?php
 	
 	// Classe de Configuração do sistema
-	require $_path_core . 'classes/system/config.class.php';
-
+	require PATH_CORE . 'classes/system/config.class.php';
+	
 	// Variável global do projeto atual
 	$currentProject = Config::currentProject();
 	$_phpversion 	= explode('.',phpversion());
 	$phpversion 	= (int)$_phpversion[0];
 	$phpbuild 		= (int)$_phpversion[1];
 	$phpcompilation	= isset($_phpversion[2])?(int)$_phpversion[2]:0;
-
+	
 	$_session_isactive = false;
 	if ($phpversion >= 5 && $phpbuild > 3){
 		if (session_status() === PHP_SESSION_ACTIVE) {
@@ -21,23 +21,13 @@
 		}
 	}
 	
-	// Sessão do Sistema
-	$sessionName = "miles_" . AMBIENTE . "_" . $currentProject;
-	
 	// Verificar se a sessão não já está aberta.
-	if (!$_session_isactive){
-
-		// Cria uma nova sessão
+	if (!$_session_isactive) {
+		// Sessão do Sistema
+		$sessionName = "miles_" . AMBIENTE . "_" . $currentProject;
 		session_name($sessionName);
 		session_start();
 	}
-	
-	if (!defined('SCHEMA')){
-		if (isset($_SESSION["db_base"])){
-			define('SCHEMA',$_SESSION["db_base"]);
-		}
-	}
-
 	if (!defined('SCHEMA')){
 		if (isset($_SESSION["db_base"])){
 			define('SCHEMA',$_SESSION["db_base"]);
@@ -115,10 +105,10 @@
 	define("REQUEST_PROTOCOL",$mjc->system->request_protocol."://");
 	
 	// Exibir mensagem de erro
-	define("IS_SHOW_ERROR_MESSAGE",$mjc->is_show_error_message);
-
-	// Define a estratégia de log da transação
-	define('IS_TRANSACTION_LOG',$mjc->is_transaction_log);
+	define("IS_SHOW_ERROR_MESSAGE",true);
+	
+	// Inclui os arquivos de funções do sistema
+	require 'funcoes.php';
 
 	// Arquivos que fazem parte da estrutura do sistema
 	$strutuct = json_decode(file_get_contents($_path_config . 'estrutura.json'));

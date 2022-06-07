@@ -38,6 +38,10 @@
 	// FOLDER PAGE
 	define("FOLDER_PAGE","page");
 
+	#***************************************
+	# PATH
+	#***************************************
+
 	// FOLDER WEBSITE
 	define("FOLDER_WEBSITE","website");
 

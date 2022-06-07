@@ -21,7 +21,7 @@
 	);
 
 	// Criando Atributos
-	$nome 		= criarAtributo($conn,$entidadeID,"nome","Nome","varchar",200,0,3,1,0,0,"");
+	$nome 		= criarAtributo($conn,$entidadeID,"nome","Nome","varchar",200,0,3,1,0,0,"");	
 	$tipopessoa = criarAtributo($conn,$entidadeID,"tipopessoa","Tipo","int",0,1,16,0,0,0,'',1,0);
 
 	// Seta atributo generalização

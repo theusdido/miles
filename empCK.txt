@@ -1,0 +1,187 @@
+
+        <Envio>
+            <ModeloDocumento>NFSE</ModeloDocumento>
+            <Versao>1.0</Versao>
+            <RPS>
+                <RPSNumero>3</RPSNumero>
+                <RPSSerie>U</RPSSerie>
+                <RPSTipo>1</RPSTipo>
+                <dEmis>2014-07-10T08:00:00</dEmis>
+                <dCompetencia />
+                <LocalPrestServ />
+                <natOp>3</natOp>
+                <Operacao />
+                <NumProcesso />
+                <RegEspTrib>1</RegEspTrib>
+                <OptSN>2</OptSN>
+                <IncCult>2</IncCult>
+                <Status>1</Status>
+                <cVerificaRPS />
+                <EmpreitadaGlobal />
+                <tpAmb>2</tpAmb>
+                <RPSSubs>
+                    <SubsNumero />
+                    <SubsSerie />
+                    <SubsTipo />
+                    <SubsNFSeNumero />
+                    <SubsDEmisNFSe />
+                </RPSSubs>
+                <Prestador>
+                    <CNPJ_prest>83248021000158</CNPJ_prest>
+                    <xNome>Góes Empreendimentos Imobiliários e Cobrança de Títulos Ltda</xNome>
+                    <xFant />
+                    <IM />
+                    <IE />
+                    <CMC />
+                    <enderPrest>
+                        <TPEnd />
+                        <xLgr />
+                        <nro />
+                        <xCpl />
+                        <xBairro />
+                        <cMun />
+                        <UF />
+                        <CEP />
+                        <fone />
+                        <Email />
+                    </enderPrest>
+                </Prestador>
+                <ListaItens />
+                <ListaParcelas />
+                <Servico>
+                    <Valores>
+                        <ValServicos>200.00</ValServicos>
+                        <ValDeducoes>0.00</ValDeducoes>
+                        <ValPIS>0.00</ValPIS>
+                        <ValCOFINS>0.00</ValCOFINS>
+                        <ValINSS>0.00</ValINSS>
+                        <ValIR>0.00</ValIR>
+                        <ValCSLL>0.00</ValCSLL>
+                        <ValBCPIS>0.00</ValBCPIS>
+                        <ValBCCOFINS>0.00</ValBCCOFINS>
+                        <ValBCINSS>0.00</ValBCINSS>
+                        <ValBCIRRF>0.00</ValBCIRRF>
+                        <ValBCCSLL>0.00</ValBCCSLL>
+                        <ISSRetido>2</ISSRetido>
+                        <RespRetencao />
+                        <Tributavel />
+                        <ValISS>4.00</ValISS>
+                        <ValISSRetido />
+                        <ValBaseCalculo>200.00</ValBaseCalculo>
+                        <ValOutrasRetencoes />
+                        <ValAliqISS>2.00</ValAliqISS>
+                        <ValAliqPIS>0</ValAliqPIS>
+                        <PISRetido />
+                        <ValAliqCOFINS>0.0800</ValAliqCOFINS>
+                        <COFINSRetido/>
+                        <ValAliqIR>0.0000</ValAliqIR>
+                        <IRRetido />
+                        <ValAliqCSLL>0.0000</ValAliqCSLL>
+                        <CSLLRetido />
+                        <ValAliqINSS>0.0000</ValAliqINSS>
+                        <INSSRetido />
+                        <ValLiquido />
+                        <ValAliqCpp />
+                        <CppRetido />
+                        <ValCpp />
+                        <OutrasRetencoesRetido />
+                        <ValAliqTotTributos />
+                        <ValLiquido>200.00</ValLiquido>
+                        <ValDescIncond>0.00</ValDescIncond>
+                        <ValDescCond>0.00</ValDescCond>
+                        <ValAliqISSoMunic />
+                        <InfValPIS />
+                        <InfValCOFINS />
+                        <ValLiqFatura />
+                        <ValBCISSRetido />
+                    </Valores>
+                    <LocalPrestacao>
+                        <SerEndTpLgr />
+                        <SerEndLgr />
+                        <SerEndNumero />
+                        <SerEndComplemento />
+                        <SerEndBairro />
+                        <SerEndxMun />
+                        <SerEndcMun />
+                        <SerEndUF />
+                        <SerEndCep />
+                        <SerEndSiglaUF />
+                    </LocalPrestacao>
+                    <cServ />
+                    <IteListServico>1405</IteListServico>
+                    <Cnae>0</Cnae>
+                    <fPagamento />
+                    <Discriminacao>Servico de recapagem de pneus.</Discriminacao>
+                    <cMun>4305108</cMun>
+                    <cMunIncidencia>4305108</cMunIncidencia>
+                    <SerQuantidade />
+                    <SerUnidade />
+                    <SerNumAlva />
+                    <PaiPreServico />
+                    <dVencimento />
+                    <ObsInsPagamento />
+                    <ObrigoMunic />
+                    <TributacaoISS />
+                </Servico>
+                <Tomador>
+                    <TomaCNPJ>00000000000000</TomaCNPJ>
+                    <TomaCPF />
+                    <TomaIE />
+                    <TomaIM />
+                    <TomaRazaoSocial>Henrique</TomaRazaoSocial>
+                    <TomatpLgr>RUA</TomatpLgr>
+                    <TomaEndereco>RUA DO COMERCIO</TomaEndereco>
+                    <TomaNumero>3000</TomaNumero>
+                    <TomaComplemento>321</TomaComplemento>
+                    <TomaBairro>UNIVERSITARIO</TomaBairro>
+                    <TomacMun>4305108</TomacMun>
+                    <TomaxMun>Caxias do Sul</TomaxMun>
+                    <TomaUF>RS</TomaUF>
+                    <TomaPais>BR</TomaPais>
+                    <TomaCEP>98700000</TomaCEP>
+                    <TomaTelefone>5535354800</TomaTelefone>
+                    <TomaEmail>teste@migrate.com.br</TomaEmail>
+                    <TomaSite>www.migratecompany.com.br</TomaSite>
+                    <TomaIME />
+                </Tomador>
+                <IntermServico>
+                    <IntermRazaoSocial />
+                    <IntermCNPJ />
+                    <IntermCPF />
+                    <IntermIM />
+                </IntermServico>
+                <ConstCivil>
+                    <CodObra />
+                    <Art />
+                    <ObraLog />
+                    <ObraCompl />
+                    <ObraNumero />
+                    <ObraBairro />
+                    <ObraCEP />
+                    <ObraMun />
+                    <ObraUF />
+                    <ObraPais />
+                    <ObraCEI />
+                    <ObraMatricula />
+                    <ObraValRedBC />
+                </ConstCivil>
+                <ListaDed />
+                <Transportadora>
+                    <TraNome />
+                    <TraCPFCNPJ />
+                    <TraIE />
+                    <TraPlaca />
+                    <TraEnd />
+                    <TraMun />
+                    <TraUF />
+                    <TraPais />
+                    <TraTipoFrete />
+                </Transportadora>
+                <NFSOutrasinformacoes />
+                <Arquivo />
+                <ExtensaoArquivo />
+            </RPS>
+        </Envio>
+    
+-------------------------
+1c76c7d022e0e16c1acc8f2a53212e77

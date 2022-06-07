@@ -16,7 +16,10 @@
 	require $_path_system . 'functions.php';
 	
 	// Carrega as configurações do arquivo miles.json
-	require $_path_system . 'miles.json.php';
+	require PATH_MILES . 'core/system/miles.json.php';
+
+	// Carrega os arquivos de configuração do sistema
+	require PATH_MILES . 'core/system/globais.php';
 	
 	// Carrega os arquivos de configuração do sistema	
 	require $_path_system . 'config.php';

@@ -36,6 +36,9 @@
 	Session::append("URL_PAGE",Session::Get('URL_CORE') . FOLDER_PAGE . '/');
 	define('URL_PAGE', URL_CORE . FOLDER_PAGE . '/');
 
+	// URL PAGE
+	Session::append("URL_PAGE",Session::Get('URL_CORE') . FOLDER_PAGE . '/');	
+
 	Session::append("URL_CURRENT_PROJECT",Session::Get("URL_MILES") . FOLDER_PROJECT . '/' . CURRENT_PROJECT_ID . "/");
 	define('URL_PROJECT',Session::Get("URL_MILES") . FOLDER_PROJECT . '/');
 

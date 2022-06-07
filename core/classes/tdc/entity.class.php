@@ -116,7 +116,10 @@ class Entity{
 				}
 			break;
 			case 'array':
-					if (gettype($attr['tipohtml']) == 'string'){
+					$tipohtml	= isset($attr['tipohtml'])?$attr['tipohtml']:3;
+					$tipo 		= isset($attr['tipo'])?$attr['tipo']:'varchar';
+					$tamanho	= isset($attr['tamanho'])?$attr['tamanho']:($tipo=='varchar'?200:0);
+					if (gettype($tipohtml) == 'string'){
 						switch($attr['tipohtml']){
 							case 'numero_inteiro':
 								$tipohtml	= 25;
@@ -134,10 +137,6 @@ class Entity{
 								$tamanho	= 0;
 							break;
 						}
-					}else{
-						$tipohtml	= isset($attr['tipohtml'])?$attr['tipohtml']:3;
-						$tipo 		= $attr['tipo'];
-						$tamanho	= isset($attr['tamanho'])?$attr['tamanho']:0;
 					}
 					$is_obrigatorio 		= isset($attr['is_obrigatorio']) ? $attr['is_obrigatorio'] : 1;
 					$is_exibirgradedados	= isset($attr['is_exibirgradedados']) ? $attr['is_exibirgradedados'] : 0;
