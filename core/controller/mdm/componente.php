@@ -1,51 +1,26 @@
 <?php
-<<<<<<< HEAD
 
 	$entidade 		= tdc::e(tdc::r('entidade'));
 	$descricao_doc 	= $entidade->id . " - " . $entidade->descricao . "[ ".$entidade->nome." ]";
 	switch(tdc::r('op')){
 		case 'criarcadastro':
-=======
-	$entidade 		= tdc::e(tdc::r('entidade'));
-	$descricao_doc 	= $entidade->id . " - " . $entidade->descricao . "[ ".$entidade->nome." ]";
-	switch(tdc::r('op')){
-		case 'criarpagina':
->>>>>>> d446a0d (consulta)
 			$path 		= PATH_FILES_CADASTRO . $entidade->id . "/";
 		break;
 		case 'criarconsulta':
 			$path 		= PATH_FILES_CONSULTA . tdc::r('id') . "/";
 		break;
-<<<<<<< HEAD
 		case 'criarmovimentacao':
 			$path 		= PATH_FILES_MOVIMENTACAO . tdc::r('id') . '/';
 		break;
 		case 'criarrelatorio':
 			$path 		= PATH_FILES_RELATORIO . tdc::r('id') . '/';	
 		break;
-=======
->>>>>>> d446a0d (consulta)
 	}
 
 	// Documentação
 	$datacriacaodoc = "* @Data de Criacao: ".date("d/m/Y H:i:s");
 	$authordoc 		= "* @Criado por: ".$_SESSION["username"].", @id: ".$_SESSION["userid"];
 	$paginadoc 		= "* @Página: {$descricao_doc}";
-<<<<<<< HEAD
-	
-	// Cria o diretório do registro caso não exista
-	if (!file_exists($path)){
-		tdFile::mkdir($path,0777);
-	}
-
-	// Cria o arquivo HTML
-	$fp = fopen($path . tdc::r('filename') ,'w');
-	fwrite($fp,htmlespecialcaracteres($_POST["html"],2));
-	fclose($fp);
-
-	// Cria o arquivo HTML Embutido Dinâmico
-	$dhtmlFile = $path . tdc::r('filenamehtm');
-=======
 
 	// Cria o diretório do registro caso não exista
 	if (!file_exists($path)){
@@ -58,12 +33,7 @@
 	fclose($fp);
 
 	// Cria o arquivo HTML Embutido Dinâmico
-<<<<<<< HEAD
-	$dhtmlFile = $path . tdc::r('filename') . ".htm";
->>>>>>> d446a0d (consulta)
-=======
 	$dhtmlFile = $path . tdc::r('filenamehtm');
->>>>>>> 0017abd (status na grade de dados)
 	if (!file_exists($dhtmlFile)){
 		$fp = fopen($dhtmlFile,'w');
 		fwrite($fp,"<!--\n * HTML Personalizado \n {$datacriacaodoc} \n {$authordoc} \n {$paginadoc} \n\n Escreve seu código HTML personalizado aqui! \n-->\n");
@@ -160,8 +130,4 @@
 	}
 
 	// Cria o MDM File JavaScript Compile
-<<<<<<< HEAD
 	include 'javascriptfile.php';
-=======
-	include 'javascriptfile.php';
->>>>>>> d446a0d (consulta)

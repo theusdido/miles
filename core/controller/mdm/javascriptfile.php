@@ -23,12 +23,9 @@
 			$filtro_atributo = tdc::f();
 			$filtro_atributo->addFiltro('entidade','=',$entidade->id);
 			$filtro_atributo->setPropriedade('order','ordem ASC');
-<<<<<<< HEAD
 
 			$filtro_relacionamento	= tdc::f();
 			$filtro_relacionamento->addFiltro("pai","=",$entidade->id);
-=======
->>>>>>> 0017abd (status na grade de dados)
 			fwrite($mdmJSCompile,utf8charset("
 				td_entidade[{$entidade->id}] = {
 					id:{$entidade->id},
@@ -44,12 +41,8 @@
 					registrounico:{$entidade->registrounico},
 					pacote:'{$entidade->pacote}',
 					nomecompleto:'".(($entidade->pacote==""?"":$entidade->pacote."."))."{$entidade->nome}',
-<<<<<<< HEAD
 					atributos:".tdc::dj(ATRIBUTO,$filtro_atributo).",
 					relacionamentos:".tdc::dj(RELACIONAMENTO,$filtro_relacionamento)."
-=======
-					atributos:".tdc::dj(ATRIBUTO,$filtro_atributo)."
->>>>>>> 0017abd (status na grade de dados)
 				};
 			",$localCharset));
 		}

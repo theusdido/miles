@@ -72,23 +72,11 @@
 			if ($atualizar){
 				$sql = ("UPDATE ".PREFIXO."atributo SET entidade='{$_POST["entidade"]}',nome='{$nome}',descricao='{$descricao}',tipo='{$tipo}',tamanho={$tamanhoSQL},nulo=".((isset($_POST["nulo"]))?1:0).", tipohtml = '{$tipohtml}', exibirgradededados = {$exibirgradededados} , chaveestrangeira = {$chaveestrangeira} , dataretroativa = {$dataretroativa}, inicializacao = '{$inicializacao}', readonly = {$readonly}, indice = '{$indice}', tipoinicializacao = {$tipoinicializacao}, atributodependencia = {$atributodependencia}, labelzerocheckbox = '{$labelzerocheckbox}' , labelumcheckbox = '{$labelumcheckbox}' , legenda = '{$legenda}' , desabilitar = '{$desabilitar}' , criarsomatoriogradededados = '{$criarsomatoriogradededados}' , naoexibircampo = {$naoexibircampo} WHERE id = {$_POST["id"]};");
 				$query = $conn->query($sql);
-<<<<<<< HEAD
 		$error = $conn->errorInfo();
 		if ($error[0] != "00000"){
 			var_dump($error);
 		}else{
 			header('Location: criarAtributo.php?entidade=' . $_POST["entidade"] . "&id=" . $idRetorno . getURLParamsProject("&"));
-=======
-			}
-			$error = $conn->errorInfo();
-			if ($error[0] != "00000"){
-				var_dump($error);
-				$conn->rollback();
-			}else{
-				$conn->commit();
-				header('Location: criarAtributo.php?entidade=' . $_POST["entidade"] . "&id=" . $idRetorno . getURLParamsProject("&"));
-			}
->>>>>>> 0017abd (status na grade de dados)
 		}
 		exit;
 	}

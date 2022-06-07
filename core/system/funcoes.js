@@ -667,7 +667,6 @@ function getURLProject(parametro = null){
 	let nocache = new Date().getTime();
 	if (parametro.indexOf("?") < 0 && typeof parametro == "string"){
 		if (parametro.indexOf(".html") > -1 || parametro.indexOf(".htm") > -1){
-<<<<<<< HEAD
 			//parametro = parametro + "?nocahe=" + nocache
 		}
 		return parametro;
@@ -676,16 +675,6 @@ function getURLProject(parametro = null){
 	var parmsProject 	= [];
 	parmsProject.push(getParamsOBJ("currentproject",session.projeto));
 	//parmsProject.push(getParamsOBJ("nocache",nocache));
-=======
-			parametro = parametro + "?nocahe=" + nocache
-		}
-		return parametro;
-	} 
-	var urlproject 		= session.urlmiles.replace("index.php","") + "index.php";
-	var parmsProject 	= [];
-	parmsProject.push(getParamsOBJ("currentproject",session.projeto));
-	parmsProject.push(getParamsOBJ("nocache",nocache));
->>>>>>> 0017abd (status na grade de dados)
 	var tipoparms = typeof parametro;
 	switch(typeof parametro){
 		case 'string':

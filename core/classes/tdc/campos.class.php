@@ -1,8 +1,4 @@
-<<<<<<< HEAD
- <?php 
-=======
 <?php 
->>>>>>> d446a0d (consulta)
 	/*
 		* Framework MILES
 		* @license : Estilo Site Ltda.
@@ -79,19 +75,11 @@
 		public static function CPF($id,$nome,$descricao,$valor=null){
 			$campo = tdClass::Criar("labeledit");	
 			$campo->label->add(utf8charset($descricao));
-<<<<<<< HEAD
 			$campo->label->for 		= $id;
 			$campo->label->class 	= "control-label";
 			$campo->input->id 		= $id;
 			$campo->input->name 	= $nome;
 			$campo->input->class 	= "form-control input-sm formato-cpf";
-=======
-			$campo->label->for = $id;
-			$campo->label->class = "control-label";
-			$campo->input->id = $id;
-			$campo->input->name = $nome;
-			$campo->input->class = "form-control input-sm formato-cpf";
->>>>>>> d446a0d (consulta)
 			if (!empty($valor)) $campo->input->value = utf8charset($valor,4);		
 			return $campo;
 		}
@@ -112,11 +100,7 @@
 			}
 			return $campo;	
 		}
-<<<<<<< HEAD
 		/*
-=======
-		/*  
->>>>>>> d446a0d (consulta)
 			* Método Texarea
 			* Data de Criacao: 25/03/2015
 			* @author Edilson Valentim dos Santos Bitencourt (Theusdido)
@@ -124,7 +108,6 @@
 			Campo Texarea
 		*/	
 		public static function TextArea($id,$nome,$descricao,$valor=null,$coluna_entidade=""){
-<<<<<<< HEAD
 			$campo 			= tdClass::Criar("div");
 			$campo->class 	= "form-group";
 
@@ -138,22 +121,6 @@
 			$label->for 				= $id;
 			$label->class 				= "control-label";
 			$label->add(utf8charset($descricao));
-=======
-			$campo = tdClass::Criar("div");
-			$campo->class = "form-group";
-
-			$textarea = tdClass::Criar("textarea");
-			$textarea->id = $id;
-			$textarea->name = $nome;
-			$textarea->class = "form-control";
-			$textarea->data_entidade = $coluna_entidade;
-
-			$label = tdClass::Criar("label");
-			$label->add(utf8charset($descricao));
-			$label->for = $id;
-			$label->class = "control-label";		
-
->>>>>>> d446a0d (consulta)
 
 			if (!empty($valor)) $textarea->add(utf8charset($valor),4);
 			$campo->add($label,$textarea);
@@ -180,132 +147,6 @@
 			if ($coluna==0) $campo->input->required = "true";
 			return $campo;	
 		}
-<<<<<<< HEAD
-=======
-		/*  
-			* integridade
-			* Data de Criacao: desconhecido
-			* @author Edilson Valentim dos Santos Bitencourt (Theusdido)
-			* Retorna um padrão de dados e processa o salvamento de dados padrão
-			* PARAMETROS
-			*	@params: int entidade:"ID da Entidade"
-			*	@params: String atributo:"Nome do Atributo"
-			*	@params: any valor:"Valor a ser salvo"
-			*	@params: int id:"ID do registro"
-			* RETORNO
-			*	@return any: Valor formatado para salvamento
-		*/		
-		public static function integridade($entidade,$atributo,$valor,$id){
-
-			$sql = tdClass::Criar("sqlcriterio");
-			$sql->addFiltro("nome","=",$atributo);
-			$sql->addFiltro("entidade","=",$entidade);
-			$dataset = tdClass::Criar("repositorio",array(ATRIBUTO))->carregar($sql);
-			if (sizeof($dataset) <= 0) return $valor;
-			switch((int)$dataset[0]->tipohtml){
-				case 1: case 2: case 3:
-					$retorno = utf8charset($valor,4);
-				break;
-				case 6: # Senha
-					$retorno = strlen($valor) == 32 ? $valor : md5($valor);
-				break;
-				case 7:				
-					$retorno = $valor == "" ? 0 : $valor;
-				break;
-				case 10:
-					$retorno = $valor;
-				break;
-				case 11: # Data
-					if ($valor != ""){
-						$separador = (strpos($valor,"/") > 0)?"/":"-";
-						$dt = explode($separador,$valor);
-						return $dt[2] . "-" . $dt[1] . "-" . $dt[0];
-					}else{
-						return null;
-					}
-				break;
-				case 13:
-					$retorno = (double)moneyToFloat($valor);
-				break;
-				case 19: # Upload
-					if ($valor == ""){
-						$retorno = $valor;
-					}else{
-						$val 				= json_decode($valor,true);
-						$op             	= isset($val["op"])?$val["op"]:'';
-						$filename 			= isset($val["filename"])?$val["filename"]: (isset($val[1])?$val[1]:'');
-						$tipo 				= isset($val["tipo"])?$val["tipo"]:'';
-						$src 				= isset($val["src"])?$val["src"]:'';
-						$legenda			= isset($val["legenda"])?$val["legenda"]:'';					
-						$isexcluirtemp		= isset($val["isexcluirtemp"])?(bool)$val["isexcluirtemp"]:true;
-						$filenamefixed		= $atributo . "-" . $entidade . "-". $id. "." . getExtensao($filename);
-						$filenametemp		= $src;
-						$pathfile       	= Session::Get("PATH_CURRENT_FILE") . $filenamefixed;
-						$pathexternalfile	= '/public_html/sistema/projects/'.Session::Get()->projeto.'/arquivos/' . $filenamefixed;
-
-						// Em modo de exclusão
-						if ($op == "excluir"){
-							if (file_exists($pathfile)){
-
-								// Exclui o arquivo no FTP
-								$ftp = new FTP();
-								$ftp->delete($pathexternalfile);
-
-								// Exclui o arquivo
-								unlink($pathfile);
-							}
-							$filename = '';
-						}
-
-						if (sizeof($val) > 0 && $filename != ''){
-							if (file_exists($filenametemp)){
-
-								// Envia arquivo para o FTP Externo do Projeto
-								$ftp = new FTP();
-								$ftp->put($filenametemp,$pathexternalfile);
-
-								// Move o arquivo da pasta temporária para permanente
-								copy($filenametemp,$pathfile);	
-
-								// Exclui o arquivo temporário
-								if ($isexcluirtemp) unlink($filenametemp);
-							}
-						}
-
-						$retorno = $filename;					
-					}
-				break;
-				case 22: # Filtro
-					if ($valor == "" || $valor == null){
-						return 0;
-					}else{
-						return $valor;
-					}
-				break;
-				case 23: # Data e Hora
-					if ($valor != ""){
-						$separador = (strpos($valor,"/") > 0)?"/":"-";
-						$data = explode(" ",$valor);
-						$hora = explode(" ",$valor);
-						$dt = explode($separador,$data[0]);
-						return $dt[2] . "-" . $dt[1] . "-" . $dt[0] . (isset($data[1])?" " . $data[1]:"");
-					}else{
-						return null;
-					}	
-				break;
-				case 24: # Filtro (Endereço)
-					if ($valor == "" || $valor == null){
-						return 0;
-					}else{
-						return $valor;
-					}
-				break;
-				default:
-					$retorno = $valor;
-			}
-			return $retorno;
-		}
->>>>>>> d446a0d (consulta)
 		public static function arquivo(){
 			$campo = tdClass::Criar("div");
 			$label = tdClass::Criar("label");
@@ -324,7 +165,6 @@
 				$modalName = "modal-" . $nome;
 			}
 			$entidadePK = tdClass::Criar("persistent",array(ENTIDADE,$chaveestrangeira));
-<<<<<<< HEAD
 			
 			$campo 					= tdClass::Criar("div");
 			$campo->class 			= "filtro-pesquisa form-group";
@@ -357,46 +197,10 @@
 			$termo->id 			= $nome;
 			$termo->name 		= $nome;
 			$termo->data_fk 	= $entidadePK->contexto->nome;
-=======
-
-			$campo = tdClass::Criar("div");
-			$campo->class = "filtro-pesquisa form-group";
-			$campo->data_modalname = $modalName;
-
-			$label = tdClass::Criar("label");
-			$label->add(utf8charset($descricao));
-			$label->for = $nome;
-			$label->class = "control-label";				
-
-			$input_group = tdClass::Criar("div");
-			$input_group->class = "input-group";
-
-			$input_group_btn = tdClass::Criar("span");
-			$input_group_btn->class = "input-group-btn";
-
-			$button = tdClass::Criar("button");
-			$button->class = "btn btn-default botao-filtro";
-			$button->id = "pesquisa-" . $nome;
-			$button->name = $nome;
-			$button->data_fk = $chaveestrangeira;
-			$button->data_entidade = $entidade;
-			$span_icon_procura = tdClass::Criar("span");
-			$span_icon_procura->class = "fas fa-search";
-
-			$button->add($span_icon_procura);		
-
-			$termo = tdClass::Criar("input");
-			$termo->type = "text";
-			$termo->class = "form-control termo-filtro {$gd}";
-			$termo->id = $nome;
-			$termo->name = $nome;
-			$termo->data_fk = $entidadePK->contexto->nome;
->>>>>>> d446a0d (consulta)
 			if ($obrigatorio != null){
 				$termo->required = "true";
 				$label->add($obrigatorio);
 			}
-<<<<<<< HEAD
 			$termo->data_entidade 	= $entidade;
 			$termo->atributo 		= getAtributoId($entidade,$nome,Transacao::Get());
 
@@ -422,25 +226,6 @@
 			$modal 					= tdClass::Criar("modal");
 			$modal->nome 			= $modalName;
 			$modal->tamanho 		= "modal-lg";
-=======
-			$termo->data_entidade = $entidade;
-			$termo->atributo = getAtributoId($entidade,$nome,Transacao::Get());
-
-			$descricao_resultado = tdClass::Criar("input");
-			$descricao_resultado->type = "text";
-			$descricao_resultado->readonly = "true";
-			$descricao_resultado->class = "form-control descricao-filtro";
-			$descricao_resultado->id = "descricao-".$nome;
-			$descricao_resultado->name = "descricao-".$nome;
-			$descricao_resultado->data_entidade = $entidade;
-
-			$input_group_btn->add($button);
-			$input_group->add($termo,$descricao_resultado,$input_group_btn);
-
-			$modal = tdClass::Criar("modal");
-			$modal->nome = $modalName;
-			$modal->tamanho = "modal-lg";
->>>>>>> d446a0d (consulta)
 			$modal->addHeader("Pesquisa de " . $entidadePK->contexto->descricao,null);
 			$modal->addBody("");
 			$modal->addFooter("");
@@ -596,19 +381,12 @@
 			$select->name = $nome;
 			$select->class = "form-control";
 
-<<<<<<< HEAD
 			switch(gettype($opcoes)){
 				case  'array':
 					foreach($opcoes as $op){
 						$select->add($op);
 					}
 				break;
-=======
-			if (gettype($opcoes) == "array"){
-				foreach($opcoes as $op){
-					$select->add($op);
-				}
->>>>>>> d446a0d (consulta)
 			}
 
 			$campo = tdClass::Criar("div");
@@ -696,7 +474,6 @@
 			if (!empty($valor)) $campo->input->value = utf8charset($valor,4);
 			return $campo;
 		}	
-<<<<<<< HEAD
 
 		/*  
 			* Método Senha
@@ -718,6 +495,3 @@
 			return $campo;
 		}
 	}
-=======
-	}
->>>>>>> d446a0d (consulta)

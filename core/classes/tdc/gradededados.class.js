@@ -39,10 +39,7 @@ function GradeDeDados(entidade){
 	this.exibireditar = true;
 	this.exibirexcluir = true;
 	this.exibiremmassa = true;
-<<<<<<< HEAD
 	this.exibirmovimentacao = false;
-=======
->>>>>>> 0017abd (status na grade de dados)
 	this.totalRegistroRetorno = 0;
 	this.order = [];
 	this.selecionados = [];
@@ -235,8 +232,6 @@ GradeDeDados.prototype.cabecalho = function(){
 			th.append(this.attr_cabecalho_descricao[c]);
 			tr.append(th);
 		}
-		console.log(this.retornaFiltro);
-		debugger;
 		if (!this.retornaFiltro){
 			if (this.isExibirMovimentacao()){
 				tr.append($("<th class='movimentacao-coluna-gradededados'><center>Mov.</center></th>"));
@@ -246,11 +241,7 @@ GradeDeDados.prototype.cabecalho = function(){
 			}
 			if (this.exibirexcluir){
 				tr.append($("<th class='excluir-coluna-gradededados'><center>Excluir</center></th>"));
-<<<<<<< HEAD
 			}
-=======
-			}			
->>>>>>> 0017abd (status na grade de dados)
 
 			let thSelTodos 		= $("<th class='selectall-coluna-gradededados'>");
 			let buttonSelTodos 	= $("<input type='checkbox' data-sel='false' aria-label='Selecionar Todos' class='gd-sel-todos' />");
@@ -258,19 +249,11 @@ GradeDeDados.prototype.cabecalho = function(){
 			$(buttonSelTodos).click(function(){
 				instancia.selecionarTodos(this);
 			});
-<<<<<<< HEAD
 
 			thSelTodos.append(buttonSelTodos);
 			if (this.exibireditar || this.exibirexcluir || this.exibiremmassa){
 				tr.append(thSelTodos);
 			}			
-=======
-			thCenter.append(buttonSelTodos);
-			thSelTodos.append(thCenter);
-			if (this.exibireditar || this.exibirexcluir || this.exibiremmassa){
-				tr.append(thSelTodos);
-			}
->>>>>>> 0017abd (status na grade de dados)
 		}
 		thead.append(tr);
 		this.table.append(thead);
@@ -582,18 +565,10 @@ GradeDeDados.prototype.rodape = function(){
 		if (this.table.find("tfoot").length <= 0){
 			let qtdeTempReg 	= this.qtdeTempRegistro();
 			if (this.dadosCorpo.length > 0 || qtdeTempReg > 0){
-<<<<<<< HEAD
 				let tfoot 		= $("<tfoot>");
 				let tr 			= $("<tr>");			
 				let td 			= $("<td colspan='"+(this.attr_cabecalho_nome.length+3)+"'>");
 				let instancia 	= this;
-=======
-				var tfoot = $("<tfoot>");
-				var tr = $("<tr>");			
-				var td = $("<td colspan='"+(this.attr_cabecalho_nome.length+3)+"'>");
-				var instancia = gradesdedados[this.contexto];
-				
->>>>>>> 0017abd (status na grade de dados)
 
 				// Excluir Selecionados
 				let btnExcluirTodos = $("<input type='button' style='float:right;' value='Excluir Selecionados' class='btn btn-default btn-excluir-selecionados'>");
@@ -608,11 +583,7 @@ GradeDeDados.prototype.rodape = function(){
 				});
 
 				if (this.exibirexcluir) td.append(btnExcluirTodos);
-<<<<<<< HEAD
 				if (this.exibiremmassa) td.append(this.btnEditarEmMassa);
-=======
-				if (this.exibiremmassa) td.append(btnEditarEmMassa);
->>>>>>> 0017abd (status na grade de dados)
 				tr.append(td);
 				tfoot.append(tr);
 				this.table.append(tfoot);
@@ -815,32 +786,18 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
 					break;
 				}
 			}
-<<<<<<< HEAD
 
-			if (typeof td_consulta[this.consulta] != "undefined"){
-				for (f in td_consulta[this.consulta].status){
-
-					let ft = td_consulta[this.consulta].status[f];
-					if (ft.atributo == idAtributo){
-						let operador = '';
-=======
-			debugger;
 			if (typeof td_consulta[this.consulta] != "undefined"){
 				for (f in td_consulta[this.consulta].status){
 					var ft = td_consulta[this.consulta].status[f];
 					if (ft.atributo == idAtributo){
->>>>>>> 0017abd (status na grade de dados)
 						switch (ft.operador){
 							case "=": operador = "=="; break;
 							case "!": operador = "!="; break;
 							default:  operador = "==";
 						}
 
-<<<<<<< HEAD
 						let tipohtml = td_atributo[ft.atributo].tipohtml;
-=======
-						var tipohtml = td_atributo[ft.atributo].tipohtml;
->>>>>>> 0017abd (status na grade de dados)
 						if (valorreal != ""){
 							if (parseInt(tipohtml) == 11){
 								let dt = valorreal.split(" ")[0];
@@ -850,11 +807,7 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
 									let data2 	= new Date(dt2.split("/")[2],dt2.split("/")[1],dt2.split("/")[0]).toUTCString();
 									switch(ft.operador){
 										case "=":
-											if (data1 == data2){
-												console.log(td_status[ft.status].classe);
-												eval("tr.addClass('"+td_status[ft.status].classe+"');");
-												debugger;
-											}
+											if (data1 == data2) eval("tr.addClass('"+td_status[ft.status].classe+"');");
 										break;
 										case "!":
 											if (data1 != data2) eval("tr.addClass('"+td_status[ft.status].classe+"');");
@@ -863,11 +816,7 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
 											if (data1 > data2) eval("tr.addClass('"+td_status[ft.status].classe+"');");
 										break;
 										case "<":
-											if (data1 < data2){
-												console.log(td_status[ft.status].classe);
-												eval("tr.addClass('"+td_status[ft.status].classe+"');");
-												debugger;
-											}
+											if (data1 < data2) eval("tr.addClass('"+td_status[ft.status].classe+"');");
 										break;								
 										case ">=":
 											if (data1 >= data2) eval("tr.addClass('"+td_status[ft.status].classe+"');");
@@ -880,19 +829,11 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
 							}else if (parseInt(tipohtml) == 23){
 								let dt = valorreal.split(" ")[0];
 								if (dt != undefined && dt != null && dt != ''){
-<<<<<<< HEAD
 									let data 		= dt.split("-")[2] + "/" + dt.split("-")[1] + "/" + dt.split("-")[0];
 									let hora 		= valorreal.split(" ")[1];
 									let datahora 	= data + " " + hora;
 									let data1 		= new Date(datahora);
 									let data2 		= new Date((ft.valor=="now()"?config.datahora:ft.valor));
-=======
-									var data 		= dt.split("-")[2] + "/" + dt.split("-")[1] + "/" + dt.split("-")[0];
-									var hora 		= valorreal.split(" ")[1];
-									var datahora 	= data + " " + hora;
-									var data1 		= new Date(datahora);
-									var data2 		= new Date((ft.valor=="now()"?config.datahora:ft.valor));
->>>>>>> 0017abd (status na grade de dados)
 									switch(ft.operador){
 										case "=":									
 											if (data1 == data2) eval("tr.addClass('"+td_status[ft.status].classe+"');");
@@ -959,13 +900,7 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
 		}
 	});
 
-<<<<<<< HEAD
 	let btnEditar 		= $("<td align='center' class='editar-coluna-gradededados'></td>");
-=======
-	var entidadeGD 		= this.nomeEntidade;
-	var entidade 		= this.entidade;
-	var btnEditar 		= $("<td align='center' class='editar-coluna-gradededados'></td>");
->>>>>>> 0017abd (status na grade de dados)
 	if (this.exibireditar) btnEditar.append(spanEditar);
 
 	let tdExcluir 		= $("<td align='center' class='excluir-coluna-gradededados'>");
@@ -983,11 +918,7 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
 		tdExcluir.append(loaderExcluir);
 	}
 
-<<<<<<< HEAD
 	let checkExcluir = "<td align='center'><span align='center' class='grade-info'><input type='checkbox' value='"+id+"' class='gradededados-checkbox-excluir'></span></td>";	
-=======
-	var checkExcluir = "<td align='center'><span align='center' class='grade-info'><input type='checkbox' value='"+id+"' class='gradededados-checkbox-excluir'></span></td>";	
->>>>>>> 0017abd (status na grade de dados)
 	if (!this.retornaFiltro){
 		if (this.isExibirMovimentacao()){
 			tr.append(btnMovimentacao);

@@ -4,13 +4,6 @@
 		echo 'Parametro "ID" não foi enviado.';
 		exit;
 	}
-<<<<<<< HEAD
-=======
-
-	$cf = getCurrentConfigFile();
-	$pathfileconsulta = PATH_FILES_CONSULTA . $id;
->>>>>>> d446a0d (consulta)
-
 	$pathfileconsulta = PATH_FILES_CONSULTA . $id;
 	
 	// Cria diretório
@@ -40,7 +33,6 @@
 	$funcionalidadeTD->value 	= "consulta";
 	$funcionalidadeTD->mostrar();
 	
-<<<<<<< HEAD
 	// Campo Entidade Principal
 	$consultaID 				= tdClass::Criar("input");
 	$consultaID->id 			= "consulta_id";
@@ -48,18 +40,6 @@
 	$consultaID->type 			= "hidden";
 	$consultaID->value 			= $id;
 	$consultaID->mostrar();
-=======
-
-	// JS Formulário
-	$jsFormulario 		= tdClass::Criar("script");
-	$jsFormulario->src 	= Session::Get('URL_SYSTEM') . "formulario.js";
-	$jsFormulario->mostrar();
-
-	// JS Validar
-	$jsValidar 		= tdClass::Criar("script");
-	$jsValidar->src = Session::Get('URL_SYSTEM') . "validar.js";
-	$jsValidar->mostrar();
->>>>>>> d446a0d (consulta)
 
 	$blocoTitulo = tdClass::Criar("bloco");
 	$blocoTitulo->class = "col-md-12";
@@ -84,17 +64,10 @@
 	$btn_pesquisar->add($span_pesquisar," Pesquisar");
 
 	// Seleciona os campos do FILTRO da CONSULTA
-<<<<<<< HEAD
 	$sql 						= tdClass::Criar("sqlcriterio");
 	$sql->add(tdClass::Criar("sqlfiltro",array("consulta",'=',$consulta->id)));
 	$sql->setPropriedade("order","id ASC");
 	$dataset					= tdClass::Criar("repositorio",array(FILTROCONSULTA))->carregar($sql);
-=======
-	$sql = tdClass::Criar("sqlcriterio");
-	$sql->add(tdClass::Criar("sqlfiltro",array("consulta",'=',$consulta->id)));
-	$sql->setPropriedade("order","id ASC");
-	$dataset = tdClass::Criar("repositorio",array(FILTROCONSULTA))->carregar($sql);
->>>>>>> d446a0d (consulta)
 
 	$arrayCamposAtributos = array();
 	$atributo = "";
@@ -180,84 +153,6 @@
 	$linhaGrade->class		= "row";
 	$linhaGrade->add($blocoGrade);
 	$linhaGrade->mostrar();
-<<<<<<< HEAD
-=======
-	
-	// Consulta Filtro Inicial
-	$gdFiltroInicial = "";
-	$sqlCI = tdClass::Criar("sqlcriterio");
-	$sqlCI->addFiltro("consulta","=",$id);
-	$dsCI = tdClass::Criar("repositorio",array("td_consultafiltroinicial"))->carregar($sqlCI);
-	foreach ($dsCI as $d){
-		$atributoCI = tdClass::Criar("persistent",array("atributo",$d->atributo))->contexto->nome;
-		$gdFiltroInicial .= 'gd.addFiltro("'.$atributoCI.'","'.$d->operador.'","'.$d->valor.'");';
-	}
-
-	// JS 
-	$js = tdClass::Criar("script");
-	$js->add('
-		debugger;
-		// Seta CK Editores para CONSULTA
-		setaCkEditores(true);
-		if (gradesdedados[contextoListar] == undefined){
-			// Carrega a grade de dados padrão
-			var gd 	= new GradeDeDados('.$consulta->entidade.');
-			gd.contexto="#'.$contextoListarID.'";
-		}else{
-			var gd 	= gradesdedados["#'.$contextoListarID.'"];
-		}
-		gd.consulta 		= '.$id.';
-		gd.movimentacao 	= '.$consulta->movimentacao.';
-		gd.exibireditar		= '.($consulta->exibireditar?'true':'false').';
-		gd.exibirexcluir	= '.($consulta->exibirexcluir?'true':'false').';
-		gd.exibiremmassa	= '.($consulta->exibiremmassa?'true':'false').';		
-		gd.exibirpesquisa 	= false;
-		gd.setOrder("id","DESC");		
-		gd.show();
-		gd.clear();
-
-		$("#form-consulta.tdform .form_campos .form-control").each(function(){
-			if ($(this).prop("tagName") == "SELECT"){
-				$(this).removeAttr("required");
-				var atributo = $(this).attr("id").split(" ")[0];
-				carregarListas($(this).data("entidade"),$(this).attr("id"),"");
-			}
-		});
-		$(".asteriscoobrigatorio").hide();
-
-		'.$gdFiltroInicial.'
-		$("#pesquisa-consulta").click(function(){
-			gd.clear();
-			'.$gdFiltroInicial.'
-			atribuiValoresCKEditor();
-			$("#form-consulta.tdform .form_campos .form-control").each(function(){
-				if ($(this).hasClass("input-sm") || $(this).hasClass("termo-filtro") || $(this).hasClass("checkbox-sn")){
-					if ($(this).val() != "" && $(this).val() != undefined && $(this).val() != null){
-						var operador 	= $(this).data("operador");
-						var tipo 		= $(this).data("tipo");
-						var atributo 	= $(this).attr("id");
-						gd.addFiltro(atributo,(operador == undefined?"=":operador),$(this).val(),(tipo == undefined?"int":tipo));
-					}
-				}
-			});
-			gd.qtdeMaxRegistro = 500;
-			gd.reload();
-		});
-		var i = 1;
-		for (f in td_consulta['.$id.'].filtros){
-			var ft = td_consulta['.$id.'].filtros[f];
-			$("#form-consulta .form-control[atributo="+ft.atributo+"]").attr("data-operador",ft.operador);
-			$("#form-consulta .form-control[atributo="+ft.atributo+"]").attr("data-tipo",td_atributo[ft.atributo].tipo);
-			i++;
-		}
-		
-		$(document).ready(function(){
-			$(".checkbox-s,.checkbox-n").removeClass("active");
-			$(".checkbox-s,.checkbox-n").parents(".form-group").find("input").val("");
-		});
-	');
-	$js->mostrar();
->>>>>>> d446a0d (consulta)
 
 	// Modal Movimentação
 	$modalName 		= "modal-movimentacao";
