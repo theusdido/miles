@@ -1,4 +1,4 @@
-<?php	
+<?php
 
 	// Avisos
 	include PATH_MVC_CONTROLLER . "aviso.php";
