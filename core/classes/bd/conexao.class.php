@@ -88,10 +88,6 @@ final class Conexao{
 			try{
 				$conn = new PDO(
 					"$type:host=$host;port=$port;dbname=$base;",$user,$password
-<<<<<<< HEAD
-=======
-					#,array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8")
->>>>>>> 287b430 (instalação góes)
 				);
 				$conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 				return $conn;
@@ -108,13 +104,8 @@ final class Conexao{
 			Tratamento para a transação principal do sistema.
 			Nesse caso deve chamar o arquivo do projeto selecionado
 		*/
-<<<<<<< HEAD
 		$database 	= ($banco == '' || $banco == 'current') ? DATABASECONNECTION : $banco;
 		$arq_config = PATH_CURRENT_CONFIG_PROJECT.$database."_mysql.ini";
-=======
-		$banco		= DATABASECONNECTION;
-		$arq_config = PATH_CURRENT_CONFIG_PROJECT.DATABASECONNECTION."_mysql.ini";
->>>>>>> aa5207b (#goes alinhamento)
 		if (!file_exists($arq_config)){
 			if (IS_SHOW_ERROR_MESSAGE){
 				echo "Arquivo <b>{$database}</b> de configuração com o banco de dados não existe. => " . $arq_config . " <= ";
