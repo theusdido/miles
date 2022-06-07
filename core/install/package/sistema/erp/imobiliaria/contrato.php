@@ -226,7 +226,7 @@
 	$tipocontrato = criarAtributo($conn,$entidadeIDLayoutContrato,"tipocontrato","Tipo de Contrato","int",0,0,4,1,$entidadeIDTipoContrato);
 	
 	// Criando Acesso
-	$menu_webiste = addMenu($conn,'Jurídico','#','','','','juridico');
+	$menu_webiste = addMenu($conn,'Jurídico','#','',0,0,'juridico');
 
 	// Menu
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,8,'juridico-' . $entidadeNome,$entidadeID, 'cadastro');

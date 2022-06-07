@@ -27,7 +27,7 @@
 	$produto 	= criarAtributo($conn,$entidadeID,"produto","Produto","int",0,1,16,getEntidadeId("ecommerce_produto"));
 
 	// Criando Acesso
-	$menu_webiste = addMenu($conn,'E-Commerce','#','','','','ecommerce');
+	$menu_webiste = addMenu($conn,'E-Commerce','#','',0,0,'ecommerce');
 
 	// Adicionando Menu
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,0,'ecommerce-' . $entidadeNome,$entidadeID,'cadastro');

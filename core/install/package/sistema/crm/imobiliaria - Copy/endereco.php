@@ -28,7 +28,7 @@
 	$tipologradouro = criarAtributo($conn,$entidadeID,"tipologradouro","Tipo de Logradouro","Int",0,0,4,getEntidadeId("crm_imobiliaria_tipologradouro",$conn));
 	$pais = criarAtributo($conn,$entidadeID,"pais","País","Int",0,0,4,0,getEntidadeId("crm_imobiliaria_pais",$conn));
 	// Criando Acesso
-	$menu_webiste = addMenu($conn,'Geral','#','','','','Geral');
+	$menu_webiste = addMenu($conn,'Geral','#','',0,0,'Geral');
 
 	// Adicionando Menu
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,8,'geral-' . $entidadeNome);

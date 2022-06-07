@@ -27,7 +27,7 @@
 	$observacao = criarAtributo($conn,$entidadeID,"observacao","Observação","varchar",1000,0,3);
 	$interesse = criarAtributo($conn,$entidadeID,"interesse","Interesse","int",0,0,4,0,installDependencia($conn,"crm_imobiliaria_registrointeresse"));
 	// Criando Acesso
-	$menu_webiste = addMenu($conn,'Geral','#','','','','Geral');
+	$menu_webiste = addMenu($conn,'Geral','#','',0,0,'Geral');
 
 	// Adicionando Menu
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,8,'geral-' . $entidadeNome);

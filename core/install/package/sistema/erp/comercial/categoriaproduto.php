@@ -24,7 +24,7 @@
 	$descricao = criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar","200",1,3,1,0,0,"");
 
 	// Criando Acesso
-	$menu_webiste = addMenu($conn,'Categoria de Produto','#','','','','comercial');
+	$menu_webiste = addMenu($conn,'Categoria de Produto','#','',0,0,'comercial');
 
 	// Adicionando Menu
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,8,'comercial-' . $entidadeNome);

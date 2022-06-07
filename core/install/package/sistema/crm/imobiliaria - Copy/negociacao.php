@@ -26,7 +26,7 @@
 	$datainicial = criarAtributo($conn,$entidadeID,"datainicial","Data Inicial","date",0,0,11);
 	$datafinal = criarAtributo($conn,$entidadeID,"datafinal","Data Final","date",0,0,11);
 	// Criando Acesso
-	$menu_webiste = addMenu($conn,'Geral','#','','','','Geral');
+	$menu_webiste = addMenu($conn,'Geral','#','',0,0,'Geral');
 
 	// Adicionando Menu
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,8,'geral-' . $entidadeNome);

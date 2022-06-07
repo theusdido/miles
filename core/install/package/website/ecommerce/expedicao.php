@@ -27,7 +27,7 @@
 	$codigorastreamento		= criarAtributo($conn,$entidadeID,"codigorastreamento","Código Rastreamento","varchar",200,0,3,0);
 
 	// Criando Acesso
-	$menu_webiste = addMenu($conn,'E-Commerce','#','','','','ecommerce');
+	$menu_webiste = addMenu($conn,'E-Commerce','#','',0,0,'ecommerce');
 
 	// Adicionando Menu Expedição
 	addMenu($conn,"Expedição","files/cadastro/".$entidadeID."/".PREFIXO."expedicao.html",'',$menu_webiste,7,'ecommerce-expedicao',$entidadeID,'cadastro');

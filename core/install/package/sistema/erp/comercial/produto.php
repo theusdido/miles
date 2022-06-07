@@ -37,7 +37,7 @@
 
 
 	// Criando Acesso
-	$menu_webiste = addMenu($conn,'Comercial','#','','','','comercial');
+	$menu_webiste = addMenu($conn,'Comercial','#','',0,0,'comercial');
 
 	// Adicionando Menu
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,8,'comercial-' . $entidadeNome);

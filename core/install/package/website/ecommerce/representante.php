@@ -30,7 +30,7 @@
 	$telefone = criarAtributo($conn,$entidadeID,"telefone","Telefone","varchar","35",1,8,0,0,0,"");
 	
 	// Criando Acesso
-	$menu_webiste = addMenu($conn,'E-Commerce','#','','','','ecommerce');
+	$menu_webiste = addMenu($conn,'E-Commerce','#','',0,0,'ecommerce');
 
 	// Adicionando Menu
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,8,'ecommerce-' . $entidadeNome,$entidadeID,'cadastro');

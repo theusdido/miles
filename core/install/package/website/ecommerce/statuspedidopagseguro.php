@@ -27,7 +27,7 @@
 	$operacaoestoque 	= criarAtributo($conn,$entidadeID,"operacaoestoque","Operação de Estoque","int",0,1,4,0,getEntidadeId("ecommerce_tipooperacaoestoque"));
 
 	// Criando Acesso
-	$menu_webiste = addMenu($conn,'E-Commerce','#','','','','ecommerce');
+	$menu_webiste = addMenu($conn,'E-Commerce','#','',0,0,'ecommerce');
 
 	// Adicionando Menu
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,0,'ecommerce-' . $entidadeNome,$entidadeID,'cadastro');

@@ -2,7 +2,6 @@
 	// Setando variáveis
 	$entidadeNome 		= "erp_financeiro_contasapagar";
 	$entidadeDescricao 	= "Contas à Pagar";
-
 	// Criando Entidade
 	$entidadeID = criarEntidade(
 		$conn,

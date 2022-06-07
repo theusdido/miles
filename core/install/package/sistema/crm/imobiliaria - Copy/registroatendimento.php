@@ -29,7 +29,7 @@
 	$tipoatendimento = criarAtributo($conn,$entidadeID,"tipoatendimento","Tipo Atendimento","int",0,0,4,0,getEntidadeId("crm_imobiliaria_tipoatendimento",$conn));
 	$descricao = criarAtributo($conn,$entidadeID,"descricao","Descrição","text",0,0,21);
 	// Criando Acesso
-	$menu_webiste = addMenu($conn,'Geral','#','','','','Geral');
+	$menu_webiste = addMenu($conn,'Geral','#','',0,0,'Geral');
 
 	// Adicionando Menu
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,8,'geral-' . $entidadeNome);
