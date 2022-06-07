@@ -51,7 +51,10 @@
 								<input type="text" id="filename" name="filename" class="form-control" value="<?php echo $linha[0]["nome"]; ?>.html" style="float:right;width:89%;margin-right:1%;"/>
 								<input type="hidden" id="filenamejs" name="filenamejs" class="form-control" value="<?php echo $linha[0]["nome"]; ?>.js" />
 								<input type="hidden" id="filenamecss" name="filenamecss" value="<?php echo $linha[0]["nome"]; ?>.css" />
+<<<<<<< HEAD
 								<input type="hidden" id="filenamehtm" name="filenamehtm" value="<?php echo $linha[0]["nome"]; ?>.htm" />
+=======
+>>>>>>> d446a0d (consulta)
 								<div id="pagina-gerada"></div>
 							</div>
 						</fieldset>						
@@ -85,8 +88,13 @@
 			url:"../../index.php",
 			type:"POST",
 			data:{
+<<<<<<< HEAD
 				controller:"mdm/componente",
 				op:"criarcadastro",
+=======
+				controller="mdm/componente",
+				op:"criarpagina",
+>>>>>>> d446a0d (consulta)
 				html:html,
 				filename:$("#filename").val(),
 				filenamejs:$("#filenamejs").val(),
@@ -96,12 +104,19 @@
 				nomeentidade:"<?=$nomeEntidadePrincipal?>",
 				descricaoentidade:"<?=$descricaoEntidadePrincipal?>",
 				urlupload:$("#urlupload").val(),
+<<<<<<< HEAD
 				currentproject:<?=$_SESSION["currentproject"]?>,
 				id:<?=$id?>
 			},
 			complete:function(){
 				let url = '../../projects/<?=$_SESSION["currentproject"]?>/files/cadastro/<?=$id?>/' + $("#filename").val();
 				$("#pagina-gerada").html('<center><h3>Carregou</h3><a href="'+url+'" target="_blank">Abrir ( HTML )</a></center>');
+=======
+				currentproject:<?=$_SESSION["currentproject"]?>
+			},
+			complete:function(){
+				$("#pagina-gerada").html("Carregou");;
+>>>>>>> d446a0d (consulta)
 			}
 		});
 	}

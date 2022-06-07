@@ -44,7 +44,10 @@
 								<input type="text" id="filename" name="filename" class="form-control" value="<?php echo $linha[0]["nome"]; ?>.html" style="float:right;width:89%;margin-right:1%;"/>
 								<input type="hidden" id="filenamejs" name="filenamejs" class="form-control" value="<?php echo $linha[0]["nome"]; ?>.js" />
 								<input type="hidden" id="filenamecss" name="filenamecss" value="<?php echo $linha[0]["nome"]; ?>.css" />
+<<<<<<< HEAD
 								<input type="hidden" id="filenamehtm" name="filenamehtm" value="<?php echo $linha[0]["nome"]; ?>.htm" />
+=======
+>>>>>>> d446a0d (consulta)
 								<div id="consulta-gerada"></div>
 							</div>
 						</fieldset>						
@@ -80,7 +83,10 @@
 					filename:$("#filename").val(),
 					filenamejs:$("#filenamejs").val(),
 					filenamecss:$("#filenamecss").val(),
+<<<<<<< HEAD
 					filenamehtm:$("#filenamehtm").val(),
+=======
+>>>>>>> d446a0d (consulta)
 					entidade:"<?=$entidade?>",
 					urlupload:$("#urlupload").val(),
 					currentproject:<?=$_SESSION["currentproject"]?>,

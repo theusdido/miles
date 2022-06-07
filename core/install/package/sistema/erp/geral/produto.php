@@ -1,8 +1,8 @@
 <?php
 	// Setando variÃ¡veis
-	$entidadeNome = "erp_geral_fornecedor";
-	$entidadeDescricao = "Fornecedor";
-	
+	$entidadeNome = "erp_geral_produto";
+	$entidadeDescricao = "Produto";
+
 	// Criando Entidade
 	$entidadeID = criarEntidade(
 		$conn,
@@ -17,22 +17,14 @@
 		$criarprojeto = 1,
 		$criarempresa = 1,
 		$criarauth = 0,
-		$registrounico = 0
+		$registrounico = 0		
 	);
-	
+
 	// Criando Atributos
-	$contato = criarAtributo($conn,$entidadeID,"contato","Contato","varchar","200",1,3,1,0,0,"");
+	$nome 		= criarAtributo($conn,$entidadeID,"nome","Nome","varchar",200,0,3,1,0,0,"");
 
 	// Criando Acesso
 	$menu_webiste 	= addMenu($conn,'Geral','#','',0,0,'geral');
 
 	// Adicionando Menu
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,8,'financeiro-' . $entidadeNome,$entidadeID,'cadastro');
-	
-	// Criar Aba
-	criarAba($conn,$entidadeID,"Capa",$contato);
-
-	// Criando Relacionamento
-	criarRelacionamento($conn,9,$entidadeID,installDependencia($conn,"erp_geral_fornecedor"),"Fornecedor",0);
-	criarRelacionamento($conn,5,$entidadeID,installDependencia($conn,"erp_geral_produto"),"Produtos",0);
-	criarRelacionamento($conn,5,$entidadeID,installDependencia($conn,"erp_geral_servico"),"Servi‡os",0);

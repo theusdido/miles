@@ -168,7 +168,4 @@ switch(tdc::r("acao")){
 		$bloco->mostrar();
 }
 
-// Cria o MDM File JavaScript Compile
-include 'mdm/javascriptfile.php';
-
 Transacao::Fechar();
