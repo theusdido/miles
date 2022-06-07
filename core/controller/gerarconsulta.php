@@ -196,11 +196,34 @@
 	// JS 
 	$js = tdClass::Criar("script");
 	$js->add('
-
-		var gd 			= gradesdedados["#'.$contextoListarID.'"];
-		gd.consulta 	= '.$id.';
-		gd.movimentacao = '.$consulta->movimentacao.';
+		debugger;
+		// Seta CK Editores para CONSULTA
+		setaCkEditores(true);
+		if (gradesdedados[contextoListar] == undefined){
+			// Carrega a grade de dados padrão
+			var gd 	= new GradeDeDados('.$consulta->entidade.');
+			gd.contexto="#'.$contextoListarID.'";
+		}else{
+			var gd 	= gradesdedados["#'.$contextoListarID.'"];
+		}
+		gd.consulta 		= '.$id.';
+		gd.movimentacao 	= '.$consulta->movimentacao.';
+		gd.exibireditar		= '.($consulta->exibireditar?'true':'false').';
+		gd.exibirexcluir	= '.($consulta->exibirexcluir?'true':'false').';
+		gd.exibiremmassa	= '.($consulta->exibiremmassa?'true':'false').';		
+		gd.exibirpesquisa 	= false;
+		gd.setOrder("id","DESC");		
+		gd.show();
 		gd.clear();
+
+		$("#form-consulta.tdform .form_campos .form-control").each(function(){
+			if ($(this).prop("tagName") == "SELECT"){
+				$(this).removeAttr("required");
+				var atributo = $(this).attr("id").split(" ")[0];
+				carregarListas($(this).data("entidade"),$(this).attr("id"),"");
+			}
+		});
+		$(".asteriscoobrigatorio").hide();
 
 		'.$gdFiltroInicial.'
 		$("#pesquisa-consulta").click(function(){

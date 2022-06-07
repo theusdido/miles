@@ -45,9 +45,13 @@
 								<input type="hidden" id="filenamejs" name="filenamejs" class="form-control" value="<?php echo $linha[0]["nome"]; ?>.js" />
 								<input type="hidden" id="filenamecss" name="filenamecss" value="<?php echo $linha[0]["nome"]; ?>.css" />
 <<<<<<< HEAD
+<<<<<<< HEAD
 								<input type="hidden" id="filenamehtm" name="filenamehtm" value="<?php echo $linha[0]["nome"]; ?>.htm" />
 =======
 >>>>>>> d446a0d (consulta)
+=======
+								<input type="hidden" id="filenamehtm" name="filenamehtm" value="<?php echo $linha[0]["nome"]; ?>.htm" />
+>>>>>>> 0017abd (status na grade de dados)
 								<div id="consulta-gerada"></div>
 							</div>
 						</fieldset>						
@@ -84,9 +88,13 @@
 					filenamejs:$("#filenamejs").val(),
 					filenamecss:$("#filenamecss").val(),
 <<<<<<< HEAD
+<<<<<<< HEAD
 					filenamehtm:$("#filenamehtm").val(),
 =======
 >>>>>>> d446a0d (consulta)
+=======
+					filenamehtm:$("#filenamehtm").val(),
+>>>>>>> 0017abd (status na grade de dados)
 					entidade:"<?=$entidade?>",
 					urlupload:$("#urlupload").val(),
 					currentproject:<?=$_SESSION["currentproject"]?>,

@@ -47,14 +47,23 @@
 	$dhtmlFile = $path . tdc::r('filenamehtm');
 =======
 
+	// Cria o diretório do registro caso não exista
+	if (!file_exists($path)){
+		mkdir($path,777);
+	}
+
 	// Cria o arquivo HTML
-	$fp = fopen($path . tdc::r('filename') ,'w+');
+	$fp = fopen($path . tdc::r('filename') ,'w');
 	fwrite($fp,htmlespecialcaracteres($_POST["html"],1));
 	fclose($fp);
 
 	// Cria o arquivo HTML Embutido Dinâmico
+<<<<<<< HEAD
 	$dhtmlFile = $path . tdc::r('filename') . ".htm";
 >>>>>>> d446a0d (consulta)
+=======
+	$dhtmlFile = $path . tdc::r('filenamehtm');
+>>>>>>> 0017abd (status na grade de dados)
 	if (!file_exists($dhtmlFile)){
 		$fp = fopen($dhtmlFile,'w');
 		fwrite($fp,"<!--\n * HTML Personalizado \n {$datacriacaodoc} \n {$authordoc} \n {$paginadoc} \n\n Escreve seu código HTML personalizado aqui! \n-->\n");

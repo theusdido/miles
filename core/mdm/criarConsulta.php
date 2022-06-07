@@ -35,6 +35,7 @@
 				$prox = $query_prox->fetch();
 				$id = $prox[0];
 <<<<<<< HEAD
+<<<<<<< HEAD
 				$sql = "INSERT INTO ".PREFIXO."consulta (id,descricao,entidade,movimentacao,exibirbotaoeditar,exibirbotaoexcluir,exibirbotaoemmassa) VALUES ({$id},'{$descricao}',{$entidade},{$movimentacao},{$exibirbotaoeditar},{$exibirbotaoexcluir},{$exibirbotaoemmassa});";
 			}else{
 				$sql = "UPDATE ".PREFIXO."consulta SET entidade = {$entidade} , descricao = '{$descricao}' , movimentacao = {$movimentacao} , exibirbotaoeditar = {$exibirbotaoeditar} , exibirbotaoexcluir = {$exibirbotaoexcluir} , exibirbotaoemmassa = {$exibirbotaoemmassa} WHERE id = {$id};";
@@ -43,6 +44,11 @@
 			}else{
 				$sql = "UPDATE ".PREFIXO."consulta SET entidade = {$entidade} , descricao = '{$descricao}' , movimentacao = {$movimentacao} WHERE id = {$id};";
 >>>>>>> d446a0d (consulta)
+=======
+				$sql = "INSERT INTO ".PREFIXO."consulta (id,descricao,entidade,movimentacao,exibirbotaoeditar,exibirbotaoexcluir,exibirbotaoemmassa) VALUES ({$id},'{$descricao}',{$entidade},{$movimentacao},{$exibirbotaoeditar},{$exibirbotaoexcluir},{$exibirbotaoemmassa});";
+			}else{
+				$sql = "UPDATE ".PREFIXO."consulta SET entidade = {$entidade} , descricao = '{$descricao}' , movimentacao = {$movimentacao} , exibirbotaoeditar = {$exibirbotaoeditar} , exibirbotaoexcluir = {$exibirbotaoexcluir} , exibirbotaoemmassa = {$exibirbotaoemmassa} WHERE id = {$id};";
+>>>>>>> 0017abd (status na grade de dados)
 			}
 			$query = $conn->query($sql);
 			if($query){
@@ -250,6 +256,7 @@
 	}
 	if ($id != ""){
 <<<<<<< HEAD
+<<<<<<< HEAD
 		$sql = "SELECT descricao,entidade,movimentacao,exibirbotaoeditar,exibirbotaoexcluir,exibirbotaoemmassa FROM ".PREFIXO."consulta WHERE id = {$id}";
 		$query = $conn->query($sql);
 		foreach ($query->fetchAll() as $linha){
@@ -267,6 +274,17 @@
 			$descricao		= executefunction("utf8charset",array($linha["descricao"]));
 			$movimentacao	= $linha["movimentacao"];
 >>>>>>> d446a0d (consulta)
+=======
+		$sql = "SELECT descricao,entidade,movimentacao,exibirbotaoeditar,exibirbotaoexcluir,exibirbotaoemmassa FROM ".PREFIXO."consulta WHERE id = {$id}";
+		$query = $conn->query($sql);
+		foreach ($query->fetchAll() as $linha){
+			$entidade			= $linha["entidade"];
+			$descricao			= executefunction("utf8charset",array($linha["descricao"]));
+			$movimentacao		= $linha["movimentacao"];
+			$exibirbotaoeditar 	= $linha["exibirbotaoeditar"];
+			$exibirbotaoexcluir = $linha["exibirbotaoexcluir"];
+			$exibirbotaoemmassa = $linha["exibirbotaoemmassa"];
+>>>>>>> 0017abd (status na grade de dados)
 		}
 	}
 ?>

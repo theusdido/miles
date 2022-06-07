@@ -33,4 +33,4 @@
 	addMenu($conn,"Expedição","files/cadastro/".$entidadeID."/".PREFIXO."expedicao.html",'',$menu_webiste,7,'ecommerce-expedicao',$entidadeID,'cadastro');
 
 	// Cria Relacionamento
-	criarRelacionamento($conn,7,$entidadeID,getEntidadeId("ecommerce_endereco",$conn),utf8_decode("Endereço"),0);
+	criarRelacionamento($conn,7,$entidadeID,installDependencia('website_ecommerce_endereco'),"Endereço",0);

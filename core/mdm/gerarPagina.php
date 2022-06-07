@@ -52,9 +52,13 @@
 								<input type="hidden" id="filenamejs" name="filenamejs" class="form-control" value="<?php echo $linha[0]["nome"]; ?>.js" />
 								<input type="hidden" id="filenamecss" name="filenamecss" value="<?php echo $linha[0]["nome"]; ?>.css" />
 <<<<<<< HEAD
+<<<<<<< HEAD
 								<input type="hidden" id="filenamehtm" name="filenamehtm" value="<?php echo $linha[0]["nome"]; ?>.htm" />
 =======
 >>>>>>> d446a0d (consulta)
+=======
+								<input type="hidden" id="filenamehtm" name="filenamehtm" value="<?php echo $linha[0]["nome"]; ?>.htm" />
+>>>>>>> 0017abd (status na grade de dados)
 								<div id="pagina-gerada"></div>
 							</div>
 						</fieldset>						
@@ -89,10 +93,14 @@
 			type:"POST",
 			data:{
 <<<<<<< HEAD
+<<<<<<< HEAD
 				controller:"mdm/componente",
 				op:"criarcadastro",
 =======
 				controller="mdm/componente",
+=======
+				controller:"mdm/componente",
+>>>>>>> 0017abd (status na grade de dados)
 				op:"criarpagina",
 >>>>>>> d446a0d (consulta)
 				html:html,
@@ -105,6 +113,7 @@
 				descricaoentidade:"<?=$descricaoEntidadePrincipal?>",
 				urlupload:$("#urlupload").val(),
 <<<<<<< HEAD
+<<<<<<< HEAD
 				currentproject:<?=$_SESSION["currentproject"]?>,
 				id:<?=$id?>
 			},
@@ -113,6 +122,10 @@
 				$("#pagina-gerada").html('<center><h3>Carregou</h3><a href="'+url+'" target="_blank">Abrir ( HTML )</a></center>');
 =======
 				currentproject:<?=$_SESSION["currentproject"]?>
+=======
+				currentproject:<?=$_SESSION["currentproject"]?>,
+				id:<?=$id?>
+>>>>>>> 0017abd (status na grade de dados)
 			},
 			complete:function(){
 				$("#pagina-gerada").html("Carregou");;
