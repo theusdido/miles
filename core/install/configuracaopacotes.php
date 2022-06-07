@@ -170,7 +170,7 @@
 					}
 
 					$.ajax({
-						url:"<?=$_SESSION['URL_MILES']?>",
+						url:"<?=URL_MILES?>",
 						type:"POST",
 						data:{
 							controller:'install/modulos',
@@ -191,7 +191,7 @@
 									instalarcomponentes();
 								}else{
 									$.ajax({
-										url:"<?=$_SESSION['URL_MILES']?>",
+										url:"<?=URL_MILES?>",
 										type:"POST",
 										data:{
 											controller:'install/modulos',
@@ -224,7 +224,7 @@
 				function instalarregistros(){
 					if (registros[indiceRegistro] == undefined) return false;
 					$.ajax({
-						url:"<?=$_SESSION['URL_MILES']?>",
+						url:"<?=URL_MILES?>",
 						type:"POST",
 						data:{
 							controller:'install/modulos',

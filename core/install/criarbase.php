@@ -126,7 +126,7 @@
 	});
 	$("#btn-testarconexao").click(function(){
 		$.ajax({
-			url:"<?=$_SESSION['URL_MILES']?>",
+			url:"<?=URL_MILES?>",
 			data:{
 				controller:"install/database",
 				op:"testar",
@@ -163,7 +163,7 @@
 		}		
 		$("#loader-criarbanco").show();
 		$.ajax({
-			url:"<?=$_SESSION['URL_MILES']?>",
+			url:"<?=URL_MILES?>",
 			data:{
 				controller:"install/database",
 				op:"criar",

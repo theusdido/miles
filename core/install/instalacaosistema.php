@@ -166,7 +166,7 @@
 
 					$.ajax({
 						type:"POST",
-						url:"<?=$_SESSION['URL_MILES']?>",
+						url:"<?=URL_MILES?>",
 						data:{
 							controller:"install/instalar",
 							op:"instalar",
@@ -204,7 +204,7 @@
 					$("#formulario-personalizado .form-group input[type=checkbox]:checked").each(function(){
 						instrucao = componentes[$(this).data("componente")];
 						$.ajax({
-							url:"<?=$_SESSION['URL_MILES']?>",
+							url:"<?=URL_MILES?>",
 							beforeSend:function(){
 								$("#loading-atualizar-personalizado").show();
 							},
@@ -228,7 +228,7 @@
 				function executa(instrucao){
 					$.ajax({
 						type:"POST",
-						url:"<?=$_SESSION['URL_MILES']?>",
+						url:"<?=URL_MILES?>",
 						data:{
 							controller:"install/instalar",
 							op:"instrucao",
@@ -253,7 +253,7 @@
 									},5000);
 									$.ajax({
 										type:"POST",
-										url:"<?=$_SESSION['URL_MILES']?>",
+										url:"<?=URL_MILES?>",
 										data:{
 											controller:"install/instalar",
 											op:"projeto",
@@ -262,7 +262,7 @@
 									});
 									$.ajax({
 										type:"POST",
-										url:"<?=$_SESSION['URL_MILES']?>",
+										url:"<?=URL_MILES?>",
 										data:{
 											controller:"install/instalar",
 											op:"inserirregistros",
@@ -271,7 +271,7 @@
 										complete:function(){
 											// Setando Permissões
 											$.ajax({
-												url:"<?=$_SESSION['URL_MILES']?>",
+												url:"<?=URL_MILES?>",
 												data:{
 													controller:"requisicoes",
 													op:"setar_todas_permissoes",
@@ -292,7 +292,7 @@
 									?>
 									$.ajax({
 										type:"POST",
-										url:"<?=$_SESSION['URL_MILES']?>",
+										url:"<?=URL_MILES?>",
 										data:{
 											controller:'install/instalar',
 											op:"arquivos",
@@ -301,7 +301,7 @@
 									});
 									$.ajax({
 										type:"POST",
-										url:"<?=$_SESSION['URL_MILES']?>",
+										url:"<?=URL_MILES?>",
 										data:{
 											controller:'install/instalar',
 											op:"versao"

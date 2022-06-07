@@ -1090,9 +1090,13 @@ function inserirRegistro($conn,$tabela,$id,$atributos,$valores,$criarnovoregistr
 		$id = getEntidadeId($tabela);
 	}
 
-	$sql = "SELECT 1 FROM " . $tabela . " WHERE id = " . $id;
-	$query = $conn->query($sql);	
+	$sql 	= "SELECT 1 FROM " . $tabela . " WHERE id = " . $id . ";";
+	$query 	= $conn->query($sql);
 	if ($query->rowCount() > 0){
+		// Atualiza a informação caso o ID já exista
+		atualizarRegistro($conn,$tabela,$id,$atributos,$valores);
+		return $id;
+	}else{			
 		if ($criarnovoregistro){
 			// Força a criação do registro, independentemente do ID
 			$id = getProxId(str_replace("td_","",$tabela),$conn);

@@ -74,5 +74,3 @@
 		$senha 		= $linhaCurrentDB["password"];
 		$conn 		= new PDO("$tipo:host=$host;port=$porta;dbname=$base",$usuario,$senha);
 	}
-
-	define('URL_MILES',$_SESSION['URL_MILES']);
