@@ -38,17 +38,8 @@
 	// FOLDER PAGE
 	define("FOLDER_PAGE","page");
 
-	#***************************************
-	# PATH
-	#***************************************
-
 	// FOLDER WEBSITE
 	define("FOLDER_WEBSITE","website");
-
-	// FOLDER PAGE
-	define("FOLDER_IMAGES","images");
-
-	#include 'path.php';
 	
 	#***************************************
 	# SQL

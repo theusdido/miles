@@ -272,7 +272,13 @@ class tdc Extends tdClass{
 		Retorna um DataSet do banco de dados no formato JSON
 	*/	
 	public static function dj($entidade,$sql = null){
-		return json_encode(tdc::da(getTableName($entidade),$sql));
+		try{
+			return json_encode(tdc::da(getTableName($entidade),$sql));
+		}catch(Throwable $t)
+		{
+			return [];
+			var_dump($t);
+		}
 	}
 
 	/*

@@ -1,7 +1,7 @@
 <?php
 	
 	// Classe de Configuração do sistema
-	require PATH_CORE . 'classes/system/config.class.php';
+	require FOLDER_CORE . '/classes/system/config.class.php';
 	
 	// Variável global do projeto atual
 	$currentProject = Config::currentProject();
@@ -103,13 +103,13 @@
 
 	// REQUEST PROTOCOLO
 	define("REQUEST_PROTOCOL",$mjc->system->request_protocol."://");
-	
+
 	// Exibir mensagem de erro
-	define("IS_SHOW_ERROR_MESSAGE",false);
-	
-	// Inclui os arquivos de funções do sistema
-	require 'funcoes.php';
-	
+	define("IS_SHOW_ERROR_MESSAGE",$mjc->is_show_error_message);
+
+	// Exibir mensagem de erro
+	define("IS_TRANSACTION_LOG",$mjc->is_transaction_log);	
+
 	// Arquivos que fazem parte da estrutura do sistema
 	$strutuct = json_decode(file_get_contents($_path_config . 'estrutura.json'));
 

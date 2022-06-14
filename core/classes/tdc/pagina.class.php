@@ -318,7 +318,7 @@ class Pagina Extends Html {
 				this.urlloadform					= "'.getURLProject($this->config->urlloadform).'";
 				this.urluploadform					= "'.getURLProject($this->config->urluploadform).'";
 				this.urlexcluirregistros			= "'.getURLProject($this->config->urlexcluirregistros).'";
-				this.urlinicializacao				= "'.getURLProject($this->config->urlinicializacao).'"
+				this.urlinicializacao				= "'.getURLProject($this->config->urlinicializacao).'";
 				this.urlloadgradededados			= "'.getURLProject($this->config->urlloadgradededados).'";
 				this.urlsaveform					= "'.getURLProject($this->config->urlsaveform).'";
 				this.urlloading						= "'.getURLProject($this->config->urlloading).'";

@@ -4,10 +4,16 @@ if (isset($_GET["op"])){
 		$userid 	= Usuario::id();
 		$where 		= "WHERE (EXISTS(SELECT 1 FROM td_entidadepermissoes b WHERE b.entidade = a.entidade AND b.usuario = ".$userid." AND b.visualizar = 1)";
 		$where 	   .= " OR EXISTS(SELECT 1 FROM td_menupermissoes c WHERE c.menu = a.id AND c.usuario = ".$userid." AND c.permissao = 1)) AND a.descricao <> '' ";
-
 		if ($conn = Transacao::get()){
 			$retornomenu = array();
-			$sqlMenu = "SELECT * FROM td_menu a ".$where." ORDER BY a.pai,a.ordem;";
+			$sqlMenu = "
+				SELECT * 
+				FROM td_menu a
+				{$where}
+				AND a.pai = 0
+				AND a.descricao <> ''
+				ORDER BY a.pai,a.ordem;
+			";
 			$queryMenu = $conn->query($sqlMenu);
 			While ($linhaMenu = $queryMenu->fetch()){
 				array_push ($retornomenu,Menu::open($linhaMenu["id"]));

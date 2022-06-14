@@ -40,71 +40,46 @@ Menu.prototype.collapse = function(){
 }
 Menu.prototype.menuprincipal = function(dados){
 
-	let caret  = " <span class='caret'>";
-	let nivel = [];
-	let ultpai = "";
-	
-	// Nível 0
+	let caret  	= " <span class='caret'>";
 	let menu 	= $("<ul class='nav navbar-nav' >");
-	let submenu = null;
-	for (d in dados){
-		let pai = parseInt(dados[d].pai);
-		if (pai == 0){
-			let li = $("<li>");
-			let link = dados[d].link == "#"?dados[d].link:session.currentprojectregisterpath+dados[d].link;
-			let a =  $("<a class='dropdown-toggle' role='button' aria-haspopup='true' data-toggle='dropdown' href='"+link+"' aria-expanded='false'>"+dados[d].descricao+"</span></a>");
-			li.append(a);
-			menu.append(li);
-			nivel[dados[d].id] = li;
-		}else{
-			if (ultpai != pai){
-				submenu = $('<ul class="dropdown-menu" role="menu">');
-				ultpai= pai;				
-				if (pai != "" && pai != undefined && pai != 0){					
-					try {
- 					  	nivel[pai].find("a").append(caret);	
-					}catch(err) {
-						continue;
-					}
-				}	
-			}	
-			let li = $("<li>");
-			let linkpath = session.folderprojectfiles + dados[d].link;
-			if (dados[d].entidade == "" || dados[d].entidade == 0){
-				
-			}else{
-				//var linkpath = dados[d].link == "#"?dados[d].link:session.folderfiles+dados[d].link;
-			}
-			
-			
-			let a =  $("<a target='"+(dados[d].target == ""?"_self":dados[d].target)+"' data-path='"+linkpath+"' data-id='"+dados[d].id+"' data-target='#conteudoprincipal' href='"+(dados[d].target == "" || dados[d].target == ""?"#":dados[d].link)+"' data-tipomenu='"+dados[d].tipomenu+"'>"+dados[d].descricao+"</span></a>");
-			let instancia = this;
-			if (dados[d].target != "_blank"){
-				a.click(dados[d],function(handler){
-					let tipomenu = $(this).data("tipomenu");
-					if (!isNumeric(tipomenu)){
-						funcionalidade = tipomenu;
-					}
-					menuprincipalselecionado = $(this).data("id");
-					instancia.menuselecionado = menuprincipalselecionado;
-					instancia.carregarpagina($(this).data("path"),$(this).data("target"),handler.data);
-					addLog("","","", getEntidadeId("administracao-menu"),menuprincipalselecionado, 5, $(this).data("path"));
-				});
-			}
-			li.append(a);
-			submenu.append(li);
-			
-			try {
-				if (typeof nivel[pai] === "object"){
-					nivel[pai].append(submenu);
-				}
-			}catch(err) {
-				console.log('Falhou ao abrir esse menu => ' + submenu + " = " + pai);
-				continue;
-			}
+	let instancia 	= this;	
+	dados.forEach(function(menu_item)
+	{
+		let pai 	= parseInt(menu_item.pai);
+		let li 		= $("<li>");
+		let link 	= menu_item.link == "#"?menu_item.link:session.currentprojectregisterpath+menu_item.link;
+		let a 		= $("<a class='dropdown-toggle' role='button' aria-haspopup='true' data-toggle='dropdown' href='"+link+"' aria-expanded='false'>"+menu_item.descricao+"</span></a>");
+		li.append(a);
+		menu.append(li);
 
+		if (menu_item.filhos.length > 0){
+			li.find("a").append(caret);
+			let	submenu = $('<ul class="dropdown-menu" role="menu">');
+			menu_item.filhos.forEach(function(subitem)
+			{
+				let li_submenu 	= $("<li>");
+				let linkpath 	= session.folderprojectfiles + subitem.link;
+				let a_submenu 	=  $("<a target='"+(subitem.target == ""?"_self":subitem.target)+"' data-path='"+linkpath+"' data-id='"+subitem.id+"' data-target='#conteudoprincipal' href='"+(subitem.target == "" || subitem.target == ""?"#":subitem.link)+"' data-tipomenu='"+subitem.tipomenu+"'>"+subitem.descricao+"</span></a>");				
+
+				if (subitem.target != "_blank"){
+					a_submenu.click(subitem,function(handler){
+						let tipomenu = $(this).data("tipomenu");
+						if (!isNumeric(tipomenu)){
+							funcionalidade = tipomenu;
+						}
+						menuprincipalselecionado 	= $(this).data("id");
+						instancia.menuselecionado 	= menuprincipalselecionado;
+						
+						instancia.carregarpagina($(this).data("path"),$(this).data("target"),handler.data);
+						addLog("","","", getEntidadeId("administracao-menu"),menuprincipalselecionado, 5, $(this).data("path"));
+					});
+				}
+				li_submenu.append(a_submenu);
+				submenu.append(li_submenu);
+			});
+			li.append(submenu);
 		}
-	}
+	});
 	this.collapse.append(menu); // Adiciona no corpo do menu
 }
 Menu.prototype.load = function(){

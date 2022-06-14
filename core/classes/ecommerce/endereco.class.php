@@ -93,7 +93,6 @@ class Endereco {
 
 		return getListaRegFilhoObject($entidadepai,$entidadefilho,$regpai);
 	}
-<<<<<<< HEAD
 
 	public function isExiste(){
 		global $conn;
@@ -204,8 +203,5 @@ class Endereco {
 			return $sucesso;
 		}
 		*/
-	}	
-=======
-	
->>>>>>> 99681f1 (baixando versao cedup)
+	}
 }

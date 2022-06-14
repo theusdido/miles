@@ -21,20 +21,25 @@ class Menu {
 	*/
 	public static function filhos($pai = 0){
 		global $conn;
+		$userid 	= Usuario::id();
+		$where 		= "WHERE (EXISTS(SELECT 1 FROM td_entidadepermissoes b WHERE b.entidade = a.entidade AND b.usuario = ".$userid." AND b.visualizar = 1)";
+		$where 	   .= " OR EXISTS(SELECT 1 FROM td_menupermissoes c WHERE c.menu = a.id AND c.usuario = ".$userid." AND c.permissao = 1)) AND a.descricao <> '' ";
 		$retornomenu = array();
 		$sqlMenu = "
 			SELECT * 
-			FROM " . MENU . " 
-			WHERE pai = {$pai} 
-			AND pai = 0
-			ORDER BY pai,ordem;";
+			FROM " . MENU . " a
+			".$where."
+			AND a.pai = {$pai}
+			AND a.descricao <> ''
+			ORDER BY a.pai,a.ordem;
+		";
 		$queryMenu = $conn->query($sqlMenu);
 		While ($linhaMenu = $queryMenu->fetch()){
 			array_push ($retornomenu,Menu::open($linhaMenu["id"]));
 		}
 		return $retornomenu;
 	}
-	
+
 	public static function open($id){
 		global $conn;
 		$retorno = array();
@@ -44,15 +49,16 @@ class Menu {
 			$linha = $query->fetch();
 			$retorno = array(
 				"id"			=> $linha["id"],
-				"descricao" 	=> $linha["descricao"],
+				"descricao" 	=> utf8charset($linha["descricao"],2),
 				"link" 			=> $linha["link"],
 				"pai" 			=> $linha["pai"],
-				"entidade" 	=> $linha["entidade"],
+				"entidade" 		=> $linha["entidade"],
 				"target" 		=> empty($linha["target"])?"":$linha["target"],
 				"tipomenu" 		=> $linha["tipomenu"],
-				"filhos" 		=> Menu::filhos( $linha["id"] ),
+				"filhos" 		=> Menu::filhos( $id ),
 				"path"			=> isset($linha["path"]) ? $linha["path"] : '',
-				"icon"			=> isset($linha["icon"]) ? $linha["icon"] : ''
+				"icon"			=> isset($linha["icon"]) ? $linha["icon"] : '',
+				"coluna" 		=> isset($linha["coluna"]) ? $linha["coluna"] : 0
 			);
 		}
 		return $retorno;

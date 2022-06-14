@@ -283,7 +283,6 @@ tdFormulario.prototype.setPermissoesAtributos = function(funcao){
 	}
 	// Tem que ser depois de setar as permissões
 	//this.setaAtributoGeneralizacaoLista();
-	debugger;
 }
 
 // -- Campo do tipo lista <select>

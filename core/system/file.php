@@ -5,9 +5,6 @@
 	// Nome do arquivo do Favicon do sistema
 	define('FILE_FAVICON','logo-favicon.png');
 
-	// Nome do arquivo do Favicon do sistema
-	define('FILE_FAVICON','logo-favicon.png');
-
 	// Logo Padrão
 	define("FILE_LOGO", 'logo.png');
 

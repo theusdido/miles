@@ -2,10 +2,21 @@
 	require 'conexao.php';
 	require 'prefixo.php';
 	require 'funcoes.php';
-	
+
 	$currentFile = getCurrentProjectConfig("../../");
 	$self = "menutopohome.php";
-	$id = $entidade = $descricao = $link = $target = $ordem = $pai  = $tipomenu =  $path = $icon = "";
+	$id = 
+	$entidade = 
+	$descricao = 
+	$link = 
+	$target = 
+	$ordem = 
+	$pai  = 
+	$tipomenu =  
+	$path = 
+	$icon = "";
+	$coluna = 0;
+
 	$op = isset($_GET["op"])?$_GET["op"]:(isset($_POST["op"])?$_POST["op"]:'');
 
 	if (isset($_GET["iframe"])){
@@ -94,6 +105,7 @@
 		$tipomenu			= "'" . $tp_menu . "'";
 		$path				= "'" . $_POST["path"] . "'";
 		$icon				= "'" . $_POST["icon"] . "'";
+		$coluna				= isset($_POST["coluna"])?$_POST["coluna"]:0;
 
 		if ($_POST["ordem"] == ''){
 			$ordem = getProxIdMDM("menu","ordem",array("pai","=",$pai));
@@ -112,10 +124,10 @@
 			$sql = "
 				INSERT INTO ".PREFIXO."menu (
 					id,entidade,descricao,link,target,ordem,pai,tipomenu,fixo
-					,path,icon
+					,path,icon,coluna
 				) VALUES (
 					".$idNew.",".$entidade.",".$descricao.",".$link.",".$target.",".$ordem.",".$pai.",".$tipomenu.",''
-					,".$path.",".$icon."
+					,".$path.",".$icon.",".$coluna."
 				);";
 		}else{
 			$sql = "
@@ -130,6 +142,7 @@
 					, tipomenu = ".$tipomenu." 
 					, path = ".$path."
 					, icon = ".$icon."
+					, coluna = ".$coluna."
 				WHERE id = ".$id.";
 			";
 		}
@@ -180,6 +193,7 @@
 			$tipomenu 	= $linha["tipomenu"]==""?"raiz":$linha["tipomenu"];
 			$path		= $linha["path"];
 			$icon		= $linha["icon"];
+			$coluna		= $linha["coluna"];
 		}
 	}
 
@@ -276,6 +290,7 @@
 						}
 						$("#path").val("<?=$path?>");
 						$("#icon").val("<?=$icon?>");
+						$("#coluna").val("<?=$coluna?>");
 					}else{
 						configuracaoInicial();
 					}
@@ -316,9 +331,8 @@
 				});				
 			}
 			function carregarEntidade(valor){
-				$("#entidade,#pai").attr("readonly",false);
-				$("#entidade,#pai").attr("disabled",false);
-
+				$("#entidade,#pai,#coluna").attr("readonly",false);
+				$("#entidade,#pai,#coluna").attr("disabled",false);
 				switch(valor){
 					case 'cadastro':
 						$("#entidade").load("menutopohome.php?op=carregaentidade&<?=getURLParamsProject()?>",function(){
@@ -346,8 +360,9 @@
 			function configuracaoPersonalizado(){
 				$("#entidade").attr("readonly",true);
 				$("#entidade").attr("disabled",true);
-				$("#pai").attr("readonly",false);
-				$("#pai").attr("disabled",false);
+				$("#pai,#coluna").attr("readonly",false);
+				$("#pai,#coluna").attr("disabled",false);
+
 				if ($("#id").val() == ""){
 					$("#entidade,#pai").val(0);
 					$("#descricao").val("");
@@ -360,9 +375,9 @@
 				$("#target").attr("readonly",false);
 			}
 			function configuracaoInicial(){
-				$("#entidade,#pai").val(0);
-				$("#entidade,#pai").attr("readonly",true);
-				$("#entidade,#pai").attr("disabled",true);
+				$("#entidade,#pai,#coluna").val(0);
+				$("#entidade,#pai,#coluna").attr("readonly",true);
+				$("#entidade,#pai,#coluna").attr("disabled",true);
 				$("#descricao,#link,#target,id,entidade,ordem,pai").val("");
 				$("#descricao,#link").removeAttr("readonly");
 				$("#entidade").load("menutopohome.php?op=carregaentidade&<?=getURLParamsProject()?>");
@@ -448,7 +463,14 @@
 							<div class="form-group">
 								<label for="icon">Icon</label>
 								<input type="text" name="icon" id="icon" class="form-control">
-							</div>							
+							</div>
+							<div class="form-group">
+								<label for="coluna">Coluna</label>
+								<select id="coluna" name="coluna" class="form-control">
+									<option value="0">1ª Coluna</option>
+									<option value="1">2ª Coluna</option>
+								</select>
+							</div>
 							<div class="form-group">
 								<label for="pai">Pai</label>
 								<select id="pai" name="pai" class="form-control">
@@ -587,6 +609,7 @@
 						pai:$("#pai").val(),
 						path:$("#path").val(),
 						icon:$("#icon").val(),
+						coluna:$("#coluna").val()
 					},
 					complete:function(ret){
 						var retorno = ret.responseJSON;

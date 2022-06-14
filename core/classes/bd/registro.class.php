@@ -403,6 +403,17 @@ abstract class Registro {
 	}
 
 	/*  
+		* Método newNotExistsId
+	    * Data de Criacao: 08/06/2022
+	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
+
+		Retorna o registro vazio caso ou não encontre o ID
+	*/
+	public function newNotExistsId($id){
+		return $this->newNotExists('id','=',$id);
+	}
+	
+	/*  
 		* Método setIsNew
 		* Data de Criacao: 21/02/2022
 		* @author Edilson Valentim dos Santos Bitencourt (Theusdido)
@@ -412,5 +423,36 @@ abstract class Registro {
 	public function setIsNew($valor = true)
 	{
 		$this->isnew = $valor;
+	}
+	
+	/*  
+		* Método salvar
+		* Data de Criacao: 08/06/2022
+		* @author Edilson Valentim dos Santos Bitencourt (Theusdido)
+
+		Adiciona e/ou atualiza um registro
+		Alias para método armazenar
+	*/
+	public function salvar()
+	{
+		$this->armazenar();
+	}
+	
+	/*  
+		* Método inativar
+		* Data de Criacao: 08/06/2022
+		* @author Edilson Valentim dos Santos Bitencourt (Theusdido)
+
+		Inativa um registro
+	*/
+	public function inativar()
+	{	
+		try{
+			$this->inativo = true;
+			$this->salvar();
+			return true;
+		}catch(Throwable $t){
+			return false;
+		}
 	}
 }

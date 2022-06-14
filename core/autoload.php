@@ -5,7 +5,7 @@
 
 	// Seta as constantes
 	require PATH_MILES . 'core/system/constantes.php';
-	
+
 	// Diretório de sistema para carregar as principais funcionaliades
 	$_path_core 	= PATH_MILES . '/' . FOLDER_CORE . '/';
 	$_path_system	= $_path_core . FOLDER_SYSTEM . '/';

@@ -9,3 +9,4 @@
 	include_once $_path_classes . 'tdc/tdfile.class.php';
 	include_once $_path_classes . 'install/install.class.php';
 	include_once $_path_classes . 'interface/cookie.class.php';
+	include_once $_path_classes . 'system/entity.class.php';
