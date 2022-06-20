@@ -124,7 +124,7 @@
 			inserirRegistro($conn,getSystemPREFIXO() . "status",2, array("descricao","classe"), array("'Sucesso'","'td-status-sucesso'"));
 			inserirRegistro($conn,getSystemPREFIXO() . "status",3, array("descricao","classe"), array("'Alerta'","'td-status-alerta'"));
 			inserirRegistro($conn,getSystemPREFIXO() . "status",4, array("descricao","classe"), array("'Erro'","'td-status-erro'"));
-			inserirRegistro($conn,getSystemPREFIXO() . "status",5, array("descricao","classe"), array("'Informativo'","'td-status-info'"));			
+			inserirRegistro($conn,getSystemPREFIXO() . "status",5, array("descricao","classe"), array("'Informativo'","'td-status-info'"));
 
 			// Tipo Aviso
 			inserirRegistro($conn,getSystemPREFIXO() . "tipoaviso",1, array("descricao"), array("'Sucesso'"));
@@ -156,7 +156,6 @@
 			inserirRegistro($conn,getSystemPREFIXO() . "charset",8, array("local","charset"), array("'Javascript Embutido no PHP'","'D'"));
 			inserirRegistro($conn,getSystemPREFIXO() . "charset",9, array("local","charset"), array("'Javascript mdm.js'","'E'"));
 			inserirRegistro($conn,getSystemPREFIXO() . "charset",10, array("local","charset"), array("'Javascript mdm.js ( Relacionamento ) em funcoes.php'","'E'"));
-			
 			
 			//  Tipo de Ticket
 			inserirRegistro($conn,getSystemPREFIXO() . "tickettipo",1, array("descricao"), array("'Alterar"));
@@ -195,3 +194,4 @@
 			include 'core/controller/install/version.php';
 		break;
     }
+

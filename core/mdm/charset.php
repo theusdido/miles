@@ -92,7 +92,7 @@
 								<th width="50%">Local</th>
 								<th width="15%" class="text-center">Nulo</th>
 								<th width="15%" class="text-center">UTF-8 Decode</th>
-								<th width="15%" class="text-center">UTT-8 Encode</th>
+								<th width="15%" class="text-center">UTF-8 Encode</th>
 							</tr>
 						</thead>
 						<tbody>
