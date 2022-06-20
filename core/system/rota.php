@@ -58,14 +58,16 @@
 			}
 		break;
 		case 'BIBLIOTECA':
-			switch($mjc->system->package){
-				case 'ecommerce':
-					$ecommerce_main_controller = PATH_MVC_CONTROLLER_ECOMMERCE . 'main.php';
-					if (file_exists($ecommerce_main_controller))
-					{
-						include $ecommerce_main_controller;
-					}
-				break;
+			foreach($mjc->system->packages as $p){
+				switch($p){
+					case 'ecommerce':
+						$ecommerce_main_controller = PATH_MVC_CONTROLLER_ECOMMERCE . 'main.php';
+						if (file_exists($ecommerce_main_controller))
+						{
+							include $ecommerce_main_controller;
+						}
+					break;
+				}
 			}
 		break;
 	}	

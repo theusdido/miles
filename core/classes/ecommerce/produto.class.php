@@ -6,7 +6,7 @@ class tdEcommerceProduto
         return ($peso * $valor);
     }
 
-    function retornarPrecoDescricao($produto,$valor,$conn){
+    public static function retornarPrecoDescricao($produto,$valor,$conn){
     
         // Array Retorno do Preço
         $retornoPreco = array();
@@ -88,7 +88,7 @@ class tdEcommerceProduto
                     return $retornoPreco;
                 }else{
                     if($unidadeMedida != ""){
-                        $valor = Produto::calcularPrecoPorkG($valor,$peso);
+                        $valor = self::calcularPrecoPorkG($valor,$peso);
                     }
                     $retornoPreco["de"] 				= $valor;
                     $retornoPreco["para"] 				= $valor;

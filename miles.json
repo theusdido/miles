@@ -1,13 +1,13 @@
 {
     "version": 2.0,
     "currentproject": 1,
-    "folder": "primodas/miles/",
+    "folder": "granuemporio.com.br/miles/",
     "system": {
         "url": {
             "lib": "https://teia.tec.br/miles/repository/lib/"
         },
         "request_protocol": "http",
-        "packages": []
+        "packages": ["ecommerce"]
     },
     "theme": "desktop",
     "prefix": "td",

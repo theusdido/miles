@@ -1,7 +1,7 @@
 <?php
-	
+
 	// Classe de Configuração do sistema
-	require FOLDER_CORE . '/classes/system/config.class.php';
+	require $_path_core . '/classes/system/config.class.php';
 	
 	// Variável global do projeto atual
 	$currentProject = Config::currentProject();
