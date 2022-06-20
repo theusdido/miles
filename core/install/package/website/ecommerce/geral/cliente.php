@@ -67,4 +67,4 @@
 	criarAba($conn,$entidadeID,"Jurídica",implode(",",$camposAba));
 
 	/* *** ENDEREÇO *** */
-	criarRelacionamento($conn,2,$entidadeID,installDependencia('ecommerce_endereco','package/website/ecommerce/geral/endereco'),"Endereço",0);
+	criarRelacionamento($conn,2,$entidadeID,installDependencia('ecommerce_geral_endereco','package/website/ecommerce/geral/endereco'),"Endereço",0);
