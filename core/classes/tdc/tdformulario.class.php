@@ -39,6 +39,7 @@ class TdFormulario Extends Elemento {
 		$this->linhacampos 			= tdClass::Criar("div");
 		$this->linhacampos->class 	= "row-fluid form_campos tdform";
 		$this->grupo_botoes			= tdc::html("div" , array("class" => "form-grupo-botao"));
+		$this->onsubmit 			= "return false";
 	}
 	/*  
 		* Método CamposHTML 

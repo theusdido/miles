@@ -100,6 +100,7 @@
 								$sql = "SELECT * FROM td_charset ORDER BY id ASC";
 								$query = $conn->query($sql);
 								while ($linha = $query->fetch()){
+									
 									$id = $linha["id"];
 									echo '
 											<tr>

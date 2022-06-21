@@ -332,13 +332,20 @@ class tdc Extends tdClass{
 	public static function pj(string $entidade,int $id){
 		$retorno = array();
 		if ($id > 0 && $entidade != ""){
-			$registro = json_decode(tdc::dj($entidade,tdc::f("id","=",$id)));
-			if (sizeof($registro) > 0){
-				$retorno = $registro[0];
+			$data = tdc::dj($entidade,tdc::f("id","=",$id));
+			
+			$data = gettype($data)=='string'?[]:$data;
+			
+			if (sizeof($data) > 0){
+				
+				$registro = json_decode(tdc::dj($entidade,tdc::f("id","=",$id)));
+				if (sizeof($registro) > 0){
+					$retorno = $registro[0];
+				}
 			}
 		}
 		return $retorno;
-	}	
+	}
 	/*
 		* Método opt
 		* Data de Criacao: 10/12/2021

@@ -937,7 +937,7 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
 	}
 
 	if (this.funcionalidade != 'consulta'){
-		td_status_class.forEach( (s) => tr.removeClass(s) );
+		//td_status_class.forEach( (s) => tr.removeClass(s) );
 	}
 
 	this.table.find("tbody tr[class=warning]").remove();
