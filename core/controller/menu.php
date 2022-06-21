@@ -19,9 +19,9 @@
 					array_push ($retornomenu,Menu::open($linhaMenu["id"]));
 				}
 				echo json_encode($retornomenu);
-			}
-			exit;
+			}			
 		}
+		exit;
 	}
 
 	$menuClass = tdClass::Criar("script");

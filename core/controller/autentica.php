@@ -14,6 +14,7 @@
 			}
 			$sqlCriterio2->add(tdClass::Criar("sqlfiltro",array("perfilusuario",'<>',1)));
 			$sqlCriterio2->add(tdClass::Criar("sqlfiltro",array("perfilusuario",'IS',null)),OU);
+
 			$sql = tdClass::Criar("sqlcriterio");
 			$sql->add($sqlCriterio1);
 			$sql->add($sqlCriterio2);
