@@ -331,13 +331,10 @@ class tdc Extends tdClass{
 	*/
 	public static function pj(string $entidade,int $id){
 		$retorno = array();
-		if ($id > 0 && $entidade != ""){
+		if ($id > 0 && $entidade != ''){
 			$data = tdc::dj($entidade,tdc::f("id","=",$id));
-			
-			$data = gettype($data)=='string'?[]:$data;
-			
+			$data = gettype($data)=='string'?json_decode($data):$data;
 			if (sizeof($data) > 0){
-				
 				$registro = json_decode(tdc::dj($entidade,tdc::f("id","=",$id)));
 				if (sizeof($registro) > 0){
 					$retorno = $registro[0];

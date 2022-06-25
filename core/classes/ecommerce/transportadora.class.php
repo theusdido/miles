@@ -1,14 +1,14 @@
 <?php
-class Transportadora {
+    class Transportadora {
 
-    // Retorna lista de Transportadoras
-    public static function getTransportadoras(){
-        $sql = "SELECT * FROM td_ecommerce_transportadora WHERE inativo <> 1;";
-        $query = Transacao::get()->query($sql);
-        return $query->fetchAll();
-    }
+        // Retorna lista de Transportadoras
+        public static function all(){
+            $ft = tdc::f();
+            $ft->onlyActive();
+            return tdc::da('td_ecommerce_transportadora',$ft);
+        }
 
-    public static function getLogo($transportora){
-        return URL_TDECOMMERCE . "/img/beedelivery/logo.png";
+        public static function getLogo($transportora){
+            return URL_TDECOMMERCE . "/img/beedelivery/logo.png";
+        }
     }
-}

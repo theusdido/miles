@@ -32,7 +32,7 @@ class Checkout {
 		$sql = "
 		SELECT 1 FROM td_ecommerce_carrinhoitem a
 		INNER JOIN td_ecommerce_carrinhocompras b ON a.carrinho = b.id
-		WHERE b.cliente = " . $_SESSION["userid"] . "
+		WHERE b.cliente = " . Usuario::id() . "
 		AND (b.inativo = false OR b.inativo IS NULL);
 	";
 	$query = $this->conn->query($sql);
@@ -52,7 +52,7 @@ class Checkout {
 		return $autenticado;
 	}
 	public function isEndereco(){
-		$sqlListaEndereco = "SELECT regfilho FROM td_lista WHERE entidadepai = ".getEntidadeId("ecommerce_cliente")." AND entidadefilho = ".getEntidadeId("ecommerce_endereco")." AND regpai = " . $_SESSION["userid"];
+		$sqlListaEndereco = "SELECT regfilho FROM td_lista WHERE entidadepai = ".getEntidadeId("ecommerce_cliente")." AND entidadefilho = ".getEntidadeId("ecommerce_endereco")." AND regpai = " . Usuario::id();
 		$queryListaEndereco = $this->conn->query($sqlListaEndereco);
 		if ($queryListaEndereco->rowcount() > 0){
 			return true;
