@@ -371,11 +371,24 @@ class tdc Extends tdClass{
 		* Data de Criacao: 08/01/2021
 		* @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 
-		Retorna um objeto persistent do tipo único
+		Retorna um objeto persistent com um único registro
 		$parametros: 	entidade_name [String]
 
 	*/
 	public static function ru($entidade_name,$registro_id = 1){
 		return tdc::p($entidade_name,$registro_id);
 	}
+
+	/*
+		* Método rua
+		* Data de Criacao: 02/07/2022
+		* @author Edilson Valentim dos Santos Bitencourt (Theusdido)
+
+		Retorna uma array persistent com um único registro
+		$parametros: 	entidade_name [String]
+
+	*/
+	public static function rua($entidade_name,$registro_id = 1){
+		return tdc::pa($entidade_name,$registro_id);
+	}	
 }

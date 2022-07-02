@@ -125,11 +125,11 @@
 			$idNew = getProxIdMDM("menu");
 			$sql = "
 				INSERT INTO ".PREFIXO."menu (
-					id,entidade,descricao,link,target,ordem,pai,tipomenu,fixo
-					,path,icon,coluna,fixo
+					id,entidade,descricao,link,target,ordem,pai,tipomenu,
+					path,icon,coluna,fixo
 				) VALUES (
-					".$idNew.",".$entidade.",".$descricao.",".$link.",".$target.",".$ordem.",".$pai.",".$tipomenu.",''
-					,".$path.",".$icon.",".$coluna.",".$fixo."
+					".$idNew.",".$entidade.",".$descricao.",".$link.",".$target.",".$ordem.",".$pai.",".$tipomenu.",
+					".$path.",".$icon.",".$coluna.",".$fixo."
 				);";
 		}else{
 			$sql = "
