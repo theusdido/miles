@@ -17,6 +17,7 @@
       array(
         array('name' => 'quemsomos'               ,'title' => 'Quem Somos'),
         array('name' => 'politicaprivacidade'     ,'title' => 'Política de Privacidade'),
+		array('name' => 'politicacookies'     ,'title' => 'Política de Cookies'),
         array('name' => 'home'                    ,'title' => 'Home'),
         array('name' => 'blog'                    ,'title' => 'Blog')
       )
@@ -31,7 +32,8 @@
       array(
         array('name' => 'newsletter'              ,'title' => 'Newsletter'),
         array('name' => 'rodape'                  ,'title' => 'Rodapé'),
-        array('name' => 'redessociais'              ,'title' => 'Redes Sociais')
+        array('name' => 'redesocial'              ,'title' => 'Rede Social'),
+		array('name' => 'redessociais'              ,'title' => 'Redes Sociais')		
       )
     )
   );

@@ -1,6 +1,6 @@
 <?php
-	$entidadeNome 		= "website_geral_redessociais";
-	$entidadeDescricao 	= "Redes Sociais";
+	$entidadeNome 		= "website_geral_redesocial";
+	$entidadeDescricao 	= "Rede Social";
 
 	$entidadeID = criarEntidade(
 		$conn,
@@ -18,14 +18,11 @@
 		$registrounico = 0
 	);
 
-	// 2 PASSO
-	$redesocial = criarAtributo($conn,$entidadeID,"redesocial"	,"Rede Social"	,"int",0,0,4,1,installDependencia('website_geral_redesocial','package/website/geral/sessao/redesocial'),0,"");
-    $link 		= criarAtributo($conn,$entidadeID,"link"	,"Link"	,"varchar",500,0,3,0,0,0,"");
+	$descricao 	= criarAtributo($conn,$entidadeID,"descricao"	,"Descrição"	,"varchar",50,0,3,1,0,0,"");
+    $icone 		= criarAtributo($conn,$entidadeID,"icone"	,"Ícone"	,"varchar",50,1,3,0,0,0,"");
 
-	Entity::setDescriptionField($conn,$entidadeID,$link);
+	Entity::setDescriptionField($conn,$entidadeID,$descricao);
 
-	// 3 PASSO
 	$menu_webiste = addMenu($conn,'WebSite','#','',0,0,'website');
 
-	// 4 PASSO
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,5,'website-'.$entidadeNome,$entidadeID,'cadastro');

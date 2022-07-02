@@ -14,7 +14,8 @@
 	$pai  = 
 	$tipomenu =  
 	$path = 
-	$icon = "";
+	$icon = 
+	$fixo = "";
 	$coluna = 0;
 
 	$op = isset($_GET["op"])?$_GET["op"]:(isset($_POST["op"])?$_POST["op"]:'');
@@ -106,6 +107,7 @@
 		$path				= "'" . $_POST["path"] . "'";
 		$icon				= "'" . $_POST["icon"] . "'";
 		$coluna				= isset($_POST["coluna"])?$_POST["coluna"]:0;
+		$fixo				= "'" . $_POST["fixo"] . "'";
 
 		if ($_POST["ordem"] == ''){
 			$ordem = getProxIdMDM("menu","ordem",array("pai","=",$pai));
@@ -124,10 +126,10 @@
 			$sql = "
 				INSERT INTO ".PREFIXO."menu (
 					id,entidade,descricao,link,target,ordem,pai,tipomenu,fixo
-					,path,icon,coluna
+					,path,icon,coluna,fixo
 				) VALUES (
 					".$idNew.",".$entidade.",".$descricao.",".$link.",".$target.",".$ordem.",".$pai.",".$tipomenu.",''
-					,".$path.",".$icon.",".$coluna."
+					,".$path.",".$icon.",".$coluna.",".$fixo."
 				);";
 		}else{
 			$sql = "
@@ -142,6 +144,7 @@
 					, tipomenu = ".$tipomenu." 
 					, path = ".$path."
 					, icon = ".$icon."
+					, fixo = ".$fixo."
 					, coluna = ".$coluna."
 				WHERE id = ".$id.";
 			";
@@ -193,6 +196,7 @@
 			$tipomenu 	= $linha["tipomenu"]==""?"raiz":$linha["tipomenu"];
 			$path		= $linha["path"];
 			$icon		= $linha["icon"];
+			$fixo		= $linha["fixo"];
 			$coluna		= $linha["coluna"];
 		}
 	}
@@ -290,6 +294,7 @@
 						}
 						$("#path").val("<?=$path?>");
 						$("#icon").val("<?=$icon?>");
+						$("#fixo").val("<?=$fixo?>");
 						$("#coluna").val("<?=$coluna?>");
 					}else{
 						configuracaoInicial();
@@ -465,6 +470,10 @@
 								<input type="text" name="icon" id="icon" class="form-control">
 							</div>
 							<div class="form-group">
+								<label for="fixo">Fixo</label>
+								<input type="text" name="fixo" id="fixo" class="form-control">
+							</div>							
+							<div class="form-group">
 								<label for="coluna">Coluna</label>
 								<select id="coluna" name="coluna" class="form-control">
 									<option value="0">1ª Coluna</option>
@@ -609,6 +618,7 @@
 						pai:$("#pai").val(),
 						path:$("#path").val(),
 						icon:$("#icon").val(),
+						fixo:$("#fixo").val(),
 						coluna:$("#coluna").val()
 					},
 					complete:function(ret){

@@ -28,7 +28,8 @@
         array('name' => 'tamanhoproduto' , 'title' => 'Tamanho Produto'),
         array('name' => 'tipoproduto' , 'title' => 'Tipo de Produto'),
         array('name' => 'unidademedida' , 'title' => 'Unidade de Medida'),
-        array('name' => 'fichatecnica' , 'title' => 'Ficha Técnica')
+        array('name' => 'fichatecnica' , 'title' => 'Ficha Técnica'),
+		array('name' => 'grupoproduto' , 'title' => 'Grupo de Produto')
       )
     ),
     array( "name" => "pagseguro", "title" => "Pagseguro", "components" => 

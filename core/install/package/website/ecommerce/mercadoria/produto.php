@@ -55,6 +55,9 @@
     // Adiciando Marca
     $produto_marca = criarAtributo($conn,$entidadeID,"marca","Marca","int",0,1,4,0,installDependencia("ecommerce_marca","package/website/ecommerce/mercadoria/marca"));	
 
+	// Adiciando categoria em produto
+	$produto_grupo = criarAtributo($conn,$entidadeID,"grupo","Grupo","int",0,1,4,1,installDependencia("ecommerce_grupoproduto","package/website/ecommerce/mercadoria/grupoproduto"),0,"");
+
 	// Criando Acesso
 	$menu_webiste = addMenu($conn,'E-Commerce','#','',0,0,'ecommerce');
 
@@ -62,7 +65,7 @@
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,6,'ecommerce-' . $entidadeNome,$entidadeID,'cadastro');
 
 	// Abas
-	criarAba($conn,$entidadeID,'Capa',array($produto_nome,$produto_sku,$produto_referencia,$produto_categoria,$produto_subcategoria,$produto_tipo,$produto_unidademedida,$produto_marca,$produto_preco,$produto_exibirpreco,$produto_exibirhome,$produto_inativo));
+	criarAba($conn,$entidadeID,'Capa',array($produto_nome,$produto_sku,$produto_referencia,$produto_categoria,$produto_subcategoria,$produto_tipo,$produto_unidademedida,$produto_marca,$produto_grupo,$produto_preco,$produto_exibirpreco,$produto_exibirhome,$produto_inativo));
 	criarAba($conn,$entidadeID,'Caracteristicas',array($produto_descricao));
 	criarAba($conn,$entidadeID,'Imagens',array($produto_imagemPrincipal,$produto_imagemExtra1,$produto_imagemExtra2,$produto_imagemExtra3));
 	criarAba($conn,$entidadeID,'Embalagem',array($produto_peso,$produto_comprimento,$produto_altura,$produto_largura,$produto_diametro));
