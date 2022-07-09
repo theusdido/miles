@@ -1,5 +1,5 @@
 <?php
-	
+
 	if ($controller == "autentica"){
 		$login = tdc::r("login");
 		$senha = tdc::r("senha");
@@ -21,13 +21,13 @@
 			$dataset = tdClass::Criar("repositorio",array(USUARIO))->carregar($sql);
 			if ($dataset){
 				
-				$_username		= $dataset[0]->id;
-				$_userid		= $dataset[0]->nome;
+				$_userid		= $dataset[0]->id;
+				$_username		= $dataset[0]->nome;
 				$access_token	= md5( $login . $senha . date('YmdHmi') );
 
 				Session::append('autenticado'				,true);
-				Session::append('userid'					,$_username);
-				Session::append('username'					,$_userid);
+				Session::append('userid'					,$_userid);
+				Session::append('username'					,$_username);
 				Session::append('empresa'					,1);
 				Session::append('permitirexclusao'			,$dataset[0]->permitirexclusao==""?0:$dataset[0]->permitirexclusao);
 				Session::append('permitirtrocarempresa'		,$dataset[0]->permitirtrocarempresa==""?0:$dataset[0]->permitirtrocarempresa);

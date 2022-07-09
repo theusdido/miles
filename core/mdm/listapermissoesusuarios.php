@@ -149,7 +149,7 @@
 				var acoes = "";
 				$(obj).parents("tr").find("input[type=checkbox]").each(function(){
 					acoes += (acoes==""?"":"^") + ($(this).prop("checked")?1:0);
-				});			
+				});	
 				$.ajax({
 					type:"POST",
 					url:"setapermissao.php",
@@ -162,8 +162,17 @@
 						funcao:funcaoid,
 						menu:menuid,
 						currentproject:<?=$_SESSION["currentproject"]?>
+					},
+					complete:function(){
+						$.ajax({
+							url:'../../index.php',
+							data:{
+								controller:'permissoes',
+								op:'menu'
+							}
+						});
 					}
-				});		
+				});
 			}else{
 				var acao = $(obj).prop("checked");
 				$(obj).prop("checked",(acao?false:true));

@@ -369,7 +369,6 @@ abstract class Registro {
 	public function append($atributo,$operador,$valor){
 		$dataset = tdc::d($this->getEntidade(),tdc::f($atributo,$operador,$valor));
 		if (sizeof($dataset) <= 0 || $valor == ''){
-			
 			$entidade = tdc::p($this->getEntidade());		
 			if ($valor == ''){
 				$entidade->id = 0;
@@ -389,7 +388,7 @@ abstract class Registro {
 	    * Data de Criacao: 17/01/2022
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 
-		Retorna o registro vazio caso ou não encontre na condição
+		Retorna o registro vazio caso não encontre a condição
 	*/
 	public function newNotExists($atributo,$operador,$valor){
 		$dataset = tdc::d($this->getEntidade(),tdc::f($atributo,$operador,$valor));
@@ -407,7 +406,7 @@ abstract class Registro {
 	    * Data de Criacao: 08/06/2022
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 
-		Retorna o registro vazio caso ou não encontre o ID
+		Retorna o registro vazio caso não encontre o ID
 	*/
 	public function newNotExistsId($id){
 		return $this->newNotExists('id','=',$id);

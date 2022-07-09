@@ -12,7 +12,7 @@
 	define("PROJETO",				$prefixo_format . "projeto");
 	define("ABAS",					$prefixo_format . "abas");
 	define("RELACIONAMENTO",		$prefixo_format . "relacionamento");
-	define("COLUNAENTIDADE",						  "entidade");
+	define("COLUNAENTIDADE",		$prefixo_format . "entidade");
 	define("LISTA",					$prefixo_format . "lista");
 	define("CONFIG",				$prefixo_format . "config");
 	define("PERMISSOES",			$prefixo_format . "entidadepermissoes");

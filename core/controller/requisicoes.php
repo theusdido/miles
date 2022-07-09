@@ -415,8 +415,7 @@
 						}else{
 							// Registro não encontrado
 							echo '';
-						}
-						
+						}						
 					}
 				}
 			}	
@@ -519,18 +518,29 @@
 			echo tdFormulario::getEntidadesRelacionamentos($entidadeID);
 		break;
 		case "perfilusuario":
-			$usuario = $_GET["usuario"];
-			$perfil = $_GET["perfil"];
-			
+			$usuario 	= tdc::r('usuario');
+			$perfil 	= tdc::r('perfil');
+
+			if ($usuario == ''){
+				echo json_encode('Usuário não encontrado.');
+				return false;
+			}
+
+			if ($perfil == ''){
+				echo json_encode('Perfil do usuário não encontrado.');
+				return false;
+			}
+
 			$projeto = 1;
 			$empresa = 1;
-			
+
 			if ($conn = Transacao::Get()){
+
 				// Entidade ( Permissão )
 				$sql = "SELECT id,descricao FROM ".ENTIDADE." ORDER BY id ASC";
 				$query = $conn->query($sql);
 				While ($linha = $query->fetch()){
-					
+
 					// Dados do Perfil
 					// [Entidade Permissão]
 					$inserirEntidade = $excluirEntidade = $editarEntidade = $visualizarEntidade = 0;
@@ -553,52 +563,64 @@
 					}else{
 						$linhaUsuario = $queryUsuario->fetch();
 						$sqlUpdateEntidadePermissao = "UPDATE ".PERMISSOES." SET projeto = 1, empresa = 1
-						, inserir = {$inserirEntidade} , excluir = {$excluiEntidade} , editar = {$editarEntidade} , visualizar = {$visualizarEntidade} 
+						, inserir = {$inserirEntidade} , excluir = {$excluirEntidade} , editar = {$editarEntidade} , visualizar = {$visualizarEntidade} 
 						WHERE id = " . $linhaUsuario["id"];
-						
+
 						$queryUpdateEntidadePermissao = $conn->query($sqlUpdateEntidadePermissao);
 					}		
 				}
 				
-				// Entidade ( Permissão )
+				// Atributo ( Permissão )
 				$sql = "SELECT id,descricao FROM ".ATRIBUTO." ORDER BY id ASC";
 				$query = $conn->query($sql);
 				While ($linha = $query->fetch()){
-					
+
 					// Dados do Perfil
 					// [Atributo Permissão]
 					$inserirAtributo = $excluirAtributo = $editarAtributo = $visualizarAtributo = 0;
-					$sqlPerfilAtributo = "SELECT id,projeto,empresa,atributo,IFNULL(inserir,0) inserir,IFNULL(excluir,0) excluir,IFNULL(editar,0) editar,IFNULL(visualizar,0) visualizar FROM  WHERE usuario = ".$perfil." AND atributo = ".$linha["id"];
+					$sqlPerfilAtributo = "
+						SELECT 
+							id,
+							projeto,
+							empresa,
+							atributo,
+							IFNULL(inserir,0) inserir,
+							IFNULL(excluir,0) excluir,
+							IFNULL(editar,0) editar,
+							IFNULL(visualizar,0) visualizar 
+						FROM  ".PERMISSOESATRIBUTO."
+						WHERE usuario = ".$perfil." 
+						AND atributo = ".$linha["id"];
 					$queryPerfilAtributo = $conn->query($sqlPerfilAtributo);
 					if ($linhaPerfilAtributo = $queryPerfilAtributo->fetch()){
-						$inserirAtributo = $linhaPerfilAtributo["inserir"];
-						$excluirAtributo = $linhaPerfilAtributo["excluir"];
-						$editarAtributo = $linhaPerfilAtributo["editar"];
-						$visualizarAtributo = $linhaPerfilAtributo["visualizar"];
+						$inserirAtributo 		= $linhaPerfilAtributo["inserir"];
+						$excluirAtributo 		= $linhaPerfilAtributo["excluir"];
+						$editarAtributo 		= $linhaPerfilAtributo["editar"];
+						$visualizarAtributo 	= $linhaPerfilAtributo["visualizar"];
 					}
 
 					$sqlUsuario = "SELECT id FROM ".PERMISSOESATRIBUTO." WHERE usuario = ".$usuario." AND atributo = ".$linha["id"];
 					$queryUsuario = $conn->query($sqlUsuario);
 					if ($queryUsuario->rowcount() <= 0){
-						
+
 						$sqlInsertAtributoPermissao = "INSERT INTO ".PERMISSOESATRIBUTO." (id,projeto,empresa,atributo,usuario,inserir,excluir,editar,visualizar) VALUES (".getProxId("atributopermissoes",$conn).",1,1,".$linha["id"].",".$usuario.",".$inserirAtributo.",".$excluirAtributo.",".$editarAtributo.",".$visualizarAtributo.");";
 						$queryInsertAtributoPermissao = $conn->query($sqlInsertAtributoPermissao);
 
 					}else{
+
 						$linhaUsuario = $queryUsuario->fetch();
 						$sqlUpdateAtributoPermissao = "UPDATE ".PERMISSOESATRIBUTO." SET projeto = 1, empresa = 1
-						, inserir = {$inserirAtributo} , excluir = {$excluiAtributo} , editar = {$editarAtributo} , visualizar = {$visualizarAtributo} 
+						, inserir = {$inserirAtributo} , excluir = {$excluirAtributo} , editar = {$editarAtributo} , visualizar = {$visualizarAtributo} 
 						WHERE id = " . $linhaUsuario["id"];
-						
 						$queryUpdateAtributoPermissao = $conn->query($sqlUpdateAtributoPermissao);
-					}		
+					}
 				}
-				
+
 				// Função ( Permissão )
 				$sql = "SELECT id,descricao FROM ".FUNCAO." ORDER BY id ASC";
 				$query = $conn->query($sql);
 				While ($linha = $query->fetch()){
-					
+
 					// Dados do Perfil
 					// [Função Permissão]
 					$permissao = 0;
@@ -611,25 +633,26 @@
 					$sqlUsuario = "SELECT id FROM ".FUNCOESPERMISSOES." WHERE usuario = ".$usuario." AND funcao = ".$linha["id"];
 					$queryUsuario = $conn->query($sqlusuario);
 					if ($queryUsuario->rowcount() <= 0){
-						
+
 						$sqlInsertFuncaoPermissao = "INSERT INTO ".FUNCOESPERMISSOES." (id,projeto,empresa,funcao,usuario,permissao) VALUES (".getProxId("funcaoPermissoes",$conn).",1,1,".$linha["id"].",".$usuario.",".$permissao.");";
 						$queryInsertFuncaoPermissao = $conn->query($sqlInsertFuncaoPermissao);
 
 					}else{
+
 						$linhaUsuario = $queryUsuario->fetch();
 						$sqlUpdateFuncaoPermissao = "UPDATE ".FUNCOESPERMISSOES." SET projeto = 1, empresa = 1
 						, permissao = {$permissao} 
 						WHERE id = " . $linhaUsuario["id"];
-						
+
 						$queryUpdateFuncaoPermissao = $conn->query($sqlUpdateFuncaoPermissao);
 					}		
 				}
-				
+
 				// Menu ( Permissão )
 				$sql = "SELECT id,descricao FROM ".MENU." ORDER BY id ASC";
 				$query = $conn->query($sql);
 				While ($linha = $query->fetch()){
-					
+
 					// Dados do Perfil
 					// [Função Permissão]
 					$permissao = 0;
@@ -642,7 +665,7 @@
 					$sqlUsuario = "SELECT id FROM ".MENUPERMISSOES." WHERE usuario = ".$usuario." AND menu = ".$linha["id"];
 					$queryUsuario = $conn->query($sqlUsuario);
 					if ($queryUsuario->rowcount() <= 0){
-						
+
 						$sqlInsertMenuPermissao = "INSERT INTO ".MENUPERMISSOES." (id,projeto,empresa,menu,usuario,permissao) VALUES (".getProxId("menuPermissoes",$conn).",1,1,".$linha["id"].",".$usuario.",".$permissao.");";
 						$queryInsertMenuPermissao = $conn->query($sqlInsertMenuPermissao);
 
@@ -686,7 +709,7 @@
 
 		break;
 		case "setar_todas_permissoes":
-		
+
 			if ((int)tdClass::Read("installsystem") == 1){
 				$tipo		= tdClass::Read("tipo");
 				$host		= tdClass::Read("host");
@@ -700,7 +723,7 @@
 				$conn = Transacao::Get();
 				$usuario = isset($_GET["usuario"])?$_GET["usuario"]:1;
 			}
-		
+
 			if ($conn){
 				$sqlEntidade = "SELECT id FROM " . ENTIDADE;
 				$queryEntidade = $conn->query($sqlEntidade);

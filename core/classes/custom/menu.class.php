@@ -40,7 +40,7 @@ class Menu {
 		return $retornomenu;
 	}
 
-	public static function open($id){
+	public static function open($id,$load_filhos = true){
 		global $conn;
 		$retorno = array();
 		$sql 	= "SELECT * FROM " . MENU . " WHERE id = " . $id;
@@ -55,7 +55,7 @@ class Menu {
 				"entidade" 		=> $linha["entidade"],
 				"target" 		=> empty($linha["target"])?"":$linha["target"],
 				"tipomenu" 		=> $linha["tipomenu"],
-				"filhos" 		=> Menu::filhos( $id ),
+				"filhos" 		=> $load_filhos ? Menu::filhos( $id ) : [],
 				"path"			=> isset($linha["path"]) ? $linha["path"] : '',
 				"icon"			=> isset($linha["icon"]) ? $linha["icon"] : '',
 				"coluna" 		=> isset($linha["coluna"]) ? $linha["coluna"] : 0

@@ -31,4 +31,3 @@
 		// Fecha a transação com o banco de dados
 		Transacao::Commit();
 	}
-	

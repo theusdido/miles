@@ -190,7 +190,6 @@
 	// Abre a conexão com o banco de dados MILES
 	$connMILES = null; # Descontinuado
 
-
 	// Aumenta o tamanho máximo para upload em 200MB
 	ini_set('upload_max_filesize', '200M');
 

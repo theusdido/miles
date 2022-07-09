@@ -276,7 +276,7 @@ class tdc Extends tdClass{
 			return json_encode(tdc::da(getTableName($entidade),$sql));
 		}catch(Throwable $t)
 		{
-			return [];
+			return json_encode([]);
 			var_dump($t);
 		}
 	}
@@ -391,4 +391,22 @@ class tdc Extends tdClass{
 	public static function rua($entidade_name,$registro_id = 1){
 		return tdc::pa($entidade_name,$registro_id);
 	}	
+	/*  
+		* Método openId
+		* Data de Criacao: 07/07/2022
+		* @author Edilson Valentim dos Santos Bitencourt (Theusdido)
+
+		Tenta abrir um registro pelo ID, caso não encontre retorna um objeto vazio
+	*/	
+	public static function openId($entidade,$id)
+	{
+		$_entidade = tdc::p($entidade,$id);
+		if (!$_entidade->hasData()){
+			$new_entidade 		= tdc::p($entidade);
+			$new_entidade->id 	= $id;
+			$new_entidade->setIsNew();
+			return $new_entidade;
+		}
+		return $_entidade;
+	}
 }
