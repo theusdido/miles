@@ -178,12 +178,15 @@ function dateToMysqlFormat($str_date,$invertido=false){
 		if (strpos($str_date,"/") > 0){ // O strpos eu testo se existe alguma barra
 			$dt = explode("/",$str_date);  // Quebra a string com a barra e transforma em array ( dia,mes,ano )
 			if (sizeof($dt) != 3) return $str_date; // Retorna a data sem formatação se não for 3 partes, data inválida no caso
+		}else if (strpos($str_date,".") > 0){
+			$dt = explode(".",$str_date);
+			if (sizeof($dt) != 3) return $str_date;
 		}else{
 			// Partimos do princípio que a data veio sem barra, no formato ddmmyyyy
 			$dt[0] = substr($str_date,0,2); // o substr pega uma parte da string
 			$dt[1] = substr($str_date,2,2); 
 			$dt[2] = substr($str_date,4,4);
-		}		
+		}
 		return $dt[2] ."-". $dt[1] ."-". $dt[0]; // retorna o formato do MySQL
 	}else{
 		if (strpos($str_date,"/") > 0){

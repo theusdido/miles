@@ -198,3 +198,8 @@
 
 	// Permite recuperar abrir pela URL
 	ini_set('allow_url_fopen','On');
+
+	// Padrão de envios via request
+    $_op 			= tdc::r("op");
+	$_dados 		= json_decode(tdc::r('dados'));
+	$_id			= tdc::r("id");
