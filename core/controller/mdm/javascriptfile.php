@@ -21,9 +21,10 @@
 	if ($dataset){
 		foreach ($dataset as $entidade){
 			$filtro_atributo = tdc::f();
-			$filtro_atributo->addFiltro('entidade','=',$entidade->id);
+			$filtro_atributo->addFiltro('entidade','=',(int)$entidade->id);
 			$filtro_atributo->setPropriedade('order','ordem ASC');
 
+			// 
 			$filtro_relacionamento	= tdc::f();
 			$filtro_relacionamento->addFiltro("pai","=",$entidade->id);
 			fwrite($mdmJSCompile,utf8charset("

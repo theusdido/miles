@@ -14,7 +14,7 @@
 	if (isset($_POST["salvar"])){
 		$conn->beginTransaction();
 		$nome = $_POST["nome"];
-		$descricao = executefunction("utf8charset",array($_POST["descricao"]));
+		$descricao = executefunction("utf8charset",array($_POST["descricao"],6));
 		$tipo = $_POST["tipo"];		
 		$tamanho = isset($_POST["tamanho"])?$_POST["tamanho"]:0;
 		if ($tipo == "char" || $tipo == "varchar"){

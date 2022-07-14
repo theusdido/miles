@@ -734,15 +734,15 @@ function criarAtributo(
 			$labelumcheckbox 	= $descricao[2];
 			$descricao 			= $descricao[0]; #Não inverter essa ordem
 		}else{
-			$labelzerocheckbox = utf8charset("Não");
-			$labelumcheckbox = "Sim";			
+			$labelzerocheckbox = utf8charset("Não",10);
+			$labelumcheckbox = "Sim";
 		}
 	}else{
 		$labelzerocheckbox = "";
-		$labelumcheckbox = "";		
+		$labelumcheckbox = "";	
 	}
-	
-	$descricao 			= utf8charset($descricao);
+
+	$descricao 			= utf8charset($descricao,10);
 	$nuloSQL			= ((int)$nulo==0)?'NOT NULL':'NULL';
 	$chaveestrangeira 	= ($chaveestrangeira=="")?0:($chaveestrangeira);		
 	$inicializacao 		= str_replace("'","\'",$inicializacao);
@@ -1005,6 +1005,7 @@ function getAtributoId($entidadeString,$atributoString,$conn = null){
 	}
 }
 function criarRelacionamento($conn,$tipo,$entidadePai,$entidadeFilho,$descricao = "",$atributo = 0){
+	$descricao		= utf8charset($descricao,10);
 	$cardinalidade 	= getCardinalidade($tipo);
 	$sqlVerifica 	= "SELECT id FROM ".RELACIONAMENTO." WHERE pai = " . $entidadePai . " AND filho = " . $entidadeFilho . " AND tipo = " . $tipo;
 	$queryVerifica 	= $conn->query($sqlVerifica);
@@ -1709,10 +1710,15 @@ function getTipoHTML($atributo,$entidade = null){
 function addCampoFormatadoDB($dados,$entidade){
 	// Entidade interna não precisa adicionar a formatação dos campos
 	// Futuramento criar um atributo para fazer esse controle
-	if ($entidade == RELACIONAMENTO){
+
+	if ($entidade == RELACIONAMENTO || $entidade == ATRIBUTO){
 		foreach ($dados as $key => $value){
-			if ($key == 'descricao'){
-				$dados[$key] = utf8charset($value, 10);
+			switch($key){
+				case 'descricao':
+				case 'labelzerocheckbox':
+				case 'labelumcheckbox':
+					$dados[$key] = utf8charset($value, 10);
+				break;
 			}
 		}
 		return $dados;
