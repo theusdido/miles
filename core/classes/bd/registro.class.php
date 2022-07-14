@@ -153,7 +153,7 @@ abstract class Registro {
 			
 			if ($conn = Transacao::get()){
 				Transacao::log($sql->getInstrucao());
-				$resultado = $conn->exec($sql->getInstrucao());
+				$resultado = $conn->query($sql->getInstrucao());
 				$status_operacao =  $resultado;
 			}else{
 				echo "Não há transação ativa: Registro Armazenar <br/>\n";

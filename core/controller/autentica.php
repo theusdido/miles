@@ -1,4 +1,8 @@
 <?php
+	
+	if ($controller == "autentica"){
+		$login = tdc::r("login");
+		$senha = tdc::r("senha");
 
 	if ($controller == "autentica"){
 		$login = tdc::r("login");

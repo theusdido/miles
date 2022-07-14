@@ -1,7 +1,7 @@
 <?php
 	// Setando variáveis
-	$entidadeNome = "charset";
-	$entidadeDescricao = "CharSet";
+	$entidadeNome       = "charsetfiles";
+	$entidadeDescricao  = "Files Charset";
 	
 	// Criando Entidade
 	$entidadeID = criarEntidade(
@@ -21,6 +21,6 @@
 	);
 
 	// Criando Atributos
-	$local = criarAtributo($conn,$entidadeID,"local","Local","varchar",500,0,3);
-	$charset = criarAtributo($conn,$entidadeID,"charset","CharSet","char",1,0,3);
-	include "charsetarquivos.php";
+	$path       = criarAtributo($conn,$entidadeID,"path","Path","varchar",500,0,3);
+	$file       = criarAtributo($conn,$entidadeID,"file","File","varchar",100,0,3);
+    $charset    = criarAtributo($conn,$entidadeID,"charset","Charset","int",0,1,4,0,getEntidadeId("charset"));

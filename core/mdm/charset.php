@@ -89,10 +89,11 @@
 						<thead>
 							<tr>
 								<th width="5%">ID</th>
-								<th width="50%">Local</th>
-								<th width="15%" class="text-center">Nulo</th>
+								<th width="45%">Local</th>
+								<th width="10%" class="text-center">Arquivos</th>
+								<th width="10%" class="text-center">Nulo</th>
 								<th width="15%" class="text-center">UTF-8 Decode</th>
-								<th width="15%" class="text-center">UTF-8 Encode</th>
+								<th width="15%" class="text-center">UTT-8 Encode</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -100,12 +101,22 @@
 								$sql = "SELECT * FROM td_charset ORDER BY id ASC";
 								$query = $conn->query($sql);
 								while ($linha = $query->fetch()){
-									
-									$id = $linha["id"];
+									$id 		= $linha["id"];
+									$local 		= executefunction('utf8charset',array($linha["local"],5));
+									$id_modal 	= 'myModal' . $linha["id"];
 									echo '
 											<tr>
-												<td>'.$linha["id"].'</td>
-												<td>'.executefunction('utf8charset',array($linha["local"],5)).'</td>
+												<td>'.$linha["id"].'
+											</td>
+											<td>'.$local.'</td>
+											<td>
+									';
+
+									include 'charset_modal.php';
+
+									echo '
+											</td>
+												
 												<td class="text-center">
 													<input type="radio" name="charsetoption-'.$id.'" id="charsetoption-'.$id.'-N" value="N" '.($linha["charset"]=='N'?'checked':'').' onclick="setCharset('.$id.',this)">
 												</td>

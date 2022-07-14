@@ -156,6 +156,8 @@
 	// Caminho padrão para os arquivos do build do projeto
 	define("PATH_CURRENT_BUILD", PATH_CURRENT_PROJECT . FOLDER_BUILD . "/");
 
+	define ('PATH_MDM', PATH_CORE . 'mdm/');
+
 	define("PATH_MDM_JS_COMPILE", PATH_CURRENT_PROJECT  . FOLDER_BUILD . "/js/");
 
 	define('PATH_MDM_CONTROLLER' , PATH_MVC_CONTROLLER . 'mdm/');
