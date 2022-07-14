@@ -311,7 +311,7 @@ class tdc Extends tdClass{
 		Retorna um registro persistente do banco no formato de uma Array
 		$parametros: 1, Entidade:String. 2, id:Int
 	*/
-	public static function pa(string $entidade,int $id){
+	public static function pa($entidade,$id){
 		$retorno = array();
 		if ($id > 0 && $entidade != ""){
 			$registro = tdc::da($entidade,tdc::f("id","=",$id));
@@ -329,7 +329,7 @@ class tdc Extends tdClass{
 		Retorna um registro persistente do banco no formato de JSON
 		$parametros: 1, Entidade:String. 2, id:Int
 	*/
-	public static function pj(string $entidade,int $id){
+	public static function pj($entidade,$id){
 		$retorno = array();
 		if ($id > 0 && $entidade != ''){
 			$data = tdc::dj($entidade,tdc::f("id","=",$id));

@@ -1,18 +1,18 @@
 {
     "version": 2.0,
     "currentproject": 1,
-    "folder": "qeru.com.br/miles/",
+    "folder": "miles/",
     "system": {
         "url": {
             "lib": "https://teia.tec.br/miles/repository/lib/"
         },
-        "request_protocol": "http",
-        "packages": []
+        "request_protocol": "https",
+        "packages": ["ecommerce"]
     },
     "theme": "desktop",
     "prefix": "td",
     "is_show_error_message": false,
     "is_transaction_log": false,
-    "database_current": "desenv",
+    "database_current": "producao",
     "port": "auto"
 }

@@ -47,37 +47,37 @@
 			if ($criar){
 				addLog($sql);
 				// ID Última entidade
-				$query_ultimo = mysql_query("SELECT MAX(id)+1 id FROM ".PREFIXO."entidade");
+				$query_ultimo = mysql_query("SELECT MAX(id)+1 id FROM ".getSystemPREFIXO()."entidade");
 				$linha_ultimo = mysql_fetch_array($query_ultimo);
 				$prox = $linha_ultimo['id'];
-				$sql = "INSERT INTO ".PREFIXO."entidade (id,nome,descricao,exibirmenuadministracao,exibircabecalho,ncolunas,atributogeneralizacao,exibirlegenda) VALUES ({$prox},'{$nome}','{$descricao}',{$exibirmenuadministracao},{$exibircabecalho},{$ncolunas},{$atributogeneralizacao},{$exibirlegenda});";
+				$sql = "INSERT INTO ".getSystemPREFIXO()."entidade (id,nome,descricao,exibirmenuadministracao,exibircabecalho,ncolunas,atributogeneralizacao,exibirlegenda) VALUES ({$prox},'{$nome}','{$descricao}',{$exibirmenuadministracao},{$exibircabecalho},{$ncolunas},{$atributogeneralizacao},{$exibirlegenda});";
 				$query = mysql_query($sql);
 				if($query){					
 					addLog($sql);
 					// ID Última entidade
-					$query_ultimo_attr = mysql_query("SELECT MAX(id)+1 id FROM ".PREFIXO."atributo");
+					$query_ultimo_attr = mysql_query("SELECT MAX(id)+1 id FROM ".getSystemPREFIXO()."atributo");
 					$linha_ultimo_attr = mysql_fetch_array($query_ultimo_attr);
 					$prox_attr = $linha_ultimo_attr['id'];
 					
 					if ($criarprojeto == 1){
-						$sql_projeto = "INSERT INTO ".PREFIXO."atributo (id,'.PREFIXO."entidade,nome,descricao,tipo,tamanho,nulo,tipohtml,exibirgradededados,chaveestrangeira,dataretroativa) VALUES ({$prox_attr},{$prox},'projeto','Projeto','smallint','',0,'16',0,3,0);";
+						$sql_projeto = "INSERT INTO ".getSystemPREFIXO()."atributo (id,entidade,nome,descricao,tipo,tamanho,nulo,tipohtml,exibirgradededados,chaveestrangeira,dataretroativa) VALUES ({$prox_attr},{$prox},'projeto','Projeto','smallint','',0,'16',0,3,0);";
 						mysql_query($sql_projeto);
 						addLog($sql_projeto);
 						$prox_attr++;
 					}
 					if ($criarempresa == 1){
-						$sql_empresa = "INSERT INTO ".PREFIXO."atributo (id,'.PREFIXO."entidade,nome,descricao,tipo,tamanho,nulo,tipohtml,exibirgradededados,chaveestrangeira,dataretroativa) VALUES ({$prox_attr},{$prox},'empresa','Empresa','smallint','',0,'16',0,4,0);";
+						$sql_empresa = "INSERT INTO ".getSystemPREFIXO()."atributo (id,entidade,nome,descricao,tipo,tamanho,nulo,tipohtml,exibirgradededados,chaveestrangeira,dataretroativa) VALUES ({$prox_attr},{$prox},'empresa','Empresa','smallint','',0,'16',0,4,0);";
 						mysql_query($sql_empresa);
 						addLog($sql_empresa);
 						$prox_attr++;
 					}
 					if ($criarauth == 1){
-						$sql_auth = "INSERT INTO ".PREFIXO."atributo (id,'.PREFIXO."entidade,nome,descricao,tipo,tamanho,nulo,tipohtml,exibirgradededados,chaveestrangeira,dataretroativa) VALUES ({$prox_attr},{$prox},'auth','Auth','varchar','45',0,'16',0,null,0);";
+						$sql_auth = "INSERT INTO ".getSystemPREFIXO()."atributo (id,entidade,nome,descricao,tipo,tamanho,nulo,tipohtml,exibirgradededados,chaveestrangeira,dataretroativa) VALUES ({$prox_attr},{$prox},'auth','Auth','varchar','45',0,'16',0,null,0);";
 						mysql_query($sql_auth);
 						addLog($sql_auth);
 						$prox_attr++;
 						
-						$sql_auth0 = "INSERT INTO ".PREFIXO."atributo (id,'.PREFIXO."entidade,nome,descricao,tipo,tamanho,nulo,tipohtml,exibirgradededados,chaveestrangeira,dataretroativa) VALUES ({$prox_attr},{$prox},'auth0','Auth0','varchar','45',0,'16',0,null,0);";
+						$sql_auth0 = "INSERT INTO ".getSystemPREFIXO()."atributo (id,".PREFIXO."entidade,nome,descricao,tipo,tamanho,nulo,tipohtml,exibirgradededados,chaveestrangeira,dataretroativa) VALUES ({$prox_attr},{$prox},'auth0','Auth0','varchar','45',0,'16',0,null,0);";
 						mysql_query($sql_auth0);
 						addLog($sql_auth0);
 						$prox_attr++;
@@ -93,7 +93,7 @@
 				addLog($sql_update);
 			}	
 			$prox = $_POST["id"];
-			$sql = "UPDATE ".PREFIXO."entidade SET nome = '{$nome}' , descricao = '{$descricao}' , ncolunas = {$ncolunas} , exibirmenuadministracao = {$exibirmenuadministracao} , exibircabecalho = {$exibircabecalho} , campodescchave = {$campodescchave} , atributogeneralizacao = {$atributogeneralizacao} , exibirlegenda = {$exibirlegenda} WHERE id = {$_POST['id']};";
+			$sql = "UPDATE ".getSystemPREFIXO()."entidade SET nome = '{$nome}' , descricao = '{$descricao}' , ncolunas = {$ncolunas} , exibirmenuadministracao = {$exibirmenuadministracao} , exibircabecalho = {$exibircabecalho} , campodescchave = {$campodescchave} , atributogeneralizacao = {$atributogeneralizacao} , exibirlegenda = {$exibirlegenda} WHERE id = {$_POST['id']};";
 			$query = mysql_query($sql);
 			if ($query){
 				addLog($sql);
@@ -103,7 +103,7 @@
 		header("Location: criarEntidade.php?entidade=" . $prox);
 	}
 	if (isset($_GET["entidade"])){		
-		$sql = "SELECT nome,descricao,exibirmenuadministracao,exibircabecalho,ncolunas,campodescchave,atributogeneralizacao,exibirlegenda FROM ".PREFIXO."entidade WHERE id = {$id};";
+		$sql = "SELECT nome,descricao,exibirmenuadministracao,exibircabecalho,ncolunas,campodescchave,atributogeneralizacao,exibirlegenda FROM ".getSystemPREFIXO()."entidade WHERE id = {$id};";
 
 		$query = mysql_query($sql);
 		if ($linha = mysql_fetch_array($query)){			
@@ -188,7 +188,7 @@
 									<option value="null" selected></option>
 									<?php 
 										if ($id!=""){						
-											$sql = "SELECT id,descricao FROM ".PREFIXO."atributo WHERE ".PREFIXO."entidade = " . $id;
+											$sql = "SELECT id,descricao FROM ".getSystemPREFIXO()."atributo WHERE ".getSystemPREFIXO()."entidade = " . $id;
 											$query = mysql_query($sql);
 											while ($linha = mysql_fetch_array($query)){
 												echo '<option value="'.$linha["id"].'">'.utf8_encode($linha["descricao"]).'</option>';						
@@ -203,7 +203,7 @@
 									<option value="null" selected></option>
 									<?php 
 										if ($id!=""){						
-											$sql = "SELECT id,descricao FROM ".PREFIXO."atributo WHERE ".PREFIXO."entidade = " . $id;
+											$sql = "SELECT id,descricao FROM ".getSystemPREFIXO()."atributo WHERE ".getSystemPREFIXO()."entidade = " . $id;
 											$query = mysql_query($sql);
 											while ($linha = mysql_fetch_array($query)){
 												echo '<option value="'.$linha["id"].'">'.utf8_encode($linha["descricao"]).'</option>';						
