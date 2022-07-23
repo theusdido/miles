@@ -24,8 +24,8 @@ abstract class Registro {
 	*/
 	public function __construct($id=null){
 		if (!empty($id)){
-			$this->isnew = false;
-			$objeto = $this->carregar((int)$id);
+			$this->isnew 	= false;
+			$objeto 		= $this->carregar((int)$id);
 			if ($objeto){
 				$this->fromArray($objeto->toArray());
 			}
@@ -122,7 +122,7 @@ abstract class Registro {
 	    * Data de Criacao: 05/06/2012
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
-		Armazena os objetos na base de dados e retorna a quantidade de linhas afetas pelo SQL ( zero e um )
+		Armazena os objetos na base de dados e retorna true ou false.
 	*/	
 	public function armazenar(){
 		if ($this->isnew){			
@@ -153,7 +153,13 @@ abstract class Registro {
 			
 			if ($conn = Transacao::get()){
 				Transacao::log($sql->getInstrucao());
-				$resultado = $conn->query($sql->getInstrucao());
+				try{
+					$resultado = $conn->exec($sql->getInstrucao());
+				}catch(PDOException $t){
+					
+				}finally{
+					
+				}
 				$status_operacao =  $resultado;
 			}else{
 				echo "Não há transação ativa: Registro Armazenar <br/>\n";
@@ -168,6 +174,7 @@ abstract class Registro {
 					$sql->getInstrucao()
 				),'Classe Registro - Método Armazenar');
 			}
+			var_dump('Deu erro ao salvar !');
 			$status_operacao =  false;
 		}finally{
 			return $status_operacao;
@@ -453,5 +460,17 @@ abstract class Registro {
 		}catch(Throwable $t){
 			return false;
 		}
+	}
+	/*  
+		* Método isExists
+		* Data de Criacao: 18/07/2022
+		* @author Talles Machado Rodrigues (TallesMR)
+
+		Verifica se um registro existe na base de dados
+	*/
+	public function isExists()
+	{
+		if ($this->carregar($this->id) == false) return false;
+		else return true;
 	}
 }
