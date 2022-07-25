@@ -1,5 +1,20 @@
 <?php
 
+	// Porta para chamadas via URL
+	switch($mjc->port){
+		case 'hidden': 
+			$_port = ''; 
+		break;
+		case 'auto': 
+			$_port = $_SERVER['SERVER_PORT']; 
+		break;
+		default:
+			$_port = $mjc->port;
+	}
+
+	// Define a porta para requisições via API
+	define('PORT', $_port);
+
 	// Classe de Configuração do sistema
 	require $_path_core . '/classes/system/config.class.php';
 	

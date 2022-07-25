@@ -12,17 +12,22 @@
 		echo 'Arquivo <strong>miles.json</strong> está comrrompido.';
 		exit;
 	}
-
+	
+	$_env 		= '';
 	$miles_json = file_get_contents($path_miles_json);
 	if ($miles_json !== false){
 
 		// MILES JSON CONFIG
 		$mjc = json_decode($miles_json);
+
 		// Seta o projeto no MILES 
 		define('MILES_PROJECT',$mjc->currentproject);
 		
 		// Diretório da instalação do MILES FRAMEWORK
 		define("FOLDER_MILES",$mjc->folder);
+		
+		// Ambiente
+		$_env = $mjc->enviroments->{$mjc->enviroment};
 	}
 
 	if (!isset($mjc->system->request_protocol)){

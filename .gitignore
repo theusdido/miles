@@ -1,6 +1,7 @@
-**/miles.json
-**/vsc.bat
-**/winehq.key
+miles.json
+vsc.bat
+winehq.key
+error_log
 **/frameworks
 **/node_modules
 **/vendor
@@ -11,5 +12,3 @@
 **/ecommerce
 **/webservice
 **/core/nodejs
-**/error_log
-miles.json

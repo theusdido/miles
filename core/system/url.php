@@ -1,12 +1,18 @@
 <?php
+	
+	$_full_port 	= (PORT == '' ? '' : ':') . PORT;
+	$_root_folder	= (isset($_env->root) ? $_env->root : '');
 
     // URL ROOT
-	Session::append("URL_ROOT",REQUEST_PROTOCOL . HTTP_HOST . "/" . FOLDER_PROJECT . "/");
-	define('URL_ROOT', REQUEST_PROTOCOL . HTTP_HOST . ':' . PORT . "/" . FOLDER_PROJECT . "/");
+	define('URL_ROOT', REQUEST_PROTOCOL . HTTP_HOST . $_full_port. "/" . $_root_folder);
 
 	// URL ALIAS
-	if (isset($_GET["alias"])) Session::append("URL_ALIAS",REQUEST_PROTOCOL . HTTP_HOST . "/" . $_GET["alias"]);
+	if (isset($_GET["alias"])) 
+		Session::append("URL_ALIAS",REQUEST_PROTOCOL . HTTP_HOST . "/" . $_GET["alias"]);
 
+	// URL API
+	$_domain = isset($_env->url->domain) ? $_env->url->domain : HTTP_HOST;
+	define('URL_API', REQUEST_PROTOCOL . $_domain . $_full_port . '/' . FOLDER_MILES . "index.php");
 
 	if (isset($mjc->folder)){
 		$request_uri_dir 	= '/' . $mjc->folder;
@@ -17,7 +23,7 @@
 	}
 
 	// URL MILES
-	$_url_miles	= REQUEST_PROTOCOL . HTTP_HOST . (PORT==''?'':':'.PORT) .  $request_uri_dir;
+	$_url_miles	= REQUEST_PROTOCOL . HTTP_HOST . $_full_port .  $request_uri_dir;
 	Session::append("URL_MILES",$_url_miles);
 	define('URL_MILES',$_url_miles);
 
