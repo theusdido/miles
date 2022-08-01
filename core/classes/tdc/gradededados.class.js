@@ -117,6 +117,10 @@ GradeDeDados.prototype.getFiltrosNN = function(){
 	return str_filtros;
 }
 GradeDeDados.prototype.load = function(){
+	if (this.entidade == 0){
+		console.warn('Não carregou os dados da grande de dados, entidade setada com zero.');
+		return false;
+	}
 	var instancia 			= this;
 	var camposNome 			= instancia.attr_cabecalho_nome[0];
 	var camposDescricao 	= "ID";
@@ -455,8 +459,8 @@ GradeDeDados.prototype.pesquisa = function(){
 }
 GradeDeDados.prototype.excluir = function(){	
 	if (typeof beforeDelete === "function") beforeDelete();
-	let entidade = this.entidade;
-	let instancia = this;
+	let entidade 	= this.entidade;
+	let instancia 	= this;
 	let excluirRegistroUnico = (arguments.length > 0)?true:false;
 	
 	// Permissões
@@ -475,6 +479,7 @@ GradeDeDados.prototype.excluir = function(){
 	let btnExcluir;
 	let linhatable;
 	let loaderExcluir;
+
 	// Registro único ou em massa
 	if (excluirRegistroUnico){
 		registro 			= arguments[0];
@@ -1069,15 +1074,19 @@ GradeDeDados.prototype.setCabecalhoAtributos = function(){
 	this.attr_cabecalho_descricao 	= new Array("ID");
 	this.attr_cabecalho_tipo 		= new Array("int");
 
-	if (td_entidade[this.entidade].atributos.length > 0){
-		for (a in td_entidade[this.entidade].atributos){
-			if (td_entidade[this.entidade].atributos[a].entidade == this.entidade && parseInt(td_entidade[this.entidade].atributos[a].exibirgradededados) == 1){
-				this.attr_cabecalho_nome.push(td_entidade[this.entidade].atributos[a].nome);
-				this.attr_cabecalho_descricao.push(td_entidade[this.entidade].atributos[a].descricao);
-				this.attr_cabecalho_tipo.push(td_entidade[this.entidade].atributos[a].tipo);
+	if (this.entidade > 0){
+		if (td_entidade[this.entidade].atributos.length > 0){
+			for (a in td_entidade[this.entidade].atributos){
+				if (td_entidade[this.entidade].atributos[a].entidade == this.entidade && parseInt(td_entidade[this.entidade].atributos[a].exibirgradededados) == 1){
+					this.attr_cabecalho_nome.push(td_entidade[this.entidade].atributos[a].nome);
+					this.attr_cabecalho_descricao.push(td_entidade[this.entidade].atributos[a].descricao);
+					this.attr_cabecalho_tipo.push(td_entidade[this.entidade].atributos[a].tipo);
+				}
 			}
 		}
-	}
+	}else{
+		console.warn('Existe uma entidade setada como zero');
+	}	
 }
 GradeDeDados.prototype.editarEmMassa = function(){
 
@@ -1246,7 +1255,7 @@ GradeDeDados.prototype.editarEmMassa = function(){
 }
 
 GradeDeDados.prototype.getSelecionados = function(){
-	return $("#crud-contexto-listar-td_ecommerce_produto").find(".gradededados-checkbox-excluir:input[type='checkbox']:checked");
+	return $(this.getContextoListar()).find(".gradededados-checkbox-excluir:input[type='checkbox']:checked");
 }
 
 GradeDeDados.prototype.qtdeTempRegistro = function (){
@@ -1288,4 +1297,7 @@ GradeDeDados.prototype.isExibirMovimentacao = function(){
 GradeDeDados.prototype.reset = function () {
 	this.clear();
 	this.reload();
+}
+GradeDeDados.prototype.getContextoListar = function(){
+	return "#crud-contexto-listar-" + this.nomeEntidade;
 }

@@ -216,5 +216,11 @@
 
 	// Padrão de envios via request
     $_op 			= tdc::r("op");
-	$_dados 		= json_decode(tdc::r('dados'));
+	
+	$_dados = new stdClass;
+	
+	if (gettype(tdc::r('dados')) == 'string'){
+		$_dados 		= json_decode(tdc::r('dados'));
+	}
+
 	$_id			= tdc::r("id");
