@@ -1553,6 +1553,15 @@ function getListaRegFilhoObject($entidadepai,$entidadefilho,$regpai){
 	}
 	return $retorno;
 }
+function getListaRegFilhoArray($entidadepai,$entidadefilho,$regpai){
+	$retorno = array();
+	$lista = getListaRegFilho($entidadepai,$entidadefilho,$regpai);
+	foreach($lista as $l){
+		$filho = tdc::pa( tdc::e($entidadefilho)->nome , $l->regfilho );
+		array_push($retorno,$filho);
+	}
+	return $retorno;
+}
 function utf8charset($texto, $local = null, $decodificacao = null , $convert = null){
 	if ($texto == '') return $texto;
 	if ($decodificacao == null && $local == null){
