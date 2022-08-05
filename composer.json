@@ -1,13 +1,5 @@
-<<<<<<< HEAD
 {
     "require": {
         "mongodb/mongodb": "^1.11"
     }
 }
-=======
-{
-    "require": {
-        "mongodb/mongodb": "^1.11"
-    }
-}
->>>>>>> dfd2109f (#qeru - iniciando fase de teste)

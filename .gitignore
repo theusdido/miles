@@ -1,13 +1,7 @@
-<<<<<<< HEAD
 miles.json
 vsc.bat
 winehq.key
 error_log
-=======
-**/miles.json
-**/vsc.bat
-**/winehq.key
->>>>>>> dfd2109f (#qeru - iniciando fase de teste)
 **/frameworks
 **/node_modules
 **/vendor
@@ -17,10 +11,6 @@ error_log
 **/webservice/servicos/pagseguro/log
 **/ecommerce
 **/webservice
-<<<<<<< HEAD
-**/core/nodejs
-=======
 **/core/nodejs
 **/error_log
 miles.json
->>>>>>> dfd2109f (#qeru - iniciando fase de teste)
