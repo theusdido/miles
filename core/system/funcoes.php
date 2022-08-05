@@ -1562,6 +1562,10 @@ function getListaRegFilhoArray($entidadepai,$entidadefilho,$regpai){
 	}
 	return $retorno;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> dfd2109f (#qeru - iniciando fase de teste)
 function utf8charset($texto, $local = null, $decodificacao = null , $convert = null){
 	if ($texto == '') return $texto;
 	if ($decodificacao == null && $local == null){

@@ -216,6 +216,7 @@
 
 	// Padrão de envios via request
     $_op 			= tdc::r("op");
+<<<<<<< HEAD
 	
 	$_dados = new stdClass;
 	
@@ -224,3 +225,7 @@
 	}
 
 	$_id			= tdc::r("id");
+=======
+	$_dados 		= json_decode(tdc::r('dados'));
+	$_id			= tdc::r("id");
+>>>>>>> dfd2109f (#qeru - iniciando fase de teste)

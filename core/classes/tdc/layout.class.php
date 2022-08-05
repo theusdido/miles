@@ -39,7 +39,11 @@ class Layout extends Div {
 	*/			
 	public function addCabecalho(){
 		$linha 			= tdClass::Criar("div");
+<<<<<<< HEAD
 		$linha->class 	= "row";
+=======
+		$linha->class 	= "row" . ($this->fluido?"-fluid":'');
+>>>>>>> dfd2109f (#qeru - iniciando fase de teste)
 		
 		if (func_num_args() > 0){
 			foreach (func_get_args() as $obj){

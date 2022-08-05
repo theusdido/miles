@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "dependencies": {
     "cors": "^2.8.5",
@@ -20,3 +21,27 @@
     "nodemon": "^2.0.15"
   }
 }
+=======
+{
+  "dependencies": {
+    "cors": "^2.8.5",
+    "crypto-js": "^4.1.1",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "md5": "^2.3.0",
+    "mongodb": "^4.2.1",
+    "reload": "^3.2.0",
+    "xhr2": "^0.2.1",
+    "xmlhttprequest": "^1.8.0"
+  },
+  "scripts": {    
+    "watch": "nodemon --ext *",
+    "start": "nodemon projects/nodejs/index.js -e ejs,js"
+  },
+  "devDependencies": {
+    "connect-livereload": "^0.6.1",
+    "livereload": "^0.9.3",
+    "nodemon": "^2.0.15"
+  }
+}
+>>>>>>> dfd2109f (#qeru - iniciando fase de teste)
