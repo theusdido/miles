@@ -116,7 +116,7 @@ if ($isprincipal){
 
 		// Adiciona a página padrão de validação dos campos do formulário
 		$jsValidar 		= tdClass::Criar("script");
-		$jsValidar->src = Session::Get('URL_SYSTEM') . "validar.js";
+		$jsValidar->src = URL_SYSTEM . "validar.js";
 		$bloco->add($jsValidar);
 
 		// Arquivo JS Incorporado
@@ -126,7 +126,7 @@ if ($isprincipal){
 
 		// Adiciona a página padrão de validação dos campos do formulário
 		$jsFormulario 		= tdClass::Criar("script");
-		$jsFormulario->src 	= Session::Get('URL_SYSTEM') . "formulario.js";
+		$jsFormulario->src 	= URL_SYSTEM . "formulario.js";
 		$bloco->add($jsFormulario);
 	}
 

@@ -122,7 +122,7 @@ abstract class Registro {
 	    * Data de Criacao: 05/06/2012
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
-		Armazena os objetos na base de dados e retorna true ou false.
+		Armazena os objetos na base de dados e retorna a quantidade de linhas afetas pelo SQL ( zero e um )
 	*/	
 	public function armazenar(){
 		if ($this->isnew){			
@@ -150,16 +150,9 @@ abstract class Registro {
 		}
 		
 		try{
-			
 			if ($conn = Transacao::get()){
 				Transacao::log($sql->getInstrucao());
-				try{
-					$resultado = $conn->exec($sql->getInstrucao());
-				}catch(PDOException $t){
-					
-				}finally{
-					
-				}
+				$resultado = $conn->query($sql->getInstrucao());
 				$status_operacao =  $resultado;
 			}else{
 				echo "Não há transação ativa: Registro Armazenar <br/>\n";
@@ -174,7 +167,6 @@ abstract class Registro {
 					$sql->getInstrucao()
 				),'Classe Registro - Método Armazenar');
 			}
-			var_dump('Deu erro ao salvar !');
 			$status_operacao =  false;
 		}finally{
 			return $status_operacao;

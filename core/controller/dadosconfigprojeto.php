@@ -8,7 +8,7 @@
 	}
 	$idprojetocurrent 				= Session::Get()->projeto;
 	$dadosconfigprojeto 			= tdClass::Criar("div");
-	$dadosconfigprojeto->class 		= "col-md-12 dados-config-projeto-" . Session::Get()->currenttypedatabase;
+	$dadosconfigprojeto->class 		= "col-md-10 dados-config-projeto-" . Session::Get()->currenttypedatabase;
 	$dadosconfigprojeto->id 		= "dados-config-projeto";
 	$dadosconfigprojeto->add("ID: [ <b>{$idprojetocurrent}</b> ] - Instância: <b>".$texto."</b>");
 

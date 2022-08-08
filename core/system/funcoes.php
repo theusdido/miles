@@ -1573,19 +1573,22 @@ function utf8charset($texto, $local = null, $decodificacao = null , $convert = n
 				return $texto;
 		}
 	}else{
+		
 		if (is_numeric($local)){
 			$charset = tdClass::Criar("persistent",array(CHARSET,$local))->contexto->charset;
-			switch($charset){
+			switch(strtoupper($charset)){
 				case 'N': return $texto; break;
 				case 'D': return utf8decode($texto,'d'); break;
 				case 'E': return utf8encode($texto,'e'); break;
 				default: return $texto;
 			}
 		}else{
-			if ($decodificacao = 'd'){
-				return utf8decode($texto);
-			}else if ($decodificacao = 'e'){
-				return utf8encode($texto);
+			$utf8_codificacao = $decodificacao == null ? $local : $decodificacao;
+			switch(strtolower($utf8_codificacao)){
+				case 'd': return utf8decode($texto); break;
+				case 'e': return utf8encode($texto); break;
+				default:
+					return $texto;
 			}
 		}
 	}
@@ -2221,4 +2224,8 @@ function anti_injection($sql)
    $sql = strip_tags($sql);
    $sql = (get_magic_quotes_gpc()) ? $sql : addslashes($sql);
    return $sql;
+}
+
+function noClick(){
+	return 'onclick=event.preventDefault();event.stopPropagation();';
 }

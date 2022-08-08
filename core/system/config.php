@@ -35,7 +35,6 @@
 			$_session_isactive = true;
 		}
 	}
-	
 	// Verificar se a sessão não já está aberta.
 	if (!$_session_isactive) {
 		// Sessão do Sistema
@@ -83,7 +82,6 @@
 	}else if (AMBIENTE == "WEBSERVICE" || AMBIENTE == "WEBSITE"){
 		$currentConfigFile = PATH_MILES .'projects/'.PROJETO_CONSUMIDOR.'/config/current_config.inc';
 	}
-
 
 	if (file_exists($currentConfigFile)){
 		// Current File Config
@@ -212,15 +210,9 @@
 	set_time_limit(300);
 
 	// Permite recuperar abrir pela URL
-	ini_set('allow_url_fopen','On');
+	ini_set('allow_url_fopen','On');	
 
 	// Padrão de envios via request
     $_op 			= tdc::r("op");
-	
-	$_dados = new stdClass;
-	
-	if (gettype(tdc::r('dados')) == 'string'){
-		$_dados 		= json_decode(tdc::r('dados'));
-	}
-
+	$_dados 		= json_decode(tdc::r('dados'));
 	$_id			= tdc::r("id");

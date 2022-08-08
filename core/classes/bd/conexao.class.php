@@ -90,8 +90,6 @@ final class Conexao{
 					"$type:host=$host;port=$port;dbname=$base;",$user,$password
 				);
 				$conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-				#$conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_WARNING);
-				
 				return $conn;
 			}catch(PDOException $e){
 				if (IS_SHOW_ERROR_MESSAGE){
