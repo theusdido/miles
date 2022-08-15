@@ -1,5 +1,4 @@
 <?php
-
 	// Carrega o layout do sistema
 	$pagina = tdClass::Criar("pagina");
 

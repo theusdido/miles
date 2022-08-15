@@ -139,6 +139,7 @@
 	require $_path_system . 'url.php';
 	require $_path_system . 'file.php';
 	require $_path_system . 'entidade.php';
+	require $_path_system . 'atributo.php';
 
 	// Inclui a classe AutoLoad
 	require PATH_MILES . $strutuct->auto_load_class;	
@@ -162,13 +163,13 @@
 	// Título da página do projeto
 	define ("PROJETO_DESC",utf8charset(Session::Get("currentprojectname")));
 
+	$_userid = isset(Session::Get()->userid) ? Session::Get()->userid : 0;
+
 	// Forçar a exibição dos erros para Super Usuário
-	if (isset(Session::Get()->userid)){
-		if (Session::Get()->userid == 1){
-			ini_set('display_errors',1);
-			ini_set('display_startup_erros',1);
-			error_reporting(E_ALL);		
-		}
+	if ($mjc->is_show_error_message || $_userid == 1){
+		ini_set('display_errors',1);
+		ini_set('display_startup_erros',1);
+		error_reporting(E_ALL);		
 	}
 	
 	// Indice do componente Collapse
@@ -191,7 +192,7 @@
 
 	// Abre a transação atual do banco de dados do projeto
 	if (!Transacao::abrir("current") && (tdc::r('controller') == '' || tdc::r('controller') == 'install') && AMBIENTE == 'SISTEMA'){
-
+		
 		// Redireciona o sistema para instalação do sistema
 		include PATH_MVC_CONTROLLER . 'install.php';
 		exit;
@@ -199,7 +200,7 @@
 
 	// Variavel Global da conexão ative com banco de dados
 	$conn = Transacao::Get();
-
+	
 	// Abre a conexão com o banco de dados MILES
 	$connMILES = null; # Descontinuado
 

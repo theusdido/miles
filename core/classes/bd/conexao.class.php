@@ -82,8 +82,9 @@ final class Conexao{
 			return null;
 		}
 	}
-	public static function getConnection($type = null,$host,$base,$user,$password = null,$port = null){
-		if ($type == null) $type = "mysql";
+
+	public static function getConnection($type = 'mysql',$host='localhost',$base='',$user = 'root',$password = '',$port = '3306')
+	{
 		if ($type == "mysql"){
 			try{
 				$conn = new PDO(

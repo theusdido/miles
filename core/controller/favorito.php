@@ -1,15 +1,23 @@
 <?php
 	if ($conn = Transacao::Get()){
-		$sqlFavorito = "select valorid,count(valorid) as qtde from ".LOG." WHERE acao = 4 and entidade = " . getEntidadeId("menu",$conn) . " group by valorid order by qtde desc limit 3;";
+		$sqlFavorito = "
+			SELECT valorid,count(valorid) AS qtde
+			FROM ".LOG."
+			WHERE acao = 4
+			AND ".ATRIBUTO_ENTIDADE." = " . getEntidadeId("menu",$conn) . "
+			GROUP BY valorid
+			ORDER BY qtde DESC
+			LIMIT 3;
+		";
 		$queryFavorito = $conn->query($sqlFavorito);
 		if ($queryFavorito->rowCount() > 0){
-			$listaFavorito = tdClass::Criar("div");
-			$listaFavorito->id = "lista-favoritos-home";
-			$listaFavorito->class = "list-group";
+			$listaFavorito 			= tdClass::Criar("div");
+			$listaFavorito->id 		= "lista-favoritos-home";
+			$listaFavorito->class 	= "list-group";
 			while ($linhaFavorito = $queryFavorito->fetch()){
-				$a = tdClass::Criar("hyperlink");
-				$a->class="list-group-item";
-				$a->href = "#";
+				$a 			= tdClass::Criar("hyperlink");
+				$a->class	= "list-group-item";
+				$a->href 	= "#";
 				$menu = tdClass::Criar("persistent",array(MENU,$linhaFavorito["valorid"]))->contexto;
 
 				if ($menu->link != "" && $menu->descricao != ""){

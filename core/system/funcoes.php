@@ -97,7 +97,8 @@ function arrayToString($array,$separador=","){
 	}
 	return $retorno;
 }
-function is_date( $str ){
+function is_date( $str = ''){
+	if ($str == '') return false;
 	if (strpos($str, "/") > 0){
 		// Com barras
 		$dt = explode("/",$str);
@@ -994,7 +995,7 @@ function getAtributoId($entidadeString,$atributoString,$conn = null){
 		return 0;
 	}else{
 		$entidadeString = str_replace($PREFIXO,"",$entidadeString);
-		$sql = "SELECT id FROM ".ATRIBUTO." WHERE entidade = ".getEntidadeId($entidadeString,$conn)." AND nome = '".$atributoString."'";
+		$sql = "SELECT id FROM ".ATRIBUTO." WHERE ".ATRIBUTO_ENTIDADE." = ".getEntidadeId($entidadeString,$conn)." AND nome = '".$atributoString."'";
 		$query = $conn->query($sql);
 		if ($query->rowCount() > 0){
 			$linha = $query->fetch();

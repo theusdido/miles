@@ -23,7 +23,7 @@
 	
 	// Arquivo de compatibilidade entre versões
 	include $_path_system . 'compatibilidade.php';
-
+	
 	// Rotas
 	require $_path_system . 'rota.php';
 

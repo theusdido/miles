@@ -19,7 +19,7 @@
 			$_page			= $_page . "/" . end($_page_e);
 		}
 	}
-
+	
 	$_systempage		= PATH_SYSTEM_PAGE . $_page . ".php";
 	$_custumpage		= PATH_CURRENT_PAGE . $_page . ".php";
 
@@ -46,7 +46,7 @@
 		if (file_exists($systemrequisicoes)) include $systemrequisicoes;
 		exit;
 	}
-
+	
 	switch(AMBIENTE){
 		case 'SISTEMA':
 			if ($controller == "" && $_page == ""){
@@ -70,4 +70,4 @@
 				}
 			}
 		break;
-	}	
+	}
