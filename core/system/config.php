@@ -214,6 +214,6 @@
 	ini_set('allow_url_fopen','On');	
 
 	// Padrão de envios via request
-    $_op 			= tdc::r("op");
-	$_dados 		= json_decode(tdc::r('dados'));
-	$_id			= tdc::r("id");
+    $_op 			= tdc::r("_op");
+	$_dados 		= json_decode(tdc::r('_dados'));
+	$_id			= tdc::r("_id");

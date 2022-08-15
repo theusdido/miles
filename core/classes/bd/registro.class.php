@@ -434,6 +434,7 @@ abstract class Registro {
 	public function salvar()
 	{
 		$this->armazenar();
+		Transacao::Commit();
 	}
 	
 	/*  

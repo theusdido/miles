@@ -70,17 +70,41 @@ class tdClass {
 		
 		Lê String ( Substitui o comando "$_GET","$_POST" e "$_FILES")
 	*/	
-	public static function read($parms){
-		$parms = trim($parms);
-		$parms = strip_tags($parms);
-		$parms = addslashes($parms);
-	
-		if (isset($_GET[$parms])){
-			return $_GET[$parms];
-		}else if (isset($_POST[$parms])){
-			return $_POST[$parms];
-		}else if (isset($_FILES[$parms])){
-			return $_FILES[$parms];
+	public static function read($params){
+		$params = trim($params);
+		$params = strip_tags($params);
+		$params = addslashes($params);
+		
+		$_dados = self::_dados($params);
+		if (!$_dados){
+			return self::_params($params);
+		}else{
+			return $_dados;
+		}
+	}
+
+	private static function _dados($params)
+	{
+		$retorno = false;
+		if (isset($_GET['_dados'])){
+			$_dados = json_decode($_GET['_dados']);
+			if (isset($_dados->{$params})){
+				$retorno = utf8charset($_dados->{$params},1);
+			}
+		}
+		return $retorno;
+	}
+
+	private static function _params($params)
+	{
+		if (isset($_GET[$params])){
+			return $_GET[$params];
+		}else if (isset($_POST[$params])){
+			return $_POST[$params];
+		}else if (isset($_FILES[$params])){
+			return $_FILES[$params];
+		}else if (isset($_dados->{$params})){
+			return $_dados->{$params};
 		}else{
 			return false;
 		}

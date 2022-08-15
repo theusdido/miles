@@ -270,15 +270,20 @@ class tdc Extends tdClass{
 		* @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
 		Retorna um DataSet do banco de dados no formato JSON
-	*/	
+	*/
 	public static function dj($entidade,$sql = null){
 		try{
-			return json_encode(tdc::da(getTableName($entidade),$sql));
-		}catch(Throwable $t)
-		{
-			return json_encode([]);
-			var_dump($t);
+			$dados = json_encode(tdc::da(getTableName($entidade),$sql));
+		}catch(Throwable $t){
+			$dados = json_encode([]);
 		}
+
+		if (IS_SHOW_ERROR_MESSAGE){
+			var_dump(json_last_error_msg());
+			var_dump(json_last_error());
+		}
+		
+		return $dados;
 	}
 
 	/*

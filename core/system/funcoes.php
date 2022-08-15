@@ -988,22 +988,25 @@ function getEntidadeId($entidadeString,$conn = null){
 	}
 }
 function getAtributoId($entidadeString,$atributoString,$conn = null){
-	$conn = getCurrentConnection();
-	$PREFIXO = getSystemPREFIXO();
-
-	if ($entidadeString == "" || $entidadeString == null || $atributoString == "" || $atributoString == null){
-		return 0;
-	}else{
+	$conn 		= getCurrentConnection();
+	$PREFIXO 	= getSystemPREFIXO();
+	$_id 		= 0;
+	if ($entidadeString != "" && $entidadeString != null && $atributoString != "" && $atributoString != null){
 		$entidadeString = str_replace($PREFIXO,"",$entidadeString);
-		$sql = "SELECT id FROM ".ATRIBUTO." WHERE ".ATRIBUTO_ENTIDADE." = ".getEntidadeId($entidadeString,$conn)." AND nome = '".$atributoString."'";
-		$query = $conn->query($sql);
-		if ($query->rowCount() > 0){
-			$linha = $query->fetch();
-			return $linha["id"];
-		}else{
-			return 0;
+		try{
+			$sql = "SELECT id FROM ".ATRIBUTO." WHERE ".ATRIBUTO_ENTIDADE." = ".getEntidadeId($entidadeString,$conn)." AND nome = '".$atributoString."'";
+			$query = $conn->query($sql);		
+			if ($query->rowCount() > 0){
+				$linha 	= $query->fetch();
+				$_id 	= $linha["id"];
+			}
+		}catch(Throwable $t){
+			if (IS_SHOW_ERROR_MESSAGE){
+				//var_dump($t->getMessage());
+			}
 		}
 	}
+	return $_id;
 }
 function criarRelacionamento($conn,$tipo,$entidadePai,$entidadeFilho,$descricao = "",$atributo = 0){
 	$descricao		= utf8charset($descricao,10);
@@ -1723,7 +1726,10 @@ function getTipoHTML($atributo,$entidade = null){
 function addCampoFormatadoDB($dados,$entidade){
 	// Entidade interna não precisa adicionar a formatação dos campos
 	// Futuramento criar um atributo para fazer esse controle
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1041b39 (#zoomsoft instável , alterando requisições padrão)
 	if ($entidade == RELACIONAMENTO || $entidade == ATRIBUTO){
 		foreach ($dados as $key => $value){
 			switch($key){
@@ -1738,8 +1744,12 @@ function addCampoFormatadoDB($dados,$entidade){
 	}
 
 	foreach ($dados as $key => $value){
-		$tipohtml 	= getTipoHTML($key,$entidade);
-		$linha 		= array( $key => $value );
+		$tipohtml 		= getTipoHTML($key,$entidade);
+		$linha 			= array( $key => $value );
+
+		// Converte os acentos, afeta o método tdc::dj() 		
+		$dados[$key] 	= utf8charset($value, 10);
+
 		if ($tipohtml == 13 ){
 			$valorformatado = getHTMLTipoFormato( $tipohtml , $value );
 			$dados["formated_" . $key] = $valorformatado;
