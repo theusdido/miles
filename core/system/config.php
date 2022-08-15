@@ -217,3 +217,4 @@
     $_op 			= tdc::r("_op");
 	$_dados 		= json_decode(tdc::r('_dados'));
 	$_id			= tdc::r("_id");
+	$_entidade		= getSystemPREFIXO() . tdc::r('_entidade');

@@ -1,6 +1,7 @@
 <?php
-	$controller 		= tdc::r("controller");
-	$systemcontroller 	= PATH_MVC_CONTROLLER . $controller .  '.php';	
+	$controller 		= tdc::r("_controller") == '' ? tdc::r("controller") : tdc::r("_controller");
+	$_controller		= tdc::r("_controller"); # Novo padrão com _ na frente
+	$systemcontroller 	= PATH_MVC_CONTROLLER . $controller .  '.php';
 	$systemrequisicoes	= PATH_MVC_CONTROLLER . 'requisicoes.php';
 	$systemautentica	= PATH_MVC_CONTROLLER . 'autentica.php';
 	$systemmain			= PATH_MVC_CONTROLLER . 'main.php';

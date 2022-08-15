@@ -92,7 +92,7 @@ abstract class Registro {
 		@parms propriedade		
 	*/
 	public function getEntidade(){
-		return get_class($this);		
+		return get_class($this);
 	}
 
 	/*

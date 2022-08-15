@@ -28,14 +28,18 @@ final class SqlInserir extends sqlInstrucao{
 				$this->colunaValor[$coluna] = "'".dateToMysqlFormat($valor)."'";	
 			}else if (is_money($valor)){	
 					$this->colunaValor[$coluna] = moneyToFloat($valor);
-			}else{	
-				$valor = addslashes($valor);
-				$this->colunaValor[$coluna] = "'$valor'";
+			}else{
+				if (strtoupper($valor) == 'DATE_NULL'){
+					$valor = 'NULL';
+				}else{
+					$valor = addslashes($valor);
+					$this->colunaValor[$coluna] = "'$valor'";
+				}
 			}	
 		}else if (is_bool($valor)){
 			$this->colunaValor[$coluna] = $valor ? 'TRUE' : 'FALSE';
 		}else if (is_date($valor)){
-			$this->colunaValor[$coluna] = addslashes(date('Y-m-d'));			
+			$this->colunaValor[$coluna] = addslashes(date('Y-m-d'));
 		}else if (isset($valor)){
 			$this->colunaValor[$coluna] = $valor;
 		}else{
