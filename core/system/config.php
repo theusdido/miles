@@ -214,7 +214,12 @@
 	ini_set('allow_url_fopen','On');	
 
 	// Padrão de envios via request
-    $_op 			= tdc::r("_op");
-	$_dados 		= json_decode(tdc::r('_dados'));
-	$_id			= tdc::r("_id");
-	$_entidade		= getSystemPREFIXO() . tdc::r('_entidade');
+    $_op 			= tdc::r("op") == '' ? (tdc::r("_op") == '' ? '' : tdc::r("_op") ) : tdc::r("op");
+	$_id			= tdc::r("id") == '' ? (tdc::r("_id")==''?0:tdc::r("_id")) : tdc::r("id");
+	switch(gettype(tdc::r('dados'))){
+		case 'array':
+			$_dados = (object)tdc::r('dados');
+		break;
+		default:
+			$_dados	= json_decode(tdc::r('dados') == '' ? (tdc::r('_dados')==''?'{}':tdc::r('_dados')) : tdc::r('dados'));		
+	}
