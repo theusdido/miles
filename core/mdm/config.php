@@ -5,6 +5,7 @@
 	
 	$urlupload = $urlrequisicoes = $urlloadform = $enderecofiltro = $urlpesquisafiltro = $urlexcluirregistros = $linguagemprogramacao = $bancodados = "";	
 	$urlinicializacao = $urlloadgradededados = $urlloading = $urlmenu = $pathfileupload = $pathfileuploadtemp = $tipogradedados = $urluploadform = "";
+	$casasdecimais = 0;
 
 	if (!empty($_POST)){
 		$urlupload				= $_POST["urlupload"];
@@ -25,13 +26,15 @@
 		$pathfileupload			= $_POST["pathfileupload"];
 		$pathfileuploadtemp		= $_POST["pathfileuploadtemp"];
 		$tipogradedados			= $_POST["tipogradedados"];
-		
+		$casasdecimais			= $_POST["casasdecimais"];
+
 		$sql = "UPDATE ".PREFIXO."config SET urlupload = '{$urlupload}' ,urlrequisicoes = '{$urlrequisicoes}', urlsaveform = '{$urlsaveform}' 
 		, urlloadform = '{$urlloadform}', urlpesquisafiltro = '{$urlpesquisafiltro}', urlenderecofiltro = '{$urlenderecofiltro}'
 		, urlexcluirregistros = '{$urlexcluirregistros}', linguagemprogramacao = '{$linguagemprogramacao}', bancodados = '{$bancodados}' 
 		, urlinicializacao = '{$urlinicializacao}', urlloadgradededados = '{$urlloadgradededados}', urlloading = '{$urlloading}'
 		, urlrelatorio = '{$urlrelatorio}' , urlmenu = '{$urlmenu}', pathfileupload = '{$pathfileupload}' , pathfileuploadtemp = '{$pathfileuploadtemp}'
-		, tipogradedados = '{$tipogradedados}' , urluploadform = '{$urluploadform}'
+		, tipogradedados = '{$tipogradedados}' , urluploadform = '{$urluploadform}', casasdecimais = {$casasdecimais}
+		
 		WHERE id=1; ";
 		$query = $conn->query($sql);
 		if ($query){
@@ -61,6 +64,7 @@
 		$pathfileupload			= $linha["pathfileupload"];
 		$pathfileuploadtemp		= $linha["pathfileuploadtemp"];
 		$tipogradedados			= $linha["tipogradedados"];
+		$casasdecimais			= $linha["casasdecimais"];
 	}
 ?>
 <html>
@@ -87,6 +91,8 @@
 				document.getElementById("pathfileupload").value 			= "<?=$pathfileupload?>";
 				document.getElementById("pathfileuploadtemp").value 		= "<?=$pathfileuploadtemp?>";
 				document.getElementById("tipogradedados").value 			= "<?=$tipogradedados?>";
+				document.getElementById("casasdecimais").value 				= "<?=$casasdecimais?>";
+				
 			}
 		</script>
 	</head>
@@ -186,7 +192,11 @@
 									<option value="table">TABLE</option>
 									<option value="panel">PANEL</option>
 								</select>
-							</div>							
+							</div>
+							<div class="form-group">
+								<label for="casasdecimais">Quantidade de casas decimais</label>
+								<input type="text" name="casasdecimais" id="casasdecimais" class="form-control" />
+							</div>
 							<button type="submit" class="btn btn-primary" >Salvar</button>							  
 						</fieldset>	  
 					</form>					

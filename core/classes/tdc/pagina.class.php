@@ -285,33 +285,33 @@ class Pagina Extends Html {
 		$cf 			= getCurrentConfigFile();
 		$jsSession 		= tdClass::Criar("script");
 		$jsSession->add('
-				function SystemSession(){
-					this.autenticado 				= "'.(isset(Session::get()->autenticado)?Session::get()->autenticado:"").'";
-					this.userid 					= "'.(isset(Session::get()->userid)?Session::get()->userid:"").'";
-					this.username 					= "'.(isset(Session::get()->username)?Session::get()->username:"").'";
-					this.usergroup 					= '.(isset(Session::get()->usergroup)?(is_numeric(Session::get()->usergroup)?Session::get()->usergroup:0):0).';
-					this.empresa					= "'.(isset(Session::get()->empresa)?Session::get()->empresa:"").'";
-					this.projeto					= "'.(isset(Session::get()->projeto)?Session::get()->projeto:"").'";
-					this.permitirexclusao			= "'.(isset(Session::get()->permitirexclusao)?Session::get()->permitirexclusao:"").'";
-					this.permitirtrocarempresa		= "'.(isset(Session::get()->permitirtrocarempresa)?Session::get()->permitirtrocarempresa:"").'";
-					this.currentprojectregisterpath	= "'.Session::Get("PATH_CURRENT_PROJECT").'";
-					this.objectID					= -1;
-					this.PREFIXO					= "'.PREFIXO.'_";
-					this.isonline                   = '.isOnline("string").';
-					this.isproducao                 = '.isProducao("string").';
-					this.urlroot					= "'.Session::Get("URL_ROOT").'";
-					this.urlsystem					= "'.Session::Get("URL_SYSTEM").'";
-					this.urlalias					= "'.Session::Get("URL_ALIAS").'";
-					this.urlcurrenttheme			= "'.Session::Get("URL_CURRENT_PROJECT_THEME").'";					
-					this.urlloading					= "'.Session::Get("URL_LOADING").'";
-					this.urlloading2				= "'.Session::Get("URL_LOADING2").'";
-					this.urlmiles					= "'.Session::Get("URL_MILES").'index.php";
-					this.folderprojectfiles 		= "'.Session::Get('URL_CURRENT_PROJECT').'";
-					this.urlnodejs					= "'.URL_NODEJS.'";
-					this.curdate					= "'.date('d/m/Y').'";
-					this.urlcontrollerecommerce		= "'.Session::Get('URL_ECOMMERCE').'";
-				}
-				var session = new SystemSession();
+			function SystemSession(){
+				this.autenticado 				= "'.(isset(Session::get()->autenticado)?Session::get()->autenticado:"").'";
+				this.userid 					= "'.(isset(Session::get()->userid)?Session::get()->userid:"").'";
+				this.username 					= "'.(isset(Session::get()->username)?Session::get()->username:"").'";
+				this.usergroup 					= '.(isset(Session::get()->usergroup)?(is_numeric(Session::get()->usergroup)?Session::get()->usergroup:0):0).';
+				this.empresa					= "'.(isset(Session::get()->empresa)?Session::get()->empresa:"").'";
+				this.projeto					= "'.(isset(Session::get()->projeto)?Session::get()->projeto:"").'";
+				this.permitirexclusao			= "'.(isset(Session::get()->permitirexclusao)?Session::get()->permitirexclusao:"").'";
+				this.permitirtrocarempresa		= "'.(isset(Session::get()->permitirtrocarempresa)?Session::get()->permitirtrocarempresa:"").'";
+				this.currentprojectregisterpath	= "'.Session::Get("PATH_CURRENT_PROJECT").'";
+				this.objectID					= -1;
+				this.PREFIXO					= "'.PREFIXO.'_";
+				this.isonline                   = '.isOnline("string").';
+				this.isproducao                 = '.isProducao("string").';
+				this.urlroot					= "'.Session::Get("URL_ROOT").'";
+				this.urlsystem					= "'.Session::Get("URL_SYSTEM").'";
+				this.urlalias					= "'.Session::Get("URL_ALIAS").'";
+				this.urlcurrenttheme			= "'.Session::Get("URL_CURRENT_PROJECT_THEME").'";					
+				this.urlloading					= "'.Session::Get("URL_LOADING").'";
+				this.urlloading2				= "'.Session::Get("URL_LOADING2").'";
+				this.urlmiles					= "'.Session::Get("URL_MILES").'index.php";
+				this.folderprojectfiles 		= "'.Session::Get('URL_CURRENT_PROJECT').'";
+				this.urlnodejs					= "'.URL_NODEJS.'";
+				this.curdate					= "'.date('d/m/Y').'";
+				this.urlcontrollerecommerce		= "'.Session::Get('URL_ECOMMERCE').'";
+			}
+			var session = new SystemSession();
 			
 			function SystemConfig(){
 				this.urlrequisicoes 				= "'.getURLProject($this->config->urlrequisicoes).'";
@@ -329,6 +329,8 @@ class Pagina Extends Html {
 				this.datahora						= "";
 				this.pathfileupload					= "'.$this->config->pathfileupload.'";
 				this.pathfileuploadtemp				= "'.$this->config->pathfileuploadtemp.'";
+				this.casasdecimais					= "'.($this->config->casasdecimais==''?2:$this->config->casasdecimais).'";
+
 			}
 			var config = new SystemConfig();
 		');

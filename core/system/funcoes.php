@@ -2236,3 +2236,8 @@ function anti_injection($sql)
 function noClick(){
 	return 'onclick=event.preventDefault();event.stopPropagation();';
 }
+
+// Testa se a variável existe ( @theusdido 07/09/2000 )
+function is_exists($variable,$replace = null){
+	return isset($variable) ? $variable : $replace;
+}

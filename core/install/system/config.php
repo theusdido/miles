@@ -40,3 +40,5 @@
 	$pathfileuploadtemp 		= criarAtributo($conn,$entidadeID,"pathfileuploadtemp","Diretório Temporário de Arquivos ( Upload )","varchar",200,1,3);
 	$urlupload 					= criarAtributo($conn,$entidadeID,"testecharset","Teste CharSet","text",0,0,3);
 	$tipogradedados 			= criarAtributo($conn,$entidadeID,"tipogradedados","Tipo de Grade de Dados","varchar",10,1,3);
+	$casasdecimais 				= criarAtributo($conn,$entidadeID,"casasdecimais","Quantidade de Casas Decimais","int",0,1,25);
+	

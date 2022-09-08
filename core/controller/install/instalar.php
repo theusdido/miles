@@ -96,7 +96,8 @@
 				"pathfileupload",
 				"pathfileuploadtemp",
 				"testecharset",
-				"tipogradedados"
+				"tipogradedados",
+				"casasdecimais"
 			), array(
 				"'index.php?controller=upload'",
 				"'index.php?controller=requisicoes'",
@@ -116,7 +117,8 @@
 				"'projects/".CURRENT_PROJECT_ID."/arquivos'",
 				"'projects/".CURRENT_PROJECT_ID."/arquivos/temp'",
 				"'á'",
-				"'table'"
+				"'table'",
+				2
 			));
 
 			// Status

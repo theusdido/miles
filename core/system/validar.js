@@ -349,28 +349,32 @@ if (typeof $().mask == "function"){
 		}
 	});
 
+	let casasdecimais = parseInt(config.casasdecimais);
 	if (typeof $.fn.maskMoney === "function"){
+
 		// Moeda
-		$(".formato-moeda").maskMoney({symbol:"R$", thousands:".", decimal:",", symbolStay: true,showSymbol:true});
-		//Número Decimal
-		$(".formato-numerodecimal").maskMoney({symbol:"Kg", thousands:"", decimal:",", symbolStay: true,showSymbol:true});
+		$(".formato-moeda").maskMoney({
+			symbol:"R$", 
+			thousands:".", 
+			decimal:",",
+			symbolStay: true,
+			showSymbol:true
+		});
+
+		// Número Decimal
+		$(".formato-numerodecimal").maskMoney({
+			symbol:"", 
+			thousands:"", 
+			decimal:",", 
+			symbolStay: false,
+			showSymbol:false, 
+			precision:casasdecimais
+		});
 	}
 
-	/*
-	//Número Decimal
-	$(".formato-numerodecimal").mask("99,99");
-	$(".formato-numerodecimal").keypress(function(e){
-		var tecla = e.which;
-		if ((tecla > 47 && tecla < 58) || (tecla == 46))  return true;
-		else {
-			if (tecla != 8) return false;
-			else return true;
-		}
-	});
-	*/
-
-	// NÃºmero Processo Judicial
+	// Número Processo Judicial
 	$('.formato-numeroprocessojudicial').mask('9999999-99.9999.9.99.9999');
+
 	// Telefone
 	$('.formato-telefone').mask('(99) 99999-9999');
 	$('.formato-telefone').blur(function(e){
@@ -397,6 +401,7 @@ if (typeof $().mask == "function"){
 			var numero = numerotelefone.substr(7,4);
 		}
 	});
+
 	// Número Inteiro
 	$(".formato-numerointeiro").keypress(function(e){
 			var tecla = e.which;
@@ -430,6 +435,7 @@ if (typeof $().mask == "function"){
 			clicado = false;
 		}
 	});
+
 	// AddList
 	$('.add_list').popover({
 	 html : true

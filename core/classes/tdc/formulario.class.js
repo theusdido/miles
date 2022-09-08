@@ -97,7 +97,7 @@ tdFormulario.prototype.novo = function(){
 		let atributoID 		= getIdAtributo(atributo,entidadeAttr);
 		if (parseInt(atributoID) != 0 && atributoID != ""){
 			let atributoOBJ = td_atributo[atributoID];
-			if (parseInt(atributoOBJ.tipoinicializacao) == 1 && atributoOBJ.inicializacao != ""){
+			if (parseInt(atributoOBJ.tipoinicializacao) == 1 && atributoOBJ.inicializacao != ""){			
 				eval("valor = " + atributoOBJ.inicializacao + ";");
 			}
 		}
@@ -140,9 +140,21 @@ tdFormulario.prototype.novo = function(){
 			}
 
 			let attr_selector = "#" + td_atributo[atributoID].nome + '[data-entidade="'+entidadeAttr+'"]';
-			if ($(attr_selector,contextoAdd).hasClass("checkbox-sn")){
-				$(attr_selector,contextoAdd).val(0);
+
+			if (valor == ''){
+				if ($(attr_selector,contextoAdd).hasClass("checkbox-sn")){
+					$(attr_selector,contextoAdd).val(0);
+				}
+			}else{
+				if ($(attr_selector,contextoAdd).hasClass("checkbox-sn")){
+					$(attr_selector,contextoAdd).val(valor);
+					setTimeout(function(){
+						$(attr_selector,contextoAdd).parents('.form-group').first().find('.checkbox-'+(valor==1?'s':'n')).click();
+					},1000)
+					
+				}
 			}
+
 			if ($(attr_selector,contextoAdd).hasClass("td-file-hidden")){
 				$(attr_selector,contextoAdd).parents(".form-group").find("iframe").first().attr("src",getURLProject("index.php?controller=upload&atributo="+td_atributo[atributoID].id+"&valor=&id=" + indicetemp));
 			}
@@ -281,37 +293,40 @@ tdFormulario.prototype.setPermissoesAtributos = function(funcao){
 			}
 		}
 	}
-	// Tem que ser depois de setar as permissões
-	//this.setaAtributoGeneralizacaoLista();
+
+	// Atributo dependencia	
+	this.setAtributoDependencia();
 }
 
-// -- Campo do tipo lista <select>
-tdFormulario.prototype.setaAtributoGeneralizacaoLista = function(){
+
+tdFormulario.prototype.setAtributoDependencia = function(){
 	let instancia = this;
 	$(".form-control",this.getContextoAdd()).each(function(){
+		console.log($(this).attr("atributo"));
 		if ($(this).attr("atributo") != undefined){
 			var idatributo = $(this).attr("atributo");
 			if (td_atributo[idatributo] == undefined) return false;
+
 			if (
 				td_atributo[idatributo].atributodependencia != "" && 
 				td_atributo[idatributo].atributodependencia > 0 && 
 				td_atributo[idatributo].atributodependencia != undefined
-			){
-
+			){				
 				let $_atributo = $("#" + td_atributo[idatributo].nome,instancia.getContextoAdd());
 				$("#" + td_atributo[idatributo].nome,instancia.getContextoAdd()).attr("disabled",true);
 				$("#" + td_atributo[idatributo].nome,instancia.getContextoAdd()).parents(".filtro-pesquisa").find(".descricao-filtro").val("");
 				$("#" + td_atributo[idatributo].nome,instancia.getContextoAdd()).parents(".filtro-pesquisa").find(".botao-filtro").hide();
 				if ($(this).prop("tagName") == "SELECT"){
-					$("#" + td_atributo[idatributo].nome,this.getContextoAdd()).html("<option value=''>Selecione</option>");
+					$("#" + td_atributo[idatributo].nome,instancia.getContextoAdd()).html("<option value=''>Selecione</option>");
 				}
 				let atributodependencia = td_atributo[td_atributo[idatributo].atributodependencia];
 				$("#" + atributodependencia.nome,instancia.getContextoAdd()).change(function(){
 					let _valor = $(this).val();
+					let atributofiltro = "";
 					if (_valor == ''){
 						$_atributo.html("<option value=''>-- Selecione --</option>");
+						$_atributo.attr("disabled",true);
 					}else{
-						let atributofiltro = "";
 						for (a in td_atributo){
 							if (td_atributo[a].entidade == td_atributo[idatributo].chaveestrangeira){
 								if (atributodependencia.chaveestrangeira == td_atributo[a].chaveestrangeira){
@@ -333,19 +348,7 @@ tdFormulario.prototype.setaAtributoGeneralizacaoLista = function(){
 						let filtro = atributofiltro!=""?atributofiltro+ "^=^" + $(this).val():"";
 						carregarListas(td_entidade[td_atributo[idatributo].entidade].nomecompleto,td_atributo[idatributo].nome,instancia.getContextoAdd(),valordependencia,filtro);
 					}
-					let valordependencia = "";
-					for(dap in this.dadosatributodependencia){
-						var d = dadosatributodependencia[dap];
-						if (td_entidade[td_atributo[idatributo].entidade].nomecompleto == d.entidade && td_atributo[idatributo].nome == d.atributo){
-							valordependencia = d.valor;
-						}
-					}
-							
-					$("#" + td_atributo[idatributo].nome).removeAttr("disabled");
-					var filtro = atributofiltro!=""?atributofiltro+ "^=^" + $(this).val():"";
-					carregarListas(td_entidade[td_atributo[idatributo].entidade].nomecompleto,td_atributo[idatributo].nome,this.getContextoAdd(),valordependencia,filtro);
 				});
-				
 			}
 		}
 	});	
@@ -817,7 +820,7 @@ tdFormulario.prototype.editar = function(){
 	if (typeof beforeEdit === "function") beforeEdit(this.entidade.id,this.registro_id);
 	//Limpa o formulário para edição de um novo registro
 	this.novo();
-	this.setaAtributoGeneralizacaoLista();
+	this.setAtributoDependencia();
 	
 	addLog("", "", "", this.entidade.id,this.registro_id, 7, "");
 	
@@ -968,6 +971,7 @@ tdFormulario.prototype.setDados = function(dados){
 		
 		// Apenas os campos do tipo SELECT <select>
 		if ($('#' + dado.atributo + '[data-entidade="'+entidade_nome+'"]',contextoAdd).prop("tagName") == "SELECT"){
+
 			let atributodependencia_id 	= td_atributo[getIdAtributo(dado.atributo,entidade_nome)].atributodependencia;
 			atributodependencia_id		= atributodependencia_id == '' ? 0 : atributodependencia_id;
 			// Trata-se de um atributo dependente
