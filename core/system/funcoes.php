@@ -1726,7 +1726,15 @@ function getTipoHTML($atributo,$entidade = null){
 function addCampoFormatadoDB($dados,$entidade){
 	// Entidade interna não precisa adicionar a formatação dos campos
 	// Futuramento criar um atributo para fazer esse controle
-	if ($entidade == RELACIONAMENTO || $entidade == ATRIBUTO){
+	if (
+		$entidade == RELACIONAMENTO || 
+		$entidade == ATRIBUTO ||
+		$entidade == ENTIDADE ||
+		$entidade == MENU
+	){
+		if ($entidade == MENU){
+			echo 'tá passando aqui';
+		}
 		foreach ($dados as $key => $value){
 			switch($key){
 				case 'descricao':

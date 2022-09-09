@@ -49,7 +49,7 @@ class Menu {
 			$linha = $query->fetch();
 			$retorno = array(
 				"id"			=> $linha["id"],
-				"descricao" 	=> utf8charset($linha["descricao"],2),
+				"descricao" 	=> utf8charset($linha["descricao"],11),
 				"link" 			=> $linha["link"],
 				"pai" 			=> $linha["pai"],
 				"entidade" 		=> $linha["entidade"],

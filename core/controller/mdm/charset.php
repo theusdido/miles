@@ -11,8 +11,12 @@
 		break;
 
 		case 'listaratributo':
-			$entidade = $_GET["entidade"];
-			
+			$entidade = isset($_GET["entidade"]) ? $_GET["entidade"] : '';
+			if ($entidade == ''){
+				echo 'Entidade não enviada por parametro.';
+				exit;
+			}
+
 			if (is_numeric($entidade)){
 				
 				$sqlT 	= "SELECT id,nome,descricao FROM td_atributo WHERE entidade = {$entidade} AND tipohtml in (1,2,3,14,16,21,27) AND tipo IN ('varchar','char','text');";

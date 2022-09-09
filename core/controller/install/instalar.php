@@ -158,6 +158,7 @@
 			inserirRegistro($conn,getSystemPREFIXO() . "charset",8, array("local","charset"), array("'Javascript Embutido no PHP'","'D'"));
 			inserirRegistro($conn,getSystemPREFIXO() . "charset",9, array("local","charset"), array("'Javascript mdm.js'","'E'"));
 			inserirRegistro($conn,getSystemPREFIXO() . "charset",10, array("local","charset"), array("'Javascript mdm.js ( Relacionamento ) em funcoes.php'","'E'"));
+			inserirRegistro($conn,getSystemPREFIXO() . "charset",11, array("local","charset"), array("'Campo descrição da classe Menu ( menu.class.php - E )'","'E'"));
 			
 			//  Tipo de Ticket
 			inserirRegistro($conn,getSystemPREFIXO() . "tickettipo",1, array("descricao"), array("'Alterar"));

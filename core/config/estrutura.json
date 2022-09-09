@@ -2,7 +2,7 @@
     "auto_load_class": "core/classes/tdc/AutoLoad.class.php",
     "mdm": {
         "atributo": {
-            "entidade": "td_entidade"
+            "entidade": "entidade"
         }
     }
 }
