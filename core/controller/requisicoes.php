@@ -540,7 +540,6 @@
 				$sql = "SELECT id,descricao FROM ".ENTIDADE." ORDER BY id ASC";
 				$query = $conn->query($sql);
 				While ($linha = $query->fetch()){
-
 					// Dados do Perfil
 					// [Entidade Permissão]
 					$inserirEntidade = $excluirEntidade = $editarEntidade = $visualizarEntidade = 0;
@@ -602,7 +601,6 @@
 					$sqlUsuario = "SELECT id FROM ".PERMISSOESATRIBUTO." WHERE usuario = ".$usuario." AND atributo = ".$linha["id"];
 					$queryUsuario = $conn->query($sqlUsuario);
 					if ($queryUsuario->rowcount() <= 0){
-
 						$sqlInsertAtributoPermissao = "INSERT INTO ".PERMISSOESATRIBUTO." (id,projeto,empresa,atributo,usuario,inserir,excluir,editar,visualizar) VALUES (".getProxId("atributopermissoes",$conn).",1,1,".$linha["id"].",".$usuario.",".$inserirAtributo.",".$excluirAtributo.",".$editarAtributo.",".$visualizarAtributo.");";
 						$queryInsertAtributoPermissao = $conn->query($sqlInsertAtributoPermissao);
 
@@ -620,7 +618,6 @@
 				$sql = "SELECT id,descricao FROM ".FUNCAO." ORDER BY id ASC";
 				$query = $conn->query($sql);
 				While ($linha = $query->fetch()){
-
 					// Dados do Perfil
 					// [Função Permissão]
 					$permissao = 0;
@@ -633,7 +630,6 @@
 					$sqlUsuario = "SELECT id FROM ".FUNCOESPERMISSOES." WHERE usuario = ".$usuario." AND funcao = ".$linha["id"];
 					$queryUsuario = $conn->query($sqlusuario);
 					if ($queryUsuario->rowcount() <= 0){
-
 						$sqlInsertFuncaoPermissao = "INSERT INTO ".FUNCOESPERMISSOES." (id,projeto,empresa,funcao,usuario,permissao) VALUES (".getProxId("funcaoPermissoes",$conn).",1,1,".$linha["id"].",".$usuario.",".$permissao.");";
 						$queryInsertFuncaoPermissao = $conn->query($sqlInsertFuncaoPermissao);
 
@@ -652,7 +648,6 @@
 				$sql = "SELECT id,descricao FROM ".MENU." ORDER BY id ASC";
 				$query = $conn->query($sql);
 				While ($linha = $query->fetch()){
-
 					// Dados do Perfil
 					// [Função Permissão]
 					$permissao = 0;
@@ -665,7 +660,6 @@
 					$sqlUsuario = "SELECT id FROM ".MENUPERMISSOES." WHERE usuario = ".$usuario." AND menu = ".$linha["id"];
 					$queryUsuario = $conn->query($sqlUsuario);
 					if ($queryUsuario->rowcount() <= 0){
-
 						$sqlInsertMenuPermissao = "INSERT INTO ".MENUPERMISSOES." (id,projeto,empresa,menu,usuario,permissao) VALUES (".getProxId("menuPermissoes",$conn).",1,1,".$linha["id"].",".$usuario.",".$permissao.");";
 						$queryInsertMenuPermissao = $conn->query($sqlInsertMenuPermissao);
 
@@ -709,7 +703,6 @@
 
 		break;
 		case "setar_todas_permissoes":
-
 			if ((int)tdClass::Read("installsystem") == 1){
 				$tipo		= tdClass::Read("tipo");
 				$host		= tdClass::Read("host");
@@ -723,7 +716,6 @@
 				$conn = Transacao::Get();
 				$usuario = isset($_GET["usuario"])?$_GET["usuario"]:1;
 			}
-
 			if ($conn){
 				$sqlEntidade = "SELECT id FROM " . ENTIDADE;
 				$queryEntidade = $conn->query($sqlEntidade);

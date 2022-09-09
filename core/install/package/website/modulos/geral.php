@@ -33,7 +33,8 @@
         array('name' => 'newsletter'              ,'title' => 'Newsletter'),
         array('name' => 'rodape'                  ,'title' => 'Rodapé'),
         array('name' => 'redesocial'              ,'title' => 'Rede Social'),
-		array('name' => 'redessociais'              ,'title' => 'Redes Sociais')		
+		    array('name' => 'redessociais'              ,'title' => 'Redes Sociais'),
+        array('name' => 'whatsapp'              ,'title' => 'Whatsapp')	
       )
     )
   );

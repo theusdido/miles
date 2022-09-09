@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <?php
 	$pedidos 	= [];
 	$filtro 	= tdc::f(array(
@@ -45,6 +46,8 @@
 		));
 	}
 =======
+=======
+>>>>>>> b09270b6 (desatualizado ftp teia)
 <?php
 	$pedidos 	= [];
 	$filtro 	= tdc::f(array(
@@ -90,5 +93,8 @@
 			"itens"				=> tdc::da('td_ecommerce_pedidoitem',tdc::f('pedido','=',$pedidoID))
 		));
 	}
+<<<<<<< HEAD
 >>>>>>> dfd2109f (#qeru - iniciando fase de teste)
+=======
+>>>>>>> b09270b6 (desatualizado ftp teia)
 	$retorno["dados"] = $pedidos;

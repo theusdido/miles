@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <?php
 
 	foreach($_POST as $k => $v){
@@ -44,6 +45,8 @@
 		$retorno['status'] 	= 0;
 		$retorno['msg']		= 'Não foi possível salvar o registro';
 =======
+=======
+>>>>>>> b09270b6 (desatualizado ftp teia)
 <?php
 
 	foreach($_POST as $k => $v){
@@ -88,5 +91,8 @@
 	}else{
 		$retorno['status'] 	= 0;
 		$retorno['msg']		= 'Não foi possível salvar o registro';
+<<<<<<< HEAD
 >>>>>>> dfd2109f (#qeru - iniciando fase de teste)
+=======
+>>>>>>> b09270b6 (desatualizado ftp teia)
 	}

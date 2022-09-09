@@ -66,9 +66,13 @@
 		case md5("ecommerce.granuemporio"): // 5bbc1f5977be278e8521ee0fb2b3658a
 			$permissao = true;
 		break;
+<<<<<<< HEAD
 		case md5("ecommerce.sidercomp"): // 9c372ce9eeaa680bc3c6a0252c711643
 			$permissao = true;
 		break;
+=======
+
+>>>>>>> b09270b6 (desatualizado ftp teia)
 	}
 	if (!$permissao){
 		echo 'Token não confere com o cadastrado';
@@ -97,11 +101,14 @@
 	// Opção dentro do servições
 	$op = isset($_GET['op']) ? $_GET['op'] : ( isset($_POST['op']) ? $_POST['op'] : '' );
 
+<<<<<<< HEAD
 	if ($op == ''){
 		$op 		= isset($_GET['service']) ? $_GET['service'] : ( isset($_POST['service']) ? $_POST['service'] : '' );
 		$service 	= $op;
 	}
 
+=======
+>>>>>>> b09270b6 (desatualizado ftp teia)
 	// Encaminha para o serviço solicitado
 	require 'rota.php';
 

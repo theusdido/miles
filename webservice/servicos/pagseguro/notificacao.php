@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <?php
 	$filenameLog = 'servicos/pagseguro/log/log-'.$projetoconsumidor.'.txt';
 	if (file_exists($filenameLog)) unlink($filenameLog);
@@ -307,6 +308,8 @@
 		fwrite($file,"\n" . $string);
 		fclose($file);
 =======
+=======
+>>>>>>> b09270b6 (desatualizado ftp teia)
 <?php
 	$filenameLog = 'servicos/pagseguro/log/log-'.$projetoconsumidor.'.txt';
 	if (file_exists($filenameLog)) unlink($filenameLog);
@@ -614,5 +617,8 @@
 		$file = fopen($filenameLog, 'a');
 		fwrite($file,"\n" . $string);
 		fclose($file);
+<<<<<<< HEAD
 >>>>>>> dfd2109f (#qeru - iniciando fase de teste)
+=======
+>>>>>>> b09270b6 (desatualizado ftp teia)
 	}

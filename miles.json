@@ -1,0 +1,33 @@
+{
+    "version": 2.0,
+    "currentproject": 1,
+    "folder": "miles/",
+    "system": {
+        "url": {
+            "lib": "https://teia.tec.br/miles/repository/lib/"
+        },
+        "request_protocol": "http",
+        "packages": ["ecommerce"]
+    },
+    "theme": "desktop",
+    "prefix": "td",
+    "is_show_error_message": false,
+    "is_transaction_log": false,
+    "database_current": "producao",
+    "port": "hidden",
+	"enviroment":"prod",
+	"enviroments":{
+		"dev":{
+			"root":"ws.teia.tec.br/primodas/",
+			"url":{
+				"domain":"localhost"
+			}
+		},
+		"prod":{
+			"root":"/",
+			"url":{
+				"domain":"primodass.com.br"
+			}
+		}
+	}
+}
