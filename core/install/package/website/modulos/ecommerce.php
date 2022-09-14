@@ -8,7 +8,8 @@
         array('name' => 'endereco' , 'title' => 'Endereço'),
         array('name' => 'configuracoes' , 'title' => 'Configurações'),
         array('name' => 'recuperacaosenha' , 'title' => 'Recuperar Senha'),
-        array('name' => 'loja'                    ,'title' => 'Loja')
+        array('name' => 'loja'                    ,'title' => 'Loja'),
+        array('name' => 'modalidade'                    ,'title' => 'Modalidade')
       )
     ),
     array( "name" => "comercial", "title" => "Comercial", "components" => 

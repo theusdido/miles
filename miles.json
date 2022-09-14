@@ -21,6 +21,17 @@
 			"root":"ws.teia.tec.br/primodas/",
 			"url":{
 				"domain":"localhost"
+			},
+            "frameworks":{
+                "angular":{
+                    "port":4200
+                }
+            }
+		},
+		"prod":{
+			"root":"/",
+			"url":{
+				"domain":"app.qeru.com.br"
 			}
 		},
 		"prod":{

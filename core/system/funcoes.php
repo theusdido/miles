@@ -1104,7 +1104,7 @@ function inserirRegistro($conn,$tabela,$id,$atributos,$valores,$criarnovoregistr
 		// Atualiza a informação caso o ID já exista
 		atualizarRegistro($conn,$tabela,$id,$atributos,$valores);
 		return $id;
-	}else{			
+	}else{
 		if ($criarnovoregistro){
 			// Força a criação do registro, independentemente do ID
 			$id = getProxId(str_replace("td_","",$tabela),$conn);
