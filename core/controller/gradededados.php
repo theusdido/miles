@@ -222,7 +222,7 @@
 						$attrRel = $datasetAttrRelVazio[0]->nome;
 					}
 				}
-				if ($dado->{$c} != ""){
+				if ($dado->{$c} != "" && $dado->{$c} != 0){
 					$valor_campo =  tdClass::Criar("persistent",array($entRel->contexto->nome, $dado->{$c} ))->contexto->{$attrRel};
 				}
 			}else{

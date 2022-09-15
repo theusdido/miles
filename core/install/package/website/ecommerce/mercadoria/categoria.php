@@ -20,8 +20,10 @@
 		$registrounico = 0
     );
 
-	$descricao 	= criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar",200,0,3,1,0,0,"");
-	$imagem 	= criarAtributo($conn,$entidadeID,"imagem","Imagem","text",0,1,19,0,0,0,"");
+	$descricao 		= criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar",200,0,3,1,0,0,"");
+	$imagem 		= criarAtributo($conn,$entidadeID,"imagem","Imagem","text",0,1,19,0,0,0,"");
+	$icon 			= criarAtributo($conn,$entidadeID,"icon","Icon","text",0,1,19,0,0,0,"");
+	$modalidade  	= criarAtributo($conn, $entidadeID,"modalidade","Modalidade","int",0,1,4,0,installDependencia("ecommerce_modalidade","package/website/ecommerce/geral/modalidade"));
 
 	Entity::setDescriptionField($conn,$entidadeID,$descricao,false);
 

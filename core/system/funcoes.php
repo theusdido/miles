@@ -426,6 +426,7 @@ function isemail($email){
 }
 
 function getExtensao($str){
+	if ($str == '') return '';
 	$array = explode(".", $str);
 	if (sizeof($array) > 1){
 		return strtolower(end($array));

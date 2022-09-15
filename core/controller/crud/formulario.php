@@ -70,17 +70,19 @@
 		';
 	}
 
-	function getFormPadrao($ncolunas = 1,$fpForm){
+	function getFormPadrao($ncolunas = 1,$fpForm = ''){
+
 		// Formulário Principal ( Personalizado )
 		$form 					= tdClass::Criar("tdformulario");
 		$form->ncolunas 		= $ncolunas;
 		$form->fp 				= $fpForm;
 		$form->funcionalidade 	= "cadastro";
-		
+
 		return $form;
 	}
 
 	if ($isprincipal){
+
 		// Adicionar Registro em tempo de execução
 		$iframeEmExecucao 					= tdc::o("iframe");
 		$iframeEmExecucao->border 			= 0;

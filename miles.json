@@ -1,7 +1,7 @@
 {
     "version": 2.0,
     "currentproject": 1,
-    "folder": "miles/",
+    "folder": "qeru.com.br/miles/",
     "system": {
         "url": {
             "lib": "https://teia.tec.br/miles/repository/lib/"
@@ -13,12 +13,12 @@
     "prefix": "td",
     "is_show_error_message": false,
     "is_transaction_log": false,
-    "database_current": "producao",
+    "database_current": "desenv",
     "port": "hidden",
-	"enviroment":"prod",
+	"enviroment":"dev",
 	"enviroments":{
 		"dev":{
-			"root":"ws.teia.tec.br/primodas/",
+			"root":"qeru.com.br/",
 			"url":{
 				"domain":"localhost"
 			},
@@ -32,12 +32,6 @@
 			"root":"/",
 			"url":{
 				"domain":"app.qeru.com.br"
-			}
-		},
-		"prod":{
-			"root":"/",
-			"url":{
-				"domain":"primodass.com.br"
 			}
 		}
 	}
