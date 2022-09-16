@@ -122,65 +122,65 @@
 			));
 
 			// Status
-			inserirRegistro($conn,getSystemPREFIXO() . "status",1, array("descricao","classe"), array("'Ativo'","'td-status-ativo'"));
-			inserirRegistro($conn,getSystemPREFIXO() . "status",2, array("descricao","classe"), array("'Sucesso'","'td-status-sucesso'"));
-			inserirRegistro($conn,getSystemPREFIXO() . "status",3, array("descricao","classe"), array("'Alerta'","'td-status-alerta'"));
-			inserirRegistro($conn,getSystemPREFIXO() . "status",4, array("descricao","classe"), array("'Erro'","'td-status-erro'"));
-			inserirRegistro($conn,getSystemPREFIXO() . "status",5, array("descricao","classe"), array("'Informativo'","'td-status-info'"));
+			inserirRegistro($conn,STATUS,1, array("descricao","classe"), array("'Ativo'","'td-status-ativo'"));
+			inserirRegistro($conn,STATUS,2, array("descricao","classe"), array("'Sucesso'","'td-status-sucesso'"));
+			inserirRegistro($conn,STATUS,3, array("descricao","classe"), array("'Alerta'","'td-status-alerta'"));
+			inserirRegistro($conn,STATUS,4, array("descricao","classe"), array("'Erro'","'td-status-erro'"));
+			inserirRegistro($conn,STATUS,5, array("descricao","classe"), array("'Informativo'","'td-status-info'"));
 
 			// Tipo Aviso
-			inserirRegistro($conn,getSystemPREFIXO() . "tipoaviso",1, array("descricao"), array("'Sucesso'"));
-			inserirRegistro($conn,getSystemPREFIXO() . "tipoaviso",2, array("descricao"), array("'Alerta'"));
-			inserirRegistro($conn,getSystemPREFIXO() . "tipoaviso",3, array("descricao"), array("'Erro'"));
-			inserirRegistro($conn,getSystemPREFIXO() . "tipoaviso",4, array("descricao"), array("'Informativo'"));
+			inserirRegistro($conn,TIPOAVISO,1, array("descricao"), array("'Sucesso'"));
+			inserirRegistro($conn,TIPOAVISO,2, array("descricao"), array("'Alerta'"));
+			inserirRegistro($conn,TIPOAVISO,3, array("descricao"), array("'Erro'"));
+			inserirRegistro($conn,TIPOAVISO,4, array("descricao"), array("'Informativo'"));
 
 			// Tipo de Conexão com Banco de Dados
-			inserirRegistro($conn,getSystemPREFIXO() . "typeconnectiondatabase",1, array("nome,descricao"), array("'desenv'","'Desenvolvimento'"));
-			inserirRegistro($conn,getSystemPREFIXO() . "typeconnectiondatabase",2, array("nome,descricao"), array("'teste'","'Testes'"));
-			inserirRegistro($conn,getSystemPREFIXO() . "typeconnectiondatabase",3, array("nome,descricao"), array("'homolog'","'Homologação'"));
-			inserirRegistro($conn,getSystemPREFIXO() . "typeconnectiondatabase",4, array("nome,descricao"), array("'producao'","'Produção'"));
+			inserirRegistro($conn,TYPECONNECTIONDATABASE,1, array("nome,descricao"), array("'desenv'","'Desenvolvimento'"));
+			inserirRegistro($conn,TYPECONNECTIONDATABASE,2, array("nome,descricao"), array("'teste'","'Testes'"));
+			inserirRegistro($conn,TYPECONNECTIONDATABASE,3, array("nome,descricao"), array("'homolog'","'Homologação'"));
+			inserirRegistro($conn,TYPECONNECTIONDATABASE,4, array("nome,descricao"), array("'producao'","'Produção'"));
 
 			// Banco de Dados
-			inserirRegistro($conn,getSystemPREFIXO() . "database",1, array("nome","descricao"), array("'mysql'","'MySQL'"));
-			inserirRegistro($conn,getSystemPREFIXO() . "database",2, array("nome","descricao"), array("'cache'","'CACHÉ'"));
+			inserirRegistro($conn,DATABASE,1, array("nome","descricao"), array("'mysql'","'MySQL'"));
+			inserirRegistro($conn,DATABASE,2, array("nome","descricao"), array("'cache'","'CACHÉ'"));
 			
 			// Aba - Projeto
 			inserirRegistro($conn,ABAS,2, array("entidade","descricao","atributos"), array(getEntidadeId("abas",$conn),"'Aba'",getAtributoId(getEntidadeId("abas",$conn),"nome",$conn)));
 
 			// Local para CharSet
-			inserirRegistro($conn,getSystemPREFIXO() . "charset",1, array("local","charset"), array("'Página principal (index)'","'D'"));
-			inserirRegistro($conn,getSystemPREFIXO() . "charset",2, array("local","charset"), array("'Grade de Dados (load)'","'E'"));
-			inserirRegistro($conn,getSystemPREFIXO() . "charset",3, array("local","charset"), array("'Formulário (load)'","'N'"));
-			inserirRegistro($conn,getSystemPREFIXO() . "charset",4, array("local","charset"), array("'Classe Campos'","'N'"));
-			inserirRegistro($conn,getSystemPREFIXO() . "charset",5, array("local","charset"), array("'MDM Embituido PHP'","'E'"));
-			inserirRegistro($conn,getSystemPREFIXO() . "charset",6, array("local","charset"), array("'MDM Salvar Form com Submit'","'E'"));
-			inserirRegistro($conn,getSystemPREFIXO() . "charset",7, array("local","charset"), array("'Gerar HTML no CRUD'","'D'"));
-			inserirRegistro($conn,getSystemPREFIXO() . "charset",8, array("local","charset"), array("'Javascript Embutido no PHP'","'D'"));
-			inserirRegistro($conn,getSystemPREFIXO() . "charset",9, array("local","charset"), array("'Javascript mdm.js'","'E'"));
-			inserirRegistro($conn,getSystemPREFIXO() . "charset",10, array("local","charset"), array("'Javascript mdm.js ( Relacionamento ) em funcoes.php'","'E'"));
-			inserirRegistro($conn,getSystemPREFIXO() . "charset",11, array("local","charset"), array("'Campo descrição da classe Menu ( menu.class.php - E )'","'E'"));
+			inserirRegistro($conn,DEFINE,1, array("local","charset"), array("'Página principal (index)'","'D'"));
+			inserirRegistro($conn,DEFINE,2, array("local","charset"), array("'Grade de Dados (load)'","'E'"));
+			inserirRegistro($conn,DEFINE,3, array("local","charset"), array("'Formulário (load)'","'N'"));
+			inserirRegistro($conn,DEFINE,4, array("local","charset"), array("'Classe Campos'","'N'"));
+			inserirRegistro($conn,DEFINE,5, array("local","charset"), array("'MDM Embituido PHP'","'E'"));
+			inserirRegistro($conn,DEFINE,6, array("local","charset"), array("'MDM Salvar Form com Submit'","'E'"));
+			inserirRegistro($conn,DEFINE,7, array("local","charset"), array("'Gerar HTML no CRUD'","'D'"));
+			inserirRegistro($conn,DEFINE,8, array("local","charset"), array("'Javascript Embutido no PHP'","'D'"));
+			inserirRegistro($conn,DEFINE,9, array("local","charset"), array("'Javascript mdm.js'","'E'"));
+			inserirRegistro($conn,DEFINE,10, array("local","charset"), array("'Javascript mdm.js ( Relacionamento ) em funcoes.php'","'E'"));
+			inserirRegistro($conn,DEFINE,11, array("local","charset"), array("'Campo descrição da classe Menu ( menu.class.php - E )'","'E'"));
 			
 			//  Tipo de Ticket
-			inserirRegistro($conn,getSystemPREFIXO() . "tickettipo",1, array("descricao"), array("'Alterar"));
-			inserirRegistro($conn,getSystemPREFIXO() . "tickettipo",2, array("descricao"), array("'Corrigir"));
-			inserirRegistro($conn,getSystemPREFIXO() . "tickettipo",3, array("descricao"), array("'Desenvolver"));
-			inserirRegistro($conn,getSystemPREFIXO() . "tickettipo",4, array("descricao"), array("'Estudar"));
-			inserirRegistro($conn,getSystemPREFIXO() . "tickettipo",5, array("descricao"), array("'Propôr"));
-			inserirRegistro($conn,getSystemPREFIXO() . "tickettipo",6, array("descricao"), array("'Solicitar"));
-			inserirRegistro($conn,getSystemPREFIXO() . "tickettipo",7, array("descricao"), array("'Verificar"));
-			inserirRegistro($conn,getSystemPREFIXO() . "tickettipo",8, array("descricao"), array("'Contactar"));
+			inserirRegistro($conn,TICKETTIPO,1, array("descricao"), array("'Alterar"));
+			inserirRegistro($conn,TICKETTIPO,2, array("descricao"), array("'Corrigir"));
+			inserirRegistro($conn,TICKETTIPO,3, array("descricao"), array("'Desenvolver"));
+			inserirRegistro($conn,TICKETTIPO,4, array("descricao"), array("'Estudar"));
+			inserirRegistro($conn,TICKETTIPO,5, array("descricao"), array("'Propôr"));
+			inserirRegistro($conn,TICKETTIPO,6, array("descricao"), array("'Solicitar"));
+			inserirRegistro($conn,TICKETTIPO,7, array("descricao"), array("'Verificar"));
+			inserirRegistro($conn,TICKETTIPO,8, array("descricao"), array("'Contactar"));
 
 			// Status de Ticket
-			inserirRegistro($conn,getSystemPREFIXO() . "ticketstatus",1, array("descricao"), array("'Abrir'"));
-			inserirRegistro($conn,getSystemPREFIXO() . "ticketstatus",2, array("descricao"), array("'Aguardar'"));
-			inserirRegistro($conn,getSystemPREFIXO() . "ticketstatus",3, array("descricao"), array("'Interagir'"));
-			inserirRegistro($conn,getSystemPREFIXO() . "ticketstatus",4, array("descricao"), array("'Finalizar'"));
-			inserirRegistro($conn,getSystemPREFIXO() . "ticketstatus",5, array("descricao"), array("'Reabrir'"));
+			inserirRegistro($conn,TICKETSTATUS,1, array("descricao"), array("'Abrir'"));
+			inserirRegistro($conn,TICKETSTATUS,2, array("descricao"), array("'Aguardar'"));
+			inserirRegistro($conn,TICKETSTATUS,3, array("descricao"), array("'Interagir'"));
+			inserirRegistro($conn,TICKETSTATUS,4, array("descricao"), array("'Finalizar'"));
+			inserirRegistro($conn,TICKETSTATUS,5, array("descricao"), array("'Reabrir'"));
 
 			// Prioridade de Ticket
-			inserirRegistro($conn,getSystemPREFIXO() . "ticketprioridade",1, array("descricao"), array("'Alta'"));
-			inserirRegistro($conn,getSystemPREFIXO() . "ticketprioridade",2, array("descricao"), array("'Média'"));
-			inserirRegistro($conn,getSystemPREFIXO() . "ticketprioridade",3, array("descricao"), array("'Baixa'"));
+			inserirRegistro($conn,TICKETPRIORIDADE,1, array("descricao"), array("'Alta'"));
+			inserirRegistro($conn,TICKETPRIORIDADE,2, array("descricao"), array("'Média'"));
+			inserirRegistro($conn,TICKETPRIORIDADE,3, array("descricao"), array("'Baixa'"));
 
         break;
 

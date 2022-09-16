@@ -33,6 +33,14 @@
 	define('CONNECTIONDATABASE',	$prefixo_format . 'connectiondatabase');
 	define('AVISO',					$prefixo_format . 'aviso');
 	define('CHARSET',				$prefixo_format . 'charset');
+	define('STATUS', 				$prefixo_format . 'status');
+	define('TIPOAVISO',				$prefixo_format . 'tipoaviso');
+	define('TYPECONNECTIONDATABASE',$prefixo_format . 'typeconnectiondatabase');
+	define('DATABASE',				$prefixo_format . 'database');
+	define('DEFINE', 				$prefixo_format . 'define');
+	define('TICKETTIPO',			$prefixo_format . 'tickettipo');
+	define('TICKETSTATUS',			$prefixo_format . 'ticketstatus');
+	define('TICKETPRIORIDADE',		$prefixo_format . 'ticketprioridade');
 
 	// Formato do prefixo para pacotes
 	$prefixo_package = $prefixo_format . '_';
