@@ -100,14 +100,12 @@
 	// Opção dentro do servições
 	$op = isset($_GET['op']) ? $_GET['op'] : ( isset($_POST['op']) ? $_POST['op'] : '' );
 
-<<<<<<< HEAD
+	// Aceitar parametro service
 	if ($op == ''){
 		$op 		= isset($_GET['service']) ? $_GET['service'] : ( isset($_POST['service']) ? $_POST['service'] : '' );
 		$service 	= $op;
 	}
 
-=======
->>>>>>> b09270b6 (desatualizado ftp teia)
 	// Encaminha para o serviço solicitado
 	require 'rota.php';
 
