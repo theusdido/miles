@@ -32,6 +32,8 @@
 	if ($_http_request == 'https' && !_IS_HTTP)
 	{
 		showMessage('HTTPs está ativo na configuração!');
+		$link_https = str_replace('http://','https://',$_SERVER['SCRIPT_URI']);
+		echo '<br><a href="'.$link_https.'">Entrar com URL segura.</a>';
 		exit;
 	}
 	

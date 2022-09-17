@@ -349,7 +349,13 @@ if (typeof $().mask == "function"){
 		}
 	});
 
-	let casasdecimais = parseInt(config.casasdecimais);
+	let casasdecimais = 2;
+	try{
+		casadecimais = parseInt(config.casasdecimais);
+	}catch(e){
+		console.warn('Configuração de casas decimais não encontrada.');
+	}
+	
 	if (typeof $.fn.maskMoney === "function"){
 
 		// Moeda
