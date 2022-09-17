@@ -1,13 +1,13 @@
 {
     "version": 2.0,
     "currentproject": 1,
-    "folder": "qeru.com.br/miles/",
+    "folder": "miles_/",
     "system": {
         "url": {
             "lib": "https://teia.tec.br/miles/repository/lib/"
         },
         "request_protocol": "http",
-        "packages": ["ecommerce"]
+        "packages": []
     },
     "theme": "desktop",
     "prefix": "td",
@@ -18,7 +18,7 @@
 	"enviroment":"dev",
 	"enviroments":{
 		"dev":{
-			"root":"qeru.com.br/",
+			"root":"/",
 			"url":{
 				"domain":"localhost"
 			},
@@ -31,7 +31,7 @@
 		"prod":{
 			"root":"/",
 			"url":{
-				"domain":"app.qeru.com.br"
+				"domain":""
 			}
 		}
 	}

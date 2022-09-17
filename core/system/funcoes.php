@@ -1128,13 +1128,15 @@ function inserirRegistro($conn,$tabela,$id,$atributos,$valores,$criarnovoregistr
 }
 function atualizarRegistro($conn,$tabela,$id = "",$atributos,$valores,$atualizarnulo=false){
 	$campos = "";
-	$totalAtributos = sizeof($atributos) - 1;
+	$_atributos 	= gettype($atributos) == 'string' ? explode(',',$atributos) : $atributos;
+	$_valores		= gettype($valores) == 'string' ? explode(',',$valores) : $valores;
+	$totalAtributos = sizeof($_atributos) - 1;
 	for($i=0;$i<=$totalAtributos;$i++){
-		$campos .= $atributos[$i] . " = " . utf8charset($valores[$i]);
-        if ($i != $totalAtributos) $campos .= ",";
+		$campos .= $_atributos[$i] . " = " . utf8charset($_valores[$i]);
+		if ($i != $totalAtributos) $campos .= ",";
 	}
 	try{
-		$sqlInserir = "UPDATE " . $tabela . " SET " . $campos . " WHERE 1=1 " . (!$atualizarnulo?"":" AND " . $atributos[$i] . " IS NOT NULL ") . ($id == ""?"":" AND id = " . $id) . "";
+		$sqlInserir = "UPDATE " . $tabela . " SET " . $campos . " WHERE 1=1 " . (!$atualizarnulo?"":" AND " . $_atributos[$i] . " IS NOT NULL ") . ($id == ""?"":" AND id = " . $id) . "";
 		$query = $conn->query($sqlInserir);
 	}catch(Throwable $t){
         echo $sqlInserir;
