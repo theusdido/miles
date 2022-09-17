@@ -40,7 +40,7 @@
 		// Sessão do Sistema
 		$sessionName = "miles_" . AMBIENTE . "_" . $currentProject;
 		session_name($sessionName);
-		session_start();
+		@session_start();
 	}
 	if (!defined('SCHEMA')){
 		if (isset($_SESSION["db_base"])){
