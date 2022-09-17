@@ -15,9 +15,9 @@
     "is_transaction_log": false,
     "database_current": "desenv",
     "port": "hidden",
-	"enviroment":"dev",
-	"enviroments":{
-		"dev":{
+	"enviromment":"dev",
+	"enviromments":{
+		"dev":{            
 			"root":"/",
 			"url":{
 				"domain":"localhost"
@@ -26,6 +26,9 @@
                 "angular":{
                     "port":4200
                 }
+            },
+            "system":{
+                "request_protocol": "http"
             }
 		},
 		"prod":{

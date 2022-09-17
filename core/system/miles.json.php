@@ -19,14 +19,19 @@
 
 		// MILES JSON CONFIG
 		$mjc = json_decode($miles_json);
+
 		// Seta o projeto no MILES 
 		define('MILES_PROJECT',$mjc->currentproject);
+
+		// Ambiente selecionado
+		$_enviromment = isset($mjc->enviromment) ? $mjc->enviromment : '';
 		
+		// Carrega os dados do ambiente selecionado
+		$_env = isset($mjc->enviromments->{$_enviromment}) ? $mjc->enviromments->{$_enviromment} : $mjc;
+
 		// Diretório da instalação do MILES FRAMEWORK
 		define("FOLDER_MILES",$mjc->folder);
-		
-		// Ambiente
-		$_env = $mjc->enviroments->{$mjc->enviroment};
+
 	}
 
 	if (!isset($mjc->system->request_protocol)){

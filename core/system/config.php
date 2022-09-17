@@ -17,6 +17,23 @@
 
 	// Classe de Configuração do sistema
 	require $_path_core . '/classes/system/config.class.php';
+
+	// Variável global apenas para o HTTP
+	$_http_request = Config::getEnvirommentVariable('system->request_protocol');
+
+	// REQUEST PROTOCOLO
+	define("REQUEST_PROTOCOL",$_http_request."://");
+
+	// Seta se o requisição está com HTTPs
+	define('_IS_HTTP',isset($_SERVER['HTTPS']) ? true : false);
+
+	// Encerrar o programa se a requisição não estiver com HTTPs 
+	// e o a configuração estiver setada para HTTPs
+	if ($_http_request == 'https' && !_IS_HTTP)
+	{
+		showMessage('HTTPs está ativo na configuração!');
+		exit;
+	}
 	
 	// Variável global do projeto atual
 	$currentProject = Config::currentProject();
@@ -113,9 +130,6 @@
 
 	// Define se o usuário está logado ou não
 	define("LOGGED",$logged);
-
-	// REQUEST PROTOCOLO
-	define("REQUEST_PROTOCOL",$mjc->system->request_protocol."://");
 
 	// Exibir mensagem de erro
 	define("IS_SHOW_ERROR_MESSAGE",$mjc->is_show_error_message);

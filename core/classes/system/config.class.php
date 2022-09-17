@@ -188,5 +188,23 @@ class Config {
 		}
 		return $retorno;
 	}
-	
+	/*
+		* getEnvirommentVariable
+		* Data de Criacao: 16/09/2022
+		* @author Edilson Valentim dos Santos Bitencourt (Theusdido)
+		* Retorna o valor da variável de ambiente
+		* PARAMETROS
+		*	@params: String variavel:string | any
+		* RETORNO
+		*	@return: any
+	*/
+	public static function getEnvirommentVariable($path_variable){
+		global $_env;
+		global $mjc;
+
+		eval('$_custom	= isset($_env->'.$path_variable.') ? $_env->'.$path_variable.' : false;');
+		eval('$_system	= isset($mjc->'.$path_variable.') ? $mjc->'.$path_variable.' : false;');
+
+		return $_custom ? $_custom : ($_system ? $_system : NULL);
+	}
 }
