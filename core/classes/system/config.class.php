@@ -202,8 +202,8 @@ class Config {
 		global $_env;
 		global $mjc;
 
-		eval('$_custom	= isset($_env->'.$path_variable.') ? $_env->'.$path_variable.' : false;');
-		eval('$_system	= isset($mjc->'.$path_variable.') ? $mjc->'.$path_variable.' : false;');
+		$_custom	= isset($_env->{$path_variable}) ? $_env->{$path_variable} : false;
+		$_system	= isset($mjc->{$path_variable}) ? $mjc->{$path_variable} : false;
 
 		return $_custom ? $_custom : ($_system ? $_system : NULL);
 	}

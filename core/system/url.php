@@ -15,7 +15,7 @@
 	define('URL_API', REQUEST_PROTOCOL . $_domain . $_full_port . '/' . FOLDER_MILES . "index.php");
 
 	if (isset($mjc->folder)){
-		$request_uri_dir 	= '/' . $mjc->folder;
+		$request_uri_dir 	= $mjc->folder;
 	}else{
 		$ruri 				= $_SERVER['REQUEST_URI'];
 		$request_uri 		= explode('?',(strpos($ruri,'index.php') > -1 ? dirname($ruri).'/' : $ruri));

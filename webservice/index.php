@@ -33,6 +33,9 @@
 	// Seta o ambiente da requisição
 	define("PROJETO_CONSUMIDOR", $projetoconsumidor);
 
+	// Limpa cachê do SOAP
+	ini_set("soap.wsdl_cache_enabled", 0);
+
 	// Carrega os arquivos de configuração do sistema
 	require '../core/autoload.php';
 
@@ -66,13 +69,9 @@
 		case md5("ecommerce.granuemporio"): // 5bbc1f5977be278e8521ee0fb2b3658a
 			$permissao = true;
 		break;
-<<<<<<< HEAD
 		case md5("ecommerce.sidercomp"): // 9c372ce9eeaa680bc3c6a0252c711643
 			$permissao = true;
 		break;
-=======
-
->>>>>>> b09270b6 (desatualizado ftp teia)
 	}
 	if (!$permissao){
 		echo 'Token não confere com o cadastrado';

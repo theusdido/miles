@@ -17,7 +17,7 @@
 	$parms->nCdEmpresa 				= "";
 	$parms->sDsSenha				= "";
 	$parms->nCdServico				= "04014"; # "40010"
-	$parms->sCepOrigem				= str_replace(array(".","-"),array(""),'88868000');
+	$parms->sCepOrigem				= str_replace(array(".","-"),array(""),'88804000'); // 88865000
 	$parms->sCepDestino				= str_replace(array(".","-"),array(""),$cep_destino);
 	$parms->nVlPeso					= (($peso == 0 || $peso == "" || $peso < 0.3 || $peso > 30)?0.3:$peso);
 	$parms->nCdFormato				= 1;
@@ -28,8 +28,6 @@
 	$parms->sCdMaoPropria			= "n";
 	$parms->nVlValorDeclarado		= 0;
 	$parms->sCdAvisoRecebimento		= "n";
-
-    //var_dump($parms);
 
 	$soap               = new SoapClient("http://ws.correios.com.br/calculador/CalcPrecoPrazo.asmx?wsdl");
 	$retorno["dados"]   = $soap->CalcPrecoPrazo($parms);

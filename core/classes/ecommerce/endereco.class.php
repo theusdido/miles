@@ -119,7 +119,7 @@ class Endereco {
 				a.complemento,
 				a.cep,
 				a.bairro bairroid,
-				bairro bairrodesc,
+				(SELECT d.nome FROM td_ecommerce_bairro d WHERE d.id = a.id LIMIT 1) bairrodesc,
 				c.id cidadeid,
 				c.nome cidadedesc,
 				c.uf ufid,
