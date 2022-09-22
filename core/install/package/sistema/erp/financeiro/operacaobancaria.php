@@ -1,7 +1,7 @@
 <?php
 	// Setando variáveis
-	$entidadeNome = "erp_financeiro_operacaobancaria";
-	$entidadeDescricao = "Operação Bancária";
+	$entidadeNome 		= "erp_financeiro_operacaobancaria";
+	$entidadeDescricao 	= "Operação Bancária";
 
 	// Criando Entidade
 	$entidadeID = criarEntidade(
@@ -21,8 +21,9 @@
 	);
 
 	// Criando Atributos
-	$descricao = criarAtributo($conn,$entidadeID,"descricao","Descrição","int",0,1,3);
-	$codigo = criarAtributo($conn,$entidadeID,"codigo","Código","int",0,1,25);
+	$descricao 	= criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar",50,0,3,1);
+	$codigo 	= criarAtributo($conn,$entidadeID,"codigo","Código","int",0,1,25);
+	Entity::setDescriptionField($conn,$entidadeID,$descricao,true);
 
 	// Criando Acesso
 	$menu_webiste = addMenu($conn,'Financeiro','#','',0,0,'financeiro');

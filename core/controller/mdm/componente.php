@@ -24,8 +24,11 @@
 
 	// Cria o diretório do registro caso não exista
 	if (!file_exists($path)){
-		mkdir($path,777);
+		mkdir($path,0777);
 	}
+
+	// Seta permissão total para escrita no arquivo
+	chmod ($path, 0777);
 
 	// Cria o arquivo HTML
 	$fp = fopen($path . tdc::r('filename') ,'w');

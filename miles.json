@@ -1,7 +1,10 @@
 {
     "version": 2.0,
+    "project":{
+        "name":"Villa Francioni"
+    },
     "currentproject": 1,
-    "folder": "/qeru.com.br/miles/",
+    "folder": "/villafrancioni.com.br/miles/",
     "system": {
         "url": {
             "lib": "https://teia.tec.br/miles/repository/lib/"
@@ -17,7 +20,7 @@
     "port": "hidden",
 	"enviromment":"dev",
 	"enviromments":{
-		"dev":{            
+		"dev":{
 			"root":"/",
 			"url":{
 				"domain":"localhost"
@@ -38,7 +41,7 @@
 			},
             "system":{
                 "request_protocol": "http"
-            }            
+            }
 		}
 	}
 }

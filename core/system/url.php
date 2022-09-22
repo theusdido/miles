@@ -46,7 +46,7 @@
 	define('URL_COMPONENT', URL_CORE . FOLDER_COMPONENT . '/');
 
 	Session::append("URL_CURRENT_PROJECT",Session::Get("URL_MILES") . FOLDER_PROJECT . '/' . CURRENT_PROJECT_ID . "/");
-	define('URL_PROJECT',Session::Get("URL_MILES") . FOLDER_PROJECT . '/');
+	define('URL_PROJECT',URL_MILES . FOLDER_PROJECT . '/' . CURRENT_PROJECT_ID . '/');
 
 	// URL CLASSES	
 	Session::append('URL_CLASS',Session::Get('URL_CORE') . FOLDER_CLASSES . '/');

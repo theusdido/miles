@@ -52,6 +52,6 @@
 			});
 		');
 		$br = tdClass::Criar("br");
-		$nome_projeto->add($session->currentprojectname,$br,(sizeof($empresas)>0?$select_empresa:""),$js_select_empresa);
+		$nome_projeto->add(PROJECT_NAME,$br,(sizeof($empresas)>0?$select_empresa:""),$js_select_empresa);
 		$info->add($nome_projeto);
 	}

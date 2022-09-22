@@ -18,7 +18,7 @@ final class Conexao{
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
 		Será marcado como private pois não existirão instancias dessa classe
-	*/	
+	*/
 	private function __construct(){	}
 	/*
 		* Método abrir

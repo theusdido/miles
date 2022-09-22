@@ -36,4 +36,4 @@
 	$menu_webiste = addMenu($conn,'Blog','#','',0,0,'blog');
 	
 	// Adicionando Menu
-	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,1,'blog-' . $entidadeNome);
+	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,1,'blog-' . $entidadeNome,$entidadeID, 'cadastro');

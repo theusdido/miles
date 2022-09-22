@@ -19,7 +19,7 @@
 		$criarauth = 0,
 		$registrounico = 0
 	);
-	
+
 	// Criando Atributos
 	$descricao 		= criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar",200,0,3,1,0,0,"");
     $sigla 		    = criarAtributo($conn,$entidadeID,"sigla","Sigla","varchar",10,1,3,1,0,0,"");
@@ -30,4 +30,4 @@
 	$menu_webiste = addMenu($conn,'Contábil','#','',0,0,'contabil');
 	
 	// Adicionando Menu
-	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,8,'contabil-' . $entidadeNome);
+	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,8,'contabil-' . $entidadeNome,$entidadeID, 'cadastro');

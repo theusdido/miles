@@ -27,4 +27,4 @@
 	$menu_webiste = addMenu($conn,'Categoria de Produto','#','',0,0,'comercial');
 
 	// Adicionando Menu
-	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,8,'comercial-' . $entidadeNome);
+	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,8,'comercial-' . $entidadeNome,$entidadeID, 'cadastro');

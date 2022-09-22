@@ -13,6 +13,7 @@
 		exit;
 	}
 
+	$_project_name	= '';
 	$_enviromment	= 'dev';
 	$_env 			= '';
 	$miles_json 	= file_get_contents($path_miles_json);
@@ -33,7 +34,12 @@
 		// Diretório da instalação do MILES FRAMEWORK
 		define("FOLDER_MILES",$mjc->folder);
 
+		// Nome do Projeto
+		$_project_name = isset($mjc->project->name)?$mjc->project->name:'';
+
 	}	
+
+	define('PROJECT_NAME',$_project_name);
 
 	// Define o ambiente do sistema
 	define('_ENVIROMMENT',$_enviromment);

@@ -29,7 +29,7 @@
 	$menu_redesocial = addMenu($conn,$entidadeDescricao,'#','',0,0,'redesocial');
 
 	// Adicionando Menu
-	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_redesocial,1,'redesocial-' . $entidadeNome);
+	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_redesocial,1,'redesocial-' . $entidadeNome,$entidadeID, 'cadastro');
 	
 	// Instalando a entidade das fotos
 	$fotos = installDependencia("website_redesocial_foto",'package/website/redesocial/foto');

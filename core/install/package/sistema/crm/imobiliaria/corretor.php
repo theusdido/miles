@@ -28,7 +28,7 @@
 	$menu_webiste = addMenu($conn,'CRM','#','',0,0,'crm');
 
 	// Adicionando Menu
-	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,8,'crm-' . $entidadeNome);
+	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,8,'crm-' . $entidadeNome,$entidadeID, 'cadastro');
 
 	// Relacionamento
 	$relacionamento = criarRelacionamento($conn,3,installDependencia("imobiliaria_pessoa",'package/negocio/imobiliaria/pessoa'),$entidadeID,"Corretor",$pessoa,$entidadeID,'cadastro');

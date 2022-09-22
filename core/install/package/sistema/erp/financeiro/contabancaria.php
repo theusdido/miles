@@ -25,7 +25,7 @@
 	$agencia 	= criarAtributo($conn,$entidadeID,"agencia","Agência","varchar","30",1,3);
 	$divagencia = criarAtributo($conn,$entidadeID,"divagencia","DV Agência","varchar",1,0,3);
 	$operacao 	= criarAtributo($conn,$entidadeID,"operacao","Operação","int",0,0,4,1,installDependencia("erp_financeiro_operacaobancaria",'package/sistema/erp/financeiro/operacaobancaria'),0,"",0,0);
-	$numero 	= criarAtributo($conn,$entidadeID,"numero","´Número","varchar","60",1,25);
+	$numero 	= criarAtributo($conn,$entidadeID,"numero","Número","varchar","60",1,25);
 	$divconta 	= criarAtributo($conn,$entidadeID,"divagencia","DV Agência","varchar",1,0,3);
 	$tipo 		= criarAtributo($conn,$entidadeID,"tipo","Tipo","int",0,0,4,1,installDependencia("erp_financeiro_tipocontabancaria",'package/sistema/erp/financeiro/tipocontabancaria'),0,"",0,0);
 	$cpf 		= criarAtributo($conn,$entidadeID,"cpf","CPF","varchar","30",0,10);

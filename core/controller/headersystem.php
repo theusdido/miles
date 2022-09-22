@@ -140,11 +140,11 @@
 	$iconInstallHome->aria_hidden = "true";
 	$colBlocoIntalacao->add($iconInstallHome);
 	
-	$aInstallHome = tdClass::Criar("hyperlink");
-	$aInstallHome->href = Session::Get("URL_MILES") . "index.php?controller=install";
-	$aInstallHome->target = "_blank";
+	$aInstallHome 			= tdClass::Criar("hyperlink");
+	$aInstallHome->href 	= URL_MILES . "index.php?controller=install/modulos";
+	$aInstallHome->target 	= "_blank";
 	$aInstallHome->add("Pacotes");
-	$aInstallHome->id = "link-install-home";
+	$aInstallHome->id 		= "link-install-home";
 	$colBlocoIntalacao->add($aInstallHome);
 	
 	$tempoSessaoHome = tdClass::Criar("div");

@@ -1,6 +1,21 @@
 <?php
 	$usuario = $senha = $base = $host = $tipo = $porta = "";
-	$check_criarbase = $check_instalacaosistema = $check_pacoteconfigurado = $_SESSION["URL_SYSTEM_THEME"] . 'check-no.gif';
+	$check_criarbase = $check_instalacaosistema = $check_pacoteconfigurado = URL_SYSTEM_THEME . 'check-no.gif';
+	$check_yes = URL_SYSTEM_THEME . 'check.gif';
+	
+	$install = tdc::ru('td_instalacao');
+
+	if ($install->bancodedadoscriado){
+		$check_criarbase = $check_yes;
+	}
+
+	if ($install->sistemainstalado){
+		$check_instalacaosistema = $check_yes;
+	}
+
+	if ($install->pacoteconfigurado){
+		$check_pacoteconfigurado = $check_yes;
+	}
 ?>
 
 

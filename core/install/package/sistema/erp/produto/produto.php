@@ -40,7 +40,7 @@
 	$menu_webiste = addMenu($conn,'Comercial','#','',0,0,'comercial');
 
 	// Adicionando Menu
-	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,8,'comercial-' . $entidadeNome);
+	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,8,'comercial-' . $entidadeNome,$entidadeID, 'cadastro');
 
 	// Relacionamentos
 	criarRelacionamento($conn,5,$entidadeID,installDependencia("erp_geral_foto",'geral/foto'),"Fotos",0);

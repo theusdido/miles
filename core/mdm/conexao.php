@@ -6,6 +6,8 @@
 		session_start();
 	}
 	
+	define('IS_SHOW_ERROR_MESSAGE',true);
+
 	if (isset($_SESSION["currentproject"])){
 		$currentproject = $_SESSION["currentproject"];
 	}else{

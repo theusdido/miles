@@ -16,7 +16,7 @@ class Config {
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 
 		Retorna o ID do projeto atual
-	*/	
+	*/
 	public static function currentProject() {
 		if (defined("PROJETO_CONSUMIDOR")){			
 			$currentProject = (int)PROJETO_CONSUMIDOR;
