@@ -26,6 +26,7 @@
 	$email 				= criarAtributo($conn,$entidadeID,"email","E-Mail","varchar",120,0,3,1,0,0,"");
 	$telefone 			= criarAtributo($conn,$entidadeID,"telefone","Telefone","varchar",35,1,8,0,0,0,"");
 	$cnpj 				= criarAtributo($conn,$entidadeID,"cnpj","CNPJ","varchar",35,1,15,1,0,0,"",0,0);
+	$logo 				= criarAtributo($conn,$entidadeID,"logo","Foto (Perfil)","mediumblob",0,1,19);
 
 	Entity::setDescriptionField($conn,$entidadeID,$razaosocial,true);
 

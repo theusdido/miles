@@ -12,7 +12,7 @@
 	$entidade	= isset($_GET["entidade"])?$_GET['entidade']:$_POST['entidade'];
 		
 	if (isset($_POST["salvar"])){
-		$conn->beginTransaction();
+		#$conn->beginTransaction();
 		$nome = $_POST["nome"];
 		$descricao = executefunction("utf8charset",array($_POST["descricao"],6));
 		$tipo = $_POST["tipo"];		
@@ -82,10 +82,12 @@
 		
 		$error = $conn->errorInfo();
 		if ($error[0] != "00000"){
-			var_dump($error);
-			$conn->rollback();
+			if (IS_SHOW_ERROR_MESSAGE){
+				var_dump($error);
+			}
+			#$conn->rollback();
 		}else{
-			$conn->commit();
+			#$conn->commit();
 			header('Location: criarAtributo.php?entidade=' . $_POST["entidade"] . "&id=" . $idRetorno . getURLParamsProject("&"));
 		}
 		exit;

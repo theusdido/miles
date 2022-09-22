@@ -216,7 +216,7 @@ class tdc Extends tdClass{
 		
 		* Returna um DataSet do banco de dados com as entidade filho
 	*/
-	public static function dh($entidade,$id = 0, $tiposrelacionamentos){
+	public static function dh($entidade,$id = 0, $tiposrelacionamentos = []){
 		$entidade = tdc::e(getEntidadeId($entidade));
 		$dados[$entidade->id] = tdc::p($entidade->nome,$id);
 		if (sizeof($tiposrelacionamentos) > 0){
@@ -238,7 +238,6 @@ class tdc Extends tdClass{
 	*/	
 	public static function da($entidade,$sql = null){
 		$entidade = getTableName($entidade);
-
 		if (!$sql || $sql == null){
 			return tdClass::Criar("repositorio",array($entidade))->getDataArray();
 		}else{
@@ -278,7 +277,7 @@ class tdc Extends tdClass{
 			$dados = json_encode([]);
 		}
 
-		if (IS_SHOW_ERROR_MESSAGE){
+		if (IS_SHOW_ERROR_MESSAGE && json_last_error() != JSON_ERROR_NONE){
 			var_dump(json_last_error_msg());
 			var_dump(json_last_error());
 		}
@@ -320,9 +319,9 @@ class tdc Extends tdClass{
 		$retorno = array();
 		if ($id > 0 && $entidade != ""){
 			$registro = tdc::da($entidade,tdc::f("id","=",$id));
-			if (sizeof($registro) > 0){
-				$retorno = $registro[0];
-			}
+		 	if (sizeof($registro) > 0){
+		 		$retorno = $registro[0];
+		 	}
 		}
 		return $retorno;
 	}
@@ -413,5 +412,16 @@ class tdc Extends tdClass{
 			return $new_entidade;
 		}
 		return $_entidade;
+	}
+	/*  
+		* Método wj
+		* Data de Criacao: 18/09/2022
+		* @author Edilson Valentim dos Santos Bitencourt (Theusdido)
+
+		Exibe uma mensagem formata em JSON
+	*/
+	public static function wj($message)
+	{
+		echo json_encode($message);
 	}
 }

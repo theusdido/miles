@@ -198,13 +198,13 @@ class Config {
 		* RETORNO
 		*	@return: any
 	*/
-	public static function getEnvirommentVariable($path_variable){
+	public static function getEnvirommentVariable($path_variable,$default = NULL){
 		global $_env;
 		global $mjc;
 
 		$_custom	= isset($_env->{$path_variable}) ? $_env->{$path_variable} : false;
 		$_system	= isset($mjc->{$path_variable}) ? $mjc->{$path_variable} : false;
 
-		return $_custom ? $_custom : ($_system ? $_system : NULL);
+		return $_custom ? $_custom : ($_system ? $_system : $default);
 	}
 }

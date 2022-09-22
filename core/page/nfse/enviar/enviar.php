@@ -409,12 +409,13 @@
                 $url  	= "https://homolog.invoicy.com.br/arecepcao.aspx?wsdl";
                 $client = new SoapClient($url , array("location" => $url));
                 $retorno = $client->Execute($parametros);
-                var_dump($retorno);
             }catch(SoapFault $e){
-                echo 'Erro: ['.$e->getCode() . "] => " .$e->getMessage().'<br/>';
-                echo '<pre>';
-                var_dump($e);
-                echo '</pre>';
+                if (IS_SHOW_ERROR_MESSAGE){
+                    echo 'Erro: ['.$e->getCode() . "] => " .$e->getMessage().'<br/>';
+                    echo '<pre>';
+                    var_dump($e);
+                    echo '</pre>';
+                }
             }
         break;
     }                

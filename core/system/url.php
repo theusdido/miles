@@ -42,8 +42,8 @@
 	Session::append("URL_PAGE",Session::Get('URL_CORE') . FOLDER_PAGE . '/');
 	define('URL_PAGE', URL_CORE . FOLDER_PAGE . '/');
 
-	// URL PAGE
-	Session::append("URL_PAGE",Session::Get('URL_CORE') . FOLDER_PAGE . '/');	
+	// URL COMPONENT
+	define('URL_COMPONENT', URL_CORE . FOLDER_COMPONENT . '/');
 
 	Session::append("URL_CURRENT_PROJECT",Session::Get("URL_MILES") . FOLDER_PROJECT . '/' . CURRENT_PROJECT_ID . "/");
 	define('URL_PROJECT',Session::Get("URL_MILES") . FOLDER_PROJECT . '/');
@@ -76,18 +76,19 @@
 	Session::append("URL_CURRENT_FILE_TEMP",Session::Get("URL_CURRENT_FILE") . "temp/");
 	define('URL_CURRENT_FILE_TEMP', URL_CURRENT_FILE . 'temp/');
 
-	define('URL_CURRENT_PAGE',Session::Get("URL_CURRENT_PROJECT") . "page/");
-	define('URL_CURRENT_IMG',Session::Get("URL_CURRENT_PROJECT") . "images/");
+	define('URL_CURRENT_PAGE',URL_PROJECT . "page/");
+	define('URL_CURRENT_IMG',URL_PROJECT . "images/");
+	define('URL_CURRENT_COMPONENT',URL_PROJECT . FOLDER_COMPONENT .'/');
 
 	// URL da Biblioteca
 	define('URL_LIB',$mjc->system->url->lib);
 	Session::append("URL_LIB",$mjc->system->url->lib);
 
 	// URL dos arquivos de cadastro
-	define('URL_FILES_CADASTRO', Session::Get('URL_CURRENT_PROJECT') . 'files/cadastro/');
+	define('URL_FILES_CADASTRO', URL_PROJECT . 'files/cadastro/');
     
 	// URL dos arquivos de movimentação
-	define('URL_FILES_MOVIMENTACAO', Session::Get('URL_CURRENT_PROJECT') . 'files/movimentacao/');
+	define('URL_FILES_MOVIMENTACAO', URL_PROJECT . 'files/movimentacao/');
 
 	// URL padrão para as classes de WIDGETS
 	define('URL_CLASS_WIDGETS', Session::Get('URL_CLASS') . 'widgets/');
@@ -103,8 +104,12 @@
 	// Arquivo MDM JavaScript Compilado
     define("URL_MDM_JS_COMPILE",Session::Get("URL_CURRENT_PROJECT") . FOLDER_BUILD . '/js/');
 
-	define('URL_CURRENT_BUILD',Session::Get('URL_CURRENT_PROJECT') . FOLDER_BUILD . '/');
+	define('URL_CURRENT_BUILD',URL_PROJECT . FOLDER_BUILD . '/');
 
 	define('URL_TDWEBSERVICE', URL_MILES . 'webservice/');
 
 	define('URL_ASSETS' , URL_CORE . 'assets/');
+
+	define('URL_IMG', URL_CORE . 'images/');
+
+	define('URL_PICTURE', URL_IMG . 'picture/');

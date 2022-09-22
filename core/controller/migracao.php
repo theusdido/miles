@@ -29,8 +29,10 @@
                 $sql        = "SELECT * FROM {$de_entidade};";
                 $query      = $connProd->query($sql);
             }catch(Throwable $t){
-                echo $sql;
-                var_dump($t);
+                if (IS_SHOW_ERROR_MESSAGE){
+                    echo $sql;
+                    var_dump($t);
+                }
             }
 
             // Adiciona registros na tabela de destino

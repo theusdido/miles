@@ -37,6 +37,9 @@
 
 	// FOLDER WEBSITE
 	define("FOLDER_WEBSITE","website");
+
+	// FOLDER COMPONENT
+	define('FOLDER_COMPONENT', 'component');
 	
 	#***************************************
 	# SQL

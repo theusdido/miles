@@ -58,8 +58,10 @@
 		if($query){
 			header("Location: criarRelacionamento.php?entidade=" . $entidade . getURLParamsProject("&"));
 		}else{
-			echo $sql;
-			var_dump($conn->errorInfo());
+			if (IS_SHOW_ERROR_MESSAGE){
+				echo $sql;
+				var_dump($conn->errorInfo());
+			}
 			exit;
 		}
 	}

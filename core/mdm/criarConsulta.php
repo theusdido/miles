@@ -43,7 +43,9 @@
 			if($query){
 				//addLog($sql);
 			}else{
-				var_dump($conn->errorInfo());
+				if (IS_SHOW_ERROR_MESSAGE){
+					var_dump($conn->errorInfo());
+				}
 			}
 
 			header("Location: criarConsulta.php?id=" . $id . "&currentproject=" .$_SESSION['currentproject']);
@@ -70,7 +72,9 @@
 				$conn->query("UPDATE td_atributo SET legenda = '{$legenda}' WHERE id=" . $atributo);
 				echo 1;
 			}else{
-				var_dump($conn->errorInfo());
+				if (IS_SHOW_ERROR_MESSAGE){
+					var_dump($conn->errorInfo());
+				}
 			}
 			exit;
 		}
@@ -97,7 +101,9 @@
 				$conn->query("UPDATE td_atributo SET legenda = '{$legenda}' WHERE id=" . $atributo);
 				echo 1;
 			}else{
-				var_dump($conn->errorInfo());
+				if (IS_SHOW_ERROR_MESSAGE){
+					var_dump($conn->errorInfo());
+				}
 			}
 			exit;
 		}

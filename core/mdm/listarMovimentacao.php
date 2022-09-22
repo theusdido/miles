@@ -44,7 +44,7 @@
 												</button>
 											</td>
 											<td align='center' >
-												<button type='button' class='btn btn-primary' onclick='excluirEntidade({$linha["id"]})'>
+												<button type='button' class='btn btn-primary' onclick='excluirMovimentacao({$linha["id"]})'>
 													<span class='fas fa-trash-alt' aria-hidden='true'></span>
 												</button>
 											</td>
@@ -57,9 +57,9 @@
 			</div>
 		</div>
 		<script type="text/javascript">
-			function excluirEntidade(id){				
+			function excluirMovimentacao(id){				
 				if (confirm("Tem certeza que deseja excluir ?")){
-					location.href='excluirEntidade.php?entidade=' + id;
+					location.href='excluirMovimentacao.php?movimentacao=' + id;
 				}
 			}
 		</script>

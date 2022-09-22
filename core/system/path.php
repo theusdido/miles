@@ -79,6 +79,9 @@
 	// Caminho da Páginas
 	define("PATH_SYSTEM_PAGE",PATH_CORE . "page/");
 
+	// Caminho dos Componentes
+	define("PATH_SYSTEM_COMPONENT",PATH_CORE . "components/");
+
 	// Caminho de padrão para os arquivos de instalação
 	define('PATH_INSTALL', PATH_CORE . 'install/');
 
@@ -129,6 +132,9 @@
 	// Caminho padrão para as páginas personalizadas
 	define("PATH_CURRENT_PAGE", PATH_CURRENT_PROJECT . "page/");
 
+	// Caminho padrão para os componentes personalizadas
+	define("PATH_CURRENT_COMPONENT", PATH_CURRENT_PROJECT . "component/");
+	
 	// Caminho padrão para os arquivos de log
 	define("PATH_CURRENT_LOG", PATH_CURRENT_PROJECT . "log/");		
 

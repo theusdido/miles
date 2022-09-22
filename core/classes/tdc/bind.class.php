@@ -136,9 +136,6 @@ class bind {
 			$filtro = tdc::f();
 			foreach($matches as $mm){
 				foreach($mm as $m){
-					//json_decode($m,true);
-					#var_dump(explode("=",$m));
-					#var_dump(json_decode($m,true));
 					$ft = $this->getFiltroBindTdFor($m);
 					foreach($ft as $f){
 						$filtro->addFiltro($f["campo"],$f["operador"],$f["valor"]);

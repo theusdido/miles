@@ -720,7 +720,9 @@
 			if ($query){
 				gravandoArquivo($connMILES,$_FILES,$numerochamado);
 			}else{
-				var_dump($connMILES->errorInfo());
+				if (IS_SHOW_ERROR_MESSAGE){
+					var_dump($connMILES->errorInfo());
+				}
 				exit;
 			}
 
@@ -824,8 +826,10 @@
 				$sql_insert_arquivo = "INSERT INTO td_ticketanexo (id,ticket,ticketinteraction,arquivo) VALUES({$prox},{$ticket},{$ticketinteraction},'".$file["name"]."');";
 				$query = $connMILES->exec($sql_insert_arquivo);
 				if (!$query){
-					echo $sql_insert_arquivo . "<br/>";
-					var_dump($connMILES->errorInfo());
+					if (IS_SHOW_ERROR_MESSAGE){
+						echo $sql_insert_arquivo . "<br/>";
+						var_dump($connMILES->errorInfo());
+					}
 				}
 			}
 		}

@@ -152,16 +152,16 @@ abstract class Registro {
 		try{
 			if ($conn = Transacao::get()){
 				Transacao::log($sql->getInstrucao());
-				$resultado = $conn->query($sql->getInstrucao());
-				$status_operacao =  $resultado;
+				$resultado 			= $conn->query($sql->getInstrucao());
+				$status_operacao 	=  $resultado;
 			}else{
 				echo "Não há transação ativa: Registro Armazenar <br/>\n";
 				$status_operacao =  false;
 			}
 		}catch(Throwable $t){
 			if (IS_SHOW_ERROR_MESSAGE){
-				#echo $sql->getInstrucao() . "<br/>";
-				#echo $t->getMessage();
+				echo $sql->getInstrucao() . "<br/>";
+				echo $t->getMessage();
 				Debug::console(array(
 					$t->getMessage(),
 					$sql->getInstrucao()
@@ -333,7 +333,7 @@ abstract class Registro {
 			$sql->setCriterio($criterio);
 			if ($conn = Transacao::get()){
 				Transacao::log($sql->getInstrucao());
-				$resultado = $conn->query($sql->getInstrucao());
+				$resultado 	= $conn->query($sql->getInstrucao());
 				$resultados = array();
 				if($resultado){
 					if ($linha = $resultado->fetch(PDO::FETCH_ASSOC)){

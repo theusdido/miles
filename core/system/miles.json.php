@@ -12,9 +12,10 @@
 		echo 'Arquivo <strong>miles.json</strong> está comrrompido.';
 		exit;
 	}
-	
-	$_env 		= '';
-	$miles_json = file_get_contents($path_miles_json);
+
+	$_enviromment	= 'dev';
+	$_env 			= '';
+	$miles_json 	= file_get_contents($path_miles_json);
 	if ($miles_json !== false){
 
 		// MILES JSON CONFIG
@@ -32,7 +33,10 @@
 		// Diretório da instalação do MILES FRAMEWORK
 		define("FOLDER_MILES",$mjc->folder);
 
-	}
+	}	
+
+	// Define o ambiente do sistema
+	define('_ENVIROMMENT',$_enviromment);
 
 	if (!isset($mjc->system->request_protocol)){
 		showMessage('Parametro <b>system:"request_protocol"</b> em miles.json não especificado.');

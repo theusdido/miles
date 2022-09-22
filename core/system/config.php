@@ -18,14 +18,14 @@
 	// Classe de Configuração do sistema
 	require $_path_core . '/classes/system/config.class.php';
 
+	// Seta se o requisição está com HTTPs
+	define('_IS_HTTP',isset($_SERVER['HTTPS']) ? true : false);
+	
 	// Variável global apenas para o HTTP
-	$_http_request = Config::getEnvirommentVariable('system->request_protocol');
+	$_http_request = Config::getEnvirommentVariable('system->request_protocol','http');
 
 	// REQUEST PROTOCOLO
 	define("REQUEST_PROTOCOL",$_http_request."://");
-
-	// Seta se o requisição está com HTTPs
-	define('_IS_HTTP',isset($_SERVER['HTTPS']) ? true : false);
 
 	// Encerrar o programa se a requisição não estiver com HTTPs 
 	// e o a configuração estiver setada para HTTPs
@@ -183,9 +183,9 @@
 
 	// Forçar a exibição dos erros para Super Usuário
 	if ($mjc->is_show_error_message || $_userid == 1){
-		ini_set('display_errors',1);
-		ini_set('display_startup_erros',1);
-		error_reporting(E_ALL);		
+		ini_set('display_errors',0);
+		ini_set('display_startup_erros',0);
+		error_reporting(E_ALL);
 	}
 	
 	// Indice do componente Collapse
@@ -216,7 +216,7 @@
 
 	// Variavel Global da conexão ative com banco de dados
 	$conn = Transacao::Get();
-	
+
 	// Abre a conexão com o banco de dados MILES
 	$connMILES = null; # Descontinuado
 

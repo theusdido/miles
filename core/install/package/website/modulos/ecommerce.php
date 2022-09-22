@@ -15,7 +15,8 @@
     array( "name" => "comercial", "title" => "Comercial", "components" => 
       array(
         array('name' => 'pedido' , 'title' => 'Pedido'),
-        array('name' => 'pedidoemail' , 'title' => 'Pedido E-Mail')
+        array('name' => 'pedidoemail' , 'title' => 'Pedido E-Mail'),
+        array('name' => 'propaganda' , 'title' => 'Propaganda')
       )
     ),
     array( "name" => "mercadoria", "title" => "Mercadoria", "components" => 

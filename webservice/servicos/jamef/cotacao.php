@@ -68,6 +68,5 @@ curl_close($curl);
 // Retorno
 $retorno = json_decode($response,true);
 
-//var_dump($retorno);
-$retorno["status"] = "success";
-$retorno["dados"] = json_encode(array("valor" => "1.24514","previsao_entrega" =>"31/10/2018"));
+$retorno["status"]  = "success";
+$retorno["dados"]   = json_encode(array("valor" => "1.24514","previsao_entrega" =>"31/10/2018"));

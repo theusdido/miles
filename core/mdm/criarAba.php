@@ -34,8 +34,10 @@
 		if ($query){
 			header('Location: criarAba.php?entidade='.$entidade."&currentproject=".$_SESSION['currentproject']);
 		}else{
-			echo $sql;
-			var_dump($conn->errorInfo());
+			if (IS_SHOW_ERROR_MESSAGE){
+				echo $sql;
+				var_dump($conn->errorInfo());
+			}
 		}
 	}
 	if (isset($_GET["id"])){

@@ -26,7 +26,6 @@ if ($conn = Transacao::get()){
 					$novalista->regpai = $idclone;
 					$novalista->regfilho = $cloneFilho->id;
 					$novalista->armazenar();
-					//var_dump($lista);
 				}	
 			}
 		}

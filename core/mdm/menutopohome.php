@@ -44,12 +44,16 @@
 			$sqlP = "DELETE FROM ".PREFIXO."menupermissoes WHERE menu = {$excluir};";
 			$queryP = $conn->query($sqlP);
 			if (!$queryP){
-				echo $sqlP;
-				var_dump($conn->errorInfo());
+				if (IS_SHOW_ERROR_MESSAGE){
+					echo $sqlP;
+					var_dump($conn->errorInfo());
+				}
 			}
 			echo 1;
 		}else{
-			var_dump($conn->errorInfo());
+			if (IS_SHOW_ERROR_MESSAGE){
+				var_dump($conn->errorInfo());
+			}
 		}
 		exit;
 	}
@@ -160,8 +164,10 @@
                         $conn->exec($sqlP);
                     }catch(Exception $e){
 					    $conn->rollBack();
-						echo $sqlP;
-					    var_dump($e->getMessage());
+						if (IS_SHOW_ERROR_MESSAGE){
+							echo $sqlP;
+					    	var_dump($e->getMessage());
+						}
 					    exit;
                     }
 				}
@@ -172,11 +178,13 @@
 				"msg" => "Salvo com sucesso."
 			));			
 		}catch(Exception $e){
-			echo 'Errou';
-			echo '<br/>' . $sql;
-			echo '<br/>' . $e->getMessage();
-			var_dump($conn->errorInfo());
-			$conn->rollBack();
+			if (IS_SHOW_ERROR_MESSAGE){
+				echo 'Errou';
+				echo '<br/>' . $sql;
+				echo '<br/>' . $e->getMessage();
+				var_dump($conn->errorInfo());
+				$conn->rollBack();
+			}
 			exit;
 		}
 		exit;

@@ -54,7 +54,7 @@
 			$pathfile       	= PATH_CURRENT_FILE . $filenamefixed;
 			
 			if (!file_exists($pathfile)){
-				$pathfile = PATH_IMG . "semimagem.jpg";
+				$pathfile = URL_PICTURE . "sem-imagem.jpg";
 			}
 			echo '
 				<li data-order="'.$indice.'" data-id="'.$id.'">

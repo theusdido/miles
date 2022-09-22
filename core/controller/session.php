@@ -27,9 +27,11 @@
 			session_name($sessionName);
 			session_start();
 		}catch(Throwable $t){
-			var_dump($sessionName);
-			var_dump(session_id());	
-			echo $t->getMessage();
+			if (IS_SHOW_ERROR_MESSAGE){
+				var_dump($sessionName);
+				var_dump(session_id());	
+				echo $t->getMessage();
+			}
 			exit;
 		}
 

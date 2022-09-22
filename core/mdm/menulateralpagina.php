@@ -37,8 +37,9 @@
 		$query = $conn->query($sql);
 				
 		if (!$query){
-			echo 'Errou';
-			var_dump($conn->infoError());
+			if (IS_SHOW_ERROR_MESSAGE){
+				var_dump($conn->infoError());
+			}
 			exit;
 		}else{
 			echo "<meta http-equiv='refresh' content='0;url=".$self."'>";

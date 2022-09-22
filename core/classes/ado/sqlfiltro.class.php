@@ -30,11 +30,11 @@ class SqlFiltro extends SqlExpressao {
 	}
 	
 	/*  
-		* M�todo Transformar 
+		* Método Transformar 
 	    * Data de Criacao: 19/01/2012
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
-		Recebe um valor e faz modifica��es necess�rias para que ele ser interpretado pelo banco de dados podendo ser um integer/string/boolean ou array.
+		Recebe um valor e faz modificações necessárias para que ele ser interpretado pelo banco de dados podendo ser um integer/string/boolean ou array.
 	*/		
 	public static function transformar($valor){
 		if (is_array($valor)){
@@ -52,18 +52,20 @@ class SqlFiltro extends SqlExpressao {
 			$result = "DATE_FORMAT('".dateToMysqlFormat($dt[0])." ". $dt[1]."','%Y-%m-%d %H:%i:%s')";
 		}else if (is_date($valor) == 1){
 			$result = "DATE_FORMAT('".dateToMysqlFormat($valor)."','%Y-%m-%d')";
-		}else if(is_string($valor)){		
+		}else if(is_string($valor)){
 			$result = "'$valor'";
 		}else if (is_null($valor)){
 			$result = 'NULL';
 		}else if (is_bool($valor)){
 			$result = $valor?'TRUE':'FALSE';
-		}else{			
+		}else if (is_numeric($valor)){
+			$result = $valor;
+		}else{
 			$result = $valor;
 		}
 		return $result;
-	}	
-	
+	}
+
 	/*  
 		* M�todo Dump 
 	    * Data de Criacao: 19/01/2012

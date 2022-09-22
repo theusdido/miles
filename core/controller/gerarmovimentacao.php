@@ -37,7 +37,7 @@
 					$sql 				= "SELECT id,{$atributo->nome} FROM " .  $entidadeNameMov . " WHERE ID = " . $identidadepai;
 					$query 				= $conn->query($sql);
 					$linha 				= $query->fetch();
-					$valorold 			= utf8_encode(getHTMLTipoFormato($atributo->tipohtml,$linha[$atributo->nome]));
+					$valorold 			= utf8charset(getHTMLTipoFormato($atributo->tipohtml,$linha[$atributo->nome]));
 					$valor 				= Config::Integridade($entidade->contexto->id,$atributo->nome,$obj->valor,"");
 
 					if ($valor == $valorold) continue;
@@ -94,11 +94,15 @@
 						if ($queryMHA){
 							echo 1;
 						}else{
-							var_dump($conn->errorInfo());
+							if (IS_SHOW_ERROR_MESSAGE){
+								var_dump($conn->errorInfo());
+							}
 						}
 					}else{
 						echo 'Erro ao atualizar status';
-						var_dump($conn->erroInfo());
+						if (IS_SHOW_ERROR_MESSAGE){
+							var_dump($conn->erroInfo());
+						}
 					}
 				}
 			}
@@ -118,7 +122,7 @@
 					$query = $conn->query($sql);
 					$linha = $query->fetch();
 
-					echo ($a==1?"":",").'{"atributo":"'.$attr.'","valor":"'.utf8_encode(getHTMLTipoFormato($atributo->tipohtml,$linha[$atributo->nome])).'"}';
+					echo ($a==1?"":",").'{"atributo":"'.$attr.'","valor":"'.utf8charset(getHTMLTipoFormato($atributo->tipohtml,$linha[$atributo->nome])).'"}';
 					$a++;
 				}
 				echo "]";

@@ -31,7 +31,9 @@
 			if($query){
 				//addLog($sql);
 			}else{
-				var_dump($conn->errorInfo());
+				if (IS_SHOW_ERROR_MESSAGE){
+					var_dump($conn->errorInfo());
+				}
 			}
 
 			header("Location: criarMenucrud.php?id=" . $id);
@@ -56,7 +58,9 @@
 				//addLog($sql);
 				echo 1;
 			}else{
-				var_dump($conn->errorInfo());
+				if (IS_SHOW_ERROR_MESSAGE){
+					var_dump($conn->errorInfo());
+				}
 			}
 			exit;
 		}

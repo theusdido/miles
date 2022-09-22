@@ -29,7 +29,8 @@
 	$email 				= criarAtributo($conn,$entidadeID,"email","E-Mail","varchar",200,1,12,0,0,0,"");
 	$senha 				= criarAtributo($conn,$entidadeID,"senha","Senha","varchar",128,1,6,0,0,0,"");
 	$telefone 			= criarAtributo($conn,$entidadeID,"telefone","Telefone","varchar",35,1,8,0,0,0,"");
-	$observacao			= criarAtributo($conn,$entidadeID,"observacao","Observação","text",0,1,14,0);
+	$fotoperfil 		= criarAtributo($conn,$entidadeID,"fotoperfil","Foto (Perfil)","mediumblob",0,1,19);	
+	$observacao			= criarAtributo($conn,$entidadeID,"observacao","Observação","text",0,1,14,0);	
 
 	// Pessoa Física
 	$cpf 				= criarAtributo($conn,$entidadeID,"cpf","CPF","varchar",35,1,10,1,0,0,"",0,0);
@@ -55,7 +56,7 @@
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,8,'ecommerce-' . $entidadeNome,$entidadeID,'cadastro');
 	
 	// Aba Capa
-	$camposAba = array($codigo,$nome,$email,$senha,$telefone,$observacao);
+	$camposAba = array($codigo,$nome,$email,$senha,$telefone,$fotoperfil,$observacao);
 	criarAba($conn,$entidadeID,"Capa",implode(",",$camposAba));
 
 	// Aba Física

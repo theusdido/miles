@@ -65,8 +65,7 @@
 		}
 
 		function getIdCarrinho()
-		{
-			var_dump($_SESSION);
+		{			
 			if (isset($_SESSION["carrinhoid"])){
 				return $_SESSION["carrinhoid"];
 			}else{

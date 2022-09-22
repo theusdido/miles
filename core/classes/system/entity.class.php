@@ -273,8 +273,10 @@ class Entity {
 		$sqlExisteEntidade = "SELECT id,nome FROM " . getSystemPREFIXO() . "entidade WHERE {$where}";
 		$queryExisteEntidade = $conn->query($sqlExisteEntidade);
 		if (!$queryExisteEntidade){
-			echo $sqlExisteEntidade;
-			var_dump($conn->errorInfo());
+			if (IS_SHOW_ERROR_MESSAGE){
+				echo $sqlExisteEntidade;
+				var_dump($conn->errorInfo());
+			}
 		}
 		if ($queryExisteEntidade->rowCount() <= 0) return false;
 		$linhaExisteEntidade 	= $queryExisteEntidade->fetch();		

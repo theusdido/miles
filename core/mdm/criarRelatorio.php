@@ -30,7 +30,9 @@
 			}
 			$query = $conn->query($sql);
 			if(!$query){
-				var_dump($conn->errorInfo());
+				if (IS_SHOW_ERROR_MESSAGE){
+					var_dump($conn->errorInfo());
+				}
 			}
 
 			header("Location: criarRelatorio.php?id=" . $id);
@@ -57,7 +59,9 @@
 				$conn->query("UPDATE td_atributo SET legenda = '{$legenda}' WHERE id=" . $atributo);
 				echo 1;
 			}else{
-				var_dump($conn->errorInfo());
+				if (IS_SHOW_ERROR_MESSAGE){
+					var_dump($conn->errorInfo());
+				}
 			}
 			exit;
 		}
@@ -82,7 +86,9 @@
 			if($query){
 				echo 1;
 			}else{
-				var_dump($conn->errorInfo());
+				if (IS_SHOW_ERROR_MESSAGE){
+					var_dump($conn->errorInfo());
+				}
 			}
 			exit;
 		}

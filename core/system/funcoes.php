@@ -454,7 +454,9 @@ function getUrl($url,$opcoes = null){
 		$conteudo 	= file_get_contents($url,false,$context);
 		session_start(); //Bloqueia o arquivo de sessão
 	}catch(Exception $e){
-		var_dump($e);
+		if (IS_SHOW_ERROR_MESSAGE){
+			var_dump($e);
+		}
 		$conteudo = '';
 	}finally{
 		return $conteudo;
@@ -653,8 +655,10 @@ function criarEntidade(
 	$sqlExisteEntidade = "SELECT id,nome FROM " . ENTIDADE . " WHERE nome='{$nome}'";
 	$queryExisteEntidade = $conn->query($sqlExisteEntidade);
 	if (!$queryExisteEntidade){
-		echo $sqlExisteEntidade;
-		var_dump($conn->errorInfo());
+		if (IS_SHOW_ERROR_MESSAGE){
+			echo $sqlExisteEntidade;
+			var_dump($conn->errorInfo());
+		}
 	}
 	
 	$linhaExisteEntidade = $queryExisteEntidade->fetch();
@@ -669,8 +673,10 @@ function criarEntidade(
 	
 	$query = $conn->query($sql);
 	if (!$query){
-		echo $sql;
-		var_dump($conn->errorInfo());
+		if (IS_SHOW_ERROR_MESSAGE){
+			echo $sql;
+			var_dump($conn->errorInfo());
+		}
 		exit;
 	}
 	$sqlExisteFisicamente = "SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE UPPER(TABLE_NAME) = UPPER('".$nome."') AND UPPER(TABLE_SCHEMA) = UPPER('".SCHEMA."')";
@@ -680,8 +686,10 @@ function criarEntidade(
 		$sql = "CREATE TABLE IF NOT EXISTS {$nome}(id int not null primary key) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
 		$query = $conn->query($sql);
 		if (!$query){
-			echo $sql;
-			var_dump($conn->errorInfo());
+			if (IS_SHOW_ERROR_MESSAGE){
+				echo $sql;
+				var_dump($conn->errorInfo());
+			}
 		}		
 	}else{
 		if (strtoupper($linhaExisteEntidade["nome"]) != strtoupper($nome) && $linhaExisteEntidade["nome"] != "" && $nome != ""){
@@ -689,8 +697,10 @@ function criarEntidade(
 			echo $sql;
 			$query = $conn->query($sql);
 			if (!$query){
-				echo $sql;
-				var_dump($conn->errorInfo());
+				if (IS_SHOW_ERROR_MESSAGE){
+					echo $sql;
+					var_dump($conn->errorInfo());
+				}
 			}
 		}	
 	}
@@ -766,8 +776,10 @@ function criarAtributo(
 	$sqlExisteAtributo 			= "SELECT id FROM {$entidadeatributodefault} WHERE nome='{$nome}' AND entidade={$entidade};";
 	$queryExisteAtributo 		= $conn->query($sqlExisteAtributo);
 	if (!$queryExisteAtributo){
-		echo $sqlExisteAtributo;
-		var_dump($conn->errorInfo());
+		if (IS_SHOW_ERROR_MESSAGE){
+			echo $sqlExisteAtributo;
+			var_dump($conn->errorInfo());
+		}
 	}
 	
 	try{
@@ -793,8 +805,10 @@ function criarAtributo(
 
 			}
 		}else{
-			echo $sql;
-			var_dump($conn->errorInfo());
+			if (IS_SHOW_ERROR_MESSAGE){
+				echo $sql;
+				var_dump($conn->errorInfo());
+			}
 		}
 	}else{
 		$linhaExistequeAtributo = $queryExisteAtributo->fetch();
@@ -804,8 +818,10 @@ function criarAtributo(
 		$sql_old = "SELECT nome FROM {$entidadeatributodefault} WHERE id = {$id}";
 		$query_old = $conn->query($sql_old);
 		if (!$query_old){
-			echo $sql_old;
-			var_dump($conn->errorInfo());
+			if (IS_SHOW_ERROR_MESSAGE){
+				echo $sql_old;
+				var_dump($conn->errorInfo());
+			}
 		}
 		$linha_old = $query_old->fetchAll();
 		
@@ -815,8 +831,10 @@ function criarAtributo(
 			$sqlFisicamante = "SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{$linha[0]["nome"]}' AND  COLUMN_NAME = '{$nome}';";
 			$queryFisicamante = $conn->query($sqlFisicamante);
 			if (!$queryFisicamante){
-				echo $sqlFisicamente;
-				var_dump($conn->errorInfo());
+				if (IS_SHOW_ERROR_MESSAGE){
+					echo $sqlFisicamente;
+					var_dump($conn->errorInfo());
+				}
 			}
 			
 			if ($queryFisicamante->rowCount() > 0 ){
@@ -834,21 +852,27 @@ function criarAtributo(
 					$sql = "ALTER TABLE {$linha[0]["nome"]} ADD COLUMN {$nome} {$tipo}{$tamanhoSQL} {$nuloSQL};";
 					$inserir = $conn->query($sql);
 					if (!$inserir){
-						echo $sql;
-						var_dump($conn->errorInfo());
+						if (IS_SHOW_ERROR_MESSAGE){
+							echo $sql;
+							var_dump($conn->errorInfo());
+						}
 					}
 				}
 			}else{
 				$sql = "ALTER TABLE {$linha[0]["nome"]} ADD COLUMN {$nome} {$tipo}{$tamanhoSQL} {$nuloSQL};";
 				$criar = $conn->query($sql);
 				if (!$criar){
-					echo $sql;
-					var_dump($conn->errorInfo());
+					if (IS_SHOW_ERROR_MESSAGE){
+						echo $sql;
+						var_dump($conn->errorInfo());
+					}
 				}
 			}
 		}else{
-			echo $sql;
-			var_dump($conn->errorInfo());
+			if (IS_SHOW_ERROR_MESSAGE){
+				echo $sql;
+				var_dump($conn->errorInfo());
+			}
 		}
 	}
 	
@@ -863,8 +887,10 @@ function getProxId($entidade,$conn = null){
 	$sql 	= 'SELECT IFNULL(MAX(id),0) + 1 FROM ' . $entidadeName;
 	$query 	= $conn->query($sql);
 	if (!$query){
-		echo $sql;
-		var_dump($conn->errorInfo());		
+		if (IS_SHOW_ERROR_MESSAGE){
+			echo $sql;
+			var_dump($conn->errorInfo());
+		}
 	}
 	$prox = $query->fetch(PDO::FETCH_BOTH);
 	return $prox[0];
@@ -944,8 +970,10 @@ $atributos #3
 	$sql_verificar = "SELECT id FROM ".ABAS." WHERE descricao = '{$descricao}' AND entidade = " . $entidade;
 	$query_verificar = $conn->query($sql_verificar);
 	if (!$query_verificar){
-		echo $sql_verificar;
-		var_dump($conn->errorInfo());
+		if (IS_SHOW_ERROR_MESSAGE){
+			echo $sql_verificar;
+			var_dump($conn->errorInfo());
+		}
 	}
 	$linha_verificar = $query_verificar->fetch();
 	$descricao = utf8charset($descricao);
@@ -1003,7 +1031,7 @@ function getAtributoId($entidadeString,$atributoString,$conn = null){
 			}
 		}catch(Throwable $t){
 			if (IS_SHOW_ERROR_MESSAGE){
-				//var_dump($t->getMessage());
+				var_dump($t->getMessage());
 			}
 		}
 	}
@@ -1027,8 +1055,10 @@ function criarRelacionamento($conn,$tipo,$entidadePai,$entidadeFilho,$descricao 
 		$query = $conn->query($sql);
 		return $idRetorno;
 	}catch(Throwable $t){
-		echo $sql;
-		var_dump($conn->errorInfo());
+		if (IS_SHOW_ERROR_MESSAGE){
+			echo $sql;
+			var_dump($conn->errorInfo());
+		}
 		return 0;
 	}	
 }
@@ -1091,7 +1121,9 @@ function criarCampoDicionario($conn,$tabela,$nome,$tipo,$tamanho = 0,$nulo = 0){
 	$query = $conn->query($sql);
 	
 	if (!$query){
-		var_dump($conn->errorInfo());
+		if (IS_SHOW_ERROR_MESSAGE){
+			var_dump($conn->errorInfo());
+		}
 	}
 }
 function inserirRegistro($conn,$tabela,$id,$atributos,$valores,$criarnovoregistro=false){
@@ -1121,8 +1153,10 @@ function inserirRegistro($conn,$tabela,$id,$atributos,$valores,$criarnovoregistr
 		$query = $conn->query($sqlInserir);
 		return true;
 	}catch(Throwable $t){
-        echo $sqlInserir;
-        var_dump($conn->errorInfo());
+		if (IS_SHOW_ERROR_MESSAGE){
+        	echo $sqlInserir;
+        	var_dump($conn->errorInfo());
+		}
         return false;
 	}
 }
@@ -1139,8 +1173,10 @@ function atualizarRegistro($conn,$tabela,$id = "",$atributos,$valores,$atualizar
 		$sqlInserir = "UPDATE " . $tabela . " SET " . $campos . " WHERE 1=1 " . (!$atualizarnulo?"":" AND " . $_atributos[$i] . " IS NOT NULL ") . ($id == ""?"":" AND id = " . $id) . "";
 		$query = $conn->query($sqlInserir);
 	}catch(Throwable $t){
-        echo $sqlInserir;
-        var_dump($conn->errorInfo());
+		if (IS_SHOW_ERROR_MESSAGE){
+        	echo $sqlInserir;
+        	var_dump($conn->errorInfo());
+		}
         return false;
 	}
 }
@@ -1754,12 +1790,15 @@ function addCampoFormatadoDB($dados,$entidade){
 		$tipohtml 		= getTipoHTML($key,$entidade);
 		$linha 			= array( $key => $value );
 
-		// Converte os acentos, afeta o método tdc::dj() 		
+		// Converte os acentos, afeta o método tdc::dj(), tdc::da e tdc::pa		
 		$dados[$key] 	= utf8charset($value, 10);
 
-		if ($tipohtml == 13 ){
+		if ($tipohtml == 11){
+			$dados[$key . '_formated']	= dateToMysqlFormat($value,true);
+		}else if ($tipohtml == 13 ){
 			$valorformatado = getHTMLTipoFormato( $tipohtml , $value );
-			$dados["formated_" . $key] = $valorformatado;
+			$dados["formated_" . $key] = $valorformatado; # Padrão errado, retirar.			
+			$dados[$key . "_formated"] = $valorformatado;
 		}else if ($tipohtml == 4 || $tipohtml == 22){
 			if (is_numeric_natural($value)){
 				$atributoOBJ 			= tdc::p(ATRIBUTO,getAtributoId($entidade,$key));		
@@ -1776,6 +1815,8 @@ function addCampoFormatadoDB($dados,$entidade){
 			$url_file 					= URL_CURRENT_FILE . $file;
 			$path_file					= PATH_CURRENT_FILE . $file;
 			$dados[$key . '_src'] 		= file_exists($path_file) ? $url_file : URL_ASSETS . 'img/noimage.png';
+		}else if ($tipohtml == 23){
+			$dados[$key . '_formated']	= datetimeToMysqlFormat($value,true);
 		}
 	}
 	return $dados;
@@ -2098,7 +2139,6 @@ function ordenarAtributo($atributo){
 	
 	if (!$a->ordem) return false;
 	if ($a->ordem <= 0 || $a->ordem == ''){
-		var_dump($a->ordem);
 		switch($a->tipohtml){
 			case 16:
 				$ordem = 1;
@@ -2250,5 +2290,6 @@ function noClick(){
 
 // Testa se a variável existe ( @theusdido 07/09/2000 )
 function is_exists($variable,$replace = null){
-	return isset($variable) ? $variable : $replace;
+	eval('$is_exists_variable = isset('.$variable.');');
+	return $is_exists_variable ? $variable : $replace;
 }

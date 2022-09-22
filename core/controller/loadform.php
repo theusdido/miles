@@ -88,9 +88,11 @@
 				try{
 					$query = $conn->query($sql);	
 				}catch(Exception $e){
-					var_dump($tiporelacionamento);
-					echo $sql;
-					var_dump($conn->errorInfo());
+					if (IS_SHOW_ERROR_MESSAGE){
+						var_dump($tiporelacionamento);
+						echo $sql;
+						var_dump($conn->errorInfo());
+					}
 				}
 
 				if ($query->rowcount() > 0){

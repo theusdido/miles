@@ -35,19 +35,22 @@
 			$exigirobrigatorio		= isset($_POST["exigirobrigatorio"])?1:0;;
 			$exibirtitulo			= isset($_POST["exibirtitulo"])?1:0;;
 			$exibirvaloresantigos	= isset($_POST["exibirvaloresantigos"])?1:0;
+
 			if ($id == ""){
 				$query_prox = $conn->query("SELECT IFNULL(MAX(id),0)+1 FROM ".PREFIXO."movimentacao");
-				$prox = $query_prox->fetch();
-				$id = $prox[0];
-				$sql = "INSERT INTO ".PREFIXO."movimentacao (id,descricao,entidade,motivo,exigirobrigatorio,exibirtitulo,exibirvaloresantigos) VALUES ({$id},'{$descricao}',{$entidade},{$motivo},{$exigirobrigatorio},{$exibirtitulo},{$exibirvaloresantigos});";
+				$prox 		= $query_prox->fetch();
+			 	$id 		= $prox[0];
+			 	$sql 		= "INSERT INTO ".PREFIXO."movimentacao (id,descricao,entidade,motivo,exigirobrigatorio,exibirtitulo,exibirvaloresantigos) VALUES ({$id},'{$descricao}',{$entidade},{$motivo},{$exigirobrigatorio},{$exibirtitulo},{$exibirvaloresantigos});";
 			}else{
-				$sql = "UPDATE ".PREFIXO."movimentacao SET entidade = {$entidade} , descricao = '{$descricao}' , motivo = {$motivo} , exigirobrigatorio = {$exigirobrigatorio} , exibirtitulo = {$exibirtitulo} , exibirvaloresantigos = {$exibirvaloresantigos} WHERE id = {$id};";
+			 	$sql 		= "UPDATE ".PREFIXO."movimentacao SET entidade = {$entidade} , descricao = '{$descricao}' , motivo = {$motivo} , exigirobrigatorio = {$exigirobrigatorio} , exibirtitulo = {$exibirtitulo} , exibirvaloresantigos = {$exibirvaloresantigos} WHERE id = {$id};";
 			}
 			$query = $conn->query($sql);
 			if($query){
-				//addLog($sql);
+				addLog($sql);
 			}else{
-				var_dump($conn->errorInfo());
+				if (IS_SHOW_ERROR_MESSAGE){
+			 		var_dump($conn->errorInfo());
+				}
 			}
 
 			header("Location: criarMovimentacao.php?id=" . $id);
@@ -74,7 +77,9 @@
 				$conn->query("UPDATE td_atributo SET legenda = '{$legenda}' WHERE id=" . $atributo);
 				echo 1;
 			}else{
-				var_dump($conn->errorInfo());
+				if (IS_SHOW_ERROR_MESSAGE){
+					var_dump($conn->errorInfo());
+				}
 			}
 			exit;
 		}
@@ -99,7 +104,9 @@
 				//addLog($sql);				
 				echo 1;
 			}else{
-				var_dump($conn->errorInfo());
+				if (IS_SHOW_ERROR_MESSAGE){
+					var_dump($conn->errorInfo());
+				}
 			}
 			exit;
 		}
@@ -122,7 +129,9 @@
 				//addLog($sql);		
 				echo 1;
 			}else{
-				var_dump($conn->errorInfo());
+				if (IS_SHOW_ERROR_MESSAGE){
+					var_dump($conn->errorInfo());
+				}
 			}
 			exit;
 		}		

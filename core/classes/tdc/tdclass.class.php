@@ -19,20 +19,21 @@ class tdClass {
 	{
 		if (strpos($classe,".") > -1){
 			include PATH_CLASS . str_replace(".","/",$classe). '.class.php';
-			$classeArray = explode(".",$classe);
-			$classe = end($classeArray);
+			$classeArray 	= explode(".",$classe);
+			$classe 		= end($classeArray);
 		}
 		$argumentos = "";
-		if (func_num_args() > 1){
+		if (func_num_args() > 1){			
 			if (is_array(func_get_arg(1))){
 				foreach (func_get_arg(1) as $i => $arg){
-					$arg = (getType($arg)=="array"?"array":"") . SqlFiltro::transformar($arg);					
+					$arg = (gettype($arg)=="array"?"array":"") . SqlFiltro::transformar($arg);
 					$arg = substr_count($arg,'DATE_FORMAT') > 0? '"RETIRAR ' . $arg . ' RETIRAR"':$arg;
 					$argumentos .= ($argumentos=="")?$arg:','.$arg;
+
 				}
 			}
 		}
-		eval('$obj = new '.$classe.'('.$argumentos.');');
+		eval('$obj = new '.$classe.'('.$argumentos.');');		
 		return $obj;
 	}
 	/*
