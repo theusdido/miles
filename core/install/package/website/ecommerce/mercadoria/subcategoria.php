@@ -24,8 +24,8 @@
     $categoria  = criarAtributo($conn, $entidadeID,"categoria","Categoria","int",0,0,4,1,installDependencia("ecommerce_categoria","package/website/ecommerce/mercadoria/categoria"));
     $imagem 	= criarAtributo($conn, $entidadeID,"imagem","Imagem","text",0,1,19,0,0,0,"");    
 
-    // Criando Acesso
-    $menu_webiste = addMenu($conn, 'E-Commerce', '#', '', 0, 0, 'ecommerce');
+	// Criando Acesso
+	$menu_webiste = addMenu($conn,'E-Commerce','#','',0,0,'ecommerce');
 
-    // Adicionando Menu
-    addMenu($conn, $entidadeDescricao, "files/cadastro/" . $entidadeID . "/" . PREFIXO . $entidadeNome . ".html", '', $menu_webiste, 0, 'ecommerce-' . $entidadeNome, $entidadeID, 'cadastro');
+	// Adicionando Menu
+	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,0,'ecommerce-' . $entidadeNome,$entidadeID,'cadastro');

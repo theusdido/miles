@@ -1126,32 +1126,33 @@ function criarCampoDicionario($conn,$tabela,$nome,$tipo,$tamanho = 0,$nulo = 0){
 		}
 	}
 }
+
+
 function inserirRegistro($conn,$tabela,$id,$atributos,$valores,$criarnovoregistro=false){
 	if ($id == '' || $id == null){
 		$id = getEntidadeId($tabela);
 	}
 
-	$sql 	= "SELECT 1 FROM " . $tabela . " WHERE id = " . $id . ";";
-	$query 	= $conn->query($sql);
-	if ($query->rowCount() > 0){
-		// Atualiza a informação caso o ID já exista
-		atualizarRegistro($conn,$tabela,$id,$atributos,$valores);
-		return $id;
-	}else{
-		if ($criarnovoregistro){
-			// Força a criação do registro, independentemente do ID
-			$id = getProxId(str_replace("td_","",$tabela),$conn);
-		}else{
-			// Atualiza a informação caso o ID já exista
-            atualizarRegistro($conn,$tabela,$id,$atributos,$valores);
-            return true;
+	// Força a criação de um novo registro registro
+	// independentemente do ID
+	if ($criarnovoregistro){
+		$id = getProxId(str_replace("td_","",$tabela),$conn);
+	}else {
+		if (is_numeric($id)){
+			$sql 	= "SELECT 1 FROM " . $tabela . " WHERE id = " . $id . ";";
+			$query 	= $conn->query($sql);
+			if ($query->rowCount() > 0){
+				// Atualiza a informação caso o ID já exista
+				atualizarRegistro($conn,$tabela,$id,$atributos,$valores);
+				return $id;
+			}			
 		}
 	}
 
 	try{
 		$sqlInserir = "INSERT " . $tabela . " (id,".implode(",",$atributos).") VALUES (".$id.",".utf8charset(implode(",",$valores)).");";
-		$query = $conn->query($sqlInserir);
-		return true;
+		$query 		= $conn->query($sqlInserir);
+		return $id;
 	}catch(Throwable $t){
 		if (IS_SHOW_ERROR_MESSAGE){
         	echo $sqlInserir;

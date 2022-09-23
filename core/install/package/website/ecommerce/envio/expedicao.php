@@ -1,10 +1,14 @@
 <?php
 
+	$entidadeNome 		= "ecommerce_expedicao";
+	$entidadeDescricao 	= "Expedição";
+
+
 	// Expedição
 	$entidadeID = criarEntidade(
 		$conn,
-		"ecommerce_expedicao",
-		"Expedição",
+		$entidadeNome,
+		$entidadeDescricao,
 		$ncolunas=3,
 		$exibirmenuadministracao = 0,
 		$exibircabecalho = 0,
@@ -30,7 +34,7 @@
 	$menu_webiste = addMenu($conn,'E-Commerce','#','',0,0,'ecommerce');
 
 	// Adicionando Menu Expedição
-	addMenu($conn,"Expedição","files/cadastro/".$entidadeID."/".PREFIXO."expedicao.html",'',$menu_webiste,7,'ecommerce-expedicao',$entidadeID,'cadastro');
+	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,8,'ecommerce-' . $entidadeNome,$entidadeID,'cadastro');
 
 	// Cria Relacionamento
-	criarRelacionamento($conn,7,$entidadeID,installDependencia('ecommerce_endereco','package/website/ecommerce/geral/endereco'),"Endereço",0);
+	criarRelacionamento($conn,7,$entidadeID,installDependencia('ecommerce_endereco','package/website/ecommerce/endereco/endereco'),"Endereço",0);

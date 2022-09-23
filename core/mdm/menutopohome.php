@@ -110,7 +110,7 @@
 		$tipomenu			= "'" . $tp_menu . "'";
 		$path				= "'" . $_POST["path"] . "'";
 		$icon				= "'" . $_POST["icon"] . "'";
-		$coluna				= isset($_POST["coluna"])?$_POST["coluna"]:0;
+		$coluna				= isset($_POST["coluna"])?($_POST["coluna"]==''?0:$_POST["coluna"]):0;
 		$fixo				= "'" . $_POST["fixo"] . "'";
 
 		if ($_POST["ordem"] == ''){

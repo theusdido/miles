@@ -21,7 +21,9 @@
 	);
 
 	// Criando Atributos
-	$descricao = criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar",50,0,3,1);
+	$descricao 	= criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar",50,0,3,1);
+	$codigo 	= criarAtributo($conn,$entidadeID,"codigo","Código ( FEBRABAN )","char",3,1,3,1);
+	$sigla 		= criarAtributo($conn,$entidadeID,"sigla","Sigla","varchar",5,1,3,1);
 	Entity::setDescriptionField($conn,$entidadeID,$descricao,true);
 
 	// Criando Acesso

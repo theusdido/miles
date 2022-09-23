@@ -1,24 +1,4 @@
 <?php
-
-	// Status do Pedido
-	$statuspedidoID = criarEntidade(
-		$conn,
-		"ecommerce_statuspedido",
-		"Status do Pedido",
-		$ncolunas=3,
-		$exibirmenuadministracao = 0,
-		$exibircabecalho = 0,
-		$campodescchave = "",
-		$atributogeneralizacao = 0,
-		$exibirlegenda = 0,
-		$criarprojeto = 1,
-		$criarempresa = 1,
-		$criarauth = 0,
-		$registrounico = 0
-	);
-	$descricao = criarAtributo($conn,$statuspedidoID,"descricao","Descrição","varchar",50,0,3,1,0,0,"");
-	$significado = criarAtributo($conn,$statuspedidoID,"significado","Significado","varchar",1000,0,3,1,0,0,"");
-
 	// Setando variáveis
 	$entidadeNome 		= "ecommerce_pedido";
 	$entidadeDescricao 	= "Pedido";
@@ -45,8 +25,8 @@
 	$pedido_datahoraenvio 		= criarAtributo($conn,$entidadeID,"datahoraenvio","Data/Hora de Envio","datetime",0,0,23,1,0,0,"");
 	$pedido_datahoraretorno 	= criarAtributo($conn,$entidadeID,"datahoraretorno","Data/Hora de Retorno","datetime",0,0,23,0,0,0,"");
 	$pedido_carrinho 			= criarAtributo($conn,$entidadeID,"carrinhocompras","Carrinho de Compra","int",0,0,22,0,getEntidadeId("ecommerce_carrinhocompras",$conn),0,"");
-	$pedido_status 				= criarAtributo($conn,$entidadeID,"status","Status","tinyint",0,0,4,1,getEntidadeId("ecommerce_statuspedido",$conn),0,"");
-	$pedido_metodopagamento 	= criarAtributo($conn,$entidadeID,"metodopagamento","Método de Pagamento","int",0,1,4,0,getEntidadeId("ecommerce_metodopagamento",$conn),0,"");
+	$pedido_status 				= criarAtributo($conn,$entidadeID,"status","Status","tinyint",0,0,4,1,installDependencia("ecommerce_statuspedido","package/website/ecommerce/comercial/statuspedido"),0,"");
+	$pedido_metodopagamento 	= criarAtributo($conn,$entidadeID,"metodopagamento","Método de Pagamento","int",0,1,4,0,installDependencia("ecommerce_metodopagamento","package/website/ecommerce/comercial/metodopagamento"),0,"");
 	$pedido_qtdetotalitens 		= criarAtributo($conn,$entidadeID,"qtdetotalitens","Qtde Total de Itens","int",0,1,3,0,0,0,"");
 	$pedido_valortotal 			= criarAtributo($conn,$entidadeID,"valortotal","Valor Total","float",0,1,13,1,0,0,"");
 	$pedido_representante 		= criarAtributo($conn,$entidadeID,"representante","Representante","int",0,1,22,0,getEntidadeId("ecommerce_representante",$conn),0,"",0,0);
@@ -62,6 +42,9 @@
 	// Criando Acesso
 	$menu_webiste = addMenu($conn,'E-Commerce','#','',0,0,'ecommerce');
 	
+	// Adicionando Menu
+	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,7,'ecommerce-' . $entidadeNome,$entidadeID,'cadastro');
+
 	// Itens do Carrinho
 	$itenspedidoID = criarEntidade(
 		$conn,
@@ -91,32 +74,5 @@
 	$itenspedido_tamanho 		= criarAtributo($conn,$itenspedidoID,"tamanho","Tamanho","varchar",200,1,3,1,0,0,"");
 	$itenspedido_variacao 		= criarAtributo($conn,$itenspedidoID,"variacao","Variação","varchar",200,1,3,1,0,0,"");
 
-	// Adicionando Menu
-	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,7,'ecommerce-' . $entidadeNome,$entidadeID,'cadastro');
-
 	// Cria Relacionamento
 	criarRelacionamento($conn,2,$entidadeID,$itenspedidoID,"Itens",$itenspedido_pedido);
-	
-	// Métodos de Pagamentos
-	$metodopagamentoID = criarEntidade(
-		$conn,
-		"ecommerce_metodopagamento",
-		"Método de Pagamento",
-		$ncolunas=3,
-		$exibirmenuadministracao = 0,
-		$exibircabecalho = 0,
-		$campodescchave = "",
-		$atributogeneralizacao = 0,
-		$exibirlegenda = 0,
-		$criarprojeto = 1,
-		$criarempresa = 1,
-		$criarauth = 0,
-		$registrounico = 0
-	);
-	$descricao = criarAtributo($conn,$metodopagamentoID,"descricao","Descrição","varchar",200,0,3,1,0,0,"");
-
-	// Adicionando Menu Método Pagamento
-	addMenu($conn,"Método de Pagamento","files/cadastro/".$metodopagamentoID."/".PREFIXO."metodopagamento.html",'',$menu_webiste,7,'ecommerce-metodopagamento',$metodopagamentoID,'cadastro');
-
-	// Adicionando Menu Status Pedido
-	addMenu($conn,"Status do Pedido","files/cadastro/".$statuspedidoID."/".PREFIXO."statuspedido.html",'',$menu_webiste,8,'ecommerce-statuspedido',$statuspedidoID,'cadsatro');
