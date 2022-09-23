@@ -11,5 +11,5 @@ error_log
 **/webservice/servicos/pagseguro/log
 **/ecommerce
 **/webservice
-**/core/nodejs
+**/nodejs
 **/error_log
