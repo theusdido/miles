@@ -22,10 +22,10 @@
 	);
 
 	// Criando Atributos
-	$email = criarAtributo($conn,$entidadeID,"email","E-Mail","varchar",200,0,12,1,0,0,'',1,0);
-	$token = criarAtributo($conn,$entidadeID,"token","Token","varchar",200,0,3,1,0,0,'',1,0);
-	$producao = criarAtributo($conn,$entidadeID,"producao","Produção","tinyint",0,1,7);
-	$notificacao = criarAtributo($conn,$entidadeID,"notificacaourl","Notificação (URL)","varchar",1000,1,3,0,0,0,'',1,0);
+	$email 			= criarAtributo($conn,$entidadeID,"email","E-Mail","varchar",200,0,12,1,0,0,'',1,0);
+	$token 			= criarAtributo($conn,$entidadeID,"token","Token","varchar",200,0,3,1,0,0,'',1,0);
+	$producao 		= criarAtributo($conn,$entidadeID,"producao","Produção","tinyint",0,1,7);
+	$notificacao 	= criarAtributo($conn,$entidadeID,"notificacaourl","Notificação (URL)","varchar",1000,1,3,0,0,0,'',1,0);
 	
 
 	// Criando Acesso
