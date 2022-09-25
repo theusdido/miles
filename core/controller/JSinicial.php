@@ -115,7 +115,13 @@
 			// Requisições
 			$.ajaxSetup({
 				headers: { "CustomHeader": "myValue" }				
-			});			
+			});
+
+			function menuleft(){
+				carregar("?controller=component&_component=menu-left","#menulateralesquerdoprincipal");
+			}
+
+			//menuleft();
 	' .
 	(CURRENT_THEME=='desktop'?'$("body").css("background-image","none");':'')
 	);

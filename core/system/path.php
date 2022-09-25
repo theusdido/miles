@@ -80,7 +80,7 @@
 	define("PATH_SYSTEM_PAGE",PATH_CORE . "page/");
 
 	// Caminho dos Componentes
-	define("PATH_SYSTEM_COMPONENT",PATH_CORE . "components/");
+	define("PATH_SYSTEM_COMPONENT",PATH_CORE . "component/");
 
 	// Caminho de padrão para os arquivos de instalação
 	define('PATH_INSTALL', PATH_CORE . 'install/');

@@ -183,8 +183,8 @@
 
 	// Forçar a exibição dos erros para Super Usuário
 	if ($mjc->is_show_error_message || $_userid == 1){
-		ini_set('display_errors',0);
-		ini_set('display_startup_erros',0);
+		ini_set('display_errors',1);
+		ini_set('display_startup_erros',1);
 		error_reporting(E_ALL);
 	}
 	

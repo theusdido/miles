@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "admin-lte": "3.2",
     "cors": "^2.8.5",
     "crypto-js": "^4.1.1",
     "ejs": "^3.1.6",
@@ -10,7 +11,7 @@
     "xhr2": "^0.2.1",
     "xmlhttprequest": "^1.8.0"
   },
-  "scripts": {    
+  "scripts": {
     "watch": "nodemon --ext *",
     "start": "nodemon projects/nodejs/index.js -e ejs,js"
   },

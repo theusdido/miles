@@ -1,6 +1,8 @@
 <?php
-    $op = tdc::r('op');
-	
+
+	$install 	= tdc::ru('td_instalacao');
+    $op 		= tdc::r('op');
+
 	if (!$conn || $conn == 'NULL'){
 		$conn = Conexao::getConnection(
 			$_SESSION["db_type"],
@@ -30,10 +32,18 @@
             echo 1;
         break;
         case 'projeto':
-            $query = $conn->exec("INSERT INTO ".PROJETO." (id,nome) VALUES (1,'".utf8_decode($_POST["nome"])."');");
-            if ($query){
-                echo 1;
-            }
+			$projeto_nome = tdc::r('nome');
+			if ($projeto_nome != ''){
+				if ($install->sistemainstalado){
+					$sql 	= "UPDATE " . PROJETO . " SET nome = '{$projeto_nome}' WHERE id = 1;";
+				}else{
+					$sql	= "INSERT INTO ".PROJETO." (id,nome) VALUES (1,'{$projeto_nome}');";
+				}
+				$query 	= $conn->exec($sql);
+				if ($query){
+					echo 1;
+				}		
+			}
         break;
         case 'inserirregistros':
 
@@ -148,17 +158,17 @@
 			inserirRegistro($conn,ABAS,2, array("entidade","descricao","atributos"), array(getEntidadeId("abas",$conn),"'Aba'",getAtributoId(getEntidadeId("abas",$conn),"nome",$conn)));
 
 			// Local para CharSet
-			inserirRegistro($conn,DEFINE,1, array("local","charset"), array("'Página principal (index)'","'N'"));
-			inserirRegistro($conn,DEFINE,2, array("local","charset"), array("'Grade de Dados (load)'","'N'"));
-			inserirRegistro($conn,DEFINE,3, array("local","charset"), array("'Formulário (load)'","'N'"));
-			inserirRegistro($conn,DEFINE,4, array("local","charset"), array("'Classe Campos'","'N'"));
-			inserirRegistro($conn,DEFINE,5, array("local","charset"), array("'MDM Embituido PHP'","'N'"));
-			inserirRegistro($conn,DEFINE,6, array("local","charset"), array("'MDM Salvar Form com Submit'","'N'"));
-			inserirRegistro($conn,DEFINE,7, array("local","charset"), array("'Gerar HTML no CRUD'","'N'"));
-			inserirRegistro($conn,DEFINE,8, array("local","charset"), array("'Javascript Embutido no PHP'","'N'"));
-			inserirRegistro($conn,DEFINE,9, array("local","charset"), array("'Javascript mdm.js'","'N'"));
-			inserirRegistro($conn,DEFINE,10, array("local","charset"), array("'Javascript mdm.js ( Relacionamento ) em funcoes.php'","'N'"));
-			inserirRegistro($conn,DEFINE,11, array("local","charset"), array("'Campo descrição da classe Menu ( menu.class.php - E )'","'N'"));
+			inserirRegistro($conn,CHARSET,1, array("local","charset"), array("'Página principal (index)'","'N'"));
+			inserirRegistro($conn,CHARSET,2, array("local","charset"), array("'Grade de Dados (load)'","'N'"));
+			inserirRegistro($conn,CHARSET,3, array("local","charset"), array("'Formulário (load)'","'N'"));
+			inserirRegistro($conn,CHARSET,4, array("local","charset"), array("'Classe Campos'","'N'"));
+			inserirRegistro($conn,CHARSET,5, array("local","charset"), array("'MDM Embituido PHP'","'N'"));
+			inserirRegistro($conn,CHARSET,6, array("local","charset"), array("'MDM Salvar Form com Submit'","'N'"));
+			inserirRegistro($conn,CHARSET,7, array("local","charset"), array("'Gerar HTML no CRUD'","'N'"));
+			inserirRegistro($conn,CHARSET,8, array("local","charset"), array("'Javascript Embutido no PHP'","'N'"));
+			inserirRegistro($conn,CHARSET,9, array("local","charset"), array("'Javascript mdm.js'","'N'"));
+			inserirRegistro($conn,CHARSET,10, array("local","charset"), array("'Javascript mdm.js ( Relacionamento ) em funcoes.php'","'N'"));
+			inserirRegistro($conn,CHARSET,11, array("local","charset"), array("'Campo descrição da classe Menu ( menu.class.php - E )'","'N'"));
 			
 			//  Tipo de Ticket
 			inserirRegistro($conn,TICKETTIPO,1, array("descricao"), array("'Alterar"));

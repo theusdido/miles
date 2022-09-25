@@ -1,5 +1,6 @@
 <?php
-
+    /*
+   
     include PATH_CLASS_WEBSITE      . 'configuracoes.class.php';
     include PATH_CLASS_ECOMMERCE    . 'configuracoes.class.php';
     include PATH_CLASS_ECOMMERCE    . 'carrinho.class.php';
@@ -120,3 +121,4 @@ class EcommerceMain
         return $google_maps;
     }
 }
+*/
