@@ -1772,9 +1772,6 @@ function addCampoFormatadoDB($dados,$entidade){
 		$entidade == ENTIDADE ||
 		$entidade == MENU
 	){
-		if ($entidade == MENU){
-			echo 'tá passando aqui';
-		}
 		foreach ($dados as $key => $value){
 			switch($key){
 				case 'descricao':

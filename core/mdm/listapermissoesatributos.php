@@ -3,8 +3,8 @@
 		<tr>
 			<th width="80%">Nome</th>
 			<!--				
-			<th width="10%"><center><span class="fas fa-plus-circle-sign" aria-hidden="true"></span></center></th>
-			<th width="10%"><center><span class="fas fa-minus-circle" aria-hidden="true"></span></center></th>
+			<th width="10%"><center><span class="fas fa-plus" aria-hidden="true"></span></center></th>
+			<th width="10%"><center><span class="fas fa-minus" aria-hidden="true"></span></center></th>
 			-->
 			<th width="10%">
 				<center>					

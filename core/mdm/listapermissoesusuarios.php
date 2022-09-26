@@ -332,7 +332,7 @@
 						<th width="10%">
 							<center>
 								<button data-op="entidade-adicionar" type="button" class="btn btn-default btn-all-tela" aria-label="Left Align">
-  									<span class="fas fa-plus-circle-sign" aria-hidden="true"></span>
+  									<span class="fas fa-plus" aria-hidden="true"></span>
 								</button>
 							</center>						
 						</th>
