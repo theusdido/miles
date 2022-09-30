@@ -1,5 +1,5 @@
 <?php
-	$entidadeNome = PREFIXO . "ecommerce_metodopagamento";
+	$entidadeNome = getSystemPrefixo() . "ecommerce_pagseguro_metodopagamento";
 
 	inserirRegistro($conn,$entidadeNome,1,array("descricao"),array("'Cartão de Crédito'"));
 	inserirRegistro($conn,$entidadeNome,2,array("descricao"),array("'Boleto'"));

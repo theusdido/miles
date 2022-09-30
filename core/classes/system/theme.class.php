@@ -30,7 +30,7 @@ class Theme {
 	*/
     public static function logoSRC(){
         if (file_exists(PATH_CURRENT_LOGO_PADRAO)){
-            return Session::Get("URL_CURRENT_LOGO_PADRAO");
+            return URL_CURRENT_LOGO_PADRAO;
         }else{
             return URL_LOGO;
         }

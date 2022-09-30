@@ -1,7 +1,7 @@
 <?php
 	// Setando variáveis
-	$entidadeNome = "email";
-	$entidadeDescricao = "E-Mail";
+	$entidadeNome 		= "email";
+	$entidadeDescricao 	= "E-Mail";
 
 	// Criando Entidade
 	$entidadeID = criarEntidade(
@@ -27,3 +27,4 @@
 	$issmtp      			= criarAtributo($conn,$entidadeID,"issmtp","Usar SMTP ?","boolean",0,0,7);
 	$smtpsecure				= criarAtributo($conn,$entidadeID,"smtpsecure","SMTP Secure","varchar",5,1,3);
 	$port				    = criarAtributo($conn,$entidadeID,"port","Porta","varchar",5,1,3);
+	$email				    = criarAtributo($conn,$entidadeID,"email","E-Mail","int",0,1,16);

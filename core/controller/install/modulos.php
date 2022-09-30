@@ -44,6 +44,6 @@
             include PATH_PACKAGE . $package . '/modulos/' . $module .'.php';
             echo json_encode($modules);
         break;
-        default:
+        default:            
             include 'core/install/configuracaopacotes.php';        
     }

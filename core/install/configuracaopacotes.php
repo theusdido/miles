@@ -20,7 +20,7 @@
 							<div class="row">
 								<div class="col-md-12 col-sm-12">
 									<div id="btn-salvar-pacotes" class="form-grupo-botao">
-										<img id="loader-pacotes" src="<?=$_SESSION["URL_SYSTEM_THEME"]?>loading2.gif"/>
+										<img id="loader-pacotes" src="<?=URL_LOADING2?>"/>
 										<button type="button" class="btn btn-primary" id="btn-pacotes">
 											Salvar
 										</button>
@@ -106,8 +106,8 @@
 				</div>
 			  </div>
 			</div>			
-			<script type="text/javascript" language="JavaScript" src="<?=$_SESSION["URL_LIB"]?>jquery/jquery.js"></script>
-			<script type="text/javascript" src="<?=$_SESSION["URL_LIB"]?>bootstrap/3.3.1/js/bootstrap.js"></script>
+			<script type="text/javascript" language="JavaScript" src="<?=URL_LIB?>jquery/jquery.js"></script>
+			<script type="text/javascript" src="<?=URL_LIB?>bootstrap/3.3.1/js/bootstrap.js"></script>
 			<script type="text/javascript" language="JavaScript">
 				var componentes 		= [];
 				var indiceComponente 	= 0;
@@ -123,7 +123,7 @@
 					modulo_selecionado	= $(this).data("componente");
 					$("#view-componente .modal-body p").html("");
 					$.ajax({
-						url:"<?=$_SESSION["URL_MILES"]?>",
+						url:"<?=URL_MILES?>",
 						data:{
 							currentproject:<?=$_SESSION["currentproject"]?>,
 							//controller:'install/componentes',
@@ -221,7 +221,7 @@
 									componentes.splice(0,componentes.length);
 									$(".checkbox-componente,.checkbox-registro").prop("checked",false);
 									msgRetorno('<b>Parabéns !</b>. Pacotes configurados com sucesso.');
-									$("#guia-pacote").attr("src","<?=$_SESSION['URL_SYSTEM_THEME']?>check.gif");
+									$("#guia-pacote").attr("src","<?=URL_SYSTEM_THEME?>check.gif");
 									
 								}
 							}else{

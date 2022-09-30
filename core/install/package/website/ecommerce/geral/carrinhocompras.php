@@ -25,7 +25,7 @@
 	$carrinho_datahoracriacao		= criarAtributo($conn,$entidadeID,"datahoracriacao","Data/Hora Criação","datetime",0,0,23,1,0,0,"");
 	$carrinho_datahoraultimoacesso 	= criarAtributo($conn,$entidadeID,"datahoraultimoacesso","Data/Hora Último Acesso","datetime",0,1,23,1,0,0,"");
 	$carrinho_sessionid 			= criarAtributo($conn,$entidadeID,"sessionid","ID da Sessão","varchar",100,1,3,0,0,0,"");
-	$carrinho_representante 		= criarAtributo($conn,$entidadeID,"representante","Representante","int",0,1,22,1,getEntidadeId("ecommerce_representante",$conn),0,"",0,0);
+	$carrinho_representante 		= criarAtributo($conn,$entidadeID,"representante","Representante","int",0,1,22,0,getEntidadeId("ecommerce_representante",$conn),0,"",0,0);
 	$carrinho_isrepresentante 		= criarAtributo($conn,$entidadeID,"isrepresentante","Representante ?","tinyint",0,1,7,0,0,0,'',1,0);
 	$carrinho_inativo 				= criarAtributo($conn,$entidadeID,"inativo","Inativo","boolean",false,1,7,1);
 	$carrinho_valortotal 			= criarAtributo($conn,$entidadeID,"valortotal","Valor Total","float",0,1,13,1,0,0,"");
@@ -62,8 +62,11 @@
 	$itenscarrinho_valortotal			= criarAtributo($conn,$itenscarrinhoID,"valortotal","Valor Total","float",0,1,13,1,0,0,"");	
 	$itenscarrinho_produtonome			= criarAtributo($conn,$itenscarrinhoID,"produtonome","Produto","varchar",200,1,3,1,0,0,"");
 	$itenscarrinho_referencia			= criarAtributo($conn,$itenscarrinhoID,"referencia","Referência","varchar",200,1,3,1,0,0,"");
-	$itenscarrinho_tamanho 				= criarAtributo($conn,$itenscarrinhoID,"tamanho","Tamanho","varchar",200,1,3,1,0,0,"");
+	$itenscarrinho_tamanho_desc 		= criarAtributo($conn,$itenscarrinhoID,"tamanho_desc","Tamanho","varchar",200,1,3,1,0,0,"");
+	$itenscarrinho_cor_desc 			= criarAtributo($conn,$itenscarrinhoID,"cor_desc","Cor","varchar",200,1,3,1,0,0,"");
 	$itenscarrinho_variacao 			= criarAtributo($conn,$itenscarrinhoID,"variacao","Variação","varchar",200,1,3,1,0,0,"");	
+	$itenscarrinho_tamanho 				= criarAtributo($conn,$itenscarrinhoID,"tamanho","Tamanho","int",0,0,4,1,getEntidadeId("ecommerce_produtotamanho",$conn),0,"");
+	$itenscarrinho_cor 					= criarAtributo($conn,$itenscarrinhoID,"cor","Cor","int",0,0,4,1,getEntidadeId("ecommerce_produtocor",$conn),0,"");
 
 	// Adicionando Menu
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,7,'ecommerce-' . $entidadeNome,$entidadeID,'cadastro');

@@ -132,7 +132,8 @@ tdFormulario.prototype.novo = function(){
 		}
 
 		if (parseInt(atributoID) != 0 && atributoID != "" && atributoID != undefined){
-			if (td_atributo[atributoID].chaveestrangeira != "" && td_atributo[atributoID].tipohtml == "4"){
+			let _tipo_html = td_atributo[atributoID].tipohtml;
+			if (td_atributo[atributoID].chaveestrangeira != "" && (_tipo_html == "4" || _tipo_html == "5")){
 				// Só carrega as listas se for acessado o botão novo do formulário principal
 				if (instancia.is_principal){ 
 					carregarListas(entidadeAttr,atributoID,contextoAdd,valor);
@@ -151,7 +152,6 @@ tdFormulario.prototype.novo = function(){
 					setTimeout(function(){
 						$(attr_selector,contextoAdd).parents('.form-group').first().find('.checkbox-'+(valor==1?'s':'n')).click();
 					},1000)
-					
 				}
 			}
 
@@ -302,7 +302,6 @@ tdFormulario.prototype.setPermissoesAtributos = function(funcao){
 tdFormulario.prototype.setAtributoDependencia = function(){
 	let instancia = this;
 	$(".form-control",this.getContextoAdd()).each(function(){
-		console.log($(this).attr("atributo"));
 		if ($(this).attr("atributo") != undefined){
 			var idatributo = $(this).attr("atributo");
 			if (td_atributo[idatributo] == undefined) return false;
@@ -1312,7 +1311,6 @@ tdFormulario.prototype.setBuscaFiltro = function()
 						$('#'+modalName).modal({
 							backdrop:false
 						});
-						console.log('#'+modalName);
 						$('#'+modalName).modal('show');
 
 					});

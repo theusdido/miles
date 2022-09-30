@@ -23,6 +23,7 @@
 	// Criando Atributos
 	$descricao  = criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar","200",1,3,1,0,0,"");
 	$sigla      = criarAtributo($conn,$entidadeID,"sigla","Sigla","varchar",3,1,3,1);
+	Entity::setDescriptionField($conn,$entidadeID,$descricao,false);
 
 	// Criando Acesso
 	$menu_webiste = addMenu($conn,'E-Commerce','#','',0,0,'ecommerce');

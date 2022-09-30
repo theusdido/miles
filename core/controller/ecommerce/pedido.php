@@ -10,7 +10,7 @@ $datadopedido 	= '<div id="data-pedido"><span class="fas fa-calendar-alt" aria-h
 $horadopedido 	= '<div id="hora-pedido"><span class="fas fa-clock" aria-hidden="true"></span><span>'.$datahorapedido[1].'</span></div>';
 $totalpedido 	= '<div id="total-pedido"><small>Valor Total</small><h1>R$ '.moneyToFloat($pedidoClass->getValorTotal(),true).'</h1><p>Valor Frete: R$ '.moneyToFloat($pedido->valorfrete,true).'</p></div>';
 
-// Lista de Estado dos pedidos
+// Lista de Estado dos pedidos	
 if ($conn = Transacao::Get()){
 	$listaStatusPedido 	= "<select class='form-control' id='pedido-listastatus'>";
 	$sqlStatusPedido 	= "SELECT id,descricao FROM td_ecommerce_statuspedido";
@@ -24,11 +24,19 @@ $btnAlterarStatus = '<button class="btn btn-primary form-control" type="button" 
 
 // Dados do Cliente
 $cliente 					= tdClass::Criar("persistent",array("td_ecommerce_cliente",$pedido->cliente))->contexto;
-$cnpj 						= "<div class='dadoscliente'><label>CNPJ</label><p>".$cliente->cnpj."</p></div>";
-$nomefantasia				= "<div class='dadoscliente'><label>Nome Fantasia</label><p>".$cliente->nomefantasia."</p></div>";
+if ($cliente->tipopessoa == 1){
+	$numero_documento		= "<div class='dadoscliente'><label>CPF</label><p>".$cliente->cpf."</p></div>";
+	$apelido				= "<div class='dadoscliente'><label>Nome</label><p>".$cliente->nome."</p></div>";
+}else{
+	$numero_documento 		= "<div class='dadoscliente'><label>CNPJ</label><p>".$cliente->cnpj."</p></div>";
+	$apelido				= "<div class='dadoscliente'><label>Nome Fantasia</label><p>".$cliente->nomefantasia."</p></div>";
+}
 $email 						= "<div class='dadoscliente'><label>E-Mail</label><p>".$cliente->email."</p></div>";
 $telefone 					= "<div class='dadoscliente'><label>Telefone</label><p>".$cliente->telefone."</p></div>";
 $btnAlterarDadosCliente 	= '<button class="btn btn-success" type="button" id="pedido-editar-cliente">Editar</button>';
+
+# Desabilidado
+$btnAlterarDadosCliente 	= '';
 
 // Dados de Pagametno
 $datapagamento 				= "<div class='dadospagamento'><label>Data</label><p>".datetimeToMysqlFormat($pedido->datahoraretorno,true)."</p></div>";
@@ -151,7 +159,7 @@ $panelDadosCliente 			= tdClass::Criar("panel");
 $panelDadosCliente->id 		= "dados-cliente-pedido";
 $panelDadosCliente->tipo 	= "success";
 $panelDadosCliente->head("<b>".strtoupper($cliente->nome)."</b>");
-$panelDadosCliente->body($cnpj . $telefone . $nomefantasia . $email . $btnAlterarDadosCliente);
+$panelDadosCliente->body($numero_documento . $telefone . $apelido . $email . $btnAlterarDadosCliente);
 $colDadosCliente->add($panelDadosCliente);
 $linha1->add($colDadosCliente);
 

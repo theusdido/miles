@@ -29,16 +29,24 @@ $clienteEntidadeID = getEntidadeId("ecommerce_cliente");
 if ($carrinho->cliente > 0){
 	$clienteID					= $carrinho->cliente;
 	$cliente 					= tdClass::Criar("persistent",array("td_ecommerce_cliente",$clienteID))->contexto;
-	$clienteNome				= strtoupper($cliente->nome);
-	$cnpj 						= "<div class='dadoscliente'><label>CNPJ</label><p>".$cliente->cnpj."</p></div>";
-	$nomefantasia				= "<div class='dadoscliente'><label>Nome Fantasia</label><p>".$cliente->nomefantasia."</p></div>";
+
+	if ($cliente->tipopessoa == 1){
+		$numero_documento		= "<div class='dadoscliente'><label>CPF</label><p>".$cliente->cpf."</p></div>";
+		$apelido				= "<div class='dadoscliente'><label>Nome</label><p>".$cliente->nome."</p></div>";
+		$clienteNome				= strtoupper($cliente->nome);
+	}else{
+		$numero_documento 		= "<div class='dadoscliente'><label>CNPJ</label><p>".$cliente->cnpj."</p></div>";
+		$apelido				= "<div class='dadoscliente'><label>Nome Fantasia</label><p>".$cliente->nomefantasia."</p></div>";
+		$clienteNome				= strtoupper($cliente->nomefantasia);
+	}
+	
 	$email 						= "<div class='dadoscliente'><label>E-Mail</label><p>".$cliente->email."</p></div>";
 	$telefone 					= "<div class='dadoscliente'><label>Telefone</label><p>".$cliente->telefone."</p></div>";
 	$btnAlterarDadosCliente 	= '<button class="btn btn-success" type="button" id="carrinho-editar-cliente">Editar</button>';
-	$dadosClientePanel			= $cnpj . $telefone . $nomefantasia . $email . $btnAlterarDadosCliente;
+	$dadosClientePanel			= $numero_documento . $telefone . $apelido . $email . $btnAlterarDadosCliente;
 }else{
 	$clienteID = 0;
-	$clienteNome = $cnpj = $nomefantasia = $email = $telefone = $btnAlterarDadosCliente = "";
+	$clienteNome = $numero_documento = $apelido = $email = $telefone = $btnAlterarDadosCliente = "";
 	$dadosClientePanel = '<div class="alert alert-warning text-center">Cliente ainda não efetuou o login.</div>';
 }
 

@@ -1,5 +1,5 @@
 <?php
-	$entidadeNome = getSystemPrefixo() . "ecommerce_statuspedido";
+	$entidadeNome = getSystemPrefixo() . "ecommerce_pagseguro_statuspedido";
 	
 	inserirRegistro($conn,$entidadeNome,1,array("descricao","significado"),array("'Aguardando Pagamento'","'o comprador iniciou a transação, mas até o momento o PagSeguro não recebeu nenhuma informação sobre o pagamento.'"));
 	inserirRegistro($conn,$entidadeNome,2,array("descricao","significado"),array("'Em Análise'","'o comprador optou por pagar com um cartão de crédito e o PagSeguro está analisando o risco da transação.'"));

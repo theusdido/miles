@@ -1,5 +1,5 @@
 <?php
-    /*
+
    
     include PATH_CLASS_WEBSITE      . 'configuracoes.class.php';
     include PATH_CLASS_ECOMMERCE    . 'configuracoes.class.php';
@@ -11,7 +11,6 @@
     include PATH_CLASS_ECOMMERCE    . 'produto.class.php';
     include PATH_CLASS_ECOMMERCE    . 'transportadora.class.php';
 
-    
     // Entidades ID
     $_entidade_unidademedida_id     = getEntidadeId("ecommerce_unidademedida");
 	$_entidade_categoria_id			= tdc::r('categoria');
@@ -121,4 +120,3 @@ class EcommerceMain
         return $google_maps;
     }
 }
-*/

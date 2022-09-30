@@ -25,18 +25,17 @@
 
     define('PATH_CURRENT_FAVICON', PATH_CURRENT_PROJECT_THEME . FILE_CURRENT_FAVICON);  
 
-	define('FILE_SYSTEM_FAVICON',Session::Get("URL_SYSTEM_THEME") . "logo-favicon.png");
+	define('FILE_SYSTEM_FAVICON', URL_SYSTEM_THEME . "logo-favicon.png");
 
-	define('URL_NOIMAGE', Session::Get('URL_CORE') . 'assets/img/noimage.png');
+	define('URL_NOIMAGE', URL_CORE . 'assets/img/noimage.png');
 
 	define('FILE_BACKGROUND','background.jpg');
 
-	Session::append("URL_CURRENT_LOGO_PADRAO",Session::Get("URL_CURRENT_PROJECT_THEME") . FILE_LOGO );
+	define('URL_CURRENT_LOGO_PADRAO', URL_CURRENT_PROJECT_THEME . FILE_LOGO);
 
-	Session::append("URL_CURRENT_FAVICON",Session::Get("URL_CURRENT_PROJECT_THEME") . FILE_CURRENT_FAVICON);
+	define('URL_CURRENT_FAVICON', URL_CURRENT_PROJECT_THEME . FILE_CURRENT_FAVICON);
 
-	Session::append("URL_FAVICON",Session::Get("URL_SYSTEM_THEME") . FILE_FAVICON);	
-
+	define('URL_FAVICON', URL_SYSTEM_THEME . FILE_FAVICON);
 
 	define('URL_LOGO', URL_SYSTEM_THEME . FILE_LOGO);
 	define('URL_BACKGROUND',URL_SYSTEM_THEME . FILE_BACKGROUND);	

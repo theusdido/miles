@@ -21,8 +21,9 @@
 	);
 
 	// Criando Atributos
-    $email      = criarAtributo($conn,$entidadeID,"email","E-Mail","varchar",200,0,12);
-    $descricao  = criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar",50,1,3);
+    $email      		= criarAtributo($conn,$entidadeID,"email","E-Mail","int",0,0,16);
+    $descricao  		= criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar",50,1,3);
+	$destinatario    	= criarAtributo($conn,$entidadeID,"destinatario","E-Mail","varchar",250,0,12);
 
 	// Criando Acesso
 	$menu_webiste = addMenu($conn,'E-Commerce','#','',0,0,'ecommerce');
@@ -31,7 +32,7 @@
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,0,'ecommerce-' . $entidadeNome,$entidadeID,'cadastro');
 
     // Criar Capa
-    criarAba($conn,$entidadeID,'Destinatário',array($email));
+    criarAba($conn,$entidadeID,'Destinatário',array($email, $destinatario, $descricao));
 
 	// Cria Relacionamento
-    criarRelacionamento($conn,7,$entidadeID,getEntidadeId("email"),"Remetente",$email);
+    criarRelacionamento($conn,7,getEntidadeId("email"),$entidadeID,"Remetente",$email);

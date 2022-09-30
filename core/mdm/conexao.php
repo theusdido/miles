@@ -1,4 +1,6 @@
 <?php
+
+	$miles_json 	= json_decode(file_get_contents('../../miles.json'));
 	date_default_timezone_set('America/Sao_Paulo');	
 	if (@session_id() == ""){
 		$currentProjectParams = isset($_GET["currentproject"])?$_GET["currentproject"]:(isset($_POST["currentproject"])?$_POST["currentproject"]:1);
@@ -76,3 +78,6 @@
 		$senha 		= $linhaCurrentDB["password"];
 		$conn 		= new PDO("$tipo:host=$host;port=$porta;dbname=$base",$usuario,$senha);
 	}
+
+	define('URL_LIB', $miles_json->system->url->lib);
+	define('URL_MILES','https://primodass.com.br/miles/');

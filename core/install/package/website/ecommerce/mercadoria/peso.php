@@ -25,6 +25,7 @@
 
 	$peso 		= criarAtributo($conn,$entidadeID,"peso","Peso","float",0,0,26);
 	$produto 	= criarAtributo($conn,$entidadeID,"produto","Produto","int",0,1,16,getEntidadeId("ecommerce_produto"));
+	Entity::setDescriptionField($conn,$entidadeID,$peso,false);
 
 	// Criando Acesso
 	$menu_webiste = addMenu($conn,'E-Commerce','#','',0,0,'ecommerce');

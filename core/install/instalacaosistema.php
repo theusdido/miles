@@ -32,7 +32,7 @@
 					<div class="row">
 						<div class="col-md-12 col-sm-12">
 							<div id="form-grupo-botao-instalacao">
-								<img id="loader-instalar" src="<?=$_SESSION["URL_SYSTEM_THEME"]?>loading2.gif"/>
+								<img id="loader-instalar" src="<?=URL_LOADING2?>"/>
 								<button type="button" class="btn btn-primary btn-instalacaosistema" id="btn-instalar">
 									<?=$displaybutton?>				
 								</button>
@@ -82,7 +82,7 @@
 						  			<button type="button" class="btn btn-warning btn-instalacaosistema" id="btn-atualizar-personalizado">
 										Atualizar
 									</button>
-									<img id="loading-atualizar-personalizado" src="<?=$_SESSION["URL_SYSTEM_THEME"]?>loading2.gif" />
+									<img id="loading-atualizar-personalizado" src="<?=URL_LOADING2?>" />
 								</div>
 								<form id="formulario-personalizado"></form>
 						  </div>
@@ -90,8 +90,8 @@
 					</div>
 				</div>
 			</divs>
-			<script type="text/javascript" src="<?=$_SESSION["URL_LIB"]?>jquery/jquery.js"></script>
-			<script type="text/javascript" src="<?=$_SESSION["URL_LIB"]?>tdlib/js/tdlib.js"></script>
+			<script type="text/javascript" src="<?=URL_LIB?>jquery/jquery.js"></script>
+			<script type="text/javascript" src="<?=URL_LIB?>tdlib/js/tdlib.js"></script>
 			<script type="text/javascript">
 				<?php
 					if (isset($_GET["installsystem"])){
@@ -247,7 +247,7 @@
 									$("#barradeprogresso-instalacao .progress-bar").removeClass("progress-bar-info");
 									$("#barradeprogresso-instalacao .progress-bar").addClass("progress-bar-success");
 									$("#barradeprogresso-instalacao .progress-bar").html("Sistema Instalado com Sucesso!");
-									$("#guia-instalacao").attr("src","<?=$_SESSION['URL_SYSTEM_THEME']?>check.gif");
+									$("#guia-instalacao").attr("src","<?=URL_SYSTEM_THEME?>check.gif");
 									setTimeout(function(){
 										$("#barradeprogresso-instalacao").hide("5000");
 									},5000);

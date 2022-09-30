@@ -25,7 +25,8 @@
 	$saldo 			= criarAtributo($conn,$entidadeID,"saldo","Saldo","int",0,1,25,1);
 	$data 			= criarAtributo($conn,$entidadeID,"datahora","Data/Hora","datetime",0,1,23,1);
 	$tamanho 		= criarAtributo($conn,$entidadeID,"tamanho","Tamanho","int",0,0,22,1,installDependencia("ecommerce_tamanhoproduto","package/website/ecommerce/mercadoria/tamanhoproduto"));
-
+	$sku 			= criarAtributo($conn,$entidadeID,"sku","SKU","int",0,1,25,1);
+	
 	// Criando Acesso
 	$menu_webiste = addMenu($conn,'Material','#','',0,0,'material');
 

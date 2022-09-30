@@ -16,7 +16,9 @@
       array(
         array('name' => 'pedido' , 'title' => 'Pedido'),
         array('name' => 'pedidoemail' , 'title' => 'Pedido E-Mail'),
-        array('name' => 'propaganda' , 'title' => 'Propaganda')
+        array('name' => 'propaganda' , 'title' => 'Propaganda'),
+        array('name' => 'statuspedido' , 'title' => 'Status do Pedido'),
+        array('name' => 'metodopagamento' , 'title' => 'Método de Pagamento')
       )
     ),
     array( "name" => "mercadoria", "title" => "Mercadoria", "components" => 
@@ -31,7 +33,9 @@
         array('name' => 'tipoproduto' , 'title' => 'Tipo de Produto'),
         array('name' => 'unidademedida' , 'title' => 'Unidade de Medida'),
         array('name' => 'fichatecnica' , 'title' => 'Ficha Técnica'),
-		array('name' => 'grupoproduto' , 'title' => 'Grupo de Produto')
+		    array('name' => 'grupoproduto' , 'title' => 'Grupo de Produto'),
+        array('name' => 'produtocor' , 'title' => 'Cor de Produto'),
+        array('name' => 'produtotamanho' , 'title' => 'Tamanho de Produto')
       )
     ),
     array( "name" => "pagseguro", "title" => "Pagseguro", "components" => 

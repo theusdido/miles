@@ -124,7 +124,7 @@
 	$confighome->add($iconConfigHome);	
 
 	$aConfigHome 				= tdClass::Criar("hyperlink");
-	$aConfigHome->href 			= Session::Get("URL_MDM") . "index.php?currentproject=" . Session::Get()->projeto;
+	$aConfigHome->href 			= URL_MDM . "index.php?currentproject=" . Session::Get()->projeto;
 	$aConfigHome->target 		= "_blank";
 	$aConfigHome->add("Gerenciamento");
 	$confighome->add($aConfigHome);

@@ -101,12 +101,12 @@ class Pagina Extends Html {
 			$jsValidar->src	 	= URL_SYSTEM . "validar.js";
 
 			// Adiciona a classe Grade de Dados em JavaScript
-			$jsGradeDados = tdClass::Criar("script");
-			$jsGradeDados->src = Session::Get('URL_CLASS_TDC') . "gradededados.class.js";
+			$jsGradeDados 			= tdClass::Criar("script");
+			$jsGradeDados->src	 	= URL_CLASS_TDC . "gradededados.class.js";
 
 			// Classe do formulário
 			$jsFormularioClass 			= tdClass::Criar("script");
-			$jsFormularioClass->src 	= Session::Get('URL_CLASS_TDC') . "formulario.class.js";	
+			$jsFormularioClass->src 	= URL_CLASS_TDC . "formulario.class.js";	
 
 			$this->body->add($jsFuncoes,$jsValidar,$jsGradeDados,$jsFormularioClass);
 		}
@@ -118,29 +118,29 @@ class Pagina Extends Html {
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 
 		Mostrar o conteúdo na página, sobreescreve o método da classe pai
-	*/			
+	*/
 	public function mostrar(){
 		if ($this->showJSMask){
-			$jquery_mask = tdClass::Criar("script");
-			$jquery_mask->src = URL_LIB . "jquery/jquery.mask.js";
-			$jquery_mask->language = "JavaScript";
+			$jquery_mask 				= tdClass::Criar("script");
+			$jquery_mask->src 			= URL_LIB . "jquery/jquery.mask.js";
+			$jquery_mask->language 		= "JavaScript";
 			$this->body->add($jquery_mask);
 		}
 		if ($this->showJSMaskMoney){
-			$jquery_maskMoney = tdClass::Criar("script");
-			$jquery_maskMoney->src = URL_LIB . "jquery/jquery.maskMoney.js";
+			$jquery_maskMoney 			= tdClass::Criar("script");
+			$jquery_maskMoney->src 		= URL_LIB . "jquery/jquery.maskMoney.js";
 			$jquery_maskMoney->language = "JavaScript";
 			$this->body->add($jquery_maskMoney);
 		}
 		if ($this->showJSBootBox){
-			$bootbox_js = tdClass::Criar("script");
-			$bootbox_js->src = URL_LIB . "jquery/jquery-bootbox.js";
-			$bootbox_js->language = "JavaScript";
+			$bootbox_js 			= tdClass::Criar("script");
+			$bootbox_js->src 		= URL_LIB . "jquery/jquery-bootbox.js";
+			$bootbox_js->language 	= "JavaScript";
 			$this->body->add($bootbox_js);
 		}	
 		if ($this->showJSGoogleMaps){
-			$jsGoogleMaps = tdClass::Criar("script");
-			$jsGoogleMaps->src = "https://maps.googleapis.com/maps/api/js?sensor=false&language=pt_BR";
+			$jsGoogleMaps 		= tdClass::Criar("script");
+			$jsGoogleMaps->src 	= "https://maps.googleapis.com/maps/api/js?sensor=false&language=pt_BR";
 			$this->head->add($jsGoogleMaps);
 		}
 		
@@ -148,18 +148,18 @@ class Pagina Extends Html {
 			if (file_exists(PATH_CURRENT_PROJECT_THEME)){
 				$cf 				= getCurrentConfigFile();
 				$tema 				= tdClass::Criar("link");
-				$tema->href 		=  Session::Get("URL_CURRENT_PROJECT_THEME") . 'geral.css';
+				$tema->href 		=  URL_CURRENT_PROJECT_THEME . 'geral.css';
 				$tema->rel 			= 'stylesheet';
 				$this->head->add($tema);
 			}
 
-			$tema_default = tdClass::Criar("link");
-			$tema_default->href = Session::Get('URL_SYSTEM_THEME') . 'geral.css';
-			$tema_default->rel = 'stylesheet';
+			$tema_default 			= tdClass::Criar("link");
+			$tema_default->href 	= URL_SYSTEM_THEME . 'geral.css';
+			$tema_default->rel 		= 'stylesheet';
 			
-			$gradededadosCSS = tdClass::Criar("link");
-			$gradededadosCSS->href = Session::Get("URL_SYSTEM_THEME") . 'gradesdedados.css';
-			$gradededadosCSS->rel = 'stylesheet';			
+			$gradededadosCSS 		= tdClass::Criar("link");
+			$gradededadosCSS->href 	= URL_SYSTEM_THEME . 'gradesdedados.css';
+			$gradededadosCSS->rel 	= 'stylesheet';			
 			
 			$this->head->add($tema_default,$gradededadosCSS);
 		}
@@ -294,22 +294,22 @@ class Pagina Extends Html {
 				this.projeto					= "'.(isset(Session::get()->projeto)?Session::get()->projeto:"").'";
 				this.permitirexclusao			= "'.(isset(Session::get()->permitirexclusao)?Session::get()->permitirexclusao:"").'";
 				this.permitirtrocarempresa		= "'.(isset(Session::get()->permitirtrocarempresa)?Session::get()->permitirtrocarempresa:"").'";
-				this.currentprojectregisterpath	= "'.Session::Get("PATH_CURRENT_PROJECT").'";
+				this.currentprojectregisterpath	= "'.PATH_CURRENT_PROJECT.'";
 				this.objectID					= -1;
 				this.PREFIXO					= "'.PREFIXO.'_";
 				this.isonline                   = '.isOnline("string").';
 				this.isproducao                 = '.isProducao("string").';
-				this.urlroot					= "'.Session::Get("URL_ROOT").'";
-				this.urlsystem					= "'.Session::Get("URL_SYSTEM").'";
-				this.urlalias					= "'.Session::Get("URL_ALIAS").'";
-				this.urlcurrenttheme			= "'.Session::Get("URL_CURRENT_PROJECT_THEME").'";					
-				this.urlloading					= "'.Session::Get("URL_LOADING").'";
-				this.urlloading2				= "'.Session::Get("URL_LOADING2").'";
-				this.urlmiles					= "'.Session::Get("URL_MILES").'index.php";
-				this.folderprojectfiles 		= "'.Session::Get('URL_CURRENT_PROJECT').'";
+				this.urlroot					= "'.URL_ROOT.'";
+				this.urlsystem					= "'.URL_SYSTEM.'";
+				this.urlalias					= "'.URL_ALIAS.'";
+				this.urlcurrenttheme			= "'.URL_CURRENT_PROJECT_THEME.'";					
+				this.urlloading					= "'.URL_LOADING.'";
+				this.urlloading2				= "'.URL_LOADING2.'";
+				this.urlmiles					= "'.URL_MILES.'index.php";
+				this.folderprojectfiles 		= "'.URL_CURRENT_PROJECT.'";
 				this.urlnodejs					= "'.URL_NODEJS.'";
 				this.curdate					= "'.date('d/m/Y').'";
-				this.urlcontrollerecommerce		= "'.Session::Get('URL_ECOMMERCE').'";
+				this.urlcontrollerecommerce		= "'.URL_ECOMMERCE.'";
 			}
 			var session = new SystemSession();
 			

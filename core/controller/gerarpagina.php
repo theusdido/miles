@@ -111,7 +111,7 @@ if ($isprincipal){
 
 		// Adiciona a classe Grade de Dados em JavaScript
 		$jsGrade 		= tdClass::Criar("script");
-		$jsGrade->src 	= Session::Get('URL_CLASS_TDC') . "gradededados.class.js";
+		$jsGrade->src 	= URL_CLASS_TDC . "gradededados.class.js";
 		$bloco->add($jsGrade);
 
 		// Adiciona a página padrão de validação dos campos do formulário

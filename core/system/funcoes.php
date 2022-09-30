@@ -746,7 +746,7 @@ function criarAtributo(
 			$labelumcheckbox 	= $descricao[2];
 			$descricao 			= $descricao[0]; #Não inverter essa ordem
 		}else{
-			$labelzerocheckbox = utf8charset("Não",10);
+			$labelzerocheckbox = utf8charset("Não",'D');
 			$labelumcheckbox = "Sim";
 		}
 	}else{
@@ -754,7 +754,7 @@ function criarAtributo(
 		$labelumcheckbox = "";	
 	}
 
-	$descricao 			= utf8charset($descricao,10);
+	$descricao 			= isutf8($descricao) ? utf8charset($descricao,'D') : utf8charset($descricao,'E');
 	$nuloSQL			= ((int)$nulo==0)?'NOT NULL':'NULL';
 	$chaveestrangeira 	= ($chaveestrangeira=="")?0:($chaveestrangeira);		
 	$inicializacao 		= str_replace("'","\'",$inicializacao);
@@ -1150,7 +1150,9 @@ function inserirRegistro($conn,$tabela,$id,$atributos,$valores,$criarnovoregistr
 	}
 
 	try{
-		$sqlInserir = "INSERT " . $tabela . " (id,".implode(",",$atributos).") VALUES (".$id.",".utf8charset(implode(",",$valores)).");";
+		$valores_i	= implode(",",$valores);
+		$valores_ 	= isutf8($valores_i) ? utf8charset($valores_i,'D') : $valores_i;
+		$sqlInserir = "INSERT " . $tabela . " (id,".implode(",",$atributos).") VALUES (".$id.",".$valores_.");";
 		$query 		= $conn->query($sqlInserir);
 		return $id;
 	}catch(Throwable $t){
@@ -1167,7 +1169,7 @@ function atualizarRegistro($conn,$tabela,$id = "",$atributos,$valores,$atualizar
 	$_valores		= gettype($valores) == 'string' ? explode(',',$valores) : $valores;
 	$totalAtributos = sizeof($_atributos) - 1;
 	for($i=0;$i<=$totalAtributos;$i++){
-		$campos .= $_atributos[$i] . " = " . utf8charset($_valores[$i]);
+		$campos .= $_atributos[$i] . " = " . (isutf8($_valores[$i]) ? utf8charset($_valores[$i],'D') : $_valores[$i]);
 		if ($i != $totalAtributos) $campos .= ",";
 	}
 	try{
@@ -1777,7 +1779,7 @@ function addCampoFormatadoDB($dados,$entidade){
 				case 'descricao':
 				case 'labelzerocheckbox':
 				case 'labelumcheckbox':
-					$dados[$key] = utf8charset($value, 10);
+					$dados[$key] = isutf8($value) ? utf8charset($value, 'D') : utf8charset($value, 'E');
 				break;
 			}
 		}
@@ -1788,8 +1790,8 @@ function addCampoFormatadoDB($dados,$entidade){
 		$tipohtml 		= getTipoHTML($key,$entidade);
 		$linha 			= array( $key => $value );
 
-		// Converte os acentos, afeta o método tdc::dj(), tdc::da e tdc::pa		
-		$dados[$key] 	= utf8charset($value, 10);
+		// Converte os acentos, afeta o método tdc::dj(), tdc::da e tdc::pa	
+		$dados[$key] = isutf8($value) ? utf8charset($value, 'D') : utf8charset($value, 'E');
 
 		if ($tipohtml == 11){
 			$dados[$key . '_formated']	= dateToMysqlFormat($value,true);
@@ -1805,7 +1807,8 @@ function addCampoFormatadoDB($dados,$entidade){
 				if ($campodescdefault->hasData()){
 					$valorfk 				= is_numeric_natural($value)?$value:0;
 					$registro 				= getRegistro(null,tdc::p(ENTIDADE,$atributoOBJ->chaveestrangeira)->nome,$campodescdefault->nome, "id={$valorfk}" , "limit 1");
-					$dados[$key . "_desc"] 	= $registro[$campodescdefault->nome];					
+					$_utf8charset			= isutf8($registro[$campodescdefault->nome]) ? 'D' : 'E';
+					$dados[$key . "_desc"] 	= utf8charset($registro[$campodescdefault->nome],$_utf8charset);
 				}
 			}
 		}else if ($tipohtml == 19){
@@ -2084,7 +2087,7 @@ function getBoolean($boolean,$returntype){
     return $retorno;
 }
 function getURLProject($parametro = null){
-	$urlproject 		= Session::Get("URL_MILES") . "index.php";
+	$urlproject 		= URL_MILES . "index.php";
 	$parmsProject 		= array("currentproject" => Session::Get()->projeto);
 	switch(gettype($parametro)){
 		case 'string':

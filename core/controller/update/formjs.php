@@ -14,25 +14,25 @@
 
     // Funções do Sistema
     $aFuncoes               = tdc::html($item_list_html_object);
-    $aFuncoes->href         = Session::Get('URL_SYSTEM') . "funcoes.js";
+    $aFuncoes->href         = URL_SYSTEM . "funcoes.js";
     $aFuncoes->target       = $target;
     $aFuncoes->add('funcoes.js');
 
     // Validação dos campos do formulário
     $aValidar               = tdc::html($item_list_html_object);
-    $aValidar->href         = Session::Get('URL_SYSTEM') . "validar.js";
+    $aValidar->href         = URL_SYSTEM . "validar.js";
     $aValidar->target       = $target;
     $aValidar->add('validar.js');
     
     // Grade de Dados
     $aGrade                 = tdc::html($item_list_html_object);
-    $aGrade->href           = Session::Get('URL_CLASS_TDC') . "gradededados.class.js";
+    $aGrade->href           = URL_CLASS_TDC . "gradededados.class.js";
     $aGrade->target         = $target;
     $aGrade->add('gradededados.class.js');
 
     // Classe do formulário
     $aFormulario                = tdc::html($item_list_html_object);
-    $aFormulario->href          = Session::Get('URL_CLASS_TDC') . "formulario.class.js";
+    $aFormulario->href          = URL_CLASS_TDC . "formulario.class.js";
     $aFormulario->target        = $target;
     $aFormulario->add('formulario.class.js');
 
@@ -44,7 +44,7 @@
 
     // Classe do formulário
     $aMenu                = tdc::html($item_list_html_object);
-    $aMenu->href          = Session::Get('URL_CLASS_TDC') . "menu.class.js";
+    $aMenu->href          = URL_CLASS_TDC . "menu.class.js";
     $aMenu->target        = $target;
     $aMenu->add('menu.class.js');
 

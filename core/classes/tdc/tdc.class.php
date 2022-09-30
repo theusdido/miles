@@ -338,7 +338,7 @@ class tdc Extends tdClass{
 		if ($id > 0 && $entidade != ''){
 			$data = tdc::dj($entidade,tdc::f("id","=",$id));
 			$data = gettype($data)=='string'?json_decode($data):$data;
-			if (sizeof($data) > 0){
+			if (is_array($data) && sizeof($data) > 0){
 				$registro = json_decode(tdc::dj($entidade,tdc::f("id","=",$id)));
 				if (sizeof($registro) > 0){
 					$retorno = $registro[0];

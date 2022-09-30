@@ -1,2 +1,2 @@
 <?php
-$retorno["dados"] = tdc::da("td_ecommerce_categoria",tdc::f("inativo","=",0));
+    $retorno["dados"] = tdc::da("td_ecommerce_categoria",tdc::f("inativo","=",0));

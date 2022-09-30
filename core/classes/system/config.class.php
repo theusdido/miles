@@ -81,6 +81,13 @@ class Config {
 			case 1: case 2: case 3:
 				$retorno = utf8charset($valor,4);
 			break;
+			case 5:
+				if (gettype($valor) == 'array'){
+					$retorno = implode(',',$valor);
+				}else{
+					$retorno = '';
+				}
+			break;
 			case 6: # Senha
 				$retorno = strlen($valor) == 32 ? $valor : md5($valor);
 			break;

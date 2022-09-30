@@ -1,6 +1,16 @@
 <?php
-	$usuario = $senha = $base = $host = $tipo = $porta = "";
-	$check_criarbase = $check_instalacaosistema = $check_pacoteconfigurado = URL_SYSTEM_THEME . 'check-no.gif';
+	$usuario 	= 
+	$senha 		= 
+	$base 		= 
+	$host 		= 
+	$tipo 		= 
+	$porta 		= '';
+
+	$check_criarbase 			= 
+	$check_instalacaosistema 	= 
+	$check_pacoteconfigurado 	= 
+	$check_checkout 			= URL_SYSTEM_THEME . 'check-no.gif';
+
 	$check_yes = URL_SYSTEM_THEME . 'check.gif';
 	
 	$install = tdc::ru('td_instalacao');
@@ -34,6 +44,6 @@
 	</a>
 	<a href="../index.php?controller=teste/instalacao&currentproject=<?=$_SESSION["currentproject"]?>" class="list-group-item" target="_blank">
 		Check Out
-		<img src="<?=$_SESSION["URL_SYSTEM_THEME"]?>check-no.gif" class="check-no" id="guia-checkout"/>
+		<img src="<?=$check_checkout?>" class="check-no" id="guia-checkout"/>
 	</a>
 </div>

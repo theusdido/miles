@@ -21,7 +21,7 @@
 	$enderecoempresa= tdc::p("td_endereco",@(int)getListaRegFilho(getEntidadeId("empresa"),getEntidadeId("endereco"),Session::Get()->empresa)[0]->regfilho);
 
 	$style			= tdc::o("link");
-	$style->href	= Session::Get('URL_ECOMMERCE') . "pedidoimpressao/pedidoimpressao.css";
+	$style->href	= URL_ECOMMERCE . "pedidoimpressao/pedidoimpressao.css";
 	$style->rel		= "stylesheet";
 
 	// Div Topo
@@ -30,7 +30,7 @@
 	// Div da Logo
 	$divlogo 	= $topo->add("div" , array("propriedades" => array ("class" => "div-logo")));
 	$logo		= $topo->add("img",array(
-		"propriedades" => array( "id" => "logo" , "src" => Session::get("URL_CURRENT_LOGO_PADRAO")) ,
+		"propriedades" => array( "id" => "logo" , "src" => URL_CURRENT_LOGO_PADRAO) ,
 		"elementopai" => $divlogo
 	));
 
@@ -58,7 +58,7 @@
 	$divdatahora	 	= $topo->add("div", array("propriedades" => array("innerhtml" => "DATA/HORA: " . $pedido->datahoraretorno , "class" => "div-datahorapedido")));
 
 	// Div Nome Cliente
-	$divnomecliente 	= $topo->add("div", array("propriedades" => array("innerhtml" => "Razão Social: " . $cliente->id . " - " . strtoupper($cliente->nome) , "class" => "div-cliente-razaosocial")));
+	$divnomecliente 	= $topo->add("div", array("propriedades" => array("innerhtml" => "Nome: " . $cliente->id . " - " . strtoupper($cliente->nome) , "class" => "div-cliente-razaosocial")));
 
 	// Div Dados de Contato do Cliente
 	$divdadoscliente 	= $topo->add("div", array("propriedades" => array("class" => "div-dados-cliente" ,"innerhtml" => array(	

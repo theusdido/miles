@@ -21,7 +21,7 @@
 	$enderecoempresa= tdc::p("td_endereco",@(int)getListaRegFilho(getEntidadeId("empresa"),getEntidadeId("endereco"),Session::Get()->empresa)[0]->regfilho);
 
 	$style			= tdc::o("link");
-	$style->href	= Session::Get('URL_ECOMMERCE') . "carrinhoimpressao/carrinhoimpressao.css";
+	$style->href	= URL_ECOMMERCE . "carrinhoimpressao/carrinhoimpressao.css";
 	$style->rel		= "stylesheet";
 
 	// Div Topo
@@ -30,7 +30,7 @@
 	// Div da Logo
 	$divlogo 	= $topo->add("div" , array("propriedades" => array ("class" => "div-logo")));
 	$logo		= $topo->add("img",array(
-		"propriedades" => array( "id" => "logo" , "src" => Session::get("URL_CURRENT_LOGO_PADRAO")) ,
+		"propriedades" => array( "id" => "logo" , "src" => URL_CURRENT_LOGO_PADRAO) ,
 		"elementopai" => $divlogo
 	));
 
@@ -57,12 +57,24 @@
 	// Div Data e Hora do Pedido
 	$divdatahora	 	= $topo->add("div", array("propriedades" => array("innerhtml" => "DATA/HORA: " . datetimeToMysqlFormat($pedido->datahoracriacao,true) , "class" => "div-datahorapedido")));
 
-	// Div Nome Cliente
-	$divnomecliente 	= $topo->add("div", array("propriedades" => array("innerhtml" => "Razão Social: " . $cliente->id . " - " . strtoupper($cliente->nome) , "class" => "div-cliente-razaosocial")));
+	if ($cliente->tipopessoa == 1){
+		$numero_documento		= $cliente->cpf;
+		$apelido				= $cliente->nome;
+		$display_nome			= 'Nome';
+		$display_documento		= 'CPF';
+	}else{
+		$numero_documento 		= $cliente->cnpj;
+		$apelido				= $cliente->nomefantasia;
+		$display_nome			= 'Razão Social';
+		$display_documento		= 'CNPJ';
+	}
 
-	// Div Dados de Contato do Cliente
+	// Div Nome Cliente
+	$divnomecliente 	= $topo->add("div", array("propriedades" => array("innerhtml" => "{$display_nome}: " . $cliente->id . " - " . strtoupper($cliente->nome) , "class" => "div-cliente-razaosocial")));
+
+	// Div Dados de Contato do Cliente	
 	$divdadoscliente 	= $topo->add("div", array("propriedades" => array("class" => "div-dados-cliente" ,"innerhtml" => array(	
-		$topo->node("div", array("innerhtml" => "CNPJ: " . $cliente->cnpj , "class" => "div-cliente-cnpj")) ,
+		$topo->node("div", array("innerhtml" => "{$display_documento}: " . $numero_documento , "class" => "div-cliente-cnpj")) ,
 		$topo->node("div", array("innerhtml" => "Telefone: " . $cliente->telefone , "class" => "div-cliente-telefone")) ,
 		$topo->node("div", array("innerhtml" => "E-Mail: " . $cliente->email , "class" => "div-cliente-email"))	
 	))));

@@ -6,7 +6,7 @@ if ($op == "get_form"){
 
 	// Validar JS
 	$jsValidar = tdClass::Criar("script");
-	$jsValidar->src = PATH_SYSTEM . "validar.js";
+	$jsValidar->src = URL_SYSTEM . "validar.js";
 	$jsValidar->mostrar();
 
 	$jsScript = tdClass::Criar("script");

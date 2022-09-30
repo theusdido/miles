@@ -16,8 +16,8 @@
 
 	$ol->add($li);
 
-	$scriptBClass = tdClass::Criar("script");
-	$scriptBClass->src = URL_CLASS_WIDGETS . "bootstrap/breadcrumb.class.js";
+	$scriptBClass 		= tdClass::Criar("script");
+	$scriptBClass->src 	= URL_CLASS_WIDGETS . "bootstrap/breadcrumb.class.js";
 
 	$bloco_breadcrumb->add($scriptBClass,$ol);
 	$template->addCorpo($bloco_breadcrumb);

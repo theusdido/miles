@@ -72,7 +72,11 @@
 		case md5("ecommerce.sidercomp"): // 9c372ce9eeaa680bc3c6a0252c711643
 			$permissao = true;
 		break;
+		case md5("ecommerce.primodas"): // 61d205a14cb39f75b93676bf97cf967f
+			$permissao = true;
+		break;		
 	}
+
 	if (!$permissao){
 		echo 'Token não confere com o cadastrado';
 		exit;
@@ -104,6 +108,11 @@
 	if ($op == ''){
 		$op 		= isset($_GET['service']) ? $_GET['service'] : ( isset($_POST['service']) ? $_POST['service'] : '' );
 		$service 	= $op;
+	}
+
+	if ($service == ''){
+		echo 'Serviço nao informado ou nao encontrado.';
+		exit;
 	}
 
 	// Encaminha para o serviço solicitado

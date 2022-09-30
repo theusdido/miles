@@ -1,6 +1,6 @@
 <?php
 	$bloco_chamado 		= null;
-	$imgSemFotoUsuario 	= Session::Get("URL_SYSTEM") . "system/tema/padrao/sem-foto-usuario.png";
+	$imgSemFotoUsuario 	= URL_SYSTEM . "system/tema/padrao/sem-foto-usuario.png";
 	if ($connMILES){
 		$op = isset($_GET["op"])?$_GET["op"]:"";
 

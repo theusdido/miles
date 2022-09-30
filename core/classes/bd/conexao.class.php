@@ -29,7 +29,7 @@ final class Conexao{
 		@parms $banco
 	*/
 	public static function abrir($banco){
-		$bd = self::getDados($banco);
+		$bd = self::getDados($banco);	
 		if ($bd != false){
 			$usuario 	= $bd["usuario"];
 			$senha 		= $bd["senha"];

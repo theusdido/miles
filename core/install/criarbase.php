@@ -61,7 +61,7 @@
 				<legend>Criar Banco de Dados</legend>
 				<div class="form-grupo-botao">
 				
-					<img id="loader-criarbanco" src="<?=$_SESSION["URL_SYSTEM_THEME"]?>loading2.gif"/>
+					<img id="loader-criarbanco" src="<?=URL_LOADING2?>"/>
 					<button type="button" class="btn btn-primary" id="btn-criarbanco">
 						Criar Banco																
 					</button>	
@@ -107,8 +107,8 @@
 	$password 	= "";
 	$type 		= 'mysql';
 ?>
-<script type="text/javascript" src="<?=$_SESSION["URL_LIB"]?>jquery/jquery.js"></script>
-<script type="text/javascript" src="<?=$_SESSION["URL_SYSTEM"]?>funcoes.js"></script>
+<script type="text/javascript" src="<?=URL_LIB?>jquery/jquery.js"></script>
+<script type="text/javascript" src="<?=URL_SYSTEM?>funcoes.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#host").val("<?=$host?>");

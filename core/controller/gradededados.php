@@ -228,8 +228,9 @@
 			}else{
 				$valor_campo = $dado->{$c};
 			}
-			$campos_dados[$c] 		= getHTMLTipoFormato($camposhtml[$i],utf8charset($valor_campo,2),$entidade->contexto->id,$c,$dado->id);
-			$campos_dados_reais[$c] = utf8charset($dado->{$c},2);
+			$utf8_value 			= isutf8($valor_campo) ? $valor_campo : utf8charset($valor_campo,'E');
+			$campos_dados[$c] 		= getHTMLTipoFormato($camposhtml[$i],$utf8_value,$entidade->contexto->id,$c,$dado->id);
+			$campos_dados_reais[$c] = isutf8($dado->{$c}) ? $dado->{$c} : utf8charset($dado->{$c},'D');
 			$i++;
 		}
 		$dados_array[$idRegIndice] 			= $campos_dados;

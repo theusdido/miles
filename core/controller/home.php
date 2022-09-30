@@ -14,7 +14,7 @@
 		switch($p){
 			case 'ecommerce':
 				include PATH_ECOMMERCE . 'novosclienteshome/novosclienteshome.php';
-				include PATH_ECOMMERCE . 'maisvendidoshome/maisvendidoshome.php';
+				#include PATH_ECOMMERCE . 'maisvendidoshome/maisvendidoshome.php';
 				include PATH_ECOMMERCE . 'pedidohome/pedidohome.php';
 				include PATH_ECOMMERCE . 'informacoesadicionaishome/informacoesadicionaishome.php';
 			break;

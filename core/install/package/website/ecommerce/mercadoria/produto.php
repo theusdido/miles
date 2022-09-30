@@ -40,6 +40,8 @@
 	$produto_destaque 			= criarAtributo($conn,$entidadeID,"destaque","Destaque","boolean",0,1,7,0,0,0,"");
 	$produto_sku 				= criarAtributo($conn,$entidadeID,"sku","SKU","varchar",50,1,3);
 
+	Entity::setDescriptionField($conn,$entidadeID,$produto_nome,false);
+
 	// Adiciando categoria em produto
 	$produto_categoria = criarAtributo($conn,$entidadeID,"categoria","Categoria","int",0,1,4,1,installDependencia("ecommerce_categoria","package/website/ecommerce/mercadoria/categoria"),0,"");
 
@@ -58,14 +60,20 @@
 	// Adiciando categoria em produto
 	$produto_grupo = criarAtributo($conn,$entidadeID,"grupo","Grupo","int",0,1,4,1,installDependencia("ecommerce_grupoproduto","package/website/ecommerce/mercadoria/grupoproduto"),0,"");
 
+	// Adiciando opções de cores no produto
+	$produto_cores 		= criarAtributo($conn,$entidadeID,"cores","Cores","varchar",50,1,5,0,installDependencia("ecommerce_produtocor","package/website/ecommerce/mercadoria/produtocor"),0,"");
+
+	// Adiciando opções de tamanho no produto
+	$produto_tamanhos 	= criarAtributo($conn,$entidadeID,"tamanhos","Tamanhos","varchar",50,1,5,0,installDependencia("ecommerce_produtotamanho","package/website/ecommerce/mercadoria/produtotamanho"),0,"");
+
 	// Criando Acesso
-	$menu_webiste = addMenu($conn,'E-Commerce','#','',0,0,'ecommerce');
+	$menu_webiste 		= addMenu($conn,'E-Commerce','#','',0,0,'ecommerce');
 
 	// Adicionando Menu
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,6,'ecommerce-' . $entidadeNome,$entidadeID,'cadastro');
 
 	// Abas
 	criarAba($conn,$entidadeID,'Capa',array($produto_nome,$produto_sku,$produto_referencia,$produto_categoria,$produto_subcategoria,$produto_tipo,$produto_unidademedida,$produto_marca,$produto_grupo,$produto_preco,$produto_exibirpreco,$produto_exibirhome,$produto_inativo));
-	criarAba($conn,$entidadeID,'Caracteristicas',array($produto_descricao));
+	criarAba($conn,$entidadeID,'Caracteristicas',array($produto_descricao,$produto_cores,$produto_tamanhos));
 	criarAba($conn,$entidadeID,'Imagens',array($produto_imagemPrincipal,$produto_imagemExtra1,$produto_imagemExtra2,$produto_imagemExtra3));
 	criarAba($conn,$entidadeID,'Embalagem',array($produto_peso,$produto_comprimento,$produto_altura,$produto_largura,$produto_diametro));

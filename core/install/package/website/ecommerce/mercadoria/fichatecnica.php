@@ -24,8 +24,9 @@
     $produto        = criarAtributo($conn,$entidadeID,"produto","Produto","int",0,1,16,0,getEntidadeId("ecommerce_produto",$conn),0,"");
     $especificacao  = criarAtributo($conn,$entidadeID,"especificacao","Especificação","int",0,0,4,0,getEntidadeId("ecommerce_especificacaotecnica",$conn),1,"");
     $descricao      = criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar","1000",0,3,1,0,0,"");
-
-   	// Criando Acesso
+	Entity::setDescriptionField($conn,$entidadeID,$descricao,false);
+   	
+	// Criando Acesso
 	$menu_webiste = addMenu($conn,'E-Commerce','#','',0,0,'ecommerce');
 
 	// Adicionando Menu

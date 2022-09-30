@@ -72,7 +72,7 @@
 		break;
 		default:
 			$menuClass = tdClass::Criar("script");
-			$menuClass->src = Session::Get("URL_CLASS_TDC") . "menu.class.js";
+			$menuClass->src = URL_CLASS_TDC . "menu.class.js";
 
 			$menu = tdClass::Criar("bloco",array('menu'));
 			$menu->class = "col-md-12 col-sm-12";

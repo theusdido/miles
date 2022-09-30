@@ -1,6 +1,6 @@
 <?php
-$pedido = tdc::p("td_ecommerce_pedido",(int)$dados["pedido"]);
-$pedido->isfinalizado = 1;
-$pedido->armazenar();
+    $pedido = tdc::p("td_ecommerce_pedido",(int)$dados["pedido"]);
+    $pedido->isfinalizado = 1;
+    $pedido->armazenar();
 
-$retorno["status"] = "success";
+    $retorno["status"] = "success";

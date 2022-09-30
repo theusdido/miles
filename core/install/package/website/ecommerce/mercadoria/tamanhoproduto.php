@@ -25,6 +25,7 @@
 	$descricao 	= criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar","200",0,3,1,0,0,"");
 	$valor 		= criarAtributo($conn,$entidadeID,"valor","Valor","float",0,1,13,1);
 	$peso 		= criarAtributo($conn,$entidadeID,"peso","Peso","float",0,1,26,1);
+	Entity::setDescriptionField($conn,$entidadeID,$descricao,false);
 
 	// Cria Relacionamento
 	criarRelacionamento($conn,2,getEntidadeId("ecommerce_produto",$conn),$entidadeID,"Tamanhos",$produto);

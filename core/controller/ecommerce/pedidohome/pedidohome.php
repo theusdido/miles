@@ -24,7 +24,7 @@
 	$panel->body($aba);
 
 	$objGradeDados 			= tdClass::Criar("script");	
-	$objGradeDados->src 	= Session::Get('URL_ECOMMERCE') . "pedidohome/pedidohome.js";
+	$objGradeDados->src 	= URL_ECOMMERCE . "pedidohome/pedidohome.js";
 
 	$bloco_pedido->add($panel,$objGradeDados);
 	$bloco_pedido->mostrar();

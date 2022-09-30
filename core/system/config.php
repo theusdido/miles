@@ -22,7 +22,7 @@
 	define('_IS_HTTP',isset($_SERVER['HTTPS']) ? true : false);
 	
 	// Variável global apenas para o HTTP
-	$_http_request = Config::getEnvirommentVariable('system->request_protocol','http');
+	$_http_request = isset($_env->system->request_protocol) ? $_env->system->request_protocol :  Config::getEnvirommentVariable('system->request_protocol','http');
 
 	// REQUEST PROTOCOLO
 	define("REQUEST_PROTOCOL",$_http_request."://");
@@ -31,10 +31,14 @@
 	// e o a configuração estiver setada para HTTPs
 	if ($_http_request == 'https' && !_IS_HTTP)
 	{
-		showMessage('HTTPs está ativo na configuração!');
 		$link_https = str_replace('http://','https://',$_SERVER['SCRIPT_URI']);
-		echo '<br><a href="'.$link_https.'">Entrar com URL segura.</a>';
-		exit;
+		if (AMBIENTE == 'SISTEMA'){
+			showMessage('HTTPs está ativo na configuração!');
+			echo '<br><a href="'.$link_https.'">Entrar com URL segura.</a>';
+			exit;
+		}else{
+			header('Location: ' . $link_https);
+		}
 	}
 	
 	// Variável global do projeto atual

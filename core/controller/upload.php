@@ -20,16 +20,16 @@
 	$bootstrap->rel = 'stylesheet';
 	$bootstrap->mostrar();
 	
-	$fontAwesome = tdClass::Criar("script");
-	$fontAwesome->src = "https://kit.fontawesome.com/ea948eea7a.js";
-	$fontAwesome->crossorigin = "anonymous";
+	$fontAwesome 				= tdClass::Criar("script");
+	$fontAwesome->src 			= "https://kit.fontawesome.com/ea948eea7a.js";
+	$fontAwesome->crossorigin 	= "anonymous";
 	$fontAwesome->mostrar();
 	
-	$tema_default = tdClass::Criar("link");
-	$tema_default->href = Session::Get('URL_SYSTEM_THEME').'geral.css';
-	$tema_default->rel = 'stylesheet';
+	$tema_default 			= tdClass::Criar("link");
+	$tema_default->href 	= URL_SYSTEM_THEME.'geral.css';
+	$tema_default->rel 		= 'stylesheet';
 	$tema_default->mostrar();
-	
+
 	$style = tdClass::Criar("style");
 	$style->type = "text/css";
 	$style->add('
@@ -124,7 +124,7 @@
 	}
 
 	$form 						= tdClass::Criar("form");
-	$form->action 				= Session::Get("URL_MILES") . tdClass::Criar("persistent",array(CONFIG,1))->contexto->urlupload;
+	$form->action 				= URL_MILES . tdClass::Criar("persistent",array(CONFIG,1))->contexto->urlupload;
 	$form->method 				= "POST";
 	$form->enctype 				= "multipart/form-data";
 	$form->id 					= $id_form;

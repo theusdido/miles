@@ -49,7 +49,7 @@ class Menu {
 			$linha = $query->fetch();
 			$retorno = array(
 				"id"			=> $linha["id"],
-				"descricao" 	=> utf8charset($linha["descricao"],11),
+				"descricao" 	=> isutf8($linha["descricao"]) ? $linha["descricao"] : utf8encode($linha["descricao"]),
 				"link" 			=> $linha["link"],
 				"pai" 			=> $linha["pai"],
 				"entidade" 		=> $linha["entidade"],

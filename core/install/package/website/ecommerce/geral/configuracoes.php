@@ -35,6 +35,11 @@
 	$is_show_price_only_logged	= criarAtributo($conn,$entidadeID,"is_show_price_only_logged","Exibir Preço Apenas Logado ?","boolean",0,1,7);
 	$qtdademaximaitenspedido	= criarAtributo($conn,$entidadeID,"qtdademaximaitenspedido","Quantidade de Itens no Pedido","int",0,1,25);
 
+	$is_send_order_email		= criarAtributo($conn,$entidadeID,"is_send_order_email","Enviar pedido por e-mail ?","boolean",0,1,7);
+	$is_send_app_mobile			= criarAtributo($conn,$entidadeID,"is_send_app_mobile","Enviar pedido para o aplicativo ?","boolean",0,1,7);
+	$is_control_inventory		= criarAtributo($conn,$entidadeID,"is_control_inventory","Usar controle de estoque ?","boolean",0,1,7);
+	$is_control_commission		= criarAtributo($conn,$entidadeID,"is_control_commission","Usar controle de comissão ?","boolean",0,1,7);
+
 	// Criando Acesso
 	$menu_webiste = addMenu($conn,'E-Commerce','#','',0,0,'ecommerce');
 

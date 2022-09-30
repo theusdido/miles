@@ -22,9 +22,8 @@
 	);
 
 	// Capa
-	
-
 	$codigo				= criarAtributo($conn,$entidadeID,"codigo","Código","varchar",15,1,3,0,0,0,"");
+	$tipopessoa			= criarAtributo($conn,$entidadeID,"tipopessoa",array('Tipo Pessoa','Pessoa Física','Pessoa Jurídica'),"tinyint",0,0,7);
 	$nome 				= criarAtributo($conn,$entidadeID,"nome","Nome","varchar",200,0,3,1,0,0,"");
 	$email 				= criarAtributo($conn,$entidadeID,"email","E-Mail","varchar",200,1,12,0,0,0,"");
 	$senha 				= criarAtributo($conn,$entidadeID,"senha","Senha","varchar",128,1,6,0,0,0,"");
