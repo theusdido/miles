@@ -1038,7 +1038,7 @@ function getAtributoId($entidadeString,$atributoString,$conn = null){
 	return $_id;
 }
 function criarRelacionamento($conn,$tipo,$entidadePai,$entidadeFilho,$descricao = "",$atributo = 0){
-	$descricao		= utf8charset($descricao,10);
+	$descricao		= utf8charset($descricao);
 	$cardinalidade 	= getCardinalidade($tipo);
 	$sqlVerifica 	= "SELECT id FROM ".RELACIONAMENTO." WHERE pai = " . $entidadePai . " AND filho = " . $entidadeFilho . " AND tipo = " . $tipo;
 	$queryVerifica 	= $conn->query($sqlVerifica);
@@ -1616,7 +1616,7 @@ function utf8charset($texto, $local = null, $decodificacao = null , $convert = n
 				return isutf8($texto) ? convertecharset($texto,2) : $texto;
 			break;
 			default:
-				return $texto;
+				return isutf8($texto) ? utf8charset($texto,'D') : utf8charset($texto,'E');
 		}
 	}else{
 		

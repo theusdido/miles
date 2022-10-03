@@ -58,4 +58,5 @@
 		$grupo_botoes->style = "display:none;";
 	}
 	$crudAdd->add($grupo_botoes);
+
 	include 'formulario.php';

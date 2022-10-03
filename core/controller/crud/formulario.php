@@ -37,6 +37,7 @@
 		}
 		$crudAdd->add($aba_html);
 	}else{
+
 		// Seleciona os dados da ENTIDADE
 		$sql = tdClass::Criar("sqlcriterio");
 		$sql->add(tdClass::Criar("sqlfiltro",array('entidade','=',$entidade->contexto->id)));
@@ -50,6 +51,7 @@
 			$crudAdd->add($form);
 		}else{
 			echo 'Não carregou os atributos da entidade ' . $entidade->contexto->nome;
+			exit;
 		}
 	}
 

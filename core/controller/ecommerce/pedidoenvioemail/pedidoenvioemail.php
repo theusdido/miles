@@ -24,7 +24,7 @@ $topo		= new Dom("div" , array("class" => "topo"));
 // Div da Logo
 $divlogo 	= $topo->add("div" , array("propriedades" => array ("class" => "div-logo")));
 $logo		= $topo->add("img",array(
-	"propriedades" => array( "id" => "logo" , "src" => Session::get("URL_CURRENT_LOGO_PADRAO") ) ,
+	"propriedades" => array( "id" => "logo" , "src" => URL_CURRENT_LOGO_PADRAO ) ,
 	"elementopai" => $divlogo
 ));
 

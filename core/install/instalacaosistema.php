@@ -141,6 +141,7 @@
 				componentes['system.historicoatividade']	= 'system/historicoatividade.php';
 				componentes['system.comunicado']			= 'system/comunicado.php';
 				componentes['system.email']					= 'system/email.php';
+
 				// Helpdesk
 				componentes['helpdesk.status'] 				= 'helpdesk/status.php';
 				componentes['helpdesk.prioridade'] 			= 'helpdesk/prioridade.php';
@@ -148,13 +149,16 @@
 				componentes['helpdesk.seguidores'] 			= 'helpdesk/seguidores.php';
 				componentes['helpdesk.ticket'] 				= 'helpdesk/ticket.php';
 				componentes['helpdesk.anexos'] 				= 'helpdesk/anexos.php';
+
 				// Aplicativo
 				componentes['aplicativo.dispositivo']		= 'aplicativo/dispositivo.php';
 				componentes['aplicativo.usuario'] 			= 'aplicativo/usuario.php';
+
 				// Geral
-				componentes['geral.mes']					= 'geral/datas/mes.php';
-				componentes['geral.diasemana']				= 'geral/datas/diasemana.php';
-				componentes['geral.feriado'] 				= 'geral/datas/feriado.php';
+				componentes['geral.mes']						= 'geral/datas/mes.php';
+				componentes['geral.diasemana']					= 'geral/datas/diasemana.php';
+				componentes['geral.feriado'] 					= 'geral/datas/feriado.php';
+				componentes['geral.email.emailconfiguracao']	= 'geral/email/emailconfiguracao.php';
 
 				var totalinstrucao = 0;
 				var progressaoatual = 0;

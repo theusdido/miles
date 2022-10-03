@@ -1,7 +1,7 @@
 <?php
 	// Setando variáveis
 	$entidadeNome 		= "ecommerce_pedidoemail";
-	$entidadeDescricao 	= "E-Mail de Pedido";
+	$entidadeDescricao 	= "E-Mail de Envio do Pedido";
 
 	// Criando Entidade
 	$entidadeID = criarEntidade(
@@ -10,7 +10,7 @@
 		$entidadeDescricao,
 		$ncolunas=1,
 		$exibirmenuadministracao = 0,
-		$exibircabecalho = 0,
+		$exibircabecalho = 1,
 		$campodescchave = 0,
 		$atributogeneralizacao = 0,
 		$exibirlegenda = 0,
@@ -21,18 +21,14 @@
 	);
 
 	// Criando Atributos
-    $email      		= criarAtributo($conn,$entidadeID,"email","E-Mail","int",0,0,16);
-    $descricao  		= criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar",50,1,3);
-	$destinatario    	= criarAtributo($conn,$entidadeID,"destinatario","E-Mail","varchar",250,0,12);
+    $email      		= criarAtributo($conn,$entidadeID,"email","E-Mail","varchar",0,0,12);
+	$username 			= criarAtributo($conn,$entidadeID,"username","Nome de Usuário","varchar",200,0,3);
+	$password 		    = criarAtributo($conn,$entidadeID,"password","Senha","varchar",120,0,6);
+    $assunto  			= criarAtributo($conn,$entidadeID,"assunto","Assunto","varchar",50,1,3);
+	$destinatario    	= criarAtributo($conn,$entidadeID,"destinatario","Destinatário ( FromName )","varchar",50,1,3);	
 
 	// Criando Acesso
 	$menu_webiste = addMenu($conn,'E-Commerce','#','',0,0,'ecommerce');
 
 	// Adicionando Menu
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,0,'ecommerce-' . $entidadeNome,$entidadeID,'cadastro');
-
-    // Criar Capa
-    criarAba($conn,$entidadeID,'Destinatário',array($email, $destinatario, $descricao));
-
-	// Cria Relacionamento
-    criarRelacionamento($conn,7,getEntidadeId("email"),$entidadeID,"Remetente",$email);
