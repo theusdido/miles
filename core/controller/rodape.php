@@ -1,6 +1,4 @@
 <?php
-$image_rodape = tdClass::Criar("imagem");
-if (file_exists(Session::Get("PATH_CURRENT_IMG_RODAPE_PADRAO"))){
-	$image_rodape->src = Session::Get("PATH_CURRENT_IMG_RODAPE_PADRAO");
-}
-$rodape = $image_rodape;
+	$copyright = tdc::o('p');
+	$copyright->add('Copyright &copy;' . date('Y') . ' Todos os direitos reservados para <b>Miles Framework</b> | Desenvolvido por <a href="#" target="https://teia.tec.br/">Teia Tecnologia WEB</a> .');
+	$rodape = $copyright;

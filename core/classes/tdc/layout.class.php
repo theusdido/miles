@@ -14,6 +14,7 @@ class Layout extends Div {
 	public $header;
 	public $article;
 	public $footer;
+	public $script;
 	public $exibir_blocos = true;
 	public $fluido = false;
 	/*  
@@ -26,6 +27,7 @@ class Layout extends Div {
 		$this->header 	= tdClass::Criar("header");
 		$this->article 	= tdClass::Criar("article");
 		$this->footer 	= tdClass::Criar("footer");
+		$this->script	= tdClass::Criar('script');
 
 		$this->header->class = $this->article->class = $this->footer->class = "container" . (CURRENT_THEME=='desktop'?'-fluid':'');
 	}
@@ -76,11 +78,14 @@ class Layout extends Div {
 	}
 
 	public function mostrar(){
-		if ($this->exibir_blocos) 	$this->addBloco();
+		if ($this->exibir_blocos) 	$this->addBloco();		
+
 		if (!empty($this->header)) 	parent::add($this->header);
 		if (!empty($this->article)) parent::add($this->article);
 		if (!empty($this->footer)) 	parent::add($this->footer);
 
+		// Adiciona script inicial
+		parent::add($this->addJsInicial());		
 		parent::mostrar();
 	}
 	/*  
@@ -107,7 +112,20 @@ class Layout extends Div {
 			$this->addCabecalho($menu);
 			$this->addCabecalho(@$headersystem);
 			$this->addRodape($rodape);
-			$this->addRodape($JSinicial);
-		}	
+		}
 	}
+
+	/*  
+		* Método jsInicial
+		* Data de Criacao: 04/10/2022
+		* @author Edilson Valentim dos Santos Bitencourt (Theusdido)
+
+		Adiciona javascript principal no sistema
+	*/
+
+	public function addJsInicial(){
+		include (PATH_MVC_CONTROLLER . 'JSinicial.php');
+		return $JSinicial;
+	}
+
 }

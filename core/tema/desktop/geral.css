@@ -24,7 +24,7 @@ body {
     background-size: cover;	
 }
 header {
-	border-radius: 15px 15px 0 0;
+	background-color: #FFF;
 }
 article{
 	border-radius:0 0 15px 15px;
@@ -775,5 +775,12 @@ header #menu {
 .gradededados .selectall-coluna-gradededados
 {
 	text-align: center;
+}
+
+
+#miles-root > div > footer 
+{
+	background-color: #000;
+	color:#FFF;
 }
 -->
