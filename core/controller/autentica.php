@@ -20,7 +20,7 @@
 
 			$dataset = tdClass::Criar("repositorio",array(USUARIO))->carregar($sql);
 			if ($dataset){
-				
+
 				$_userid		= $dataset[0]->id;
 				$_username		= $dataset[0]->nome;
 				$access_token	= md5( $login . $senha . date('YmdHmi') );

@@ -484,7 +484,7 @@ class TdFormulario Extends Elemento {
 					$iframe = tdClass::Criar("iframe");
 					$iframe->data_entidade = $coluna->entidade;
 					$iframe->data_atributo=$coluna->id;
-					$iframe->src = tdClass::Criar("persistent",array(CONFIG,1))->contexto->urlupload . "&atributo={$coluna->id}&valor={$initialValue}&id=" . ($initialValue!=''?$initialValue:-1) . "&currentproject=" . Session::Get()->projeto;
+					$iframe->src = tdClass::Criar("persistent",array(CONFIG,1))->contexto->urlupload . "&atributo={$coluna->id}&valor={$initialValue}&id=" . ($initialValue!=''?$initialValue:-1) . "&currentproject=" . CURRENT_PROJECT_ID;
 					$campo->add($input,$label,$iframe);
 				break;
 				// CK Editor - Editor de Texto

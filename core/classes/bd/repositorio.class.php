@@ -52,14 +52,13 @@ final class Repositorio {
 			Transacao::log($sql->getInstrucao());
 			try{
 				$resultado = $conn->query($sql->getInstrucao());
-				if($resultado){				
+				if($resultado){
 					while ($linha = $resultado->fetchObject($this->classe)){
 						$linha->setIsNew(false); // Os registros são marcados para serem atualizados 
 						$resultados[] = $linha;
 					}
 				}
 			}catch(Exception $e){
-
 			}
 			$this->registros = $resultados;
 			return $resultados;

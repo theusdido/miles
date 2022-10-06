@@ -141,7 +141,7 @@
 	$currentProject->type 		= "hidden";
 	$currentProject->id 		= "currentproject";
 	$currentProject->name 		= "currentproject";
-	$currentProject->value 		= Session::Get()->projeto;
+	$currentProject->value 		= CURRENT_PROJECT_ID;
 
 	$registro 					= tdClass::Criar("input");
 	$registro->type 			= "hidden";

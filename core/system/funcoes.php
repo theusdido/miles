@@ -738,8 +738,11 @@ function criarAtributo(
 	$inicializacao = '', #11
 	$tipoinicializacao = 1, #12
 	$readonly = 0, #13
-	$legenda = ''
+	$legenda = '', #14
+	$naoexibircampo = false #15
 ){
+
+	$naoexibircampo = is_bool($naoexibircampo) ? ($naoexibircampo?1:0) : 1;
 	if ($tipohtml == 7){
 		if (getType($descricao) == "array"){			
 			$labelzerocheckbox 	= $descricao[1];
@@ -795,7 +798,47 @@ function criarAtributo(
 	$linha = $query->fetchAll();		
 	if ($queryExisteAtributo->rowCount() <= 0){		
 		$id = getProxId("atributo",$conn);
-		$sql = "INSERT INTO {$entidadeatributodefault} (id,entidade,nome,descricao,tipo,tamanho,nulo,tipohtml,exibirgradededados,chaveestrangeira,dataretroativa,inicializacao,tipoinicializacao,labelzerocheckbox,labelumcheckbox,readonly,legenda) VALUES (".$id.",{$entidade},'{$nome}','".$descricao."','{$tipo}','{$tamanho}',{$nulo},'{$tipohtml}',{$exibirgradededados},{$chaveestrangeira},{$dataretroativa},'{$inicializacao}',{$tipoinicializacao},'{$labelzerocheckbox}','{$labelumcheckbox}',{$readonly},'{$legenda}');";
+		$sql = "
+			INSERT INTO {$entidadeatributodefault} 
+			(
+				id,
+				entidade,
+				nome,
+				descricao,
+				tipo,
+				tamanho,
+				nulo,
+				tipohtml,
+				exibirgradededados,
+				chaveestrangeira,
+				dataretroativa,
+				inicializacao,
+				tipoinicializacao,
+				labelzerocheckbox,
+				labelumcheckbox,
+				readonly,
+				legenda,
+				naoexibircampo
+			) VALUES (
+				".$id.",
+				{$entidade},
+				'{$nome}',
+				'".$descricao."',
+				'{$tipo}',
+				'{$tamanho}',
+				{$nulo},
+				'{$tipohtml}',
+				{$exibirgradededados},
+				{$chaveestrangeira},
+				{$dataretroativa},
+				'{$inicializacao}',
+				{$tipoinicializacao},
+				'{$labelzerocheckbox}',
+				'{$labelumcheckbox}',
+				{$readonly},
+				'{$legenda}',
+				{$naoexibircampo}
+			);";
 		$query = $conn->query($sql);
 		if ($query){
 			try{
@@ -825,7 +868,28 @@ function criarAtributo(
 		}
 		$linha_old = $query_old->fetchAll();
 		
-		$sql = "UPDATE {$entidadeatributodefault} SET entidade = {$entidade},nome='{$nome}',descricao='{$descricao}',tipo='{$tipo}',tamanho='{$tamanho}',nulo={$nulo},tipohtml='{$tipohtml}',exibirgradededados={$exibirgradededados},chaveestrangeira={$chaveestrangeira},dataretroativa={$dataretroativa},inicializacao='{$inicializacao}',tipoinicializacao = {$tipoinicializacao},labelzerocheckbox = '{$labelzerocheckbox}',labelumcheckbox = '{$labelumcheckbox}', readonly = {$readonly} , legenda = '{$legenda}' WHERE id={$id};";
+		$sql = "
+			UPDATE {$entidadeatributodefault} 
+			SET 
+				entidade={$entidade},
+				nome='{$nome}',
+				descricao='{$descricao}',
+				tipo='{$tipo}',
+				tamanho='{$tamanho}',
+				nulo={$nulo},
+				tipohtml='{$tipohtml}',
+				exibirgradededados={$exibirgradededados},
+				chaveestrangeira={$chaveestrangeira},
+				dataretroativa={$dataretroativa},
+				inicializacao='{$inicializacao}',
+				tipoinicializacao={$tipoinicializacao},
+				labelzerocheckbox='{$labelzerocheckbox}',
+				labelumcheckbox='{$labelumcheckbox}',
+				readonly={$readonly},
+				legenda='{$legenda}',
+				naoexibircampo={$naoexibircampo}
+			WHERE id={$id};
+		";
 		$query = $conn->query($sql);
 		if ($query){
 			$sqlFisicamante = "SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{$linha[0]["nome"]}' AND  COLUMN_NAME = '{$nome}';";
@@ -1007,7 +1071,7 @@ function getEntidadeId($entidadeString,$conn = null){
 			$query = $conn->query($sql);
 			if ($query->rowCount() > 0){
 				$linha = $query->fetch();
-				return $linha["id"];
+				return (int)$linha["id"];
 			}else{
 				return 0;
 			}
@@ -2088,7 +2152,7 @@ function getBoolean($boolean,$returntype){
 }
 function getURLProject($parametro = null){
 	$urlproject 		= URL_MILES . "index.php";
-	$parmsProject 		= array("currentproject" => Session::Get()->projeto);
+	$parmsProject 		= array("currentproject" => CURRENT_PROJECT_ID);
 	switch(gettype($parametro)){
 		case 'string':
 			if (strpos("?",$parametro) < 0) return $parametro;

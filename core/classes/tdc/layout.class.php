@@ -106,11 +106,11 @@ class Layout extends Div {
 				}
 			}
 			$this->addCabecalho($logo,$info,$logon);
-			$this->fluido = true;
-			$this->addCabecalho($dadosconfigprojeto);
 			$this->fluido = false;
 			$this->addCabecalho($menu);
 			$this->addCabecalho(@$headersystem);
+			$this->fluido = true;
+			$this->addCabecalho($dadosconfigprojeto);			
 			$this->addRodape($rodape);
 		}
 	}
@@ -122,7 +122,6 @@ class Layout extends Div {
 
 		Adiciona javascript principal no sistema
 	*/
-
 	public function addJsInicial(){
 		include (PATH_MVC_CONTROLLER . 'JSinicial.php');
 		return $JSinicial;

@@ -99,38 +99,15 @@
 	// Se a raiz não for definida
 	if (!defined('RAIZ')) define('RAIZ',PATH_MILES);
 
-	// Caminho dos arquivos de configuração
-	if (AMBIENTE == "SISTEMA" || AMBIENTE == 'BIBLIOTECA'){		
-		$currentConfigFile = PATH_MILES . 'projects/'.$currentProject.'/config/current_config.inc';
-	}else if (AMBIENTE == "WEBSERVICE" || AMBIENTE == "WEBSITE"){
-		$currentConfigFile = PATH_MILES .'projects/'.PROJETO_CONSUMIDOR.'/config/current_config.inc';
-	}
 
-	if (file_exists($currentConfigFile)){
-		// Current File Config
-		$config = parse_ini_file($currentConfigFile);
-				
-		// Constantes de inicialização do sistema
-		switch(AMBIENTE){
-			case 'SISTEMA': 	define ("PROJETO_FOLDER",$config["PROJETO_FOLDER"]."/sistema"); break;
-			case 'WEBSERVICE': 	define ("PROJETO_FOLDER",$config["PROJETO_FOLDER"]."/webservice"); break;
-			case 'WEBSITE':		define ("PROJETO_FOLDER",$config["PROJETO_FOLDER"].'/site'); break;
-		}		
-		// Pega o PREFIXO
-		define("PREFIXO",$config["PREFIXO"]);
+	// Folder da Projeto
+	define ("PROJETO_FOLDER",$mjc->folder);
 
-		// Tema Atual
-		define("CURRENT_THEME",isset($config["THEME"])?$config["THEME"]:'padrao');
-	}else{
-		// Folder da Projeto
-		define ("PROJETO_FOLDER",$mjc->folder);
+	// Pega o PREFIXO
+	define("PREFIXO",$mjc->prefix);
 
-		// Pega o PREFIXO
-		define("PREFIXO",$mjc->prefix);
+	define("CURRENT_THEME",$mjc->theme);
 
-		define("CURRENT_THEME",$mjc->theme);
-	}
-	
 	// Projeto atual
 	define('CURRENT_PROJECT_ID',$currentProject);
 
@@ -170,18 +147,15 @@
 
 	// Dados de Sessão do Projeto
 	Session::setName($sessionName);
-	Session::append("currenttypedatabase",isset($_SESSION["currenttypedatabase"])?$_SESSION["currenttypedatabase"]:(isset($config["CURRENT_DATABASE"])?$config["CURRENT_DATABASE"]:'desenv'));
-	Session::append("projeto",$currentProject);
-	Session::append("currentprojectname",isset($_SESSION["currentprojectname"])?$_SESSION["currentprojectname"]:(isset($config["PROJETO_DESC"])?$config["PROJETO_DESC"]:'Teia'));
 
 	// Código do Cliente
-	define ("CODIGOCLIENTE",isset($config["CODIGOCLIENTE"])?$config["CODIGOCLIENTE"]:0);
-	
+	define ("CODIGOCLIENTE",0); # Ainda não implementado
+
 	// Define a imagem de loader de contexto
-	define("LOADERCONTEXTO",'<img class="loadercontexto" width="32" align="middle" src="'.Session::Get("URL_LOADING2").'">');
-	
+	define("LOADERCONTEXTO",'<img class="loadercontexto" width="32" align="middle" src="'.URL_LOADING2.'">');
+
 	// Título da página do projeto
-	define ("PROJETO_DESC",utf8charset(Session::Get("currentprojectname")));
+	define ("PROJETO_DESC",$mjc->project->name);
 
 	$_userid = isset(Session::Get()->userid) ? Session::Get()->userid : 0;
 
@@ -191,7 +165,7 @@
 		ini_set('display_startup_erros',1);
 		error_reporting(E_ALL);
 	}
-	
+
 	// Indice do componente Collapse
 	$_SESSION["icollapse"] = 0;
 
@@ -208,14 +182,15 @@
 	define('BROWSER', getNavegador());
 
 	// Database Connection do Projeto
-	if (!defined("DATABASECONNECTION")) define("DATABASECONNECTION",(isset($_SESSION["currenttypedatabase"])?$_SESSION["currenttypedatabase"]:(isset($config["CURRENT_DATABASE"])?$config["CURRENT_DATABASE"]:'desenv')));
+	if (!defined("DATABASECONNECTION")) define("DATABASECONNECTION",$mjc->database_current);
 
 	// Abre a transação atual do banco de dados do projeto
 	if (!Transacao::abrir("current") && (tdc::r('controller') == '' || tdc::r('controller') == 'install') && AMBIENTE == 'SISTEMA'){
-		
+
 		// Redireciona o sistema para instalação do sistema
 		include PATH_MVC_CONTROLLER . 'install.php';
 		exit;
+
 	}
 
 	// Variavel Global da conexão ative com banco de dados

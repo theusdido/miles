@@ -291,7 +291,7 @@ class Pagina Extends Html {
 				this.username 					= "'.(isset(Session::get()->username)?Session::get()->username:"").'";
 				this.usergroup 					= '.(isset(Session::get()->usergroup)?(is_numeric(Session::get()->usergroup)?Session::get()->usergroup:0):0).';
 				this.empresa					= "'.(isset(Session::get()->empresa)?Session::get()->empresa:"").'";
-				this.projeto					= "'.(isset(Session::get()->projeto)?Session::get()->projeto:"").'";
+				this.projeto					= '.CURRENT_PROJECT_ID.';
 				this.permitirexclusao			= "'.(isset(Session::get()->permitirexclusao)?Session::get()->permitirexclusao:"").'";
 				this.permitirtrocarempresa		= "'.(isset(Session::get()->permitirtrocarempresa)?Session::get()->permitirtrocarempresa:"").'";
 				this.currentprojectregisterpath	= "'.PATH_CURRENT_PROJECT.'";

@@ -208,7 +208,7 @@
 		
 				$attr_empresa = tdClass::Criar("repositorio",array(ATRIBUTO))->carregar($sql_attr);			
 				if ($attr_empresa){
-					$sql->add(tdClass::Criar("sqlfiltro",array("projeto",'=',Session::get()->projeto)));
+					$sql->add(tdClass::Criar("sqlfiltro",array("projeto",'=',CURRENT_PROJECT_ID)));
 				}
 				
 				/* Filtro de empresa */
@@ -775,16 +775,16 @@
 			if ($conn =Transacao::Get()){
 				$log 				= tdClass::Criar("persistent",array(LOG))->contexto;
 				$log->id 			= $log->getUltimo() + 1;
-				$log->usuario	= Session::get()->userid;
-				$log->projeto	= Session::get()->projeto;
-				$log->empresa	= Session::get()->empresa;
-				$log->entidade	= getEntidadeId("menu",$conn);
+				$log->usuario		= Session::get()->userid;
+				$log->projeto		= CURRENT_PROJECT_ID;
+				$log->empresa		= Session::get()->empresa;
+				$log->entidade		= getEntidadeId("menu",$conn);
 				$log->valorid 		= $_GET["menu"];
 				$log->datahora		= date("Y-m-d H:i:s");
 				$log->acao 			= 4;
 				$log->armazenar();
 				Transacao::Commit();
-			}	
+			}
 		break;
 		case "createprojetct":
 			$idproject = tdClass::Read("id");

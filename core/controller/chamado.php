@@ -162,7 +162,7 @@
 		if ($op == "salvarinteracao"){
 			$proxid = getProxId("ticketinteraction",$connMILES);
 			$empresa = Session::Get()->empresa;
-			$projeto = Session::Get()->projeto;
+			$projeto = CURRENT_PROJECT_ID;
 			$ticket = tdClass::Read("id");
 			$descricao = utf8charset(tdClass::Read("descricao"));
 			$data = date("Y-m-d H:i:s");
@@ -341,7 +341,7 @@
 				// Form Novo Chamado
 				$form = tdClass::Criar("form");
 				$form->id = "form-interacao-chamado";
-				$form->action = "index.php?controller=chamado&op=salvarinteracao&id=" . $id . "&currentproject=" . Session::Get()->projeto;
+				$form->action = "index.php?controller=chamado&op=salvarinteracao&id=" . $id . "&currentproject=" . CURRENT_PROJECT_ID;
 				$form->method = "POST";
 				$form->enctype = "multipart/form-data";
 				$form->target = "msg-retorno";
@@ -411,7 +411,7 @@
 							controller:"chamado",
 							op:"listarinteracoes",
 							ticket:'.$id.',
-							currentproject:'.Session::Get()->projeto.'
+							currentproject:'.CURRENT_PROJECT_ID.'
 						},
 						complete:function(ret){
 							$("#listarinteracoes").html(ret.responseText);
@@ -451,7 +451,7 @@
 			$where = " WHERE 1=1 ";			
 			if (Session::Get()->userid != 1){ // Condição especial para super usuário
 				$where .= "
-					AND a.projeto = ".Session::Get()->projeto;
+					AND a.projeto = ".CURRENT_PROJECT_ID;
 			}
 			$statuschamado = (int)tdClass::Read("status");
 			if (tdClass::Read("status") != ""){
@@ -585,7 +585,7 @@
 			// Form Novo Chamado
 			$form = tdClass::Criar("form");
 			$form->id = "form-criar-chamado";
-			$form->action = "index.php?controller=chamado&op=salvarchamado&currentproject=".Session::Get()->projeto;
+			$form->action = "index.php?controller=chamado&op=salvarchamado&currentproject=".CURRENT_PROJECT_ID;
 			$form->method = "POST";
 			$form->enctype = "multipart/form-data";
 			$form->target = "msg-retorno";
@@ -638,7 +638,7 @@
 			$listaProjetosOptions = "";
 			$sqlLCO = "SELECT id,nome FROM td_projeto";
 			if (Session::Get()->userid != 1){
-				$whereCO = " WHERE projeto = " . Session::Get()->projeto;
+				$whereCO = " WHERE projeto = " . CURRENT_PROJECT_ID;
 				$sqlLCO .= $whereCO;
 			}
 			$sqlLCO .=  " ORDER BY id DESC; ";
@@ -774,7 +774,7 @@
 		$sqlChamado = '
 			SELECT a.id,a.titulo,a.usuario,a.projeto
 			FROM td_ticket a 
-			'.(Session::Get()->userid!=1?'WHERE a.projeto = '.Session::Get()->projeto:'').'
+			'.(Session::Get()->userid!=1?'WHERE a.projeto = '.CURRENT_PROJECT_ID:'').'
 			ORDER BY a.id DESC 
 			LIMIT 3;
 		';
@@ -786,8 +786,8 @@
 			$a->href = "#";
 			$a->data_id = $linhaChamado["id"];
 			
-			if ($linhaChamado["projeto"] != Session::Get()->projeto){
-				$referenciaExibirChamado = Session::Get()->currentprojectname;
+			if ($linhaChamado["projeto"] != CURRENT_PROJECT_ID){
+				$referenciaExibirChamado = DATABASECONNECTION;
 			}else{
 				$referenciaExibirChamado = tdClass::Criar("persistent",array(USUARIO,$linhaChamado["usuario"]))->contexto->nome;				
 			}

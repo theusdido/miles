@@ -154,13 +154,13 @@
 		if ($query->rowCount() > 0){
 			return $query->fetch()[0];
 		}else{
-			$cidadeOBJ = tdClass::Criar("persistent",array("td_imobiliaria_cidade"))->contexto;
-			$idCidade = $cidadeOBJ->proximoID();
-			$cidadeOBJ->id = $idCidade;
-			$cidadeOBJ->empresa = Session::Get()->empresa;
-			$cidadeOBJ->projeto = Session::Get()->projeto;
-			$cidadeOBJ->estado = $ufID;
-			$cidadeOBJ->nome = $cidade;
+			$cidadeOBJ 				= tdClass::Criar("persistent",array("td_imobiliaria_cidade"))->contexto;
+			$idCidade 				= $cidadeOBJ->proximoID();
+			$cidadeOBJ->id 			= $idCidade;
+			$cidadeOBJ->empresa 	= Session::Get()->empresa;
+			$cidadeOBJ->projeto 	= CURRENT_PROJECT_ID;
+			$cidadeOBJ->estado 		= $ufID;
+			$cidadeOBJ->nome 		= $cidade;
 			//$cidadeOBJ->sigla = getSiglaLocalidade($cidade,$uf);
 			$cidadeOBJ->armazenar();
 			
@@ -175,16 +175,16 @@
 		if ($query->rowCount() > 0){
 			return $query->fetch()[0];
 		}else{
-			$ufOBJ = tdClass::Criar("persistent",array("td_imobiliaria_estado"))->contexto;
-			$idUF = $ufOBJ->proximoID();
-			$ufOBJ->id = $idUF;
-			$ufOBJ->empresa = Session::Get()->empresa;
-			$ufOBJ->projeto = Session::Get()->projeto;
-			$ufOBJ->pais = 1;
-			$ufOBJ->nome = getNomeUF($uf);
-			$ufOBJ->sigla = $uf;
-			$ufOBJ->denominacao = '';
-			$ufOBJ->armazenar();			
+			$ufOBJ 					= tdClass::Criar("persistent",array("td_imobiliaria_estado"))->contexto;
+			$idUF 					= $ufOBJ->proximoID();
+			$ufOBJ->id 				= $idUF;
+			$ufOBJ->empresa 		= Session::Get()->empresa;
+			$ufOBJ->projeto 		= CURRENT_PROJECT_ID;
+			$ufOBJ->pais 			= 1;
+			$ufOBJ->nome 			= getNomeUF($uf);
+			$ufOBJ->sigla 			= $uf;
+			$ufOBJ->denominacao 	= '';
+			$ufOBJ->armazenar();	
 			return $idUF;
 		}
 	}

@@ -1,14 +1,18 @@
 <?php
-	if (Session::Get()->currenttypedatabase == "producao"){
-		$texto = 'Produção';
-	}else if(Session::Get()->currenttypedatabase == "desenv"){
-		$texto = 'Desenvolvimento';
-	}else{
-		$texto = '';
+	switch(DATABASECONNECTION){
+		case 'producao':
+			$texto = 'Produção';
+		break;
+		case 'desenv':
+			$texto = 'Desenvolvimento';
+		break;
+		default:
+		$texto = '';	
 	}
-	$idprojetocurrent 				= Session::Get()->projeto;
+
+	$idprojetocurrent 				= CURRENT_PROJECT_ID;
 	$dadosconfigprojeto 			= tdClass::Criar("div");
-	$dadosconfigprojeto->class 		= "col-md-12 dados-config-projeto-" . Session::Get()->currenttypedatabase;
+	$dadosconfigprojeto->class 		= "col-md-12 dados-config-projeto-" . DATABASECONNECTION;
 	$dadosconfigprojeto->id 		= "dados-config-projeto";
 	$dadosconfigprojeto->add("ID: [ <b>{$idprojetocurrent}</b> ] - Instância: <b>".$texto."</b>");
 

@@ -124,7 +124,7 @@ class Config {
 					$filenametemp		= isset($val["filenametemp"])?$val["filenametemp"]:'';
 					$pathfiletemp		= PATH_CURRENT_FILE_TEMP . $filenametemp;
 					$pathfile       	= PATH_CURRENT_FILE . $filenamefixed;
-					$pathexternalfile	= '/public_html/sistema/projects/'.Session::Get()->projeto.'/arquivos/' . $filenamefixed;
+					$pathexternalfile	= '/public_html/sistema/projects/'.CURRENT_PROJECT_ID.'/arquivos/' . $filenamefixed;
 					$file_full_temp		= isset($val["filenametemp"])?PATH_CURRENT_FILE_TEMP . $val["filenametemp"]:'';
 
 					// Em modo de exclusão

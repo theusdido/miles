@@ -5,7 +5,7 @@
 	$sql = tdClass::Criar("sqlcriterio");
 	$sql->addFiltro("datainicio",'>=',date("Y-m-d"));
 	$sql->addFiltro("datainicio",'<=',date("Y-m-d"));
-	$sql->addFiltro("projeto",'=',Session::get()->projeto);
+	$sql->addFiltro("projeto",'=',CURRENT_PROJECT_ID);
 	$sql->addFiltro("empresa",'=',Session::get()->empresa);
 	$dataset = tdClass::Criar("repositorio",array(PREFIXO . "_aviso"))->carregar($sql);
 	foreach($dataset as $aviso){

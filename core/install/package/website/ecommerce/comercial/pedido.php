@@ -14,8 +14,8 @@
 		$campodescchave = "",
 		$atributogeneralizacao = 0,
 		$exibirlegenda = 1,
-		$criarprojeto = 1,
-		$criarempresa = 1,
+		$criarprojeto = 0,
+		$criarempresa = 0,
 		$criarauth = 0,
 		$registrounico = 0
 	);
@@ -35,13 +35,20 @@
 	$pedido_isfinalizado		= criarAtributo($conn,$entidadeID,"isfinalizado","Finalizado ?","tinyint",0,1,7,0,0,0,'',1,0);
 
 	criarAba($conn,$entidadeID,"Capa", implode(",",array(
-		$pedido_cliente,$pedido_datahoraenvio,$pedido_datahoraretorno,$pedido_carrinho,$pedido_status,$pedido_metodopagamento,$pedido_qtdetotalitens,
-		$pedido_valortotal,$pedido_representante,$pedido_representante
+		$pedido_cliente,
+		$pedido_datahoraenvio,
+		$pedido_datahoraretorno,
+		$pedido_carrinho,
+		$pedido_status,
+		$pedido_metodopagamento,
+		$pedido_qtdetotalitens,
+		$pedido_valortotal,
+		$pedido_isfinalizado
 	)));
 
 	// Criando Acesso
 	$menu_webiste = addMenu($conn,'E-Commerce','#','',0,0,'ecommerce');
-	
+
 	// Adicionando Menu
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,7,'ecommerce-' . $entidadeNome,$entidadeID,'cadastro');
 
@@ -56,27 +63,27 @@
 		$campodescchave = "",
 		$atributogeneralizacao = 0,
 		$exibirlegenda = 0,
-		$criarprojeto = 1,
-		$criarempresa = 1,
+		$criarprojeto = 0,
+		$criarempresa = 0,
 		$criarauth = 0,
 		$registrounico = 0
 	);
 
-	$itenspedido_pedido 		= criarAtributo($conn,$itenspedidoID,"pedido","Pedido","int",0,0,16,0,$entidadeID,0,"");
-	$itenspedido_carrinhoitem	= criarAtributo($conn,$itenspedidoID,"carrinhoitem","Item do Carrinho","int",0,0,22,1,getEntidadeId("ecommerce_carrinhoitem",$conn),0,"");
+	$itenspedido_pedido 		= criarAtributo($conn,$itenspedidoID,"pedido","Pedido","int",0,1,16,0,$entidadeID,0,"");
+	$itenspedido_carrinhoitem	= criarAtributo($conn,$itenspedidoID,"carrinhoitem","Item do Carrinho","int",1,0,22,1,getEntidadeId("ecommerce_carrinhoitem",$conn),0,"");
 	$itenspedido_produto 		= criarAtributo($conn,$itenspedidoID,"produto","Produto","int",0,0,22,1,getEntidadeId("ecommerce_produto",$conn),0,"");
 	$itenspedido_qtde 			= criarAtributo($conn,$itenspedidoID,"qtde","Quantidade","tinyint",0,0,26,1,0,0,"");
-	$itenspedido_descricao 		= criarAtributo($conn,$itenspedidoID,"descricao","Descrição","varchar",200,0,3,1,0,0,"");
-	$itenspedido_valor 			= criarAtributo($conn,$itenspedidoID,"valor","Valor","float",0,0,13,1,0,0,"");	
-	$itenspedido_valortotal 	= criarAtributo($conn,$itenspedidoID,"valortotal","Valor Total","float",0,1,13,1,0,0,"");
-	$itenspedido_qtde 			= criarAtributo($conn,$itenspedidoID,"qtdetotaldeitens","Quantidade Total","tinyint",0,0,26,1,0,0,"");	
-	$itenspedido_produtonome	= criarAtributo($conn,$itenspedidoID,"produtonome","Produto","varchar",200,1,3,1,0,0,"");
-	$itenspedido_referencia		= criarAtributo($conn,$itenspedidoID,"referencia","Referência","varchar",200,1,3,1,0,0,"");
-	$itenspedido_tamanho_desc 	= criarAtributo($conn,$itenspedidoID,"tamanho_desc","Tamanho","varchar",200,1,3,1,0,0,"");
-	$itenspedido_cor_desc 		= criarAtributo($conn,$itenspedidoID,"cor_desc","Cor","varchar",200,1,3,1,0,0,"");
-	$itenspedido_variacao 		= criarAtributo($conn,$itenspedidoID,"variacao","Variação","varchar",200,1,3,1,0,0,"");
-	$itenspedido_produto 		= criarAtributo($conn,$itenspedidoID,"tamanho","Tamanho","int",0,0,4,1,getEntidadeId("ecommerce_produtotamanho",$conn),0,"");
-	$itenspedido_produto 		= criarAtributo($conn,$itenspedidoID,"cor","Cor","int",0,0,4,1,getEntidadeId("ecommerce_produtocor",$conn),0,"");
+	$itenspedido_descricao 		= criarAtributo($conn,$itenspedidoID,"descricao","Descrição","varchar",200,1,3,1,0,0,"");
+	$itenspedido_valor 			= criarAtributo($conn,$itenspedidoID,"valor","Valor","float",0,0,13,1,0,0,"");
+	$itenspedido_valortotal 	= criarAtributo($conn,$itenspedidoID,"valortotal","Valor Total","float",0,1,13,1,0,0,"",1,0,'',false);
+	$itenspedido_qtdetotal		= criarAtributo($conn,$itenspedidoID,"qtdetotaldeitens","Quantidade Total","tinyint",0,1,26,1,0,0,"",1,0,'',false);
+	$itenspedido_produtonome	= criarAtributo($conn,$itenspedidoID,"produtonome","Produto","varchar",200,1,3,1,0,0,"",1,0,'',false);
+	$itenspedido_referencia		= criarAtributo($conn,$itenspedidoID,"referencia","Referência","varchar",200,1,3,1,0,0,"",1,0,'',false);
+	$itenspedido_tamanho_desc 	= criarAtributo($conn,$itenspedidoID,"tamanho_desc","Tamanho","varchar",200,1,3,1,0,0,"",1,0,'',false);
+	$itenspedido_cor_desc 		= criarAtributo($conn,$itenspedidoID,"cor_desc","Cor","varchar",200,1,3,1,0,0,"",1,0,'',false);
+	$itenspedido_variacao 		= criarAtributo($conn,$itenspedidoID,"variacao","Variação","varchar",200,1,3,1,0,0,"",1,0,'',false);
+	$itenspedido_produtotamanho	= criarAtributo($conn,$itenspedidoID,"tamanho","Tamanho","int",0,1,4,1,getEntidadeId("ecommerce_produtotamanho",$conn),0,"");
+	$itenspedido_produtocor		= criarAtributo($conn,$itenspedidoID,"cor","Cor","int",0,1,4,1,getEntidadeId("ecommerce_produtocor",$conn),0,"");
 
 	// Cria Relacionamento
 	criarRelacionamento($conn,2,$entidadeID,$itenspedidoID,"Itens",$itenspedido_pedido);
