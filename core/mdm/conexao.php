@@ -9,6 +9,7 @@
 	}
 	
 	define('IS_SHOW_ERROR_MESSAGE',true);
+	define('URL_FAVICON','');
 
 	if (isset($_SESSION["currentproject"])){
 		$currentproject = $_SESSION["currentproject"];
@@ -27,9 +28,8 @@
 		throw new Exception("Arquivo configuração não existe");
 	}
 
-	$currenttypedatabase 	= isset($_SESSION["currenttypedatabase"]) ? $_SESSION["currenttypedatabase"] : $config["CURRENT_DATABASE"];
-	$currentprojectname 	= isset($_SESSION["currentprojectname"]) ? $_SESSION["currentprojectname"] : $config["PROJETO_DESC"];
-
+	$currenttypedatabase 	= $miles_json->database_current;
+	$currentprojectname 	= $miles_json->project->name;
 
 	define("DATABASECONNECTION",$currenttypedatabase);
 	define("PATH_CURRENT_CONFIG_PROJECT",$config_path);	

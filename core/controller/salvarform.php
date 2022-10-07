@@ -63,7 +63,6 @@
 			}
 		}
 		$entidade->armazenar();
-
 	}
 
 	// Seta os relacionamentos

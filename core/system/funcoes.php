@@ -1720,12 +1720,14 @@ function retornaValorTipo($valor){
 	}
 	return $valor;
 }
-function isutf8($str) {
+function isutf8($str){
+	if ($str == null) return '';
 	$c=0; $b=0;
 	$bits=0;
 	$len=strlen($str);
 	for($i=0; $i<$len; $i++){
-		$c=ord($str[$i]);
+		if (!isset($str[$i])) continue;
+		$c=ord($str[$i]);		
 		if($c > 128){
 			if(($c >= 254)) return false;
 			elseif($c >= 252) $bits=6;
@@ -1843,7 +1845,7 @@ function addCampoFormatadoDB($dados,$entidade){
 				case 'descricao':
 				case 'labelzerocheckbox':
 				case 'labelumcheckbox':
-					$dados[$key] = isutf8($value) ? utf8charset($value, 'D') : utf8charset($value, 'E');
+					$dados[$key] = isutf8($value) ? $value : utf8charset($value, 'E');
 				break;
 			}
 		}
@@ -1855,7 +1857,7 @@ function addCampoFormatadoDB($dados,$entidade){
 		$linha 			= array( $key => $value );
 
 		// Converte os acentos, afeta o método tdc::dj(), tdc::da e tdc::pa	
-		$dados[$key] = isutf8($value) ? utf8charset($value, 'D') : utf8charset($value, 'E');
+		$dados[$key] = isutf8($value) ? $value  : utf8charset($value, 'E');
 
 		if ($tipohtml == 11){
 			$dados[$key . '_formated']	= dateToMysqlFormat($value,true);
@@ -1871,8 +1873,8 @@ function addCampoFormatadoDB($dados,$entidade){
 				if ($campodescdefault->hasData()){
 					$valorfk 				= is_numeric_natural($value)?$value:0;
 					$registro 				= getRegistro(null,tdc::p(ENTIDADE,$atributoOBJ->chaveestrangeira)->nome,$campodescdefault->nome, "id={$valorfk}" , "limit 1");
-					$_utf8charset			= isutf8($registro[$campodescdefault->nome]) ? 'D' : 'E';
-					$dados[$key . "_desc"] 	= utf8charset($registro[$campodescdefault->nome],$_utf8charset);
+					$_utf8charset			= isutf8($registro[$campodescdefault->nome]) ? $registro[$campodescdefault->nome] : utf8charset($registro[$campodescdefault->nome],'E');
+					$dados[$key . "_desc"] 	= $_utf8charset;
 				}
 			}
 		}else if ($tipohtml == 19){

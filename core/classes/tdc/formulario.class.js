@@ -36,6 +36,7 @@ tdFormulario.prototype.construct = function(entidade_id,registro_id = 0,entidade
 		this.init();
 	}else{
 		console.warn('Entidade => ' + entidade_id + ' não existe em td_entidade.');
+		console.warn('*** Provavelmente não tem entidade no Menu Topo. ***');
 	}
 }
 

@@ -79,7 +79,7 @@ class Config {
 		if (sizeof($dataset) <= 0) return $valor;
 		switch((int)$dataset[0]->tipohtml){
 			case 1: case 2: case 3:
-				$retorno = utf8charset($valor,4);
+				$retorno = utf8charset($valor);
 			break;
 			case 5:
 				if (gettype($valor) == 'array'){

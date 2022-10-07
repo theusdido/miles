@@ -278,6 +278,7 @@ class tdc Extends tdClass{
 		}
 
 		if (IS_SHOW_ERROR_MESSAGE && json_last_error() != JSON_ERROR_NONE){
+			Debug::console($entidade . ' => ' . $sql->dump(),'SQL');
 			var_dump(json_last_error_msg());
 			var_dump(json_last_error());
 		}
@@ -424,4 +425,9 @@ class tdc Extends tdClass{
 	{
 		echo json_encode($message);
 	}
+
+	public static function utf8($str){
+		return isutf8($str) ? $str : utf8charset($str,'E');
+	}
+	
 }

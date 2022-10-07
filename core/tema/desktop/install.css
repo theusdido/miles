@@ -59,17 +59,13 @@
 #linha-personalizacao .panel-footer{
 	text-align:right;
 }
-#formulario-personalizado{
-	display: flex;
-	flex-flow: wrap;
-}
-#formulario-personalizado label {
+#formulario-personalizado label{
 	margin-left:3px;
 }
-#formulario-personalizado .form-group {
+#formulario-personalizado .form-group{
 	border-bottom:1px solid #DDD;
-	width:33.3%;
-	margin:15px 0;
+	width:20%;
+	margin:2%;
 }
 #loading-atualizar-personalizado{
 	display:none;

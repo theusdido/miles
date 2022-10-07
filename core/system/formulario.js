@@ -1,4 +1,5 @@
 var EntidadePrincipalID                 = $("#entidadeprincipalid").val();
+debugger;
 formulario[EntidadePrincipalID]         = new tdFormulario(EntidadePrincipalID);
 // Funcionalidade tem que vir antes do registro único
 if (typeof funcionalidade != 'undefined') formulario[EntidadePrincipalID].funcionalidade = funcionalidade;
