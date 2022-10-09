@@ -200,51 +200,77 @@
 						}
 					}
 				}
+				logPagSeguro("\nParametro para enviar por e-mail => {$configucao_ecommerce->is_send_order_email} \n");
 				if ($configucao_ecommerce->is_send_order_email){
 					/* ***********************************
 						ENVIA PEDIDO POR E-MAIL
 					*********************************** */
 					$_pedido_email 				= tdc::ru('td_ecommerce_pedidoemail');
 					$_email_config				= tdc::ru('td_emailconfiguracao');
-					$_ecommerce_config			= tdc::ru('ecommerce_configuracoes');
+					$_ecommerce_config			= tdc::ru('td_ecommerce_configuracoes');
+					
+					include(PATH_LIB . "phpmailer/PHPMailerAutoload.php");
 
-						include(PATH_LIB . "phpmailer/PHPMailerAutoload.php");
+					// $mail 						= new PHPMailer();
+					// $mail->SetLanguage("en",PATH_LIB . "phpmailer/language/");
+					// $mail->CharSet 				= $_email_config->chartset == '' ?  'UTF-8' : $_email_config->chartset;
+					// $mail->SMTPDebug 			= 0;
+					// $mail->SMTPAuth 			= $_email_config->smtpauth ? true : false;
+					// $mail->Username 			= $_pedido_email->username;
+					// $mail->Password 			= $_pedido_email->password;
+					// $mail->SMTPSecure 			= $_email_config->smtpsecure;
+					// $mail->Host 				= $_email_config->host;
+					// $mail->Port 				= $_email_config->port;
+					// $mail->From 				= $_email_config->username;
+					// $mail->FromName 			= $_pedido_email->destinatario == '' ? 'E-Commerce - #automatico#' : $_pedido_email->destinatario;
+					// $mail->WordWrap 			= 50;
+					// $mail->Subject 				= $_pedido_email->assunto == '' ? "PEDIDO REALIZADO" : $_pedido_email->assunto;
 
-						$mail 						= new PHPMailer();
-						$mail->SetLanguage("en",PATH_LIB . "phpmailer/language/");
-						$mail->CharSet 				= $_email_config->chartset == '' ?  'UTF-8' : $_email_config->chartset;
-						$mail->SMTPDebug 			= 0;
-						$mail->SMTPAuth 			= $_email_config->smtpauth;
-						$mail->Username 			= $_pedido_email->username;
-						$mail->Password 			= $_pedido_email->password;
-						$mail->SMTPSecure 			= $_email_config->smtpsecure;
-						$mail->Host 				= $_email_config->host;
-						$mail->Port 				= $_email_config->port;
-						$mail->From 				= $_email_config->username;
-						$mail->FromName 			= $_pedido_email->destinatario == '' ? 'E-Commerce - #automatico#' : $_pedido_email->destinatario;
-						$mail->WordWrap 			= 50;
-						$mail->Subject 				= $_pedido_email->assunto == '' ? "PEDIDO REALIZADO" : $_pedido_email->assunto;
-						
-						# E-Mail enviado para a loja
-						$mail->AddAddress($_ecommerce_config->emailenviopedido,"E-Mail Pedido");
-						if ($_ecommerce_config->issmtp){
-							$mail->IsSMTP();
-						}
-						$mail->IsHTML(true);
-						$url_impressao_pedido 	= URL_MILES. "index.php?controller=ecommerce/pedidoenvioemail/pedidoenvioemail&registro={$idPedido}";
-						$msg 					= file_get_contents($url_impressao_pedido);
-						$mail->Body 			= $msg;
-						if(!$mail->Send())
-						{
-							echo $mail->ErrorInfo;
-							exit;
-						}else{
-							$retorno['msg'] 	= 'E-Mail enviado com sucesso!';
-							$retorno['email']  	= $_ecommerce_config->emailenviopedido;
-							$retorno['link']	= $url_impressao_pedido;
-						}
+					$mail 						= new PHPMailer();
+					#$mail->SetLanguage("en",PATH_LIB . "phpmailer/language/");
+					$mail->CharSet 				= 'UTF-8';
+					$mail->SMTPDebug 			= 1;
+					$mail->SMTPAuth 			= true;
+					$mail->Username 			= 'automatico@qeru.com.br';
+					$mail->Password 			= 'q@Teia.10#miles';
+					$mail->SMTPSecure 			= 'SSL';
+					$mail->Host 				= 'mail.qeru.com.br';
+					$mail->Port 				= '465';
+					$mail->From 				= 'automatico@qeru.com.br';
+					$mail->FromName 			= 'E-Commerce - #automatico#';
+					$mail->WordWrap 			= 50;
+					$mail->Subject 				= 'PEDIDO REALIZADO';
 
+					# E-Mail enviado para a loja
+					#$mail->AddAddress($_ecommerce_config->emailenviopedido,"E-Mail Pedido");
+					$mail->AddAddress("theusdido@gmail.com","Developer");
+					#if ($_ecommerce_config->issmtp){
+					#	$mail->IsSMTP();
+					#}
+					$mail->IsHTML(true);
+					#$url_impressao_pedido 	= URL_MILES. "index.php?controller=ecommerce/pedidoenvioemail/pedidoenvioemail&registro={$idPedido}";
+					#$msg 					= file_get_contents($url_impressao_pedido);
+					$msg 					= 'teste';
+					$mail->Body 			= $msg;
+
+					#logPagSeguro("$_email_config->chartset \n $_email_config->smtpauth \n $_pedido_email->username \n $_pedido_email->password \n $_email_config->smtpsecure \n $_email_config->host \n $_email_config->port \n $_pedido_email->destinatario \n $_pedido_email->assunto \n $_ecommerce_config->emailenviopedido \n $_ecommerce_config->issmtp");
+					var_dump($mail->Send());
+					exit;
+					if(!$mail->Send())
+					{
+						echo $mail->ErrorInfo;
+						exit;
+					}else{
+						$retorno['msg'] 	= 'E-Mail enviado com sucesso!';
+						#$retorno['email']  	= $_ecommerce_config->emailenviopedido;
+						#$retorno['link']	= $url_impressao_pedido;
+					}
+
+					exit;
 				}
+				echo 'Não chegou no fim do script';
+				exit;
+
 				if ($configucao_ecommerce->is_send_app_mobile){
 					logPagSeguro("Chegou aqui >>>");
 					/* ***********************************

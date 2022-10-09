@@ -2,19 +2,29 @@
 	
 	$_full_port 	= (PORT == '' ? '' : ':') . PORT;
 	$_root_folder	= (isset($_env->root) ? $_env->root : '');
+	$_domain	 	= HTTP_HOST;
 
     // URL ROOT
-	define('URL_ROOT', REQUEST_PROTOCOL . HTTP_HOST . $_full_port . $_root_folder);
+	if (isset($_env->url->domain)){
+		$_mainHost 	= REQUEST_PROTOCOL . $_env->url->domain . '/';
+		$_domain	= $_env->url->domain;
+	}else if (isset($_SERVER['SERVER_NAME'])){
+		$_mainHost 	= REQUEST_PROTOCOL . $_SERVER['SERVER_NAME'] . '/';
+		$_mainHost	= str_replace('www.','', $_mainHost);
+	}else{
+		$_mainHost	= REQUEST_PROTOCOL . $_domain . $_full_port . $_root_folder;
+	}
+
+	define('URL_ROOT', $_mainHost);
 
 	// URL ALIAS
 	if (isset($_GET["alias"])){
-		define('URL_ALIAS',REQUEST_PROTOCOL . HTTP_HOST . "/" . $_GET["alias"]);
+		define('URL_ALIAS',REQUEST_PROTOCOL . $_domain . "/" . $_GET["alias"]);
 	}else{
 		define('URL_ALIAS',URL_ROOT);
 	}
 
-	// URL API
-	$_domain = isset($_env->url->domain) ? $_env->url->domain : HTTP_HOST;
+	// URL API	
 	define('URL_API', REQUEST_PROTOCOL . $_domain . $_full_port . '/' . FOLDER_MILES . "index.php");
 
 	if (isset($mjc->folder)){
@@ -26,12 +36,12 @@
 	}
 
 	// URL MILES
-	$_url_miles	= REQUEST_PROTOCOL . HTTP_HOST . $_full_port .  $request_uri_dir;
+	$_url_miles	= REQUEST_PROTOCOL . $_domain . $_full_port .  $request_uri_dir;
 
 	define('URL_MILES',$_url_miles);
 
 	// URL NODEJS
-	define('URL_NODEJS', REQUEST_PROTOCOL . HTTP_HOST . ':2711/');
+	define('URL_NODEJS', REQUEST_PROTOCOL . $_domain . ':2711/');
 
 	// URL CORE
 	define('URL_CORE', URL_MILES . FOLDER_CORE . '/');

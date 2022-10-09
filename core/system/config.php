@@ -27,12 +27,15 @@
 	// REQUEST PROTOCOLO
 	define("REQUEST_PROTOCOL",$_http_request."://");
 
+	// Força redirecionar para HTTPs
+	$force_https = isset($_env->system->force_https) ? $_env->system->force_https : false;
+
 	// Encerrar o programa se a requisição não estiver com HTTPs 
 	// e o a configuração estiver setada para HTTPs
 	if ($_http_request == 'https' && !_IS_HTTP)
 	{
 		$link_https = str_replace('http://','https://',$_SERVER['SCRIPT_URI']);
-		if (AMBIENTE == 'SISTEMA'){
+		if (AMBIENTE == 'SISTEMA' && !$force_https){
 			showMessage('HTTPs está ativo na configuração!');
 			echo '<br><a href="'.$link_https.'">Entrar com URL segura.</a>';
 			exit;

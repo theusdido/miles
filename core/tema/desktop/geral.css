@@ -774,4 +774,14 @@ header #menu {
 .gradededados .btn-editar-emmassa{
 	margin-right:10px;
 }
+
+#miles-root > div > footer {
+	margin-bottom:0px;
+	height: 15px;
+}
+
+#miles-root > div > footer p {
+	margin:-7px;
+	padding:0;
+}
 -->

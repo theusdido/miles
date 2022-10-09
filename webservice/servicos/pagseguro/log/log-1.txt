@@ -1,35 +1,11 @@
 
-RETORNO => 28/09/2022 23:19:43
+RETORNO => 08/10/2022 09:38:52
  -------------------------------------------------------------------------------------------------- 
 
 SELECT email,token,notificacaourl,producao FROM td_ecommerce_pagseguro WHERE id = 1;
-https://ws.sandbox.pagseguro.uol.com.br/v2/transactions/notifications/E154D7-36031A031AB6-1EE4336FBD31-6AE092?email=theusdido@hotmail.com&token=F0908AA5BC894935A8630A1153655E59
+https://ws.sandbox.pagseguro.uol.com.br/v2/transactions/notifications/E154D736031A031AB61EE4336FBD316AE092?email=theusdido@hotmail.com&token=F0908AA5BC894935A8630A1153655E59
 UPDATE td_ecommerce_carrinhocompras SET inativo = 1 WHERE id = 8;
 SELECT * FROM td_ecommerce_carrinhocompras WHERE id = 8;
 SELECT id FROM td_ecommerce_pedido WHERE carrinhocompras = 8 ORDER BY id DESC LIMIT 1;
-INSERT INTO td_ecommerce_pedido (id,cliente,datahoraenvio,datahoraretorno,carrinhocompras,status,metodopagamento,qtdetotalitens,valortotal,valorfrete) VALUES(
-					2,1,'2022-09-28 23:13:33',now(),8,3,1,1,250.00,0);
+UPDATE td_ecommerce_pedido SET cliente = 1, datahoraretorno = now() , status = 3 , metodopagamento = 1, qtdetotalitens = 1, valortotal = 250.00, valorfrete = 0 WHERE id = 2;
 SELECT * FROM td_ecommerce_carrinhoitem WHERE carrinho = 8;
-
-								INSERT INTO td_ecommerce_pedidoitem 
-								(
-									id,
-									pedido,
-									produto,
-									qtde,
-									descricao,
-									valor,
-									valortotal,
-									carrrinhoitem,
-									produtonome
-								) VALUES (
-									2,
-									2,
-									1,
-									1,
-									'Belo Vestido Azul',
-									250,
-									250,
-									2,
-									'Belo Vestido Azul'
-							);

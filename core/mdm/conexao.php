@@ -2,24 +2,25 @@
 
 	$miles_json 	= json_decode(file_get_contents('../../miles.json'));
 	date_default_timezone_set('America/Sao_Paulo');	
+
+	if (isset($miles_json->currentproject)){
+		$_currentproject_id = $miles_json->currentproject;
+	}else{
+		$_currentproject_id = isset($_GET["currentproject"])?$_GET["currentproject"]:(isset($_POST["currentproject"])?$_POST["currentproject"]:1);
+	}
+
 	if (@session_id() == ""){
-		$currentProjectParams = isset($_GET["currentproject"])?$_GET["currentproject"]:(isset($_POST["currentproject"])?$_POST["currentproject"]:1);
-		session_name("miles_SISTEMA_" . $currentProjectParams);
+		session_name("miles_SISTEMA_" . $_currentproject_id);
 		session_start();
 	}
-	
+
+	define('CURRENT_PROJECT_ID',$_currentproject_id);
 	define('IS_SHOW_ERROR_MESSAGE',true);
 	define('URL_FAVICON','');
 
-	if (isset($_SESSION["currentproject"])){
-		$currentproject = $_SESSION["currentproject"];
-	}else{
-		$_SESSION["currentproject"] = $currentProjectParams;
-		$currentproject 			= $currentProjectParams;
-	}
-	
-	$config_path = "../../projects/".$currentproject."/config/";
-	$config_file = $config_path . "current_config.inc";
+	$currentproject 	= $_currentproject_id;	
+	$config_path 		= "../../projects/".$currentproject."/config/";
+	$config_file 		= $config_path . "current_config.inc";
 
 	require '../classes/bd/conexao.class.php';
 	if (file_exists($config_file)){
@@ -80,4 +81,4 @@
 	}
 
 	define('URL_LIB', $miles_json->system->url->lib);
-	define('URL_MILES','https://primodass.com.br/miles/');
+	define('URL_MILES','http://191.252.134.34/~primodas/miles/');

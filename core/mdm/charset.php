@@ -2,8 +2,6 @@
 	require 'conexao.php';
 	require 'prefixo.php';
 	require 'funcoes.php';
-
-	if (!defined('URL_MILES')) define('URL_MILES',$_SESSION['URL_MILES']);
 ?>
 <html>
 	<head>
@@ -17,8 +15,7 @@
 					controller:'mdm/charset',
 					op:"setar",
 					id:id,
-					charset:obj.value,
-					currentproject:<?=$_SESSION["currentproject"]?>
+					charset:obj.value
 				}
 			});
 		}
@@ -29,8 +26,7 @@
 				data:{
 					controller:'mdm/charset',
 					op:"listaratributo",
-					entidade:entidade,
-					currentproject:<?=$_SESSION["currentproject"]?>
+					entidade:entidade
 				},
 				beforeSend:function(){
 					$("#atributolista").html("<option>Carregando ...</option>");
@@ -57,8 +53,7 @@
 						controller:'mdm/charset',
 						op:"corrigir",
 						entidade:$("#entidadelista").val(),
-						atributo:$("#atributolista").val(),
-						currentproject:<?=$_SESSION["currentproject"]?>
+						atributo:$("#atributolista").val()
 					},
 					beforeSend:function(){
 						$("#loading-corrigir-charset").show();

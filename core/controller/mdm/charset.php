@@ -18,7 +18,6 @@
 			}
 
 			if (is_numeric($entidade)){
-				
 				$sqlT 	= "SELECT id,nome,descricao FROM td_atributo WHERE entidade = {$entidade} AND tipohtml in (1,2,3,14,16,21,27) AND tipo IN ('varchar','char','text');";
 				$queryT = $conn->query($sqlT);
 				$linhaT = $queryT->fetchAll();
