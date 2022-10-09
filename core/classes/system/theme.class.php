@@ -28,7 +28,7 @@ class Theme {
 
 		Retorna o SRC do logo principal
 	*/
-    public static function logoSRC(){
+    public static function logoSRC(){        
         if (file_exists(PATH_CURRENT_LOGO_PADRAO)){
             return URL_CURRENT_LOGO_PADRAO;
         }else{

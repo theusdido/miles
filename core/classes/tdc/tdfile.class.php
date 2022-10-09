@@ -137,7 +137,7 @@ class tdFile {
 			$hashtemp		= md5($f["tmp_name"] . session_id() . "-" . $atributo->nome . "-" . $atributo->entidade);
 			$filenametemp 	= $hashtemp . "." . getExtensao($f["name"]);
 			$pathtdtempfile = PATH_CURRENT_FILE_TEMP . $filenametemp;
-			$urltdtempfile	= Session::Get('URL_CURRENT_FILE_TEMP') . $filenametemp;
+			$urltdtempfile	= URL_CURRENT_FILE_TEMP . $filenametemp;
 			
 			if (move_uploaded_file($f["tmp_name"], $pathtdtempfile)){
 				$dadosarquivo = array(

@@ -18,8 +18,8 @@
 	define("FOLDER_CORE","core");
 
 	// FOLDER PROJECT
-	define("FOLDER_PROJECT","projects");
-	
+	define("FOLDER_PROJECT","project");
+
 	// FOLDER PROJECT
 	define("FOLDER_SYSTEM","system");
 	

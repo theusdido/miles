@@ -20,7 +20,7 @@
 			}
 
 			// Move os arquivos para sua respectiva pasta
-			$path_files_cadastro = "../../projects/".$config["CURRENT_PROJECT"]."/files/relatorio/"; #Fora do escopo do sistema para recepurar a constante PATH_FILES_RELATORIO
+			$path_files_cadastro = "../../project/files/relatorio/"; #Fora do escopo do sistema para recepurar a constante PATH_FILES_RELATORIO
 			$diretorio = dir($path_files_cadastro);
 			while($arquivo = $diretorio -> read()){
 				if ($arquivo != "" && $arquivo != "." && $arquivo != "..");{

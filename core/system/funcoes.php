@@ -1503,7 +1503,7 @@ function setCurrentFileDatabseDefault(){
 	);
 }
 function setCurrentConfigFile($atualizar,$replace = true){
-	$pathconfig = "projects/".Session::Get("currentproject")."/config/";
+	$pathconfig = "project/config/";
 	$fileconfig = "current_config.inc";
 	$pathfinal	= $pathconfig . $fileconfig;
 	if (!file_exists($pathconfig)){

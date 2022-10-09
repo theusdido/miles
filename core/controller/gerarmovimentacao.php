@@ -175,7 +175,7 @@
 
 	// JS Formulário
 	$jsFormulario 		= tdClass::Criar("script");
-	$jsFormulario->src 	= Session::Get('URL_SYSTEM') . "funcoes.js";
+	$jsFormulario->src 	= URL_SYSTEM . "funcoes.js";
 	$jsFormulario->mostrar();
 
 	// Arquivo JS Incorporado

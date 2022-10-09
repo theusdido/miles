@@ -285,15 +285,6 @@
 											});
 										}
 									});
-									<?php
-										/*
-										if (isset($_GET["installsystem"])){
-											echo 'parent.finalizacaoDisplayInstalacao();';
-											$newdir = "../projects/" . $_GET["projetoid"] . "/";
-											copiardiretorio("../projects/1/",$newdir,true,"config");
-										}
-										*/
-									?>
 									$.ajax({
 										type:"POST",
 										url:"<?=URL_MILES?>",

@@ -75,8 +75,8 @@
         "'index.php?controller=menu'",
         "'mysql'",
         "'php'",
-        "'projects/".$config["CURRENT_PROJECT"]."/arquivos'",
-        "'projects/".$config["CURRENT_PROJECT"]."/arquivos/temp'",
+        "'project/arquivos'",
+        "'project/arquivos/temp'",
         "'á'",
         "'table'"
     ));

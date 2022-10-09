@@ -145,8 +145,8 @@
 
 					$entidades = explode (",",$_GET["entidadesarquivo"]);
 					foreach($entidades as $e){
-						$local_arquivo = '../../projects/'.PROJETO.'/files/cadastro/' . $e . '/'; // Localização (local)
-						$ftp_pasta = '/public_html/sistema/projects/'.PROJETO.'/files/cadastro/' . $e . '/'; // Pasta (externa)
+						$local_arquivo 	= '../../project/files/cadastro/' . $e . '/'; // Localização (local)
+						$ftp_pasta 		= '/public_html/miles/project/files/cadastro/' . $e . '/'; // Pasta (externa)
 						if (file_exists($local_arquivo)){
 							$res = getRegistro($conn,"td_entidade","nome","id=".$e);
 							$extensoes = array("html","js");

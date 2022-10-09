@@ -4,9 +4,9 @@
 	
 	$lcenter = tdClass::Criar("center");
 	
-	$limagem = tdClass::Criar("imagem");
+	$limagem 		= tdClass::Criar("imagem");
 	$limagem->align = "middle";
-	$limagem->src = Session::Get('URL_LOADING');
+	$limagem->src 	= URL_LOADING;
 	
 	$lp = tdClass::Criar("p");
 	$lp->class = "text-muted">

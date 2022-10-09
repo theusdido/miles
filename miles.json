@@ -16,12 +16,12 @@
     "prefix": "td",
     "is_show_error_message": false,
     "is_transaction_log": false,
-    "database_current": "dev",
+    "database_current": "desenv",
     "port": "hidden",
 	"enviromment":"dev",
 	"enviromments":{
 		"dev":{
-			"root":"/",
+			"root":"/villafrancioni.com.br/",
 			"url":{
 				"domain":"localhost"
 			},

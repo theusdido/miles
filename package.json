@@ -13,7 +13,7 @@
   },
   "scripts": {
     "watch": "nodemon --ext *",
-    "start": "nodemon projects/nodejs/index.js -e ejs,js"
+    "start": "nodemon project/nodejs/index.js -e ejs,js"
   },
   "devDependencies": {
     "connect-livereload": "^0.6.1",

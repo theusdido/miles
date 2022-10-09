@@ -22,7 +22,7 @@
 	$loadergeral->class = "loadergeral";
 	$loadergeral->add('
 		<center>
-			<img width="32" align="middle" src="'.Session::Get('URL_LOADING').'">
+			<img width="32" align="middle" src="'.URL_LOADING.'">
 			<p class="text-muted">Aguarde</p>
 		</center>
 	');

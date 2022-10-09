@@ -60,9 +60,9 @@
 
 	// Caminho padrão para os arquivos de debug
 	define('PATH_DEBUG',PATH_CORE . "debug/");
-
+	
 	// Caminho padrão para os arquivos de cada projeto
-	define('PATH_PROJECT',PATH_MILES . FOLDER_PROJECT . '/');		
+	define('PATH_PROJECT',PATH_MILES . FOLDER_PROJECT . '/');
 
 	// Caminho padrão para arquivos do E-Commerce
 	define('PATH_ECOMMERCE', PATH_MVC_CONTROLLER . "ecommerce/");
@@ -100,7 +100,7 @@
 	define('PATH_THEME_SYSTEM', PATH_CORE.PATH_THEME);
 
 	// Caminho do projeto atual
-	define('PATH_CURRENT_PROJECT' , PATH_PROJECT . CURRENT_PROJECT_ID . "/");
+	define('PATH_CURRENT_PROJECT' , PATH_PROJECT);
 
 	// Caminho padrão para o diretório do tema do projeto
 	define('PATH_CURRENT_PROJECT_THEME', PATH_CURRENT_PROJECT . PATH_THEME);

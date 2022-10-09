@@ -182,7 +182,7 @@
 	$colBlocoClock->class 	= 'col-md-2 ' . $headersystem_col;	
 	$colBlocoClock->add($horaHome,$dataHome);
 
-	if (Session::get("usergroup") == 1 || Session::get("currentproject") == 1){	
+	if (Session::get("usergroup") == 1 || PROJECT_ID == 1){	
 		array_push($headersystem, $colBlocoGerenciamento);
 		array_push($headersystem, $colBlocoIntalacao);
 	}else{

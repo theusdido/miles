@@ -10,7 +10,7 @@
 */
 function getEntidadeEcommercePedidoItem(){
 	
-	switch(Session::Get()->currentproject){
+	switch(PROJECT_ID){
 		case 22: # Bixoferpa
 			$entidade = 'td_ecommerce_itenspedido';
 		break;

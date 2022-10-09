@@ -6,6 +6,7 @@ error_log
 **/node_modules
 **/vendor
 **/projects
+**/project
 **/lib
 **/.vscode
 **/webservice/servicos/pagseguro/log

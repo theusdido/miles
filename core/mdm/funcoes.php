@@ -63,7 +63,7 @@
 
 	function getCurrentProjectConfig(){
 		global $config;
-		$filepath = "../../projects/" . $config["CURRENT_PROJECT"] . "/config/current_config.inc";
+		$filepath = "../../project/config/current_config.inc";
 		if (file_exists($filepath)){
 			return parse_ini_file($filepath);
 		}else{

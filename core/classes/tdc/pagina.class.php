@@ -79,9 +79,7 @@ class Pagina Extends Html {
 		$favicon 		= tdClass::Criar("link");
 		$favicon->id 	= "favicon";
 		$favicon->rel 	= "icon";
-
-		$faviconSYSTEM	= Session::Get("URL_SYSTEM_THEME") . "logo-favicon.png";
-		$favicon->href = file_exists(PATH_CURRENT_FAVICON) ? Session::Get('URL_CURRENT_FAVICON') : $faviconSYSTEM;
+		$favicon->href 	= PATH_CURRENT_FAVICON;
 
 		$this->setTitle();
 		$this->head->add($meta_charset,$meta_viewport,$meta_robots,$favicon,$bootstrap);
@@ -383,7 +381,7 @@ class Pagina Extends Html {
 	public function setTitle($title = ''){
 		if ($title == ''){
 			$title 				= 'Miles';
-			$currentProjectName = Session::get("currentprojectname");
+			$currentProjectName = PROJETO_DESC;
 			if ($currentProjectName != '' && $currentProjectName != '0'){
 				$title .=  " | " . $currentProjectName;
 			}

@@ -1,7 +1,7 @@
 <?php
     include_once 'core/classes/tdc/tdfile.class.php';
 
-    $path_root_project          = 'projects/1/';
+    $path_root_project          = 'project';
     $path_current_arquivos      = $path_root_project.'arquivos/';    
     $path_current_build         = $path_root_project.'build/';
     $path_current_classe        = $path_root_project.'classes/';

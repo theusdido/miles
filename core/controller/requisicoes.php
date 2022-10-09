@@ -776,7 +776,7 @@
 				$log 				= tdClass::Criar("persistent",array(LOG))->contexto;
 				$log->id 			= $log->getUltimo() + 1;
 				$log->usuario		= Session::get()->userid;
-				$log->projeto		= CURRENT_PROJECT_ID;
+				$log->projeto		= PROJECT_ID;
 				$log->empresa		= Session::get()->empresa;
 				$log->entidade		= getEntidadeId("menu",$conn);
 				$log->valorid 		= $_GET["menu"];
@@ -881,7 +881,7 @@
 			$queryProjetoMiles = $connMILES->query($sqlProjetoMiles);
 			$projetocurrent = (object)$queryProjetoMiles->fetch();
 
-			if ((int)tdClass::Read("project") == 1 && (int)Session::get()->usergroup == 1){
+			if (PROJECT_ID == 1 && (int)Session::get()->usergroup == 1){
 				setConfigSessionDefault();			
 				#setConfigFileDefault();
 				#setCurrentFileDatabseDefault();

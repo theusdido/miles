@@ -70,9 +70,9 @@ class tdInstall {
 	*/
 	private static function getLocalConfigProjeto(){
 		if ($_SERVER["REQUEST_URI"] == "/miles/sistema/install/instalacaosistema.php"){			
-			$local = "../projects/".self::$projeto."/config/";
+			$local = "../project/config/";
 		}else{
-			$local = PATH_PROJECT . self::$projeto . "/config/";
+			$local = PATH_PROJECT . "config/";
 		}
 		if (file_exists($local)){
 			return $local;

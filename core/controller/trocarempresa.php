@@ -1,6 +1,6 @@
 <?php
 if (isset($_GET["empresa"])){
-	$session = Session::get();
+	$session 				= Session::get();
 	$session->autenticado 	= true;
 	$session->userid 		= $session->userid;
 	$session->username 		= $session->username;

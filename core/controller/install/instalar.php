@@ -124,8 +124,8 @@
 				"'index.php?controller=menu'",
 				"'mysql'",
 				"'php'",
-				"'projects/".CURRENT_PROJECT_ID."/arquivos'",
-				"'projects/".CURRENT_PROJECT_ID."/arquivos/temp'",
+				"'project/arquivos'",
+				"'project/arquivos/temp'",
 				"'á'",
 				"'table'",
 				2

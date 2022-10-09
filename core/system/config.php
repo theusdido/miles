@@ -112,7 +112,8 @@
 	define("CURRENT_THEME",$mjc->theme);
 
 	// Projeto atual
-	define('CURRENT_PROJECT_ID',$currentProject);
+	define('CURRENT_PROJECT_ID',$currentProject); # Não utilizar, obsoleto
+	define('PROJECT_ID',$currentProject);
 
 	// Define se o usuário está logado ou não
 	define("LOGGED",$logged);

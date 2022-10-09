@@ -1090,7 +1090,7 @@ class TdFormulario Extends Elemento {
 	private function setGrupoBotoes(){
 		$div_loader		= tdc::html("div",array("class" => "loader-salvar"));
 		$loading        = tdc::html("imagem", array("class" => "loading2"));
-		$loading->src   = Session::Get("URL_LOADING2");
+		$loading->src   = URL_LOADING2;
 		$div_loader->add($loading);
 
 		$this->grupo_botoes->add($div_loader);

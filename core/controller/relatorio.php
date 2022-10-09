@@ -52,9 +52,9 @@
 		}
 
 		// *** CABEÇALHO *** //
-		$empresa = tdClass::Criar("span");
-		$empresa->id = "empresa";
-		$empresa->add("Empresa: " . Session::get()->currentprojectname);
+		$empresa 		= tdClass::Criar("span");
+		$empresa->id 	= "empresa";
+		$empresa->add("Empresa: " . PROJETO_DESC);
 
 		$descricaorelatorio = tdClass::Criar("span");
 		$descricaorelatorio->id = "descricaorelatorio";

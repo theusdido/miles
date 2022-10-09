@@ -19,7 +19,7 @@
 	define('URL_FAVICON','');
 
 	$currentproject 	= $_currentproject_id;	
-	$config_path 		= "../../projects/".$currentproject."/config/";
+	$config_path 		= "../../project/config/";
 	$config_file 		= $config_path . "current_config.inc";
 
 	require '../classes/bd/conexao.class.php';
