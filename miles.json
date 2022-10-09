@@ -44,6 +44,6 @@
                 "request_protocol": "https",
                 "force_https":true
             }
-		},
+		}
 	}
 }
