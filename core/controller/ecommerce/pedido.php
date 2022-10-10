@@ -6,8 +6,10 @@ $pedido 		= tdClass::Criar("persistent",array("td_ecommerce_pedido",$pedidoID))-
 
 $pedidoClass	= new Pedido($pedidoID);
 $datahorapedido = explode(" ",$pedido->datahoraretorno);
-$datadopedido 	= '<div id="data-pedido"><span class="fas fa-calendar-alt" aria-hidden="true"></span><span>'.dateToMysqlFormat($datahorapedido[0],true).'</span></div>';
-$horadopedido 	= '<div id="hora-pedido"><span class="fas fa-clock" aria-hidden="true"></span><span>'.$datahorapedido[1].'</span></div>';
+$data_pedido	= isset($datahorapedido[0]) ? dateToMysqlFormat($datahorapedido[0],true) : '';
+$hora_pedido	= isset($datahorapedido[1]) ? $datahorapedido[1] : '';
+$datadopedido 	= '<div id="data-pedido"><span class="fas fa-calendar-alt" aria-hidden="true"></span><span>'.$data_pedido.'</span></div>';
+$horadopedido 	= '<div id="hora-pedido"><span class="fas fa-clock" aria-hidden="true"></span><span>'.$hora_pedido.'</span></div>';
 $totalpedido 	= '<div id="total-pedido"><small>Valor Total</small><h1>R$ '.moneyToFloat($pedidoClass->getValorTotal(),true).'</h1><p>Valor Frete: R$ '.moneyToFloat($pedido->valorfrete,true).'</p></div>';
 
 // Lista de Estado dos pedidos	

@@ -433,7 +433,11 @@ abstract class Registro {
 	*/
 	public function salvar()
 	{
-		$this->armazenar();
+		if ($this->armazenar()){
+			return true;
+		}else{
+			return false;
+		}
 		Transacao::Commit();
 	}
 	

@@ -778,4 +778,17 @@ header #menu {
 	margin:-7px;
 	padding:0;
 }
+
+#miles-root > div {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+#miles-root > div > header,
+#miles-root > div > article,
+#miles-root > div > footer
+{
+	width:100%;
+}
 -->

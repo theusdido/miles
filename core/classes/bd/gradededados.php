@@ -229,7 +229,7 @@ foreach($dataset as $dado){
 		}else{
 			$valor_campo = $dado->{$c};
 		}
-		$campos_dados[$c] = getHTMLTipoFormato($camposhtml[$i],$valor_campo,$entidade->contexto->id,$c,$dado->id);
+		$campos_dados[$c] 		= getHTMLTipoFormato($camposhtml[$i],$valor_campo,$entidade->contexto->id,$c,$dado->id);
 		$campos_dados_reais[$c] = $dado->{$c};
 		$i++;
 	}
@@ -238,12 +238,11 @@ foreach($dataset as $dado){
 	$idRegIndice++;
 }
 
-$total_registros = tdClass::Criar("repositorio",array($entidade->contexto->nome))->quantia($sqlTotal);
-
-$retorno["entidade"] = $entidade->contexto->id;
-$retorno["dados"] = $dados_array;
-$retorno["dadosreais"] = $dados_array_reais;
-$retorno["total"] = $total_registros;
+$total_registros 		= tdClass::Criar("repositorio",array($entidade->contexto->nome))->quantia($sqlTotal);
+$retorno["entidade"] 	= $entidade->contexto->id;
+$retorno["dados"] 		= $dados_array;
+$retorno["dadosreais"] 	= $dados_array_reais;
+$retorno["total"] 		= $total_registros;
 
 
 echo json_encode($retorno);

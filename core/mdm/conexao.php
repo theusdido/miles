@@ -19,7 +19,7 @@
 	define('URL_FAVICON','');
 
 	$currentproject 	= $_currentproject_id;	
-	$config_path 		= "../../project/config/";
+	$config_path 		= "../../projects/{$currentproject}/config/";
 	$config_file 		= $config_path . "current_config.inc";
 
 	require '../classes/bd/conexao.class.php';
@@ -81,4 +81,4 @@
 	}
 
 	define('URL_LIB', $miles_json->system->url->lib);
-	define('URL_MILES','http://191.252.134.34/~primodas/miles/');
+	define('URL_MILES','https://primodass.com.br/miles/');

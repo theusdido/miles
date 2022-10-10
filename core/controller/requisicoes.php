@@ -492,7 +492,7 @@
 				if (isset($_GET["valor"])){
 					$selecionado = $dado->id == (int)$_GET["valor"]?"selected":"";
 				}
-				echo '<option value="'.$dado->id.'" '.$selecionado.'>'.utf8charset($dado->{$campo_descricao},2).'</option>';
+				echo '<option value="'.$dado->id.'" '.$selecionado.'>'.tdc::utf8($dado->{$campo_descricao}).'</option>';
 			}		
 		break;
 		case "carregar_options_checkbox":
