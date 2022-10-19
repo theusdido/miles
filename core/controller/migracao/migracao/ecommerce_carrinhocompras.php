@@ -35,7 +35,7 @@
             'NULL',
             ($de['inativo']==''?'NULL':$de['inativo']),
             ($de['valortotal']==''?0:$de['valortotal']),
-            ($de['qtdetotaldeitens']==''?0:$de['qtdetotaldeitens']),
+            ($de['qtdetotalitens']==''?0:$de['qtdetotalitens']),
             (($de['datahoraultimoacesso']==''||$de['datahoraultimoacesso']=='0000-00-00 00:00:00')?'"' . $de['datahoraultimoacesso'] . '"':'NULL'),
             ($de['valorfrete']==''?0:$de['valorfrete']),
             ($de['td_transportadora']==''?'NULL':$de['td_transportadora'])

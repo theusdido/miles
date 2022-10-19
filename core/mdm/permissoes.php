@@ -62,6 +62,10 @@
 			#permissao-panel-funcao,#permissao-panel-menu{
 				display:none;
 			}
+
+			#gp-btn-op button {
+				width:100px;
+			}
 		</style>
 		<script type="text/javascript">
 			function Permissoes(){

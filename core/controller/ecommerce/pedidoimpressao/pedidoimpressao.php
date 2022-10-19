@@ -69,13 +69,13 @@
 
 	// Div Dados do Endereço do Cliente
 	$divdadosenderecocliente	= $topo->add("div", array("propriedades" => array( "class" => "div-dados-endereco" , "innerhtml" => array(
-		$topo->node("div", array("innerhtml" => "Logradouro: " . $enderecliente->logradouro , "class" => "div-enderecocliente-logradouro" )) ,
-		$topo->node("div", array("innerhtml" => "Complemento: " . $enderecliente->complemento , "class" => "div-enderecocliente-complemento")) ,
-		$topo->node("div", array("innerhtml" => "Bairro: " . $enderecliente->bairro , "class" => "div-enderecocliente-bairro"))
+		$topo->node("div", array("innerhtml" => "Logradouro: " . tdc::utf8($enderecliente->logradouro) , "class" => "div-enderecocliente-logradouro" )) ,
+		$topo->node("div", array("innerhtml" => "Complemento: " . tdc::utf8($enderecliente->complemento) , "class" => "div-enderecocliente-complemento")) ,
+		$topo->node("div", array("innerhtml" => "Bairro: " . tdc::utf8($enderecliente->bairro_nome) , "class" => "div-enderecocliente-bairro"))
 	))));
 
 	$divdadosenderecocliente2	= $topo->add("div", array("propriedades" => array( "class" => "div-dados-endereco" , "innerhtml" => array(
-		$topo->node("div", array("innerhtml" => "Cidade: " . $enderecliente->cidade , "class" => "div-enderecocliente-cidade")),
+		$topo->node("div", array("innerhtml" => "Cidade: " . tdc::utf8($enderecliente->cidade_nome) , "class" => "div-enderecocliente-cidade")),
 		$topo->node("div", array("innerhtml" => "CEP: " . $enderecliente->cep , "class" => "div-enderecocliente-cep"))	
 	))));
 
@@ -129,14 +129,14 @@
 	foreach($pedido->getItens() as $item){
 		$trBody			= $tabela->add("tr",array("elementopai" => $tbody));
 		$tdID   		= $tabela->add("td",array("propriedades" => array( "innerhtml" => $item['id'] ) , "elementopai" => $trBody));
-		$tdProduto 		= $tabela->add("td",array("propriedades" => array( "innerhtml" => utf8charset( $item['produtonome'],5) ) , "elementopai" => $trBody));
+		$tdProduto 		= $tabela->add("td",array("propriedades" => array( "innerhtml" => tdc::utf8($item['produtonome']) ) , "elementopai" => $trBody));
 		if ($is_referencia)
-		{		
-			$tdReferencia 	= $tabela->add("td",array("propriedades" => array( "innerhtml" => utf8charset( $item['referencia'],5) ) , "elementopai" => $trBody));
+		{
+			$tdReferencia 	= $tabela->add("td",array("propriedades" => array( "innerhtml" => tdc::utf8($item['referencia']) ) , "elementopai" => $trBody));
 		}
 		if ($is_variacaotamanho)
 		{
-			$tdTamanho 		= $tabela->add("td",array("propriedades" => array( "innerhtml" => utf8charset( $item['tamanho'],5) ) , "elementopai" => $trBody));
+			$tdTamanho 		= $tabela->add("td",array("propriedades" => array( "innerhtml" => tdc::utf8($item['tamanho']) ) , "elementopai" => $trBody));
 		}
 		$tdQtdade 		= $tabela->add("td",array("propriedades" => array( "innerhtml" => $item['quantidade']  , "align" => "center") , "elementopai" => $trBody));
 		$tdValor 		= $tabela->add("td",array("propriedades" => array( "innerhtml" => "R$ " . moneyToFloat($item['valor'],true)  , "align" => "right") , "elementopai" => $trBody));

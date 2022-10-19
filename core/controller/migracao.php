@@ -75,7 +75,7 @@
                         continue;
                     }
 
-                    if ($field_new == 'qtdetotaldeitens' && $de_entidade == 'td_ecommerce_pedido')
+                    if ($field_new == 'qtdetotalitens' && $de_entidade == 'td_ecommerce_pedido')
                     {
                         $para->qtdetotalitens = $value;
                         continue;

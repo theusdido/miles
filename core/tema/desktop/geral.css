@@ -791,4 +791,19 @@ header #menu {
 {
 	width:100%;
 }
+
+#miles-root > div > article
+{
+	margin-bottom:30px;
+}
+#miles-root > div > footer {
+	position: fixed;
+    bottom: 0;
+	z-index:1000px;
+}
+
+.tdform .checkbox-n.active,
+.tdform .checkbox-s.active {
+	z-index:0 !important;
+}
 -->

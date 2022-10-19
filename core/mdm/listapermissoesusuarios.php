@@ -250,6 +250,9 @@
 		$("#permissao-btn-consulta").click(function(){
 			abrirListaPermissoes('consulta');
 		});		
+		$("#permissao-btn-relatorio").click(function(){
+			abrirListaPermissoes('relatorio');
+		});
 		$("#permissao-btn-funcao").click(function(){
 			abrirListaPermissoes('funcao');
 		});
@@ -388,6 +391,7 @@
 		</div>
 		<?php
 			include 'listapermissoesconsulta.php';
+			include 'listapermissoesrelatorio.php';
 		?>
 		<div class="panel panel-default panel-lista-permissoes" id="permissao-panel-funcao">
 		  <div class="panel-heading">

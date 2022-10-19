@@ -10,18 +10,20 @@
 */
 class Pedido {
     private $id;
-    public $isVariacaoTamanho = true;
-    public $isReferenciaProduto = true;
-    private $itens = array();
-    private $quantidadeTotalItens = 0;
-    private $somaValor = 0;
-    private $somaValorTotal = 0;
+    public $isVariacaoTamanho       = false;
+    public $isReferenciaProduto     = false;
+    private $itens                  = array();
+    private $quantidadeTotalItens   = 0;
+    private $somaValor              = 0;
+    private $somaValorTotal         = 0;
     private $pedido;
-    private $valorfrete = 0;
+    private $valorfrete             = 0;
+    private $configuracao;
     public function __construct(int $pedido){
-        $this->id       = $pedido;
-        $this->pedido   = tdc::p("td_ecommerce_pedido",$pedido);
-        $this->valorfrete = $this->pedido->valorfrete;
+        $this->id           = $pedido;
+        $this->pedido       = tdc::p("td_ecommerce_pedido",$pedido);
+        $this->valorfrete   = $this->pedido->valorfrete;
+        $this->configuracao = tdc::p("td_ecommerce_configuracoes",1);
         $this->itens();
     }
 	/*

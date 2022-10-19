@@ -119,11 +119,11 @@
 			$ordem = $_POST["ordem"];
 		}
 
-		if ($tp_menu == 'consulta'){
-			$sqlConsulta 	= 'SELECT entidade FROM td_consulta WHERE id = ' . $entidadeRequest;
-			$query 			= $conn->query($sqlConsulta);
-			$linhaConsulta	= $query->fetch();
-			$entidade		= $linhaConsulta['entidade'];
+		if ($tp_menu != 'cadastro'){
+			$sqlTpMenu 	= 'SELECT entidade FROM td_'.$tp_menu.' WHERE id = ' . $entidadeRequest;
+			$query 			= $conn->query($sqlTpMenu);
+			$linhaTpMenu	= $query->fetch();
+			$entidade		= $linhaTpMenu['entidade'];
 		}
 		if ($id == ""){
 			$idNew = getProxIdMDM("menu");

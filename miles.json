@@ -18,7 +18,7 @@
     "is_transaction_log": false,
     "database_current": "producao",
     "port": "hidden",
-	"enviromment":"producao",
+	"enviromment":"prod",
 	"enviromments":{
 		"dev":{
 			"root":"/primodass.com.br/",

@@ -8,17 +8,27 @@ if ($op == "entidade"){
 	$entidade 	= $_POST["entidade"];
 	$usuario 	= $_POST["usuario"];
 	$acao 		= explode("^",$_POST["acoes"]);
-
-	$sql = "SELECT id FROM td_entidadepermissoes WHERE entidade = ".$entidade." AND usuario = ".$usuario  . " LIMIT 1;";
-	$query = $conn->query($sql);
+	$sql 	= "SELECT id FROM td_entidadepermissoes WHERE entidade = ".$entidade." AND usuario = ".$usuario  . " LIMIT 1;";
+	$query 	= $conn->query($sql);
 	if ($query->rowcount() <= 0){
 		$sqlPermissaoEntidade  = "INSERT INTO td_entidadepermissoes (id,projeto,empresa,entidade,usuario,inserir,excluir,editar,visualizar) VALUES ";
 		$sqlPermissaoEntidade  .= "(".getProxIdMDM("entidadepermissoes").",1,1,".$entidade.",".$usuario.",".$acao[0].",".$acao[1].",".$acao[2].",".$acao[3].");";
 	}else{
 		$linha = $query->fetch();
-		$sqlPermissaoEntidade = "UPDATE td_entidadepermissoes SET ";
-		$sqlPermissaoEntidade .= "projeto = 1, empresa = 1, entidade = ".$entidade.",usuario = ".$usuario.",inserir = ".$acao[0].",excluir = ".$acao[1].",editar =".$acao[2].",visualizar = ".$acao[3];
-		$sqlPermissaoEntidade .= " WHERE id = " . $linha["id"];
+		$sqlPermissaoEntidade = "
+			UPDATE 
+				td_entidadepermissoes 
+			SET
+				projeto = 1,
+				empresa = 1,
+				entidade = ".$entidade.",
+				usuario = ".$usuario.",
+				inserir = ".$acao[0].",
+				excluir = ".$acao[1].",
+				editar =".$acao[2].",
+				visualizar = ".$acao[3]."
+			WHERE id = " . $linha["id"].";
+		";
 	}
 	$conn->query($sqlPermissaoEntidade);
 }elseif ($op == "atributo"){

@@ -6,8 +6,8 @@
 	if (isset($_GET["entidade"])){
 		$entidade = tdClass::Criar("persistent",array(ENTIDADE,$_GET["entidade"]));
 		if (!$entidade->contexto->hasData()){
-			$alert = tdClass::Criar("Alert",array("Não foi possível abrir a entidade. "));
-			$alert->type = "alert-danger";
+			$alert 			= tdClass::Criar("Alert",array("Não foi possível abrir a entidade. "));
+			$alert->type 	= "alert-danger";
 			$bloco->add($alert);
 			exit;
 		}

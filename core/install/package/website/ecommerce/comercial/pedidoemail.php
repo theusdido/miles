@@ -21,7 +21,7 @@
 	);
 
 	// Criando Atributos
-    $email      		= criarAtributo($conn,$entidadeID,"email","E-Mail","varchar",0,0,12);
+    $email      		= criarAtributo($conn,$entidadeID,"email","E-Mail","varchar",200,0,12);
 	$username 			= criarAtributo($conn,$entidadeID,"username","Nome de Usuário","varchar",200,0,3);
 	$password 		    = criarAtributo($conn,$entidadeID,"password","Senha","varchar",120,0,6);
     $assunto  			= criarAtributo($conn,$entidadeID,"assunto","Assunto","varchar",50,1,3);

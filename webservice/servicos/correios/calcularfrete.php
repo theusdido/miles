@@ -29,5 +29,9 @@
 	$parms->nVlValorDeclarado		= 0;
 	$parms->sCdAvisoRecebimento		= "n";
 
-	$soap               = new SoapClient("http://ws.correios.com.br/calculador/CalcPrecoPrazo.asmx?wsdl");
-	$retorno["dados"]   = $soap->CalcPrecoPrazo($parms);
+	try{
+		$soap               = new SoapClient("http://ws.correios.com.br/calculador/CalcPrecoPrazo.asmx?wsdl");
+		$retorno["dados"]   = $soap->CalcPrecoPrazo($parms);
+	}catch(Throwable $t){
+		
+	}

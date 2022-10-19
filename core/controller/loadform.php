@@ -1,8 +1,6 @@
 <?php
 	if ($conn = Transacao::get()){
 
-		
-
 		// Rever a variável $dadosParams
 		$dadosParams 				= gettype(tdClass::Read("dados")) == 'string' ? json_decode(tdClass::Read("dados"),true) : tdClass::Read("dados");
 		$rastrearrelacionamentos 	= tdc::r("rastrearrelacionamentos") != '' ? json_decode(tdc::r("rastrearrelacionamentos")) : false;
@@ -101,12 +99,12 @@
 						$queryAttr 		= $conn->query($sqlAttr);
 						$dados_retorno 	= array();
 						while ($linhaAttr = $queryAttr->fetch()){
-							$valor			= utf8charset($linha[$linhaAttr["nome"]],3);
+							$valor			= $linha[$linhaAttr["nome"]];
 							$dados_array = array(
-								"atributo" => $linhaAttr["nome"],
-								"valor" => getHTMLTipoFormato($linhaAttr["tipohtml"],$valor,$entidadeID,$linhaAttr["id"],tdClass::Read("registroprincipal")),
-								"valorreal" => $valor,
-								"idatributo" => $linhaAttr["id"]
+								"atributo" 		=> $linhaAttr["nome"],
+								"valor" 		=> tdc::utf8(getHTMLTipoFormato($linhaAttr["tipohtml"],$valor,$entidadeID,$linhaAttr["id"],tdClass::Read("registroprincipal"))),
+								"valorreal" 	=> tdc::utf8($valor),
+								"idatributo" 	=> $linhaAttr["id"]
 							);
 							array_push($dados_retorno,$dados_array);
 						}

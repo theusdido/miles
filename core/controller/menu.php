@@ -4,16 +4,16 @@
 	{
 		case 'retorna_dados':
 			$userid 	= Usuario::id();
-			$where 		= "WHERE (EXISTS(SELECT 1 FROM td_entidadepermissoes b WHERE b.entidade = a.entidade AND b.usuario = ".$userid." AND b.visualizar = 1)";
+			$where 		= "AND (EXISTS(SELECT 1 FROM td_entidadepermissoes b WHERE b.entidade = a.entidade AND b.usuario = ".$userid." AND b.visualizar = 1)";
 			$where 	   .= " OR EXISTS(SELECT 1 FROM td_menupermissoes c WHERE c.menu = a.id AND c.usuario = ".$userid." AND c.permissao = 1)) AND a.descricao <> '' ";
 			if ($conn = Transacao::get()){
 				$menu = array();
 				$sqlMenu = "
 					SELECT a.id,a.descricao,a.pai,icon
-					FROM td_menu a
-					{$where}
-					AND a.pai = 0
+					FROM td_menu a					
+					WHERE a.pai = 0
 					AND a.descricao <> ''
+					{$where}
 					ORDER BY a.pai,a.ordem;
 				";
 				$queryMenu = $conn->query($sqlMenu);
@@ -21,10 +21,11 @@
 					$submenu = array();
 					$menu_id = $linhaMenu['id'];
 					$sqlSubMenu = "
-						SELECT id
-						FROM td_menu
-						WHERE pai = {$menu_id}
-						ORDER BY ordem;
+						SELECT a.id
+						FROM td_menu a
+						WHERE a.pai = {$menu_id}
+						{$where}
+						ORDER BY a.ordem;
 					";
 					$querySubMenu = $conn->query($sqlSubMenu);
 					While ($linhaSubMenu = $querySubMenu->fetch()){

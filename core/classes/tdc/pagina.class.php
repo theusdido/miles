@@ -375,7 +375,7 @@ class Pagina Extends Html {
 		* Método getTitle
 	    * Data de Criacao: 20/11/2021
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
-		
+
 		Seta o titulo da página
 	*/
 	public function setTitle($title = ''){

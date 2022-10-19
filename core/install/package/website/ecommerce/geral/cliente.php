@@ -50,12 +50,12 @@
 
 	// Criando Acesso
 	$menu_webiste = addMenu($conn,'E-Commerce','#','',0,0,'ecommerce');
-	
+
 	// Adicionando Menu
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,8,'ecommerce-' . $entidadeNome,$entidadeID,'cadastro');
-	
+
 	// Aba Capa
-	$camposAba = array($codigo,$nome,$email,$senha,$telefone,$fotoperfil,$observacao);
+	$camposAba = array($codigo,$nome,$email,$telefone,$fotoperfil,$observacao);
 	criarAba($conn,$entidadeID,"Capa",implode(",",$camposAba));
 
 	// Aba Física
@@ -67,4 +67,4 @@
 	criarAba($conn,$entidadeID,"Jurídica",implode(",",$camposAba));
 
 	/* *** ENDEREÇO *** */
-	criarRelacionamento($conn,2,$entidadeID,installDependencia('ecommerce_geral_endereco','package/website/ecommerce/geral/endereco'),"Endereço",0);
+	criarRelacionamento($conn,6,$entidadeID,installDependencia('ecommerce_endereco','package/website/ecommerce/endereco/endereco'),"Endereço",0);
