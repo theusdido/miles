@@ -11,6 +11,5 @@ error_log
 **/.vscode
 **/webservice/servicos/pagseguro/log
 **/ecommerce
-**/webservice
 **/nodejs
 **/error_log
