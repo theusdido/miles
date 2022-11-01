@@ -1,5 +1,6 @@
 <?php
-	
+	// Rodando no composer ...
+
 	// Define o caminho absoluto da raiz do MILES
 	define('PATH_MILES',dirname(__DIR__) . '/');
 
