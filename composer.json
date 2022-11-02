@@ -1,7 +1,7 @@
 {
     "name":"theusdido/miles",
     "description":"Miles Framework - Fast development for back end.",
-    "type":"library",
+    "type":"project",
     "license":"GPL-3.0-or-later",
     "authors":[
       {
