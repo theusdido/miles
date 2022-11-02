@@ -1,5 +1,0 @@
-[10-Oct-2022 16:02:42 America/Sao_Paulo] PHP Fatal error:  Uncaught Exception: Arquivo configuração não existe in /home/primodas/public_html/miles/core/mdm/conexao.php:29
-Stack trace:
-#0 /home/primodas/public_html/miles/core/mdm/index.php(2): require()
-#1 {main}
-  thrown in /home/primodas/public_html/miles/core/mdm/conexao.php on line 29
