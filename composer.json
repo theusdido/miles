@@ -17,9 +17,6 @@
       }
     },
     "require": {
-		"theusdido/miles-library":"^1.0.0",
-        "php":">=7.0",
-        "mongodb/mongodb": "^1.11",
-        "phpmailer/phpmailer": "~5.2"
+		"theusdido/miles-library":"^1.0.0"
     }
 }
