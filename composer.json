@@ -17,6 +17,6 @@
       }
     },
     "require": {
-		"theusdido/miles-library":"^1.0.0"
+		"theusdido/miles-library":"^1.0.1"
     }
 }
