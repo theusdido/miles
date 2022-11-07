@@ -2,6 +2,7 @@ miles.json
 vsc.bat
 winehq.key
 error_log
+update.php
 **/frameworks
 **/node_modules
 **/vendor
