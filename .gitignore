@@ -2,7 +2,6 @@ miles.json
 vsc.bat
 winehq.key
 error_log
-composer.lock
 **/frameworks
 **/node_modules
 **/vendor
