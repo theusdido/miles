@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "theusdido/miles-library",
-            "version": "v1.0.6",
+            "version": "v1.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/theusdido/miles-library.git",
-                "reference": "0c5fc71d814cef334a2b20ec333e5d674b9ce6b7"
+                "reference": "3aaa9de73046c34d46e5e131ebe9fea9b1d62513"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/theusdido/miles-library/zipball/0c5fc71d814cef334a2b20ec333e5d674b9ce6b7",
-                "reference": "0c5fc71d814cef334a2b20ec333e5d674b9ce6b7",
+                "url": "https://api.github.com/repos/theusdido/miles-library/zipball/3aaa9de73046c34d46e5e131ebe9fea9b1d62513",
+                "reference": "3aaa9de73046c34d46e5e131ebe9fea9b1d62513",
                 "shasum": ""
             },
             "require": {
@@ -84,9 +84,9 @@
             "description": "Miles Framework - Fast development for back end.",
             "support": {
                 "issues": "https://github.com/theusdido/miles-library/issues",
-                "source": "https://github.com/theusdido/miles-library/tree/v1.0.6"
+                "source": "https://github.com/theusdido/miles-library/tree/v1.0.7"
             },
-            "time": "2022-11-07T10:38:30+00:00"
+            "time": "2022-11-07T11:40:44+00:00"
         }
     ],
     "packages-dev": [],
