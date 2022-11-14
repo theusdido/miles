@@ -3,3 +3,15 @@ vsc.bat
 winehq.key
 error_log
 update.php
+**/frameworks
+**/node_modules
+**/vendor
+**/projects
+**/project
+**/lib
+**/.vscode
+**/webservice/servicos/pagseguro/log
+**/webservice
+**/ecommerce
+**/nodejs
+**/error_log
