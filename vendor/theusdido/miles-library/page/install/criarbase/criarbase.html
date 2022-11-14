@@ -1,0 +1,40 @@
+<form>
+    <fieldset>
+        <legend>Criar Banco de Dados</legend>
+        <div class="form-grupo-botao">        
+            <img id="loader-criarbanco" class="loading" />
+            <button type="button" class="btn btn-primary" id="btn-criarbanco">
+                Criar Banco																
+            </button>	
+            <button type="button" class="btn btn-default" id="btn-testarconexao">Testar Conexão</button>
+            <div id="retorno"></div>
+        </div>				
+        <div class="form-group">
+            <label for="host">Host</label>
+            <input type="text" class="form-control" id="host" name="host" placeholder="Host ou Ip">
+        </div>
+        <div class="form-group">
+            <label for="base">Base</label>
+            <input type="text" class="form-control" id="base" name="base" placeholder="Banco de dados">
+        </div>
+        <div class="form-group">
+            <label for="porta">Porta</label>
+            <input type="text" class="form-control" id="porta" name="porta" placeholder="Porta">
+        </div>
+        <div class="form-group">
+            <label for="usuario">Usuário</label>
+            <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Host">
+        </div>
+        <div class="form-group">
+            <label for="senha">Senha</label>
+            <input type="password" class="form-control" id="senha"  name="senha" placeholder="Senha">
+        </div>
+        <div class="form-group">
+            <label for="tipo">Tipo</label>
+            <select id="tipo" name="tipo" class="form-control">
+                <option value="mysql">MySQL</option>
+                <option value="cache">Caché</option>
+            </select>
+        </div>
+    </fieldset>
+</form>

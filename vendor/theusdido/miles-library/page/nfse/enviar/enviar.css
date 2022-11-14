@@ -1,0 +1,14 @@
+#btn-enviar{
+    margin-bottom:10px;
+}
+
+.after-search{
+    display:none;
+}
+#progress-send{
+    display:none;
+}
+
+.icon-enviar{
+    cursor:pointer;
+}

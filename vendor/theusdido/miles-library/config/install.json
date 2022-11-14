@@ -1,0 +1,59 @@
+{
+    "system":[
+        "entidade",
+        "atributo",
+        "menu",
+        "grupousuario",
+        "usuario",
+        "relacionamento",
+        "abas",
+        "lista",
+        "pagina",
+        "tagsattributes" ,
+        "tags",
+        "tipoaviso",
+        "aviso",
+        "config",
+        "entidadepermissoes",
+        "atributopermissoes" ,
+        "funcao",
+        "funcaopermissoes",
+        "menupermissoes" ,
+        "atributofiltro" ,
+        "status",
+        "consulta",
+        "relatorio",
+        "movimentacao",
+        "log",
+        "menucrud",
+        "typeconnectiondatabase",
+        "database",
+        "connectiondatabase" ,
+        "connectionftp" ,
+        "charset",
+        "projeto",
+        "endereco",
+        "empresa",
+        "historicoatividade",
+        "comunicado",
+        "email"
+    ],
+    "helpdesk":[
+        "status",
+        "prioridade",
+        "tipo",
+        "seguidores",
+        "ticket",
+        "anexos"
+    ],
+    "aplicativo":[
+        "dispositivo",
+        "usuario"
+    ],
+    "geral":[
+        "mes",
+        "diasemana",
+        "feriado",
+        "emailconfiguracao"
+    ]   
+}

@@ -1,0 +1,8 @@
+{
+    "auto_load_class": "classes/tdc/AutoLoad.class.php",
+    "mdm": {
+        "atributo": {
+            "entidade": "entidade"
+        }
+    }
+}

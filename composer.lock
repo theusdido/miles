@@ -8,7 +8,7 @@
     "packages": [
         {
             "name": "theusdido/miles-library",
-            "version": "v1.0.7",
+            "version": "v1.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/theusdido/miles-library.git",
@@ -84,7 +84,7 @@
             "description": "Miles Framework - Fast development for back end.",
             "support": {
                 "issues": "https://github.com/theusdido/miles-library/issues",
-                "source": "https://github.com/theusdido/miles-library/tree/v1.0.7"
+                "source": "https://github.com/theusdido/miles-library/tree/v1.0.9"
             },
             "time": "2022-11-07T11:40:44+00:00"
         }

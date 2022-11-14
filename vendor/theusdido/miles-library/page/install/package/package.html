@@ -1,0 +1,90 @@
+<form>
+    <fieldset>
+        <legend>Configuração dos Pacotes</legend>
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div id="btn-salvar-pacotes" class="form-grupo-botao">
+                    <img id="loader-pacotes" />
+                    <button type="button" class="btn btn-primary" id="btn-pacotes">
+                        Salvar
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div id="retorno" class="alert" role="alert">
+                    <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <p class="msg"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 col-sm-6">
+                <div class="panel panel-default panel-pacote">
+                    <div class="panel-heading">Website</div>
+                    <div class="panel-body">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item carregar-componentes" data-pacote="website" data-componente="geral">Geral</a>
+                            <a href="#" class="list-group-item carregar-componentes disabled" data-pacote="website" data-componente="institucional">Institucional</a>
+                            <a href="#" class="list-group-item carregar-componentes" data-pacote="website" data-componente="ecommerce">E-Commerce</a>
+                            <a href="#" class="list-group-item carregar-componentes" data-pacote="website" data-componente="blog">Blog</a>
+                            <a href="#" class="list-group-item carregar-componentes disabled" data-pacote="website" data-componente="landpage">LandPage</a>
+                            <a href="#" class="list-group-item carregar-componentes disabled" data-pacote="website" data-componente="redesocial">Rede Social</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <div class="panel panel-default panel-pacote">
+                    <div class="panel-heading">Sistema</div>
+                    <div class="panel-body">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item carregar-componentes" data-pacote="sistema" data-componente="erp">ERP - Enterprise Resource Planning</a>
+                            <a href="#" class="list-group-item carregar-componentes disabled" data-pacote="sistema" data-componente="crm">CRM - Customer Relationship Management</a>
+                            <a href="#" class="list-group-item carregar-componentes disabled" data-pacote="sistema" data-componente="bi">BI - Business Intelligence</a>								  								  
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <div class="panel panel-default panel-pacote">
+                    <div class="panel-heading">Negócio</div>
+                    <div class="panel-body">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item carregar-componentes" data-pacote="negocio" data-componente="imobiliaria">Imobiliária</a>
+                            <a href="#" class="list-group-item carregar-componentes" data-pacote="negocio" data-componente="escola">Escola</a>
+                            <a href="#" class="list-group-item carregar-componentes" data-pacote="negocio" data-componente="associacao">Associação</a>
+                            <a href="#" class="list-group-item carregar-componentes" data-pacote="negocio" data-componente="livraria">Livraria</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <div class="panel panel-default panel-pacote">
+                    <div class="panel-heading">Competição</div>
+                    <div class="panel-body">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item carregar-componentes" data-pacote="competicao" data-componente="cultural">Cultural</a>
+                        </div>
+                    </div>
+                </div>
+            </div>								
+        </div>
+    </fieldset>	  
+</form>		
+<!-- Modal -->
+<div class="modal fade" id="view-componente" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel"></h4>
+        </div>
+        <div class="modal-body">
+            <p></p>
+        </div>
+        </div>
+    </div>
+    </div>	

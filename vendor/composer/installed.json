@@ -1,0 +1,91 @@
+{
+    "packages": [
+        {
+            "name": "theusdido/miles-library",
+            "version": "v1.0.9",
+            "version_normalized": "1.0.9.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/theusdido/miles-library.git",
+                "reference": "3aaa9de73046c34d46e5e131ebe9fea9b1d62513"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/theusdido/miles-library/zipball/3aaa9de73046c34d46e5e131ebe9fea9b1d62513",
+                "reference": "3aaa9de73046c34d46e5e131ebe9fea9b1d62513",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "time": "2022-11-07T11:40:44+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "\\theusdido\\miles-library\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Edilson Bitencourt - @theusdido",
+                    "email": "edilson@teia.tec.br",
+                    "homepage": "https://github.com/theusdido",
+                    "role": "Fuonder"
+                },
+                {
+                    "name": "Bianca Peruchi Cardoso - @biancaperuchi",
+                    "email": "bianca_hotmail@hotmail.com",
+                    "homepage": "https://github.com/biancaperuchi",
+                    "role": "Manager"
+                },
+                {
+                    "name": "Talles Machado Rodrigues - @TallesMR",
+                    "email": "tallesmachadorodrigues@gmail.com",
+                    "homepage": "https://github.com/TallesMR",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Eliton dos Santos José - @elitonDSJ",
+                    "email": "elitondsj@gmail.com",
+                    "homepage": "https://github.com/elitonDSJ",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Luan Zelinski Corrêa - @luanzelinskicorrea",
+                    "email": "comercialluanzc@gmail.com",
+                    "homepage": "https://github.com/luanzelinskicorrea",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Emanuel Borges Albano - @Necobgs",
+                    "email": "emanuelborgesdev@gmail.com",
+                    "homepage": "https://github.com/necobgs",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Daniela Sommacal- @dmsommacal",
+                    "email": "dmsommacal@gmail.com",
+                    "homepage": "https://github.com/dmsommacal",
+                    "role": "Contributor"
+                },
+                {
+                    "name": "Jair Felipe Peruchi Cardoso",
+                    "role": "Contributor"
+                }
+            ],
+            "description": "Miles Framework - Fast development for back end.",
+            "support": {
+                "issues": "https://github.com/theusdido/miles-library/issues",
+                "source": "https://github.com/theusdido/miles-library/tree/v1.0.9"
+            },
+            "install-path": "../theusdido/miles-library"
+        }
+    ],
+    "dev": true,
+    "dev-package-names": []
+}

@@ -1,0 +1,16 @@
+miles.json
+vsc.bat
+winehq.key
+error_log
+**/frameworks
+**/node_modules
+**/vendor
+**/projects
+**/project
+**/lib
+**/.vscode
+**/webservice/servicos/pagseguro/log
+**/webservice
+**/ecommerce
+**/nodejs
+**/error_log
