@@ -2,7 +2,12 @@ miles.json
 vsc.bat
 winehq.key
 error_log
+<<<<<<< Updated upstream
 composer.lock
+=======
+update.php
+index.dev.php
+>>>>>>> Stashed changes
 **/frameworks
 **/node_modules
 **/vendor
