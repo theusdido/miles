@@ -3,6 +3,7 @@ vsc.bat
 winehq.key
 error_log
 update.php
+index.dev.php
 **/frameworks
 **/node_modules
 **/vendor
