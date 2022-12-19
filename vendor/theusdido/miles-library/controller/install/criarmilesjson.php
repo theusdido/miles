@@ -5,7 +5,9 @@
             {
                 "version": 2.0,
                 "project":{
-                    "name":"Miles"
+                    "name":"Miles",
+                    "path":"project/",
+					"url":"localhost/miles/"
                 },
                 "currentproject": 1,
                 "folder":"'.str_replace('//','',removeBarraRoot($uri)).'/",
