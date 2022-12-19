@@ -14,9 +14,10 @@
 		exit;
 	}
 
-	$_project_name	= '';
+	$_project_name	= 
+	$_project_path 	= 
+	$_env 			= '';
 	$_enviromment	= 'dev';
-	$_env 			= '';	
 	$miles_json 	= file_get_contents($path_miles_json);
 
 	if ($miles_json != false){
@@ -42,6 +43,7 @@
 		// Nome do Projeto
 		$_project_name = isset($mjc->project->name)?$mjc->project->name:'';
 
+		$_project_path = isset($mjc->project->path)?$mjc->project->path:'';
 	}	
 
 	define('PROJECT_NAME',$_project_name);

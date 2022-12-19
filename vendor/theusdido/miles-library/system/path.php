@@ -57,9 +57,9 @@
 
 	// Caminho padrão para os arquivos de debug
 	define('PATH_DEBUG',PATH_MILES . "debug/");
-	
+
 	// Caminho padrão para os arquivos de cada projeto
-	define('PATH_PROJECT',PATH_MILES . FOLDER_PROJECT . '/');
+	define('PATH_PROJECT',$_project_path == '' ? PATH_MILES . FOLDER_PROJECT . '/' : $_project_path);
 
 	// Caminho padrão para arquivos do E-Commerce
 	define('PATH_ECOMMERCE', PATH_MVC_CONTROLLER . "ecommerce/");
