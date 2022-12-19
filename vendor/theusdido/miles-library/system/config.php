@@ -195,7 +195,7 @@
 	set_time_limit(300);
 
 	// Permite recuperar abrir pela URL
-	ini_set('allow_url_fopen','On');	
+	ini_set('allow_url_fopen','On');
 
 	// Padrão de envios via request
     $_op 			= tdc::r("op") == '' ? (tdc::r("_op") == '' ? '' : tdc::r("_op") ) : tdc::r("op");
