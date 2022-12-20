@@ -48,17 +48,21 @@
 				$atributo 	= $linhaa["nome"];				
 			}
 
+			// Caracteres desformatados
+			$_de 	= array('Ã§','Ã£','Ã');
+			$_para	= array('ç','ã','í');
 			$sqlv 	= "SELECT id,{$atributo} valor FROM {$entidade};";
 			$queryv = $conn->query($sqlv);
 			while ($linhav = $queryv->fetch()){
-				if (isutf8($linhav["valor"])){
-					try {
-						$valor 	= utf8_decode($linhav["valor"]); //Só funcionou com o comando nativo
-						$sql 	= 'UPDATE '.$entidade.' SET '.$atributo.' = "'.$valor.'" WHERE id = ' . $linhav["id"]. ';';
-						$query 	= $conn->query($sql);
-					}catch(Throwable $t){
-						echo $t->getMessage();
-					}
+				$_valor = str_replace($_de,$_para,$linhav["valor"]);
+				if (!isutf8($_valor)){
+					$valor 	= utf8_decode($_valor); //Só funcionou com o comando nativo
+				}
+				try {
+					$sql 	= 'UPDATE '.$entidade.' SET '.$atributo.' = "'.$_valor.'" WHERE id = ' . $linhav["id"]. ';';
+					$query 	= $conn->query($sql);
+				}catch(Throwable $t){
+					echo $t->getMessage();
 				}
 			}
 		break;

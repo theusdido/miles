@@ -96,72 +96,69 @@
 	define("PATH_THEME",'tema/' . CURRENT_THEME . '/');
 	define('PATH_THEME_SYSTEM', PATH_MILES.PATH_THEME);
 
-	// Caminho do projeto atual
-	define('PATH_CURRENT_PROJECT' , PATH_PROJECT);
-
 	// Caminho padrão para o diretório do tema do projeto
-	define('PATH_CURRENT_PROJECT_THEME', PATH_CURRENT_PROJECT . PATH_THEME);
+	define('PATH_CURRENT_PROJECT_THEME', PATH_PROJECT . PATH_THEME);
 
 	// Tema do Sistema
 	define('PATH_SYSTEM_THEME', PATH_THEME_SYSTEM);
 
 	// Caminho atual para configuração
-	define('PATH_CURRENT_CONFIG_PROJECT',PATH_CURRENT_PROJECT . "config/");
+	define('PATH_CURRENT_CONFIG_PROJECT',PATH_PROJECT . "config/");
 
 	// Caminho padrão para o armazenamento de arquivos
-	define("PATH_CURRENT_FILE",PATH_CURRENT_PROJECT. "arquivos/");
+	define("PATH_CURRENT_FILE",PATH_PROJECT. "arquivos/");
 
 	// Caminho padrão para o armazenamento de arquivos tempor?rios
 	define("PATH_CURRENT_FILE_TEMP", PATH_CURRENT_FILE . "temp/");
 	
 	// Caminho padrão para o armazenamento das imagens
-	define("PATH_CURRENT_IMG", PATH_CURRENT_PROJECT . "images/");
+	define("PATH_CURRENT_IMG", PATH_PROJECT . "images/");
 
 	// Caminho padrão para as classes personalizadas
-	define("PATH_CURRENT_CLASS_PROJECT", PATH_CURRENT_PROJECT . "classes/");
+	define("PATH_CURRENT_CLASS_PROJECT", PATH_PROJECT . "classes/");
 		
 	// Caminho padrão para os controllers personalizados
-	define("PATH_CURRENT_CONTROLLER", PATH_CURRENT_PROJECT  . "controller/");
+	define("PATH_CURRENT_CONTROLLER", PATH_PROJECT  . "controller/");
 	
 	// Caminho padrão para as views personalizadas
-	define("PATH_CURRENT_VIEW", PATH_CURRENT_PROJECT . "view/");
+	define("PATH_CURRENT_VIEW", PATH_PROJECT . "view/");
 
 	// Caminho padrão para as páginas personalizadas
-	define("PATH_CURRENT_PAGE", PATH_CURRENT_PROJECT . "page/");
+	define("PATH_CURRENT_PAGE", PATH_PROJECT . "page/");
 
 	// Caminho padrão para os componentes personalizadas
-	define("PATH_CURRENT_COMPONENT", PATH_CURRENT_PROJECT . "component/");
+	define("PATH_CURRENT_COMPONENT", PATH_PROJECT . "component/");
 	
 	// Caminho padrão para os arquivos de log
-	define("PATH_CURRENT_LOG", PATH_CURRENT_PROJECT . "log/");		
+	define("PATH_CURRENT_LOG", PATH_PROJECT . "log/");		
 
 	// Caminho padrão para os arquivos do WebSite
-	define("PATH_CURRENT_WEBSITE",PATH_CURRENT_PROJECT . "website/");
+	define("PATH_CURRENT_WEBSITE",PATH_PROJECT . "website/");
 
 	// Caminho padrão para os arquivos da páginas de cadastro
-	define('PATH_FILES_PAGE', PATH_CURRENT_PROJECT . 'files/cadastro/');
+	define('PATH_FILES_PAGE', PATH_PROJECT . 'files/cadastro/');
 
 	// Caminho padrão para os arquivos da páginas de cadastro
-	define('PATH_FILES_CADASTRO', PATH_CURRENT_PROJECT . 'files/cadastro/');
+	define('PATH_FILES_CADASTRO', PATH_PROJECT . 'files/cadastro/');
 
 	// Caminho padrão para os arquivos da páginas de consulta
-	define('PATH_FILES_CONSULTA', PATH_CURRENT_PROJECT . 'files/consulta/');
+	define('PATH_FILES_CONSULTA', PATH_PROJECT . 'files/consulta/');
 
 	// Caminho padrão para os arquivos da páginas de relatório
-	define('PATH_FILES_RELATORIO', PATH_CURRENT_PROJECT . 'files/relatorio/');
+	define('PATH_FILES_RELATORIO', PATH_PROJECT . 'files/relatorio/');
 
 	// Caminho padrão para os arquivos da páginas de movimentação
-	define('PATH_FILES_MOVIMENTACAO', PATH_CURRENT_PROJECT . 'files/movimentacao/');
+	define('PATH_FILES_MOVIMENTACAO', PATH_PROJECT . 'files/movimentacao/');
 
 	// Caminho dos arquivos de instalação de pacotes ( módulos )
-	define('PATH_CURRENT_PACKAGE', PATH_CURRENT_PROJECT . 'install/package/');
+	define('PATH_CURRENT_PACKAGE', PATH_PROJECT . 'install/package/');
 	
 	// Caminho padrão para os arquivos do build do projeto
-	define("PATH_CURRENT_BUILD", PATH_CURRENT_PROJECT . FOLDER_BUILD . "/");
+	define("PATH_CURRENT_BUILD", PATH_PROJECT . FOLDER_BUILD . "/");
 
 	define ('PATH_MDM', PATH_MILES_LIBRARY . 'mdm/');
 
-	define("PATH_MDM_JS_COMPILE", PATH_CURRENT_PROJECT  . FOLDER_BUILD . "/js/");
+	define("PATH_MDM_JS_COMPILE", PATH_PROJECT  . FOLDER_BUILD . "/js/");
 
 	define('PATH_MDM_CONTROLLER' , PATH_MVC_CONTROLLER . 'mdm/');
 

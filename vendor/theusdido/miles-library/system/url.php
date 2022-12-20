@@ -25,7 +25,6 @@
 
 	if (isset($mjc->folder)){
 		$request_uri_dir 	= (isset($_env->root) ? $_env->root  : '/') . $mjc->folder;
-
 	}else{
 		$ruri 				= $_SERVER['REQUEST_URI'];
 		$request_uri 		= explode('?',(strpos($ruri,'index.php') > -1 ? dirname($ruri).'/' : $ruri));
@@ -39,7 +38,7 @@
 
 	define('URL_AUTOLOAD',$_url_miles . 'autoload.php');
 
-	define('URL_MILES_LIBRARY',URL_MILES . PATH_REPOSITORY .  FOLDER_MILES_LIBRARY . '/');
+	define('URL_MILES_LIBRARY',URL_MILES . str_replace('\\','/',PATH_REPOSITORY) . FOLDER_MILES_LIBRARY . '/');
 
 	// URL API	
 	define('URL_API', $_url_miles . "index.php");
@@ -57,8 +56,8 @@
 	define('URL_COMPONENT', URL_MILES_LIBRARY . FOLDER_COMPONENT . '/');
 
 	
-	define('URL_PROJECT',URL_MILES . FOLDER_PROJECT . '/');
-	define('URL_CURRENT_PROJECT',URL_MILES . FOLDER_PROJECT . '/');
+	define('URL_PROJECT',URL_MILES . PATH_PROJECT);
+	define('URL_CURRENT_PROJECT',URL_MILES . PATH_PROJECT);
 
 	// URL CLASSES	
 	define('URL_CLASS', URL_MILES_LIBRARY . FOLDER_CLASSES . '/');

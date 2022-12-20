@@ -21,7 +21,7 @@
 				$menu = tdClass::Criar("persistent",array(MENU,$linhaFavorito["valorid"]))->contexto;
 
 				if ($menu->link != "" && $menu->descricao != ""){
-					$a->onclick = "menuprincipal.menuselecionado = ".$menu->id.";menuprincipal.carregarpagina('".PATH_CURRENT_PROJECT.$menu->link."','#conteudoprincipal');";
+					$a->onclick = "menuprincipal.menuselecionado = ".$menu->id.";menuprincipal.carregarpagina('".PATH_PROJECT.$menu->link."','#conteudoprincipal');";
 					$descricaoMenu = $menu->descricao;
 					$paiMenu = $menu->pai;
 					$descricaoMenuPai = ($menu->pai != "" && $menu->pai > 0)? tdClass::Criar("persistent",array(MENU,$menu->pai))->contexto->descricao . '<span class="fas fa-arrow-right" aria-hidden="true"></span>':"";

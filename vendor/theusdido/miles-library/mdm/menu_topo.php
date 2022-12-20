@@ -7,8 +7,8 @@
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="index.php">
-        <img alt="Brand" src="<?=URL_CURRENT_THEME?>favicon.png">
-		<label>Teia Online</label>
+        <img alt="Brand" src="<?=URL_THEME?>favicon.png">
+		<label>Teia</label>
       </a>
     </div>
 	<ul class="nav navbar-nav">		

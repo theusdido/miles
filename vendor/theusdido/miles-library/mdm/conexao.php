@@ -22,15 +22,17 @@
 	define('URL_FAVICON','');
 	define('URL_LIB', $miles_json->system->url->lib);
 	define('URL_MILES',$request_schema . '://'.$_SERVER["HTTP_HOST"].'/' . $miles_json->folder);
+	define('URL_MILES_LIBRARY',URL_MILES . 'vendor/theusdido/miles-library/');
 	define('PATH_CONFIG','../config/');
 	define('PREFIXO',$miles_json->prefix . '_');
 	define('URL_API',$relative_path . 'index.php');
-	define('FOLDER_PROJECT','project');
-	define('URL_PROJECT', URL_MILES . FOLDER_PROJECT .'/');
-	define('PATH_PROJECT',$relative_path . FOLDER_PROJECT .'/');
-	define('PATH_CURRENT_CONFIG_PROJECT',PATH_PROJECT . 'config');
+	define('FOLDER_PROJECT',$miles_json->project->path);
+	define('URL_PROJECT', URL_MILES . $miles_json->project->path);
+	define('PATH_PROJECT',$relative_path . $miles_json->project->path);
+	define('PATH_CURRENT_CONFIG_PROJECT',PATH_PROJECT . 'config/');
 	define('URL_CURRENT_THEME', URL_PROJECT . 'tema/' . $miles_json->theme .'/');
-	
+	define('URL_THEME',URL_MILES_LIBRARY . 'tema/' . $miles_json->theme .'/');
+	define('PATH_TMP', $relative_path . 'tmp/');
 
 	$config_file 		= PATH_CURRENT_CONFIG_PROJECT. "current_config.inc";
 
@@ -43,7 +45,7 @@
 	
 	$conn = Conexao::Abrir($currenttypedatabase);
 
-	// Conexão com a base central foi descontinuada
+	// Conex√£o com a base central foi descontinuada
 	$connMiles = $conn;
 
 	switch($currenttypedatabase){

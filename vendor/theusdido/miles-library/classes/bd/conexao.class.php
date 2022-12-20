@@ -108,7 +108,7 @@ final class Conexao{
 		$database 	= ($banco == '' || $banco == 'current') ? DATABASECONNECTION : $banco;
 		$arq_config = PATH_CURRENT_CONFIG_PROJECT.$database.'_'.$sgdb.'.ini';
 		$arq_temp	= PATH_CONFIG . 'temp_'.$sgdb.'.ini';
-		$is_exists 	= !file_exists($arq_config) ? file_exists($arq_temp) ? $arq_config = $arq_temp : false : true;
+		$is_exists 	= !file_exists($arq_config) ? (file_exists($arq_temp) ? $arq_config = $arq_temp : false) : true;
 
 		if (!$is_exists){
 			if (IS_SHOW_ERROR_MESSAGE){

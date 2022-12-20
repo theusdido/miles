@@ -10,7 +10,7 @@
 		$sql = "DELETE FROM ".PREFIXO."abas WHERE id = {$_GET["excluir"]}";
 		$query = $conn->query($sql);
 		if ($query){
-			header("Location: criarAba.php?entidade={$entidade}&currentproject=".$_SESSION['currentproject']);
+			header("Location: criarAba.php?entidade={$entidade}&currentproject=".CURRENT_PROJECT_ID);
 		}
 		exit;
 	}
@@ -32,7 +32,7 @@
 		}
 		$query = $conn->query($sql);
 		if ($query){
-			header('Location: criarAba.php?entidade='.$entidade."&currentproject=".$_SESSION['currentproject']);
+			header('Location: criarAba.php?entidade='.$entidade."&currentproject=".CURRENT_PROJECT_ID);
 		}else{
 			if (IS_SHOW_ERROR_MESSAGE){
 				echo $sql;
@@ -135,10 +135,10 @@
 				e.preventDefault();
 			});
 			function excluirAba(id,entidade){				
-				location.href='criarAba.php?excluir='+id+'&entidade=' + entidade + "&currentproject=<?=$_SESSION['currentproject']?>";
+				location.href='criarAba.php?excluir='+id+'&entidade=' + entidade + "&currentproject=<?=CURRENT_PROJECT_ID?>";
 			}
 			function editarAba(entidade,id,atributos){
-				location.href='criarAba.php?entidade=' + entidade + "&id=" + id + "&atributos=" + atributos + "&currentproject=<?=$_SESSION['currentproject']?>";
+				location.href='criarAba.php?entidade=' + entidade + "&id=" + id + "&atributos=" + atributos + "&currentproject=<?=CURRENT_PROJECT_ID?>";
 			}
 		</script>		
 	</body>

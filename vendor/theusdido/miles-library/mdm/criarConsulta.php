@@ -23,7 +23,7 @@
 	if (!empty($_POST)){
 		if ($_POST["op"] == "salvar"){
 			$id			 			= isset($_POST["id"])?$_POST["id"]:'';
-			$descricao				= executefunction("tdc::utf8",array($_POST["descricao"]));
+			$descricao				= $_POST["descricao"];
 			$entidade	 			= $_POST["entidade"];
 			$movimentacao	 		= isset($_POST["movimentacao"])?$_POST["movimentacao"]:0;			
 			$exibirbotaoeditar		= isset($_POST["exibirbotaoeditar"])?1:0;
@@ -48,7 +48,7 @@
 				}
 			}
 
-			header("Location: criarConsulta.php?id=" . $id . "&currentproject=" .$_SESSION['currentproject']);
+			header("Location: criarConsulta.php?id=" . $id . "&currentproject=" .CURRENT_PROJECT_ID);
 		}
 		if ($_POST["op"] == "salvarfiltro"){
 			$id			 			= isset($_POST["id"])?$_POST["id"]:'';
@@ -177,11 +177,11 @@
 			foreach($query->fetchAll() as $linha){
 				$atributo = $linha["atributo"];
 				$operador = $linha["operador"];
-				$legenda = executefunction("tdc::utf8",array($linha["legenda"]));
+				$legenda = $linha["legenda"];
 				$sqlAtributo = "SELECT descricao FROM td_atributo WHERE id = " . $atributo;
 				$queryAtributo = $conn->query($sqlAtributo);
 				$linhaAtributo = $queryAtributo->fetch();
-				$atributoDescricao = executefunction("tdc::utf8",array($linhaAtributo["descricao"]));
+				$atributoDescricao = $linhaAtributo["descricao"];
 				echo "<span class='list-group-item'>
 						Atributo <strong>{$atributoDescricao}</strong> com  operador ( <strong>{$operador} ) </strong>
 						<button type='button' class='btn btn-default' onclick='excluirFiltro({$linha["id"]});' style='float:right;margin-top:-4px'>
@@ -204,11 +204,11 @@
 			foreach($query->fetchAll() as $linha){
 				$atributo = $linha["atributo"];
 				$operador = $linha["operador"];
-				$legenda = executefunction("tdc::utf8",array($linha["legenda"]));
+				$legenda = $linha["legenda"];
 				$sqlAtributo = "SELECT descricao FROM td_atributo WHERE id = " . $atributo;
 				$queryAtributo = $conn->query($sqlAtributo);
 				$linhaAtributo = $queryAtributo->fetch();
-				$atributoDescricao = executefunction("tdc::utf8",array($linhaAtributo["descricao"]));
+				$atributoDescricao = $linhaAtributo["descricao"];
 				$valor = $linha["valor"];
 				echo "<span class='list-group-item'>
 						Atributo <strong>{$atributoDescricao}</strong> com  operador ( <strong>{$operador} ) </strong>
@@ -235,7 +235,7 @@
 				$sqlAtributo = "SELECT descricao FROM td_atributo WHERE id = " . $atributo;
 				$queryAtributo = $conn->query($sqlAtributo);
 				$linhaAtributo = $queryAtributo->fetch();
-				$atributoDescricao = executefunction("tdc::utf8",array($linhaAtributo["descricao"]));
+				$atributoDescricao = $linhaAtributo["descricao"];
 				echo "<span class='list-group-item'>
 						Atributo <strong>{$atributoDescricao}</strong> com  operador ( <strong>{$operador} ) </strong>. Valor: <small class='text-info'>{$valor}</small>.
 						<button type='button' class='btn btn-default' onclick='excluirStatus({$linha["id"]});' style='float:right;margin-top:-4px'>
@@ -254,7 +254,7 @@
 		$query = $conn->query($sql);
 		foreach ($query->fetchAll() as $linha){
 			$entidade			= $linha["entidade"];
-			$descricao			= executefunction("tdc::utf8",array($linha["descricao"]));
+			$descricao			= $linha["descricao"];
 			$movimentacao		= $linha["movimentacao"];
 			$exibirbotaoeditar 	= $linha["exibirbotaoeditar"];
 			$exibirbotaoexcluir = $linha["exibirbotaoexcluir"];
@@ -333,7 +333,7 @@
 							consulta:"<?=$id?>",
 							id:$("#form-filtro #idfiltro").val(),
 							legenda:$("#form-filtro #legenda").val(),
-							currentproject:<?=$_SESSION["currentproject"]?>
+							currentproject:<?=CURRENT_PROJECT_ID?>
 						},
 						complete:function(r){
 							atualizarListaFiltro("<?=$id?>");
@@ -353,7 +353,7 @@
 							id:$("#form-filtro-inicial #idfiltro").val(),
 							valor:$("#form-filtro-inicial #valor").val(),
 							legenda:$("#form-filtro-inicial #legenda").val(),
-							currentproject:<?=$_SESSION["currentproject"]?>
+							currentproject:<?=CURRENT_PROJECT_ID?>
 						},
 						complete:function(r){
 							atualizarListaFiltroInicial("<?=$id?>");
@@ -373,7 +373,7 @@
 							consulta:"<?=$id?>",
 							id:$("#form-status #idstatus").val(),
 							status:$("#form-status #status").val(),
-							currentproject:<?=$_SESSION["currentproject"]?>
+							currentproject:<?=CURRENT_PROJECT_ID?>
 						},
 						complete:function(r){
 							atualizarListaStatus("<?=$id?>");
@@ -415,13 +415,13 @@
 				$("#form-status #status").val($("#form-status #status option:first").val());
 			}
 			function atualizarListaFiltro(consulta){
-				$("#lista-filtro").load("criarConsulta.php?op=listarconsulta&consulta=" + consulta + "&currentproject=<?=$_SESSION['currentproject']?>");
+				$("#lista-filtro").load("criarConsulta.php?op=listarconsulta&consulta=" + consulta + "&currentproject=<?=CURRENT_PROJECT_ID?>");
 			}
 			function atualizarListaFiltroInicial(consulta){
-				$("#lista-filtroinicial").load("criarConsulta.php?op=listarfiltroinicial&consulta=" + consulta+ "&currentproject=<?=$_SESSION['currentproject']?>");
+				$("#lista-filtroinicial").load("criarConsulta.php?op=listarfiltroinicial&consulta=" + consulta+ "&currentproject=<?=CURRENT_PROJECT_ID?>");
 			}
 			function atualizarListaStatus(consulta){
-				$("#lista-status").load("criarConsulta.php?op=listarstatus&consulta=" + consulta + "&currentproject=<?=$_SESSION['currentproject']?>");
+				$("#lista-status").load("criarConsulta.php?op=listarstatus&consulta=" + consulta + "&currentproject=<?=CURRENT_PROJECT_ID?>");
 			}
 			function excluirFiltro(id){
 				$.ajax({
@@ -429,7 +429,7 @@
 					data:{
 						op:"excluirfiltro",
 						id:id,
-						currentproject:<?=$_SESSION['currentproject']?>
+						currentproject:<?=CURRENT_PROJECT_ID?>
 					},
 					complete:function(){
 						atualizarListaFiltro("<?=$id?>");
@@ -442,7 +442,7 @@
 					data:{
 						op:"excluirfiltroinicial",
 						id:id,
-						currentproject:<?=$_SESSION['currentproject']?>
+						currentproject:<?=CURRENT_PROJECT_ID?>
 					},
 					complete:function(){
 						atualizarListaFiltroInicial("<?=$id?>");
@@ -455,7 +455,7 @@
 					data:{
 						op:"excluirstatus",
 						id:id,
-						currentproject:<?=$_SESSION['currentproject']?>
+						currentproject:<?=CURRENT_PROJECT_ID?>
 					},
 					complete:function(){
 						atualizarListaStatus("<?=$id?>");
@@ -479,7 +479,7 @@
 							entidade:fk,
 							atributo:"",
 							filtro:"",
-							currentproject:<?=$_SESSION['currentproject']?>,
+							currentproject:<?=CURRENT_PROJECT_ID?>,
 							key:"k"
 						},
 						complete:function(ret){
@@ -517,7 +517,7 @@
 						<fieldset>
 							<input type="hidden" id="id" name="id">
 							<input type="hidden" id="op" name="op" value="salvar">
-							<input type="hidden" id="currentproject" name="currentproject" value="<?=$_SESSION['currentproject']?>" />
+							<input type="hidden" id="currentproject" name="currentproject" value="<?=CURRENT_PROJECT_ID?>" />
 							<div class="form-group">
 								<label for="nome">Descri&ccedil;&atilde;o</label>
 								<input type="text" name="descricao" id="descricao" class="form-control">
@@ -529,7 +529,7 @@
 										$sql = "SELECT id,nome,descricao FROM ".PREFIXO."entidade";
 										$query = $conn->query($sql);
 										foreach($query->fetchAll() as $linha){
-											echo '<option value="'.$linha["id"].'" data-nome="'.$linha["nome"].'">'.executefunction("tdc::utf8",array($linha["descricao"])).' [ '.$linha["nome"].' ]</option>';
+											echo '<option value="'.$linha["id"].'" data-nome="'.$linha["nome"].'">'.$linha["descricao"].' [ '.$linha["nome"].' ]</option>';
 										}
 									?>
 								</select>
@@ -602,7 +602,7 @@
 													<input type="hidden" id="idfiltro" name="idfiltro" />
 													<input type="hidden" id="op" name="op" value="salvarfiltro" />
 													<input type="hidden" id="consulta" name="consulta" value="<?=$id?>" />
-													<input type="hidden" id="currentproject" name="currentproject" value="<?=$_SESSION['currentproject']?>" />
+													<input type="hidden" id="currentproject" name="currentproject" value="<?=CURRENT_PROJECT_ID?>" />
 													<div class="form-group">
 														<label for="atributo">Atributo</label>
 														<select id="atributo" name="atributo" class="form-control">
@@ -610,7 +610,7 @@
 															$sql = "SELECT id,nome,descricao FROM ".PREFIXO."atributo WHERE entidade = " . $entidade;
 															$query = $conn->query($sql);
 															foreach($query->fetchAll() as $linha){
-																echo '<option value="'.$linha["id"].'" data-nome="'.$linha["nome"].'">'.executefunction("tdc::utf8",array($linha["descricao"])).' [ '.$linha["nome"].' ]</option>';
+																echo '<option value="'.$linha["id"].'" data-nome="'.$linha["nome"].'">'.$linha["descricao"].' [ '.$linha["nome"].' ]</option>';
 															}
 														?>
 														</select>
@@ -684,7 +684,7 @@
 													<input type="hidden" id="idstatus" name="idstatus" />
 													<input type="hidden" id="op" name="op" value="salvarfiltro" />
 													<input type="hidden" id="consulta" name="consulta" value="<?=$id?>" />
-													<input type="hidden" id="currentproject" name="currentproject" value="<?=$_SESSION['currentproject']?>" />													
+													<input type="hidden" id="currentproject" name="currentproject" value="<?=CURRENT_PROJECT_ID?>" />													
 													<div class="form-group">
 														<label for="atributo">Atributo</label>
 														<select id="atributo" name="atributo" class="form-control">
@@ -692,7 +692,7 @@
 															$sql = "SELECT id,nome,descricao,chaveestrangeira FROM ".PREFIXO."atributo WHERE entidade = " . $entidade ;
 															$query = $conn->query($sql);
 															foreach($query->fetchAll() as $linha){
-																echo '<option value="'.$linha["id"].'" data-nome="'.$linha["nome"].'" data-chaveestrangeira="'.$linha["chaveestrangeira"].'">'.executefunction("tdc::utf8",array($linha["descricao"])).' [ '.$linha["nome"].' ]</option>';
+																echo '<option value="'.$linha["id"].'" data-nome="'.$linha["nome"].'" data-chaveestrangeira="'.$linha["chaveestrangeira"].'">'.$linha["descricao"].' [ '.$linha["nome"].' ]</option>';
 															}
 														?>
 														</select>
@@ -723,7 +723,7 @@
 															$sql = "SELECT id,descricao FROM ".PREFIXO."status";
 															$query = $conn->query($sql);
 															foreach($query->fetchAll() as $linha){
-																echo '<option value="'.$linha["id"].'">'.executefunction("tdc::utf8",array($linha["descricao"])).'</option>';
+																echo '<option value="'.$linha["id"].'">'.$linha["descricao"].'</option>';
 															}
 														?>
 														</select>
@@ -779,7 +779,7 @@
 													<input type="hidden" id="idfiltro" name="idfiltro" />
 													<input type="hidden" id="op" name="op" value="salvarfiltroinicial" />
 													<input type="hidden" id="consulta" name="consulta" value="<?=$id?>" />
-													<input type="hidden" id="currentproject" name="currentproject" value="<?=$_SESSION['currentproject']?>" />													
+													<input type="hidden" id="currentproject" name="currentproject" value="<?=CURRENT_PROJECT_ID?>" />													
 													<div class="form-group">
 														<label for="atributo">Atributo</label>
 														<select id="atributo" name="atributo" class="form-control">
@@ -787,7 +787,7 @@
 															$sql = "SELECT id,nome,descricao FROM ".PREFIXO."atributo WHERE entidade = " . $entidade;
 															$query = $conn->query($sql);
 															foreach($query->fetchAll() as $linha){
-																echo '<option value="'.$linha["id"].'" data-nome="'.$linha["nome"].'">'.executefunction("tdc::utf8",array($linha["descricao"])).' [ '.$linha["nome"].' ]</option>';
+																echo '<option value="'.$linha["id"].'" data-nome="'.$linha["nome"].'">'.$linha["descricao"].' [ '.$linha["nome"].' ]</option>';
 															}
 														?>
 														</select>

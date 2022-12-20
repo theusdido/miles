@@ -139,15 +139,15 @@ class Pagina Extends Html {
 		}
 		
 		if ($this->showCSSTheme){
-			if (file_exists(PATH_CURRENT_PROJECT_THEME)){
+			#if (file_exists(PATH_PROJECT)){
 				$tema 			= tdClass::Criar("link");
-				$tema->href 	=  URL_CURRENT_PROJECT_THEME . 'geral.css';
+				$tema->href 	= URL_CURRENT_PROJECT_THEME . 'geral.css';
 				$tema->rel 		= 'stylesheet';				
-			}else{
+			#}else{
 				$tema 			= tdClass::Criar("link");
 				$tema->href 	= URL_SYSTEM_THEME . 'geral.css';
 				$tema->rel 		= 'stylesheet';	
-			}
+			#}
 
 			$gradededadosCSS 		= tdClass::Criar("link");
 			$gradededadosCSS->href 	= URL_SYSTEM_THEME . 'gradesdedados.css';
@@ -287,7 +287,7 @@ class Pagina Extends Html {
 				this.projeto					= '.CURRENT_PROJECT_ID.';
 				this.permitirexclusao			= "'.(isset(Session::get()->permitirexclusao)?Session::get()->permitirexclusao:"").'";
 				this.permitirtrocarempresa		= "'.(isset(Session::get()->permitirtrocarempresa)?Session::get()->permitirtrocarempresa:"").'";
-				this.currentprojectregisterpath	= "'.PATH_CURRENT_PROJECT.'";
+				this.currentprojectregisterpath	= "'.PATH_PROJECT.'";
 				this.objectID					= -1;
 				this.PREFIXO					= "'.PREFIXO.'_";
 				this.isonline                   = '.isOnline("string").';

@@ -89,7 +89,7 @@ class tdInstall {
 	*/
 	public static function isInstalled(){
 		try{
-			$conn = Conexao::getTemp();
+			$conn = Transacao::Get() ? Transacao::Get() : Conexao::getTemp();
 			$sql = "SELECT 1 FROM td_instalacao WHERE sistemainstalado = 1";
 			$query = $conn->query($sql);
 			if ($query->rowCount() > 0){
