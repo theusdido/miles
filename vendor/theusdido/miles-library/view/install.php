@@ -4,16 +4,11 @@
       $install_page = tdClass::Criar("pagina");
       $install_page->setTitle('Miles - Instalar');
 
-      $tdlibCSS       = tdc::html('link');
-      $tdlibCSS->href = URL_LIB . 'tdlib/css/tdlib.css';
-      $tdlibCSS->rel 	= "stylesheet";
-
       $installCSS         = tdc::html('link');
       $installCSS->href   = URL_SYSTEM_THEME.'install.css';
       $installCSS->rel 	= "stylesheet";
 
       $install_page->setFavIcon(URL_FAVICON);
-      $install_page->addHead($tdlibCSS);
       $install_page->addHead($installCSS);
 
       $row        = tdc::o('div');

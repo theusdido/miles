@@ -24,12 +24,12 @@
 	$datacriacaodoc = "* @Data de Criacao: ".date("d/m/Y H:i:s");
 	$authordoc 		= "* @Criado por: ".$_SESSION["username"].", @id: ".$_SESSION["userid"];
 	$paginadoc 		= "* @Página: {$descricao_doc}";
-
+	
 	// Cria o diretório do registro caso não exista
 	if (!file_exists($path)){
 		mkdir($path,0777,true);
 	}
-
+	
 	// Nome do arquivo HTML principal
 	$_filename_html 	= tdc::r('filename'		,$entidade->nome . '.html');
 	$_filename_htm 		= tdc::r('filenamehtm'	,$entidade->nome . '.htm');
@@ -40,14 +40,14 @@
 	$_full_filename_htm		= $path . $_filename_htm;
 	$_full_filename_css		= $path . $_filename_css;
 	$_full_filename_js		= $path . $_filename_js;
-
+	
 	if ((bool)$_reset_files){
 		if (file_exists($_full_filename_html)) 	unlink($_full_filename_html);
 		if (file_exists($_full_filename_htm)) 	unlink($_full_filename_htm);
 		if (file_exists($_full_filename_css))	unlink($_full_filename_css);
 		if (file_exists($_full_filename_js)) 	unlink($_full_filename_js);
 	}
-
+	
 	// Cria o arquivo HTML
 	$fp = fopen($_full_filename_html ,'w');
 	fwrite($fp,htmlespecialcaracteres(isset($_POST["html"])?$_POST["html"]:'',1));

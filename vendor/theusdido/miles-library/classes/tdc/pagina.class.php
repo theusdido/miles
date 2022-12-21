@@ -61,6 +61,14 @@ class Pagina Extends Html {
 		$bootstrap_js->src 				= URL_LIB . "bootstrap/3.3.1/js/bootstrap.js";
 		$bootstrap_js->language 		= "JavaScript";
 				
+		$tdlib_css       = tdc::html('link');
+		$tdlib_css->href = URL_LIB . 'tdlib/css/tdlib.css';
+		$tdlib_css->rel 	= "stylesheet";
+
+		$tdlib_js 					= tdClass::Criar("script");
+		$tdlib_js->src 				= URL_LIB . "tdlib/js/tdlib.js";
+		$tdlib_js->language 		= "JavaScript";
+	
 		$meta_charset = tdClass::Criar("meta");		
 		if ($this->ishtml5){
 			$meta_charset->charset 		= "utf-8";
@@ -78,8 +86,8 @@ class Pagina Extends Html {
 		$meta_robots->content 	= "noindex, nofollow";
 
 		$this->setTitle();
-		$this->head->add($meta_charset,$meta_viewport,$meta_robots,$bootstrap);
-		$this->body->add($jquery,$bootstrap_js);
+		$this->head->add($meta_charset,$meta_viewport,$meta_robots,$bootstrap,$tdlib_css);
+		$this->body->add($jquery,$bootstrap_js,$tdlib_js);
 		
 		// Javascript inicial da página
 		$this->jsInicial();

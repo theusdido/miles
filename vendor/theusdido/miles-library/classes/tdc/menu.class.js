@@ -107,6 +107,10 @@ Menu.prototype.load = function(){
 }
 Menu.prototype.carregarpagina = function(path,target,dados_menu){
 	carregar(path,target,function(){
+		if (dados_menu == undefined || dados_menu == ''){
+			console.warn('Dados do menu não foram carregados.');
+			console.log('## Tente recarregar a página com CTRL + F5. ##');
+		}
 		carregarScriptCRUD(dados_menu.tipomenu,dados_menu.entidade);
 	});
 	let instancia = this;

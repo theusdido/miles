@@ -3,6 +3,7 @@ $(document).ready(function(){
     $('#projectfolder').val();
     $('#prefixo').val();
     $('#loader-instalar').attr('src',session.urlloading2);
+    $('#loading-atualizar-personalizado').attr('src',session.urlloading2);
 });
 
 var showpersonalizar    = false;
@@ -116,7 +117,7 @@ $("#btn-personalizar").click(function(){
         addComponentesPersonalizados();
     }
 });
-$("#btn-atualizar-personalizado").click(function(){
+$("#btn-atualizar-personalizado").click(function(){    
     // Pega os itens personalizados
     $("#formulario-personalizado .form-group input[type=checkbox]:checked").each(function(){
         instrucao = componentes[$(this).data("componente")];

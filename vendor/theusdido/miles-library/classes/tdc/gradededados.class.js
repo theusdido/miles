@@ -21,10 +21,10 @@ function GradeDeDados(entidade){
 	this.totalblocos = 0;
 	this.registrosExcluir = "";
 	this.retornaFiltro = false;
-	this.attr_cabecalho_nome = new Array("id");
-	this.attr_cabecalho_descricao = new Array("ID");
-	this.attr_cabecalho_tipo = new Array("int");
-	this.attr_cabecalho_tipohtml = new Array("3");
+	this.attr_cabecalho_nome 		= new Array();
+	this.attr_cabecalho_descricao 	= new Array();
+	this.attr_cabecalho_tipo 		= new Array();
+	this.attr_cabecalho_tipohtml 	= new Array("3");
 	this.attr_cabecalho_chaveestrangeira = new Array("0");
 	this.entidadePai = "";
 	this.regpai = "";
@@ -46,11 +46,12 @@ function GradeDeDados(entidade){
 	this.funcionalidade = 'cadastro';
 	this.indice_linha = -1;	
 	this.btnEditarEmMassa = null; // Elemento DOM do botão para editar em massa
+	this.exibircolunaid = true;
 	// Método Construtor
 	this.construct(entidade);
 }
 GradeDeDados.prototype.construct = function(entidade){
-	if (entidade > 0) this.nomeEntidade = td_entidade[entidade].nomecompleto;
+	if (entidade > 0) this.nomeEntidade = td_entidade[entidade].nomecompleto;	
 	this.setCabecalhoAtributos();	
 }
 GradeDeDados.prototype.setTable = function(){
@@ -1068,10 +1069,16 @@ GradeDeDados.prototype.setCabecalhoAtributos = function(){
 	this.attr_cabecalho_nome.splice(1,this.attr_cabecalho_nome.length);
 	this.attr_cabecalho_descricao.splice(1,this.attr_cabecalho_descricao.length);
 	this.attr_cabecalho_tipo.splice(1,this.attr_cabecalho_tipo.length);
-
-	this.attr_cabecalho_nome 		= new Array("id");
-	this.attr_cabecalho_descricao 	= new Array("ID");
-	this.attr_cabecalho_tipo 		= new Array("int");
+	
+	if (this.exibircolunaid){
+		this.attr_cabecalho_nome 		= new Array("id");
+		this.attr_cabecalho_descricao 	= new Array("ID");
+		this.attr_cabecalho_tipo 		= new Array("int");
+	}else{
+		this.attr_cabecalho_nome 		= new Array();
+		this.attr_cabecalho_descricao 	= new Array();
+		this.attr_cabecalho_tipo 		= new Array();	
+	}
 
 	if (this.entidade > 0){
 		if (td_entidade[this.entidade].atributos.length > 0){

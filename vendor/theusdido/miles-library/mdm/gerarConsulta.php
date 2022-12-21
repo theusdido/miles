@@ -56,11 +56,10 @@
 <script type="text/javascript">
 	$("#gerar").click(function(){
 		$.ajax({
-			url:"../../index.php",
+			url:"<?=URL_API?>",
 			data:{
 				controller:"gerarconsulta",
-				id:"<?=$id?>",
-				currentproject:"<?=$_SESSION["currentproject"]?>"
+				id:"<?=$id?>"
 			},
 			beforeSend:function(){
 				$("#consulta-gerada").html('<img src="../tema/padrao/loading2.gif" id="loading" style="float:left;margin-left:48%;" />');
@@ -71,7 +70,7 @@
 		});
 		function gerarConsulta(html){
 			$.ajax({
-				url:"../../index.php",
+				url:"<?=URL_API?>",
 				type:"POST",
 				data:{
 					controller:"mdm/componente",
@@ -83,7 +82,6 @@
 					filenamehtm:$("#filenamehtm").val(),
 					entidade:"<?=$entidade?>",
 					urlupload:$("#urlupload").val(),
-					currentproject:<?=$_SESSION["currentproject"]?>,
 					id:<?=$id?>
 				},
 				complete:function(){

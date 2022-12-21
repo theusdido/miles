@@ -14,6 +14,11 @@
 		session_name("miles_SISTEMA_" . $_currentproject_id);
 		session_start();
 	}
+
+	if (!isset($_SESSION['userid'])){
+		echo 'Sessão foi encerrada!';
+		exit;
+	}
 	$request_schema = isset($_SERVER["HTTP_X_FORWARDED_PROTO"])?$_SERVER["HTTP_X_FORWARDED_PROTO"]:$_SERVER["REQUEST_SCHEME"];
 	
 	

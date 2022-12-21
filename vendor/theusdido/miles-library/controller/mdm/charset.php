@@ -49,14 +49,15 @@
 			}
 
 			// Caracteres desformatados
-			$_de 	= array('Ã§','Ã£','Ã');
-			$_para	= array('ç','ã','í');
+			$_de 	= array('Ã§','Ã£','Ã“','Ãµ','Ã³');
+			$_para	= array('ç','ã','Ó','õ','ó');
 			$sqlv 	= "SELECT id,{$atributo} valor FROM {$entidade};";
 			$queryv = $conn->query($sqlv);
 			while ($linhav = $queryv->fetch()){
 				$_valor = str_replace($_de,$_para,$linhav["valor"]);
 				if (!isutf8($_valor)){
-					$valor 	= utf8_decode($_valor); //Só funcionou com o comando nativo
+					// Só funcionou com o comando nativo
+					$_valor = utf8_decode($_valor); 
 				}
 				try {
 					$sql 	= 'UPDATE '.$entidade.' SET '.$atributo.' = "'.$_valor.'" WHERE id = ' . $linhav["id"]. ';';

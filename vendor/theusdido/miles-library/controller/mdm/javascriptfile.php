@@ -153,6 +153,7 @@
 			$exibirbotaoeditar		= json_encode($consultas->exibirbotaoeditar);
 			$exibirbotaoexcluir		= json_encode($consultas->exibirbotaoexcluir);
 			$exibirbotaoemmassa		= json_encode($consultas->exibirbotaoemmassa);
+			$exibircolunaid			= json_encode($consultas->exibircolunaid);
 
 			fwrite($mdmJSCompile,"
 				td_consulta[{$consultas->id}] = {
@@ -165,6 +166,7 @@
 					exibireditar:{$exibirbotaoeditar},
 					exibirexcluir:{$exibirbotaoexcluir},
 					exibiremmassa:{$exibirbotaoemmassa},
+					exibircolunaid:{$exibircolunaid},
 					filtros:{
 			");			
 			$sqlFiltros = "SELECT id,operador,atributo FROM td_consultafiltro a WHERE consulta = " . $consultas->id;

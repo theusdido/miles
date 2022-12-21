@@ -9,7 +9,7 @@
 	require 'funcoes.php';
 	
 	$id = $tipo = $entidade = $atributo = $descricao = $ent = $entidadefilho = "";
-	$exibirbotaoeditar = $exibirbotaoexcluir = $exibirbotaoemmassa = "";
+	$exibirbotaoeditar = $exibirbotaoexcluir = $exibirbotaoemmassa = $exibircolunaid = "";
 
 	
 	if (isset($_GET["entidade"])){
@@ -29,15 +29,16 @@
 			$exibirbotaoeditar		= isset($_POST["exibirbotaoeditar"])?1:0;
 			$exibirbotaoexcluir		= isset($_POST["exibirbotaoexcluir"])?1:0;
 			$exibirbotaoemmassa		= isset($_POST["exibirbotaoemmassa"])?1:0;
+			$exibircolunaid			= isset($_POST["exibircolunaid"])?1:0;
 
 			if ($id == ""){
 				$query_prox = $conn->query("SELECT IFNULL(MAX(id),0)+1 FROM ".PREFIXO."consulta");
 				$prox = $query_prox->fetch();
 				$id = $prox[0];
 
-				$sql = "INSERT INTO ".PREFIXO."consulta (id,descricao,entidade,movimentacao,exibirbotaoeditar,exibirbotaoexcluir,exibirbotaoemmassa) VALUES ({$id},'{$descricao}',{$entidade},{$movimentacao},{$exibirbotaoeditar},{$exibirbotaoexcluir},{$exibirbotaoemmassa});";
+				$sql = "INSERT INTO ".PREFIXO."consulta (id,descricao,entidade,movimentacao,exibirbotaoeditar,exibirbotaoexcluir,exibirbotaoemmassa,exibircolunaid) VALUES ({$id},'{$descricao}',{$entidade},{$movimentacao},{$exibirbotaoeditar},{$exibirbotaoexcluir},{$exibirbotaoemmassa},$exibircolunaid);";
 			}else{
-				$sql = "UPDATE ".PREFIXO."consulta SET entidade = {$entidade} , descricao = '{$descricao}' , movimentacao = {$movimentacao} , exibirbotaoeditar = {$exibirbotaoeditar} , exibirbotaoexcluir = {$exibirbotaoexcluir} , exibirbotaoemmassa = {$exibirbotaoemmassa} WHERE id = {$id};";
+				$sql = "UPDATE ".PREFIXO."consulta SET entidade = {$entidade} , descricao = '{$descricao}' , movimentacao = {$movimentacao} , exibirbotaoeditar = {$exibirbotaoeditar} , exibirbotaoexcluir = {$exibirbotaoexcluir} , exibirbotaoemmassa = {$exibirbotaoemmassa}, exibircolunaid = {$exibircolunaid} WHERE id = {$id};";
 			}
 			$query = $conn->query($sql);
 			if($query){
@@ -169,20 +170,26 @@
 		}
 		
 		if ($_GET["op"] == "listarconsulta"){
-			$sql = "SELECT id,atributo atributo,operador,legenda FROM ".PREFIXO."consultafiltro a WHERE consulta = {$_GET["consulta"]} ORDER BY id DESC";
+			$sql = "
+				SELECT 
+					id,atributo atributo,operador,legenda 
+				FROM ".PREFIXO."consultafiltro a 
+				WHERE consulta = {$_GET["consulta"]} 
+				ORDER BY ordem ASC,id DESC
+			";
 			$query = $conn->query($sql);
 			if ($query->rowCount() <= 0){
 				echo '<div class="alert alert-warning alert-dismissible text-center" role="alert">Nenhum campo de <strong>filtro</strong> configurado.</div>';
 			}
 			foreach($query->fetchAll() as $linha){
-				$atributo = $linha["atributo"];
-				$operador = $linha["operador"];
-				$legenda = $linha["legenda"];
+				$atributo 	= $linha["atributo"];
+				$operador 	= $linha["operador"];
+				$legenda 	= $linha["legenda"];
 				$sqlAtributo = "SELECT descricao FROM td_atributo WHERE id = " . $atributo;
 				$queryAtributo = $conn->query($sqlAtributo);
 				$linhaAtributo = $queryAtributo->fetch();
 				$atributoDescricao = $linhaAtributo["descricao"];
-				echo "<span class='list-group-item'>
+				echo "<li class='list-group-item' data-id='".$linha["id"]."'>
 						Atributo <strong>{$atributoDescricao}</strong> com  operador ( <strong>{$operador} ) </strong>
 						<button type='button' class='btn btn-default' onclick='excluirFiltro({$linha["id"]});' style='float:right;margin-top:-4px'>
 							<span class='fas fa-trash-alt' aria-hidden='true'></span>
@@ -190,7 +197,7 @@
 						<button id='atributo-editar-{$linha["id"]}' type='button' class='btn btn-default' data-atributo='{$atributo}' data-operador='{$operador}' data-idfiltro='{$linha["id"]}' data-legenda='{$linha["legenda"]}' onclick='editarFiltro({$linha["id"]})' style='float:right;margin-top:-4px'>
 							<span class='fas fa-edit' aria-hidden='true'></span>
 						</button>
-					</span>";
+					</li>";
 			}
 			exit;
 		}
@@ -250,7 +257,7 @@
 		}		
 	}
 	if ($id != ""){
-		$sql = "SELECT descricao,entidade,movimentacao,exibirbotaoeditar,exibirbotaoexcluir,exibirbotaoemmassa FROM ".PREFIXO."consulta WHERE id = {$id}";
+		$sql = "SELECT descricao,entidade,movimentacao,exibirbotaoeditar,exibirbotaoexcluir,exibirbotaoemmassa,exibircolunaid FROM ".PREFIXO."consulta WHERE id = {$id}";
 		$query = $conn->query($sql);
 		foreach ($query->fetchAll() as $linha){
 			$entidade			= $linha["entidade"];
@@ -259,6 +266,7 @@
 			$exibirbotaoeditar 	= $linha["exibirbotaoeditar"];
 			$exibirbotaoexcluir = $linha["exibirbotaoexcluir"];
 			$exibirbotaoemmassa = $linha["exibirbotaoemmassa"];
+			$exibircolunaid 	= $linha["exibircolunaid"];
 		}
 	}
 ?>
@@ -276,11 +284,13 @@
 					document.getElementById("exibirbotaoeditar").checked 	= (<?=(int)$exibirbotaoeditar?>==0)?false:true;
 					document.getElementById("exibirbotaoexcluir").checked 	= (<?=(int)$exibirbotaoexcluir?>==0)?false:true;
 					document.getElementById("exibirbotaoemmassa").checked 	= (<?=(int)$exibirbotaoemmassa?>==0)?false:true;
+					document.getElementById("exibircolunaid").checked 		= (<?=(int)$exibircolunaid?>==0)?false:true;
 				}else{
 					$("#accordion_filtros").hide();
 					document.getElementById("exibirbotaoeditar").checked 	= false;
 					document.getElementById("exibirbotaoexcluir").checked 	= false;
 					document.getElementById("exibirbotaoemmassa").checked 	= false;
+					document.getElementById("exibircolunaid").checked 		= false;
 				}
 				$("#valor").val("");
 				atualizarListaFiltro("<?=$id?>");
@@ -385,6 +395,35 @@
 					carregarValoresAtributo($(this).find("option:selected").data("chaveestrangeira"));
 				});
 				carregarValoresAtributo($("#form-status #atributo").find("option:selected").data("chaveestrangeira"));
+
+				$("#lista-filtro").sortable({
+					update: function( event, ui ) {
+						var ordenacao = [];
+						$("#lista-filtro li").each(
+							(e,elemento) => {
+								var id = $(elemento).data("id");
+								//<span class="fas fa-ellipsis-v pontinhos" aria-hidden="true"></span>
+								if (id != undefined){
+									ordenacao.push({
+										id:id,
+										order:e+1
+									});
+								}					
+							}
+						);
+						$.ajax({
+							url:"<?=URL_MILES?>",
+							data:{
+								op:"ordenar",
+								controller:"sortable",
+								entidade:"td_consultafiltro",
+								atributo:"ordem",
+								ordem:ordenacao
+							}
+						});
+					}
+				});
+
 			});
 			function novoFiltro(){
 				$("#modalCadastroFiltro").modal({
@@ -472,10 +511,11 @@
 					$(".form-control[data-tipoatributo=input]").hide();
 					
 					$.ajax({
-						url:"../../index.php?controller=requisicoes",
+						url:"<?=URL_MILES_LIBRARY?>",
 						type:"GET",
 						data:{
-							op:"carregar_options",
+							controller:'requisicoes',
+							op:"carregar_options",							
 							entidade:fk,
 							atributo:"",
 							filtro:"",
@@ -562,6 +602,11 @@
 									<input type="checkbox" name="exibirbotaoemmassa" id="exibirbotaoemmassa">Exibir botão <b>Em Massa</b>
 								</label>
 							</div>
+							<div class="checkbox">
+								<label for="exibircolunaid">
+									<input type="checkbox" name="exibircolunaid" id="exibircolunaid">Exibir coluna <b>ID</b>
+								</label>
+							</div>							
 							<div id="error"></div>
 							<button type="submit" class="btn btn-primary" >Salvar</button>
 						</fieldset>
@@ -646,8 +691,7 @@
 								</div>
 								<!-- CADASTRO DE FILTRO -->
 								<br/><br/>
-								<div id="lista-filtro" class="list-group">
-								</div>
+								<ul id="lista-filtro" class="list-group sortable"></ul>
 						  </div>
 						</div>
 					  </div>

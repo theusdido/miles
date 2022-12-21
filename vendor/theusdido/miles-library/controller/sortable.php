@@ -40,7 +40,7 @@
 	<?php
 		$direcao	= "ASC";
 		$atributo 	= "ordem";
-		$entidade	= "td_slider";
+		$entidade	= "td_consultafiltro";
 		$indice		= 1;
 
 		$sql 	= "SELECT id,{$atributo} FROM {$entidade} ORDER BY {$atributo} {$direcao}";

@@ -47,6 +47,7 @@ tdFormulario.prototype.init = function(){
 	this.emExecucao();
 	this.setBuscaFiltro();
 	this.addHTMLPersonalizado();
+	this.setAtributoDependencia();
 }
 tdFormulario.prototype.novo = function(){
 	let contextoListar 		= this.getContextoListar();
@@ -1236,37 +1237,37 @@ tdFormulario.prototype.setConsulta = function(id_consulta){
 		$("#form-consulta .form-control[atributo="+ft.atributo+"]").attr("data-tipo",td_atributo[ft.atributo].tipo);
 	}
 
-	let instancia = this;
+	let _gradedados = this.getGrade();
 	$("#pesquisa-consulta").click(function(){
-		instancia.getGrade().clear();
+		_gradedados.clear();
 		$("#form-consulta.tdform .form_campos .form-control").each(function(){
 			if ($(this).hasClass("input-sm") || $(this).hasClass("termo-filtro") || $(this).hasClass("checkbox-sn")){
 				if ($(this).val() != "" && $(this).val() != undefined && $(this).val() != null){
 					var operador 	= $(this).data("operador");
 					var tipo 		= $(this).data("tipo");
 					var atributo 	= $(this).attr("id");
-					instancia.getGrade().addFiltro(atributo,(operador == undefined?"=":operador),$(this).val(),(tipo == undefined?"int":tipo));
+					_gradedados.addFiltro(atributo,(operador == undefined?"=":operador),$(this).val(),(tipo == undefined?"int":tipo));
 				}
 			}
 		});
-		instancia.getGrade().qtdeMaxRegistro = 500;
-		instancia.getGrade().reload();
+		_gradedados.qtdeMaxRegistro = 500;
+		_gradedados.reload();
 	});
 
 	// Filtros Iniciais
 	consulta.filtros_iniciais.forEach(function(ft){
 		this.addFiltro(ft.atributo,ft.operador,ft.valor);
-	},this.getGrade());
-	
-	this.getGrade().consulta 		= id_consulta;
-	this.getGrade().funcionalidade	= 'consulta';
-	this.getGrade().movimentacao 	= consulta.movimentacao;
-	this.getGrade().exibireditar	= consulta.exibireditar;
-	this.getGrade().exibirexcluir	= consulta.exibirexcluir;
-	this.getGrade().exibiremmassa	= consulta.exibiremmassa;		
-	this.getGrade().exibirpesquisa 	= false;
-	this.getGrade().setOrder("id","DESC");
-	this.getGrade().show();
+	},_gradedados);
+	_gradedados.consulta 		= id_consulta;
+	_gradedados.funcionalidade	= 'consulta';
+	_gradedados.movimentacao 	= consulta.movimentacao;
+	_gradedados.exibireditar	= consulta.exibireditar;
+	_gradedados.exibirexcluir	= consulta.exibirexcluir;
+	_gradedados.exibiremmassa	= consulta.exibiremmassa;		
+	_gradedados.exibirpesquisa 	= false;
+	_gradedados.exibircolunaid = consulta.exibircolunaid == 1 ? true : false;	
+	_gradedados.setOrder("id","DESC");
+	_gradedados.show();
 }
 /* 
 	*********** FILTRO ************* 

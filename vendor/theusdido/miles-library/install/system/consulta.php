@@ -27,7 +27,8 @@
 	$exibirbotaoeditar	= criarAtributo($conn,$entidadeID,"exibirbotaoeditar","Exibir Botão Editar","boolean",0,1,7);
 	$exibirbotaoexcluir	= criarAtributo($conn,$entidadeID,"exibirbotaoexcluir","Exibir Botão Excluir","boolean",0,1,7);
 	$exibirbotaoemmassa	= criarAtributo($conn,$entidadeID,"exibirbotaoemmassa","Exibir Botão Em Massa","boolean",0,1,7);
-
+	$exibircolunaid		= criarAtributo($conn,$entidadeID,"exibircolunaid","Exibir Coluna ID","boolean",0,1,7);
+	
 	// Criando Entidade
 	$filtrosID = criarEntidade(
 		$conn,
@@ -46,10 +47,11 @@
 	);
 
 	// Criando Atributos
-	$consulta = criarAtributo($conn,$filtrosID,"consulta","Consulta","int",0,0,4,0,0,0,"");
-	$atributo = criarAtributo($conn,$filtrosID,"atributo","Atributo","int",0,0,4,0,0,0,"");
-	$operador = criarAtributo($conn,$filtrosID,"operador","Operador","varchar",5,0,3,1,0,0,"");
-	$legenda = criarAtributo($conn,$filtrosID,"legenda","Legenda","varchar",50,0,3,1,0,0,"");
+	$consulta 	= criarAtributo($conn,$filtrosID,"consulta","Consulta","int",0,0,4,0,0,0,"");
+	$atributo 	= criarAtributo($conn,$filtrosID,"atributo","Atributo","int",0,0,4,0,0,0,"");
+	$operador 	= criarAtributo($conn,$filtrosID,"operador","Operador","varchar",5,0,3,1,0,0,"");
+	$legenda 	= criarAtributo($conn,$filtrosID,"legenda","Legenda","varchar",50,0,3,1,0,0,"");
+	$ordem 		= criarAtributo($conn,$filtrosID,"ordem","Ordem","tinyint",0,1,3);
 
 	// Status Grade
 	$statusGradeID = criarEntidade(

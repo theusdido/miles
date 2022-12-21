@@ -82,7 +82,7 @@
 						  			<button type="button" class="btn btn-warning btn-instalacaosistema" id="btn-atualizar-personalizado">
 										Atualizar
 									</button>
-									<img id="loading-atualizar-personalizado" src="<?=URL_LOADING2?>" />
+									<img id="loading-atualizar-personalizado" />
 								</div>
 								<form id="formulario-personalizado"></form>
 						  </div>
@@ -192,6 +192,8 @@
 					});
 				});
 				$("#btn-personalizar").click(function(){
+					debugger;
+					alert(1);
 					if (showpersonalizar){						
 						$("#linha-formulario").show();
 						$("#linha-personalizacao").hide();
@@ -201,6 +203,7 @@
 						$("#linha-personalizacao").show();
 						showpersonalizar = true;
 						addComponentesPersonalizados();
+						$('#loading-atualizar-personalizado').attr('src',session.urlloading);
 					}
 				});
 				$("#btn-atualizar-personalizado").click(function(){

@@ -52,6 +52,13 @@
 {
 	height: 34px;
 }
+
+.sortable li {
+	cursor:pointer;
+}
+.sortable li:hover{
+	background-color:#EEE;
+}
 </style>
 <script type="text/javascript" src="<?=URL_LIB?>jquery/jquery.js"></script>
 <script type="text/javascript" src="<?=URL_LIB?>bootstrap/3.3.1/js/bootstrap.js"></script>
@@ -59,3 +66,4 @@
 <script type="text/javascript" src="<?=URL_LIB?>fontawesome/ea948eea7a.js" /></script>
 <script type="text/javascript" src="<?=URL_LIB?>jquery/jquery.mask.js"></script>
 <script type="text/javascript" src="<?=URL_LIB?>jquery/jquery.maskMoney.js"></script>
+<script type="text/javascript" src="<?=URL_LIB?>jquery/ui/jquery-ui.min.js?"></script>

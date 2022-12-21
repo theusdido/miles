@@ -66,7 +66,7 @@
 	// Seleciona os campos do FILTRO da CONSULTA
 	$sql 						= tdClass::Criar("sqlcriterio");
 	$sql->add(tdClass::Criar("sqlfiltro",array("consulta",'=',$consulta->id)));
-	$sql->setPropriedade("order","id ASC");
+	$sql->setPropriedade("order","ordem ASC");
 	$dataset					= tdClass::Criar("repositorio",array(FILTROCONSULTA))->carregar($sql);
 
 	$arrayCamposAtributos = array();
