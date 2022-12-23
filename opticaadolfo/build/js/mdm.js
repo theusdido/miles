@@ -2368,6 +2368,24 @@
 					relacionamentos:[]
 				};
 			
+				td_entidade[133] = {
+					id:133,
+					nome:'td_consultacoluna',
+					descricao:'Consulta Colunas',
+					exibirmenuadministracao:'1',
+					exibircabecalho:'1',
+					pai:'',
+					ncolunas:'3',
+					campodescchave:'',
+					atributogeneralizacao:'0',
+					exibirlegenda:'1',
+					registrounico:0,
+					pacote:'',
+					nomecompleto:'td_consultacoluna',
+					atributos:[{"id":834,"entidade":133,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":835,"entidade":133,"nome":"consulta","descricao":"Consulta","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":836,"entidade":133,"nome":"atributo","descricao":"Atributo","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":837,"entidade":133,"nome":"exibirid","descricao":"Exibir ID","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":838,"entidade":133,"nome":"alinhamento","descricao":"alinhamento","tipo":"varchar","tamanho":25,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0}],
+					relacionamentos:[]
+				};
+			
 				td_atributo[1] = {
 					id:1,
 					entidade:'1',
@@ -27208,6 +27226,156 @@
 					naoexibircampo:'0'
 				};
 			
+				td_atributo[834] = {
+					id:834,
+					entidade:'133',
+					nome:'inativo',
+					descricao:'Inativo',
+					tipo:'boolean',
+					tamanho:'0',
+					omissao:'',
+					collection:'',
+					atributos:'',
+					nulo:'1',
+					indice:'',
+					autoincrement:'',
+					comentario:'',
+					exibirgradededados:'0',
+					chaveestrangeira:'0',
+					tipohtml:'7',
+					dataretroativa:'0',
+					ordem:'',
+					readonly:'0',
+					inicializacao:'',
+					exibirpesquisa:'',
+					tipoinicializacao:'1',
+					atributodependencia:'',
+					labelzerocheckbox:'Não',
+					labelumcheckbox:'Sim',
+					criarsomatoriogradededados:'',
+					naoexibircampo:'0'
+				};
+			
+				td_atributo[835] = {
+					id:835,
+					entidade:'133',
+					nome:'consulta',
+					descricao:'Consulta',
+					tipo:'int',
+					tamanho:'0',
+					omissao:'',
+					collection:'',
+					atributos:'',
+					nulo:'0',
+					indice:'',
+					autoincrement:'',
+					comentario:'',
+					exibirgradededados:'0',
+					chaveestrangeira:'0',
+					tipohtml:'4',
+					dataretroativa:'0',
+					ordem:'',
+					readonly:'0',
+					inicializacao:'',
+					exibirpesquisa:'',
+					tipoinicializacao:'1',
+					atributodependencia:'',
+					labelzerocheckbox:'',
+					labelumcheckbox:'',
+					criarsomatoriogradededados:'',
+					naoexibircampo:'0'
+				};
+			
+				td_atributo[836] = {
+					id:836,
+					entidade:'133',
+					nome:'atributo',
+					descricao:'Atributo',
+					tipo:'int',
+					tamanho:'0',
+					omissao:'',
+					collection:'',
+					atributos:'',
+					nulo:'0',
+					indice:'',
+					autoincrement:'',
+					comentario:'',
+					exibirgradededados:'0',
+					chaveestrangeira:'0',
+					tipohtml:'4',
+					dataretroativa:'0',
+					ordem:'',
+					readonly:'0',
+					inicializacao:'',
+					exibirpesquisa:'',
+					tipoinicializacao:'1',
+					atributodependencia:'',
+					labelzerocheckbox:'',
+					labelumcheckbox:'',
+					criarsomatoriogradededados:'',
+					naoexibircampo:'0'
+				};
+			
+				td_atributo[837] = {
+					id:837,
+					entidade:'133',
+					nome:'exibirid',
+					descricao:'Exibir ID',
+					tipo:'boolean',
+					tamanho:'0',
+					omissao:'',
+					collection:'',
+					atributos:'',
+					nulo:'1',
+					indice:'',
+					autoincrement:'',
+					comentario:'',
+					exibirgradededados:'0',
+					chaveestrangeira:'0',
+					tipohtml:'7',
+					dataretroativa:'0',
+					ordem:'',
+					readonly:'0',
+					inicializacao:'',
+					exibirpesquisa:'',
+					tipoinicializacao:'1',
+					atributodependencia:'',
+					labelzerocheckbox:'Não',
+					labelumcheckbox:'Sim',
+					criarsomatoriogradededados:'',
+					naoexibircampo:'0'
+				};
+			
+				td_atributo[838] = {
+					id:838,
+					entidade:'133',
+					nome:'alinhamento',
+					descricao:'alinhamento',
+					tipo:'varchar',
+					tamanho:'25',
+					omissao:'',
+					collection:'',
+					atributos:'',
+					nulo:'1',
+					indice:'',
+					autoincrement:'',
+					comentario:'',
+					exibirgradededados:'0',
+					chaveestrangeira:'0',
+					tipohtml:'3',
+					dataretroativa:'0',
+					ordem:'',
+					readonly:'0',
+					inicializacao:'',
+					exibirpesquisa:'',
+					tipoinicializacao:'1',
+					atributodependencia:'',
+					labelzerocheckbox:'',
+					labelumcheckbox:'',
+					criarsomatoriogradededados:'',
+					naoexibircampo:'0'
+				};
+			
 				td_relacionamento[1] = {
 					id:1,
 					pai:'9',
@@ -29431,8 +29599,11 @@
 					},
 					filtros_iniciais:[
 			
+					],
+					colunas:[
+			
 					]
-				};
+				}
 			
 				td_consulta[2] = {
 					id:'2',
@@ -29453,8 +29624,21 @@
 					},
 					filtros_iniciais:[
 			
+					],
+					colunas:[
+			{
+						atributo:684,
+						consulta:2,
+						alinhamento:"center",
+						exibirid:"1"
+					},{
+						atributo:683,
+						consulta:2,
+						alinhamento:"left",
+						exibirid:"1"
+					}
 					]
-				};
+				}
 			
 				td_relatorio[1] = {
 					id:'1',

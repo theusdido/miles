@@ -275,7 +275,8 @@
 		<title>Criar Consulta</title>
 		<?php include 'head.php' ?>
 		<script type="text/javascript">
-			window.onload = function(){
+			var url_api = "<?=URL_API?>";
+			window.onload = function(){				
 				document.getElementById("id").value = "<?=$id?>";
 				if ("<?=$id?>" != ""){
 					$("#accordion_filtros").show();
@@ -296,6 +297,7 @@
 				atualizarListaFiltro("<?=$id?>");
 				atualizarListaStatus("<?=$id?>");
 				atualizarListaFiltroInicial("<?=$id?>");
+				$('#panel-colunas').load("<?=URL_API?>?controller=page&page=mdm/consulta/colunas");
 			}
 			function validar(){
 				if ($("#entidade").val() == "" || $("#entidade").val() == null){
@@ -877,7 +879,7 @@
 						</div>
 					  </div>
 					</div>
-					
+					<div id="panel-colunas"></div>
 					<?php
 						}
 					?>	

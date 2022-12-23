@@ -207,10 +207,29 @@
 								valor:"'.$linhaCI['valor'].'"
 							}');
 							if ($iCI < $tCI) fwrite($mdmJSCompile,",");
+							$iCI++;
 						}
 			fwrite($mdmJSCompile,"
+					],
+					colunas:[
+			");
+				$sqlCC 		= "SELECT id,atributo,consulta,exibirid,alinhamento FROM td_consultacoluna WHERE consulta = " . $consultas->id;
+				$queryCC 	= $conn->query($sqlCC);
+				$iCC 		= 1;
+				$tCC 		= $queryCC->rowcount();
+				While ($linhaCC = $queryCC->fetch()){
+					fwrite($mdmJSCompile,'{
+						atributo:'.$linhaCC['atributo'].',
+						consulta:'.$linhaCC['consulta'].',
+						alinhamento:"'.$linhaCC['alinhamento'].'",
+						exibirid:"'.$linhaCC['exibirid'].'"
+					}');
+					if ($iCC < $tCC) fwrite($mdmJSCompile,",");
+					$iCC++;
+				}
+			fwrite($mdmJSCompile,"
 					]
-				};
+				}
 			");
 		}
 	}

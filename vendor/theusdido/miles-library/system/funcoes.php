@@ -1896,6 +1896,7 @@ function getCampoDescricaoDefault($entidade){
 		$entidade = tdc::e((int)$entidade->getId());
 	}
 
+	if ($entidade == 0) return 0;
 	if (!$entidade->campodescchave){
 		return 0;
 	}

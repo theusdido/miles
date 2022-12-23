@@ -105,7 +105,7 @@
 	define('URL_LOADING2', URL_SYSTEM_THEME . 'loading2.gif');
 
 	// URL SYSTEM ECOMMERCE
-	define('URL_ECOMMERCE', URL_MILES . 'controller/ecommerce' . '/' );
+	define('URL_ECOMMERCE', URL_MILES_LIBRARY . 'controller/ecommerce' . '/' );
 
 	// Arquivo MDM JavaScript Compilado
     define("URL_MDM_JS_COMPILE", URL_CURRENT_PROJECT . FOLDER_BUILD . '/js/');

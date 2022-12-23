@@ -921,4 +921,10 @@
 			}
 			echo implode(",",$rlista);
 		break;
+
+		case 'retorna_atributos';
+			$sql 	= "SELECT * FROM ".ATRIBUTO." WHERE entidade = " . tdc::r('_entidade');
+			$query 	= $conn->query($sql);
+			tdc::wj($query->fetchAll(PDO::FETCH_ASSOC));
+		break;
 	}

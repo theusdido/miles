@@ -433,4 +433,20 @@ class tdc Extends tdClass{
 		return isutf8($str) ? $str : utf8charset($str,'E');
 	}
 	
+	/*  
+		* Método gj
+		* Data de Criacao: 22/12/2022
+		* Author: @theusdido
+
+		Retorna uma mensagem formata em JSON
+	*/
+	public static function gj($message)
+	{	
+		$_json = json_encode($message,JSON_PARTIAL_OUTPUT_ON_ERROR);	
+		if (IS_SHOW_ERROR_MESSAGE && json_last_error() != JSON_ERROR_NONE){
+			Debug::Console(JSON_ERROR_NONE. "\n\n" . $message,'TCC::WJ');
+			return false;
+		}
+		return $_json;
+	}	
 }

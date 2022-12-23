@@ -99,3 +99,26 @@
 	$operador = criarAtributo($conn,$filtrosIniciaisID,"operador","Operador","varchar",5,0,3,1,0,0,"");
 	$valor = criarAtributo($conn,$filtrosIniciaisID,"valor","Valor","varchar",200,0,3,1,0,0,"");
 	$legenda = criarAtributo($conn,$filtrosIniciaisID,"legenda","Legenda","varchar",50,0,3,1,0,0,"");
+
+	// Consulta Colunas
+	$colunasID = criarEntidade(
+		$conn,
+		"consultacoluna",
+		"Consulta Colunas",
+		$ncolunas=3,
+		$exibirmenuadministracao = 1,
+		$exibircabecalho = 1,
+		$campodescchave = "",
+		$atributogeneralizacao = 0,
+		$exibirlegenda = 1,
+		$criarprojeto = 0,
+		$criarempresa = 0,
+		$criarauth = 0,
+		$registrounico = 0
+	);
+
+	// Criando Atributos
+	$consulta 		= criarAtributo($conn,$colunasID,"consulta","Consulta","int",0,0,4,0,0,0,"");
+	$atributo 		= criarAtributo($conn,$colunasID,"atributo","Atributo","int",0,0,4,0,0,0,"");
+	$exibirid 		= criarAtributo($conn,$colunasID,"exibirid","Exibir ID","boolean",0,1,7);
+	$alinhamento 	= criarAtributo($conn,$colunasID,"alinhamento","alinhamento","varchar",25,1,3);
