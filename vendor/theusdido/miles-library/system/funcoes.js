@@ -815,10 +815,16 @@ function excluirArquivoUpload(dadosarquivos,entidade,atributo){
 	$("[atributo="+atributo+"]").val('{"op":"excluir","filename":"'+dadosarquivos.filename+'"}');
 }
 
-function carregarScriptCRUD(tipo,entidade,registro_id = 0){
-	
-	formulario[entidade]				 	= new tdFormulario(entidade);
+function carregarScriptCRUD(tipo,entidade,registro_id = 0,contexto = '',_extras = {}){
+	console.log(_extras);
+	debugger;
+	formulario[entidade]				 	= new tdFormulario(entidade,registro_id,0,_extras);
 	formulario[entidade].funcionalidade 	= tipo;
+
+	if (contexto != ''){
+		formulario[entidade].setContexto(contexto);
+	}
+	debugger;
 	switch(tipo){
 		case 'cadastro':
 			// Registro Único
@@ -836,8 +842,10 @@ function carregarScriptCRUD(tipo,entidade,registro_id = 0){
 			});
 		break;
 		case 'editarformulario':
+			debugger;
 			formulario[entidade].registro_id 	= registro_id;
 			formulario[entidade].editar();
+			debugger;
 		break;
 		case 'consulta':
 			formulario[entidade].setConsulta($('#consulta_id').val());

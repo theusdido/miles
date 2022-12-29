@@ -109,29 +109,10 @@
 		$cssCustom->rel 	= "stylesheet";
 		$bloco->add($cssCustom);
 
-		if ($entidade->contexto->carregarlibjavascript == 1){
-
-			// Adiciona a classe Grade de Dados em JavaScript
-			$jsGrade 		= tdClass::Criar("script");
-			$jsGrade->src 	= URL_CLASS_TDC . "gradededados.class.js";
-			$bloco->add($jsGrade);
-
-			// Adiciona a página padrão de validação dos campos do formulário
-			$jsValidar 		= tdClass::Criar("script");
-			$jsValidar->src = URL_SYSTEM . "validar.js";
-			$bloco->add($jsValidar);
-
-			// Arquivo JS Incorporado
-			$js 		= tdClass::Criar("script");
-			$js->src 	= $urlfilepage . $entidade->contexto->nome . ".js";
-			$bloco->add($js);
-
-			// Classe do formulário
-			$jsFormularioClass 			= tdClass::Criar("script");
-			$jsFormularioClass->src 	= URL_CLASS_TDC . "formulario.class.js";
-			$bloco->add($jsFormularioClass);
-
-		}
+		// Arquivo JS Incorporado
+		$js 		= tdClass::Criar("script");
+		$js->src 	= $urlfilepage . $entidade->contexto->nome . ".js";
+		$bloco->add($js);
 
 		// HTML Personalizado
 		$htmlPersonalizado 		= tdClass::Criar("div");

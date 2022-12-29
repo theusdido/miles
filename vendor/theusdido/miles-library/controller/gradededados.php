@@ -207,10 +207,13 @@
 		$i = $attrRel = 0;
 		$idRegistro = 0;
 		foreach($array_campos_nome as $c){
-			if ($camposfk[$i] != "0" && $camposfk[$i] != ""){
-				$entRel = tdClass::Criar("persistent",array(ENTIDADE,$camposfk[$i]));
+			$_is_fk = $camposfk[$i] != "0" && $camposfk[$i] != "" ? true : false;
+			if ($_is_fk){
+				$atributo_fk_id = 0;
+				$entRel 		= tdClass::Criar("persistent",array(ENTIDADE,$camposfk[$i]));
 				if ($entRel->contexto->campodescchave!="" && $entRel->contexto->campodescchave > 0){
-					$attrRel = tdClass::Criar("persistent",array(ATRIBUTO,$entRel->contexto->campodescchave))->contexto->nome;
+					$atributo_fk_id = $entRel->contexto->campodescchave;
+					$attrRel 		= tdClass::Criar("persistent",array(ATRIBUTO,$entRel->contexto->campodescchave))->contexto->nome;
 				}else{
 					$sqlAttrRelVazio = tdClass::Criar("sqlcriterio");
 					$sqlAttrRelVazio->addFiltro('entidade',"=",$entRel->contexto->id);
@@ -219,11 +222,17 @@
 					$datasetAttrRelVazio = tdClass::Criar("repositorio",array(ATRIBUTO))->carregar($sqlAttrRelVazio);
 
 					if (sizeof($datasetAttrRelVazio)>0){
-						$attrRel = $datasetAttrRelVazio[0]->nome;
+						$attrRel 		= $datasetAttrRelVazio[0]->nome;
+						$atributo_fk_id	= $datasetAttrRelVazio[0]->id;
 					}
 				}
 				if ($dado->{$c} != "" && $dado->{$c} != 0){
-					$valor_campo =  tdClass::Criar("persistent",array($entRel->contexto->nome, $dado->{$c} ))->contexto->{$attrRel};
+					$registro_fk	= tdClass::Criar("persistent",array($entRel->contexto->nome, $dado->{$c} ))->contexto;
+					$valor_campo 	= $registro_fk->{$attrRel};
+					if ($atributo_fk_id > 0){
+						$campos_dados[$c . '_obj'] 			= array('id' => $registro_fk->id);
+						$campos_dados_reais[$c . '_obj'] 	= array('id' => $registro_fk->id);
+					}
 				}
 			}else{
 				$valor_campo = $dado->{$c};

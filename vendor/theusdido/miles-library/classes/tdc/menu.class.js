@@ -103,7 +103,7 @@ Menu.prototype.load = function(){
 		error:function(ret){
 			console.log("ERRO ao carregar o menu => " + ret.responseText);
 		}
-	});	
+	});
 }
 Menu.prototype.carregarpagina = function(path,target,dados_menu){
 	carregar(path,target,function(){

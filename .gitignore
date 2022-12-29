@@ -12,8 +12,8 @@ project/
 lib/
 .vscode/
 webservice/servicos/pagseguro/log/
-webservice/
 ecommerce/
 nodejs/
 error_log/
 opticaadolfo/
+qeru/

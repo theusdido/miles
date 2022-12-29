@@ -577,9 +577,9 @@ class TdFormulario Extends Elemento {
 					if ($initialValue != ""){
 						$js = tdClass::Criar("script");
 						$js->add('
-							buscarFiltro('.$initialValue.');
+							//buscarFiltro('.$initialValue.');
 						');
-						$campo->add($js);
+						//$campo->add($js);
 					}
 				break;
 				// Data e Hora

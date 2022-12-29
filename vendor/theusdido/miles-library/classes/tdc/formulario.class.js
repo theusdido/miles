@@ -1,4 +1,4 @@
- function tdFormulario (){
+function tdFormulario (){
 	this.registro_id				= 0;
     this.entidade_id                = 0;
     this.entidade                   = null;
@@ -23,17 +23,23 @@
 	this.composicao					= [];
 	this.entidades					= []; // Usada para carregar os dados na edição
 	this.cmodal						= ' .modal-body p'; // Complemento Modal
-
-    this.construct(arguments[0], arguments[1] , arguments[2]);
+	this.is_init					= true;
+    this.construct(arguments[0], arguments[1] , arguments[2],arguments[3]);
 }
 
-tdFormulario.prototype.construct = function(entidade_id,registro_id = 0,entidade_pai = 0){
+tdFormulario.prototype.construct = function(entidade_id,registro_id = 0,entidade_pai = 0,extras = {}){
 	if (td_entidade[entidade_id] != undefined){
 		this.entidade_id    = entidade_id;
 		this.entidade       = td_entidade[entidade_id];
 		this.entidade_pai 	= entidade_pai;
 		this.registro_id	= registro_id;
-		this.init();
+
+		if (typeof extras.is_init != 'undefined') this.is_init = extras.is_init;
+		if(this.is_init) this.init();
+
+		if (typeof extras.is_registrounico != 'undefined'){
+			if (extras.is_registrounico) this.setRegistroUnico();
+		}		
 	}else{
 		console.warn('Entidade => ' + entidade_id + ' não existe em td_entidade.');
 		console.warn('*** Provavelmente não tem entidade no Menu Topo. ***');
@@ -41,6 +47,7 @@ tdFormulario.prototype.construct = function(entidade_id,registro_id = 0,entidade
 }
 
 tdFormulario.prototype.init = function(){
+	debugger;
 	this.setContexto();
 	this.setEntidadesFilho();
 	this.setBotoes();
@@ -205,10 +212,11 @@ tdFormulario.prototype.novo = function(){
 	if (typeof afterNew === "function") afterNew(contextoAdd);
 }
 
-tdFormulario.prototype.setContexto = function(){
+tdFormulario.prototype.setContexto = function(contexto = null){	
 	let hierarquia 			= getHierarquia(this.entidade_pai,this.entidade.id);
-	this.contexto_add       = '#crud-contexto-add-' + hierarquia;
-	this.contexto_listar    = '#crud-contexto-listar-' + hierarquia;
+	let _contexto			= contexto != null ? contexto + ' ' : '';
+	this.contexto_add       = _contexto + '#crud-contexto-add-' + hierarquia;
+	this.contexto_listar    = _contexto + '#crud-contexto-listar-' + hierarquia;
 }
 
 tdFormulario.prototype.getContextoAdd = function(){
@@ -455,8 +463,9 @@ tdFormulario.prototype.setBotoes = function(){
 		if (typeof afterBack === "function") afterBack(this);
 	});
 
-
+	debugger;
 	this.btn_salvar.click(this,function(handler){
+		debugger;
 		if (typeof beforeSave === "function") beforeSave(this);
 		handler.data.salvar();
 
@@ -467,6 +476,9 @@ tdFormulario.prototype.loadGrade = function(){
 	this.getGrade().show();
 }
 tdFormulario.prototype.voltar = function(){
+	console.log(this.consulta);
+	console.log(this.funcionalidade);
+	debugger;
 	this.getGrade().show();
 	$(this.getContextoAdd()).hide();
 	$(this.getContextoListar()).show();
@@ -934,8 +946,9 @@ tdFormulario.prototype.editar = function(){
 						$("#select-generalizacao-multipla").change();
 					}
 				}
-				if (r.fp){
+				if (r.fp){					
 					this.exibirDadosEdicao();
+					this.setBotoes();
 					this.liberaBotaoSalvar()
 				}
 			},this.instancia);
@@ -1027,11 +1040,10 @@ tdFormulario.prototype.setDados = function(dados){
 			try{
 				direto = false;
 				const nomeEntidadeReplace = td_entidade[td_atributo[dado.idatributo].chaveestrangeira].nomecompleto;
-				this.buscarFiltro(valorDados,nomeEntidadeReplace.replace("-","."),dado.atributo,"myModal-" + dado.atributo + " .modal-body p ",entidade_nome);				
+				this.buscarFiltro(valorDados,nomeEntidadeReplace.replace("-","."),dado.atributo,"myModal-" + dado.atributo + " .modal-body p ",entidade_nome);
 			}catch(e){
 				console.warn('ID => atributo => ' + dado.idatributo);
 			}
-
 		}
 
 		if ($('#' + dado.atributo + '[data-entidade="'+entidade_nome+'"]',contextoAdd).hasClass("checkbox-sn")){

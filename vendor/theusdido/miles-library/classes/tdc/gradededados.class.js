@@ -26,6 +26,7 @@ function GradeDeDados(entidade){
 	this.attr_cabecalho_tipo 		= new Array();
 	this.attr_cabecalho_tipohtml 	= new Array("3");
 	this.attr_cabecalho_chaveestrangeira = new Array("0");
+	this.attr_coluna_config 		= new Array();
 	this.entidadePai = "";
 	this.regpai = "";
 	this.atributoRetorno = "";
@@ -47,11 +48,13 @@ function GradeDeDados(entidade){
 	this.indice_linha = -1;	
 	this.btnEditarEmMassa = null; // Elemento DOM do botão para editar em massa
 	this.exibircolunaid = true;
+	this.modal_editar_id = 'modal-editar';
 	// Método Construtor
 	this.construct(entidade);
 }
 GradeDeDados.prototype.construct = function(entidade){
 	if (entidade > 0) this.nomeEntidade = td_entidade[entidade].nomecompleto;	
+	//this.setColunaConfig();
 	this.setCabecalhoAtributos();	
 }
 GradeDeDados.prototype.setTable = function(){
@@ -233,7 +236,9 @@ GradeDeDados.prototype.cabecalho = function(){
 		this.setCabecalhoAtributos();
 		
 		for(c in this.attr_cabecalho_descricao){
-			let th = $("<th>");
+			let atributo_id 	= getIdAtributo(this.attr_cabecalho_nome[c],this.nomeEntidade);			
+			let text_align		= this.getColunaConfig(atributo_id).alinhamento;
+			let th 				= $("<th class='text-"+text_align+"'>");
 			th.append(this.attr_cabecalho_descricao[c]);
 			tr.append(th);
 		}
@@ -290,9 +295,16 @@ GradeDeDados.prototype.corpo = function(){
 				var dadosReaisLinha = [];
 				var idRegistroLinha = linhas[l].id;
 				for(n in this.attr_cabecalho_nome){
-					dadosLinha[this.attr_cabecalho_nome[n]] = linhas[l][this.attr_cabecalho_nome[n]];
+					let _campo = this.attr_cabecalho_nome[n];
+					dadosLinha[_campo] 	= linhas[l][_campo];
+					if (linhas[l][_campo + '_obj'] != 'undefined'){
+						dadosLinha[_campo + '_obj']	= linhas[l][_campo + '_obj'];
+					}
 					if (linhasreais != undefined){
-						dadosReaisLinha[this.attr_cabecalho_nome[n]] = linhasreais[l][this.attr_cabecalho_nome[n]];
+						dadosReaisLinha[_campo] = linhasreais[l][_campo];
+						if (linhasreais[l][_campo + '_obj'] != 'undefined'){
+							dadosReaisLinha[_campo + '_obj']	= linhasreais[l][_campo + '_obj'];
+						}						
 					}
 				}
 				this.addLinha(idRegistroLinha,dadosLinha,dadosReaisLinha);
@@ -740,7 +752,6 @@ GradeDeDados.prototype.loadDadosEdicao = function(id){
 	});
 }
 GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){	
-
 	let tr;
 	let tr_is_exists;
 	let tr_indice = id == 0 ? this.indice_linha : id;
@@ -760,10 +771,10 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
 	linha['id'] 		= id <= 0 ? '-' : id;
 	linhareal['id'] 	= id;
 	for(n in this.attr_cabecalho_nome){
-
-		let valor 			= linha[this.attr_cabecalho_nome[n]];
-		let valorreal 		= linhareal[this.attr_cabecalho_nome[n]];
-		let idAtributo 		= getIdAtributo(this.attr_cabecalho_nome[n],this.nomeEntidade);
+		let _campo 			= this.attr_cabecalho_nome[n];
+		let valor 			= linha[_campo];
+		let valorreal 		= linhareal[_campo];
+		let idAtributo 		= getIdAtributo(_campo,this.nomeEntidade);
 		if (idAtributo != 0 && idAtributo != "" && idAtributo != undefined){
 			if (td_atributo[idAtributo] != undefined){
 				switch(parseInt(td_atributo[idAtributo].tipohtml)){
@@ -869,9 +880,19 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
 			}
 		}
 		
-		let td 				= $("<td>");
+		let config_coluna 	= this.getColunaConfig(idAtributo);
+		let text_align		= config_coluna.alinhamento;
+
+		let td 				= $("<td class='text-"+text_align+"'>");
 		let spanGradeInfo 	= $("<span class='grade-info'>");
-		spanGradeInfo.append((valor==undefined?"":valor));
+		let _id				= '';
+		if (config_coluna.exibirid == 1){
+			let _obj				= typeof linha[_campo + '_obj'] == 'object' ? linha[_campo + '_obj'] : '';
+			if (_obj != ''){
+				_id = _obj.id + ' - ';
+			}
+		}
+		spanGradeInfo.append((valor==undefined?"":_id + valor));
 		td.append(spanGradeInfo);
 		tr.append(td);
 	}
@@ -885,23 +906,42 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
 		btnMovimentacao.append(spanMovimentacao);
 	}
 	
-	let spanEditar = $("<span reg='"+tr_indice+"' data-entidade='"+this.entidade+"' data-funcionalidade='"+this.funcionalidade+"' class='botao fas fa-pencil-alt btn btn-default' ></span>");
+	let spanEditar = $("<span reg='"+tr_indice+"' data-entidade='"+this.entidade+"' data-funcionalidade='"+this.funcionalidade+"' class='botao fas fa-pencil-alt btn btn-default' ></span>");	
 	spanEditar.on("click",function(){
 		let entidadeid 		= $(this).data("entidade");
 		let id 				= $(this).attr("reg");
 		let funcionalidade 	= $(this).data("funcionalidade");
-	
-		if (funcionalidade == "cadastro"){
-			formulario[entidadeid].registro_id = id;
-			formulario[entidadeid].editar();
-		}else if (funcionalidade == "consulta" || funcionalidade == "emmassa"){
-			if ($(this).parents(".crud-contexto-listar").first().hasClass("fp")){
-				carregar(session.folderprojectfiles + "files/cadastro/"+entidadeid+"/"+td_entidade[entidadeid].nomecompleto+".html",'#conteudoprincipal',function(){
+		
+		switch(funcionalidade){
+			case 'cadastro':
+				formulario[entidadeid].registro_id = id;
+				formulario[entidadeid].editar();
+			break;
+			case 'consulta':
+				let selector_editar = '#' + instancia.modal_editar_id + ' .modal-body';
+				if ($(this).parents(".crud-contexto-listar").first().hasClass("fp")){
+					let _modal_editar = instancia.editarModal();
+					_modal_editar.on('shown.bs.modal', function (e) {
+						carregar(session.folderprojectfiles + "files/cadastro/"+entidadeid+"/"+td_entidade[entidadeid].nomecompleto+".html",selector_editar,function(){
+							carregarScriptCRUD('editarformulario',entidadeid,id,selector_editar,{
+								is_registrounico:true,
+								is_init:false
+							});
+						});
+					});
+				}else{
 					carregarScriptCRUD('editarformulario',entidadeid,id);
-				});
-			}else{
-				carregarScriptCRUD('editarformulario',entidadeid,id);
-			}
+				}
+			break;
+			case 'emmassa':
+				if ($(this).parents(".crud-contexto-listar").first().hasClass("fp")){
+					carregar(session.folderprojectfiles + "files/cadastro/"+entidadeid+"/"+td_entidade[entidadeid].nomecompleto+".html",'#conteudoprincipal',function(){
+						carregarScriptCRUD('editarformulario',entidadeid,id);
+					});
+				}else{
+					carregarScriptCRUD('editarformulario',entidadeid,id);
+				}
+			break;
 		}
 	});
 
@@ -1306,4 +1346,43 @@ GradeDeDados.prototype.reset = function () {
 }
 GradeDeDados.prototype.getContextoListar = function(){
 	return "#crud-contexto-listar-" + this.nomeEntidade;
+}
+
+GradeDeDados.prototype.getColunaConfig = function(atributo_id){
+	let _default = {
+		alinhamento:'left',
+		exibirid:false
+	}
+	if (typeof this.consulta == 'undefined') return _default;
+	let coluna_config = td_consulta[this.consulta].colunas.find(e => e.atributo == atributo_id);
+	if (typeof coluna_config == 'undefined'){
+		return _default;
+	}else{
+		return coluna_config;
+	}
+}
+
+GradeDeDados.prototype.editarModal = function(){	
+	let modal 			= $('<div id="'+this.modal_editar_id+'" class="modal fade" tabindex="-1" role="dialog">');
+	let modalDialog 	= $('<div class="modal-dialog modal-lg" role="document">');
+	let modalContent	= $('<div class="modal-content">');
+	let modalHeader 	= $('<div class="modal-header">');
+	let botaoClose		= $('<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>');
+	let titulo			= $('<h4 class="modal-title">Editar</h4>');
+	let modalBody		= $('<div class="modal-body">');
+	
+	modal.append(modalDialog);
+	modalDialog.append(modalContent);
+	modalContent.append(modalHeader);
+	modalContent.append(modalBody);
+
+	modalHeader.append(botaoClose);
+	modalHeader.append(titulo);
+
+	if (modal.length <= 0){
+		$("body").append(modal);
+	}
+
+	modal.modal("show");
+	return modal;
 }
