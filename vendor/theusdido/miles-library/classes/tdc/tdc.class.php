@@ -449,4 +449,17 @@ class tdc Extends tdClass{
 		}
 		return $_json;
 	}	
+
+	/*
+		* Método du
+		* Data de Criacao: 02/01/2023
+		* Author: @theusdido
+
+		Retorna um DataSet com um único registro do banco de dados
+		baseado em uma consulta SQL
+	*/
+	public static function du($entidade,$sql = null){
+		$dataset = self::d($entidade,$sql);
+		return sizeof($dataset) > 0 ? $dataset[0] : self::p($entidade);
+	}
 }

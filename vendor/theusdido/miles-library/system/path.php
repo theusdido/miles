@@ -167,3 +167,4 @@
 	// Caminho das classes do Website
 	define('PATH_CLASS_WEBSITE', PATH_CLASS . "website/");
 	
+	define('PATH_ASSETS' , PATH_MILES_LIBRARY . 'assets/');

@@ -114,8 +114,10 @@
 
 	define('URL_TDWEBSERVICE', URL_MILES . 'webservice/');
 
-	define('URL_ASSETS' , URL_MILES . 'assets/');
+	define('URL_ASSETS' , URL_MILES_LIBRARY . 'assets/');
+	define('URL_CURRENT_ASSETS' , URL_PROJECT . 'assets/');
 
-	define('URL_IMG', URL_MILES . 'images/');
+	define('URL_IMG', URL_MILES_LIBRARY . 'images/');
 
-	define('URL_PICTURE', URL_IMG . 'picture/');
+	define('URL_PICTURE', URL_MILES_LIBRARY . 'picture/');
+	
