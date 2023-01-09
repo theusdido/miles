@@ -1887,16 +1887,15 @@ function addCampoFormatadoDB($dados,$entidade){
 	}
 	return $dados;
 }
-function getCampoDescricaoDefault($entidade){
-	if (is_numeric_natural($entidade)){
-		$entidade = tdc::p(ENTIDADE,$entidade);
-	}else if (is_string($entidade)){
-		$entidade = tdc::p(ENTIDADE,getEntidadeId($entidade));
-	}else if (is_object($entidade)){
-		$entidade = tdc::e((int)$entidade->getId());
-	}
-
-	if ($entidade == 0) return 0;
+function getCampoDescricaoDefault($_entidade){
+	if ($_entidade == 0) return 0;
+	if (is_numeric_natural($_entidade)){
+		$entidade = tdc::p(ENTIDADE,$_entidade);
+	}else if (is_string($_entidade)){
+		$entidade = tdc::p(ENTIDADE,getEntidadeId($_entidade));
+	}else if (is_object($_entidade)){
+		$entidade = tdc::e((int)$_entidade->getId());
+	}	
 	if (!$entidade->campodescchave){
 		return 0;
 	}
