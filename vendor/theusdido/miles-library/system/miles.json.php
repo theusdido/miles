@@ -3,7 +3,8 @@
 	$request_uri			= isset($_SERVER["REQUEST_URI"]) ? $_SERVER["REQUEST_URI"] : '';
 	$uri 					= $script_uri != '' ? $script_uri : $request_uri;
 
-	$path_miles_json 		= PATH_MILES . "miles.json";
+	$_miles_json_project	= defined('MILES_JSON_PROJECT') ? MILES_JSON_PROJECT . '.' : '';
+	$path_miles_json 		= PATH_MILES . $_miles_json_project . "miles.json";
 
 	if (!file_exists($path_miles_json)){
 		include $_path_controller_install . 'criarmilesjson.php';
