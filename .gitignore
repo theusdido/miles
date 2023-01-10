@@ -12,7 +12,6 @@ project/
 lib/
 .vscode/
 webservice/servicos/pagseguro/log/
-ecommerce/
 nodejs/
 error_log/
 
