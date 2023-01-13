@@ -6,7 +6,7 @@
         "url":""
     },
     "currentproject": 1,
-    "folder":"miles-framework/",
+    "folder":"miles/",
     "system": {
         "url": {
             "lib": "https://teia.tec.br/miles/repository/lib/"
@@ -16,7 +16,7 @@
     },
     "theme": "desktop",
     "prefix": "td",
-    "is_show_error_message": false,
+    "is_show_error_message": true,
     "is_transaction_log": false,
     "database_current": "desenv",
     "port": "hidden",

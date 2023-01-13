@@ -6,7 +6,7 @@
         "url":""
     },
     "currentproject": 1,
-    "folder":"miles-framework/",
+    "folder":"miles/",
     "system": {
         "url": {
             "lib": "https://teia.tec.br/miles/repository/lib/"
@@ -18,9 +18,9 @@
     "prefix": "td",
     "is_show_error_message": true,
     "is_transaction_log": false,
-    "database_current": "desenv",
+    "database_current": "producao",
     "port": "hidden",
-    "enviromment":"dev",
+    "enviromment":"prod",
     "enviromments":{
         "dev":{
             "root":"/",
@@ -50,11 +50,11 @@
         "prod":{
             "root":"/",
             "url":{
-                "domain":""
+                "domain":"app.qeru.com.br"
             },
             "system":{
-                "request_protocol": "https",
-                "force_https":true
+                "request_protocol": "http",
+                "force_https":false
             }
         }
     }

@@ -67,16 +67,19 @@ class SqlFiltro extends SqlExpressao {
 	}
 
 	/*  
-		* M�todo Dump 
+		* Método Dump
 	    * Data de Criacao: 19/01/2012
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
-		Retorna o filtro em forma de express�o
+		Retorna o filtro em forma de expressão
 	*/		
 	public function dump(){
 		switch($this->operador){
 			case '%':
 				return "{$this->variavel} LIKE '%{$this->valorreal}%' ";
+			break;
+			case ',':
+				return "{$this->variavel} IN ({$this->valorreal}) ";
 			break;
 			default:
 				return "{$this->variavel} {$this->operador} {$this->valor}";

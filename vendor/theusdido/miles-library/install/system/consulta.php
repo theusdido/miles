@@ -104,7 +104,7 @@
 	$colunasID = criarEntidade(
 		$conn,
 		"consultacoluna",
-		"Consulta Colunas",
+		"Coluna Colunas",
 		$ncolunas=3,
 		$exibirmenuadministracao = 1,
 		$exibircabecalho = 1,
@@ -122,3 +122,4 @@
 	$atributo 		= criarAtributo($conn,$colunasID,"atributo","Atributo","int",0,0,4,0,0,0,"");
 	$exibirid 		= criarAtributo($conn,$colunasID,"exibirid","Exibir ID","boolean",0,1,7);
 	$alinhamento 	= criarAtributo($conn,$colunasID,"alinhamento","alinhamento","varchar",25,1,3);
+	$ordem 			= criarAtributo($conn,$colunasID,"ordem","Ordem","tinyint",0,1,3);

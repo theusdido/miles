@@ -54,7 +54,7 @@
 }
 
 .sortable li {
-	cursor:pointer;
+	cursor:move;
 }
 .sortable li:hover{
 	background-color:#EEE;

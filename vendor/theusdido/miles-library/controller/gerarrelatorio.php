@@ -199,7 +199,8 @@
 						
 						var parametros = "&entidade=" + entidadeID + "&currentproject=" + session.projeto
 						+ "&filtros=" + filtros
-						+ "&campos=" + campos;
+						+ "&campos=" + campos
+						+ "&relatorio_id='.$relatorio->id.'";
 						
 						if (urlpersonalizada == ""){
 							window.open(config.urlrelatorio +  parametros,"_blank");
@@ -216,7 +217,8 @@
 					},
 					complete:function(){
 						var parametros = "&entidade=" + entidadeID + "&currentproject=" + session.projeto
-						+ "&campos=" + campos;
+						+ "&campos=" + campos
+						+ "&relatorio_id='.$relatorio->id.'";
 						window.open(config.urlrelatorio +  parametros,"_blank");
 					}
 				});

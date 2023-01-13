@@ -154,8 +154,8 @@
 			$sql = "DELETE FROM td_consultafiltroinicial WHERE id = " . $_GET["id"];
 			$query = $conn->query($sql);
 
-			$sql = "DELETE FROM td_atributo WHERE id = " . $_GET["atributo"];
-			$query = $conn->query($sql);
+			#$sql = "DELETE FROM td_atributo WHERE id = " . $_GET["atributo"];
+			#$query = $conn->query($sql);
 
 			//addLog($sql);
 			exit;

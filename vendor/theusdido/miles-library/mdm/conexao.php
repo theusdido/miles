@@ -1,7 +1,7 @@
 <?php
 	
 	$relative_path	= '../../../../';
-	$miles_json 	= json_decode(file_get_contents($relative_path . 'miles.json'));
+	$miles_json 	= json_decode(file_get_contents($relative_path . 'opticaadolfo.miles.json'));
 	date_default_timezone_set('America/Sao_Paulo');	
 
 	if (isset($miles_json->currentproject)){

@@ -83,11 +83,10 @@
 	$("#gerar").click(function(){
 		
 		$.ajax({
-			url:"../../index.php",
+			url:"<?=URL_API?>",
 			data:{
 				controller:"gerarrelatorio",
-				id:"<?=$id?>",
-				currentproject:"<?=$_SESSION["currentproject"]?>"
+				id:"<?=$id?>"
 			},
 			beforeSend:function(){
 				$("#relatorio-gerada").html('<img src="../tema/padrao/loading2.gif" id="loading" style="float:left;margin-left:48%;" />');
@@ -98,7 +97,7 @@
 		});
 		function gerarRelatorio(html){
 			$.ajax({
-				url:"../../index.php",
+				url:"<?=URL_API?>",
 				type:"POST",
 				data:{
 					controller:"mdm/componente",
@@ -110,7 +109,6 @@
 					filenamehtm:$("#filenamehtm").val(),
 					entidade:"<?=$entidade?>",
 					urlupload:$("#urlupload").val(),
-					currentproject:<?=$_SESSION["currentproject"]?>,
 					id:<?=$id?>
 				},
 				complete:function(){

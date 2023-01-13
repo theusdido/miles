@@ -38,18 +38,26 @@
 	</head>
 	<body>	
 		<?php
+			$_campos 			= tdc::r('campos');
+			$_relatorio  		= tdc::p(RELATORIO,tdc::r('relatorio_id'));
+			$_atributos_config 	= tdc::d('td_relatoriocoluna',tdc::f('relatorio','=',$_relatorio->id));
+			$_entidade			= tdClass::Criar("persistent",array(ENTIDADE,tdc::r('entidade')))->contexto;
 
-		$colunas = explode(",",$_GET["campos"]);
-		$qtdeColunas = sizeof($colunas);
-		$entidadePrincipal = tdClass::Criar("persistent",array(ENTIDADE,$_GET["entidade"]))->contexto;
-
-		$camposNome = $camposDesc = $camposFK = array();
-		foreach ($colunas as $c){
-			$camposE = explode("^",$c);
-			array_push($camposNome,$camposE[0]);
-			array_push($camposDesc,$camposE[1]);
-			array_push($camposFK,$camposE[2]);
-		}
+			if (sizeof($_atributos_config) <= 0){
+				if ($_campos == ''){
+					showMessage('Não foram encontrado campos para montagem do relatório.');
+					exit;
+				}
+				$colunas 			= explode(",",$_campos);
+				$qtdeColunas 		= sizeof($colunas);
+			}else{
+				$criterio			= tdc::f();
+				$criterio->addFiltro('relatorio','=',$_relatorio->id);
+				$criterio->setPropriedade('order','ordem ASC');
+				$colunas 			= tdc::d('td_relatoriocoluna',$criterio);
+				$qtdeColunas 		= sizeof($colunas);
+			}
+		
 
 		// *** CABEÇALHO *** //
 		$empresa 		= tdClass::Criar("span");
@@ -58,7 +66,7 @@
 
 		$descricaorelatorio = tdClass::Criar("span");
 		$descricaorelatorio->id = "descricaorelatorio";
-		$descricaorelatorio->add("Relat&oacute;rio de " . tdc::utf8($entidadePrincipal->descricao));
+		$descricaorelatorio->add("Relat&oacute;rio de " . tdc::utf8($_relatorio->descricao));
 
 		$hr = tdClass::Criar("hr");
 		$hr->class = "separadorcabecalho";
@@ -72,72 +80,106 @@
 		$thCabecalho->colspan = $qtdeColunas;
 		$trCabecalho = tdClass::Criar("tabelalinha");
 		$trCabecalho->add($thCabecalho);
+		
+		$is_linha_somatorio = false;
+		$camposNome 		= array();
+		$camposSomatorio	= array();		
 
 		$trTitulo = tdClass::Criar("tabelalinha");
-		for($i=0;$i<$qtdeColunas;$i++){
-			$thTitulo = tdClass::Criar("tabelahead");
-			$thTitulo->add(tdc::utf8($camposDesc[$i]));
+		foreach($colunas as $coluna){
+			$_atributo 			= tdc::a($coluna->atributo);
+			$thTitulo 			= tdClass::Criar("tabelahead");
+			$thTitulo->style 	= 'text-align:' . $coluna->alinhamento;
+			$_display_coluna	= $coluna->descricao != '' ? $coluna->descricao : $_atributo->descricao;
+			$thTitulo->add(tdc::utf8($_display_coluna));
 			$trTitulo->add($thTitulo);
+			array_push($camposNome,$_atributo->nome);
+
+			if ($coluna->is_somatorio){				
+				$is_linha_somatorio = true;
+				array_push($camposSomatorio,'SUM('.$_atributo->nome.') somatorio_' . $_atributo->nome);
+			}
 		}
 
 		$thead = tdClass::Criar("thead");
 		$thead->add($trCabecalho,$trTitulo);
 
-		// *** FILTROS *** //
-		$filtrosP = isset($_GET["filtros"])?$_GET["filtros"]:""; //Atributo^Operador^Valor^Tipo
+		// Critério Geral
 		$where = tdClass::Criar("sqlcriterio");
-		$where->addFiltro(1,"=",1);
+
+		// *** FILTROS *** //
+		$filtrosP = isset($_GET["filtros"])?$_GET["filtros"]:""; // Atributo^Operador^Valor^Tipo		
+		$filtroParams = tdc::f(1,"=",1);
 		if ($filtrosP != ""){
 			$filtros = explode("~",$filtrosP);
 			foreach($filtros as $ft){
-				$f = explode("^",$ft);
-				$campo_a = explode(" ",$f[0]);
-				$camponome = $campo_a[0];
+				$f 			= explode("^",$ft);
+				$campo_a	= explode(" ",$f[0]);
+				$camponome 	= $campo_a[0];
 
 				if ($f[1] == "%" && $f[3] == "varchar"){
-					$where->addFiltro($camponome,"like",'%' . tdc::utf8($f[2]) . '%');
+					$filtroParams->addFiltro($camponome,"like",'%' . tdc::utf8($f[2]) . '%');
 				}else{
-					$where->addFiltro($camponome,$f[1],tdc::utf8($f[2]));
+					$filtroParams->addFiltro($camponome,$f[1],tdc::utf8($f[2]));
 				}
 			}
 		}
 
+		// *** RESTRIÇÕES *** //
+		$filtroRestricao = tdc::f();
+		$sqlRestricao = "SELECT * FROM td_relatoriorestricao WHERE relatorio = {$_relatorio->id};";
+		$queryRestricoes = $conn->query($sqlRestricao);		
+		foreach($queryRestricoes->fetchAll(PDO::FETCH_OBJ) as $r){
+			$filtroRestricao->addFiltro(tdc::a($r->atributo)->nome,$r->operador,$r->valor);
+		}
+
+		// Adiciona a restrição inicial
+		//$where->add($filtroRestricao);
+
+		// Adiciona filtros selecionado na geração do relatório
+		$where->add($filtroParams);
+
+		
+
 		// *** CORPO *** //
 		$tbody = tdClass::Criar("tbody");
 		if ($conn = Transacao::Get()){
-			$sql = "SELECT " . implode(",",$camposNome) . " FROM " . $entidadePrincipal->nome . " WHERE ". $where->dump();
+			$sql = "SELECT id," . implode(",",$camposNome) . " FROM " . $_entidade->nome . " WHERE ". $where->dump();
 			$query = $conn->query($sql);
 			if ($query->rowCount() <= 0){
 				$tr = tdClass::Criar("tabelalinha");
 				$td = tdClass::Criar("tabelacelula");
 				$td->add("Nenhum Registro Encontrado");
-				$td->class = "nenhumregistro";
-				$td->colspan = $qtdeColunas;
+				$td->class 		= "nenhumregistro";
+				$td->colspan 	= $qtdeColunas;
 				$tr->add($td);
 				$tbody->add($tr);
 			}else{
 				while ($linha = $query->fetch()){
-					$tr = tdClass::Criar("tabelalinha");
-					for($i=0;$i<$qtdeColunas;$i++){
-						$td = tdClass::Criar("tabelacelula");
-						if ($camposFK[$i] != ""){ // Campo de chave estrangeira
-							$sqlFK = tdClass::Criar("sqlcriterio");
-							$sqlFK->addFiltro("nome","=",$camposFK[$i]);
-							$fkEntidade = tdClass::Criar("repositorio",array(ENTIDADE))->carregar($sqlFK);
-							foreach ($fkEntidade as $cFK){
-								$campoDescCahve = "";
-								if ($cFK->campodescchave != null){
-									$campoDescCahve = tdClass::Criar("persistent",array(ATRIBUTO,$cFK->campodescchave))->contexto->nome;
+					$somatorio = 0;
+					$tr = tdClass::Criar("tabelalinha");					
+					foreach($colunas as $coluna){
+						$td 		= tdClass::Criar("tabelacelula");
+						$_atributo	= tdc::a($coluna->atributo);
+						$campo_nome = '';
+						$fk_display = '';
+						if ($_atributo->chaveestrangeira > 0){ // Campo de chave estrangeira
+							$_entidade_fk 	= tdc::e($_atributo->chaveestrangeira);
+							if (is_numeric($_entidade_fk->campodescchave)){
+								$_atributo_fk	= tdc::a($_entidade_fk->campodescchave);
+								if ($_atributo_fk){
+									$valor = new sqlCriterio();
+									$display_id = $coluna->exibirid ? completaString($linha['id'],3) . ' - '  : '';
+									$fk_display = $display_id . tdc::p($_entidade_fk->nome,$linha['id'])->{$_atributo_fk->nome};
 								}
 							}
-							if ($campoDescCahve != ""){
-								$valor = new sqlCriterio();
-								$td->add(tdClass::Criar("persistent",array($camposFK[$i],$linha[$camposNome[$i]]))->contexto->{$campoDescCahve});
-							}
 						}else{
-							$tipohtml = tdClass::Criar("persistent",array(ATRIBUTO,getAtributoId($entidadePrincipal->nome,$camposNome[$i],$conn)))->contexto->tipohtml;
-							$td->add(getHTMLTipoFormato($tipohtml,$linha[$camposNome[$i]],$entidade=0,getAtributoId($entidadePrincipal->nome,$camposNome[$i],$conn),$id=0));
+							$tipohtml 	= tdClass::Criar("persistent",array(ATRIBUTO,getAtributoId($_entidade->nome,$_atributo->nome,$conn)))->contexto->tipohtml;
+							$fk_display = getHTMLTipoFormato($tipohtml,$linha[$_atributo->nome],$entidade=0,getAtributoId($_entidade->nome,$_atributo->nome,$conn),$id=0);
 						}
+
+						$td->align = $coluna->alinhamento;
+						$td->add($fk_display);
 						$tr->add($td);
 					}
 					$tbody->add($tr);
@@ -146,6 +188,30 @@
 		}
 
 		// *** RODAPE *** //
+		$tfoot = tdClass::Criar("tfoot");
+
+		$sql 	= "SELECT id," . implode(",",$camposSomatorio) . " FROM " . $_entidade->nome . " WHERE ". $where->dump();
+		$query 	= $conn->query($sql);
+		if ($is_linha_somatorio && $query->rowCount() > 0){
+			$linha = $query->fetch();	
+			$trRodape 	= tdClass::Criar("tabelalinha");
+			foreach($colunas as $coluna){
+				
+				$tdRodape 	= tdClass::Criar("tabelacelula");
+				if ($coluna->is_somatorio){
+					$tdRodape->add(number_format($linha['somatorio_valortotal'],2,',','.'));
+				}else{
+					$tdRodape->add('&nbsp;');
+				}
+				$tdRodape->align = $coluna->alinhamento;
+				$trRodape->add($tdRodape);
+				
+			}
+			$tfoot->add($trRodape);
+		}
+		
+		
+
 		$usuario = tdClass::Criar("span");
 		$usuario->id = "usuario";
 		$usuario->add("Usu&aacute;rio: " . Session::Get()->username);
@@ -167,7 +233,7 @@
 		$trRodape = tdClass::Criar("tabelalinha");
 		$trRodape->add($tdRodape);
 
-		$tfoot = tdClass::Criar("tfoot");
+		
 		$tfoot->add($trRodape);
 		
 		//  Tabela do Relatório 

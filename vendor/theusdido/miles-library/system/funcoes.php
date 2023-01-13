@@ -2359,3 +2359,121 @@ function is_exists($variable,$replace = null){
 	eval('$is_exists_variable = isset('.$variable.');');
 	return $is_exists_variable ? $variable : $replace;
 }
+
+/*
+	* criarRelatorio
+	* Data de Criacao: 10/01/2023
+	* Author: @theusdido
+	* Cria relatório no padrão do framework
+	* PARAMETROS
+	*	@params: Literal descricao:"Nome para exibição"
+	*	@params: Inteiro entidade:"ID da Entidade principal"
+	*	@params: Literal url:"URL para relatório com acesso personalizado"
+	* RETORNO
+	*	@return: void
+*/
+function criarRelatorio($_fixo,$descricao,$entidade_id,$url = ''){
+	global $conn;
+	$descricao			= tdc::utf8($descricao);
+	$sqlVerifica 	= "SELECT id FROM ".RELATORIO." WHERE fixo = '" . $_fixo . "'";
+	$queryVerifica 	= $conn->query($sqlVerifica);
+	if ($queryVerifica->rowcount() > 0){
+		$linhaVerifica 	= $queryVerifica->fetch();
+		$idRetorno 		= $linhaVerifica["id"];
+		$sql = "UPDATE " . RELATORIO . " SET descricao = '$descricao' , entidade = $entidade_id , urlpersonalizada = '{$url}' WHERE id = " . $idRetorno;
+	}else{
+		$idRetorno = getProxId(RELATORIO,$conn);
+		$sql = "INSERT INTO " . RELATORIO . " (id,descricao,entidade,urlpersonalizada,fixo) 
+				VALUES (".$idRetorno.",'".$descricao."',".$entidade_id.",'".$url."','".$_fixo."');";
+	}
+	try{
+		$query = $conn->query($sql);
+		return $idRetorno;
+	}catch(Throwable $t){
+		if (IS_SHOW_ERROR_MESSAGE){
+			echo $sql;
+			var_dump($conn->errorInfo());
+		}
+		return 0;
+	}	
+}
+
+/*
+	* addFiltroRelatorio
+	* Data de Criacao: 10/01/2023
+	* Author: @theusdido
+	* Adiciona filtros para um relatório
+	* PARAMETROS
+	*	@params: Inteiro relatorio_id:"Id do Relatório"
+	*	@params: Literal operador
+	*	@params: Literal atributo
+	*	@params: Literal legenda
+	* RETORNO
+	*	@return: void
+*/
+function addFiltroRelatorio($relatorio_id,$atributo,$operador = '=',$legenda = ''){
+	global $conn;
+	$_entidade_principal 	= 'td_relatoriofiltro';
+	$legenda				= tdc::utf8($legenda);
+	$sqlVerifica 			= "SELECT id FROM ".$_entidade_principal." WHERE relatorio = ".$relatorio_id." AND atributo = " . $atributo .";";
+	$queryVerifica 			= $conn->query($sqlVerifica);
+	if ($queryVerifica->rowcount() > 0){
+		$linhaVerifica 	= $queryVerifica->fetch();
+		$idRetorno 		= $linhaVerifica["id"];
+		$sql = "UPDATE " . $_entidade_principal . " SET operador = '$operador' , atributo = $atributo , legenda = '$legenda' WHERE id = " . $idRetorno;
+	}else{
+		$idRetorno = getProxId($_entidade_principal,$conn);
+		$sql = "INSERT INTO " . $_entidade_principal . " (id,operador,atributo,relatorio,legenda) 
+				VALUES (".$idRetorno.",'".$operador."',".$atributo.",".$relatorio_id.",'".$legenda."');";
+	}
+	try{
+		$query = $conn->query($sql);
+		return $idRetorno;
+	}catch(Throwable $t){
+		if (IS_SHOW_ERROR_MESSAGE){
+			echo $sql;
+			var_dump($conn->errorInfo());
+		}
+		return 0;
+	}	
+}
+
+/*
+	* addRestricaoRelatorio
+	* Data de Criacao: 10/01/2023
+	* Author: @theusdido
+	* Adiciona restrições ao relatório
+	* PARAMETROS
+	*	@params: Inteiro relatorio_id:"Id do Relatório"
+	*	@params: Literal operador
+	*	@params: Literal atributo
+	*	@params: Literal legenda
+	* RETORNO
+	*	@return: void
+*/
+function addRestricaoRelatorio($relatorio_id,$atributo,$valor,$operador = '=',$legenda = ''){
+	global $conn;
+	$_entidade_principal 	= 'td_relatoriorestricao';
+	$legenda				= tdc::utf8($legenda);
+	$sqlVerifica 			= "SELECT id FROM ".$_entidade_principal." WHERE relatorio = ".$relatorio_id." AND atributo = " . $atributo .";";
+	$queryVerifica 			= $conn->query($sqlVerifica);
+	if ($queryVerifica->rowcount() > 0){
+		$linhaVerifica 	= $queryVerifica->fetch();
+		$idRetorno 		= $linhaVerifica["id"];
+		$sql = "UPDATE " . $_entidade_principal . " SET operador = '$operador' , valor = '$valor', atributo = $atributo , legenda = '$legenda' WHERE id = " . $idRetorno;
+	}else{
+		$idRetorno = getProxId($_entidade_principal,$conn);
+		$sql = "INSERT INTO " . $_entidade_principal . " (id,operador,atributo,valor,relatorio,legenda) 
+				VALUES (".$idRetorno.",'".$operador."',".$atributo.",'".$valor."',".$relatorio_id.",'".$legenda."');";
+	}
+	try{
+		$query = $conn->query($sql);
+		return $idRetorno;
+	}catch(Throwable $t){
+		if (IS_SHOW_ERROR_MESSAGE){
+			echo $sql;
+			var_dump($conn->errorInfo());
+		}
+		return 0;
+	}	
+}

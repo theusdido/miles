@@ -52,15 +52,15 @@ class SqlCriterio extends SqlExpressao {
 	*/		
 	public function dump(){
 		$result = "";
-		// Concatena a lista de express�es
+		// Concatena a lista de expressões
 		if (is_array($this->expressao)){
 			foreach($this->expressao as $i => $expressao){
-				$operador = $this->operador[$i];
+
+				$operador 	= $this->operador[$i];
+				$aRetirar 	= array("'RETIRAR","RETIRAR'");
+				$dump 		= str_replace($aRetirar,"",$expressao->dump());
 				
-				$aRetirar = array("'RETIRAR","RETIRAR'");
-				$dump = str_replace($aRetirar,"",$expressao->dump());
-				
-				// Concatena os operadores com a respectiva express�o
+				// Concatena os operadores com a respectiva expressão
 				$result .= $operador . $dump . ' ';
 			}
 			$result = trim($result);

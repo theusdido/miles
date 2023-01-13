@@ -17,7 +17,8 @@
         array('name' => 'pedidoemail' , 'title' => 'Pedido E-Mail'),
         array('name' => 'propaganda' , 'title' => 'Propaganda'),
         array('name' => 'statuspedido' , 'title' => 'Status do Pedido'),
-        array('name' => 'metodopagamento' , 'title' => 'Método de Pagamento')
+        array('name' => 'metodopagamento' , 'title' => 'Método de Pagamento'),
+        array('name' => 'relatorio/vendas' , 'title' => 'Relatório de Vendas')
       )
     ),
     array( "name" => "mercadoria", "title" => "Mercadoria", "components" => 

@@ -92,6 +92,34 @@
 			}
 			exit;
 		}
+		if ($_POST["op"] == "salvarfiltroinicial"){
+			$id			 			= isset($_POST["id"])?$_POST["id"]:'';
+			$operador				= $_POST["operador"];
+			$atributo	 			= $_POST["atributo"];
+			$relatorio	 			= $_POST["relatorio"];
+			$legenda 				= $_POST["legenda"];
+			$valor 					= $_POST["valor"];
+
+			if ($id == ""){
+				$query_prox = $conn->query("SELECT IFNULL(MAX(id),0)+1 FROM ".PREFIXO."relatoriorestricao");
+				$prox = $query_prox->fetch();
+				$id = $prox[0];
+				$sql = "INSERT INTO ".PREFIXO."relatoriorestricao (id,operador,atributo,relatorio,legenda,valor) VALUES ({$id},'{$operador}',{$atributo},{$relatorio},'{$legenda}','{$valor}');";
+			}else{
+				$sql = "UPDATE ".PREFIXO."relatoriorestricao SET atributo = {$atributo} , relatorio = {$relatorio} , operador = '{$operador}' , legenda = '{$legenda}' , valor = '{$valor}' WHERE id = {$id};";
+			}
+			$query = $conn->query($sql);
+			if($query){
+				// Alterações no atributo
+				$conn->query("UPDATE td_atributo SET legenda = '{$legenda}' WHERE id=" . $atributo);
+				echo 1;
+			}else{
+				if (IS_SHOW_ERROR_MESSAGE){
+					var_dump($conn->errorInfo());
+				}
+			}
+			exit;
+		}		
 	}
 
 	if (isset($_GET["op"])){
@@ -163,6 +191,40 @@
 					</span>";
 			}
 			exit;
+		}
+
+		if ($_GET["op"] == "listarfiltroinicial"){
+			$sql = "SELECT id,atributo atributo,operador,legenda,valor FROM ".PREFIXO."relatoriorestricao a WHERE relatorio = ".$_GET["relatorio"]." ORDER BY id DESC";
+			$query = $conn->query($sql);
+			if ($query->rowCount() <= 0){
+				echo '<div class="alert alert-warning alert-dismissible text-center" role="alert">Nenhum campo de <strong>filtro</strong> configurado.</div>';
+			}
+			foreach($query->fetchAll() as $linha){
+				$atributo 			= $linha["atributo"];
+				$operador 			= $linha["operador"];
+				$legenda 			= $linha["legenda"];
+				$sqlAtributo 		= "SELECT descricao FROM td_atributo WHERE id = " . $atributo;
+				$queryAtributo 		= $conn->query($sqlAtributo);
+				$linhaAtributo 		= $queryAtributo->fetch();
+				$atributoDescricao 	= $linhaAtributo["descricao"];
+				$valor 				= $linha["valor"];
+
+				echo "<span class='list-group-item'>
+						Atributo <strong>{$atributoDescricao}</strong> com  operador ( <strong>{$operador} ) </strong>
+						<button type='button' class='btn btn-default' onclick='excluirFiltroInicial({$linha["id"]});' style='float:right;margin-top:-4px'>
+							<span class='fas fa-trash-alt' aria-hidden='true'></span>
+						</button>
+						<button id='atributo-editar-{$linha["id"]}' type='button' class='btn btn-default' data-atributo='{$atributo}' data-operador='{$operador}' data-idfiltro='{$linha["id"]}' data-legenda='{$linha["legenda"]}' data-valor='{$valor}' onclick='editarFiltroInicial({$linha["id"]})' style='float:right;margin-top:-4px'>
+							<span class='fas fa-edit' aria-hidden='true'></span>
+						</button>
+					</span>";
+			}
+			exit;
+		}
+		if ($_GET["op"] == "excluirfiltroinicial"){
+			$sql = "DELETE FROM td_relatoriorestricao WHERE id = " . $_GET["id"];
+			$query = $conn->query($sql);
+			exit;
 		}		
 	}
 	if ($id != ""){
@@ -180,6 +242,7 @@
 		<title>Criar Relatório</title>
 		<?php include 'head.php' ?>
 		<script type="text/javascript">
+			var url_api = "<?=URL_API?>";
 			window.onload = function(){
 				document.getElementById("id").value = "<?=$id?>";
 				if ("<?=$id?>" != ""){
@@ -193,6 +256,8 @@
 				$("#valor").val("");
 				atualizarListaFiltro("<?=$id?>");
 				atualizarListaStatus("<?=$id?>");
+				atualizarListaFiltroInicial("<?=$id?>");
+				$('#panel-colunas').load("<?=URL_API?>?controller=page&page=mdm/relatorio/colunas");
 			}
 			function validar(){
 				if ($("#entidade").val() == "" || $("#entidade").val() == null){
@@ -217,6 +282,37 @@
 				$("#form-status #status").val($("#lista-status #atributo-editar-" + id).data("status"));
 				$("#form-status #idstatus").val($("#lista-status #atributo-editar-" + id).data("idstatus"));
 				$("#modalCadastroStatus").modal('show');
+			}
+			function editarFiltroInicial(id){
+				$("#form-filtro-inicial #relatorio").val(id);
+				$("#form-filtro-inicial #atributo").val($("#lista-filtroinicial #atributo-editar-" + id).data("atributo"));
+				$("#form-filtro-inicial #operador").val($("#lista-filtroinicial #atributo-editar-" + id).data("operador"));
+				$("#form-filtro-inicial #valor").val($("#lista-filtroinicial #atributo-editar-" + id).data("valor"));
+				$("#form-filtro-inicial #legenda").val($("#lista-filtroinicial #atributo-editar-" + id).data("legenda"));
+				$("#form-filtro-inicial #idfiltro").val($("#lista-filtroinicial #atributo-editar-" + id).data("idfiltro"));
+				$("#modalCadastroFiltroInicial").modal('show');
+			}
+			function novoFiltroInicial(){
+				$("#modalCadastroFiltroInicial").modal({
+					backdrop:false
+				});
+				$("#modalCadastroFiltro").modal('show');
+				$("#form-filtro #relatorio,#form-filtro #idfiltro,#form-filtro #legenda").val("");
+				$("#form-filtro #operador").val("=");
+				$("#form-filtro #atributo").val($("#form-filtro #atributo option:first").val());
+			}
+			function excluirFiltroInicial(id){
+				$.ajax({
+					url:"criarRelatorio.php",
+					data:{
+						op:"excluirfiltroinicial",
+						id:id,
+						currentproject:<?=CURRENT_PROJECT_ID?>
+					},
+					complete:function(){
+						atualizarListaFiltroInicial("<?=$id?>");
+					}
+				});
 			}
 			$(document).ready(function(){
 				$("#salvarFiltro").click(function(){
@@ -255,6 +351,26 @@
 						complete:function(r){
 							atualizarListaStatus("<?=$id?>");
 							$("#modalCadastroStatus").modal('hide');
+						}
+					});
+				});
+				$("#salvarFiltroInicial").click(function(){
+					$.ajax({
+						type:"POST",
+						url:"criarRelatorio.php",
+						data:{
+							op:"salvarfiltroinicial",
+							operador: $("#form-filtro-inicial #operador").val(),
+							atributo: $("#form-filtro-inicial #atributo").val(),
+							relatorio:"<?=$id?>",
+							id:$("#form-filtro-inicial #idfiltro").val(),
+							valor:$("#form-filtro-inicial #valor").val(),
+							legenda:$("#form-filtro-inicial #legenda").val(),
+							currentproject:<?=CURRENT_PROJECT_ID?>
+						},
+						complete:function(r){
+							atualizarListaFiltroInicial("<?=$id?>");
+							$("#modalCadastroFiltroInicial").modal('hide');
 						}
 					});
 				});
@@ -315,7 +431,6 @@
 				});
 			}
 			function carregarValoresAtributo(fk){
-				console.log(fk);
 				if (fk > 0){
 					$(".form-control[data-tipoatributo=lista]").attr("id","valor");
 					$(".form-control[data-tipoatributo=lista]").attr("name","valor");
@@ -325,14 +440,14 @@
 					$(".form-control[data-tipoatributo=input]").hide();
 
 					$.ajax({
-						url:"../../index.php?controller=requisicoes",
+						url:"<?=URL_MILES_LIBRARY?>",
 						type:"GET",
 						data:{
+							controller:'requisicoes',
 							op:"carregar_options",
 							entidade:fk,
 							atributo:"",
-							filtro:"",
-							currentproject:<?=$_SESSION["currentproject"]?>
+							filtro:""
 						},
 						complete:function(ret){
 							$("#form-status #valor").html(ret.responseText);
@@ -348,6 +463,10 @@
 				}
 				
 			}
+
+			function atualizarListaFiltroInicial(relatorio){
+				$("#lista-filtroinicial").load("criarRelatorio.php?op=listarfiltroinicial&relatorio=" + relatorio + "&currentproject=<?=CURRENT_PROJECT_ID?>");
+			}			
 		</script>
 	</head>
 	<body>
@@ -363,7 +482,7 @@
 				<div class="col-md-10">
 					<form action="criarRelatorio.php" method="post" onsubmit="return validar();">
 						<legend>
-							Relatório
+							Colunas
 						</legend>						
 						<fieldset>
 							<input type="hidden" id="id" name="id" />
@@ -567,6 +686,94 @@
 						</div>
 					  </div>
 					</div>
+
+					<!-- FILTROS INICIAIS -->
+					<div class="panel-group" id="accordion_filtrosinicias" role="tablist" aria-multiselectable="true">
+					  <div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingThree">
+						  <h4 class="panel-title">
+							<a role="button" data-toggle="collapse" data-parent="#accordion_filtrosiniciais" href="#collapseTrhee" aria-expanded="false" aria-controls="collapseTrhee">
+							  Restrições				  
+							</a>
+						  </h4>
+						</div>
+						<div id="collapseTrhee" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+						  <div class="panel-body">
+								<button type="button" class="btn btn-default" aria-label="Novo Filtro" style="float:right;margin-top:-3px;" onclick="novoFiltroInicial();">
+								  <span class="fas fa-plus-circle" aria-hidden="true"></span>
+								</button>
+
+								<!-- CADASTRO DE FILTRO -->
+								<div class="modal fade" id="modalCadastroFiltroInicial" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+								  <div class="modal-dialog" role="document">
+									<div class="modal-content">
+									  <div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+										<h4 class="modal-title" id="myModalLabel">Cadastro de Filtro Inicial</h4>
+									  </div>
+									  <div class="modal-body">
+
+											<!-- FORMULARIO DE FILTRO -->
+											<form id="form-filtro-inicial" action="criarRelatorio.php" method="post">
+												<fieldset>
+													<input type="hidden" id="idfiltro" name="idfiltro" />
+													<input type="hidden" id="op" name="op" value="salvarfiltroinicial" />
+													<input type="hidden" id="relatorio" name="relatorio" value="<?=$id?>" />
+													<input type="hidden" id="currentproject" name="currentproject" value="<?=CURRENT_PROJECT_ID?>" />													
+													<div class="form-group">
+														<label for="atributo">Atributo</label>
+														<select id="atributo" name="atributo" class="form-control">
+														<?php 
+															$sql = "SELECT id,nome,descricao FROM ".PREFIXO."atributo WHERE entidade = " . $entidade;
+															$query = $conn->query($sql);
+															foreach($query->fetchAll() as $linha){
+																echo '<option value="'.$linha["id"].'" data-nome="'.$linha["nome"].'">'.$linha["descricao"].' [ '.$linha["nome"].' ]</option>';
+															}
+														?>
+														</select>
+													</div>
+													<div class="form-group">
+														<label for="operador">Operador</label>
+														<select name="operador" id="operador" class="form-control">
+															<option value="=">Igual</option>
+															<option value="!">Diferente</option>
+															<option value="..">Intervalo</option>
+															<option value="%">Parcial</option>
+															<option value=",">Contém</option>
+															<option value=">">Maior</option>
+															<option value="<">Menor</option>
+															<option value=">=">Maior ou Igual </option>
+															<option value="<=">Menor ou Igual</option>
+														</select>
+													</div>
+													<div class="form-group">
+														<label for="valor">Valor</label>
+														<input type="text" name="valor" id="valor" class="form-control">
+													</div>													
+													<div class="form-group">
+														<label for="legenda">Legenda</label>
+														<input type="text" name="legenda" id="legenda" class="form-control">
+													</div>
+												</fieldset>
+											</form>
+									  
+									  </div>
+									  <div class="modal-footer">
+											<div id="error"></div>
+											<button type="button" class="btn btn-primary" id="salvarFiltroInicial">Salvar</button>
+									  </div>
+									</div>
+								  </div>
+								</div>
+								<!-- CADASTRO DE FILTRO -->
+								<br/><br/>
+								<div id="lista-filtroinicial" class="list-group">
+								</div>
+						  </div>
+						</div>
+					  </div>
+					</div>
+					<div id="panel-colunas"></div>
 				</div>
 			</div>
 		</div>

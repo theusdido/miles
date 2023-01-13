@@ -30,10 +30,10 @@
 							$sql = "SELECT id,descricao,entidade FROM ".PREFIXO."relatorio";
 							$query = $conn->query($sql);
 							foreach ($query->fetchAll() as $linha){
-								$descricao = utf8_encode($linha["descricao"]);
+								$descricao = $linha["descricao"];
 								
 								$query = $conn->query("SELECT descricao FROM td_entidade WHERE id = {$linha["entidade"]}")->fetch();
-								$entidade = utf8_encode($query["descricao"]);
+								$entidade = $query["descricao"];
 								echo "	<tr>
 											<td>{$linha["id"]}</td>
 											<td>{$descricao}</td>
