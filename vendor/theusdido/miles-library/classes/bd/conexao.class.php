@@ -111,7 +111,7 @@ final class Conexao{
 		$is_exists 	= !file_exists($arq_config) ? (file_exists($arq_temp) ? $arq_config = $arq_temp : false) : true;
 
 		if (!$is_exists){
-			if (IS_SHOW_ERROR_MESSAGE){
+			if (IS_SHOW_WARN_MESSAGE){
 				echo "Arquivo <b>{$database}</b> de configuração com o banco de dados não existe. => " . $arq_config . " <= ";
 			}
 		}else{

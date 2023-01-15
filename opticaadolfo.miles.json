@@ -17,10 +17,11 @@
     "theme": "desktop",
     "prefix": "td",
     "is_show_error_message": true,
+    "is_show_warn_message": false,
     "is_transaction_log": false,
-    "database_current": "desenv",
+    "database_current": "producao",
     "port": "hidden",
-    "enviromment":"dev",
+    "enviromment":"prod",
     "enviromments":{
         "dev":{
             "root":"/",
@@ -50,7 +51,7 @@
         "prod":{
             "root":"/",
             "url":{
-                "domain":""
+                "domain":"opticaadolfo.com.br"
             },
             "system":{
                 "request_protocol": "https",

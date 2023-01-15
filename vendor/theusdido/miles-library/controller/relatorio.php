@@ -12,20 +12,18 @@
 			}
 			#cabecalho #empresa,#rodape #datahora{
 				float:right;
-				margin-right:5px;
 			}
 			#cabecalho #descricaorelatorio,#rodape #usuario{
 				float:left;
-				margin-left:5px;
 			}
 			.separadorcabecalho{
 				float:left;
 				clear:both;
 				width:100%;
 				border-color:#FEFEFE;
-				margin-top:1px;
+				margin:1px 0;
 			}
-			table tr th{
+			table tr th {
 				text-align:left;
 			}
 			.nenhumregistro{
@@ -33,6 +31,26 @@
 				background-color:#F3F3F3;
 				padding:5px;
 				margin-top:10px;
+			}
+			.rodape-linha-somatorio{
+				border-top:1px solid #000;
+				font-weight:bold;
+			}
+
+			#rodape{
+				position: fixed;
+				bottom: 0;
+				z-index: 1000px;
+				text-align: center;
+				font-size: 12px;
+				height: 15px;
+				margin: 20px auto !important;
+				padding: 15px 0 !important;
+				display:contents;		
+			}
+
+			.corpo-relatorio tr td {
+				border-bottom:1px solid #EBEBEB;
 			}
 		</style>
 	</head>
@@ -134,7 +152,7 @@
 		}
 
 		// Adiciona a restrição inicial
-		//$where->add($filtroRestricao);
+		$where->add($filtroRestricao);
 
 		// Adiciona filtros selecionado na geração do relatório
 		$where->add($filtroParams);
@@ -142,7 +160,8 @@
 		
 
 		// *** CORPO *** //
-		$tbody = tdClass::Criar("tbody");
+		$tbody 			= tdClass::Criar("tbody");
+		$tbody->class 	= 'corpo-relatorio';
 		if ($conn = Transacao::Get()){
 			$sql = "SELECT id," . implode(",",$camposNome) . " FROM " . $_entidade->nome . " WHERE ". $where->dump();
 			$query = $conn->query($sql);
@@ -204,13 +223,12 @@
 					$tdRodape->add('&nbsp;');
 				}
 				$tdRodape->align = $coluna->alinhamento;
+				$tdRodape->class = 'rodape-linha-somatorio';
 				$trRodape->add($tdRodape);
 				
 			}
 			$tfoot->add($trRodape);
 		}
-		
-		
 
 		$usuario = tdClass::Criar("span");
 		$usuario->id = "usuario";
@@ -237,8 +255,10 @@
 		$tfoot->add($trRodape);
 		
 		//  Tabela do Relatório 
-		$trel = tdClass::Criar("tabela");
-		$trel->width = "100%";
+		$trel 				= tdClass::Criar("tabela");
+		$trel->width 		= "100%";
+		$trel->cellspacing	= 0;
+		$trel->cellpadding 	= 0;
 		$trel->add($thead,$tbody,$tfoot);
 		$trel->mostrar();
 		?>

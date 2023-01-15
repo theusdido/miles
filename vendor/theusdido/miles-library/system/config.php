@@ -121,6 +121,9 @@
 	// Exibir mensagem de erro
 	define("IS_SHOW_ERROR_MESSAGE",$mjc->is_show_error_message);
 
+	// Exibir mensagem de aviso
+	define("IS_SHOW_WARN_MESSAGE",$mjc->is_show_warn_message);
+
 	// Exibir mensagem de erro
 	define("IS_TRANSACTION_LOG",$mjc->is_transaction_log);	
 

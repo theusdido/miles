@@ -148,9 +148,9 @@ class Pagina Extends Html {
 		
 		if ($this->showCSSTheme){
 			#if (file_exists(PATH_PROJECT)){
-				$tema 			= tdClass::Criar("link");
-				$tema->href 	= URL_CURRENT_PROJECT_THEME . 'geral.css';
-				$tema->rel 		= 'stylesheet';				
+				$tema_project 			= tdClass::Criar("link");
+				$tema_project->href 	= URL_CURRENT_PROJECT_THEME . 'geral.css';
+				$tema_project->rel 		= 'stylesheet';				
 			#}else{
 				$tema 			= tdClass::Criar("link");
 				$tema->href 	= URL_SYSTEM_THEME . 'geral.css';
@@ -161,7 +161,7 @@ class Pagina Extends Html {
 			$gradededadosCSS->href 	= URL_SYSTEM_THEME . 'gradesdedados.css';
 			$gradededadosCSS->rel 	= 'stylesheet';
 
-			$this->head->add($tema,$gradededadosCSS);
+			$this->head->add($tema,$tema_project,$gradededadosCSS);
 		}
 		
 		if ($this->showJSParticularidades){
