@@ -1076,7 +1076,10 @@ function getEntidadeId($entidadeString,$conn = null){
 				return 0;
 			}
 		}catch(Throwable $t){
-			echo $sql . "<br/>";
+			if (IS_SHOW_ERROR_MESSAGE){
+				echo $sql . "<br/>";
+			}
+			return 0;
 		}
 	}
 }

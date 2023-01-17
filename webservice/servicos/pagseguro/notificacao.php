@@ -214,7 +214,7 @@
 					$mail 						= new PHPMailer();
 					$mail->SetLanguage("en",PATH_LIB . "phpmailer/language/");					
 					$mail->CharSet 				= $_email_config->chartset;
-					$mail->SMTPDebug 			= 1;
+					$mail->SMTPDebug 			= 0;
 					$mail->SMTPAuth 			= $_email_config->smtpauth ? true : false;
 					$mail->Username 			= $_pedido_email->username;
 					$mail->Password 			= $_pedido_email->password;
@@ -234,7 +234,7 @@
 
 					$mail->IsHTML(true);					
 					# Requisição da impressão do pedido
-					$url_impressao_pedido 	= URL_MILES. "index.php?controller=ecommerce/pedidoenvioemail/pedidoenvioemail&registro=1";
+					$url_impressao_pedido 	= URL_MILES. "index.php?controller=ecommerce/pedidoenvioemail/pedidoenvioemail&registro=" . $idPedido;
 					$curl = curl_init();
 					curl_setopt_array($curl, [
 						CURLOPT_RETURNTRANSFER => 1,

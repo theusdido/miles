@@ -15,5 +15,10 @@
 	// Variavel Global da conexão ative com banco de dados
 	$conn = Transacao::Get();
 
+	if ($conn == null){
+		showMessage('Não há conexão ativa com o banco de dados.');
+		exit;
+	}
+
 	// Abre a conexão com o banco de dados MILES
 	$connMILES = null; # Descontinuado

@@ -209,25 +209,27 @@
 		// *** RODAPE *** //
 		$tfoot = tdClass::Criar("tfoot");
 
-		$sql 	= "SELECT id," . implode(",",$camposSomatorio) . " FROM " . $_entidade->nome . " WHERE ". $where->dump();
-		$query 	= $conn->query($sql);
-		if ($is_linha_somatorio && $query->rowCount() > 0){
-			$linha = $query->fetch();	
-			$trRodape 	= tdClass::Criar("tabelalinha");
-			foreach($colunas as $coluna){
-				
-				$tdRodape 	= tdClass::Criar("tabelacelula");
-				if ($coluna->is_somatorio){
-					$tdRodape->add(number_format($linha['somatorio_valortotal'],2,',','.'));
-				}else{
-					$tdRodape->add('&nbsp;');
+		if ($is_linha_somatorio && sizeof($camposSomatorio) > 0){
+			$sql 	= "SELECT id," . implode(",",$camposSomatorio) . " FROM " . $_entidade->nome . " WHERE ". $where->dump();
+			$query 	= $conn->query($sql);
+			if ($query->rowCount() > 0){
+				$linha = $query->fetch();	
+				$trRodape 	= tdClass::Criar("tabelalinha");
+				foreach($colunas as $coluna){
+					
+					$tdRodape 	= tdClass::Criar("tabelacelula");
+					if ($coluna->is_somatorio){
+						$tdRodape->add(number_format($linha['somatorio_valortotal'],2,',','.'));
+					}else{
+						$tdRodape->add('&nbsp;');
+					}
+					$tdRodape->align = $coluna->alinhamento;
+					$tdRodape->class = 'rodape-linha-somatorio';
+					$trRodape->add($tdRodape);
+					
 				}
-				$tdRodape->align = $coluna->alinhamento;
-				$tdRodape->class = 'rodape-linha-somatorio';
-				$trRodape->add($tdRodape);
-				
+				$tfoot->add($trRodape);
 			}
-			$tfoot->add($trRodape);
 		}
 
 		$usuario = tdClass::Criar("span");

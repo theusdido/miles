@@ -649,7 +649,6 @@ function moneyToFloat(valor){
 function editarTDFormulario(entidade,id){
 	
 	carregar(session.folderprojectfiles + "files/cadastro/"+entidade+"/"+td_entidade[entidade].nomecompleto+".html",'#conteudoprincipal',function(){
-		
 		carregarScriptCRUD('editarformulario',entidade,id);
 	});
 }
@@ -816,15 +815,13 @@ function excluirArquivoUpload(dadosarquivos,entidade,atributo){
 }
 
 function carregarScriptCRUD(tipo,entidade,registro_id = 0,contexto = '',_extras = {}){
-	console.log(_extras);
-	debugger;
 	formulario[entidade]				 	= new tdFormulario(entidade,registro_id,0,_extras);
 	formulario[entidade].funcionalidade 	= tipo;
 
 	if (contexto != ''){
 		formulario[entidade].setContexto(contexto);
 	}
-	debugger;
+
 	switch(tipo){
 		case 'cadastro':
 			// Registro Único
@@ -842,10 +839,8 @@ function carregarScriptCRUD(tipo,entidade,registro_id = 0,contexto = '',_extras 
 			});
 		break;
 		case 'editarformulario':
-			debugger;
 			formulario[entidade].registro_id 	= registro_id;
 			formulario[entidade].editar();
-			debugger;
 		break;
 		case 'consulta':
 			formulario[entidade].setConsulta($('#consulta_id').val());

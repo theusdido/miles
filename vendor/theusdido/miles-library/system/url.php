@@ -55,9 +55,8 @@
 	// URL COMPONENT
 	define('URL_COMPONENT', URL_MILES_LIBRARY . FOLDER_COMPONENT . '/');
 
-	
-	define('URL_PROJECT',URL_MILES . PATH_PROJECT);
-	define('URL_CURRENT_PROJECT',URL_MILES . PATH_PROJECT);
+	define('URL_PROJECT',URL_MILES . $_project_folder);
+	define('URL_CURRENT_PROJECT',URL_MILES . $_project_folder);
 
 	// URL CLASSES	
 	define('URL_CLASS', URL_MILES_LIBRARY . FOLDER_CLASSES . '/');
@@ -81,7 +80,7 @@
 	define('URL_CURRENT_CONFIG_PROJECT', URL_CURRENT_PROJECT . FOLDER_CONFIG . '/');
     
 	// FILE
-	define('URL_CURRENT_FILE', URL_PROJECT. "arquivos/");
+	define('URL_CURRENT_FILE', URL_CURRENT_PROJECT. "arquivos/");
     
 	define('URL_CURRENT_FILE_TEMP', URL_CURRENT_FILE . 'temp/');
 	define('URL_CURRENT_PAGE',URL_PROJECT . "page/");

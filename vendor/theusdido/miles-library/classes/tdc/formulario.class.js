@@ -47,7 +47,6 @@ tdFormulario.prototype.construct = function(entidade_id,registro_id = 0,entidade
 }
 
 tdFormulario.prototype.init = function(){
-	debugger;
 	this.setContexto();
 	this.setEntidadesFilho();
 	this.setBotoes();
@@ -390,14 +389,20 @@ tdFormulario.prototype.setaLayoutGeneralizao = function(){
 
 tdFormulario.prototype.newGrade = function (){
 	// Limpa a grade de dados
-	this.getGrade().setNenhumRegistro();
+	let _grade = this.getGrade();
+	if (_grade != null){
+		_grade.setNenhumRegistro();
+	}
+	
 }
 
 tdFormulario.prototype.setGrade = function (){
-	// Atributo uma grade de dados
-	this.gradesdados 			= new GradeDeDados(this.entidade.id);
-	this.gradesdados.contexto 	= this.getContextoListar();
-	this.gradesdados.pesquisar	= false;
+	// Atribui uma grade de dados
+	if (this.entidade != null){
+		this.gradesdados 			= new GradeDeDados(this.entidade.id);
+		this.gradesdados.contexto 	= this.getContextoListar();
+		this.gradesdados.pesquisar	= false;
+	}
 }
 
 tdFormulario.prototype.getGrade = function(){
@@ -463,9 +468,7 @@ tdFormulario.prototype.setBotoes = function(){
 		if (typeof afterBack === "function") afterBack(this);
 	});
 
-	debugger;
 	this.btn_salvar.click(this,function(handler){
-		debugger;
 		if (typeof beforeSave === "function") beforeSave(this);
 		handler.data.salvar();
 
@@ -476,9 +479,6 @@ tdFormulario.prototype.loadGrade = function(){
 	this.getGrade().show();
 }
 tdFormulario.prototype.voltar = function(){
-	console.log(this.consulta);
-	console.log(this.funcionalidade);
-	debugger;
 	this.getGrade().show();
 	$(this.getContextoAdd()).hide();
 	$(this.getContextoListar()).show();

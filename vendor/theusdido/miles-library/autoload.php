@@ -1,5 +1,6 @@
 <?php
 
+	define('MILES_JSON_PROJECT','opticaadolfo');	
 	define('FOLDER_REPOSITORY', 'vendor/theusdido');
 	define('PATH_REPOSITORY', FOLDER_REPOSITORY . '/');
 	define('FOLDER_MILES_LIBRARY','miles-library');
@@ -7,12 +8,19 @@
 	// Raiz do servidor web, corresponde ao documentRoot
 	define('PATH_ROOT',$_SERVER['DOCUMENT_ROOT'] . '/');
 
+	if (!defined('AMBIENTE')) define('AMBIENTE','BIBLIOTECA');
 
 	// Global com o nome do diretório da instalação do MILES
-	$_folder_miles = str_replace(array(PATH_ROOT,FOLDER_REPOSITORY),'',dirname(__DIR__));
+	if (AMBIENTE == 'SISTEMA'){
+		$_folder_miles 	= str_replace(array(PATH_ROOT,FOLDER_REPOSITORY),'',dirname(__DIR__));
+		$_path_miles	= PATH_ROOT . $_folder_miles;
+	}else{
+		$_folder_miles 	= str_replace(array(FOLDER_REPOSITORY),'',dirname(__DIR__));
+		$_path_miles	= $_folder_miles;
+	}	
 
 	// Onde está o Miles Framework, index.php
-	define('PATH_MILES',PATH_ROOT . $_folder_miles);
+	define('PATH_MILES',$_path_miles);
 
 	// Define o diretório da biblioteca dentro do vendor
 	define ('PATH_MILES_LIBRARY',PATH_MILES . PATH_REPOSITORY .  FOLDER_MILES_LIBRARY . '/');
