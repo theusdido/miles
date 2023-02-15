@@ -40,7 +40,12 @@
 				$memcache = new Memcache;
 				$memcache->delete(session_id());
 			}else{
-				if (session_name() != self::getName()) session_name(self::getName());
+				try{
+					if (session_name() != self::getName()) session_name(self::getName());
+				}catch(Throwable $e){
+					// Não conseguiu acessar a sessão pelo nome					
+				}
+
 				foreach($_SESSION as $key => $valor){
 					unset($_SESSION[$key]);
 				}

@@ -16,7 +16,7 @@
 	if (!empty($_POST)){
 		if ($_POST["op"] == "salvar"){
 			$id			 			= isset($_POST["id"])?$_POST["id"]:'';
-			$descricao				= executefunction("tdc::utf8",array($_POST["descricao"]));
+			$descricao				= $_POST["descricao"];
 			$entidade	 			= $_POST["entidade"];
 			$urlpersonalizada		= $_POST["urlpersonalizada"];
 
@@ -148,12 +148,12 @@
 			foreach($query->fetchAll() as $linha){
 				$atributo 			= $linha["atributo"];
 				$operador 			= $linha["operador"];
-				$legenda 			= executefunction("tdc::utf8",array($linha["legenda"]));
+				$legenda 			= $linha["legenda"];
 				$sqlAtributo 		= "SELECT descricao FROM td_atributo WHERE id = " . $atributo;
 				$queryAtributo 		= $conn->query($sqlAtributo);
 				$linhaAtributo 		= $queryAtributo->fetch();
-				$atributoDescricao 	= executefunction("tdc::utf8",array($linhaAtributo["descricao"]));
-				echo "<span class='list-group-item'>
+				$atributoDescricao 	= $linhaAtributo["descricao"];
+				echo "<li class='list-group-item' data-id='".$linha["id"]."'>
 						Atributo <strong>{$atributoDescricao}</strong> com  operador ( <strong>{$operador} ) </strong>
 						<button type='button' class='btn btn-default' onclick='excluirFiltro({$linha["id"]});' style='float:right;margin-top:-4px'>
 							<span class='fas fa-trash-alt' aria-hidden='true'></span>
@@ -161,7 +161,7 @@
 						<button id='atributo-editar-{$linha["id"]}' type='button' class='btn btn-default' data-atributo='{$atributo}' data-operador='{$operador}' data-idfiltro='{$linha["id"]}' data-legenda='{$linha["legenda"]}' onclick='editarFiltro({$linha["id"]})' style='float:right;margin-top:-4px'>
 							<span class='fas fa-edit' aria-hidden='true'></span>
 						</button>
-					</span>";
+					</li>";
 			}
 			exit;
 		}
@@ -179,7 +179,7 @@
 				$sqlAtributo 		= "SELECT descricao FROM td_atributo WHERE id = " . $atributo;
 				$queryAtributo 		= $conn->query($sqlAtributo);
 				$linhaAtributo 		= $queryAtributo->fetch();
-				$atributoDescricao 	= executefunction("tdc::utf8",array($linhaAtributo["descricao"]));
+				$atributoDescricao 	= $linhaAtributo["descricao"];
 				echo "<span class='list-group-item'>
 						Atributo <strong>{$atributoDescricao}</strong> com  operador ( <strong>{$operador} ) </strong>. Valor: <small class='text-info'>{$valor}</small>.
 						<button type='button' class='btn btn-default' onclick='excluirStatus({$linha["id"]});' style='float:right;margin-top:-4px'>
@@ -232,7 +232,7 @@
 		$query 					= $conn->query($sql);
 		foreach ($query->fetchAll() as $linha){
 			$entidade			= $linha["entidade"];
-			$descricao			= executefunction("tdc::utf8",array($linha["descricao"]));
+			$descricao			= $linha["descricao"];
 			$urlpersonalizada 	= $linha["urlpersonalizada"];
 		}
 	}
@@ -257,7 +257,7 @@
 				atualizarListaFiltro("<?=$id?>");
 				atualizarListaStatus("<?=$id?>");
 				atualizarListaFiltroInicial("<?=$id?>");
-				$('#panel-colunas').load("<?=URL_API?>?controller=page&page=mdm/relatorio/colunas");
+				$('#panel-colunas').load(url_api +"?controller=page&page=mdm/relatorio/colunas");
 			}
 			function validar(){
 				if ($("#entidade").val() == "" || $("#entidade").val() == null){
@@ -378,6 +378,33 @@
 					carregarValoresAtributo($(this).find("option:selected").data("chaveestrangeira"));
 				});
 				carregarValoresAtributo($("#form-status #atributo").find("option:selected").data("chaveestrangeira"));
+
+				$("#lista-filtro").sortable({
+					update: function( event, ui ) {
+						var ordenacao = [];
+						$("#lista-filtro li").each(
+							(e,elemento) => {
+								var id = $(elemento).data("id");
+								if (id != undefined){
+									ordenacao.push({
+										id:id,
+										order:e+1
+									});
+								}					
+							}
+						);
+						$.ajax({
+							url:"<?=URL_MILES?>",
+							data:{
+								op:"ordenar",
+								controller:"sortable",
+								entidade:"td_relatoriofiltro",
+								atributo:"ordem",
+								ordem:ordenacao
+							}
+						});
+					}
+				});
 			});
 			function novoFiltro(){
 				$("#modalCadastroFiltro").modal({
@@ -440,7 +467,7 @@
 					$(".form-control[data-tipoatributo=input]").hide();
 
 					$.ajax({
-						url:"<?=URL_MILES_LIBRARY?>",
+						url:"<?=URL_MILES?>",
 						type:"GET",
 						data:{
 							controller:'requisicoes',
@@ -499,7 +526,7 @@
 										$sql = "SELECT id,nome,descricao FROM ".PREFIXO."entidade";
 										$query = $conn->query($sql);
 										foreach($query->fetchAll() as $linha){
-											echo '<option value="'.$linha["id"].'" data-nome="'.$linha["nome"].'">'.executefunction("tdc::utf8",array($linha["descricao"])).' [ '.$linha["nome"].' ]</option>';
+											echo '<option value="'.$linha["id"].'" data-nome="'.$linha["nome"].'">'.$linha["descricao"].' [ '.$linha["nome"].' ]</option>';
 										}
 									?>
 								</select>								
@@ -550,10 +577,10 @@
 														<label for="atributo">Atributo</label>
 														<select id="atributo" name="atributo" class="form-control">
 														<?php 
-															$sql = "SELECT id,nome,descricao FROM ".PREFIXO."atributo WHERE entidade = " . $entidade . " AND exibirgradededados = 1";
+															$sql = "SELECT id,nome,descricao FROM ".PREFIXO."atributo WHERE entidade = " . $entidade.";";
 															$query = $conn->query($sql);
 															foreach($query->fetchAll() as $linha){
-																echo '<option value="'.$linha["id"].'" data-nome="'.$linha["nome"].'">'.utf8_encode($linha["descricao"]).' [ '.$linha["nome"].' ]</option>';
+																echo '<option value="'.$linha["id"].'" data-nome="'.$linha["nome"].'">'.$linha["descricao"].' [ '.$linha["nome"].' ]</option>';
 															}
 														?>
 														</select>
@@ -588,8 +615,7 @@
 								</div>
 								<!-- CADASTRO DE FILTRO -->
 								<br/><br/>
-								<div id="lista-filtro" class="list-group">
-								</div>
+								<ul id="lista-filtro" class="list-group sortable"></ul>
 						  </div>
 						</div>
 					  </div>
@@ -633,7 +659,7 @@
 															$sql = "SELECT id,nome,descricao,chaveestrangeira FROM ".PREFIXO."atributo WHERE entidade = " . $entidade . " AND exibirgradededados = 1";
 															$query = $conn->query($sql);
 															foreach($query->fetchAll() as $linha){
-																echo '<option value="'.$linha["id"].'" data-nome="'.$linha["nome"].'" data-chaveestrangeira="'.$linha["chaveestrangeira"].'">'.utf8_encode($linha["descricao"]).' [ '.$linha["nome"].' ]</option>';
+																echo '<option value="'.$linha["id"].'" data-nome="'.$linha["nome"].'" data-chaveestrangeira="'.$linha["chaveestrangeira"].'">'.$linha["descricao"].' [ '.$linha["nome"].' ]</option>';
 															}
 														?>
 														</select>
@@ -664,7 +690,7 @@
 															$sql = "SELECT id,descricao FROM ".PREFIXO."status";
 															$query = $conn->query($sql);
 															foreach($query->fetchAll() as $linha){
-																echo '<option value="'.$linha["id"].'">'.utf8_encode($linha["descricao"]).'</option>';
+																echo '<option value="'.$linha["id"].'">'.$linha["descricao"].'</option>';
 															}
 														?>
 														</select>

@@ -121,7 +121,7 @@
 				carregar("?controller=component&_component=menu-left","#menulateralesquerdoprincipal");
 			}
 
-			//menuleft();
+			menuleft();
 	' .
 	(CURRENT_THEME=='desktop'?'$("body").css("background-image","none");':'')
 	);

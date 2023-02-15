@@ -1,3 +1,9 @@
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+
+	RewriteRule ^/(.*)?$ ../index.php?project_name_identifify_params=$1 [NC,L]
+</IfModule>
+
 # php -- BEGIN cPanel-generated handler, do not edit
 # Defina o pacote “ea-php74” como a linguagem padrão de programação “PHP”.
 <IfModule mime_module>

@@ -101,13 +101,14 @@ class TdFormulario Extends Elemento {
 			$atributodependencia = $coluna->atributodependencia;
 			$isatributodependenciapai = isAtributoDependenciaPai($coluna->id)?"atributodependenciapai":"";
 			
-			if ((int)$coluna->nulo != 1){
+			if ((int)$coluna->nulo != 1 && $this->funcionalidade == 'cadastro'){
 				$asteriscoobrigatorio = tdClass::Criar("span");
 				$asteriscoobrigatorio->class = "asteriscoobrigatorio";
 				$asteriscoobrigatorio->add("*");
 			}else{
 				$asteriscoobrigatorio = null;
 			}
+
 			$initialValue = $this->initialValue($coluna);
 			switch($coluna->tipohtml){
 				// Campo de Texto ( Longo )
@@ -158,12 +159,13 @@ class TdFormulario Extends Elemento {
 					$icon_add	= tdc::o("i");
 					$icon_add->class = "fas fa-plus";
 
-					$button_add = tdc::o("button");
-					$button_add->type = "button";
-					$button_add->class = "btn btn-default btn-add-emexecucao";
-					$button_add->add($icon_add);
-					
-					$input_group_btn->add($button_add);
+					if ($this->funcionalidade == 'cadastro'){
+						$button_add = tdc::o("button");
+						$button_add->type = "button";
+						$button_add->class = "btn btn-default btn-add-emexecucao";
+						$button_add->add($icon_add);
+						$input_group_btn->add($button_add);
+					}
 
 					$input_group->add($select,$input_group_btn);
 					$campo->add($label,$input_group);

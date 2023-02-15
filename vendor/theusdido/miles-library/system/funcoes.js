@@ -844,6 +844,9 @@ function carregarScriptCRUD(tipo,entidade,registro_id = 0,contexto = '',_extras 
 		break;
 		case 'consulta':
 			formulario[entidade].setConsulta($('#consulta_id').val());
+		break;
+		case 'relatorio':
+			formulario[entidade].setRelatorio($('#relatorio_id').val());
 		break;	
 	}
 }

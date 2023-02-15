@@ -11,7 +11,11 @@ if (is_registrounico){
 }else{
     formulario[EntidadePrincipalID].loadGrade();
 }
-
-if (funcionalidade == 'consulta'){
-    formulario[EntidadePrincipalID].setConsulta($('#consulta_id').val());
+switch(funcionalidade){
+    case 'consulta':
+        formulario[EntidadePrincipalID].setConsulta($('#consulta_id').val());
+    break;
+    case 'relatorio':
+        formulario[EntidadePrincipalID].setRelatorio($('#relatorio_id').val());
+    break;
 }

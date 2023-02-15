@@ -34,6 +34,14 @@
 	$funcionalidadeTD->value 		= "relatorio";
 	$funcionalidadeTD->mostrar();
 
+	// Campo ID da Relatório
+	$relatorioID 				= tdClass::Criar("input");
+	$relatorioID->id 			= "relatorio_id";
+	$relatorioID->name 			= "relatorio_id";
+	$relatorioID->type 			= "hidden";
+	$relatorioID->value 		= $id;
+	$relatorioID->mostrar();
+
 	$blocoTitulo = tdClass::Criar("bloco");
 	$blocoTitulo->class = "col-md-12";
 
@@ -58,7 +66,8 @@
 
 	// Seleciona os campos do FILTRO da RELATORIO
 	$sql 					= tdClass::Criar("sqlcriterio");
-	$sql->add(tdClass::Criar("sqlfiltro",array(RELATORIO,'=',$relatorio->id)));
+	$sql->add(tdClass::Criar("sqlfiltro",array('relatorio','=',$relatorio->id)));
+	$sql->setPropriedade("order","ordem ASC");
 	$dataset 				= tdClass::Criar("repositorio",array(FILTRORELATORIO))->carregar($sql);
 
 	global $arrayCamposAtributos;
@@ -110,7 +119,8 @@
 		$obj->tipoinicializacao 	= $atributo->tipoinicializacao;
 		$obj->atributodependencia 	= $atributo->atributodependencia;
 		$obj->labelzerocheckbox 	= $atributo->labelzerocheckbox;
-		$obj->labelumcheckbox 		= $atributo->labelumcheckbox;		
+		$obj->labelumcheckbox 		= $atributo->labelumcheckbox;
+		$obj->desabilitar 			= $atributo->desabilitar;
 
 		return $obj;
 	}
@@ -161,85 +171,3 @@
 	$linhaGrade->class 		= "row";
 	$linhaGrade->add($blocoGrade);
 	$linhaGrade->mostrar();
-	
-	// JS 
-	$js = tdClass::Criar("script");
-	$js->add('
-		var entidadeID 	= '.$entidade->id.';
-		var campos 		= "";
-		
-		$("#imprimir-relatorio").click(function(){
-			var filtros 			= "";
-			var urlpersonalizada 	= "'.$relatorio->urlpersonalizada.'";
-
-			if ($("#form-relatorio.tdform .form_campos .form-control").length >0){
-				$("#form-relatorio.tdform .form_campos .form-control").each(function(){
-					if ($(this).hasClass("input-sm") || $(this).hasClass("termo-filtro") || $(this).hasClass("checkbox-sn")){
-						if ($(this).val() != "" && $(this).val() != undefined && $(this).val() != null){
-							var atributo = $(this).attr("id");
-							if ($(this).data("operador") == ".."){
-								var operador = atributo.split("-")[1] == "inicial"?">=":"<=";
-							}else{
-								var operador = $(this).data("operador");
-							}
-							var tipo = $(this).data("tipo");
-							
-							var filtro = atributo+"^"+operador+"^"+$(this).val()+"^"+tipo;
-							filtros += (filtros == ""?"":"~") + filtro;
-						}
-					}
-				});
-				$.ajax({
-					url:config.urlrelatorio,
-					data:{
-						entidade:entidadeID,
-						filtros:filtros
-					},
-					complete:function(){
-						
-						var parametros = "&entidade=" + entidadeID + "&currentproject=" + session.projeto
-						+ "&filtros=" + filtros
-						+ "&campos=" + campos
-						+ "&relatorio_id='.$relatorio->id.'";
-						
-						if (urlpersonalizada == ""){
-							window.open(config.urlrelatorio +  parametros,"_blank");
-						}else{
-							window.open(urlpersonalizada + (urlpersonalizada.indexOf("?") >= 0?"&":"?") + "filtros=" + filtros,"_blank");
-						}
-					}
-				});				
-			}else{
-				$.ajax({
-					url:config.urlrelatorio,
-					data:{
-						entidade:entidadeID
-					},
-					complete:function(){
-						var parametros = "&entidade=" + entidadeID + "&currentproject=" + session.projeto
-						+ "&campos=" + campos
-						+ "&relatorio_id='.$relatorio->id.'";
-						window.open(config.urlrelatorio +  parametros,"_blank");
-					}
-				});
-			}
-		});
-		var i = 1;
-		for (f in td_relatorio['.$id.'].filtros){
-			var ft = td_relatorio['.$id.'].filtros[f];			
-			$("#form-relatorio .form-control[atributo="+ft.atributo+"]").attr("data-operador",ft.operador);
-			$("#form-relatorio .form-control[atributo="+ft.atributo+"]").attr("data-tipo",td_atributo[ft.atributo].tipo);
-			i++;
-		}
-		for (c in td_atributo){
-			if (td_atributo[c].entidade == entidadeID && td_atributo[c].exibirgradededados == 1){
-				if (parseInt(td_atributo[c].chaveestrangeira) > 0){
-					var fk = td_entidade[td_atributo[c].chaveestrangeira].nome;
-				}else{
-					var fk = "";
-				}
-				campos += (campos==""?"":",") + td_atributo[c].nome + "^" + td_atributo[c].descricao + "^" + fk;
-			}
-		}
-	');
-	$js->mostrar();

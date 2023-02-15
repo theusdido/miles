@@ -10,10 +10,14 @@ function getStatusGuia(){
             _op:"status"
         },
         success:function(res){
-            let response = JSON.parse(res);
-            $('#guia-base').attr('src',response.check_criarbase);
-            $('#guia-instalacao').attr('src',response.check_instalacaosistema);
-            $('#guia-pacote').attr('src',response.check_pacoteconfigurado);
+            try{
+                let response = JSON.parse(res);
+                $('#guia-base').attr('src',response.check_criarbase);
+                $('#guia-instalacao').attr('src',response.check_instalacaosistema);
+                $('#guia-pacote').attr('src',response.check_pacoteconfigurado);
+            }catch(e){
+                console.log(res);
+            }
         }
     });
 }

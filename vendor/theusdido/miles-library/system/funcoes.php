@@ -452,7 +452,7 @@ function getUrl($url,$opcoes = null){
 		session_write_close(); //Desboqueia o arquivo de sessão
 		$context 	= stream_context_create($opts);
 		$conteudo 	= file_get_contents($url,false,$context);
-		session_start(); //Bloqueia o arquivo de sessão
+		session_start(); // Bloqueia o arquivo de sessão
 	}catch(Exception $e){
 		if (IS_SHOW_ERROR_MESSAGE){
 			var_dump($e);
@@ -2340,7 +2340,7 @@ function exists_lista($entidadepai,$entidadefilho,$regpai,$regfilho){
 	*	@return: void
 */
 function consoleJS($mensagem,$tipo = 'log'){
-	echo '<script type="text/javascript">console.'.$tipo.'(\''.$log.'\');</script>';
+	echo '<script type="text/javascript">console.'.$tipo.'(\''.$mensagem.'\');</script>';
 }
 
 // Anti Injection SQL

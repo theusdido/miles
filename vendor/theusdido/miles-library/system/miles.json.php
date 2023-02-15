@@ -1,4 +1,4 @@
-<?php	
+<?php
 	$script_uri				= isset($_SERVER["SCRIPT_URI"]) ? $_SERVER["SCRIPT_URI"] : '';
 	$request_uri			= isset($_SERVER["REQUEST_URI"]) ? $_SERVER["REQUEST_URI"] : '';
 	$uri 					= $script_uri != '' ? $script_uri : $request_uri;
@@ -36,7 +36,7 @@
 		// Carrega os dados do ambiente selecionado
 		$_env = isset($mjc->enviromments->{$_enviromment}) ? $mjc->enviromments->{$_enviromment} : $mjc;
 
-		$_folder_miles_ = $_folder_miles;
+		$_folder_miles_ = PATH_MILES;
 		if (AMBIENTE == 'SISTEMA'){
 
 			// Diretório da instalação do MILES FRAMEWORK

@@ -1,0 +1,62 @@
+{
+    "version": 2.0,
+    "project":{
+        "name":"Miles",
+        "path":"senac/",
+        "url":""
+    },
+    "currentproject": 1,
+    "folder":"/",
+    "system": {
+        "url": {
+            "lib": "https://teia.tec.br/miles/repository/lib/"
+        },
+        "request_protocol": "http",
+        "packages": []
+    },
+    "theme": "desktop",
+    "prefix": "td",
+    "is_show_error_message": true,
+    "is_show_warn_message": false,
+    "is_transaction_log": false,
+    "database_current": "desenv",
+    "port": "hidden",
+    "enviromment":"dev",
+    "enviromments":{
+        "dev":{
+            "root":"/",
+            "url":{
+                "domain":"miles.senac"
+            },
+            "frameworks":{
+                "angular":{
+                    "port":4200
+                }
+            },
+            "system":{
+                "request_protocol": "http",
+                "force_https":false
+            }
+        },
+		"homolog":{
+			"root":"/",
+			"url":{
+				"domain":""
+			},
+            "system":{
+                "request_protocol": "http",
+                "force_https":false
+            }
+		},        
+        "prod":{
+            "root":"/",
+            "url":{
+                "domain":""
+            },
+            "system":{
+                "request_protocol": "https",
+                "force_https":true
+            }
+        }
+    }
+}

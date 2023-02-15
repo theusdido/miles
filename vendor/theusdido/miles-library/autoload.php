@@ -1,9 +1,17 @@
 <?php
+	$_project_name_identifify_params = isset($_GET['project_name_identifify_params']) ? $_GET['project_name_identifify_params'] : '';
 
-	define('MILES_JSON_PROJECT','opticaadolfo');	
+	if ($_project_name_identifify_params == ''){
+		$project_name_identify = str_replace(array('dev.','.com','.br','miles.','www.'),'',$_SERVER['HTTP_HOST']);
+	}else{
+		$project_name_identify = $_project_name_identifify_params;
+	}
+
+	define('MILES_JSON_PROJECT',$project_name_identify);
 	define('FOLDER_REPOSITORY', 'vendor/theusdido');
 	define('PATH_REPOSITORY', FOLDER_REPOSITORY . '/');
 	define('FOLDER_MILES_LIBRARY','miles-library');
+	define('FOLDER_LIBRARY_SYSTEM','system');
 
 	// Raiz do servidor web, corresponde ao documentRoot
 	define('PATH_ROOT',$_SERVER['DOCUMENT_ROOT'] . '/');
@@ -12,27 +20,48 @@
 
 	// Global com o nome do diretório da instalação do MILES
 	if (AMBIENTE == 'SISTEMA'){
-		$_folder_miles 	= str_replace(array(PATH_ROOT,FOLDER_REPOSITORY),'',dirname(__DIR__));
-		$_path_miles	= PATH_ROOT . $_folder_miles;
+		$_path_miles 			= str_replace(array(PATH_ROOT,FOLDER_REPOSITORY),'',dirname(__DIR__));
+		if (!file_exists($_path_miles)){
+			$_path_miles = str_replace('miles/','',$_path_miles);
+		}
 	}else{
-		$_folder_miles 	= str_replace(array(FOLDER_REPOSITORY),'',dirname(__DIR__));
-		$_path_miles	= $_folder_miles;
+		$_path_miles 			= str_replace(array(FOLDER_REPOSITORY),'',dirname(__DIR__));
 	}	
+	
+	$_path_miles_library 	= $_path_miles . PATH_REPOSITORY .  FOLDER_MILES_LIBRARY . '/';
+	$_path_library_system	= $_path_miles_library . FOLDER_LIBRARY_SYSTEM . '/';
 
 	// Onde está o Miles Framework, index.php
 	define('PATH_MILES',$_path_miles);
 
 	// Define o diretório da biblioteca dentro do vendor
-	define ('PATH_MILES_LIBRARY',PATH_MILES . PATH_REPOSITORY .  FOLDER_MILES_LIBRARY . '/');
+	define ('PATH_MILES_LIBRARY',$_path_miles_library);
+
+	// Define o diretório da biblioteca para include e require
+	define('PATH_LIBRARY_SYSTEM', $_path_library_system);
 
 	// Tratamento de Erros
-	include PATH_MILES_LIBRARY . 'system/exception.php';
+	$_path_exception = PATH_LIBRARY_SYSTEM . 'exception.php';
+
+	if (file_exists($_path_exception)){
+		include $_path_exception;
+	}else{
+		echo 'Arquivo de Exceção não encontrado.';
+		exit;
+	}
+	
 	
 	// Seta as constantes
-	require PATH_MILES_LIBRARY . 'system/constantes.php';
+	$_path_constantes = PATH_LIBRARY_SYSTEM . 'constantes.php';
+	if (file_exists($_path_constantes)){
+		include $_path_constantes;
+	}else{
+		echo 'Arquivo de Constantes não encontrado.';
+		exit;
+	}
 
 	// Diretório de sistema para carregar as principais funcionaliades
-	$_path_system				= PATH_MILES_LIBRARY . FOLDER_SYSTEM . '/';
+	$_path_system				= PATH_LIBRARY_SYSTEM;
 	$_path_config				= PATH_MILES_LIBRARY . FOLDER_CONFIG . '/';
 	$_path_class				= PATH_MILES_LIBRARY . FOLDER_CLASSES . '/';
 	$_path_controller			= PATH_MILES_LIBRARY . FOLDER_CONTROLLER . '/';
@@ -42,7 +71,7 @@
 	require $_path_system . 'functions.php';
 
 	// Carrega as configurações do arquivo miles.json
-	require PATH_MILES_LIBRARY . 'system/miles.json.php';
+	require $_path_system . 'miles.json.php';
 
 	// Carrega os arquivos de configuração do sistema	
 	require $_path_system . 'config.php';

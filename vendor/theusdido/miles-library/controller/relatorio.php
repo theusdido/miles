@@ -126,9 +126,10 @@
 		$where = tdClass::Criar("sqlcriterio");
 
 		// *** FILTROS *** //
-		$filtrosP = isset($_GET["filtros"])?$_GET["filtros"]:""; // Atributo^Operador^Valor^Tipo		
-		$filtroParams = tdc::f(1,"=",1);
+		$filtrosP = isset($_GET["filtros"])?$_GET["filtros"]:""; // Atributo^Operador^Valor^Tipo
+		
 		if ($filtrosP != ""){
+			$filtroParams = tdc::f();
 			$filtros = explode("~",$filtrosP);
 			foreach($filtros as $ft){
 				$f 			= explode("^",$ft);
@@ -141,29 +142,29 @@
 					$filtroParams->addFiltro($camponome,$f[1],tdc::utf8($f[2]));
 				}
 			}
+			// Adiciona filtros selecionado na geração do relatório
+			$where->add($filtroParams);			
 		}
 
 		// *** RESTRIÇÕES *** //
-		$filtroRestricao = tdc::f();
-		$sqlRestricao = "SELECT * FROM td_relatoriorestricao WHERE relatorio = {$_relatorio->id};";
-		$queryRestricoes = $conn->query($sqlRestricao);		
-		foreach($queryRestricoes->fetchAll(PDO::FETCH_OBJ) as $r){
-			$filtroRestricao->addFiltro(tdc::a($r->atributo)->nome,$r->operador,$r->valor);
+		$filtroRestricao 	= tdc::f();
+		$sqlRestricao 		= "SELECT * FROM td_relatoriorestricao WHERE relatorio = {$_relatorio->id};";
+		$queryRestricoes 	= $conn->query($sqlRestricao);
+		if ($queryRestricoes->rowCount() > 0){
+			foreach($queryRestricoes->fetchAll(PDO::FETCH_OBJ) as $r){
+				$filtroRestricao->addFiltro(tdc::a($r->atributo)->nome,$r->operador,$r->valor);
+			}
+			// Adiciona a restrição inicial
+			$where->add($filtroRestricao);			
 		}
 
-		// Adiciona a restrição inicial
-		$where->add($filtroRestricao);
-
-		// Adiciona filtros selecionado na geração do relatório
-		$where->add($filtroParams);
-
-		
+		$_where = $where->dump() != '' ? " WHERE ". $where->dump() : '';
 
 		// *** CORPO *** //
 		$tbody 			= tdClass::Criar("tbody");
 		$tbody->class 	= 'corpo-relatorio';
 		if ($conn = Transacao::Get()){
-			$sql = "SELECT id," . implode(",",$camposNome) . " FROM " . $_entidade->nome . " WHERE ". $where->dump();
+			$sql = "SELECT id," . implode(",",$camposNome) . " FROM " . $_entidade->nome . $_where;
 			$query = $conn->query($sql);
 			if ($query->rowCount() <= 0){
 				$tr = tdClass::Criar("tabelalinha");

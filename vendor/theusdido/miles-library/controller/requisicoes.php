@@ -923,8 +923,9 @@
 		break;
 
 		case 'retorna_atributos';
-			$sql 	= "SELECT * FROM ".ATRIBUTO." WHERE entidade = " . tdc::r('_entidade');
-			$query 	= $conn->query($sql);
-			tdc::wj($query->fetchAll(PDO::FETCH_ASSOC));
+			#$sql 	= "SELECT * FROM ".ATRIBUTO." WHERE entidade = " . tdc::r('_entidade');
+			#$query 	= $conn->query($sql);
+			#tdc::wj($query->fetchAll(PDO::FETCH_ASSOC));
+			tdc::wj(tdc::da(ATRIBUTO,['entidade','=',tdc::r('_entidade')]));
 		break;
 	}

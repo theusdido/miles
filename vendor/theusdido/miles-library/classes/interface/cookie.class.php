@@ -90,7 +90,7 @@ class TDCookie {
 
 		Retorna o tempo de experação do cookie ( Default: 30 dias )
 	*/
-    private function getTimeExpiration(){
+    private static function getTimeExpiration(){
         return time()+60*60*24*30; // 30 Dias
     }
 }

@@ -1,23 +1,17 @@
 <?php
 
+	$configuracoes_ecommerce		= tdc::ru('ecommerce_configuracoes');
+	$cep_origem						= $configuracoes_ecommerce->cep_origem_pedido;
+
 	/* CORREIOS */
 	$peso = $comprimento = $altura = $largura = $diametro = 0;
-    /*
-	while ($linhaProduto =  $queryProduto->fetch()){
-		$peso 			+= $linhaProduto["peso"];
-		$comprimento 	+= $linhaProduto["comprimento"];
-		$altura			+= $linhaProduto["altura"];
-		$largura		+= $linhaProduto["largura"];
-		$diametro		+= $linhaProduto["diametro"];
-	}
-    */
 
     $cep_destino                    = str_replace(array(' ','-','.'),'',tdc::r('cep_destino'));
 	$parms                          = new stdClass;
 	$parms->nCdEmpresa 				= "";
 	$parms->sDsSenha				= "";
 	$parms->nCdServico				= "04014"; # "40010"
-	$parms->sCepOrigem				= str_replace(array(".","-"),array(""),'88804760'); #88865000
+	$parms->sCepOrigem				= str_replace(array(".","-"),array(""),$cep_origem==''?'88800000':$cep_origem);
 	$parms->sCepDestino				= str_replace(array(".","-"),array(""),$cep_destino);
 	$parms->nVlPeso					= (($peso == 0 || $peso == "" || $peso < 0.3 || $peso > 30)?0.3:$peso);
 	$parms->nCdFormato				= 1;

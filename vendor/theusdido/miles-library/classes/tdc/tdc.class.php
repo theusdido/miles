@@ -247,6 +247,8 @@ class tdc Extends tdClass{
 				}else if(sizeof($sql) == 4){
 					$sql = tdc::f($sql[0],$sql[1],$sql[2],$sql[3]);
 				}
+			}else if(is_numeric($sql)){
+				$sql = tdc::f('id','=',$sql);
 			}
 			return tdClass::Criar("repositorio",array($entidade))->getDataArray($sql);
 		}
@@ -425,7 +427,8 @@ class tdc Extends tdClass{
 	{
 		echo json_encode($message,JSON_PARTIAL_OUTPUT_ON_ERROR);
 		if (IS_SHOW_ERROR_MESSAGE && json_last_error() != JSON_ERROR_NONE){
-			Debug::Console(JSON_ERROR_NONE. "\n\n" . $message,'TCC::WJ');
+			$_message = is_array($message) ? print_r($message) : $message;
+			Debug::Console(JSON_ERROR_NONE. "\n\n" . $_message ,'TCC::WJ');
 		}
 	}
 

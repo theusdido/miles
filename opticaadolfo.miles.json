@@ -19,9 +19,9 @@
     "is_show_error_message": true,
     "is_show_warn_message": false,
     "is_transaction_log": false,
-    "database_current": "producao",
+    "database_current": "desenv",
     "port": "hidden",
-    "enviromment":"prod",
+    "enviromment":"dev",
     "enviromments":{
         "dev":{
             "root":"/",

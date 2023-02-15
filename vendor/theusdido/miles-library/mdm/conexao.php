@@ -1,8 +1,8 @@
 <?php
-	
+
 	$relative_path	= '../../../../';
 	$miles_json 	= json_decode(file_get_contents($relative_path . 'opticaadolfo.miles.json'));
-	date_default_timezone_set('America/Sao_Paulo');	
+	date_default_timezone_set('America/Sao_Paulo');
 
 	if (isset($miles_json->currentproject)){
 		$_currentproject_id = $miles_json->currentproject;

@@ -89,29 +89,6 @@ class Pagina Extends Html {
 		$this->head->add($meta_charset,$meta_viewport,$meta_robots,$bootstrap,$tdlib_css);
 		$this->body->add($jquery,$bootstrap_js,$tdlib_js);
 		
-		// Javascript inicial da página
-		$this->jsInicial();
-
-		if ($this->showJSLibSystem){
-
-			// Adiciona o arquivo de funções em JS
-			$jsFuncoes 			= tdClass::Criar("script");
-			$jsFuncoes->src 	= URL_SYSTEM . "funcoes.js";
-
-			// Adiciona a página padrão de validação dos campos do formulário
-			$jsValidar 			= tdClass::Criar("script");
-			$jsValidar->src	 	= URL_SYSTEM . "validar.js";
-
-			// Adiciona a classe Grade de Dados em JavaScript
-			$jsGradeDados 			= tdClass::Criar("script");
-			$jsGradeDados->src	 	= URL_CLASS_TDC . "gradededados.class.js";
-
-			// Classe do formulário
-			$jsFormularioClass 			= tdClass::Criar("script");
-			$jsFormularioClass->src 	= URL_CLASS_TDC . "formulario.class.js";	
-
-			$this->body->add($jsFuncoes,$jsValidar,$jsGradeDados,$jsFormularioClass);
-		}
 	}
 
 	/*
@@ -122,24 +99,8 @@ class Pagina Extends Html {
 		Mostrar o conteúdo na página, sobreescreve o método da classe pai
 	*/
 	public function mostrar(){
-		if ($this->showJSMask){
-			$jquery_mask 				= tdClass::Criar("script");
-			$jquery_mask->src 			= URL_LIB . "jquery/jquery.mask.js";
-			$jquery_mask->language 		= "JavaScript";
-			$this->body->add($jquery_mask);
-		}
-		if ($this->showJSMaskMoney){
-			$jquery_maskMoney 			= tdClass::Criar("script");
-			$jquery_maskMoney->src 		= URL_LIB . "jquery/jquery.maskMoney.js";
-			$jquery_maskMoney->language = "JavaScript";
-			$this->body->add($jquery_maskMoney);
-		}
-		if ($this->showJSBootBox){
-			$bootbox_js 			= tdClass::Criar("script");
-			$bootbox_js->src 		= URL_LIB . "jquery/jquery-bootbox.js";
-			$bootbox_js->language 	= "JavaScript";
-			$this->body->add($bootbox_js);
-		}	
+		$this->addJQueryDependencias();
+
 		if ($this->showJSGoogleMaps){
 			$jsGoogleMaps 		= tdClass::Criar("script");
 			$jsGoogleMaps->src 	= "https://maps.googleapis.com/maps/api/js?sensor=false&language=pt_BR";
@@ -176,16 +137,7 @@ class Pagina Extends Html {
 			*/
 		}
 
-		if ($this->showJSJqueryUI){
-			$jsJQueryUI 			= tdClass::Criar("script");
-			$jsJQueryUI->src 		= URL_LIB . "jquery/ui/jquery-ui.min.js";
 
-			$cssJQueryUI 			= tdClass::Criar("link");
-			$cssJQueryUI->href 		= URL_LIB . "jquery/ui/jquery-ui.css";
-			$cssJQueryUI->rel 		= "stylesheet";
-
-			$this->body->add($cssJQueryUI,$jsJQueryUI);
-		}
 		
 		if ($this->showJSCKEditor){
 			$ckeditor 				= tdClass::Criar("script");
@@ -194,16 +146,8 @@ class Pagina Extends Html {
 			
 			$this->body->add($ckeditor);
 		}
-		if ($this->showJSSumoSelect){
-			$jsJQueryUI 			= tdClass::Criar("script");
-			$jsJQueryUI->src 		= URL_LIB . "jquery/sumoselect/jquery.sumoselect.js";
 
-			$cssJQueryUI 			= tdClass::Criar("link");
-			$cssJQueryUI->href 		= URL_LIB . "jquery/sumoselect/sumoselect.css";
-			$cssJQueryUI->rel 		= "stylesheet";
 
-			$this->body->add($cssJQueryUI,$jsJQueryUI);
-		}
 		
 		if ($this->ligthbox){
 
@@ -239,33 +183,12 @@ class Pagina Extends Html {
 			$popperjs 				= tdClass::Criar("script");
 			$popperjs->src 			= "https://unpkg.com/@popperjs/core@2";			
 			$this->body->add($popperjs);
-		}	
-
-		if ($this->priceformatjs){
-			$priceFormatJS 			= tdClass::Criar("script");
-			$priceFormatJS->src 	= URL_LIB . "jquery/Jquery-Price-Format-master/jquery.priceformat.js";
-			$this->body->add($priceFormatJS);
 		}
 
-		$smallModal 				= tdClass::Criar("script");
-		$smallModal->src 			= URL_LIB . "jquery/Small-Loading-Modal-Overlay-Plugin-With-jQuery-loadingBlock/assets/js/jquery.loading.block.js";
-		$this->body->add($smallModal);
+		// Javascript inicial da página
+		$this->jsInicial();
+		$this->addJSLbiSystem();
 		
-		$fontAwesome 				= tdClass::Criar("script");
-		$fontAwesome->src 			= URL_LIB . "fontawesome/ea948eea7a.js";
-		$this->head->add($fontAwesome);
-
-		if ($this->showMultiSelect){
-			$multiSelectCSS 		= tdClass::Criar("link");
-			$multiSelectCSS->href 	= URL_LIB . "jquery/multiselect-master/styles/multiselect.css";
-			$multiSelectCSS->rel 	= "stylesheet";
-			$this->head->add($multiSelectCSS);
-
-			$multiSelectJS 			= tdClass::Criar("script");
-			$multiSelectJS->src 	= URL_LIB . "jquery/multiselect-master/multiselect.min.js";
-			$this->head->add($multiSelectJS);
-		}
-
 		$title = tdClass::Criar("title");
 		$title->add($this->getTitle());
 		$this->head->add($title);
@@ -443,4 +366,107 @@ class Pagina Extends Html {
 		$this->favicon 	= $favicon;
 	}
 
+	/*
+		* Método addJSLibSystem
+	    * Data de Criacao: 13/02/2023
+	    * Autor @theusdido
+
+		Adiciona arquivos javascript do sistema
+	*/	
+	public function addJSLbiSystem(){
+		if ($this->showJSLibSystem){
+
+			// Adiciona o arquivo de funções em JS
+			$jsFuncoes 			= tdClass::Criar("script");
+			$jsFuncoes->src 	= URL_SYSTEM . "funcoes.js";
+
+			// Adiciona a página padrão de validação dos campos do formulário
+			$jsValidar 			= tdClass::Criar("script");
+			$jsValidar->src	 	= URL_SYSTEM . "validar.js";
+
+			// Adiciona a classe Grade de Dados em JavaScript
+			$jsGradeDados 			= tdClass::Criar("script");
+			$jsGradeDados->src	 	= URL_CLASS_TDC . "gradededados.class.js";
+
+			// Classe do formulário
+			$jsFormularioClass 			= tdClass::Criar("script");
+			$jsFormularioClass->src 	= URL_CLASS_TDC . "formulario.class.js";	
+
+			$this->body->add($jsFuncoes,$jsValidar,$jsGradeDados,$jsFormularioClass);
+		}
+	}
+
+	/*
+		* Método addJQueryLib
+	    * Data de Criacao: 13/02/2023
+	    * Autor @theusdido
+
+		Adiciona arquivos javascript com dependencia da JQuery
+	*/
+	public function addJQueryDependencias(){
+		if ($this->showJSMask){
+			$jquery_mask 				= tdClass::Criar("script");
+			$jquery_mask->src 			= URL_LIB . "jquery/jquery.mask.js";
+			$jquery_mask->language 		= "JavaScript";
+			$this->body->add($jquery_mask);
+		}
+		if ($this->showJSMaskMoney){
+			$jquery_maskMoney 			= tdClass::Criar("script");
+			$jquery_maskMoney->src 		= URL_LIB . "jquery/jquery.maskMoney.js";
+			$jquery_maskMoney->language = "JavaScript";
+			$this->body->add($jquery_maskMoney);
+		}
+		if ($this->showJSBootBox){
+			$bootbox_js 			= tdClass::Criar("script");
+			$bootbox_js->src 		= URL_LIB . "jquery/jquery-bootbox.js";
+			$bootbox_js->language 	= "JavaScript";
+			$this->body->add($bootbox_js);
+		}	
+		if ($this->showJSJqueryUI){
+			$jsJQueryUI 			= tdClass::Criar("script");
+			$jsJQueryUI->src 		= URL_LIB . "jquery/ui/jquery-ui.min.js";
+
+			$cssJQueryUI 			= tdClass::Criar("link");
+			$cssJQueryUI->href 		= URL_LIB . "jquery/ui/jquery-ui.css";
+			$cssJQueryUI->rel 		= "stylesheet";
+
+			$this->body->add($cssJQueryUI,$jsJQueryUI);
+		}
+				
+		if ($this->showJSSumoSelect){
+			$jsJQueryUI 			= tdClass::Criar("script");
+			$jsJQueryUI->src 		= URL_LIB . "jquery/sumoselect/jquery.sumoselect.js";
+
+			$cssJQueryUI 			= tdClass::Criar("link");
+			$cssJQueryUI->href 		= URL_LIB . "jquery/sumoselect/sumoselect.css";
+			$cssJQueryUI->rel 		= "stylesheet";
+
+			$this->body->add($cssJQueryUI,$jsJQueryUI);
+		}
+				
+		if ($this->priceformatjs){
+			$priceFormatJS 			= tdClass::Criar("script");
+			$priceFormatJS->src 	= URL_LIB . "jquery/Jquery-Price-Format-master/jquery.priceformat.js";
+			$this->body->add($priceFormatJS);
+		}
+
+		$smallModal 				= tdClass::Criar("script");
+		$smallModal->src 			= URL_LIB . "jquery/Small-Loading-Modal-Overlay-Plugin-With-jQuery-loadingBlock/assets/js/jquery.loading.block.js";
+		$this->body->add($smallModal);
+		
+		$fontAwesome 				= tdClass::Criar("script");
+		$fontAwesome->src 			= URL_LIB . "fontawesome/ea948eea7a.js";
+		$this->head->add($fontAwesome);
+
+		if ($this->showMultiSelect){
+			$multiSelectCSS 		= tdClass::Criar("link");
+			$multiSelectCSS->href 	= URL_LIB . "jquery/multiselect-master/styles/multiselect.css";
+			$multiSelectCSS->rel 	= "stylesheet";
+			$this->head->add($multiSelectCSS);
+
+			$multiSelectJS 			= tdClass::Criar("script");
+			$multiSelectJS->src 	= URL_LIB . "jquery/multiselect-master/multiselect.min.js";
+			$this->head->add($multiSelectJS);
+		}
+	}
 }

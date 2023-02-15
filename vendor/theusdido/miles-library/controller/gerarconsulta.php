@@ -33,7 +33,7 @@
 	$funcionalidadeTD->value 	= "consulta";
 	$funcionalidadeTD->mostrar();
 	
-	// Campo Entidade Principal
+	// Campo ID da Consulta
 	$consultaID 				= tdClass::Criar("input");
 	$consultaID->id 			= "consulta_id";
 	$consultaID->name 			= "consulta_id";

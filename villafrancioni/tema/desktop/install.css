@@ -1,0 +1,125 @@
+#btn-criarbanco{
+	float:right;
+}
+#btn-testarconexao,#btn-pacotes,#btn-instalar,#btn-personalizar{
+	float:right;
+}
+#loader-criarbanco,#loader-pacotes,#loader-instalar{
+	float:right;
+	margin:3px 0 0 5px;
+	display:none;
+}			
+#guiafrasetopo{
+	float:right;
+	color:#DDD;
+}
+#hr-instalacao{
+	margin-top:-5px;
+	width:100%;
+}
+.check-no{
+	float:right;
+	height:30px;
+	margin:-5px -10px 0 0;
+}
+#retorno{
+	float:right;
+	clear:right;
+	width:100%;
+	margin-top:5px;
+}
+#barradeprogresso-instalacao{
+	width:100%;
+	margin-top:7px;
+	display:none;
+}
+#form-grupo-botao-instalacao{
+	width:100%;
+}
+#view-componente .list-group-item{
+	margin-bottom:10px;
+}
+.btn-instalacaosistema{
+	width:125px;
+}
+#form-instalacao-sistema{
+	width:100%;
+	float:left;
+	clear:left;
+}
+#panel-personalizacao{
+	width:100%;
+	float:left;
+	clear:left;
+	margin-top:20px;
+}
+#linha-personalizacao{
+	display:none;
+}
+#linha-personalizacao .panel-footer{
+	text-align:right;
+}
+#formulario-personalizado label{
+	margin-left:3px;
+}
+#formulario-personalizado .form-group{
+	border-bottom:1px solid #DDD;
+	width:20%;
+	margin:2%;
+}
+#loading-atualizar-personalizado{
+	display:none;
+}
+#btn-salvar-pacotes{
+	margin:10px auto;
+	height: 30px;
+}
+
+#form-grupo-botao-instalacao button{
+	margin-left:5px;
+}
+.tr-checkbox-all{
+	background-color:#EEE;
+	padding:0px !important;
+	margin:0px !important;
+	border:0px !important;	
+}
+.tr-checkbox-all th {
+	padding:0px !important;
+	margin:0px !important;
+	line-height: 15px !important;
+	height: 15px !important;
+	border:0px !important;	
+}
+.tr-checkbox-all th input[type=checkbox] {
+	margin:0px !important;
+}
+
+.table-install-component .tr-all {
+	background-color: #EEE;
+	border:0px;
+}
+
+.table-install-component .tr-all th {
+	padding: 0px;
+}
+
+.table-install-component thead tr th:first-child
+,.table-install-component tbody tr td:first-child 
+{
+	text-align: left;
+}
+.table-install-component thead tr th
+,.table-install-component tbody tr td
+{
+	text-align: center;
+}
+
+.accordion-install .panel-heading {
+	border-bottom:2px solid #0098da;
+	color: #0e5d80;
+}
+
+.accordion-install .panel-heading .panel-title a {
+	text-decoration: none;
+}

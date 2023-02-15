@@ -165,7 +165,7 @@
 					},
 					complete:function(){
 						$.ajax({
-							url:'../../index.php',
+							url:'../../../../index.php',
 							data:{
 								controller:'permissoes',
 								op:'menu'
@@ -195,7 +195,7 @@
 							if (perfilusuario != "")
 							{
 								$.ajax({
-									url:"../../index.php",
+									url:"../../../../index.php",
 									data:{
 										controller:"requisicoes",
 										op:"perfilusuario",
@@ -299,14 +299,14 @@
       					}
     				}
   				}
-			});			
+			});
 		}
-		
+
 		function setarTodasPermissoes(usuario,permissao){
 			if (usuario != "")
 			{
 				$.ajax({
-					url:"../../index.php",
+					url:"../../../../index.php",
 					data:{
 						controller:"requisicoes",
 						op:"setar_todas_permissoes",

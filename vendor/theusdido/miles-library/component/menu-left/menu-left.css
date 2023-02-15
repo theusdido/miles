@@ -57,22 +57,22 @@ body {
   }
   
   .hamburger {
-      background: #fff;
-      position: relative;
-      display: block;
-      text-align: center;
-      padding: 13px 0;
-      width: 50px;
-    height: 73px;
-      left: 0;
+    background: #fff;
+    position: absolute;
+    display: block;
+    text-align: center;
+    /* padding: 13px 0; */
+    width: 50px;
+    height: 50px;
+    left: 0;
     top: 0;
-      z-index: 1000;
+    z-index: 1000;
     cursor: pointer;
   }
   
   .hamburger:before {
-      content:"\2630"; /* hamburger icon */
-      display: block;
+    content:"\2630"; /* hamburger icon */
+    display: block;
     color: #000;
     line-height: 32px;
     /* font-size: 16px; */
@@ -226,16 +226,16 @@ body {
   
   .overflow-container {
     position: relative;
-    height: calc(100vh - 73px)!important;
+    height: calc(100vh - 50px)!important;
     overflow-y: auto;
-    border-top: 73px solid #fff;
+    border-top: 50px solid #fff;
     z-index: -1;
     display:block;
   }
   
   .menu a.logotype {
     position: absolute!important;
-    top: 11px;
+    top: 0;
     left: 55px;
     display: block;
     font-family: 'Work Sans', sans-serif;
@@ -243,7 +243,7 @@ body {
     font-weight: 800;
     color: #000;
     /* font-size: 21px; */
-    padding: 10px;
+    padding: 0;
   }
   
   .menu a.logotype span {
@@ -267,13 +267,13 @@ body {
   .openNav .menu:hover {
       position: absolute;
       left: -200px;
-      top:73px;
+      top: 0;
   }
   
   .openNav .menu {
-    top:73px;
-          transform: translate3d(200px, 0, 0);
-      transition: transform .45s cubic-bezier(0.77, 0, 0.175, 1);
+    top:0;
+    transform: translate3d(200px, 0, 0);
+    transition: transform .45s cubic-bezier(0.77, 0, 0.175, 1);
   }
       
       /* label.hamburger {

@@ -234,6 +234,7 @@
 		}
 	}
 
+	// Relatório
 	$dataset = tdClass::Criar("repositorio",array(RELATORIO))->carregar();		
 	if ($dataset){
 		foreach ($dataset as $relatorios){
@@ -244,6 +245,7 @@
 					empresa:'{$relatorios->empresa}',
 					entidade:'{$relatorios->entidade}',
 					descricao:'{$relatorios->descricao}',
+					urlpersonalizada:'{$relatorios->urlpersonalizada}',
 					filtros:{
 			");
 			$sqlFiltros = "SELECT id,operador,atributo FROM td_relatoriofiltro a WHERE relatorio = " . $relatorios->id;

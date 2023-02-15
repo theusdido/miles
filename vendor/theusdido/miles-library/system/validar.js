@@ -195,10 +195,9 @@ function validarCNPJ(cnpj) {
 // *******************************************
 // Estrutura de validação de cada campo
 // *******************************************
-
 if (typeof $().mask == "function"){
 	// Cep
-	$('.formato-cep').mask('99999-999');
+	$('.formato-cep').mask('99999-999');	
 	$('.formato-cep').blur(function(){	
 		$('.status-cep').remove();
 		if (this.value!=''){			
