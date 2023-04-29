@@ -1,7 +1,7 @@
 <?php
 
 	$relative_path	= '../../../../';
-	$miles_json 	= json_decode(file_get_contents($relative_path . 'opticaadolfo.miles.json'));
+	$miles_json 	= json_decode(file_get_contents($relative_path . 'opticaadolfo/dev.miles.json'));
 	date_default_timezone_set('America/Sao_Paulo');
 
 	if (isset($miles_json->currentproject)){
@@ -50,7 +50,7 @@
 	
 	$conn = Conexao::Abrir($currenttypedatabase);
 
-	// Conex√£o com a base central foi descontinuada
+	// Conexão com a base central foi descontinuada
 	$connMiles = $conn;
 
 	switch($currenttypedatabase){

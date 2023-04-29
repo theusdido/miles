@@ -136,10 +136,15 @@
 				$campo_a	= explode(" ",$f[0]);
 				$camponome 	= $campo_a[0];
 
-				if ($f[1] == "%" && $f[3] == "varchar"){
-					$filtroParams->addFiltro($camponome,"like",'%' . tdc::utf8($f[2]) . '%');
+				$_filtro_operador 	= $f[1];
+				$_filtro_valor		= tdc::utf8($f[2]);
+
+				if ($_filtro_operador == "%" && $f[3] == "varchar"){
+					$filtroParams->addFiltro($camponome,"like",'%' . $_filtro_valor . '%');
+				}else if ($_filtro_operador == '!'){
+					$filtroParams->addFiltro($camponome,"<>",$_filtro_valor);
 				}else{
-					$filtroParams->addFiltro($camponome,$f[1],tdc::utf8($f[2]));
+					$filtroParams->addFiltro($camponome,$_filtro_operador,$_filtro_valor);
 				}
 			}
 			// Adiciona filtros selecionado na geração do relatório
@@ -183,8 +188,9 @@
 						$_atributo	= tdc::a($coluna->atributo);
 						$campo_nome = '';
 						$fk_display = '';
+						$campo_valor= $linha[$_atributo->nome];						
 						if ($_atributo->chaveestrangeira > 0){ // Campo de chave estrangeira
-							$_entidade_fk 	= tdc::e($_atributo->chaveestrangeira);
+							$_entidade_fk 	= tdc::e($_atributo->chaveestrangeira);							
 							if (is_numeric($_entidade_fk->campodescchave)){
 								$_atributo_fk	= tdc::a($_entidade_fk->campodescchave);
 								if ($_atributo_fk){
@@ -195,7 +201,12 @@
 							}
 						}else{
 							$tipohtml 	= tdClass::Criar("persistent",array(ATRIBUTO,getAtributoId($_entidade->nome,$_atributo->nome,$conn)))->contexto->tipohtml;
-							$fk_display = getHTMLTipoFormato($tipohtml,$linha[$_atributo->nome],$entidade=0,getAtributoId($_entidade->nome,$_atributo->nome,$conn),$id=0);
+							$fk_display = getHTMLTipoFormato($tipohtml,$campo_valor,$entidade=0,getAtributoId($_entidade->nome,$_atributo->nome,$conn),$id=0);
+						}
+
+						if ($_atributo->tipohtml == 7)
+						{
+							$fk_display = $campo_valor ? 'Sim' : 'Não';
 						}
 
 						$td->align = $coluna->alinhamento;

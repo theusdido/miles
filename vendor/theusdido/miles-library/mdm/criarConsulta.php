@@ -9,7 +9,7 @@
 	require 'funcoes.php';
 	
 	$id = $tipo = $entidade = $atributo = $descricao = $ent = $entidadefilho = "";
-	$exibirbotaoeditar = $exibirbotaoexcluir = $exibirbotaoemmassa = $exibircolunaid = "";
+	$exibirbotaoeditar = $exibirbotaoexcluir = $exibirbotaoemmassa = $exibircolunaid = $adicionaridfiltro =  "";
 
 	
 	if (isset($_GET["entidade"])){
@@ -30,15 +30,17 @@
 			$exibirbotaoexcluir		= isset($_POST["exibirbotaoexcluir"])?1:0;
 			$exibirbotaoemmassa		= isset($_POST["exibirbotaoemmassa"])?1:0;
 			$exibircolunaid			= isset($_POST["exibircolunaid"])?1:0;
+			$adicionaridfiltro		= isset($_POST["adicionaridfiltro"])?1:0;
+			
 
 			if ($id == ""){
 				$query_prox = $conn->query("SELECT IFNULL(MAX(id),0)+1 FROM ".PREFIXO."consulta");
 				$prox = $query_prox->fetch();
 				$id = $prox[0];
 
-				$sql = "INSERT INTO ".PREFIXO."consulta (id,descricao,entidade,movimentacao,exibirbotaoeditar,exibirbotaoexcluir,exibirbotaoemmassa,exibircolunaid) VALUES ({$id},'{$descricao}',{$entidade},{$movimentacao},{$exibirbotaoeditar},{$exibirbotaoexcluir},{$exibirbotaoemmassa},$exibircolunaid);";
+				$sql = "INSERT INTO ".PREFIXO."consulta (id,descricao,entidade,movimentacao,exibirbotaoeditar,exibirbotaoexcluir,exibirbotaoemmassa,exibircolunaid,adicionaridfiltro) VALUES ({$id},'{$descricao}',{$entidade},{$movimentacao},{$exibirbotaoeditar},{$exibirbotaoexcluir},{$exibirbotaoemmassa},$exibircolunaid,$adicionaridfiltro);";
 			}else{
-				$sql = "UPDATE ".PREFIXO."consulta SET entidade = {$entidade} , descricao = '{$descricao}' , movimentacao = {$movimentacao} , exibirbotaoeditar = {$exibirbotaoeditar} , exibirbotaoexcluir = {$exibirbotaoexcluir} , exibirbotaoemmassa = {$exibirbotaoemmassa}, exibircolunaid = {$exibircolunaid} WHERE id = {$id};";
+				$sql = "UPDATE ".PREFIXO."consulta SET entidade = {$entidade} , descricao = '{$descricao}' , movimentacao = {$movimentacao} , exibirbotaoeditar = {$exibirbotaoeditar} , exibirbotaoexcluir = {$exibirbotaoexcluir} , exibirbotaoemmassa = {$exibirbotaoemmassa}, exibircolunaid = {$exibircolunaid}, adicionaridfiltro = {$adicionaridfiltro} WHERE id = {$id};";
 			}
 			$query = $conn->query($sql);
 			if($query){
@@ -257,7 +259,19 @@
 		}		
 	}
 	if ($id != ""){
-		$sql = "SELECT descricao,entidade,movimentacao,exibirbotaoeditar,exibirbotaoexcluir,exibirbotaoemmassa,exibircolunaid FROM ".PREFIXO."consulta WHERE id = {$id}";
+		$sql = "
+			SELECT 
+				descricao,
+				entidade,
+				movimentacao,
+				exibirbotaoeditar,
+				exibirbotaoexcluir,
+				exibirbotaoemmassa,
+				exibircolunaid,
+				adicionaridfiltro 
+			FROM 
+			".PREFIXO."consulta 
+			WHERE id = {$id}";
 		$query = $conn->query($sql);
 		foreach ($query->fetchAll() as $linha){
 			$entidade			= $linha["entidade"];
@@ -267,6 +281,7 @@
 			$exibirbotaoexcluir = $linha["exibirbotaoexcluir"];
 			$exibirbotaoemmassa = $linha["exibirbotaoemmassa"];
 			$exibircolunaid 	= $linha["exibircolunaid"];
+			$adicionaridfiltro 	= $linha["adicionaridfiltro"];			
 		}
 	}
 ?>
@@ -286,12 +301,14 @@
 					document.getElementById("exibirbotaoexcluir").checked 	= (<?=(int)$exibirbotaoexcluir?>==0)?false:true;
 					document.getElementById("exibirbotaoemmassa").checked 	= (<?=(int)$exibirbotaoemmassa?>==0)?false:true;
 					document.getElementById("exibircolunaid").checked 		= (<?=(int)$exibircolunaid?>==0)?false:true;
+					document.getElementById("adicionaridfiltro").checked 	= (<?=(int)$adicionaridfiltro?>==0)?false:true;
 				}else{
 					$("#accordion_filtros").hide();
 					document.getElementById("exibirbotaoeditar").checked 	= false;
 					document.getElementById("exibirbotaoexcluir").checked 	= false;
 					document.getElementById("exibirbotaoemmassa").checked 	= false;
 					document.getElementById("exibircolunaid").checked 		= false;
+					document.getElementById("adicionaridfiltro").checked	= false;
 				}
 				$("#valor").val("");
 				atualizarListaFiltro("<?=$id?>");
@@ -607,6 +624,11 @@
 							<div class="checkbox">
 								<label for="exibircolunaid">
 									<input type="checkbox" name="exibircolunaid" id="exibircolunaid">Exibir coluna <b>ID</b>
+								</label>
+							</div>
+							<div class="checkbox">
+								<label for="adicionaridfiltro">
+									<input type="checkbox" name="adicionaridfiltro" id="adicionaridfiltro">Adicionar campo ID no filtro
 								</label>
 							</div>							
 							<div id="error"></div>

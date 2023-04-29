@@ -123,8 +123,11 @@ class Layout extends Div {
 		Adiciona javascript principal no sistema
 	*/
 	public function addJsInicial(){
-		include (PATH_MVC_CONTROLLER . 'JSinicial.php');
-		return $JSinicial;
+		$script 		= tdc::o('script');
+		$script->src 	= URL_SYSTEM . 'inicial.js';
+		return $script;
+		#include (PATH_MVC_CONTROLLER . 'JSinicial.php');
+		#return $JSinicial;
 	}
 
 }

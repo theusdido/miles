@@ -166,7 +166,7 @@ class Elemento {
 	    * Data de Criacao: 30/04/2020
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
-		Returna o elemento como String
+		Retorna o elemento como String
 	*/
 	function toString(){
 		$this->istostring = true;		

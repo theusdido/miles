@@ -493,7 +493,7 @@
 					$selecionado = $dado->id == (int)$_GET["valor"]?"selected":"";
 				}
 				echo '<option value="'.$dado->id.'" '.$selecionado.'>'.tdc::utf8($dado->{$campo_descricao}).'</option>';
-			}		
+			}
 		break;
 		case "carregar_options_checkbox":
 			if (isset($_GET["atributo"])){
@@ -687,17 +687,17 @@
 			$campos = explode(",",$atributos);
 			$tCampos = sizeof($campos);
 			$iRegistro = 1;
-			While($linha = $query->fetch()){
-				echo "{";
-				For ($i=0;$i<$tCampos;$i++){
-					$attr = $campos[$i];
-					echo '"'.$attr.'":"'.$linha[$attr].'"';
-					if ($i < $tCampos) echo ",";
-					$iCampo++;
-				}
-				echo "}";
-				if ($iRegistro < $query->rowcount()) echo ",";
-				$iRegistro++;
+			while($linha = $query->fetch()){
+			 	echo "{";
+			 	for ($i=0;$i<$tCampos;$i++){
+			 		$attr = $campos[$i];
+			 		echo '"'.$attr.'":"'.$linha[$attr].'"';
+			 		if ($i < ($tCampos - 1)) echo ",";
+			 		$iCampo++;
+			 	}
+			 	echo "}";
+			 	if ($iRegistro < $query->rowCount()) echo ",";
+			 	$iRegistro++;
 			}
 			echo "]}";
 

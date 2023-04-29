@@ -81,6 +81,9 @@ class SqlFiltro extends SqlExpressao {
 			case ',':
 				return "{$this->variavel} IN ({$this->valorreal}) ";
 			break;
+			case '!':
+				return "{$this->variavel} <> {$this->valorreal}";
+			break;
 			default:
 				return "{$this->variavel} {$this->operador} {$this->valor}";
 		}

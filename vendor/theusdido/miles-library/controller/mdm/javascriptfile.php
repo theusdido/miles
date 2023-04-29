@@ -26,6 +26,8 @@
 			// 
 			$filtro_relacionamento	= tdc::f();
 			$filtro_relacionamento->addFiltro("pai","=",$entidade->id);
+			$_entidadeauxiliar = $entidade->entidadeauxiliar == 1 ? 'true' : 'false';
+
 			fwrite($mdmJSCompile,"
 				td_entidade[{$entidade->id}] = {
 					id:{$entidade->id},
@@ -42,7 +44,8 @@
 					pacote:'{$entidade->pacote}',
 					nomecompleto:'".(($entidade->pacote==""?"":$entidade->pacote."."))."{$entidade->nome}',
 					atributos:".tdc::dj(ATRIBUTO,$filtro_atributo).",
-					relacionamentos:".tdc::dj(RELACIONAMENTO,$filtro_relacionamento)."
+					relacionamentos:".tdc::dj(RELACIONAMENTO,$filtro_relacionamento).",
+					entidadeauxiliar:{$_entidadeauxiliar}
 				};
 			");
 		}

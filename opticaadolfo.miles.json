@@ -26,7 +26,7 @@
         "dev":{
             "root":"/",
             "url":{
-                "domain":"localhost"
+                "domain":"opticaadolfo.com.br"
             },
             "frameworks":{
                 "angular":{
@@ -35,7 +35,8 @@
             },
             "system":{
                 "request_protocol": "http",
-                "force_https":false
+                "force_https":false,
+                "is_fixed_domain":true
             }
         },
 		"homolog":{

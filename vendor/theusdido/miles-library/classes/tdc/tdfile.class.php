@@ -57,13 +57,15 @@ class tdFile {
 		Criar e adiciona um arquivo
 		@pathfile: Caminho absoluto do arquivo
 		@conteudo: Informação a ser gravada no arquivo
+		@permissao: Permissão de acesso ao arquivo
 	*/
-	public static function add($pathfile,$conteudo){
+	public static function add($pathfile,$conteudo,$permissao = 0777){
 		try{
 			if (isvalidnamedir($pathfile)){
 				$fp = fopen($pathfile,"w");
 				fwrite($fp,$conteudo);
 				fclose($fp);
+				chmod($pathfile, $permissao);
 				return true;
 			}else{
 				return false;

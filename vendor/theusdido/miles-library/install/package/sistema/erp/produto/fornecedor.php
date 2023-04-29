@@ -1,7 +1,7 @@
 <?php
 	// Setando variáveis
-	$entidadeNome = "erp_geral_fornecedor";
-	$entidadeDescricao = "Fornecedor";
+	$entidadeNome 		= "erp_geral_fornecedor";
+	$entidadeDescricao 	= "Fornecedor";
 	
 	// Criando Entidade
 	$entidadeID = criarEntidade(
@@ -21,7 +21,9 @@
 	);
 	
 	// Criando Atributos
-	$contato = criarAtributo($conn,$entidadeID,"contato","Contato","varchar","200",1,3,1,0,0,"");
+	$nome 		= criarAtributo($conn,$entidadeID,"nome","Nome","varchar","200",1,3,1,0,0,"");
+	$contato 	= criarAtributo($conn,$entidadeID,"contato","Contato","varchar","200",1,3,1,0,0,"");
+	Entity::setDescriptionField($conn,$entidadeID,$nome,true);
 
 	// Criando Acesso
 	$menu_webiste 	= addMenu($conn,'Geral','#','',0,0,'geral');
@@ -33,6 +35,6 @@
 	criarAba($conn,$entidadeID,"Capa",$contato);
 
 	// Criando Relacionamento
-	criarRelacionamento($conn,9,$entidadeID,installDependencia("erp_pessoa",'package/sistema/erp/pessoa/pessoa'),"Fornecedor",0);
-	criarRelacionamento($conn,5,$entidadeID,installDependencia("erp_produto",'package/sistema/erp/produto/produto'),"Produtos",0);
-	criarRelacionamento($conn,5,$entidadeID,installDependencia("erp_servico",'package/sistema/erp/servico/servico'),"Serviços",0);
+	#criarRelacionamento($conn,9,$entidadeID,installDependencia($conn,"erp_geral_pessoa"),"Fornecedor",0);
+	#criarRelacionamento($conn,5,$entidadeID,installDependencia($conn,"erp_geral_produto"),"Produtos",0);
+	#criarRelacionamento($conn,5,$entidadeID,installDependencia($conn,"erp_geral_servico"),"Serviços",0);

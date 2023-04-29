@@ -40,6 +40,7 @@ class TdFormulario Extends Elemento {
 		$this->linhacampos->class 	= "row-fluid form_campos tdform";
 		$this->grupo_botoes			= tdc::html("div" , array("class" => "form-grupo-botao"));
 		$this->onsubmit 			= "return false";
+		//$this->funcionalidade		= $funcionalidade;
 	}
 	/*  
 		* Método CamposHTML 
@@ -98,8 +99,7 @@ class TdFormulario Extends Elemento {
 		foreach($colunas as $coluna){
 			$campo = tdClass::Criar("labeledit");
 			$label = null;
-			$atributodependencia = $coluna->atributodependencia;
-			$isatributodependenciapai = isAtributoDependenciaPai($coluna->id)?"atributodependenciapai":"";
+			$atributodependencia 		= $coluna->atributodependencia;
 			
 			if ((int)$coluna->nulo != 1 && $this->funcionalidade == 'cadastro'){
 				$asteriscoobrigatorio = tdClass::Criar("span");
@@ -138,11 +138,11 @@ class TdFormulario Extends Elemento {
 					$select->id = $coluna->nome;
 					$select->name = $coluna->nome;
 					$select->data_entidade = $entidadeCOL;
-					if ($isatributodependenciapai!='') $select->class = $isatributodependenciapai;
-					$select->data_atributodependencia = $atributodependencia;
+
 					if ((int)$coluna->nulo == 1){
 						$op = tdClass::Criar("option");
 						$op->add(("-- Selecione uma opção --"));
+						$op->selected = "true";
 						$op->value = "";
 						$select->add($op);
 					}
@@ -167,6 +167,16 @@ class TdFormulario Extends Elemento {
 						$input_group_btn->add($button_add);
 					}
 
+					if (isAtributoDependenciaPai($coluna->id)){
+						$select->class 							= 'atributodependenciapai';
+						$select->data_atributodependenciafilho 	= getAtributoDependenciaFilho($coluna->id);
+					} 
+					
+					if (isAtributoDependenciaFilho($coluna->id)){
+						$select->class 							= 'atributodependenciafilho';
+						$select->data_atributodependenciapai 	= getAtributoDependenciaPai($coluna->id);
+					}
+					
 					$input_group->add($select,$input_group_btn);
 					$campo->add($label,$input_group);
 						

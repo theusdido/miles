@@ -94,7 +94,7 @@
 
 	// Caminho para o tema
 	define("PATH_THEME",'tema/' . CURRENT_THEME . '/');
-	define('PATH_THEME_SYSTEM', PATH_MILES.PATH_THEME);
+	define('PATH_THEME_SYSTEM', PATH_MILES_LIBRARY.PATH_THEME);
 
 	// Caminho padrão para o diretório do tema do projeto
 	define('PATH_CURRENT_PROJECT_THEME', PATH_PROJECT . PATH_THEME);
@@ -130,7 +130,7 @@
 	define("PATH_CURRENT_COMPONENT", PATH_PROJECT . "component/");
 	
 	// Caminho padrão para os arquivos de log
-	define("PATH_CURRENT_LOG", PATH_PROJECT . "log/");		
+	define("PATH_CURRENT_LOG", PATH_PROJECT . "log/");
 
 	// Caminho padrão para os arquivos do WebSite
 	define("PATH_CURRENT_WEBSITE",PATH_PROJECT . "website/");
@@ -150,6 +150,9 @@
 	// Caminho padrão para os arquivos da páginas de movimentação
 	define('PATH_FILES_MOVIMENTACAO', PATH_PROJECT . 'files/movimentacao/');
 
+	// Caminho padrão para os arquivos de menu de conceito
+	define('PATH_FILES_CONCEITO', PATH_PROJECT . 'files/conceito/');	
+
 	// Caminho dos arquivos de instalação de pacotes ( módulos )
 	define('PATH_CURRENT_PACKAGE', PATH_PROJECT . 'install/package/');
 	
@@ -168,3 +171,6 @@
 	define('PATH_CLASS_WEBSITE', PATH_CLASS . "website/");
 	
 	define('PATH_ASSETS' , PATH_MILES_LIBRARY . 'assets/');
+
+	// Caminho padrão para os arquivos de banco de dados
+	define("PATH_CURRENT_DATA", PATH_PROJECT . "data/");

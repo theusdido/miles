@@ -63,4 +63,19 @@ class Menu {
 		}
 		return $retorno;
 	}
+
+	public static function link($menu_id)
+	{
+		$menu				= tdc::ru(MENU,$menu_id);
+		$a 					= tdc::html('a');
+		$a->target 			= $menu->target == ''?'_self':$menu->target;
+		$a->data_path 		= $menu->link;
+		$a->data_id			= $menu->id;
+		$a->data_target		= '#conteudoprincipal';
+		$a->href			= $menu->target == ''?'#':$menu->link;
+		$a->data_tipomenu	= $menu->tipomenu;
+		$a->data_entidade	= $menu->entidade;
+		$a->add($menu->descricao);
+		return $a;
+	}
 }

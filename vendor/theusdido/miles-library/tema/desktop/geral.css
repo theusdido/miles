@@ -662,7 +662,7 @@ header #menu {
 }
 #info , #userinfo {
 	padding:10px;
-	height: 70px;
+	height: 90px;
 	border-bottom:2px solid #0098da;
 }
 #info .nome-projeto{	
@@ -799,16 +799,14 @@ header #menu {
 #miles-root > div > footer {
 	position: fixed;
     bottom: 0;
-		z-index:1000px;
+	z-index:1000;
     background-color: #253544 !important;
     color: #FFF !important;
     text-align: center;
     font-size: 12px;
-		height: 15px;
-
-		    margin-bottom: 0px !important;
-		    padding: 15px !important;
-
+	height: 15px;
+    margin-bottom: 0px !important;
+    padding: 15px !important;
 }
 #miles-root > div > footer a {
 	color:#66deff;
@@ -817,5 +815,49 @@ header #menu {
 .tdform .checkbox-n.active,
 .tdform .checkbox-s.active {
 	z-index:0 !important;
+}
+
+.breadcrumb {
+	margin:0;
+}
+
+#conteudoprincipal
+{
+    /* transform: translate3d(200px, 0, 0);
+    transition: transform .45s cubic-bezier(0.77, 0, 0.175, 1);	 */
+	/* margin-left:50px; */
+	padding:10px 5px;
+}
+
+#menulateralesquerdoprincipal{
+	/* display:none; */
+}
+
+#pedido-aberto-home table tbody tr .label-status
+{
+	width: 50%;
+    display: block;
+}
+.panel-info .panel-body
+{
+	padding:0;
+}
+
+#listanovosclienteshome .media
+{
+	padding:10px 5px !important;
+	margin:0 !important;
+	border-bottom:1px solid #EEE;
+	border-radius:0 !important;
+}
+
+.panel
+{
+	-webkit-box-shadow:none;
+}
+#panel-vendas-mensais .panel-body
+{
+	border:0px solid #FFF !important;
+	border-bottom:0px solid #FFF !important;
 }
 -->

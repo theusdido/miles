@@ -1,7 +1,9 @@
 <?php
-
+	
+	$cep_default					= '88800-001';
 	$configuracoes_ecommerce		= tdc::ru('ecommerce_configuracoes');
-	$cep_origem						= $configuracoes_ecommerce->cep_origem_pedido;
+	$cep_origem						= !$configuracoes_ecommerce->cep_origem_pedido ? $cep_default : $configuracoes_ecommerce->cep_origem_pedido;
+
 
 	/* CORREIOS */
 	$peso = $comprimento = $altura = $largura = $diametro = 0;
@@ -11,7 +13,7 @@
 	$parms->nCdEmpresa 				= "";
 	$parms->sDsSenha				= "";
 	$parms->nCdServico				= "04014"; # "40010"
-	$parms->sCepOrigem				= str_replace(array(".","-"),array(""),$cep_origem==''?'88800000':$cep_origem);
+	$parms->sCepOrigem				= str_replace(array(".","-"),array(""),$cep_origem==''?$cep_default:$cep_origem);
 	$parms->sCepDestino				= str_replace(array(".","-"),array(""),$cep_destino);
 	$parms->nVlPeso					= (($peso == 0 || $peso == "" || $peso < 0.3 || $peso > 30)?0.3:$peso);
 	$parms->nCdFormato				= 1;
@@ -28,5 +30,5 @@
 		$soap               = new SoapClient("http://ws.correios.com.br/calculador/CalcPrecoPrazo.asmx?wsdl");
 		$retorno["dados"]   = $soap->CalcPrecoPrazo($parms);
 	}catch(Throwable $t){
-		
+		var_dump($t);
 	}

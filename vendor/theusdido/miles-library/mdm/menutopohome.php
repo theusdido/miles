@@ -99,6 +99,7 @@
 	}		
 
 	if ($op == "salvar"){
+		
 		$id					= $_POST["id"];
 		$entidadeRequest	= isset($_POST["entidade"])?$_POST["entidade"]:"";
 		$entidade			= $entidadeRequest==""?"0":"'" .$entidadeRequest. "'";
@@ -112,28 +113,29 @@
 		$icon				= "'" . $_POST["icon"] . "'";
 		$coluna				= isset($_POST["coluna"])?($_POST["coluna"]==''?0:$_POST["coluna"]):0;
 		$fixo				= "'" . $_POST["fixo"] . "'";
-
+		
 		if ($_POST["ordem"] == ''){
 			$ordem = getProxIdMDM("menu","ordem",array("pai","=",$pai));
 		}else{
 			$ordem = $_POST["ordem"];
 		}
+		
+		// if ($tp_menu != 'cadastro' && $tp_menu != 'raiz' && $tp_menu != 'personalizado' && $tp_menu != 'conceito'){
+		// 	$sqlTpMenu 	= 'SELECT entidade FROM td_'.$tp_menu.' WHERE id = ' . $entidadeRequest;
+		// 	$query 			= $conn->query($sqlTpMenu);
+		// 	$linhaTpMenu	= $query->fetch();
+		// 	$entidade		= $linhaTpMenu['entidade'];
+		// }
 
-		if ($tp_menu != 'cadastro' && $tp_menu != 'raiz'){
-			$sqlTpMenu 	= 'SELECT entidade FROM td_'.$tp_menu.' WHERE id = ' . $entidadeRequest;
-			$query 			= $conn->query($sqlTpMenu);
-			$linhaTpMenu	= $query->fetch();
-			$entidade		= $linhaTpMenu['entidade'];
-		}
 		if ($id == ""){
 			$idNew = getProxIdMDM("menu");
 			$sql = "
 				INSERT INTO ".PREFIXO."menu (
 					id,entidade,descricao,link,target,ordem,pai,tipomenu,
-					path,icon,coluna,fixo
+					path,icon,coluna,fixo,inativo
 				) VALUES (
 					".$idNew.",".$entidade.",".$descricao.",".$link.",".$target.",".$ordem.",".$pai.",".$tipomenu.",
-					".$path.",".$icon.",".$coluna.",".$fixo."
+					".$path.",".$icon.",".$coluna.",".$fixo.",false
 				);";
 		}else{
 			$sql = "
@@ -153,7 +155,7 @@
 				WHERE id = ".$id.";
 			";
 		}
-		$conn->beginTransaction();
+		
 		try{
 			$query = $conn->query($sql);
 			if ($query){
@@ -172,11 +174,11 @@
                     }
 				}
 			}
-			$conn->commit();
+
 			echo json_encode(array(
 				"status" => 1,
 				"msg" => "Salvo com sucesso."
-			));			
+			));
 		}catch(Exception $e){
 			if (IS_SHOW_ERROR_MESSAGE){
 				echo 'Errou';
@@ -187,6 +189,15 @@
 			}
 			exit;
 		}
+		exit;
+	}
+
+	if ($op == 'inativar'){
+		$inativar	= $_GET['inativar'];
+		$id			= $_GET['id'];
+		$sql		= 'UPDATE '.PREFIXO.'menu SET inativo = '.$inativar.' WHERE id = ' . $id;		
+		$query 		= $conn->query($sql);
+		echo 1;
 		exit;
 	}
 	$id = isset($_GET["id"])?$_GET["id"]:"";
@@ -209,10 +220,13 @@
 		}
 	}
 
-	function imprimeLinhaMenu($indice,$id,$descricao,$pai,$self,$idpai){
+	function imprimeLinhaMenu($indice,$id,$descricao,$pai,$self,$idpai,$inativar){
 		global $parmsiframe;
-		$retorno 	= "";
-		$pai 		= $pai == 0 ? '' : $pai;
+		$retorno 		= "";
+		$pai 			= $pai == 0 ? '' : $pai;
+		$is_inativo		= $inativar == 1 ? 'false' : 'true';
+
+		$btn_inativo	= $inativar == 1 ? 'danger' : 'primary';
 		if ($pai == ""){
 			$mais = "
 						<button type='button' class='btn btn-default' aria-label='Ver sub menu' onclick=versubmenu(".$id.",'".str_replace(" ","^",$descricao)."')>
@@ -227,7 +241,12 @@
 		$retorno .= "		<td>".$id."</td>";
 		$retorno .= "		<td>".$descricao."</td>";
 		$retorno .= "		<td>".$pai."</td>";
-		$retorno .= "		<td>".$mais."</td>";		
+		$retorno .= "		<td>".$mais."</td>";
+		$retorno .= "		<td align='center'>";
+		$retorno .= "			<button type='button' class='btn btn-$btn_inativo' data-inativar='{$inativar}' onclick=inativarMenu(this,{$id})>";
+		$retorno .= "				<span class='fas fa-ban' aria-hidden='true'></span>";
+		$retorno .= "			</button>";
+		$retorno .= "		</td>";
 		$retorno .= "		<td align='center'>";
 		$retorno .= "			<button type='button' class='btn btn-primary' onclick=location.href='".$self."?op=add&id=".$id."{$parmsiframe}&idpai={$idpai}&".getURLParamsProject()."'>";
 		$retorno .= "				<span class='fas fa-pencil-alt' aria-hidden='true'></span>";
@@ -239,7 +258,7 @@
 		$retorno .= "				</button>";
 		$retorno .= "			</td>
 
-								<td>
+								<td align='center'>
 									<div class='btn-group' role='group' aria-label='Ordenação de Elementos'>
 										<button type='button' class='btn btn-default btn-sm btn-arrow-order' aria-label='Item Acima' onclick=reodernar(this,'up');>
 										  <span class='fas fa-chevron-up' aria-hidden='true'></span>
@@ -272,6 +291,31 @@
 						}
 					});
 				}
+
+				function inativarMenu(obj,menu){
+					const status 		= $(obj).attr("data-inativar");
+					bootbox.confirm("Tem certeza que deseja inativar ? ",function(result){
+						if (result){
+							$.ajax({
+								url:"'.$self.'",
+								data:{
+									op:"inativar",
+									id:menu,
+									inativar:status == 1 ? false : true,
+									currentproject:'.$_SESSION["currentproject"].'
+								},
+								complete:function(ret){
+									if (parseInt(ret.responseText) == 1){
+										$(obj).removeClass("btn-danger btn-primary");
+										$(obj).addClass("btn-" + (status == 1 ? "primary" : "danger"));
+										$(obj).attr("data-inativar",status == 1 ? 0 : 1);
+									}
+								}
+							});
+						}
+					});
+				}
+
 			</script>
 		';
 		return $retorno;
@@ -323,7 +367,13 @@
 						var objSelOpt = $(this).find("option:selected");
 						var pacoteOBJ = (objSelOpt.data("pacote")==""?"":objSelOpt.data("pacote")+"-");
 						objDescricao.val(objSelOpt.data("descricao"));
-						objLink.val("files/"+$("#tipomenu").val()+"/"+$(this).val()+"/"+pacoteOBJ+objSelOpt.data("nome")+".html");
+						
+						if ($("#tipomenu").val() == 'conceito'){
+							objLink.val("files/"+$("#tipomenu").val()+"/"+pacoteOBJ+objSelOpt.data("nome")+".html");
+						}else{
+							objLink.val("files/"+$("#tipomenu").val()+"/"+$(this).val()+"/"+pacoteOBJ+objSelOpt.data("nome")+".html");
+						}
+
 						objTarget.val("");
 						
 						objLink.attr("readonly",true);
@@ -446,6 +496,7 @@
 									<option value="relatorio" data-tipo="relatorio">Relatório</option>
 									<option value="movimentacao" data-tipo="movimentacao">Movimentação</option>
 									<option value="personalizado" data-tipo="personalizado">Personalizado</option>
+									<option value="conceito" data-tipo="conceito">Conceito</option>
 								</select>
 							</div>
 							<div class="form-group">
@@ -495,13 +546,28 @@
 									<?php
 										$sql = "SELECT id,descricao FROM ".PREFIXO."menu WHERE pai = 0 or pai is null ORDER BY ordem ASC";
 										$query = $conn->query($sql);
-										While($linha = $query->fetch()){
-											$descricao = executefunction("tdc::utf8",array($linha["descricao"]));
-											echo "<option value='".$linha["id"]."'>".$descricao."</option>";
+										While($linha = $query->fetch()){																						
+											$descricao = executefunction("tdc::utf8",array($linha["descricao"]));											
+											$_pai = $linha['id'];
+											echo "<option value='".$linha["id"]."'>## ".$descricao." ##</option>";
+											// Submenu
+												echo "<optgroup label='# submenu #'>";
+												$sql_submenu = "
+													SELECT id,descricao
+													FROM td_menu
+													WHERE pai = {$_pai};
+												";
+												$query_submenu = $conn->query($sql_submenu);
+												While($linha_submenu = $query_submenu->fetch()){
+													$descricao = executefunction("tdc::utf8",array($linha_submenu["descricao"]));
+													echo "<option value='".$linha_submenu["id"]."' data-descricao='".$descricao."'>".$descricao."</option>";
+												}
+											echo '</optgroup>';
+											// Submenu
 										}
 									?>
 								</select>
-							</div>							
+							</div>
 							<button type="button" class="btn btn-primary" name="salvar" id="btn-salvar">Salvar</button>
 							<div id="retorno" class="alert"></div>
 						</fieldset>
@@ -514,12 +580,13 @@
 						<thead>
 							<tr>								
 								<td width="10%">ID</td>
-								<td width="40%">Descrição</td>
-								<td width="27%">Pai</td>
-								<td width="5%"></td>								
+								<td width="35%">Descrição</td>
+								<td width="25%">Pai</td>
+								<td width="5%"></td>
+								<td width="5%" align="center">Inativo</td>
 								<td width="5%" align="center">Editar</td>
 								<td width="5%" align="center">Excluir</td>
-								<td width="8%">Ordem</td>
+								<td width="10%" align="center">Ordem</td>
 							</tr>
 						</thead>
 						<tbody>
@@ -533,16 +600,18 @@
 							}
 							$sql = "
 								SELECT a.id,a.descricao,
-								(SELECT b.descricao FROM ".PREFIXO."menu b WHERE b.id = a.pai) pai,
-								a.pai
+									(SELECT b.descricao FROM ".PREFIXO."menu b WHERE b.id = a.pai) pai,
+								a.pai,
+								a.inativo
 								FROM ".PREFIXO."menu a 
 								{$where}
 								ORDER BY a.pai ASC,a.ordem ASC,a.id ASC
 							";
+
 							$query = $conn->query($sql);
 							While ($linha = $query->fetch()){
 								$descricao = executefunction("tdc::utf8",array($linha["descricao"]));
-								echo imprimeLinhaMenu($indice,$linha["id"],$descricao,executefunction("tdc::utf8",array($linha["pai"])),$self,$linha["pai"]);
+								echo imprimeLinhaMenu($indice,$linha["id"],$descricao,executefunction("tdc::utf8",array($linha["pai"])),$self,$linha["pai"],$linha["inativo"]);
 								$indice++;
 							}
 						?>
@@ -632,12 +701,36 @@
 					complete:function(ret){
 						var retorno = ret.responseJSON;
 						if (retorno.status == 1){
+							if ($("#tipomenu").val() == 'conceito'){
+								gerarConceito($("#entidade").val());
+							}
 							$("#retorno").addClass("alert-success");
 							$("#retorno").html(retorno.msg);
 						}
+					},
+					error:function(res){
+						console.log(res.responseText);
+						$("#retorno").addClass("alert-danger");
+						$("#retorno").html('Erro Interno.');
 					}
 				});
 			});
+
+			function gerarConceito(_entidade){
+				$.ajax({
+					url:"<?=URL_API?>",
+					data:{
+						controller:"gerarconceito",
+						entidade:_entidade
+					},
+					complete:function(retorno){
+
+					},
+					beforeSend:function(){
+
+					}
+				});				
+			}
 		</script>
 
 		<div class="modal fade" tabindex="-1" role="dialog" id="modal-submenu">

@@ -28,6 +28,8 @@
 	$exibirbotaoexcluir	= criarAtributo($conn,$entidadeID,"exibirbotaoexcluir","Exibir Botão Excluir","boolean",0,1,7);
 	$exibirbotaoemmassa	= criarAtributo($conn,$entidadeID,"exibirbotaoemmassa","Exibir Botão Em Massa","boolean",0,1,7);
 	$exibircolunaid		= criarAtributo($conn,$entidadeID,"exibircolunaid","Exibir Coluna ID","boolean",0,1,7);
+	$adicionaridfiltro	= criarAtributo($conn,$entidadeID,"adicionaridfiltro","Adicionar campo ID no filtro","boolean",0,1,7);
+	
 	
 	// Criando Entidade
 	$filtrosID = criarEntidade(

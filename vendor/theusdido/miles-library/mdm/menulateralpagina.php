@@ -1,11 +1,13 @@
 <?php
-	include 'conexao.php';
-	include '../funcoes.php';
+	require 'conexao.php';
 	require 'prefixo.php';
+	require 'funcoes.php';
 	
-	$self = "menulateralpagina.php";
-	$id = $projeto = $entidade = $descricao = $link = $target = $ordem = $pai  = "";
-	$op = isset($_GET["op"])?$_GET["op"]:"";
+	$self 	= "menulateralpagina.php";
+	$id 	= $projeto = $entidade = $descricao = $link = $target = $ordem = $pai  = "";
+	$op 	= isset($_GET["op"])?$_GET["op"]:"";
+	$_pai 	= isset($_GET['pai']) ? $_GET['pai'] : -1;
+
 	if (isset($_GET)){
 		$excluir = isset($_POST["excluir"])?$_POST["excluir"]:"";
 		if ($excluir != ""){
@@ -79,8 +81,10 @@
 						$("#ordem").val("<?=$ordem?>");
 						$("#pai").val("<?=$pai?>");
 					}else{
-						$("#entidade,#pai").val(0);
-						$("#descricao,#link,#target,id,projeto,entidade,ordem,pai").val("");
+						$("#entidade").val(0);
+						$("#pai").val("<?=$_pai?>");
+						$("#pai").attr('disabled',true);
+						$("#descricao,#link,#target,id,projeto,entidade,ordem").val("");
 						$("#descricao,#projeto,#link").removeAttr("readonly");						
 					}
 					if ($("#entidade").val() != "" && $("#entidade").val() != 0){
@@ -133,7 +137,15 @@
 								if ($op == "add") {
 									echo "<a href='".$self."' target='' class='btn btn-link' style='float:right;margin:5px;'>Voltar </a>";
 								}else{
-									echo "<button type='button' class='btn btn-primary' style='float:right;margin:5px;width:100px;' onclick=location.href='".$self."?op=add'><span class='fas fa-plus-circle'></span> Novo</button>";
+									echo "
+										<button 
+											type='button' 
+											class='btn btn-primary' 
+											style='float:right;margin:5px;width:100px;' 
+											onclick=location.href='".$self."?op=add&pai=".$_pai."'
+										>
+											<span class='fas fa-plus-circle'></span> Novo
+										</button>";
 								}
 								echo "<br />";
 
@@ -144,15 +156,28 @@
 							<input type="hidden" id="id" name="id">
 							<input type="hidden" id="projeto" name="projeto" value="1">
 							<div class="form-group">
-								<label for="entidade">Entidade</label>
-								<select id="entidade" name="entidade" class="form-control">
+								<label for="menu">Menu</label>
+								<select id="menu" name="menu" class="form-control">
 									<option value="0">-- Selecione --</option>
 									<?php
-										$sql = "SELECT id,nome,descricao,pacote FROM td_entidade";
+										// $sql = "
+										// 	SELECT fixo 
+										// 	FROM td_menu 
+										// 	WHERE id = $_pai
+										// ";
+										// $query = $query = $conn->query($sql);
+										// if ($linha = $query->fetch()){
+										// 	$fixo = $linha["fixo"];
+										// }
+										$sql = "
+											SELECT id,descricao
+											FROM td_menu
+											WHERE pai = {$_pai};
+										";
 										$query = $conn->query($sql);
 										While($linha = $query->fetch()){
-											$descricao = utf8_encode($linha["descricao"]);
-											echo "<option value='".$linha["id"]."' data-nome='".$linha["nome"]."' data-pacote='".$linha["pacote"]."' data-descricao='".$descricao."'>".$descricao." [ ".$linha["nome"]." ]</option>";
+											$descricao = executefunction("tdc::utf8",array($linha["descricao"]));
+											echo "<option value='".$linha["id"]."' data-descricao='".$descricao."'>".$descricao."</option>";
 										}
 									?>		
 								</select>
@@ -176,15 +201,18 @@
 							<div class="form-group">
 								<label for="pai">Pai</label>
 								<select id="pai" name="pai" class="form-control">
-									<option value="0">-- Selecione --</option>
 									<?php
-										$sql = "SELECT id,descricao FROM td_menu WHERE pai <> 0 OR pai IS NOT NULL";
+										$sql = "
+											SELECT id,descricao 
+											FROM td_menu 
+											WHERE id = $_pai
+										";
 										$query = $conn->query($sql);
 										While($linha = $query->fetch()){
-											if (qtdePaiMenu($linha["id"],$conn) == 1){
-												$descricao = utf8_encode ($linha["descricao"]);											
+											#if (qtdePaiMenu($linha["id"],$conn) == 1){
+												$descricao = executefunction("tdc::utf8",array($linha["descricao"]));
 												echo "<option value='".$linha["id"]."'>".$descricao."</option>";
-											}	
+											#}	
 										}
 									?>
 								</select>
@@ -205,23 +233,29 @@
 							<td width="5%" align="center">Editar</td>
 							<td width="5%" align="center">Excluir</td>
 						</tr>	
-						<?php
-							$sql = "SELECT id,descricao,pai pai,entidade FROM td_menu ORDER BY pai ASC,ordem ASC,ID ASC";
+						<?php							
+							$sql = "
+								SELECT id,descricao,pai pai,entidade 
+								FROM td_menu
+								WHERE pai = {$_pai}
+								ORDER BY pai ASC,ordem ASC,ID ASC
+							";
 							$query = $conn->query($sql);
 							While ($linha = $query->fetch()){
-								$descricao = utf8_encode($linha["descricao"]);
-								$sqlMenuPai = "SELECT 1 FROM td_menu WHERE id = ".$linha["id"] . " AND pai IS NOT NULL AND pai <> 0;";
-								$queryMenuPai = $conn->query($sqlMenuPai);
-								if (qtdePaiMenu($linha["id"],$conn) == 2){
+								$descricao = executefunction("tdc::utf8",array($linha["descricao"]));
+								#$sqlMenuPai = "SELECT 1 FROM td_menu WHERE id = ".$linha["id"] . " AND pai IS NOT NULL AND pai <> 0;";
+								#$queryMenuPai = $conn->query($sqlMenuPai);
+								#var_dump(qtdePaiMenu($linha["id"],$conn));
+								//if (qtdePaiMenu($linha["id"],$conn) == 2){
 								
-									if ($linha["pai"] != 0 && $linha["pai"] != ""){
-										$sqlPai = "SELECT descricao FROM td_menu WHERE id = " . $linha["pai"] . " LIMIT 1 ";
-										$queryPai = $conn->query($sqlPai);
-										$linhaPai = $queryPai->fetch();
-										$pai = utf8_encode($linha["descricao"]);
-									}else{
-										$pai = "";
-									}
+									// if ($linha["pai"] != 0 && $linha["pai"] != ""){
+									// 	$sqlPai = "SELECT descricao FROM td_menu WHERE id = " . $linha["pai"] . " LIMIT 1 ";
+									// 	$queryPai = $conn->query($sqlPai);
+									// 	$linhaPai = $queryPai->fetch();
+									// 	$pai = utf8_encode($linha["descricao"]);
+									// }else{
+									// 	$pai = "";
+									// }
 									echo "	<tr> ";
 									echo "		<td>".$linha["id"]."</td>";
 									echo "		<td>".$descricao."</td>";
@@ -237,7 +271,7 @@
 									echo "				</button>";
 									echo "			</td>";
 									echo "	</tr>";
-								}	
+								//}	
 							}
 						?>
 					</table>						

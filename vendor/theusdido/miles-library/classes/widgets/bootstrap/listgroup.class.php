@@ -29,6 +29,10 @@ class ListGroup Extends Elemento {
 		$this->setItens();
 		parent::mostrar();
 	}
+	public function toString(){
+		$this->setItens();
+		return parent::toString();		
+	}
 	public function addItem(){
 		$args = func_get_args();
 		array_push($this->itens,$args);
@@ -40,9 +44,9 @@ class ListGroup Extends Elemento {
 			$this->setItem($i);
 		}
 	}
-	protected function setItem($item,$titulo=false){
+	protected function setItem($item,$titulo=false){		
 		$listitem = tdClass::Criar("hyperlink");
-		if (gettype($item) == "array"){			
+		if (gettype($item) == "array"){
 			foreach($item as $it){
 				if (gettype($it) == "array"){
 					foreach($it as $i){
@@ -53,14 +57,11 @@ class ListGroup Extends Elemento {
 					$this->add($it);
 					$listitem->add($it);
 				}else{
-					$listitem->add($it);
+					$this->_addItem($item,$titulo);
 				}	
 			}
 		}else{
-			$listitem->class = "list-group-item" . ($titulo?" active ":"");
-			$listitem->href = "#";
-			$listitem->add($item);
-			$this->add($listitem);
+			$this->_addItem($listitem,$titulo);
 		}
 	}
 	public function setTitulo($titulo){
@@ -70,5 +71,13 @@ class ListGroup Extends Elemento {
 	public function addItemList($item){
 		$item->class = "list-group-item";
 		$this->add($item);
+	}
+	protected function _addItem($item,$titulo = false)
+	{
+		$listitem = tdClass::Criar("hyperlink");
+		$listitem->class = "list-group-item" . ($titulo?" active ":"");
+		$listitem->href = "#";
+		$listitem->add($item);
+		$this->add($listitem);		
 	}
 }

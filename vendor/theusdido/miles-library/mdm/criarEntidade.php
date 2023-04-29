@@ -4,7 +4,9 @@
 	require_once 'funcoes.php';
 	include 'configuracoes.php';
 	
-	$id = $nome = $descricao = $exibirmenuadministracao = $exibircabecalho = $exibirlegenda = $registrounico = $carregarlibjavascript = $tipoaba = "";
+	$id = $nome = $descricao = $exibirmenuadministracao = $exibircabecalho = $exibirlegenda = $registrounico = 
+	$entidadeauxiliar = $carregarlibjavascript = $tipoaba = "";
+
 	$campodescchave = $atributogeneralizacao = 0;
 	$ncolunas = 1;
 
@@ -41,6 +43,7 @@
 		$registrounico				= isset($_POST["registrounico"])?1:0;
 		$carregarlibjavascript		= isset($_POST["carregarlibjavascript"])?1:0;
 		$tipoaba					= isset($_POST["tipoaba"])?$_POST["tipoaba"]:'';
+		$entidadeauxiliar			= isset($_POST["entidadeauxiliar"])?1:0;		
 
 		if ($_POST["id"] == ""){
 			if ($bancodados == "mysql"){
@@ -63,7 +66,7 @@
 					// ID Última entidade
 					$linha_ultimo 	= $conn->query("SELECT MAX(id)+1 id FROM ".PREFIXO."entidade")->fetchAll();
 					$prox 			= $linha_ultimo[0]['id'];
-					$sql 			= "INSERT INTO ".PREFIXO."entidade (id,nome,descricao,exibirmenuadministracao,exibircabecalho,ncolunas,atributogeneralizacao,exibirlegenda,registrounico,carregarlibjavascript,tipoaba) VALUES ({$prox},'{$nome}','{$descricao}',{$exibirmenuadministracao},{$exibircabecalho},{$ncolunas},{$atributogeneralizacao},{$exibirlegenda},{$registrounico},{$carregarlibjavascript},'{$tipoaba}');";
+					$sql 			= "INSERT INTO ".PREFIXO."entidade (id,nome,descricao,exibirmenuadministracao,exibircabecalho,ncolunas,atributogeneralizacao,exibirlegenda,registrounico,carregarlibjavascript,tipoaba,entidadeauxiliar) VALUES ({$prox},'{$nome}','{$descricao}',{$exibirmenuadministracao},{$exibircabecalho},{$ncolunas},{$atributogeneralizacao},{$exibirlegenda},{$registrounico},{$carregarlibjavascript},'{$tipoaba}',{$entidadeauxiliar});";
 					$query 			= $conn->query($sql);
 
 					if($query){
@@ -98,7 +101,7 @@
 				// ID Última entidade
 				$linha_ultimo 	= $conn->query("SELECT MAX(id)+1 id FROM ".PREFIXO."entidade")->fetchAll();
 				$prox 			= $linha_ultimo[0]['id'];
-				$sql 			= "INSERT INTO entidade (id,nome,descricao,exibirmenuadministracao,exibircabecalho,ncolunas,atributogeneralizacao,exibirlegenda,registrounico,carregarlibjavascript,tipoaba) VALUES ({$prox},'{$nome}','{$descricao}',{$exibirmenuadministracao},{$exibircabecalho},{$ncolunas},{$atributogeneralizacao},{$exibirlegenda},{$registrounico},{$carregarlibjavascript},'{$tipoaba}');";
+				$sql 			= "INSERT INTO entidade (id,nome,descricao,exibirmenuadministracao,exibircabecalho,ncolunas,atributogeneralizacao,exibirlegenda,registrounico,carregarlibjavascript,tipoaba,entidadeauxiliar) VALUES ({$prox},'{$nome}','{$descricao}',{$exibirmenuadministracao},{$exibircabecalho},{$ncolunas},{$atributogeneralizacao},{$exibirlegenda},{$registrounico},{$carregarlibjavascript},'{$tipoaba}',{$entidadeauxiliar});";
 				$query 			= $conn->query($sql);
 			}	
 		}else{
@@ -111,14 +114,14 @@
 			}			
 
 			$prox 	= $_POST["id"];
-			$sql 	= "UPDATE ".PREFIXO."entidade SET nome = '{$nome}' , descricao = '{$descricao}' , ncolunas = {$ncolunas} , exibirmenuadministracao = {$exibirmenuadministracao} , exibircabecalho = {$exibircabecalho} , campodescchave = {$campodescchave} , atributogeneralizacao = {$atributogeneralizacao} , exibirlegenda = {$exibirlegenda} , registrounico = {$registrounico} , carregarlibjavascript = {$carregarlibjavascript}, tipoaba = '{$tipoaba}' WHERE id = ".$_POST['id'].";";
+			$sql 	= "UPDATE ".PREFIXO."entidade SET nome = '{$nome}' , descricao = '{$descricao}' , ncolunas = {$ncolunas} , exibirmenuadministracao = {$exibirmenuadministracao} , exibircabecalho = {$exibircabecalho} , campodescchave = {$campodescchave} , atributogeneralizacao = {$atributogeneralizacao} , exibirlegenda = {$exibirlegenda} , registrounico = {$registrounico} , carregarlibjavascript = {$carregarlibjavascript}, tipoaba = '{$tipoaba}' , entidadeauxiliar = {$entidadeauxiliar} WHERE id = ".$_POST['id'].";";
 			$query 	= $conn->query($sql);
 		}
 		header("Location: criarEntidade.php?entidade=" . $prox . "&" . getURLParamsProject());
 	}
 
 	if (isset($_GET["entidade"])){
-		$sql = "SELECT nome,descricao,exibirmenuadministracao,exibircabecalho,ncolunas,campodescchave,atributogeneralizacao,exibirlegenda,registrounico,carregarlibjavascript,tipoaba FROM ".PREFIXO."entidade WHERE id = {$id};";
+		$sql = "SELECT nome,descricao,exibirmenuadministracao,exibircabecalho,ncolunas,campodescchave,atributogeneralizacao,exibirlegenda,registrounico,carregarlibjavascript,tipoaba,entidadeauxiliar FROM ".PREFIXO."entidade WHERE id = {$id};";
 
 		$query = $conn->query($sql);
 		foreach ($query->fetchAll() as $linha){
@@ -133,6 +136,7 @@
 			$registrounico 				= $linha["registrounico"];
 			$carregarlibjavascript 		= $linha["carregarlibjavascript"];
 			$tipoaba					= $linha["tipoaba"];
+			$entidadeauxiliar			= $linha["entidadeauxiliar"];			
 		}
 	}
 ?>
@@ -159,12 +163,15 @@
 					document.getElementById("criarempresa").checked 			= false;
 					document.getElementById("criarprojeto").checked 			= false;
 					document.getElementById("criarauth").checked 				= false;
+					document.getElementById("entidadeauxiliar").checked 		= false;
+					
 				}else{
 					document.getElementById("exibirmenuadministracao").checked 	= (<?=(int)$exibirmenuadministracao?>==0)?false:true;
 					document.getElementById("exibirlegenda").checked 			= (<?=(int)$exibirlegenda?>==0)?false:true;
 					document.getElementById("registrounico").checked 			= (<?=(int)$registrounico?>==0)?false:true;
-					document.getElementById("carregarlibjavascript").checked 	= (<?=(int)$carregarlibjavascript?>==0)?false:true;					
+					document.getElementById("carregarlibjavascript").checked 	= (<?=(int)$carregarlibjavascript?>==0)?false:true;
 					document.getElementById("exibircabecalho").checked 			= (<?=(int)$exibircabecalho?>==0)?false:true;
+					document.getElementById("entidadeauxiliar").checked 		= (<?=(int)$entidadeauxiliar?>==0)?false:true;
 				}
 				setTipoAba();
 			}
@@ -330,7 +337,11 @@
 									<input type="checkbox" name="btnimprimirtodosregistrospdf" id="btnimprimirtodosregistrospdf">Exibir botão para imprimir todos os registro em PDF
 								</label>
 							</div>
-
+							<div class="checkbox">
+								<label for="entidadeauxiliar">
+									<input type="checkbox" name="entidadeauxiliar" id="entidadeauxiliar">Entidade Auxiliar ( <small>Os dados da entidade são carregados na inicialização do sistema.</small> )
+								</label>
+							</div>
 							<div class="form-group">
 								<label class="control-label">Tipo de Aba: </label>
 								<label class="radio-inline">
@@ -340,7 +351,7 @@
   									<input type="radio" name="tipoaba" id="aba-pills" value="pills" <?=($tipoaba=='pills'?'checked':'')?>> Pills
 								</label>
 							</div>
-
+							
 							<button type="submit" class="btn btn-primary" >Salvar</button>							  
 						</fieldset>	  
 					</form>					

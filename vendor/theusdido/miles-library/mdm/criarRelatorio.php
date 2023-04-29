@@ -2,7 +2,7 @@
 	require 'conexao.php';
 	require 'prefixo.php';	
 	include 'funcoes.php';
-	
+
 	$id = $entidade = $atributo = $descricao = $ent = $entidadefilho = $urlpersonalizada =  "";
 	
 	if (isset($_GET["entidade"])){
@@ -240,7 +240,7 @@
 <html>
 	<head>
 		<title>Criar Relatório</title>
-		<?php include 'head.php' ?>
+		<?php include 'head.php'; ?>
 		<script type="text/javascript">
 			var url_api = "<?=URL_API?>";
 			window.onload = function(){
@@ -378,7 +378,6 @@
 					carregarValoresAtributo($(this).find("option:selected").data("chaveestrangeira"));
 				});
 				carregarValoresAtributo($("#form-status #atributo").find("option:selected").data("chaveestrangeira"));
-
 				$("#lista-filtro").sortable({
 					update: function( event, ui ) {
 						var ordenacao = [];
@@ -394,7 +393,7 @@
 							}
 						);
 						$.ajax({
-							url:"<?=URL_MILES?>",
+							url:"<?=URL_API?>",
 							data:{
 								op:"ordenar",
 								controller:"sortable",
@@ -465,9 +464,8 @@
 					$(".form-control[data-tipoatributo=input]").attr("id","");
 					$(".form-control[data-tipoatributo=input]").attr("name","");
 					$(".form-control[data-tipoatributo=input]").hide();
-
 					$.ajax({
-						url:"<?=URL_MILES?>",
+						url:"<?=URL_API?>",
 						type:"GET",
 						data:{
 							controller:'requisicoes',

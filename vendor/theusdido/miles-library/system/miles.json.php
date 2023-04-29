@@ -3,8 +3,12 @@
 	$request_uri			= isset($_SERVER["REQUEST_URI"]) ? $_SERVER["REQUEST_URI"] : '';
 	$uri 					= $script_uri != '' ? $script_uri : $request_uri;
 
-	$_miles_json_project	= defined('MILES_JSON_PROJECT') ? MILES_JSON_PROJECT . '.' : '';
-	$path_miles_json 		= PATH_MILES . $_miles_json_project . "miles.json";
+	$_project_name		= 
+	$_project_path 		= 
+	$_project_folder	= 
+	$_env 				= '';
+	$_enviromment		= isset($_GET['env']) ? $_GET['env'] : (isset($_POST['env']) ? $_POST['env'] : (isset($_enviromment) ? $_enviromment : $_current_environment));
+	$path_miles_json 	= $_path_root_project . $_enviromment . ".miles.json";
 
 	if (!file_exists($path_miles_json)){
 		include $_path_controller_install . 'criarmilesjson.php';
@@ -15,11 +19,6 @@
 		exit;
 	}
 
-	$_project_name		= 
-	$_project_path 		= 
-	$_project_folder	= 
-	$_env 				= '';
-	$_enviromment		= 'dev';
 	$miles_json 		= file_get_contents($path_miles_json);
 
 	if ($miles_json != false){
@@ -31,8 +30,10 @@
 		define('MILES_PROJECT',isset($mjc->currentproject)?$mjc->currentproject:1);
 
 		// Ambiente selecionado
-		$_enviromment = isset($mjc->enviromment) ? $mjc->enviromment : '';
-		
+		if ($_enviromment == ''){
+			$_enviromment = isset($mjc->enviromment) ? $mjc->enviromment : '';
+		}
+
 		// Carrega os dados do ambiente selecionado
 		$_env = isset($mjc->enviromments->{$_enviromment}) ? $mjc->enviromments->{$_enviromment} : $mjc;
 

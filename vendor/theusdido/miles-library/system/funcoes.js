@@ -647,7 +647,6 @@ function moneyToFloat(valor){
 	return parseFloat(sempontos.replace(",","."));
 }
 function editarTDFormulario(entidade,id){
-	
 	carregar(session.folderprojectfiles + "files/cadastro/"+entidade+"/"+td_entidade[entidade].nomecompleto+".html",'#conteudoprincipal',function(){
 		carregarScriptCRUD('editarformulario',entidade,id);
 	});
@@ -721,7 +720,6 @@ function getIMGLoader(){
 }
 
 function carregarListas(entidade,atributo,contextoAdd,valor){ // Argumento 4 é o filtro
-	
 	if (!isNumeric(atributo)){
 		for(a in td_atributo){
 			if (td_entidade[td_atributo[a].entidade] == undefined) continue;
@@ -751,21 +749,50 @@ function carregarListas(entidade,atributo,contextoAdd,valor){ // Argumento 4 é 
 			return false;
 		}
 	}
-
+		
 	if (td_atributo[atributo].chaveestrangeira != "" && td_atributo[atributo].chaveestrangeira != undefined && td_atributo[atributo].chaveestrangeira > 0){
-		if (typeof td_entidadeauxiliar[td_atributo[atributo].chaveestrangeira] == "object"){
-			$(".form-control[id=" + td_atributo[atributo].nome +"]",contextoAdd).html("");
-			var entaux = td_entidadeauxiliar[td_atributo[atributo].chaveestrangeira];
-			for (ea in entaux){
-				var htmlOPT;
-				eval("ophtmlOPTt = entaux[ea]." + td_atributo[td_entidade[td_atributo[atributo].chaveestrangeira].campodescchave].nome);
-				var opt = "<option value='"+entaux[ea].id+"'>" + ophtmlOPTt + "</option>";
-				$(".form-control[id=" + td_atributo[atributo].nome +"]",contextoAdd).append(opt);
-			}
-			if (valor != "" && valor != undefined && valor != 0){
-				$(".form-control[id=" + td_atributo[atributo].nome + "]",contextoAdd).val(valor);
-			}
-		}else{
+
+		if (td_atributo[atributo].atributodependencia != '' && td_atributo[atributo].atributodependencia != 0){
+			$(".form-control[id=" + td_atributo[atributo].nome + "]",contextoAdd).attr('disabled',false);
+		}
+		// if (td_atributo[atributo].atributodependencia != '' && td_atributo[atributo].atributodependencia != 0){
+		// 	try{
+		// 		let _atributo = td_atributo[atributo];
+		// 		let _entidade_auxiliar = td_entidadeauxiliar[_atributo.chaveestrangeira];
+		// 		if (typeof _entidade_auxiliar == "object"){
+		// 			//let _atributo 					= td_atributo[td_atributo[atributo].chaveestrangeira];					
+		// 			//let _atributo_dependencia_id 	= $('data-atributodependencia=' + ).data('atributodependencia');
+					
+		// 			let _atributo_dependencia 		= $('#' + _atributo.nome).data('atributodependenciafilho'); 
+		// 			console.log(_atributo_dependencia);
+		// 			debugger;
+					
+		// 			$(".form-control[id=" + td_atributo[atributo].nome +"]",contextoAdd).html("");
+		// 			var entaux = _entidade_auxiliar;
+		// 			let _valor = _atributo_dependencia.val();
+		// 			console.log(_valor);
+		// 			if (_valor == undefined){
+		// 				$(".form-control[id=" + td_atributo[atributo].nome + "]",contextoAdd).attr('disabled',true);
+		// 			}else{
+		// 				console.log(_valor);
+		// 				for (ea in entaux){
+		// 					console.log(valor , entaux[ea].id);
+		// 					var htmlOPT;
+		// 					eval("ophtmlOPTt = entaux[ea]." + td_atributo[td_entidade[td_atributo[atributo].chaveestrangeira].campodescchave].nome);
+		// 					var opt = "<option value='"+entaux[ea].id+"'>" + ophtmlOPTt + "</option>";
+		// 					$(".form-control[id=" + td_atributo[atributo].nome +"]",contextoAdd).append(opt);
+		// 				}
+		// 				if (valor != "" && valor != undefined && valor != 0){
+		// 					$(".form-control[id=" + td_atributo[atributo].nome + "]",contextoAdd).val(valor);
+		// 				}
+		// 			}
+		// 		}else{
+		// 			console.warn('Entidade auxiliar não encontrada.');	
+		// 		}
+		// 	}catch(e){
+		// 		console.warn('Entidade auxiliar não encontrada.');
+		// 	}
+		// }else{
 			try{
 				var campochavedescricao = td_entidade[td_atributo[atributo].chaveestrangeira].campodescchave;
 				if (campochavedescricao <= 0){
@@ -778,6 +805,7 @@ function carregarListas(entidade,atributo,contextoAdd,valor){ // Argumento 4 é 
 			$.ajax({
 				url:config.urlrequisicoes,
 				type:"GET",
+				async:false,
 				data:{
 					op:"carregar_options",
 					entidade:td_atributo[atributo].chaveestrangeira,
@@ -785,14 +813,14 @@ function carregarListas(entidade,atributo,contextoAdd,valor){ // Argumento 4 é 
 					filtro:filtro
 				},
 				beforeSend:function(){
-					$(".form-control[id=" + td_atributo[atributo].nome+"]",contextoAdd).html("<option value=''>Aguarde ...</option>");
+					$(".form-control[id=" + td_atributo[atributo].nome +"]",contextoAdd).html("<option value=''>Aguarde ...</option>");
 				},
-				complete:function(ret){
+				complete:function(ret){					
 					var retorno = ret.responseText;
 					if (obrigatorio == 0){
 						var htmlretorno = "<option value=''>-- Selecione --</option>" + retorno;
 					}else{
-						var htmlretorno = retorno;
+						var htmlretorno = retorno;						
 					}
 					$(".form-control[id=" + td_atributo[atributo].nome+"][data-entidade="+td_entidade[td_atributo[atributo].entidade].nomecompleto+"]",contextoAdd).html(htmlretorno);
 					$(".form-control[id=" + td_atributo[atributo].nome +"-old][data-entidade="+td_entidade[td_atributo[atributo].entidade].nomecompleto+"]",contextoAdd).html(htmlretorno);
@@ -800,12 +828,13 @@ function carregarListas(entidade,atributo,contextoAdd,valor){ // Argumento 4 é 
 						$(".form-control[id=" + td_atributo[atributo].nome+"][data-entidade="+td_entidade[td_atributo[atributo].entidade].nomecompleto+"]",contextoAdd).val(valor);
 						$(".form-control[id=" + td_atributo[atributo].nome+"-old][data-entidade="+td_entidade[td_atributo[atributo].entidade].nomecompleto+"]",contextoAdd).val(valor);
 					}
+					$(".form-control[id=" + td_atributo[atributo].nome +"] option:first",contextoAdd).attr("selected",true);
 				},
 				error:function(ret){
 					console.log("ERRO ao carregar lista => " + ret.responseText);
 				}
 			});
-		}	
+		//}	
 	}
 }
 
@@ -815,38 +844,51 @@ function excluirArquivoUpload(dadosarquivos,entidade,atributo){
 }
 
 function carregarScriptCRUD(tipo,entidade,registro_id = 0,contexto = '',_extras = {}){
-	formulario[entidade]				 	= new tdFormulario(entidade,registro_id,0,_extras);
-	formulario[entidade].funcionalidade 	= tipo;
-
-	if (contexto != ''){
-		formulario[entidade].setContexto(contexto);
+	let indice_form = tipo + "_" + entidade;
+	if (formulario[indice_form] == undefined){
+		_extras.indice 							= indice_form;
+		_extras.tipo 							= tipo;
+		formulario[indice_form]	 				= new tdFormulario(entidade,registro_id,0,_extras);
 	}
 
+	if (contexto != ''){
+		formulario[indice_form].setContexto(contexto);
+	}
 	switch(tipo){
 		case 'cadastro':
 			// Registro Único
-			let is_registrounico = typeof registrounico == 'undefined' ? formulario[entidade].entidade.registrounico : registrounico;
+			let is_registrounico = typeof registrounico == 'undefined' ? formulario[indice_form].entidade.registrounico : registrounico;
 			if (is_registrounico){
-				formulario[entidade].setRegistroUnico();
+				formulario[indice_form].setRegistroUnico();
 			}else{
-				formulario[entidade].loadGrade();
+				formulario[indice_form].loadGrade();
 			}
-
 			// Monta os formulários das entidades que compoem o relacionamento
-			formulario[entidade].entidades_filho.forEach((entidade_id)=>{
+			formulario[indice_form].entidades_filho.forEach((entidade_id)=>{
 				formulario[entidade_id] = new tdFormulario(entidade_id);
 				formulario[entidade_id].loadGrade();    
 			});
 		break;
 		case 'editarformulario':
-			formulario[entidade].registro_id 	= registro_id;
-			formulario[entidade].editar();
+			formulario[indice_form].registro_id 	= registro_id;
+			if (_extras.is_registrounico == false){
+				formulario[indice_form].editar();
+			}
 		break;
 		case 'consulta':
-			formulario[entidade].setConsulta($('#consulta_id').val());
+			formulario[indice_form].setConsulta($('#consulta_id').val());
 		break;
 		case 'relatorio':
-			formulario[entidade].setRelatorio($('#relatorio_id').val());
+			formulario[indice_form].setRelatorio($('#relatorio_id').val());
 		break;	
 	}
+	
+}
+
+async function mdm_load_data($_entidade_name){
+	let _data = [];
+	await fetch(session.urldata + $_entidade_name + '.json')
+	.then( _res => _res.json() )
+	.then( _result => _data = _result );
+	return _data;
 }

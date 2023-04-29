@@ -36,3 +36,7 @@
 		}
 
 	}
+
+	if ($_op == 'verificasessao'){
+		echo $_session_isactive;
+	}

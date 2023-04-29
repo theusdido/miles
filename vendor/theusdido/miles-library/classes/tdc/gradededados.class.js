@@ -911,21 +911,26 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
 		let entidadeid 		= $(this).data("entidade");
 		let id 				= $(this).attr("reg");
 		let funcionalidade 	= $(this).data("funcionalidade");
-		
-		switch(funcionalidade){
+		let indice_form		= funcionalidade + '_' + entidadeid;
+		switch(funcionalidade){			
 			case 'cadastro':
-				formulario[entidadeid].registro_id = id;
-				formulario[entidadeid].editar();
+				formulario[indice_form].registro_id = id;
+				formulario[indice_form].editar();
 			break;
-			case 'consulta':
+			case 'consulta':				
 				let selector_editar = '#' + instancia.modal_editar_id + ' .modal-body';
-				if ($(this).parents(".crud-contexto-listar").first().hasClass("fp")){
+				//let selector_editar = '#' + instancia.modal_editar_id + ' .modal-body iframe';
+				if ($(this).parents(".crud-contexto-listar").first().hasClass("fp")){					
 					let _modal_editar = instancia.editarModal();
-					_modal_editar.on('shown.bs.modal', function (e) {
-						carregar(session.folderprojectfiles + "files/cadastro/"+entidadeid+"/"+td_entidade[entidadeid].nomecompleto+".html",selector_editar,function(){
+					_modal_editar.on('shown.bs.modal', function (e) {						
+						let url_crud = session.urlmiles + '?controller=crud&entidade=' + entidadeid + '&_id=' + id;
+						//$(selector_editar).attr('src',url_crud);
+						let url_page_html = session.folderprojectfiles + "files/cadastro/"+entidadeid+"/"+td_entidade[entidadeid].nomecompleto+".html";
+						carregar(url_page_html,selector_editar,function(){							
 							carregarScriptCRUD('editarformulario',entidadeid,id,selector_editar,{
-								is_registrounico:true,
-								is_init:false
+								is_registrounico:false,
+								is_init:true,
+								funcionalidade:'consulta'
 							});
 						});
 					});
@@ -1362,7 +1367,7 @@ GradeDeDados.prototype.getColunaConfig = function(atributo_id){
 	}
 }
 
-GradeDeDados.prototype.editarModal = function(){	
+GradeDeDados.prototype.editarModal = function(){
 	let modal 			= $('<div id="'+this.modal_editar_id+'" class="modal fade" tabindex="-1" role="dialog">');
 	let modalDialog 	= $('<div class="modal-dialog modal-lg" role="document">');
 	let modalContent	= $('<div class="modal-content">');
@@ -1370,7 +1375,9 @@ GradeDeDados.prototype.editarModal = function(){
 	let botaoClose		= $('<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>');
 	let titulo			= $('<h4 class="modal-title">Editar</h4>');
 	let modalBody		= $('<div class="modal-body">');
-	
+	let iframe 			= $('<iframe>');
+
+	//modalBody.append(iframe);
 	modal.append(modalDialog);
 	modalDialog.append(modalContent);
 	modalContent.append(modalHeader);

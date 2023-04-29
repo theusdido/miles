@@ -16,6 +16,7 @@ class Panel Extends Elemento {
 	public $body 	= null;
 	public $footer 	= null;
 	private $title 	= null;
+	public $_append  = null;
 	/*  
 		* Método construct 
 	    * Data de Criacao: 15/06/2015
@@ -61,14 +62,23 @@ class Panel Extends Elemento {
 		$this->footer->add($obj);
 	}
 	public function mostrar(){
+		$this->build();
+		parent::mostrar();
+	}
+
+	public function toString(){
+		$this->build();
+		return parent::toString();
+	}
+
+	private function build(){
 		$this->class = "panel panel-" . $this->tipo;
 		if ($this->title) $this->head($this->title);
 		if ($this->head->qtde_filhos>0) $this->add($this->head);
 		if ($this->body->qtde_filhos>0) $this->add($this->body);
 		if ($this->footer->qtde_filhos>0) $this->add($this->footer);
-		parent::mostrar();
+		if ($this->_append != null) $this->add($this->_append);
 	}
-
 	/*  
 		* Método title
 	    * Data de Criacao: 06/11/2021
@@ -84,5 +94,9 @@ class Panel Extends Elemento {
 
 		$this->title = $h4;
 		return $this->title;
+	}
+
+	public function append($append){
+		$this->_append = $append;
 	}
 }

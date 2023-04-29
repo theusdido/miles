@@ -1,3 +1,7 @@
+/*
+#cab393 // Marron menos mais claro
+#a98e69 // Marron mais escuro
+*/
 body{
 
 }
@@ -10,4 +14,39 @@ body{
 #f-autenticacao-usuario label
 {
 	color:#FFF;
+}
+
+.navbar-default,
+#miles-root > div > footer
+{
+	background-color: #a98e69 !important;
+}
+
+.nome-projeto,
+#menuprincipal .dropdown-menu li,
+#menuprincipal .dropdown-menu li a
+{
+	background-color: #FFF !important;
+	color:#50391a !important;
+}
+
+#info, #userinfo
+{
+	border-bottom: 2px solid #cab393;
+}
+
+#miles-root > div > footer a
+{
+	color:#DDD;
+}
+
+#menu .nav .open, 
+.navbar-default .navbar-nav > .open > a, 
+.navbar-default .navbar-nav > .open > a:hover, 
+.navbar-default .navbar-nav > .open > a:focus,
+#menuprincipal .dropdown-menu li:hover, 
+#menuprincipal .dropdown-menu li a:hover
+{
+	background-color: #3a2d19 !important;
+	color:#FFF !important;
 }

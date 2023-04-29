@@ -1,8 +1,21 @@
 <?php
 	
-	$_full_port 	= (PORT == '' ? '' : ':') . PORT;
-	$_root_folder	= (isset($_env->root) ? $_env->root : '');
-	$_domain	 	= HTTP_HOST;
+	$_full_port 		= (PORT == '' ? '' : ':') . PORT;
+	$_root_folder		= (isset($_env->root) ? $_env->root : '');
+	$_is_fixed_domain	= isset($_env->system->is_fixed_domain) ? $_env->system->is_fixed_domain : false;	
+	$_domain			= isset($_env->url->domain) ? $_env->url->domain : 'localhost';
+	$_url_miles			= REQUEST_PROTOCOL . 'miles.' .$_domain . $_full_port . '/';	
+	$_mainHost 			= REQUEST_PROTOCOL . $_domain . $_full_port . '/';
+
+	if (!$_is_fixed_domain){
+		$_url_miles			= REQUEST_PROTOCOL .$_domain . $_full_port . '/miles/';
+		if (isset($_SERVER['SERVER_NAME'])){
+			$_mainHost 	= REQUEST_PROTOCOL . $_SERVER['SERVER_NAME'] . '/';
+			$_mainHost	= str_replace('www.','', $_mainHost);
+			$_domain	= HTTP_HOST;
+		}		
+	}
+	
 
     // URL ROOT
 	if (isset($_env->url->domain)){
@@ -11,9 +24,11 @@
 	}else if (isset($_SERVER['SERVER_NAME'])){
 		$_mainHost 	= REQUEST_PROTOCOL . $_SERVER['SERVER_NAME'] . '/';
 		$_mainHost	= str_replace('www.','', $_mainHost);
+		$_domain	= HTTP_HOST;
 	}else{
 		$_mainHost	= REQUEST_PROTOCOL . $_domain . $_full_port . $_root_folder;
 	}
+
 	define('URL_ROOT', $_mainHost);
 
 	// URL ALIAS
@@ -32,7 +47,7 @@
 	}
 
 	// URL MILES
-	$_url_miles	 = REQUEST_PROTOCOL . $_domain . $_full_port .  $request_uri_dir;
+	#$_url_miles	 = REQUEST_PROTOCOL .$_domain . $_full_port .  $request_uri_dir;
 	
 	define('URL_MILES',$_url_miles);
 
@@ -120,3 +135,4 @@
 
 	define('URL_PICTURE', URL_MILES_LIBRARY . 'picture/');
 	
+	define('URL_CURRENT_DATA',URL_PROJECT . "data/");

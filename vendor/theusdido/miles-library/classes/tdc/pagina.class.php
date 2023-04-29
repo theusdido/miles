@@ -32,7 +32,8 @@ class Pagina Extends Html {
 	public $showMultiSelect			= true;
 	private $title					= '';
 	private $favicon				= null;
-
+	public $showChartJS				= true;
+	private $script;
 	/*  
 		* Método construct 
 	    * Data de Criacao: 31/08/2012
@@ -185,10 +186,17 @@ class Pagina Extends Html {
 			$this->body->add($popperjs);
 		}
 
+		if ($this->showChartJS){
+			$chart_js = tdc::html('script');
+			$chart_js->src = 'https://cdn.jsdelivr.net/npm/chart.js';
+			$this->body->add($chart_js);
+		}		
+
 		// Javascript inicial da página
 		$this->jsInicial();
 		$this->addJSLbiSystem();
-		
+		$this->addBody($this->script);
+
 		$title = tdClass::Criar("title");
 		$title->add($this->getTitle());
 		$this->head->add($title);
@@ -226,7 +234,7 @@ class Pagina Extends Html {
 				this.urlroot					= "'.URL_ROOT.'";
 				this.urlsystem					= "'.URL_SYSTEM.'";
 				this.urlalias					= "'.URL_ALIAS.'";
-				this.urlcurrenttheme			= "'.URL_CURRENT_PROJECT_THEME.'";					
+				this.urlcurrenttheme			= "'.URL_CURRENT_PROJECT_THEME.'";
 				this.urlloading					= "'.URL_LOADING.'";
 				this.urlloading2				= "'.URL_LOADING2.'";
 				this.urlmiles					= "'.URL_MILES.'index.php";
@@ -234,6 +242,7 @@ class Pagina Extends Html {
 				this.urlnodejs					= "'.URL_NODEJS.'";
 				this.curdate					= "'.date('d/m/Y').'";
 				this.urlcontrollerecommerce		= "'.URL_ECOMMERCE.'";
+				this.urldata					= "'.URL_CURRENT_DATA.'";
 			}
 			var session = new SystemSession();
 			
@@ -254,7 +263,7 @@ class Pagina Extends Html {
 				this.pathfileupload					= "'.$this->config->pathfileupload.'";
 				this.pathfileuploadtemp				= "'.$this->config->pathfileuploadtemp.'";
 				this.casasdecimais					= "'.($this->config->casasdecimais==''?2:$this->config->casasdecimais).'";
-
+				this.currenttheme					= "'.CURRENT_THEME.'";
 			}
 			var config = new SystemConfig();
 		');
@@ -262,11 +271,15 @@ class Pagina Extends Html {
 		// Intercepta as requisições AJAX
 		$jsDefaultAJAX = tdc::o("script");
 		$jsDefaultAJAX->add('
+			// Requisições
 			// Intercpta todas as requisições AJAX
-			$.ajaxPrefilter(function (options, originalOptions, jqXHR) {
-				var addParamsCurrentProject = $.extend({}, originalOptions.data, { currentproject: session.projeto });
-				options.data = $.param(addParamsCurrentProject);
-			});
+			$.ajaxSetup({
+				headers: { "CustomHeader": "myValue" },
+				data: {
+					project_name_identifify_params:"'.MILES_JSON_PROJECT.'",
+					env:"'._ENVIROMMENT.'"
+				}
+			});			
 		');
 
 		// Arquivo de Codificação/Decoficação em JS
@@ -454,8 +467,14 @@ class Pagina Extends Html {
 		$smallModal->src 			= URL_LIB . "jquery/Small-Loading-Modal-Overlay-Plugin-With-jQuery-loadingBlock/assets/js/jquery.loading.block.js";
 		$this->body->add($smallModal);
 		
-		$fontAwesome 				= tdClass::Criar("script");
-		$fontAwesome->src 			= URL_LIB . "fontawesome/ea948eea7a.js";
+		#$fontAwesome 				= tdClass::Criar("script");
+		#$fontAwesome->src 			= URL_LIB . "fontawesome/ea948eea7a.js";
+		
+		$fontAwesome 					= tdClass::Criar("link");
+		$fontAwesome->href				= 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==';
+		$fontAwesome->rel 				= 'stylesheet';
+		$fontAwesome->crossorigin		= 'anonymous';
+		$fontAwesome->referrerpolicy	= 'no-referrer';
 		$this->head->add($fontAwesome);
 
 		if ($this->showMultiSelect){
@@ -469,4 +488,15 @@ class Pagina Extends Html {
 			$this->head->add($multiSelectJS);
 		}
 	}
+
+	/*  
+		* Método addScript
+	    * Data de Criacao: 20/04/2023
+	    * Autor @theusdido
+
+		Adiciona script personalizado
+	*/
+	public function addScript($script){
+		$this->script = $script;
+	}	
 }

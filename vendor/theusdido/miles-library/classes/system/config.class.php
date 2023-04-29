@@ -239,5 +239,5 @@ class Config {
 			fwrite($fpMySQLINIDesenv,trim($c)."\n");
 		}
 		fclose($fpMySQLINIDesenv);
-	}
+	}	
 }

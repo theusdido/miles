@@ -25,7 +25,8 @@
 					pacote:'',
 					nomecompleto:'td_menu',
 					atributos:[{"id":1,"entidade":1,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":2,"entidade":1,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"varchar","tamanho":120,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":3,"entidade":1,"nome":"link","descricao":"Link","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":4,"entidade":1,"nome":"target","descricao":"Target","tipo":"varchar","tamanho":15,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":5,"entidade":1,"nome":"pai","descricao":"Pai","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":1,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":6,"entidade":1,"nome":"ordem","descricao":"Ordem","tipo":"smallint","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":7,"entidade":1,"nome":"fixo","descricao":"Fixo","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":8,"entidade":1,"nome":"tipomenu","descricao":"Tipo de Menu","tipo":"varchar","tamanho":35,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":9,"entidade":1,"nome":"entidade","descricao":"Entidade","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":10,"entidade":1,"nome":"path","descricao":"Path","tipo":"varchar","tamanho":250,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":11,"entidade":1,"nome":"icon","descricao":"Icon","tipo":"varchar","tamanho":50,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":12,"entidade":1,"nome":"coluna","descricao":"Coluna","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[2] = {
@@ -43,7 +44,8 @@
 					pacote:'',
 					nomecompleto:'td_grupousuario',
 					atributos:[{"id":13,"entidade":2,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":14,"entidade":2,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[3] = {
@@ -60,8 +62,9 @@
 					registrounico:0,
 					pacote:'',
 					nomecompleto:'td_usuario',
-					atributos:[{"id":15,"entidade":3,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":16,"entidade":3,"nome":"nome","descricao":"Nome","tipo":"varchar","tamanho":150,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":17,"entidade":3,"nome":"login","descricao":"Login","tipo":"varchar","tamanho":50,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":18,"entidade":3,"nome":"email","descricao":"E-Mail","tipo":"varchar","tamanho":250,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":19,"entidade":3,"nome":"senha","descricao":"Senha","tipo":"varchar","tamanho":50,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":6,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":20,"entidade":3,"nome":"permitirexclusao","descricao":"Permitir Exclus\u00e3o","tipo":"tinyint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":21,"entidade":3,"nome":"permitirtrocarempresa","descricao":"Permitir Trocar Empresa ?","tipo":"tinyint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":22,"entidade":3,"nome":"grupousuario","descricao":"Grupo de Usu\u00e1rio","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":2,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":23,"entidade":3,"nome":"perfilusuario","descricao":"Perfil de Usu\u00e1rio","tipo":"tinyint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":24,"entidade":3,"nome":"perfil","descricao":"Perfil","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":3,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":25,"entidade":3,"nome":"fotoperfil","descricao":"Foto (Perfil)","tipo":"mediumblob","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":19,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					atributos:[{"id":15,"entidade":3,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":16,"entidade":3,"nome":"nome","descricao":"Nome","tipo":"varchar","tamanho":150,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":17,"entidade":3,"nome":"login","descricao":"Login","tipo":"varchar","tamanho":50,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":18,"entidade":3,"nome":"email","descricao":"E-Mail","tipo":"varchar","tamanho":250,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":19,"entidade":3,"nome":"senha","descricao":"Senha","tipo":"varchar","tamanho":50,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":6,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":20,"entidade":3,"nome":"permitirexclusao","descricao":"Permitir Exclus\u00e3o ?","tipo":"tinyint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":21,"entidade":3,"nome":"permitirtrocarempresa","descricao":"Permitir Trocar Empresa ?","tipo":"tinyint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":22,"entidade":3,"nome":"grupousuario","descricao":"Grupo de Usu\u00e1rio","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":2,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":23,"entidade":3,"nome":"perfilusuario","descricao":"Perfil de Usu\u00e1rio ?","tipo":"tinyint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":24,"entidade":3,"nome":"perfil","descricao":"Perfil","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":3,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":25,"entidade":3,"nome":"fotoperfil","descricao":"Foto (Perfil)","tipo":"mediumblob","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":19,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0}],
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[4] = {
@@ -79,7 +82,8 @@
 					pacote:'',
 					nomecompleto:'td_relacionamento',
 					atributos:[{"id":26,"entidade":4,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":27,"entidade":4,"nome":"pai","descricao":"Pai","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":28,"entidade":4,"nome":"tipo","descricao":"Tipo","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":29,"entidade":4,"nome":"filho","descricao":"Filho","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":30,"entidade":4,"nome":"atributo","descricao":"Atributo","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":31,"entidade":4,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":32,"entidade":4,"nome":"controller","descricao":"Controller","tipo":"text","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":33,"entidade":4,"nome":"cardinalidade","descricao":"Cadinalidade","tipo":"char","tamanho":2,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[5] = {
@@ -97,7 +101,8 @@
 					pacote:'',
 					nomecompleto:'td_abas',
 					atributos:[{"id":34,"entidade":5,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":35,"entidade":5,"nome":"entidade","descricao":"Entidade","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":36,"entidade":5,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"varchar","tamanho":120,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":37,"entidade":5,"nome":"atributos","descricao":"Atributos","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[6] = {
@@ -115,7 +120,8 @@
 					pacote:'',
 					nomecompleto:'td_lista',
 					atributos:[{"id":38,"entidade":6,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":39,"entidade":6,"nome":"entidadepai","descricao":"Pai","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":40,"entidade":6,"nome":"entidadefilho","descricao":"Filho","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":41,"entidade":6,"nome":"regpai","descricao":"Pai","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":42,"entidade":6,"nome":"regfilho","descricao":"Filho","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[7] = {
@@ -133,7 +139,8 @@
 					pacote:'',
 					nomecompleto:'td_pagina',
 					atributos:[{"id":46,"entidade":7,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":92,"entidade":7,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":93,"entidade":7,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":94,"entidade":7,"nome":"nome","descricao":"Nome","tipo":"varchar","tamanho":150,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[8] = {
@@ -151,7 +158,8 @@
 					pacote:'',
 					nomecompleto:'td_projeto',
 					atributos:[{"id":43,"entidade":8,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":44,"entidade":8,"nome":"nome","descricao":"Nome","tipo":"varchar","tamanho":120,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":45,"entidade":8,"nome":"projectdiretorio","descricao":"Diret\u00f3rio Projeto","tipo":"varchar","tamanho":50,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":"","autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":0,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":0,"criarsomatoriogradededados":0,"naoexibircampo":0}],
-					relacionamentos:[{"id":2,"inativo":null,"pai":8,"tipo":2,"filho":44,"atributo":307,"descricao":"Banco de Dados","controller":null,"cardinalidade":"1N"},{"id":3,"inativo":null,"pai":8,"tipo":1,"filho":45,"atributo":314,"descricao":"FTP","controller":null,"cardinalidade":"11"}]
+					relacionamentos:[{"id":2,"inativo":null,"pai":8,"tipo":2,"filho":44,"atributo":307,"descricao":"Banco de Dados","controller":null,"cardinalidade":"1N"},{"id":3,"inativo":null,"pai":8,"tipo":1,"filho":45,"atributo":314,"descricao":"FTP","controller":null,"cardinalidade":"11"}],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[9] = {
@@ -169,7 +177,8 @@
 					pacote:'',
 					nomecompleto:'td_empresa',
 					atributos:[{"id":47,"entidade":9,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":48,"entidade":9,"nome":"codigo","descricao":"C\u00f3digo","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":25,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":49,"entidade":9,"nome":"nomefantasia","descricao":"Nome Fantasia","tipo":"varchar","tamanho":120,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":50,"entidade":9,"nome":"razaosocial","descricao":"Raz\u00e3o Social","tipo":"varchar","tamanho":200,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":51,"entidade":9,"nome":"cnpj","descricao":"CNPJ","tipo":"varchar","tamanho":25,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":15,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":52,"entidade":9,"nome":"inscricaoestadual","descricao":"Inscri\u00e7\u00e3o Estadual","tipo":"varchar","tamanho":40,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":53,"entidade":9,"nome":"inscricaomunicipal","descricao":"Inscri\u00e7\u00e3o Municipal","tipo":"varchar","tamanho":40,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":54,"entidade":9,"nome":"telefone","descricao":"Telefone","tipo":"varchar","tamanho":25,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":8,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":55,"entidade":9,"nome":"email","descricao":"E-Mail","tipo":"varchar","tamanho":200,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":12,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0}],
-					relacionamentos:[{"id":1,"inativo":null,"pai":9,"tipo":1,"filho":15,"atributo":0,"descricao":"Endere\u00e7o","controller":null,"cardinalidade":"11"}]
+					relacionamentos:[{"id":1,"inativo":null,"pai":9,"tipo":1,"filho":15,"atributo":0,"descricao":"Endere\u00e7o","controller":null,"cardinalidade":"11"}],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[10] = {
@@ -187,7 +196,8 @@
 					pacote:'',
 					nomecompleto:'td_menupermissoes',
 					atributos:[{"id":56,"entidade":10,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":57,"entidade":10,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":58,"entidade":10,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":59,"entidade":10,"nome":"menu","descricao":"Menu","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":1,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":60,"entidade":10,"nome":"usuario","descricao":"Usu\u00e1rio","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":3,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":61,"entidade":10,"nome":"permissao","descricao":"Permiss\u00e3o","tipo":"tinyint","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[11] = {
@@ -205,7 +215,8 @@
 					pacote:'',
 					nomecompleto:'td_pais',
 					atributos:[{"id":62,"entidade":11,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":63,"entidade":11,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":64,"entidade":11,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":65,"entidade":11,"nome":"nome","descricao":"Nome","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":66,"entidade":11,"nome":"sigla","descricao":"Sigla","tipo":"char","tamanho":2,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[12] = {
@@ -223,7 +234,8 @@
 					pacote:'',
 					nomecompleto:'td_uf',
 					atributos:[{"id":67,"entidade":12,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":68,"entidade":12,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":69,"entidade":12,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":70,"entidade":12,"nome":"nome","descricao":"Nome","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":71,"entidade":12,"nome":"sigla","descricao":"Sigla","tipo":"char","tamanho":2,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":72,"entidade":12,"nome":"pais","descricao":"Pa\u00eds","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":11,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[13] = {
@@ -241,7 +253,8 @@
 					pacote:'',
 					nomecompleto:'td_cidade',
 					atributos:[{"id":73,"entidade":13,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":74,"entidade":13,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":75,"entidade":13,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":76,"entidade":13,"nome":"nome","descricao":"Nome","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":77,"entidade":13,"nome":"bairromapeado","descricao":"Bairro Mapeado","tipo":"tinyint","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":78,"entidade":13,"nome":"uf","descricao":"UF","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":12,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[14] = {
@@ -259,7 +272,8 @@
 					pacote:'',
 					nomecompleto:'td_bairro',
 					atributos:[{"id":79,"entidade":14,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":80,"entidade":14,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":81,"entidade":14,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":82,"entidade":14,"nome":"nome","descricao":"Nome","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":83,"entidade":14,"nome":"cidade","descricao":"Cidade","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":13,"tipohtml":22,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[15] = {
@@ -277,7 +291,8 @@
 					pacote:'',
 					nomecompleto:'td_endereco',
 					atributos:[{"id":84,"entidade":15,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":85,"entidade":15,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":86,"entidade":15,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":87,"entidade":15,"nome":"bairro","descricao":"Bairro","tipo":"varchar","tamanho":35,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":14,"tipohtml":22,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":88,"entidade":15,"nome":"logradouro","descricao":"Logradouro","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":89,"entidade":15,"nome":"numero","descricao":"N\u00famero","tipo":"varchar","tamanho":5,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":90,"entidade":15,"nome":"complemento","descricao":"Complemento","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":91,"entidade":15,"nome":"cep","descricao":"CEP","tipo":"varchar","tamanho":10,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":9,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[16] = {
@@ -295,7 +310,8 @@
 					pacote:'',
 					nomecompleto:'td_tagsattributes',
 					atributos:[{"id":95,"entidade":16,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":96,"entidade":16,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":97,"entidade":16,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":98,"entidade":16,"nome":"tags","descricao":"Tags","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":17,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":99,"entidade":16,"nome":"atributo","descricao":"Atributo","tipo":"varchar","tamanho":50,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":100,"entidade":16,"nome":"valor","descricao":"Valor","tipo":"varchar","tamanho":150,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":101,"entidade":16,"nome":"tagpai","descricao":"Tag ( Pai )","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[17] = {
@@ -313,7 +329,8 @@
 					pacote:'',
 					nomecompleto:'td_tags',
 					atributos:[{"id":102,"entidade":17,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":103,"entidade":17,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":104,"entidade":17,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":105,"entidade":17,"nome":"entidade","descricao":"Entidade","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":106,"entidade":17,"nome":"pagina","descricao":"P\u00e1gina","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":7,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":107,"entidade":17,"nome":"nome","descricao":"Nome","tipo":"varchar","tamanho":50,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":108,"entidade":17,"nome":"tagpai","descricao":"Tag ( Pai )","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":109,"entidade":17,"nome":"texto","descricao":"Texto","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":110,"entidade":17,"nome":"ordem","descricao":"Ordem","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[18] = {
@@ -331,7 +348,8 @@
 					pacote:'',
 					nomecompleto:'td_tipoaviso',
 					atributos:[{"id":111,"entidade":18,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":112,"entidade":18,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[19] = {
@@ -349,7 +367,8 @@
 					pacote:'',
 					nomecompleto:'td_aviso',
 					atributos:[{"id":113,"entidade":19,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":114,"entidade":19,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":115,"entidade":19,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":116,"entidade":19,"nome":"datainicio","descricao":"Data de Inicio","tipo":"datetime","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":23,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":117,"entidade":19,"nome":"datafinal","descricao":"Data de Final","tipo":"datetime","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":23,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":118,"entidade":19,"nome":"tipoaviso","descricao":"Tipo de Aviso","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":18,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":119,"entidade":19,"nome":"mensagem","descricao":"Mensagem","tipo":"text","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":21,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[20] = {
@@ -367,7 +386,8 @@
 					pacote:'',
 					nomecompleto:'td_config',
 					atributos:[{"id":130,"entidade":20,"nome":"urlloading","descricao":"URL Loading","tipo":"text","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":817,"entidade":20,"nome":"casasdecimais","descricao":"Quantidade de Casas Decimais","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":25,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":139,"entidade":20,"nome":"tipogradedados","descricao":"Tipo de Grade de Dados","tipo":"varchar","tamanho":10,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":138,"entidade":20,"nome":"testecharset","descricao":"Teste CharSet","tipo":"text","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":137,"entidade":20,"nome":"pathfileuploadtemp","descricao":"Diret\u00f3rio Tempor\u00e1rio de Arquivos ( Upload )","tipo":"varchar","tamanho":200,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":136,"entidade":20,"nome":"pathfileupload","descricao":"Diret\u00f3rio de Arquivos ( Upload )","tipo":"varchar","tamanho":200,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":135,"entidade":20,"nome":"linguagemprogramacao","descricao":"Linguagem de Programa\u00e7\u00e3o","tipo":"varchar","tamanho":35,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":134,"entidade":20,"nome":"bancodados","descricao":"Banco de Dados","tipo":"varchar","tamanho":35,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":133,"entidade":20,"nome":"urlmenu","descricao":"URL Menu","tipo":"text","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":132,"entidade":20,"nome":"urlrelatorio","descricao":"URL Relat\u00f3rio","tipo":"text","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":131,"entidade":20,"nome":"urlloadgradededados","descricao":"URL Grade de Dados","tipo":"text","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":120,"entidade":20,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":129,"entidade":20,"nome":"urlinicializacao","descricao":"URL Inicializa\u00e7\u00e3o","tipo":"text","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":128,"entidade":20,"nome":"urlexcluirregistros","descricao":"URL Excluir Registro","tipo":"text","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":127,"entidade":20,"nome":"urlenderecofiltro","descricao":"URL Endere\u00e7o Filtro","tipo":"text","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":126,"entidade":20,"nome":"urlpesquisafiltro","descricao":"URL Pesquisa Filtro","tipo":"text","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":125,"entidade":20,"nome":"urluploadform","descricao":"URL Upload Form","tipo":"text","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":124,"entidade":20,"nome":"urlloadform","descricao":"URL Load Form","tipo":"text","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":123,"entidade":20,"nome":"urlsaveform","descricao":"URL Salvar Form","tipo":"text","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":122,"entidade":20,"nome":"urlrequisicoes","descricao":"URL Requisi\u00e7\u00e3o","tipo":"text","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":121,"entidade":20,"nome":"urlupload","descricao":"URL Upload","tipo":"text","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[21] = {
@@ -385,7 +405,8 @@
 					pacote:'',
 					nomecompleto:'td_entidadepermissoes',
 					atributos:[{"id":140,"entidade":21,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":141,"entidade":21,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":142,"entidade":21,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":143,"entidade":21,"nome":"entidade","descricao":"Entidade","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":144,"entidade":21,"nome":"usuario","descricao":"Usu\u00e1rio","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":3,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":145,"entidade":21,"nome":"inserir","descricao":"Inserir","tipo":"tinyint","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":146,"entidade":21,"nome":"excluir","descricao":"Excluir","tipo":"tinyint","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":147,"entidade":21,"nome":"editar","descricao":"Editar","tipo":"tinyint","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":148,"entidade":21,"nome":"visualizar","descricao":"Visualizar","tipo":"tinyint","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[22] = {
@@ -403,7 +424,8 @@
 					pacote:'',
 					nomecompleto:'td_atributopermissoes',
 					atributos:[{"id":149,"entidade":22,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":150,"entidade":22,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":151,"entidade":22,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":152,"entidade":22,"nome":"atributo","descricao":"Atributo","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":153,"entidade":22,"nome":"usuario","descricao":"Usu\u00e1rio","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":3,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":154,"entidade":22,"nome":"inserir","descricao":"Inserir","tipo":"tinyint","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":155,"entidade":22,"nome":"excluir","descricao":"Excluir","tipo":"tinyint","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":156,"entidade":22,"nome":"editar","descricao":"Editar","tipo":"tinyint","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":157,"entidade":22,"nome":"visualizar","descricao":"Visualizar","tipo":"tinyint","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[23] = {
@@ -421,7 +443,8 @@
 					pacote:'',
 					nomecompleto:'td_funcao',
 					atributos:[{"id":158,"entidade":23,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":159,"entidade":23,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":160,"entidade":23,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":161,"entidade":23,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[24] = {
@@ -439,7 +462,8 @@
 					pacote:'',
 					nomecompleto:'td_funcaopermissoes',
 					atributos:[{"id":162,"entidade":24,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":163,"entidade":24,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":164,"entidade":24,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":165,"entidade":24,"nome":"funcao","descricao":"Fun\u00e7\u00e3o","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":23,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":166,"entidade":24,"nome":"usuario","descricao":"Usu\u00e1rio","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":3,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":167,"entidade":24,"nome":"permissao","descricao":"Permiss\u00e3o","tipo":"tinyint","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[25] = {
@@ -457,7 +481,8 @@
 					pacote:'',
 					nomecompleto:'td_atributofiltro',
 					atributos:[{"id":168,"entidade":25,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":169,"entidade":25,"nome":"entidade","descricao":"Entidade","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":170,"entidade":25,"nome":"atributo","descricao":"Atributo","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":171,"entidade":25,"nome":"campo","descricao":"Campo","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":172,"entidade":25,"nome":"operador","descricao":"Operador","tipo":"varchar","tamanho":5,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":173,"entidade":25,"nome":"valor","descricao":"Valor","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[26] = {
@@ -475,7 +500,8 @@
 					pacote:'',
 					nomecompleto:'td_status',
 					atributos:[{"id":174,"entidade":26,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":175,"entidade":26,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":176,"entidade":26,"nome":"classe","descricao":"Classe","tipo":"varchar","tamanho":100,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[27] = {
@@ -492,8 +518,9 @@
 					registrounico:0,
 					pacote:'',
 					nomecompleto:'td_consulta',
-					atributos:[{"id":177,"entidade":27,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":178,"entidade":27,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":179,"entidade":27,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":180,"entidade":27,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":181,"entidade":27,"nome":"entidade","descricao":"Entidade","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":182,"entidade":27,"nome":"movimentacao","descricao":"Movimenta\u00e7\u00e3o","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":183,"entidade":27,"nome":"exibirbotaoeditar","descricao":"Exibir Bot\u00e3o Editar","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":184,"entidade":27,"nome":"exibirbotaoexcluir","descricao":"Exibir Bot\u00e3o Excluir","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":185,"entidade":27,"nome":"exibirbotaoemmassa","descricao":"Exibir Bot\u00e3o Em Massa","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":833,"entidade":27,"nome":"exibircolunaid","descricao":"Exibir Coluna ID","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0}],
-					relacionamentos:[]
+					atributos:[{"id":177,"entidade":27,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":178,"entidade":27,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":179,"entidade":27,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":180,"entidade":27,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":181,"entidade":27,"nome":"entidade","descricao":"Entidade","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":182,"entidade":27,"nome":"movimentacao","descricao":"Movimenta\u00e7\u00e3o","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":183,"entidade":27,"nome":"exibirbotaoeditar","descricao":"Exibir Bot\u00e3o Editar","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":184,"entidade":27,"nome":"exibirbotaoexcluir","descricao":"Exibir Bot\u00e3o Excluir","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":185,"entidade":27,"nome":"exibirbotaoemmassa","descricao":"Exibir Bot\u00e3o Em Massa","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":833,"entidade":27,"nome":"exibircolunaid","descricao":"Exibir Coluna ID","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":864,"entidade":27,"nome":"adicionaridfiltro","descricao":"Adicionar campo ID no filtro","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0}],
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[28] = {
@@ -511,7 +538,8 @@
 					pacote:'',
 					nomecompleto:'td_consultafiltro',
 					atributos:[{"id":186,"entidade":28,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":187,"entidade":28,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":188,"entidade":28,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":189,"entidade":28,"nome":"consulta","descricao":"Consulta","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":190,"entidade":28,"nome":"atributo","descricao":"Atributo","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":191,"entidade":28,"nome":"operador","descricao":"Operador","tipo":"varchar","tamanho":5,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":192,"entidade":28,"nome":"legenda","descricao":"Legenda","tipo":"varchar","tamanho":50,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":832,"entidade":28,"nome":"ordem","descricao":"Ordem","tipo":"tinyint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[29] = {
@@ -529,7 +557,8 @@
 					pacote:'',
 					nomecompleto:'td_consultastatus',
 					atributos:[{"id":193,"entidade":29,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":194,"entidade":29,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":195,"entidade":29,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":196,"entidade":29,"nome":"consulta","descricao":"Consulta","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":197,"entidade":29,"nome":"atributo","descricao":"Atributo","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":198,"entidade":29,"nome":"operador","descricao":"Operador","tipo":"varchar","tamanho":5,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":199,"entidade":29,"nome":"valor","descricao":"Valor","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":200,"entidade":29,"nome":"status","descricao":"Status","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":26,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[30] = {
@@ -547,7 +576,8 @@
 					pacote:'',
 					nomecompleto:'td_consultafiltroinicial',
 					atributos:[{"id":201,"entidade":30,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":202,"entidade":30,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":203,"entidade":30,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":204,"entidade":30,"nome":"consulta","descricao":"Consulta","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":205,"entidade":30,"nome":"atributo","descricao":"Atributo","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":206,"entidade":30,"nome":"operador","descricao":"Operador","tipo":"varchar","tamanho":5,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":207,"entidade":30,"nome":"valor","descricao":"Valor","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":208,"entidade":30,"nome":"legenda","descricao":"Legenda","tipo":"varchar","tamanho":50,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[31] = {
@@ -565,7 +595,8 @@
 					pacote:'',
 					nomecompleto:'td_relatorio',
 					atributos:[{"id":209,"entidade":31,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":210,"entidade":31,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":211,"entidade":31,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":212,"entidade":31,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":213,"entidade":31,"nome":"entidade","descricao":"Entidade","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":214,"entidade":31,"nome":"urlpersonalizada","descricao":"URL Personalizada","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":839,"entidade":31,"nome":"fixo","descricao":"Fixo","tipo":"varchar","tamanho":50,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[32] = {
@@ -582,8 +613,9 @@
 					registrounico:0,
 					pacote:'',
 					nomecompleto:'td_relatoriofiltro',
-					atributos:[{"id":215,"entidade":32,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":216,"entidade":32,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":217,"entidade":32,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":218,"entidade":32,"nome":"relatorio","descricao":"Relat\u00f3rio","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":219,"entidade":32,"nome":"atributo","descricao":"Atributo","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":220,"entidade":32,"nome":"operador","descricao":"Operador","tipo":"varchar","tamanho":5,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":221,"entidade":32,"nome":"legenda","descricao":"Legenda","tipo":"varchar","tamanho":50,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0}],
-					relacionamentos:[]
+					atributos:[{"id":215,"entidade":32,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":216,"entidade":32,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":217,"entidade":32,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":218,"entidade":32,"nome":"relatorio","descricao":"Relat\u00f3rio","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":219,"entidade":32,"nome":"atributo","descricao":"Atributo","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":220,"entidade":32,"nome":"operador","descricao":"Operador","tipo":"varchar","tamanho":5,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":221,"entidade":32,"nome":"legenda","descricao":"Legenda","tipo":"varchar","tamanho":50,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":853,"entidade":32,"nome":"ordem","descricao":"Ordem","tipo":"tinyint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0}],
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[33] = {
@@ -601,7 +633,8 @@
 					pacote:'',
 					nomecompleto:'td_relatoriostatus',
 					atributos:[{"id":222,"entidade":33,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":223,"entidade":33,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":224,"entidade":33,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":225,"entidade":33,"nome":"relatorio","descricao":"Relat\u00f3rio","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":226,"entidade":33,"nome":"atributo","descricao":"Atributo","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":227,"entidade":33,"nome":"operador","descricao":"Operador","tipo":"varchar","tamanho":5,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":228,"entidade":33,"nome":"valor","descricao":"Valor","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":229,"entidade":33,"nome":"status","descricao":"Status","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":26,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[34] = {
@@ -619,7 +652,8 @@
 					pacote:'',
 					nomecompleto:'td_movimentacao',
 					atributos:[{"id":230,"entidade":34,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":231,"entidade":34,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":232,"entidade":34,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":233,"entidade":34,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":234,"entidade":34,"nome":"entidade","descricao":"Entidade","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":235,"entidade":34,"nome":"motivo","descricao":"Motivo","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":236,"entidade":34,"nome":"exigirobrigatorio","descricao":"Exigir Obrig\u00f3torio","tipo":"tinyint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":237,"entidade":34,"nome":"exibirtitulo","descricao":"Exigir T\u00edtulo","tipo":"tinyint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":238,"entidade":34,"nome":"exibirvaloresantigos","descricao":"Exigir Valores Antigos","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[35] = {
@@ -637,7 +671,8 @@
 					pacote:'',
 					nomecompleto:'td_movimentacaoalterar',
 					atributos:[{"id":239,"entidade":35,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":240,"entidade":35,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":241,"entidade":35,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":242,"entidade":35,"nome":"movimentacao","descricao":"Movimenta\u00e7\u00e3o","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":243,"entidade":35,"nome":"atributo","descricao":"Atributo","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":244,"entidade":35,"nome":"legenda","descricao":"Legenda","tipo":"varchar","tamanho":50,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[36] = {
@@ -655,7 +690,8 @@
 					pacote:'',
 					nomecompleto:'td_movimentacaostatus',
 					atributos:[{"id":245,"entidade":36,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":246,"entidade":36,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":247,"entidade":36,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":248,"entidade":36,"nome":"movimentacao","descricao":"Movimenta\u00e7\u00e3o","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":249,"entidade":36,"nome":"atributo","descricao":"Atributo","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":250,"entidade":36,"nome":"operador","descricao":"Operador","tipo":"varchar","tamanho":5,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":251,"entidade":36,"nome":"valor","descricao":"Valor","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[37] = {
@@ -673,7 +709,8 @@
 					pacote:'',
 					nomecompleto:'td_movimentacaohistorico',
 					atributos:[{"id":252,"entidade":37,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":253,"entidade":37,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":254,"entidade":37,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":255,"entidade":37,"nome":"movimentacao","descricao":"Movimenta\u00e7\u00e3o","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":256,"entidade":37,"nome":"entidade","descricao":"Entidade","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":257,"entidade":37,"nome":"atributo","descricao":"Atributo","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":258,"entidade":37,"nome":"legenda","descricao":"Legenda","tipo":"varchar","tamanho":50,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[38] = {
@@ -691,7 +728,8 @@
 					pacote:'',
 					nomecompleto:'td_movimentacaohistoricoalteracao',
 					atributos:[{"id":259,"entidade":38,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":260,"entidade":38,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":261,"entidade":38,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":262,"entidade":38,"nome":"movimentacao","descricao":"Movimenta\u00e7\u00e3o","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":263,"entidade":38,"nome":"usuario","descricao":"Usu\u00e1rio","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":3,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":264,"entidade":38,"nome":"datahora","descricao":"Data\/Hora","tipo":"datetime","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":23,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":265,"entidade":38,"nome":"atributo","descricao":"Atributo","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":266,"entidade":38,"nome":"valor","descricao":"Valor","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":267,"entidade":38,"nome":"valorold","descricao":"Valor Antigo","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":268,"entidade":38,"nome":"entidade","descricao":"Entidade","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":269,"entidade":38,"nome":"motivo","descricao":"Motivo","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":270,"entidade":38,"nome":"entidademotivo","descricao":"Entidade Motivo","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":271,"entidade":38,"nome":"observacao","descricao":"Observa\u00e7\u00e3o","tipo":"text","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":14,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[39] = {
@@ -709,7 +747,8 @@
 					pacote:'',
 					nomecompleto:'td_log',
 					atributos:[{"id":272,"entidade":39,"nome":"projeto","descricao":"Projeto","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":273,"entidade":39,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":274,"entidade":39,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":275,"entidade":39,"nome":"usuario","descricao":"Usu\u00e1rio","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":3,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":276,"entidade":39,"nome":"entidade","descricao":"Entidade","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":277,"entidade":39,"nome":"atributo","descricao":"Atributo","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":278,"entidade":39,"nome":"valorid","descricao":"Valor ID","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":279,"entidade":39,"nome":"valornew","descricao":"Valor New","tipo":"varchar","tamanho":200,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":280,"entidade":39,"nome":"datahora","descricao":"Data e Hora","tipo":"datetime","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":281,"entidade":39,"nome":"acao","descricao":"A\u00e7\u00e3o","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":282,"entidade":39,"nome":"registro","descricao":"Registro","tipo":"text","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[40] = {
@@ -727,7 +766,8 @@
 					pacote:'',
 					nomecompleto:'td_menucrud',
 					atributos:[{"id":283,"entidade":40,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":284,"entidade":40,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":285,"entidade":40,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":286,"entidade":40,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[41] = {
@@ -745,7 +785,8 @@
 					pacote:'',
 					nomecompleto:'td_menucruditens',
 					atributos:[{"id":287,"entidade":41,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":288,"entidade":41,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":289,"entidade":41,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":290,"entidade":41,"nome":"link","descricao":"Link","tipo":"varchar","tamanho":500,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":291,"entidade":41,"nome":"menu","descricao":"Menu","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":292,"entidade":41,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"varchar","tamanho":50,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":293,"entidade":41,"nome":"tipo","descricao":"Tipo","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[42] = {
@@ -763,7 +804,8 @@
 					pacote:'',
 					nomecompleto:'td_typeconnectiondatabase',
 					atributos:[{"id":294,"entidade":42,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":295,"entidade":42,"nome":"nome","descricao":"Nome","tipo":"varchar","tamanho":15,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":296,"entidade":42,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"varchar","tamanho":30,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[43] = {
@@ -781,7 +823,8 @@
 					pacote:'',
 					nomecompleto:'td_database',
 					atributos:[{"id":297,"entidade":43,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":298,"entidade":43,"nome":"nome","descricao":"Nome","tipo":"varchar","tamanho":15,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":299,"entidade":43,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[44] = {
@@ -799,7 +842,8 @@
 					pacote:'',
 					nomecompleto:'td_connectiondatabase',
 					atributos:[{"id":300,"entidade":44,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":301,"entidade":44,"nome":"host","descricao":"Host","tipo":"varchar","tamanho":255,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":302,"entidade":44,"nome":"base","descricao":"Banco","tipo":"varchar","tamanho":50,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":303,"entidade":44,"nome":"port","descricao":"Porta","tipo":"varchar","tamanho":5,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":25,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":304,"entidade":44,"nome":"user","descricao":"Usu\u00e1rio","tipo":"varchar","tamanho":25,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":305,"entidade":44,"nome":"password","descricao":"Senha","tipo":"varchar","tamanho":50,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":306,"entidade":44,"nome":"type","descricao":"Tipo","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":42,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":307,"entidade":44,"nome":"projeto","descricao":"Projeto","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":308,"entidade":44,"nome":"sgdb","descricao":"SGDB","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":43,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[45] = {
@@ -817,7 +861,8 @@
 					pacote:'',
 					nomecompleto:'td_connectionftp',
 					atributos:[{"id":309,"entidade":45,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":310,"entidade":45,"nome":"host","descricao":"Host","tipo":"varchar","tamanho":255,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":311,"entidade":45,"nome":"port","descricao":"Porta","tipo":"varchar","tamanho":5,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":25,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":312,"entidade":45,"nome":"user","descricao":"Usu\u00e1rio","tipo":"varchar","tamanho":25,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":313,"entidade":45,"nome":"password","descricao":"Senha","tipo":"varchar","tamanho":50,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":314,"entidade":45,"nome":"projeto","descricao":"Projeto","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[46] = {
@@ -835,7 +880,8 @@
 					pacote:'',
 					nomecompleto:'td_charset',
 					atributos:[{"id":315,"entidade":46,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":316,"entidade":46,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":317,"entidade":46,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":318,"entidade":46,"nome":"local","descricao":"Local","tipo":"varchar","tamanho":500,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":319,"entidade":46,"nome":"charset","descricao":"CharSet","tipo":"char","tamanho":1,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[47] = {
@@ -853,7 +899,8 @@
 					pacote:'',
 					nomecompleto:'td_historicoacao',
 					atributos:[{"id":320,"entidade":47,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":321,"entidade":47,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":322,"entidade":47,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":323,"entidade":47,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[48] = {
@@ -871,7 +918,8 @@
 					pacote:'',
 					nomecompleto:'td_historicoatividade',
 					atributos:[{"id":324,"entidade":48,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":325,"entidade":48,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":326,"entidade":48,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":327,"entidade":48,"nome":"usuario","descricao":"Usu\u00e1rio","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":3,"tipohtml":22,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":328,"entidade":48,"nome":"datahora","descricao":"Data e Hora","tipo":"date","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":23,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":329,"entidade":48,"nome":"entidade","descricao":"Entidade","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":22,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":330,"entidade":48,"nome":"atributo","descricao":"Atributo","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":22,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":331,"entidade":48,"nome":"valorold","descricao":"Valor Antigo","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":332,"entidade":48,"nome":"valornew","descricao":"Valor Novo","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":333,"entidade":48,"nome":"registro","descricao":"Registro","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":334,"entidade":48,"nome":"acao","descricao":"A\u00e7\u00e3o","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":47,"tipohtml":22,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":335,"entidade":48,"nome":"observacao","descricao":"Observa\u00e7\u00e3o","tipo":"text","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":21,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[49] = {
@@ -889,7 +937,8 @@
 					pacote:'',
 					nomecompleto:'td_comunicado',
 					atributos:[{"id":336,"entidade":49,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":337,"entidade":49,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":338,"entidade":49,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":339,"entidade":49,"nome":"datainicio","descricao":"Data de Inicio","tipo":"datetime","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":23,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":340,"entidade":49,"nome":"datafinal","descricao":"Data de Final","tipo":"datetime","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":23,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":341,"entidade":49,"nome":"titulo","descricao":"T\u00edtulo","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":342,"entidade":49,"nome":"mensagem","descricao":"Mensagem","tipo":"text","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":21,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[50] = {
@@ -907,7 +956,8 @@
 					pacote:'',
 					nomecompleto:'td_email',
 					atributos:[{"id":343,"entidade":50,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":344,"entidade":50,"nome":"host","descricao":"Host","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":345,"entidade":50,"nome":"username","descricao":"Nome de Usu\u00e1rio","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":346,"entidade":50,"nome":"password","descricao":"Senha","tipo":"varchar","tamanho":120,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":6,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":347,"entidade":50,"nome":"issmtp","descricao":"Usar SMTP ?","tipo":"boolean","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":348,"entidade":50,"nome":"smtpsecure","descricao":"SMTP Secure","tipo":"varchar","tamanho":5,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":349,"entidade":50,"nome":"port","descricao":"Porta","tipo":"varchar","tamanho":5,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[51] = {
@@ -925,7 +975,8 @@
 					pacote:'',
 					nomecompleto:'td_ticketstatus',
 					atributos:[{"id":350,"entidade":51,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":351,"entidade":51,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[52] = {
@@ -943,7 +994,8 @@
 					pacote:'',
 					nomecompleto:'td_ticketprioridade',
 					atributos:[{"id":352,"entidade":52,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":353,"entidade":52,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[53] = {
@@ -961,7 +1013,8 @@
 					pacote:'',
 					nomecompleto:'td_tickettipo',
 					atributos:[{"id":354,"entidade":53,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":355,"entidade":53,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[54] = {
@@ -979,7 +1032,8 @@
 					pacote:'',
 					nomecompleto:'td_ticketseguidores',
 					atributos:[{"id":356,"entidade":54,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":357,"entidade":54,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":358,"entidade":54,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":359,"entidade":54,"nome":"usuario","descricao":"Usu\u00e1rio","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":3,"tipohtml":22,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":360,"entidade":54,"nome":"ticket","descricao":"Ticket","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":55,"tipohtml":22,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[55] = {
@@ -997,7 +1051,8 @@
 					pacote:'',
 					nomecompleto:'td_ticket',
 					atributos:[{"id":361,"entidade":55,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":362,"entidade":55,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":363,"entidade":55,"nome":"tipo","descricao":"Tipo","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":53,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":364,"entidade":55,"nome":"prioridade","descricao":"Prioridade","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":52,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":365,"entidade":55,"nome":"usuario","descricao":"Usu\u00e1rio","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":3,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.userid","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":366,"entidade":55,"nome":"responsavel","descricao":"Respons\u00e1vel","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":3,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.userid","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":367,"entidade":55,"nome":"titulo","descricao":"T\u00edtulo","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":368,"entidade":55,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"text","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":21,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":369,"entidade":55,"nome":"previsaoentrega","descricao":"Previs\u00e3o de Entrega","tipo":"datetime","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":23,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":370,"entidade":55,"nome":"datacriacao","descricao":"Data de Cria\u00e7\u00e3o","tipo":"datetime","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":23,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":1,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":371,"entidade":55,"nome":"anexo","descricao":"Anexo","tipo":"varchar","tamanho":200,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":19,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":372,"entidade":55,"nome":"status","descricao":"Status","tipo":"tinyint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"Aberto","labelumcheckbox":"Finalizado","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[{"id":4,"inativo":null,"pai":55,"tipo":6,"filho":56,"atributo":379,"descricao":"Intera\u00e7\u00e3o","controller":null,"cardinalidade":"1N"}]
+					relacionamentos:[{"id":4,"inativo":null,"pai":55,"tipo":6,"filho":56,"atributo":379,"descricao":"Intera\u00e7\u00e3o","controller":null,"cardinalidade":"1N"}],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[56] = {
@@ -1015,7 +1070,8 @@
 					pacote:'',
 					nomecompleto:'td_ticketinteraction',
 					atributos:[{"id":373,"entidade":56,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":374,"entidade":56,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":375,"entidade":56,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":376,"entidade":56,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"text","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":21,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":377,"entidade":56,"nome":"data","descricao":"Data","tipo":"datetime","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":23,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":378,"entidade":56,"nome":"anexo","descricao":"Anexo","tipo":"varchar","tamanho":200,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":19,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":379,"entidade":56,"nome":"ticket","descricao":"Ticket","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":55,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":0,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":380,"entidade":56,"nome":"usuario","descricao":"Usu\u00e1rio","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":3,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.userid","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[57] = {
@@ -1033,7 +1089,8 @@
 					pacote:'',
 					nomecompleto:'td_ticketanexo',
 					atributos:[{"id":381,"entidade":57,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":382,"entidade":57,"nome":"ticket","descricao":"Ticket","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":55,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":383,"entidade":57,"nome":"ticketinteraction","descricao":"Ticket Intera\u00e7\u00e3o","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":56,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":384,"entidade":57,"nome":"arquivo","descricao":"Arquivo","tipo":"varchar","tamanho":200,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[58] = {
@@ -1051,7 +1108,8 @@
 					pacote:'',
 					nomecompleto:'td_aplicativo_dispositivo',
 					atributos:[{"id":385,"entidade":58,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":1,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":386,"entidade":58,"nome":"usuario","descricao":"Usu\u00e1rio","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":387,"entidade":58,"nome":"token","descricao":"Token","tipo":"varchar","tamanho":256,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":388,"entidade":58,"nome":"aparelho","descricao":"Iparelho","tipo":"varchar","tamanho":32,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[59] = {
@@ -1069,7 +1127,8 @@
 					pacote:'',
 					nomecompleto:'td_aplicativo_usuario',
 					atributos:[{"id":389,"entidade":59,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":390,"entidade":59,"nome":"nome","descricao":"Nome","tipo":"varchar","tamanho":200,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":391,"entidade":59,"nome":"celular","descricao":"Celular","tipo":"varchar","tamanho":15,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":8,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[60] = {
@@ -1087,7 +1146,8 @@
 					pacote:'',
 					nomecompleto:'td_geral_mes',
 					atributos:[{"id":392,"entidade":60,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":393,"entidade":60,"nome":"nome","descricao":"Nome","tipo":"varchar","tamanho":15,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[61] = {
@@ -1105,7 +1165,8 @@
 					pacote:'',
 					nomecompleto:'td_geral_diasemana',
 					atributos:[{"id":394,"entidade":61,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":395,"entidade":61,"nome":"nome","descricao":"Nome","tipo":"varchar","tamanho":50,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[62] = {
@@ -1123,7 +1184,8 @@
 					pacote:'',
 					nomecompleto:'td_geral_feriado',
 					atributos:[{"id":396,"entidade":62,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":397,"entidade":62,"nome":"dia","descricao":"Dia","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":25,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":398,"entidade":62,"nome":"mes","descricao":"M\u00eas","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":399,"entidade":62,"nome":"nome","descricao":"Nome","tipo":"varchar","tamanho":50,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[63] = {
@@ -1140,8 +1202,9 @@
 					registrounico:0,
 					pacote:'',
 					nomecompleto:'td_ecommerce_carrinhocompras',
-					atributos:[{"id":400,"entidade":63,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":401,"entidade":63,"nome":"cliente","descricao":"Cliente","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":"","autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":66,"tipohtml":22,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":0,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":0,"criarsomatoriogradededados":0,"naoexibircampo":0},{"id":402,"entidade":63,"nome":"datahoracriacao","descricao":"Data\/Hora Cria\u00e7\u00e3o","tipo":"datetime","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":23,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":403,"entidade":63,"nome":"datahoraultimoacesso","descricao":"Data\/Hora \u00daltimo Acesso","tipo":"datetime","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":23,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":404,"entidade":63,"nome":"sessionid","descricao":"ID da Sess\u00e3o","tipo":"varchar","tamanho":100,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":405,"entidade":63,"nome":"representante","descricao":"Representante","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":"","autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":100,"tipohtml":22,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":0,"atributodependencia":0,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":0,"criarsomatoriogradededados":0,"naoexibircampo":0},{"id":406,"entidade":63,"nome":"isrepresentante","descricao":"Representante ?","tipo":"tinyint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":407,"entidade":63,"nome":"valortotal","descricao":"Valor Total","tipo":"float","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":13,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":408,"entidade":63,"nome":"qtdetotalitens","descricao":"Qtde Total de Itens","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":25,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":409,"entidade":63,"nome":"valorfrete","descricao":"Valor Frete","tipo":"float","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":13,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":413,"entidade":63,"nome":"transportadora","descricao":"Transportadora","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":64,"tipohtml":22,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[{"id":5,"inativo":null,"pai":63,"tipo":2,"filho":65,"atributo":415,"descricao":"Itens","controller":null,"cardinalidade":"1N"}]
+					atributos:[{"id":400,"entidade":63,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":401,"entidade":63,"nome":"cliente","descricao":"Cliente","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":"","autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":66,"tipohtml":22,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":0,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":0,"criarsomatoriogradededados":0,"naoexibircampo":0},{"id":402,"entidade":63,"nome":"datahoracriacao","descricao":"Data\/Hora Cria\u00e7\u00e3o","tipo":"datetime","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":23,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":403,"entidade":63,"nome":"datahoraultimoacesso","descricao":"Data\/Hora \u00daltimo Acesso","tipo":"datetime","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":23,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":404,"entidade":63,"nome":"sessionid","descricao":"ID da Sess\u00e3o","tipo":"varchar","tamanho":100,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":405,"entidade":63,"nome":"representante","descricao":"Representante","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":"","autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":100,"tipohtml":22,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":0,"atributodependencia":0,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":0,"criarsomatoriogradededados":0,"naoexibircampo":0},{"id":406,"entidade":63,"nome":"isrepresentante","descricao":"Representante ?","tipo":"tinyint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":407,"entidade":63,"nome":"valortotal","descricao":"Valor Total","tipo":"float","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":13,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":408,"entidade":63,"nome":"qtdetotalitens","descricao":"Qtde Total de Itens","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":25,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":409,"entidade":63,"nome":"valorfrete","descricao":"Valor Frete","tipo":"float","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":13,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":413,"entidade":63,"nome":"transportadora","descricao":"Transportadora","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":64,"tipohtml":22,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":859,"entidade":63,"nome":"cep","descricao":"CEP","tipo":"varchar","tamanho":10,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":9,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":863,"entidade":63,"nome":"is_retirar_loja","descricao":"Retirar na loja ?","tipo":"tinyint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0}],
+					relacionamentos:[{"id":5,"inativo":null,"pai":63,"tipo":2,"filho":65,"atributo":415,"descricao":"Itens","controller":null,"cardinalidade":"1N"}],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[64] = {
@@ -1152,14 +1215,15 @@
 					exibircabecalho:'1',
 					pai:'',
 					ncolunas:'3',
-					campodescchave:'',
+					campodescchave:'411',
 					atributogeneralizacao:'0',
 					exibirlegenda:'1',
 					registrounico:0,
 					pacote:'',
 					nomecompleto:'td_ecommerce_transportadora',
-					atributos:[{"id":410,"entidade":64,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":411,"entidade":64,"nome":"nome","descricao":"Nome","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":412,"entidade":64,"nome":"logo","descricao":"Logo","tipo":"varchar","tamanho":200,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":19,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					atributos:[{"id":410,"entidade":64,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":411,"entidade":64,"nome":"nome","descricao":"Nome","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":412,"entidade":64,"nome":"logo","descricao":"Logo","tipo":"varchar","tamanho":200,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":19,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0}],
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[65] = {
@@ -1176,8 +1240,9 @@
 					registrounico:0,
 					pacote:'',
 					nomecompleto:'td_ecommerce_carrinhoitem',
-					atributos:[{"id":414,"entidade":65,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":415,"entidade":65,"nome":"carrinho","descricao":"Carrinho","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":63,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":416,"entidade":65,"nome":"produto","descricao":"Produto","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":"","autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":85,"tipohtml":22,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":0,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":0,"criarsomatoriogradededados":0,"naoexibircampo":0},{"id":417,"entidade":65,"nome":"qtde","descricao":"Quantidade","tipo":"tinyint","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":26,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":418,"entidade":65,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":419,"entidade":65,"nome":"imgsrc","descricao":"Imagem ( Caminho )","tipo":"varchar","tamanho":300,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":420,"entidade":65,"nome":"valor","descricao":"Valor","tipo":"float","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":13,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":421,"entidade":65,"nome":"valortotal","descricao":"Valor Total","tipo":"float","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":13,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":422,"entidade":65,"nome":"produtonome","descricao":"Produto","tipo":"varchar","tamanho":200,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":423,"entidade":65,"nome":"referencia","descricao":"Refer\u00eancia","tipo":"varchar","tamanho":200,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":424,"entidade":65,"nome":"tamanho","descricao":"Tamanho","tipo":"varchar","tamanho":200,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":425,"entidade":65,"nome":"variacao","descricao":"Varia\u00e7\u00e3o","tipo":"varchar","tamanho":200,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					atributos:[{"id":414,"entidade":65,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":415,"entidade":65,"nome":"carrinho","descricao":"Carrinho","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":63,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":416,"entidade":65,"nome":"produto","descricao":"Produto","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":"","autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":85,"tipohtml":22,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":0,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":0,"criarsomatoriogradededados":0,"naoexibircampo":0},{"id":417,"entidade":65,"nome":"qtde","descricao":"Quantidade","tipo":"tinyint","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":26,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":418,"entidade":65,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":419,"entidade":65,"nome":"imgsrc","descricao":"Imagem ( Caminho )","tipo":"varchar","tamanho":300,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":420,"entidade":65,"nome":"valor","descricao":"Valor","tipo":"float","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":13,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":421,"entidade":65,"nome":"valortotal","descricao":"Valor Total","tipo":"float","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":13,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":422,"entidade":65,"nome":"produtonome","descricao":"Produto","tipo":"varchar","tamanho":200,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":423,"entidade":65,"nome":"referencia","descricao":"Refer\u00eancia","tipo":"varchar","tamanho":200,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":424,"entidade":65,"nome":"tamanho","descricao":"Tamanho","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":132,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":425,"entidade":65,"nome":"variacao","descricao":"Varia\u00e7\u00e3o","tipo":"varchar","tamanho":200,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":860,"entidade":65,"nome":"tamanho_desc","descricao":"Tamanho","tipo":"varchar","tamanho":200,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":861,"entidade":65,"nome":"cor_desc","descricao":"Cor","tipo":"varchar","tamanho":200,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":862,"entidade":65,"nome":"cor","descricao":"Cor","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":131,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0}],
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[66] = {
@@ -1194,8 +1259,9 @@
 					registrounico:0,
 					pacote:'',
 					nomecompleto:'td_ecommerce_cliente',
-					atributos:[{"id":426,"entidade":66,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":427,"entidade":66,"nome":"codigo","descricao":"C\u00f3digo","tipo":"varchar","tamanho":15,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":428,"entidade":66,"nome":"nome","descricao":"Nome","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":429,"entidade":66,"nome":"email","descricao":"E-Mail","tipo":"varchar","tamanho":200,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":12,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":430,"entidade":66,"nome":"senha","descricao":"Senha","tipo":"varchar","tamanho":128,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":6,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":431,"entidade":66,"nome":"telefone","descricao":"Telefone","tipo":"varchar","tamanho":35,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":8,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":432,"entidade":66,"nome":"observacao","descricao":"Observa\u00e7\u00e3o","tipo":"text","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":14,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":433,"entidade":66,"nome":"cpf","descricao":"CPF","tipo":"varchar","tamanho":35,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":10,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":0,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":434,"entidade":66,"nome":"genero","descricao":"G\u00eanero","tipo":"tinyint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":435,"entidade":66,"nome":"datanascimento","descricao":"Data de Nascimento","tipo":"date","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":11,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":441,"entidade":66,"nome":"nomefantasia","descricao":"Nome Fantasia","tipo":"varchar","tamanho":200,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":442,"entidade":66,"nome":"cnpj","descricao":"CNPJ","tipo":"varchar","tamanho":35,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":15,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":0,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":443,"entidade":66,"nome":"inscricaoestadual","descricao":"Inscri\u00e7\u00e3o Estadual","tipo":"varchar","tamanho":35,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":0,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":444,"entidade":66,"nome":"situacaotributaria","descricao":"Situa\u00e7\u00e3o Tribut\u00e1ria","tipo":"tinyint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":67,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":0,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":445,"entidade":66,"nome":"telefoneextra","descricao":"Telefone Extra","tipo":"varchar","tamanho":35,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":8,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":0,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[{"id":6,"inativo":null,"pai":66,"tipo":2,"filho":0,"atributo":0,"descricao":"Endere\u00e7o","controller":null,"cardinalidade":"1N"}]
+					atributos:[{"id":434,"entidade":66,"nome":"genero","descricao":"G\u00eanero","tipo":"tinyint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":858,"entidade":66,"nome":"fotoperfil","descricao":"Foto (Perfil)","tipo":"mediumblob","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":19,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":857,"entidade":66,"nome":"tipopessoa","descricao":"Tipo Pessoa","tipo":"tinyint","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"Pessoa F\u00edsica","labelumcheckbox":"Pessoa Jur\u00eddica","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":445,"entidade":66,"nome":"telefoneextra","descricao":"Telefone Extra","tipo":"varchar","tamanho":35,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":8,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":0,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":444,"entidade":66,"nome":"situacaotributaria","descricao":"Situa\u00e7\u00e3o Tribut\u00e1ria","tipo":"tinyint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":67,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":0,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":443,"entidade":66,"nome":"inscricaoestadual","descricao":"Inscri\u00e7\u00e3o Estadual","tipo":"varchar","tamanho":35,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":0,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":442,"entidade":66,"nome":"cnpj","descricao":"CNPJ","tipo":"varchar","tamanho":35,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":15,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":0,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":441,"entidade":66,"nome":"nomefantasia","descricao":"Nome Fantasia","tipo":"varchar","tamanho":200,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":435,"entidade":66,"nome":"datanascimento","descricao":"Data de Nascimento","tipo":"date","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":11,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":426,"entidade":66,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":433,"entidade":66,"nome":"cpf","descricao":"CPF","tipo":"varchar","tamanho":35,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":10,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":0,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":432,"entidade":66,"nome":"observacao","descricao":"Observa\u00e7\u00e3o","tipo":"text","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":14,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":431,"entidade":66,"nome":"telefone","descricao":"Telefone","tipo":"varchar","tamanho":35,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":8,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":430,"entidade":66,"nome":"senha","descricao":"Senha","tipo":"varchar","tamanho":128,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":6,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":429,"entidade":66,"nome":"email","descricao":"E-Mail","tipo":"varchar","tamanho":200,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":12,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":428,"entidade":66,"nome":"nome","descricao":"Nome","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":427,"entidade":66,"nome":"codigo","descricao":"C\u00f3digo","tipo":"varchar","tamanho":15,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0}],
+					relacionamentos:[{"id":6,"inativo":null,"pai":66,"tipo":2,"filho":0,"atributo":0,"descricao":"Endere\u00e7o","controller":null,"cardinalidade":"1N"},{"id":22,"inativo":null,"pai":66,"tipo":6,"filho":68,"atributo":0,"descricao":"Endere\u00e7o","controller":null,"cardinalidade":"1N"}],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[67] = {
@@ -1212,8 +1278,9 @@
 					registrounico:0,
 					pacote:'',
 					nomecompleto:'td_erp_contabil_situacaotributaria',
-					atributos:[{"id":436,"entidade":67,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":437,"entidade":67,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":438,"entidade":67,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":439,"entidade":67,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":440,"entidade":67,"nome":"sigla","descricao":"Sigla","tipo":"varchar","tamanho":10,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					atributos:[{"id":436,"entidade":67,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":437,"entidade":67,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":438,"entidade":67,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":439,"entidade":67,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":440,"entidade":67,"nome":"sigla","descricao":"Sigla","tipo":"varchar","tamanho":10,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0}],
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[68] = {
@@ -1230,8 +1297,9 @@
 					registrounico:0,
 					pacote:'',
 					nomecompleto:'td_ecommerce_endereco',
-					atributos:[{"id":476,"entidade":68,"nome":"numero","descricao":"N\u00famero","tipo":"varchar","tamanho":5,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":484,"entidade":68,"nome":"pais_sigla","descricao":"Pa\u00eds ( Sigla )","tipo":"char","tamanho":2,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":483,"entidade":68,"nome":"pais_nome","descricao":"Pa\u00eds ( Nome )","tipo":"varchar","tamanho":200,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":482,"entidade":68,"nome":"uf_nome","descricao":"UF ( Nome )","tipo":"varchar","tamanho":200,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":481,"entidade":68,"nome":"uf_sigla","descricao":"UF ( Sigla )","tipo":"char","tamanho":2,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":480,"entidade":68,"nome":"cidade_nome","descricao":"Cidade ( Nome )","tipo":"varchar","tamanho":200,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":479,"entidade":68,"nome":"bairro_nome","descricao":"Bairro ( Nome )","tipo":"varchar","tamanho":200,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":478,"entidade":68,"nome":"cep","descricao":"CEP","tipo":"varchar","tamanho":10,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":9,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":477,"entidade":68,"nome":"complemento","descricao":"Complemento","tipo":"varchar","tamanho":200,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":446,"entidade":68,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":475,"entidade":68,"nome":"logradouro","descricao":"Logradouro","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":474,"entidade":68,"nome":"pais","descricao":"Pa\u00eds","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":69,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":473,"entidade":68,"nome":"uf","descricao":"Estado ( UF )","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":70,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":472,"entidade":68,"nome":"cidade","descricao":"Cidade","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":71,"tipohtml":22,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":471,"entidade":68,"nome":"bairro","descricao":"Bairro","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":72,"tipohtml":22,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":448,"entidade":68,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":447,"entidade":68,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					atributos:[{"id":476,"entidade":68,"nome":"numero","descricao":"N\u00famero","tipo":"varchar","tamanho":5,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":484,"entidade":68,"nome":"pais_sigla","descricao":"Pa\u00eds ( Sigla )","tipo":"char","tamanho":2,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":483,"entidade":68,"nome":"pais_nome","descricao":"Pa\u00eds ( Nome )","tipo":"varchar","tamanho":200,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":482,"entidade":68,"nome":"uf_nome","descricao":"UF ( Nome )","tipo":"varchar","tamanho":200,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":481,"entidade":68,"nome":"uf_sigla","descricao":"UF ( Sigla )","tipo":"char","tamanho":2,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":480,"entidade":68,"nome":"cidade_nome","descricao":"Cidade ( Nome )","tipo":"varchar","tamanho":200,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":479,"entidade":68,"nome":"bairro_nome","descricao":"Bairro ( Nome )","tipo":"varchar","tamanho":200,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":478,"entidade":68,"nome":"cep","descricao":"CEP","tipo":"varchar","tamanho":10,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":9,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":477,"entidade":68,"nome":"complemento","descricao":"Complemento","tipo":"varchar","tamanho":200,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":446,"entidade":68,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":475,"entidade":68,"nome":"logradouro","descricao":"Logradouro","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":474,"entidade":68,"nome":"pais","descricao":"Pa\u00eds","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":69,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":473,"entidade":68,"nome":"uf","descricao":"Estado ( UF )","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":70,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":472,"entidade":68,"nome":"cidade","descricao":"Cidade","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":71,"tipohtml":22,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":471,"entidade":68,"nome":"bairro","descricao":"Bairro","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":72,"tipohtml":22,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":448,"entidade":68,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":447,"entidade":68,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0}],
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[69] = {
@@ -1248,8 +1316,9 @@
 					registrounico:0,
 					pacote:'',
 					nomecompleto:'td_ecommerce_pais',
-					atributos:[{"id":449,"entidade":69,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":450,"entidade":69,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":451,"entidade":69,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":452,"entidade":69,"nome":"nome","descricao":"Nome","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":453,"entidade":69,"nome":"sigla","descricao":"Sigla","tipo":"varchar","tamanho":5,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					atributos:[{"id":449,"entidade":69,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":450,"entidade":69,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":451,"entidade":69,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":452,"entidade":69,"nome":"nome","descricao":"Nome","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":453,"entidade":69,"nome":"sigla","descricao":"Sigla","tipo":"varchar","tamanho":5,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0}],
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[70] = {
@@ -1266,8 +1335,9 @@
 					registrounico:0,
 					pacote:'',
 					nomecompleto:'td_ecommerce_uf',
-					atributos:[{"id":454,"entidade":70,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":455,"entidade":70,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":456,"entidade":70,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":457,"entidade":70,"nome":"nome","descricao":"Nome","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":458,"entidade":70,"nome":"sigla","descricao":"Sigla","tipo":"char","tamanho":2,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":459,"entidade":70,"nome":"pais","descricao":"Pa\u00eds","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":69,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					atributos:[{"id":454,"entidade":70,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":455,"entidade":70,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":456,"entidade":70,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":457,"entidade":70,"nome":"nome","descricao":"Nome","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":458,"entidade":70,"nome":"sigla","descricao":"Sigla","tipo":"char","tamanho":2,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":459,"entidade":70,"nome":"pais","descricao":"Pa\u00eds","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":69,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0}],
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[71] = {
@@ -1284,8 +1354,9 @@
 					registrounico:0,
 					pacote:'',
 					nomecompleto:'td_ecommerce_cidade',
-					atributos:[{"id":460,"entidade":71,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":461,"entidade":71,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":462,"entidade":71,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":463,"entidade":71,"nome":"nome","descricao":"Nome","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":464,"entidade":71,"nome":"bairromapeado","descricao":"Bairro Mapeado","tipo":"tinyint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":465,"entidade":71,"nome":"uf","descricao":"UF","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":70,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					atributos:[{"id":460,"entidade":71,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":461,"entidade":71,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":462,"entidade":71,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":463,"entidade":71,"nome":"nome","descricao":"Nome","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":464,"entidade":71,"nome":"bairromapeado","descricao":"Bairro Mapeado","tipo":"tinyint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":465,"entidade":71,"nome":"uf","descricao":"UF","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":70,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0}],
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[72] = {
@@ -1302,8 +1373,9 @@
 					registrounico:0,
 					pacote:'',
 					nomecompleto:'td_ecommerce_bairro',
-					atributos:[{"id":466,"entidade":72,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":467,"entidade":72,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":468,"entidade":72,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":469,"entidade":72,"nome":"nome","descricao":"Nome","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":470,"entidade":72,"nome":"cidade","descricao":"Cidade","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":71,"tipohtml":22,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					atributos:[{"id":466,"entidade":72,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":467,"entidade":72,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":468,"entidade":72,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":469,"entidade":72,"nome":"nome","descricao":"Nome","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":470,"entidade":72,"nome":"cidade","descricao":"Cidade","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":71,"tipohtml":22,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0}],
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[73] = {
@@ -1321,7 +1393,8 @@
 					pacote:'',
 					nomecompleto:'td_ecommerce_configuracoes',
 					atributos:[{"id":485,"entidade":73,"nome":"valorminimopedido","descricao":"Valor M\u00ednimo Pedido","tipo":"float","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":13,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":486,"entidade":73,"nome":"permitecomprasemestoque","descricao":"Permite Comprar Sem Estoque","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":487,"entidade":73,"nome":"usarvariacaoproduto","descricao":"Usar Varia\u00e7\u00e3o de Produtos ?","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":488,"entidade":73,"nome":"ispaginacaoprodutohome","descricao":"P\u00e1gina\u00e7\u00e3o de Produtos na Home ?","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":489,"entidade":73,"nome":"qtdadeprodutohome","descricao":"Quantidade Produto na Home","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":25,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":490,"entidade":73,"nome":"valorminimoentrega","descricao":"Valor M\u00ednimo de Entrega","tipo":"float","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":13,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":491,"entidade":73,"nome":"prazominimoentrega","descricao":"Prazo M\u00ednimo de Entrega","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":25,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":492,"entidade":73,"nome":"emailenviopedido","descricao":"E-Mail Envio Pedido","tipo":"varchar","tamanho":200,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":12,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":493,"entidade":73,"nome":"is_show_price_only_logged","descricao":"Exibir Pre\u00e7o Apenas Logado ?","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":494,"entidade":73,"nome":"qtdademaximaitenspedido","descricao":"Quantidade de Itens no Pedido","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":25,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[74] = {
@@ -1339,7 +1412,8 @@
 					pacote:'',
 					nomecompleto:'td_ecommerce_recuperacaosenha',
 					atributos:[{"id":495,"entidade":74,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":496,"entidade":74,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":497,"entidade":74,"nome":"token","descricao":"Token","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":498,"entidade":74,"nome":"cliente","descricao":"Cliente","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":66,"tipohtml":22,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":499,"entidade":74,"nome":"datahoraenvio","descricao":"Data\/Hora de Envio","tipo":"datetime","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":23,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":500,"entidade":74,"nome":"datahoravalidade","descricao":"Data\/Hora de Validade","tipo":"datetime","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":23,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":501,"entidade":74,"nome":"email","descricao":"E-Mail","tipo":"varchar","tamanho":200,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":12,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":502,"entidade":74,"nome":"ip","descricao":"IP","tipo":"varchar","tamanho":64,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":503,"entidade":74,"nome":"dadosnavegacao","descricao":"Dados de Navega\u00e7\u00e3o","tipo":"text","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":21,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[75] = {
@@ -1357,7 +1431,8 @@
 					pacote:'',
 					nomecompleto:'td_ecommerce_loja',
 					atributos:[{"id":504,"entidade":75,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":505,"entidade":75,"nome":"razaosocial","descricao":"Raz\u00e3o Social","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":506,"entidade":75,"nome":"email","descricao":"E-Mail","tipo":"varchar","tamanho":120,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":507,"entidade":75,"nome":"telefone","descricao":"Telefone","tipo":"varchar","tamanho":35,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":8,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":508,"entidade":75,"nome":"cnpj","descricao":"CNPJ","tipo":"varchar","tamanho":35,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":15,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":0,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[{"id":7,"inativo":null,"pai":75,"tipo":2,"filho":68,"atributo":0,"descricao":"Endere\u00e7o","controller":null,"cardinalidade":"1N"}]
+					relacionamentos:[{"id":7,"inativo":null,"pai":75,"tipo":2,"filho":68,"atributo":0,"descricao":"Endere\u00e7o","controller":null,"cardinalidade":"1N"}],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[76] = {
@@ -1375,7 +1450,8 @@
 					pacote:'',
 					nomecompleto:'td_ecommerce_statuspedido',
 					atributos:[{"id":509,"entidade":76,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":510,"entidade":76,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":511,"entidade":76,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":512,"entidade":76,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"varchar","tamanho":50,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":513,"entidade":76,"nome":"significado","descricao":"Significado","tipo":"varchar","tamanho":1000,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[77] = {
@@ -1392,8 +1468,9 @@
 					registrounico:0,
 					pacote:'',
 					nomecompleto:'td_ecommerce_pedido',
-					atributos:[{"id":514,"entidade":77,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":515,"entidade":77,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":516,"entidade":77,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":517,"entidade":77,"nome":"cliente","descricao":"Cliente","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":66,"tipohtml":22,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":518,"entidade":77,"nome":"datahoraenvio","descricao":"Data\/Hora de Envio","tipo":"datetime","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":23,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":519,"entidade":77,"nome":"datahoraretorno","descricao":"Data\/Hora de Retorno","tipo":"datetime","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":23,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":520,"entidade":77,"nome":"carrinhocompras","descricao":"Carrinho de Compra","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":63,"tipohtml":22,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":521,"entidade":77,"nome":"status","descricao":"Status","tipo":"tinyint","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":"","autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":92,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":0,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":0,"criarsomatoriogradededados":0,"naoexibircampo":0},{"id":522,"entidade":77,"nome":"metodopagamento","descricao":"M\u00e9todo de Pagamento","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":79,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":523,"entidade":77,"nome":"qtdetotalitens","descricao":"Qtde Total de Itens","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":524,"entidade":77,"nome":"valortotal","descricao":"Valor Total","tipo":"float","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":13,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":525,"entidade":77,"nome":"representante","descricao":"Representante","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":100,"tipohtml":22,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":0,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":526,"entidade":77,"nome":"isrepresentante","descricao":"Representante ?","tipo":"tinyint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":527,"entidade":77,"nome":"valorfrete","descricao":"Valor Frete","tipo":"float","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":13,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":528,"entidade":77,"nome":"isfinalizado","descricao":"Finalizado ?","tipo":"tinyint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[{"id":8,"inativo":null,"pai":77,"tipo":2,"filho":78,"atributo":532,"descricao":"Itens","controller":null,"cardinalidade":"1N"}]
+					atributos:[{"id":514,"entidade":77,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":515,"entidade":77,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":516,"entidade":77,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":517,"entidade":77,"nome":"cliente","descricao":"Cliente","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":66,"tipohtml":22,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":518,"entidade":77,"nome":"datahoraenvio","descricao":"Data\/Hora de Envio","tipo":"datetime","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":23,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":519,"entidade":77,"nome":"datahoraretorno","descricao":"Data\/Hora de Retorno","tipo":"datetime","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":23,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":520,"entidade":77,"nome":"carrinhocompras","descricao":"Carrinho de Compra","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":63,"tipohtml":22,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":521,"entidade":77,"nome":"status","descricao":"Status","tipo":"tinyint","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":"","autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":92,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":0,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":0,"criarsomatoriogradededados":0,"naoexibircampo":0},{"id":522,"entidade":77,"nome":"metodopagamento","descricao":"M?todo de Pagamento","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":"","autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":93,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":0,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":0,"criarsomatoriogradededados":0,"naoexibircampo":0},{"id":523,"entidade":77,"nome":"qtdetotalitens","descricao":"Qtde Total de Itens","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":524,"entidade":77,"nome":"valortotal","descricao":"Valor Total","tipo":"float","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":13,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":525,"entidade":77,"nome":"representante","descricao":"Representante","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":100,"tipohtml":22,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":0,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":526,"entidade":77,"nome":"isrepresentante","descricao":"Representante ?","tipo":"tinyint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":527,"entidade":77,"nome":"valorfrete","descricao":"Valor Frete","tipo":"float","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":13,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":528,"entidade":77,"nome":"isfinalizado","descricao":"Finalizado ?","tipo":"tinyint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
+					relacionamentos:[{"id":8,"inativo":null,"pai":77,"tipo":2,"filho":78,"atributo":532,"descricao":"Itens","controller":null,"cardinalidade":"1N"}],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[78] = {
@@ -1411,7 +1488,8 @@
 					pacote:'',
 					nomecompleto:'td_ecommerce_pedidoitem',
 					atributos:[{"id":529,"entidade":78,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":530,"entidade":78,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":531,"entidade":78,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":532,"entidade":78,"nome":"pedido","descricao":"Pedido","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":77,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":533,"entidade":78,"nome":"carrinhoitem","descricao":"Item do Carrinho","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":65,"tipohtml":22,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":534,"entidade":78,"nome":"produto","descricao":"Produto","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":85,"tipohtml":22,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":535,"entidade":78,"nome":"qtde","descricao":"Quantidade","tipo":"tinyint","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":26,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":536,"entidade":78,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":537,"entidade":78,"nome":"valor","descricao":"Valor","tipo":"float","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":13,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":538,"entidade":78,"nome":"valortotal","descricao":"Valor Total","tipo":"float","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":13,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":539,"entidade":78,"nome":"produtonome","descricao":"Produto","tipo":"varchar","tamanho":200,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":540,"entidade":78,"nome":"referencia","descricao":"Refer\u00eancia","tipo":"varchar","tamanho":200,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":541,"entidade":78,"nome":"tamanho","descricao":"Tamanho","tipo":"varchar","tamanho":200,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":542,"entidade":78,"nome":"variacao","descricao":"Varia\u00e7\u00e3o","tipo":"varchar","tamanho":200,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[79] = {
@@ -1429,7 +1507,8 @@
 					pacote:'',
 					nomecompleto:'td_ecommerce_metodopagamento',
 					atributos:[{"id":543,"entidade":79,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":544,"entidade":79,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":545,"entidade":79,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":546,"entidade":79,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[80] = {
@@ -1447,7 +1526,8 @@
 					pacote:'',
 					nomecompleto:'td_ecommerce_pedidoemail',
 					atributos:[{"id":547,"entidade":80,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":548,"entidade":80,"nome":"email","descricao":"E-Mail","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":12,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":549,"entidade":80,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"varchar","tamanho":50,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[{"id":9,"inativo":null,"pai":80,"tipo":7,"filho":50,"atributo":548,"descricao":"Remetente","controller":null,"cardinalidade":"11"}]
+					relacionamentos:[{"id":9,"inativo":null,"pai":80,"tipo":7,"filho":50,"atributo":548,"descricao":"Remetente","controller":null,"cardinalidade":"11"}],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[81] = {
@@ -1461,11 +1541,12 @@
 					campodescchave:'551',
 					atributogeneralizacao:'0',
 					exibirlegenda:'1',
-					registrounico:0,
+					registrounico:1,
 					pacote:'',
 					nomecompleto:'td_ecommerce_categoria',
-					atributos:[{"id":550,"entidade":81,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":551,"entidade":81,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":"","autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":0,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":0,"criarsomatoriogradededados":0,"naoexibircampo":0},{"id":552,"entidade":81,"nome":"imagem","descricao":"Imagem","tipo":"text","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":19,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":818,"entidade":81,"nome":"icon","descricao":"Icon","tipo":"text","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":19,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":821,"entidade":81,"nome":"modalidade","descricao":"Modalidade","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":130,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					atributos:[{"id":550,"entidade":81,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":551,"entidade":81,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":"","autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":0,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":0,"criarsomatoriogradededados":0,"naoexibircampo":0},{"id":552,"entidade":81,"nome":"imagem","descricao":"Imagem","tipo":"text","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":19,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":818,"entidade":81,"nome":"icon","descricao":"Icon","tipo":"text","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":19,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":821,"entidade":81,"nome":"modalidade","descricao":"Modalidade","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":130,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0}],
+					relacionamentos:[],
+					entidadeauxiliar:true
 				};
 			
 				td_entidade[82] = {
@@ -1483,7 +1564,8 @@
 					pacote:'',
 					nomecompleto:'td_ecommerce_especificacaotecnica',
 					atributos:[{"id":553,"entidade":82,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":554,"entidade":82,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"varchar","tamanho":1000,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":555,"entidade":82,"nome":"icone","descricao":"\u00cdcone","tipo":"text","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":19,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":556,"entidade":82,"nome":"ordem","descricao":"Ordem","tipo":"int","tamanho":1,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":25,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[83] = {
@@ -1500,8 +1582,9 @@
 					registrounico:0,
 					pacote:'',
 					nomecompleto:'td_ecommerce_marca',
-					atributos:[{"id":557,"entidade":83,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":558,"entidade":83,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					atributos:[{"id":557,"entidade":83,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":558,"entidade":83,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0}],
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[84] = {
@@ -1519,7 +1602,8 @@
 					pacote:'',
 					nomecompleto:'td_ecommerce_peso',
 					atributos:[{"id":559,"entidade":84,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":560,"entidade":84,"nome":"peso","descricao":"Peso","tipo":"float","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":26,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":561,"entidade":84,"nome":"produto","descricao":"Produto","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[85] = {
@@ -1536,8 +1620,9 @@
 					registrounico:0,
 					pacote:'',
 					nomecompleto:'td_ecommerce_produto',
-					atributos:[{"id":576,"entidade":85,"nome":"altura","descricao":"Altura","tipo":"float","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":26,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":823,"entidade":85,"nome":"tamanhos","descricao":"Tamanhos","tipo":"varchar","tamanho":50,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":132,"tipohtml":5,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":822,"entidade":85,"nome":"cores","descricao":"Cores","tipo":"varchar","tamanho":50,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":131,"tipohtml":5,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":788,"entidade":85,"nome":"grupo","descricao":"Grupo","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":123,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":591,"entidade":85,"nome":"marca","descricao":"Marca","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":"","autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":83,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":0,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":0,"criarsomatoriogradededados":0,"naoexibircampo":1},{"id":590,"entidade":85,"nome":"unidademedida","descricao":"Unidade de Medida","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":"","autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":87,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":0,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":0,"criarsomatoriogradededados":0,"naoexibircampo":1},{"id":586,"entidade":85,"nome":"tipo","descricao":"Tipo","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":"","autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":86,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":0,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":0,"criarsomatoriogradededados":0,"naoexibircampo":1},{"id":581,"entidade":85,"nome":"sku","descricao":"SKU","tipo":"varchar","tamanho":50,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":"","autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":0,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":0,"criarsomatoriogradededados":0,"naoexibircampo":1},{"id":580,"entidade":85,"nome":"destaque","descricao":"Destaque","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":579,"entidade":85,"nome":"referencia","descricao":"Refer\u00eancia","tipo":"varchar","tamanho":50,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":"","autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":0,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":0,"criarsomatoriogradededados":0,"naoexibircampo":1},{"id":578,"entidade":85,"nome":"diametro","descricao":"Diametro","tipo":"float","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":26,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":577,"entidade":85,"nome":"largura","descricao":"Largura","tipo":"float","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":26,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":562,"entidade":85,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":575,"entidade":85,"nome":"comprimento","descricao":"Comprimento","tipo":"float","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":26,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":574,"entidade":85,"nome":"peso","descricao":"Peso","tipo":"float","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":26,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":573,"entidade":85,"nome":"imagemextra3","descricao":"Imagem ( Extra )","tipo":"text","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":19,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":572,"entidade":85,"nome":"imagemextra2","descricao":"Imagem ( Extra )","tipo":"text","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":19,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":571,"entidade":85,"nome":"imagemextra1","descricao":"Imagem ( Extra )","tipo":"text","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":19,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":570,"entidade":85,"nome":"imagemprincipal","descricao":"Imagem ( Principal )","tipo":"text","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":19,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":569,"entidade":85,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"text","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":21,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":563,"entidade":85,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":565,"entidade":85,"nome":"nome","descricao":"Nome","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":1,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":566,"entidade":85,"nome":"preco","descricao":"Pre\u00e7o","tipo":"float","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":13,"dataretroativa":0,"ordem":2,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":582,"entidade":85,"nome":"categoria","descricao":"Categoria","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":81,"tipohtml":4,"dataretroativa":0,"ordem":3,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":583,"entidade":85,"nome":"subcategoria","descricao":"Subcategoria","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":"","autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":88,"tipohtml":4,"dataretroativa":0,"ordem":4,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":582,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":0,"criarsomatoriogradededados":0,"naoexibircampo":0},{"id":568,"entidade":85,"nome":"exibirhome","descricao":"Exibir na Home","tipo":"tinyint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":5,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":567,"entidade":85,"nome":"exibirpreco","descricao":"Exibir Pre\u00e7o","tipo":"tinyint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":"","autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":6,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":0,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":0,"criarsomatoriogradededados":0,"naoexibircampo":0},{"id":564,"entidade":85,"nome":"inativo","descricao":"Inativo","tipo":"tinyint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":7,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[{"id":21,"inativo":null,"pai":85,"tipo":2,"filho":89,"atributo":598,"descricao":"Tamanhos","controller":null,"cardinalidade":"1N"}]
+					atributos:[{"id":576,"entidade":85,"nome":"altura","descricao":"Altura","tipo":"float","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":26,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":823,"entidade":85,"nome":"tamanhos","descricao":"Tamanhos","tipo":"varchar","tamanho":50,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":132,"tipohtml":5,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":822,"entidade":85,"nome":"cores","descricao":"Cores","tipo":"varchar","tamanho":50,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":131,"tipohtml":5,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":788,"entidade":85,"nome":"grupo","descricao":"Grupo","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":123,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":591,"entidade":85,"nome":"marca","descricao":"Marca","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":"","autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":83,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":0,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":0,"criarsomatoriogradededados":0,"naoexibircampo":0},{"id":590,"entidade":85,"nome":"unidademedida","descricao":"Unidade de Medida","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":"","autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":87,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":0,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":0,"criarsomatoriogradededados":0,"naoexibircampo":0},{"id":586,"entidade":85,"nome":"tipo","descricao":"Tipo","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":"","autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":86,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":0,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":0,"criarsomatoriogradededados":0,"naoexibircampo":0},{"id":581,"entidade":85,"nome":"sku","descricao":"SKU","tipo":"varchar","tamanho":50,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":"","autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":0,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":0,"criarsomatoriogradededados":0,"naoexibircampo":0},{"id":580,"entidade":85,"nome":"destaque","descricao":"Destaque","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":579,"entidade":85,"nome":"referencia","descricao":"Refer\u00eancia","tipo":"varchar","tamanho":50,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":"","autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":0,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":0,"criarsomatoriogradededados":0,"naoexibircampo":0},{"id":578,"entidade":85,"nome":"diametro","descricao":"Diametro","tipo":"float","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":26,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":577,"entidade":85,"nome":"largura","descricao":"Largura","tipo":"float","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":26,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":562,"entidade":85,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":575,"entidade":85,"nome":"comprimento","descricao":"Comprimento","tipo":"float","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":26,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":574,"entidade":85,"nome":"peso","descricao":"Peso","tipo":"float","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":26,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":573,"entidade":85,"nome":"imagemextra3","descricao":"Imagem ( Extra )","tipo":"text","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":19,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":572,"entidade":85,"nome":"imagemextra2","descricao":"Imagem ( Extra )","tipo":"text","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":19,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":571,"entidade":85,"nome":"imagemextra1","descricao":"Imagem ( Extra )","tipo":"text","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":19,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":570,"entidade":85,"nome":"imagemprincipal","descricao":"Imagem ( Principal )","tipo":"text","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":19,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":569,"entidade":85,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"text","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":21,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":563,"entidade":85,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":565,"entidade":85,"nome":"nome","descricao":"Nome","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":1,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":566,"entidade":85,"nome":"preco","descricao":"Pre\u00e7o","tipo":"float","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":13,"dataretroativa":0,"ordem":2,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":582,"entidade":85,"nome":"categoria","descricao":"Categoria","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":81,"tipohtml":4,"dataretroativa":0,"ordem":3,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":583,"entidade":85,"nome":"subcategoria","descricao":"Subcategoria","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":"","autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":88,"tipohtml":4,"dataretroativa":0,"ordem":4,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":582,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":0,"criarsomatoriogradededados":0,"naoexibircampo":0},{"id":568,"entidade":85,"nome":"exibirhome","descricao":"Exibir na Home","tipo":"tinyint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":5,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":567,"entidade":85,"nome":"exibirpreco","descricao":"Exibir Pre\u00e7o","tipo":"tinyint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":"","autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":6,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":0,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":0,"criarsomatoriogradededados":0,"naoexibircampo":0},{"id":564,"entidade":85,"nome":"inativo","descricao":"Inativo","tipo":"tinyint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":7,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0}],
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[86] = {
@@ -1554,8 +1639,9 @@
 					registrounico:0,
 					pacote:'',
 					nomecompleto:'td_ecommerce_tipoproduto',
-					atributos:[{"id":584,"entidade":86,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":585,"entidade":86,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					atributos:[{"id":584,"entidade":86,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":585,"entidade":86,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0}],
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[87] = {
@@ -1572,8 +1658,9 @@
 					registrounico:0,
 					pacote:'',
 					nomecompleto:'td_ecommerce_unidademedida',
-					atributos:[{"id":587,"entidade":87,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":588,"entidade":87,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"varchar","tamanho":200,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":589,"entidade":87,"nome":"sigla","descricao":"Sigla","tipo":"varchar","tamanho":3,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					atributos:[{"id":587,"entidade":87,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":588,"entidade":87,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"varchar","tamanho":200,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":589,"entidade":87,"nome":"sigla","descricao":"Sigla","tipo":"varchar","tamanho":3,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0}],
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[88] = {
@@ -1591,7 +1678,8 @@
 					pacote:'',
 					nomecompleto:'td_ecommerce_subcategoria',
 					atributos:[{"id":593,"entidade":88,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":1,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":594,"entidade":88,"nome":"categoria","descricao":"Categoria","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":81,"tipohtml":4,"dataretroativa":0,"ordem":2,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":816,"entidade":88,"nome":"imagem","descricao":"Imagem","tipo":"text","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":19,"dataretroativa":0,"ordem":3,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":592,"entidade":88,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":4,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:true
 				};
 			
 				td_entidade[89] = {
@@ -1609,7 +1697,8 @@
 					pacote:'',
 					nomecompleto:'td_ecommerce_tamanhoproduto',
 					atributos:[{"id":595,"entidade":89,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":596,"entidade":89,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":597,"entidade":89,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":598,"entidade":89,"nome":"produto","descricao":"Produto","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":85,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":599,"entidade":89,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":600,"entidade":89,"nome":"valor","descricao":"Valor","tipo":"float","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":13,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":601,"entidade":89,"nome":"peso","descricao":"Peso","tipo":"float","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":26,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[90] = {
@@ -1627,7 +1716,8 @@
 					pacote:'',
 					nomecompleto:'td_ecommerce_fichatecnica',
 					atributos:[{"id":602,"entidade":90,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":603,"entidade":90,"nome":"produto","descricao":"Produto","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":85,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":604,"entidade":90,"nome":"especificacao","descricao":"Especifica\u00e7\u00e3o","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":82,"tipohtml":4,"dataretroativa":1,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":605,"entidade":90,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"varchar","tamanho":1000,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[91] = {
@@ -1645,7 +1735,8 @@
 					pacote:'',
 					nomecompleto:'td_ecommerce_pagseguro',
 					atributos:[{"id":606,"entidade":91,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":607,"entidade":91,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":608,"entidade":91,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":609,"entidade":91,"nome":"email","descricao":"E-Mail","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":12,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":610,"entidade":91,"nome":"token","descricao":"Token","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":611,"entidade":91,"nome":"producao","descricao":"Produ\u00e7\u00e3o","tipo":"tinyint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":612,"entidade":91,"nome":"notificacaourl","descricao":"Notifica\u00e7\u00e3o (URL)","tipo":"varchar","tamanho":1000,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[92] = {
@@ -1662,8 +1753,9 @@
 					registrounico:0,
 					pacote:'',
 					nomecompleto:'td_ecommerce_pagseguro_statuspedido',
-					atributos:[{"id":613,"entidade":92,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":614,"entidade":92,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":615,"entidade":92,"nome":"significado","descricao":"Significado","tipo":"text","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":21,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":616,"entidade":92,"nome":"operacaoestoque","descricao":"Opera\u00e7\u00e3o de Estoque","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					atributos:[{"id":613,"entidade":92,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":614,"entidade":92,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":615,"entidade":92,"nome":"significado","descricao":"Significado","tipo":"text","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":21,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":616,"entidade":92,"nome":"operacaoestoque","descricao":"Opera??o de Estoque","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":"","autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":104,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":0,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":0,"criarsomatoriogradededados":0,"naoexibircampo":0}],
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[93] = {
@@ -1674,14 +1766,15 @@
 					exibircabecalho:'1',
 					pai:'',
 					ncolunas:'3',
-					campodescchave:'',
+					campodescchave:'620',
 					atributogeneralizacao:'0',
 					exibirlegenda:'1',
 					registrounico:1,
 					pacote:'',
 					nomecompleto:'td_ecommerce_pagseguro_metodopagamento',
 					atributos:[{"id":617,"entidade":93,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":618,"entidade":93,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":619,"entidade":93,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":620,"entidade":93,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[94] = {
@@ -1699,7 +1792,8 @@
 					pacote:'',
 					nomecompleto:'td_ecommerce_diafechado',
 					atributos:[{"id":621,"entidade":94,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":622,"entidade":94,"nome":"data","descricao":"Data","tipo":"date","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":11,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":623,"entidade":94,"nome":"motivo","descricao":"Motivo","tipo":"text","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":21,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[95] = {
@@ -1717,7 +1811,8 @@
 					pacote:'',
 					nomecompleto:'td_ecommerce_horaatendimento',
 					atributos:[{"id":624,"entidade":95,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":625,"entidade":95,"nome":"diasemana","descricao":"Dia","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":61,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":626,"entidade":95,"nome":"horainicial","descricao":"Hora Inicial","tipo":"time","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":28,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":627,"entidade":95,"nome":"horafinal","descricao":"Hora Final","tipo":"time","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":28,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":628,"entidade":95,"nome":"observacao","descricao":"Observa\u00e7\u00e3o","tipo":"varchar","tamanho":50,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":629,"entidade":95,"nome":"isfechado","descricao":"Fechado ?","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[96] = {
@@ -1735,7 +1830,8 @@
 					pacote:'',
 					nomecompleto:'td_ecommerce_comissaogeral',
 					atributos:[{"id":630,"entidade":96,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":631,"entidade":96,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":632,"entidade":96,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":633,"entidade":96,"nome":"percentualdesconto","descricao":"% de Desconto","tipo":"float","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":26,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":634,"entidade":96,"nome":"valorfixo","descricao":"Valor Fixo","tipo":"float","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":13,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[{"id":12,"inativo":null,"pai":96,"tipo":6,"filho":97,"atributo":0,"descricao":"Representante","controller":null,"cardinalidade":"1N"},{"id":13,"inativo":null,"pai":96,"tipo":6,"filho":98,"atributo":0,"descricao":"Produto","controller":null,"cardinalidade":"1N"}]
+					relacionamentos:[{"id":12,"inativo":null,"pai":96,"tipo":6,"filho":97,"atributo":0,"descricao":"Representante","controller":null,"cardinalidade":"1N"},{"id":13,"inativo":null,"pai":96,"tipo":6,"filho":98,"atributo":0,"descricao":"Produto","controller":null,"cardinalidade":"1N"}],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[97] = {
@@ -1753,7 +1849,8 @@
 					pacote:'',
 					nomecompleto:'td_ecommerce_comissaorepresentante',
 					atributos:[{"id":635,"entidade":97,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":636,"entidade":97,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":637,"entidade":97,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":638,"entidade":97,"nome":"representante","descricao":"Representante","tipo":"TEXT","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":22,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":639,"entidade":97,"nome":"percentualdesconto","descricao":"% de Desconto","tipo":"float","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":26,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":640,"entidade":97,"nome":"valorfixo","descricao":"Valor Fixo","tipo":"float","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":13,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[98] = {
@@ -1771,7 +1868,8 @@
 					pacote:'',
 					nomecompleto:'td_ecommerce_comissaoproduto',
 					atributos:[{"id":641,"entidade":98,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":642,"entidade":98,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":643,"entidade":98,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":644,"entidade":98,"nome":"produto","descricao":"Produto","tipo":"TEXT","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":85,"tipohtml":22,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":645,"entidade":98,"nome":"representante","descricao":"Representante","tipo":"TEXT","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":22,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":646,"entidade":98,"nome":"percentualdesconto","descricao":"% de Desconto","tipo":"float","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":26,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":647,"entidade":98,"nome":"valorfixo","descricao":"Valor Fixo","tipo":"float","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":13,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[99] = {
@@ -1789,7 +1887,8 @@
 					pacote:'',
 					nomecompleto:'td_ecommerce_comissaopedido',
 					atributos:[{"id":648,"entidade":99,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":649,"entidade":99,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":650,"entidade":99,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":651,"entidade":99,"nome":"pedido","descricao":"Pedido","tipo":"tinyint","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":77,"tipohtml":22,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":0,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[100] = {
@@ -1806,8 +1905,9 @@
 					registrounico:0,
 					pacote:'',
 					nomecompleto:'td_ecommerce_representante',
-					atributos:[{"id":652,"entidade":100,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":653,"entidade":100,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":654,"entidade":100,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":655,"entidade":100,"nome":"usuario","descricao":"Usu\u00e1rio","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":3,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":656,"entidade":100,"nome":"nome","descricao":"Nome","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":657,"entidade":100,"nome":"genero","descricao":"G\u00eanero","tipo":"char","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"Masculino","labelumcheckbox":"Feminino","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":658,"entidade":100,"nome":"datanascimento","descricao":"Data de Nascimento","tipo":"date","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":11,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":659,"entidade":100,"nome":"email","descricao":"E-Mail","tipo":"varchar","tamanho":120,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":660,"entidade":100,"nome":"cpf","descricao":"CPF","tipo":"varchar","tamanho":35,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":10,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":661,"entidade":100,"nome":"telefone","descricao":"Telefone","tipo":"varchar","tamanho":35,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":8,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[{"id":14,"inativo":null,"pai":100,"tipo":2,"filho":68,"atributo":0,"descricao":"Endere\u00e7o","controller":null,"cardinalidade":"1N"}]
+					atributos:[{"id":652,"entidade":100,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":653,"entidade":100,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":654,"entidade":100,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":655,"entidade":100,"nome":"usuario","descricao":"Usu\u00e1rio","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":3,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":656,"entidade":100,"nome":"nome","descricao":"Nome","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":657,"entidade":100,"nome":"genero","descricao":"G\u00eanero","tipo":"char","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"Masculino","labelumcheckbox":"Feminino","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":658,"entidade":100,"nome":"datanascimento","descricao":"Data de Nascimento","tipo":"date","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":11,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":659,"entidade":100,"nome":"email","descricao":"E-Mail","tipo":"varchar","tamanho":120,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":660,"entidade":100,"nome":"cpf","descricao":"CPF","tipo":"varchar","tamanho":35,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":10,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":661,"entidade":100,"nome":"telefone","descricao":"Telefone","tipo":"varchar","tamanho":35,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":8,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0}],
+					relacionamentos:[{"id":14,"inativo":null,"pai":100,"tipo":2,"filho":68,"atributo":0,"descricao":"Endere\u00e7o","controller":null,"cardinalidade":"1N"}],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[101] = {
@@ -1825,7 +1925,8 @@
 					pacote:'',
 					nomecompleto:'td_ecommerce_indicadores',
 					atributos:[{"id":662,"entidade":101,"nome":"visitanteonline","descricao":"Visitantes Online","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":25,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":663,"entidade":101,"nome":"totalvisitas","descricao":"Total Visitas","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":25,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":664,"entidade":101,"nome":"carrinhosativos","descricao":"Carrinhos Ativos","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":25,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":665,"entidade":101,"nome":"carrinhoabandonados","descricao":"Carrinhos Abandonados","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":25,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":666,"entidade":101,"nome":"devolucoesetrocas","descricao":"Devolu\u00e7\u00f5es e Trocas","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":25,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":667,"entidade":101,"nome":"produtosesgotados","descricao":"Produtos Esgotados","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":25,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[102] = {
@@ -1843,7 +1944,8 @@
 					pacote:'',
 					nomecompleto:'td_ecommerce_visitantes',
 					atributos:[{"id":668,"entidade":102,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":669,"entidade":102,"nome":"cliente","descricao":"Cliente","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":66,"tipohtml":22,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":670,"entidade":102,"nome":"data","descricao":"Data","tipo":"date","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":11,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":671,"entidade":102,"nome":"hora","descricao":"Hora","tipo":"time","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":28,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":672,"entidade":102,"nome":"ip","descricao":"IP","tipo":"varchar","tamanho":25,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":673,"entidade":102,"nome":"navegador","descricao":"Navegador","tipo":"varchar","tamanho":20,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":674,"entidade":102,"nome":"sessao","descricao":"Sess\u00e3o","tipo":"char","tamanho":32,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[103] = {
@@ -1861,7 +1963,8 @@
 					pacote:'',
 					nomecompleto:'td_ecommerce_operacaoestoque',
 					atributos:[{"id":675,"entidade":103,"nome":"produto","descricao":"Produto","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":85,"tipohtml":22,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":676,"entidade":103,"nome":"quantidade","descricao":"Quantidade","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":25,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":681,"entidade":103,"nome":"operacaoestoque","descricao":"Opera\u00e7\u00e3o","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":104,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[104] = {
@@ -1879,7 +1982,8 @@
 					pacote:'',
 					nomecompleto:'td_ecommerce_tipooperacaoestoque',
 					atributos:[{"id":677,"entidade":104,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":678,"entidade":104,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":679,"entidade":104,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"varchar","tamanho":200,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":680,"entidade":104,"nome":"tipo","descricao":"Tipo","tipo":"boolean","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"Entrada","labelumcheckbox":"Sa\u00edda","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[105] = {
@@ -1897,7 +2001,8 @@
 					pacote:'',
 					nomecompleto:'td_ecommerce_posicaogeralestoque',
 					atributos:[{"id":682,"entidade":105,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":683,"entidade":105,"nome":"produto","descricao":"Produto","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":85,"tipohtml":22,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":684,"entidade":105,"nome":"saldo","descricao":"Saldo","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":25,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":685,"entidade":105,"nome":"datahora","descricao":"Data\/Hora","tipo":"datetime","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":23,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[106] = {
@@ -1915,7 +2020,8 @@
 					pacote:'',
 					nomecompleto:'td_ecommerce_pontuacao',
 					atributos:[{"id":687,"entidade":106,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":688,"entidade":106,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":689,"entidade":106,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":690,"entidade":106,"nome":"taxaconversao","descricao":"Taxa Convers","tipo":"float","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":13,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[{"id":15,"inativo":null,"pai":106,"tipo":6,"filho":107,"atributo":0,"descricao":"Item","controller":null,"cardinalidade":"1N"},{"id":16,"inativo":null,"pai":106,"tipo":6,"filho":108,"atributo":0,"descricao":"Cliente","controller":null,"cardinalidade":"1N"}]
+					relacionamentos:[{"id":15,"inativo":null,"pai":106,"tipo":6,"filho":107,"atributo":0,"descricao":"Item","controller":null,"cardinalidade":"1N"},{"id":16,"inativo":null,"pai":106,"tipo":6,"filho":108,"atributo":0,"descricao":"Cliente","controller":null,"cardinalidade":"1N"}],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[107] = {
@@ -1933,7 +2039,8 @@
 					pacote:'',
 					nomecompleto:'td_ecommerce_itenspontuacao',
 					atributos:[{"id":691,"entidade":107,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":692,"entidade":107,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":693,"entidade":107,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":694,"entidade":107,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":0,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":695,"entidade":107,"nome":"ponto","descricao":"Ponto","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":25,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[108] = {
@@ -1951,7 +2058,8 @@
 					pacote:'',
 					nomecompleto:'td_ecommerce_pontuacaocliente',
 					atributos:[{"id":696,"entidade":108,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":697,"entidade":108,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":698,"entidade":108,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":699,"entidade":108,"nome":"cliente","descricao":"Cliente","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":66,"tipohtml":22,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":0,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":700,"entidade":108,"nome":"item","descricao":"Item","tipo":"tinyint","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":107,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":0,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[109] = {
@@ -1969,7 +2077,8 @@
 					pacote:'',
 					nomecompleto:'td_ecommerce_tabelaprecogeral',
 					atributos:[{"id":701,"entidade":109,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":702,"entidade":109,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":703,"entidade":109,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":704,"entidade":109,"nome":"percentualdesconto","descricao":"% de Desconto","tipo":"float","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":26,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":705,"entidade":109,"nome":"valorfixo","descricao":"Valor Fixo","tipo":"float","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":13,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[{"id":17,"inativo":null,"pai":109,"tipo":6,"filho":110,"atributo":0,"descricao":"Representante","controller":null,"cardinalidade":"1N"},{"id":18,"inativo":null,"pai":109,"tipo":6,"filho":111,"atributo":0,"descricao":"Produto","controller":null,"cardinalidade":"1N"},{"id":19,"inativo":null,"pai":109,"tipo":6,"filho":112,"atributo":0,"descricao":"Promo\u00e7\u00e3o","controller":null,"cardinalidade":"1N"}]
+					relacionamentos:[{"id":17,"inativo":null,"pai":109,"tipo":6,"filho":110,"atributo":0,"descricao":"Representante","controller":null,"cardinalidade":"1N"},{"id":18,"inativo":null,"pai":109,"tipo":6,"filho":111,"atributo":0,"descricao":"Produto","controller":null,"cardinalidade":"1N"},{"id":19,"inativo":null,"pai":109,"tipo":6,"filho":112,"atributo":0,"descricao":"Promo\u00e7\u00e3o","controller":null,"cardinalidade":"1N"}],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[110] = {
@@ -1987,7 +2096,8 @@
 					pacote:'',
 					nomecompleto:'td_ecommerce_tabelaprecorepresentante',
 					atributos:[{"id":706,"entidade":110,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":707,"entidade":110,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":708,"entidade":110,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":709,"entidade":110,"nome":"representante","descricao":"Representante","tipo":"TEXT","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":100,"tipohtml":22,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":710,"entidade":110,"nome":"percentualdesconto","descricao":"% de Desconto","tipo":"float","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":26,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":711,"entidade":110,"nome":"valorfixo","descricao":"Valor Fixo","tipo":"float","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":13,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[111] = {
@@ -2005,7 +2115,8 @@
 					pacote:'',
 					nomecompleto:'td_ecommerce_tabelaprecoproduto',
 					atributos:[{"id":712,"entidade":111,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":713,"entidade":111,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":714,"entidade":111,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":715,"entidade":111,"nome":"produto","descricao":"Produto","tipo":"TEXT","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":85,"tipohtml":22,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":716,"entidade":111,"nome":"representante","descricao":"Representante","tipo":"TEXT","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":100,"tipohtml":22,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":717,"entidade":111,"nome":"percentualdesconto","descricao":"% de Desconto","tipo":"float","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":26,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":718,"entidade":111,"nome":"valorfixo","descricao":"Valor Fixo","tipo":"float","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":13,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[112] = {
@@ -2023,7 +2134,8 @@
 					pacote:'',
 					nomecompleto:'td_ecommerce_promocao',
 					atributos:[{"id":719,"entidade":112,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":720,"entidade":112,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":721,"entidade":112,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":722,"entidade":112,"nome":"nome","descricao":"Nome","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":723,"entidade":112,"nome":"produto","descricao":"Produto","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":85,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":724,"entidade":112,"nome":"percentualdesconto","descricao":"% de Desconto","tipo":"float","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":26,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":725,"entidade":112,"nome":"valorfixo","descricao":"Valor Fixo","tipo":"float","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":13,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":726,"entidade":112,"nome":"datahorainicio","descricao":"Data\/Hora Inicio","tipo":"datetime","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":23,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":727,"entidade":112,"nome":"datahorafim","descricao":"Data\/Hora Fim","tipo":"datetime","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":23,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[113] = {
@@ -2041,7 +2153,8 @@
 					pacote:'',
 					nomecompleto:'td_ecommerce_taxaentrega',
 					atributos:[{"id":728,"entidade":113,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":729,"entidade":113,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":730,"entidade":113,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":731,"entidade":113,"nome":"remetente","descricao":"Remetente","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":72,"tipohtml":22,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":732,"entidade":113,"nome":"destinatario","descricao":"Destinatario","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":72,"tipohtml":22,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":733,"entidade":113,"nome":"taxaentrega","descricao":"Taxa de Entrega","tipo":"float","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":13,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":734,"entidade":113,"nome":"prazoentrega","descricao":"Prazo de Entrega","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":25,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":735,"entidade":113,"nome":"transportadora","descricao":"Transportadora","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":64,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[114] = {
@@ -2059,7 +2172,8 @@
 					pacote:'',
 					nomecompleto:'td_ecommerce_expedicao',
 					atributos:[{"id":736,"entidade":114,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":737,"entidade":114,"nome":"pedido","descricao":"Pedido","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":77,"tipohtml":22,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":738,"entidade":114,"nome":"datahoraenvio","descricao":"Data\/Hora de Envio","tipo":"datetime","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":23,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":739,"entidade":114,"nome":"datahorarecebimento","descricao":"Data\/Hora de Recebimento","tipo":"datetime","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":23,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":740,"entidade":114,"nome":"entregue","descricao":"Entregue ?","tipo":"boolean","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":741,"entidade":114,"nome":"valorfrete","descricao":"Valor Frete","tipo":"float","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":13,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":742,"entidade":114,"nome":"pesototal","descricao":"Peso Total","tipo":"float","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":26,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":743,"entidade":114,"nome":"transportadora","descricao":"Transportadora","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":64,"tipohtml":22,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":744,"entidade":114,"nome":"codigorastreamento","descricao":"C\u00f3digo Rastreamento","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[{"id":20,"inativo":null,"pai":114,"tipo":7,"filho":68,"atributo":0,"descricao":"Endere\u00e7o","controller":null,"cardinalidade":"11"}]
+					relacionamentos:[{"id":20,"inativo":null,"pai":114,"tipo":7,"filho":68,"atributo":0,"descricao":"Endere\u00e7o","controller":null,"cardinalidade":"11"}],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[115] = {
@@ -2077,7 +2191,8 @@
 					pacote:'',
 					nomecompleto:'td_website_geral_menuprincipal',
 					atributos:[{"id":745,"entidade":115,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":746,"entidade":115,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":747,"entidade":115,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":748,"entidade":115,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":749,"entidade":115,"nome":"link","descricao":"Link","tipo":"text","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":750,"entidade":115,"nome":"target","descricao":"Target","tipo":"varchar","tamanho":15,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":751,"entidade":115,"nome":"pai","descricao":"pai","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":115,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":752,"entidade":115,"nome":"ordem","descricao":"Ordem","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":753,"entidade":115,"nome":"fixo","descricao":"Fixo","tipo":"varchar","tamanho":35,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[116] = {
@@ -2095,7 +2210,8 @@
 					pacote:'',
 					nomecompleto:'td_website_geral_blog',
 					atributos:[{"id":754,"entidade":116,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":755,"entidade":116,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":756,"entidade":116,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":757,"entidade":116,"nome":"titulo","descricao":"Titulo","tipo":"text","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":758,"entidade":116,"nome":"arquivo","descricao":"Arquivo","tipo":"text","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":19,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":759,"entidade":116,"nome":"texto","descricao":"Texto","tipo":"text","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":21,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":760,"entidade":116,"nome":"datahora","descricao":"Data e Hora","tipo":"datetime","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":23,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":761,"entidade":116,"nome":"chamada","descricao":"Chamada","tipo":"varchar","tamanho":1000,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":762,"entidade":116,"nome":"produto","descricao":"Produto","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":22,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":769,"entidade":116,"nome":"youtube","descricao":"Youtube ( LINK )","tipo":"varchar","tamanho":500,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[117] = {
@@ -2113,7 +2229,8 @@
 					pacote:'',
 					nomecompleto:'td_website_geral_slider',
 					atributos:[{"id":763,"entidade":117,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":764,"entidade":117,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":765,"entidade":117,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":766,"entidade":117,"nome":"imagem","descricao":"Imagem","tipo":"text","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":"","autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":19,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":0,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":0,"criarsomatoriogradededados":0,"naoexibircampo":0},{"id":767,"entidade":117,"nome":"html","descricao":"HTML","tipo":"text","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":21,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":768,"entidade":117,"nome":"exibir","descricao":"Exibir","tipo":"tinyint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[119] = {
@@ -2131,7 +2248,8 @@
 					pacote:'',
 					nomecompleto:'td_website_geral_configuracoes',
 					atributos:[{"id":772,"entidade":119,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":773,"entidade":119,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":774,"entidade":119,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":775,"entidade":119,"nome":"logohome","descricao":"Logotipo ( P\u00e1gina Inicial )","tipo":"text","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":19,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":776,"entidade":119,"nome":"metatagdescription","descricao":"Meta Tag Descri\u00e7\u00e3o","tipo":"varchar","tamanho":50,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":0,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":777,"entidade":119,"nome":"metatagauthor","descricao":"Meta Tag Autor","tipo":"varchar","tamanho":50,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":0,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[120] = {
@@ -2149,7 +2267,8 @@
 					pacote:'',
 					nomecompleto:'td_website_geral_politicaprivacidade',
 					atributos:[{"id":778,"entidade":120,"nome":"texto","descricao":"Texto","tipo":"text","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":21,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[121] = {
@@ -2167,7 +2286,8 @@
 					pacote:'',
 					nomecompleto:'td_website_geral_redessociais',
 					atributos:[{"id":779,"entidade":121,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":783,"entidade":121,"nome":"redesocial","descricao":"Rede Social","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":122,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":784,"entidade":121,"nome":"link","descricao":"Link","tipo":"varchar","tamanho":500,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[122] = {
@@ -2185,7 +2305,8 @@
 					pacote:'',
 					nomecompleto:'td_website_geral_redesocial',
 					atributos:[{"id":780,"entidade":122,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":781,"entidade":122,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"varchar","tamanho":50,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":782,"entidade":122,"nome":"icone","descricao":"\u00cdcone","tipo":"varchar","tamanho":50,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[123] = {
@@ -2202,8 +2323,9 @@
 					registrounico:0,
 					pacote:'',
 					nomecompleto:'td_ecommerce_grupoproduto',
-					atributos:[{"id":785,"entidade":123,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":786,"entidade":123,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":787,"entidade":123,"nome":"imagem","descricao":"Imagem","tipo":"text","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":19,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					atributos:[{"id":785,"entidade":123,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":786,"entidade":123,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":787,"entidade":123,"nome":"imagem","descricao":"Imagem","tipo":"text","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":19,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0}],
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[124] = {
@@ -2221,7 +2343,8 @@
 					pacote:'',
 					nomecompleto:'td_website_geral_politicacookies',
 					atributos:[{"id":789,"entidade":124,"nome":"texto","descricao":"Texto","tipo":"text","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":"","autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":21,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":0,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":0,"criarsomatoriogradededados":0,"naoexibircampo":0}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[125] = {
@@ -2239,7 +2362,8 @@
 					pacote:'',
 					nomecompleto:'td_website_geral_newsletter',
 					atributos:[{"id":790,"entidade":125,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":791,"entidade":125,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":792,"entidade":125,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":793,"entidade":125,"nome":"nome","descricao":"Nome","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":794,"entidade":125,"nome":"email","descricao":"E-Mail","tipo":"text","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":12,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[126] = {
@@ -2257,7 +2381,8 @@
 					pacote:'',
 					nomecompleto:'td_website_geral_quemsomos',
 					atributos:[{"id":795,"entidade":126,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":796,"entidade":126,"nome":"texto","descricao":"Texto","tipo":"text","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":21,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":797,"entidade":126,"nome":"imagem","descricao":"Imagem","tipo":"text","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":19,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":815,"entidade":126,"nome":"filial","descricao":"Filial","tipo":"text","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":"","autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":19,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":0,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":0,"criarsomatoriogradededados":0,"naoexibircampo":0}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[127] = {
@@ -2275,7 +2400,8 @@
 					pacote:'',
 					nomecompleto:'td_website_geral_quemsomosparceiros',
 					atributos:[{"id":798,"entidade":127,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":799,"entidade":127,"nome":"quemsomos","descricao":"Quem Somos","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":126,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":801,"entidade":127,"nome":"nome","descricao":"Nome","tipo":"varchar","tamanho":200,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":802,"entidade":127,"nome":"logo","descricao":"Logo","tipo":"text","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":19,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":808,"entidade":127,"nome":"site","descricao":"Site","tipo":"varchar","tamanho":500,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":"","autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":0,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":0,"criarsomatoriogradededados":0,"naoexibircampo":0}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[128] = {
@@ -2293,7 +2419,8 @@
 					pacote:'',
 					nomecompleto:'td_website_geral_quemsomositens',
 					atributos:[{"id":803,"entidade":128,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":804,"entidade":128,"nome":"quemsomos","descricao":"Quem Somos","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":126,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":806,"entidade":128,"nome":"titulo","descricao":"T\u00edtulo","tipo":"varchar","tamanho":100,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":807,"entidade":128,"nome":"texto","descricao":"Texto","tipo":"varchar","tamanho":1000,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[129] = {
@@ -2311,7 +2438,8 @@
 					pacote:'',
 					nomecompleto:'td_charsetfiles',
 					atributos:[{"id":809,"entidade":129,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":810,"entidade":129,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":811,"entidade":129,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":812,"entidade":129,"nome":"path","descricao":"Path","tipo":"varchar","tamanho":500,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":813,"entidade":129,"nome":"file","descricao":"File","tipo":"varchar","tamanho":100,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":814,"entidade":129,"nome":"charset","descricao":"Charset","tipo":"int","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":46,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[130] = {
@@ -2328,8 +2456,9 @@
 					registrounico:0,
 					pacote:'',
 					nomecompleto:'td_ecommerce_modalidade',
-					atributos:[{"id":819,"entidade":130,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":820,"entidade":130,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					atributos:[{"id":819,"entidade":130,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":820,"entidade":130,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0}],
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[131] = {
@@ -2346,8 +2475,9 @@
 					registrounico:0,
 					pacote:'',
 					nomecompleto:'td_ecommerce_produtocor',
-					atributos:[{"id":824,"entidade":131,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":825,"entidade":131,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":826,"entidade":131,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":827,"entidade":131,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"varchar","tamanho":50,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					atributos:[{"id":824,"entidade":131,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":825,"entidade":131,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":826,"entidade":131,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":827,"entidade":131,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"varchar","tamanho":50,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0}],
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[132] = {
@@ -2364,14 +2494,15 @@
 					registrounico:0,
 					pacote:'',
 					nomecompleto:'td_ecommerce_produtotamanho',
-					atributos:[{"id":828,"entidade":132,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":829,"entidade":132,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":830,"entidade":132,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null},{"id":831,"entidade":132,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"varchar","tamanho":50,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":null}],
-					relacionamentos:[]
+					atributos:[{"id":828,"entidade":132,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":829,"entidade":132,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":830,"entidade":132,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":831,"entidade":132,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"varchar","tamanho":50,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0}],
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[133] = {
 					id:133,
 					nome:'td_consultacoluna',
-					descricao:'Consulta Colunas',
+					descricao:'Coluna Colunas',
 					exibirmenuadministracao:'1',
 					exibircabecalho:'1',
 					pai:'',
@@ -2382,8 +2513,9 @@
 					registrounico:0,
 					pacote:'',
 					nomecompleto:'td_consultacoluna',
-					atributos:[{"id":834,"entidade":133,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":835,"entidade":133,"nome":"consulta","descricao":"Consulta","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":836,"entidade":133,"nome":"atributo","descricao":"Atributo","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":837,"entidade":133,"nome":"exibirid","descricao":"Exibir ID","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":838,"entidade":133,"nome":"alinhamento","descricao":"alinhamento","tipo":"varchar","tamanho":25,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0}],
-					relacionamentos:[]
+					atributos:[{"id":834,"entidade":133,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":835,"entidade":133,"nome":"consulta","descricao":"Consulta","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":836,"entidade":133,"nome":"atributo","descricao":"Atributo","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":837,"entidade":133,"nome":"exibirid","descricao":"Exibir ID","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":838,"entidade":133,"nome":"alinhamento","descricao":"alinhamento","tipo":"varchar","tamanho":25,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":865,"entidade":133,"nome":"ordem","descricao":"Ordem","tipo":"tinyint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0}],
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_entidade[134] = {
@@ -2401,7 +2533,27 @@
 					pacote:'',
 					nomecompleto:'td_relatoriorestricao',
 					atributos:[{"id":840,"entidade":134,"nome":"projeto","descricao":"Projeto","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":8,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.projeto","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":841,"entidade":134,"nome":"empresa","descricao":"Empresa","tipo":"smallint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":9,"tipohtml":16,"dataretroativa":0,"ordem":null,"inicializacao":"session.empresa","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":842,"entidade":134,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":843,"entidade":134,"nome":"relatorio","descricao":"Relat\u00f3rio","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":844,"entidade":134,"nome":"atributo","descricao":"Atributo","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":845,"entidade":134,"nome":"operador","descricao":"Operador","tipo":"varchar","tamanho":5,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":846,"entidade":134,"nome":"valor","descricao":"Valor","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":847,"entidade":134,"nome":"legenda","descricao":"Legenda","tipo":"varchar","tamanho":50,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0}],
-					relacionamentos:[]
+					relacionamentos:[],
+					entidadeauxiliar:false
+				};
+			
+				td_entidade[135] = {
+					id:135,
+					nome:'td_relatoriocoluna',
+					descricao:'Coluna Relatório',
+					exibirmenuadministracao:'1',
+					exibircabecalho:'1',
+					pai:'',
+					ncolunas:'3',
+					campodescchave:'',
+					atributogeneralizacao:'0',
+					exibirlegenda:'1',
+					registrounico:0,
+					pacote:'',
+					nomecompleto:'td_relatoriocoluna',
+					atributos:[{"id":848,"entidade":135,"nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":849,"entidade":135,"nome":"relatorio","descricao":"Relat\u00f3rio","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":850,"entidade":135,"nome":"atributo","descricao":"Atributo","tipo":"int","tamanho":0,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":4,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":851,"entidade":135,"nome":"exibirid","descricao":"Exibir ID","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":852,"entidade":135,"nome":"alinhamento","descricao":"alinhamento","tipo":"varchar","tamanho":25,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":854,"entidade":135,"nome":"ordem","descricao":"Ordem","tipo":"tinyint","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":855,"entidade":135,"nome":"descricao","descricao":"Descri\u00e7\u00e3o","tipo":"varchar","tamanho":200,"nulo":0,"omissao":null,"collection":null,"atributos":null,"indice":null,"autoincrement":null,"comentario":null,"exibirgradededados":1,"chaveestrangeira":0,"tipohtml":3,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":null,"labelzerocheckbox":"","labelumcheckbox":"","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":0},{"id":856,"entidade":135,"nome":"is_somatorio","descricao":"Realizar Somat?rio","tipo":"boolean","tamanho":0,"nulo":1,"omissao":null,"collection":null,"atributos":null,"indice":"","autoincrement":null,"comentario":null,"exibirgradededados":0,"chaveestrangeira":0,"tipohtml":7,"dataretroativa":0,"ordem":null,"inicializacao":"","readonly":0,"exibirpesquisa":null,"tipoinicializacao":1,"atributodependencia":0,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":0,"criarsomatoriogradededados":0,"naoexibircampo":0}],
+					relacionamentos:[],
+					entidadeauxiliar:false
 				};
 			
 				td_atributo[1] = {
@@ -2851,7 +3003,7 @@
 					labelzerocheckbox:'Não',
 					labelumcheckbox:'Sim',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[16] = {
@@ -2881,7 +3033,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[17] = {
@@ -2911,7 +3063,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[18] = {
@@ -2941,7 +3093,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[19] = {
@@ -2971,14 +3123,14 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[20] = {
 					id:20,
 					entidade:'3',
 					nome:'permitirexclusao',
-					descricao:'Permitir Exclusão',
+					descricao:'Permitir Exclusão ?',
 					tipo:'tinyint',
 					tamanho:'0',
 					omissao:'',
@@ -3001,7 +3153,7 @@
 					labelzerocheckbox:'Não',
 					labelumcheckbox:'Sim',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[21] = {
@@ -3031,7 +3183,7 @@
 					labelzerocheckbox:'Não',
 					labelumcheckbox:'Sim',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[22] = {
@@ -3061,14 +3213,14 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[23] = {
 					id:23,
 					entidade:'3',
 					nome:'perfilusuario',
-					descricao:'Perfil de Usuário',
+					descricao:'Perfil de Usuário ?',
 					tipo:'tinyint',
 					tamanho:'0',
 					omissao:'',
@@ -3091,7 +3243,7 @@
 					labelzerocheckbox:'Não',
 					labelumcheckbox:'Sim',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[24] = {
@@ -3121,7 +3273,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[25] = {
@@ -3151,7 +3303,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[26] = {
@@ -14401,7 +14553,7 @@
 					labelzerocheckbox:'Não',
 					labelumcheckbox:'Sim',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[401] = {
@@ -14448,7 +14600,7 @@
 					indice:'',
 					autoincrement:'',
 					comentario:'',
-					exibirgradededados:'1',
+					exibirgradededados:'0',
 					chaveestrangeira:'0',
 					tipohtml:'23',
 					dataretroativa:'0',
@@ -14461,7 +14613,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[403] = {
@@ -14478,7 +14630,7 @@
 					indice:'',
 					autoincrement:'',
 					comentario:'',
-					exibirgradededados:'1',
+					exibirgradededados:'0',
 					chaveestrangeira:'0',
 					tipohtml:'23',
 					dataretroativa:'0',
@@ -14491,7 +14643,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[404] = {
@@ -14521,7 +14673,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[405] = {
@@ -14538,7 +14690,7 @@
 					indice:'',
 					autoincrement:'',
 					comentario:'',
-					exibirgradededados:'1',
+					exibirgradededados:'0',
 					chaveestrangeira:'100',
 					tipohtml:'22',
 					dataretroativa:'0',
@@ -14581,7 +14733,7 @@
 					labelzerocheckbox:'Não',
 					labelumcheckbox:'Sim',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[407] = {
@@ -14611,7 +14763,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[408] = {
@@ -14641,7 +14793,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[409] = {
@@ -14671,7 +14823,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[410] = {
@@ -14701,7 +14853,7 @@
 					labelzerocheckbox:'Não',
 					labelumcheckbox:'Sim',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[411] = {
@@ -14731,7 +14883,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[412] = {
@@ -14761,7 +14913,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[413] = {
@@ -14791,7 +14943,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[414] = {
@@ -14821,7 +14973,7 @@
 					labelzerocheckbox:'Não',
 					labelumcheckbox:'Sim',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[415] = {
@@ -14834,7 +14986,7 @@
 					omissao:'',
 					collection:'',
 					atributos:'',
-					nulo:'0',
+					nulo:'1',
 					indice:'',
 					autoincrement:'',
 					comentario:'',
@@ -14851,7 +15003,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[416] = {
@@ -14864,11 +15016,11 @@
 					omissao:'',
 					collection:'',
 					atributos:'',
-					nulo:'0',
+					nulo:'1',
 					indice:'',
 					autoincrement:'',
 					comentario:'',
-					exibirgradededados:'1',
+					exibirgradededados:'0',
 					chaveestrangeira:'85',
 					tipohtml:'22',
 					dataretroativa:'0',
@@ -14911,7 +15063,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[418] = {
@@ -14941,7 +15093,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[419] = {
@@ -14958,7 +15110,7 @@
 					indice:'',
 					autoincrement:'',
 					comentario:'',
-					exibirgradededados:'0',
+					exibirgradededados:'1',
 					chaveestrangeira:'0',
 					tipohtml:'3',
 					dataretroativa:'0',
@@ -14971,7 +15123,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[420] = {
@@ -15001,7 +15153,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[421] = {
@@ -15031,7 +15183,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[422] = {
@@ -15048,7 +15200,7 @@
 					indice:'',
 					autoincrement:'',
 					comentario:'',
-					exibirgradededados:'1',
+					exibirgradededados:'0',
 					chaveestrangeira:'0',
 					tipohtml:'3',
 					dataretroativa:'0',
@@ -15061,7 +15213,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[423] = {
@@ -15078,7 +15230,7 @@
 					indice:'',
 					autoincrement:'',
 					comentario:'',
-					exibirgradededados:'1',
+					exibirgradededados:'0',
 					chaveestrangeira:'0',
 					tipohtml:'3',
 					dataretroativa:'0',
@@ -15091,7 +15243,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[424] = {
@@ -15099,8 +15251,8 @@
 					entidade:'65',
 					nome:'tamanho',
 					descricao:'Tamanho',
-					tipo:'varchar',
-					tamanho:'200',
+					tipo:'int',
+					tamanho:'0',
 					omissao:'',
 					collection:'',
 					atributos:'',
@@ -15108,9 +15260,9 @@
 					indice:'',
 					autoincrement:'',
 					comentario:'',
-					exibirgradededados:'1',
-					chaveestrangeira:'0',
-					tipohtml:'3',
+					exibirgradededados:'0',
+					chaveestrangeira:'132',
+					tipohtml:'4',
 					dataretroativa:'0',
 					ordem:'',
 					readonly:'0',
@@ -15121,7 +15273,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[425] = {
@@ -15138,7 +15290,7 @@
 					indice:'',
 					autoincrement:'',
 					comentario:'',
-					exibirgradededados:'1',
+					exibirgradededados:'0',
 					chaveestrangeira:'0',
 					tipohtml:'3',
 					dataretroativa:'0',
@@ -15151,7 +15303,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[426] = {
@@ -15181,7 +15333,7 @@
 					labelzerocheckbox:'Não',
 					labelumcheckbox:'Sim',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[427] = {
@@ -15211,7 +15363,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[428] = {
@@ -15241,7 +15393,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[429] = {
@@ -15271,7 +15423,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[430] = {
@@ -15301,7 +15453,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[431] = {
@@ -15331,7 +15483,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[432] = {
@@ -15361,7 +15513,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[433] = {
@@ -15391,7 +15543,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[434] = {
@@ -15421,7 +15573,7 @@
 					labelzerocheckbox:'Não',
 					labelumcheckbox:'Sim',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[435] = {
@@ -15451,7 +15603,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[436] = {
@@ -15481,7 +15633,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[437] = {
@@ -15511,7 +15663,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[438] = {
@@ -15541,7 +15693,7 @@
 					labelzerocheckbox:'Não',
 					labelumcheckbox:'Sim',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[439] = {
@@ -15571,7 +15723,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[440] = {
@@ -15601,7 +15753,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[441] = {
@@ -15631,7 +15783,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[442] = {
@@ -15661,7 +15813,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[443] = {
@@ -15691,7 +15843,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[444] = {
@@ -15721,7 +15873,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[445] = {
@@ -15751,7 +15903,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[446] = {
@@ -15781,7 +15933,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[447] = {
@@ -15811,7 +15963,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[448] = {
@@ -15841,7 +15993,7 @@
 					labelzerocheckbox:'Não',
 					labelumcheckbox:'Sim',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[449] = {
@@ -15871,7 +16023,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[450] = {
@@ -15901,7 +16053,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[451] = {
@@ -15931,7 +16083,7 @@
 					labelzerocheckbox:'Não',
 					labelumcheckbox:'Sim',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[452] = {
@@ -15961,7 +16113,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[453] = {
@@ -15991,7 +16143,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[454] = {
@@ -16021,7 +16173,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[455] = {
@@ -16051,7 +16203,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[456] = {
@@ -16081,7 +16233,7 @@
 					labelzerocheckbox:'Não',
 					labelumcheckbox:'Sim',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[457] = {
@@ -16111,7 +16263,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[458] = {
@@ -16141,7 +16293,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[459] = {
@@ -16171,7 +16323,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[460] = {
@@ -16201,7 +16353,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[461] = {
@@ -16231,7 +16383,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[462] = {
@@ -16261,7 +16413,7 @@
 					labelzerocheckbox:'Não',
 					labelumcheckbox:'Sim',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[463] = {
@@ -16291,7 +16443,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[464] = {
@@ -16321,7 +16473,7 @@
 					labelzerocheckbox:'Não',
 					labelumcheckbox:'Sim',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[465] = {
@@ -16351,7 +16503,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[466] = {
@@ -16381,7 +16533,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[467] = {
@@ -16411,7 +16563,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[468] = {
@@ -16441,7 +16593,7 @@
 					labelzerocheckbox:'Não',
 					labelumcheckbox:'Sim',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[469] = {
@@ -16471,7 +16623,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[470] = {
@@ -16501,7 +16653,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[471] = {
@@ -16531,7 +16683,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[472] = {
@@ -16561,7 +16713,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[473] = {
@@ -16591,7 +16743,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[474] = {
@@ -16621,7 +16773,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[475] = {
@@ -16651,7 +16803,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[476] = {
@@ -16681,7 +16833,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[477] = {
@@ -16711,7 +16863,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[478] = {
@@ -16741,7 +16893,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[479] = {
@@ -16771,7 +16923,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[480] = {
@@ -16801,7 +16953,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[481] = {
@@ -16831,7 +16983,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[482] = {
@@ -16861,7 +17013,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[483] = {
@@ -16891,7 +17043,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[484] = {
@@ -16921,7 +17073,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[485] = {
@@ -18038,7 +18190,7 @@
 					id:522,
 					entidade:'77',
 					nome:'metodopagamento',
-					descricao:'Método de Pagamento',
+					descricao:'M?todo de Pagamento',
 					tipo:'int',
 					tamanho:'0',
 					omissao:'',
@@ -18049,7 +18201,7 @@
 					autoincrement:'',
 					comentario:'',
 					exibirgradededados:'0',
-					chaveestrangeira:'79',
+					chaveestrangeira:'93',
 					tipohtml:'4',
 					dataretroativa:'0',
 					ordem:'',
@@ -18057,11 +18209,11 @@
 					inicializacao:'',
 					exibirpesquisa:'',
 					tipoinicializacao:'1',
-					atributodependencia:'',
+					atributodependencia:'0',
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
-					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					criarsomatoriogradededados:'0',
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[523] = {
@@ -18901,7 +19053,7 @@
 					labelzerocheckbox:'Não',
 					labelumcheckbox:'Sim',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[551] = {
@@ -18961,7 +19113,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[553] = {
@@ -19111,7 +19263,7 @@
 					labelzerocheckbox:'Não',
 					labelumcheckbox:'Sim',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[558] = {
@@ -19141,7 +19293,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[559] = {
@@ -19261,7 +19413,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[563] = {
@@ -19291,7 +19443,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[564] = {
@@ -19321,7 +19473,7 @@
 					labelzerocheckbox:'Não',
 					labelumcheckbox:'Sim',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[565] = {
@@ -19351,7 +19503,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[566] = {
@@ -19381,7 +19533,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[567] = {
@@ -19441,7 +19593,7 @@
 					labelzerocheckbox:'Não',
 					labelumcheckbox:'Sim',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[569] = {
@@ -19471,7 +19623,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[570] = {
@@ -19501,7 +19653,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[571] = {
@@ -19531,7 +19683,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[572] = {
@@ -19561,7 +19713,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[573] = {
@@ -19591,7 +19743,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[574] = {
@@ -19621,7 +19773,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[575] = {
@@ -19651,7 +19803,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[576] = {
@@ -19681,7 +19833,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[577] = {
@@ -19711,7 +19863,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[578] = {
@@ -19741,7 +19893,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[579] = {
@@ -19771,7 +19923,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'0',
-					naoexibircampo:'1'
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[580] = {
@@ -19801,7 +19953,7 @@
 					labelzerocheckbox:'Não',
 					labelumcheckbox:'Sim',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[581] = {
@@ -19831,7 +19983,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'0',
-					naoexibircampo:'1'
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[582] = {
@@ -19861,7 +20013,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[583] = {
@@ -19921,7 +20073,7 @@
 					labelzerocheckbox:'Não',
 					labelumcheckbox:'Sim',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[585] = {
@@ -19951,7 +20103,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[586] = {
@@ -19981,7 +20133,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'0',
-					naoexibircampo:'1'
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[587] = {
@@ -20011,7 +20163,7 @@
 					labelzerocheckbox:'Não',
 					labelumcheckbox:'Sim',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[588] = {
@@ -20041,7 +20193,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[589] = {
@@ -20071,7 +20223,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[590] = {
@@ -20101,7 +20253,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'0',
-					naoexibircampo:'1'
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[591] = {
@@ -20131,7 +20283,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'0',
-					naoexibircampo:'1'
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[592] = {
@@ -20858,7 +21010,7 @@
 					id:616,
 					entidade:'92',
 					nome:'operacaoestoque',
-					descricao:'Operação de Estoque',
+					descricao:'Opera??o de Estoque',
 					tipo:'int',
 					tamanho:'0',
 					omissao:'',
@@ -20869,7 +21021,7 @@
 					autoincrement:'',
 					comentario:'',
 					exibirgradededados:'0',
-					chaveestrangeira:'0',
+					chaveestrangeira:'104',
 					tipohtml:'4',
 					dataretroativa:'0',
 					ordem:'',
@@ -20877,11 +21029,11 @@
 					inicializacao:'',
 					exibirpesquisa:'',
 					tipoinicializacao:'1',
-					atributodependencia:'',
+					atributodependencia:'0',
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
-					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					criarsomatoriogradededados:'0',
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[617] = {
@@ -21961,7 +22113,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[653] = {
@@ -21991,7 +22143,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[654] = {
@@ -22021,7 +22173,7 @@
 					labelzerocheckbox:'Não',
 					labelumcheckbox:'Sim',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[655] = {
@@ -22051,7 +22203,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[656] = {
@@ -22081,7 +22233,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[657] = {
@@ -22111,7 +22263,7 @@
 					labelzerocheckbox:'Masculino',
 					labelumcheckbox:'Feminino',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[658] = {
@@ -22141,7 +22293,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[659] = {
@@ -22171,7 +22323,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[660] = {
@@ -22201,7 +22353,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[661] = {
@@ -22231,7 +22383,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[662] = {
@@ -25861,7 +26013,7 @@
 					labelzerocheckbox:'Não',
 					labelumcheckbox:'Sim',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[786] = {
@@ -25891,7 +26043,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[787] = {
@@ -25921,7 +26073,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[788] = {
@@ -25938,7 +26090,7 @@
 					indice:'',
 					autoincrement:'',
 					comentario:'',
-					exibirgradededados:'1',
+					exibirgradededados:'0',
 					chaveestrangeira:'123',
 					tipohtml:'4',
 					dataretroativa:'0',
@@ -25951,7 +26103,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[789] = {
@@ -26791,7 +26943,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[819] = {
@@ -26821,7 +26973,7 @@
 					labelzerocheckbox:'Não',
 					labelumcheckbox:'Sim',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[820] = {
@@ -26851,7 +27003,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[821] = {
@@ -26881,7 +27033,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[822] = {
@@ -26911,7 +27063,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[823] = {
@@ -26941,7 +27093,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[824] = {
@@ -26971,7 +27123,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[825] = {
@@ -27001,7 +27153,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[826] = {
@@ -27031,7 +27183,7 @@
 					labelzerocheckbox:'Não',
 					labelumcheckbox:'Sim',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[827] = {
@@ -27061,7 +27213,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[828] = {
@@ -27091,7 +27243,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[829] = {
@@ -27121,7 +27273,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[830] = {
@@ -27151,7 +27303,7 @@
 					labelzerocheckbox:'Não',
 					labelumcheckbox:'Sim',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[831] = {
@@ -27181,7 +27333,7 @@
 					labelzerocheckbox:'',
 					labelumcheckbox:'',
 					criarsomatoriogradededados:'',
-					naoexibircampo:''
+					naoexibircampo:'0'
 				};
 			
 				td_atributo[832] = {
@@ -27664,6 +27816,546 @@
 					naoexibircampo:'0'
 				};
 			
+				td_atributo[848] = {
+					id:848,
+					entidade:'135',
+					nome:'inativo',
+					descricao:'Inativo',
+					tipo:'boolean',
+					tamanho:'0',
+					omissao:'',
+					collection:'',
+					atributos:'',
+					nulo:'1',
+					indice:'',
+					autoincrement:'',
+					comentario:'',
+					exibirgradededados:'0',
+					chaveestrangeira:'0',
+					tipohtml:'7',
+					dataretroativa:'0',
+					ordem:'',
+					readonly:'0',
+					inicializacao:'',
+					exibirpesquisa:'',
+					tipoinicializacao:'1',
+					atributodependencia:'',
+					labelzerocheckbox:'Não',
+					labelumcheckbox:'Sim',
+					criarsomatoriogradededados:'',
+					naoexibircampo:'0'
+				};
+			
+				td_atributo[849] = {
+					id:849,
+					entidade:'135',
+					nome:'relatorio',
+					descricao:'Relatório',
+					tipo:'int',
+					tamanho:'0',
+					omissao:'',
+					collection:'',
+					atributos:'',
+					nulo:'0',
+					indice:'',
+					autoincrement:'',
+					comentario:'',
+					exibirgradededados:'0',
+					chaveestrangeira:'0',
+					tipohtml:'4',
+					dataretroativa:'0',
+					ordem:'',
+					readonly:'0',
+					inicializacao:'',
+					exibirpesquisa:'',
+					tipoinicializacao:'1',
+					atributodependencia:'',
+					labelzerocheckbox:'',
+					labelumcheckbox:'',
+					criarsomatoriogradededados:'',
+					naoexibircampo:'0'
+				};
+			
+				td_atributo[850] = {
+					id:850,
+					entidade:'135',
+					nome:'atributo',
+					descricao:'Atributo',
+					tipo:'int',
+					tamanho:'0',
+					omissao:'',
+					collection:'',
+					atributos:'',
+					nulo:'0',
+					indice:'',
+					autoincrement:'',
+					comentario:'',
+					exibirgradededados:'0',
+					chaveestrangeira:'0',
+					tipohtml:'4',
+					dataretroativa:'0',
+					ordem:'',
+					readonly:'0',
+					inicializacao:'',
+					exibirpesquisa:'',
+					tipoinicializacao:'1',
+					atributodependencia:'',
+					labelzerocheckbox:'',
+					labelumcheckbox:'',
+					criarsomatoriogradededados:'',
+					naoexibircampo:'0'
+				};
+			
+				td_atributo[851] = {
+					id:851,
+					entidade:'135',
+					nome:'exibirid',
+					descricao:'Exibir ID',
+					tipo:'boolean',
+					tamanho:'0',
+					omissao:'',
+					collection:'',
+					atributos:'',
+					nulo:'1',
+					indice:'',
+					autoincrement:'',
+					comentario:'',
+					exibirgradededados:'0',
+					chaveestrangeira:'0',
+					tipohtml:'7',
+					dataretroativa:'0',
+					ordem:'',
+					readonly:'0',
+					inicializacao:'',
+					exibirpesquisa:'',
+					tipoinicializacao:'1',
+					atributodependencia:'',
+					labelzerocheckbox:'Não',
+					labelumcheckbox:'Sim',
+					criarsomatoriogradededados:'',
+					naoexibircampo:'0'
+				};
+			
+				td_atributo[852] = {
+					id:852,
+					entidade:'135',
+					nome:'alinhamento',
+					descricao:'alinhamento',
+					tipo:'varchar',
+					tamanho:'25',
+					omissao:'',
+					collection:'',
+					atributos:'',
+					nulo:'1',
+					indice:'',
+					autoincrement:'',
+					comentario:'',
+					exibirgradededados:'0',
+					chaveestrangeira:'0',
+					tipohtml:'3',
+					dataretroativa:'0',
+					ordem:'',
+					readonly:'0',
+					inicializacao:'',
+					exibirpesquisa:'',
+					tipoinicializacao:'1',
+					atributodependencia:'',
+					labelzerocheckbox:'',
+					labelumcheckbox:'',
+					criarsomatoriogradededados:'',
+					naoexibircampo:'0'
+				};
+			
+				td_atributo[853] = {
+					id:853,
+					entidade:'32',
+					nome:'ordem',
+					descricao:'Ordem',
+					tipo:'tinyint',
+					tamanho:'0',
+					omissao:'',
+					collection:'',
+					atributos:'',
+					nulo:'1',
+					indice:'',
+					autoincrement:'',
+					comentario:'',
+					exibirgradededados:'0',
+					chaveestrangeira:'0',
+					tipohtml:'3',
+					dataretroativa:'0',
+					ordem:'',
+					readonly:'0',
+					inicializacao:'',
+					exibirpesquisa:'',
+					tipoinicializacao:'1',
+					atributodependencia:'',
+					labelzerocheckbox:'',
+					labelumcheckbox:'',
+					criarsomatoriogradededados:'',
+					naoexibircampo:'0'
+				};
+			
+				td_atributo[854] = {
+					id:854,
+					entidade:'135',
+					nome:'ordem',
+					descricao:'Ordem',
+					tipo:'tinyint',
+					tamanho:'0',
+					omissao:'',
+					collection:'',
+					atributos:'',
+					nulo:'1',
+					indice:'',
+					autoincrement:'',
+					comentario:'',
+					exibirgradededados:'0',
+					chaveestrangeira:'0',
+					tipohtml:'3',
+					dataretroativa:'0',
+					ordem:'',
+					readonly:'0',
+					inicializacao:'',
+					exibirpesquisa:'',
+					tipoinicializacao:'1',
+					atributodependencia:'',
+					labelzerocheckbox:'',
+					labelumcheckbox:'',
+					criarsomatoriogradededados:'',
+					naoexibircampo:'0'
+				};
+			
+				td_atributo[855] = {
+					id:855,
+					entidade:'135',
+					nome:'descricao',
+					descricao:'Descrição',
+					tipo:'varchar',
+					tamanho:'200',
+					omissao:'',
+					collection:'',
+					atributos:'',
+					nulo:'0',
+					indice:'',
+					autoincrement:'',
+					comentario:'',
+					exibirgradededados:'1',
+					chaveestrangeira:'0',
+					tipohtml:'3',
+					dataretroativa:'0',
+					ordem:'',
+					readonly:'0',
+					inicializacao:'',
+					exibirpesquisa:'',
+					tipoinicializacao:'1',
+					atributodependencia:'',
+					labelzerocheckbox:'',
+					labelumcheckbox:'',
+					criarsomatoriogradededados:'',
+					naoexibircampo:'0'
+				};
+			
+				td_atributo[856] = {
+					id:856,
+					entidade:'135',
+					nome:'is_somatorio',
+					descricao:'Realizar Somat?rio',
+					tipo:'boolean',
+					tamanho:'0',
+					omissao:'',
+					collection:'',
+					atributos:'',
+					nulo:'1',
+					indice:'',
+					autoincrement:'',
+					comentario:'',
+					exibirgradededados:'0',
+					chaveestrangeira:'0',
+					tipohtml:'7',
+					dataretroativa:'0',
+					ordem:'',
+					readonly:'0',
+					inicializacao:'',
+					exibirpesquisa:'',
+					tipoinicializacao:'1',
+					atributodependencia:'0',
+					labelzerocheckbox:'Não',
+					labelumcheckbox:'Sim',
+					criarsomatoriogradededados:'0',
+					naoexibircampo:'0'
+				};
+			
+				td_atributo[857] = {
+					id:857,
+					entidade:'66',
+					nome:'tipopessoa',
+					descricao:'Tipo Pessoa',
+					tipo:'tinyint',
+					tamanho:'0',
+					omissao:'',
+					collection:'',
+					atributos:'',
+					nulo:'0',
+					indice:'',
+					autoincrement:'',
+					comentario:'',
+					exibirgradededados:'0',
+					chaveestrangeira:'0',
+					tipohtml:'7',
+					dataretroativa:'0',
+					ordem:'',
+					readonly:'0',
+					inicializacao:'',
+					exibirpesquisa:'',
+					tipoinicializacao:'1',
+					atributodependencia:'',
+					labelzerocheckbox:'Pessoa Física',
+					labelumcheckbox:'Pessoa Jurídica',
+					criarsomatoriogradededados:'',
+					naoexibircampo:'0'
+				};
+			
+				td_atributo[858] = {
+					id:858,
+					entidade:'66',
+					nome:'fotoperfil',
+					descricao:'Foto (Perfil)',
+					tipo:'mediumblob',
+					tamanho:'0',
+					omissao:'',
+					collection:'',
+					atributos:'',
+					nulo:'1',
+					indice:'',
+					autoincrement:'',
+					comentario:'',
+					exibirgradededados:'0',
+					chaveestrangeira:'0',
+					tipohtml:'19',
+					dataretroativa:'0',
+					ordem:'',
+					readonly:'0',
+					inicializacao:'',
+					exibirpesquisa:'',
+					tipoinicializacao:'1',
+					atributodependencia:'',
+					labelzerocheckbox:'',
+					labelumcheckbox:'',
+					criarsomatoriogradededados:'',
+					naoexibircampo:'0'
+				};
+			
+				td_atributo[859] = {
+					id:859,
+					entidade:'63',
+					nome:'cep',
+					descricao:'CEP',
+					tipo:'varchar',
+					tamanho:'10',
+					omissao:'',
+					collection:'',
+					atributos:'',
+					nulo:'0',
+					indice:'',
+					autoincrement:'',
+					comentario:'',
+					exibirgradededados:'1',
+					chaveestrangeira:'0',
+					tipohtml:'9',
+					dataretroativa:'0',
+					ordem:'',
+					readonly:'0',
+					inicializacao:'',
+					exibirpesquisa:'',
+					tipoinicializacao:'1',
+					atributodependencia:'',
+					labelzerocheckbox:'',
+					labelumcheckbox:'',
+					criarsomatoriogradededados:'',
+					naoexibircampo:'0'
+				};
+			
+				td_atributo[860] = {
+					id:860,
+					entidade:'65',
+					nome:'tamanho_desc',
+					descricao:'Tamanho',
+					tipo:'varchar',
+					tamanho:'200',
+					omissao:'',
+					collection:'',
+					atributos:'',
+					nulo:'1',
+					indice:'',
+					autoincrement:'',
+					comentario:'',
+					exibirgradededados:'0',
+					chaveestrangeira:'0',
+					tipohtml:'3',
+					dataretroativa:'0',
+					ordem:'',
+					readonly:'0',
+					inicializacao:'',
+					exibirpesquisa:'',
+					tipoinicializacao:'1',
+					atributodependencia:'',
+					labelzerocheckbox:'',
+					labelumcheckbox:'',
+					criarsomatoriogradededados:'',
+					naoexibircampo:'0'
+				};
+			
+				td_atributo[861] = {
+					id:861,
+					entidade:'65',
+					nome:'cor_desc',
+					descricao:'Cor',
+					tipo:'varchar',
+					tamanho:'200',
+					omissao:'',
+					collection:'',
+					atributos:'',
+					nulo:'1',
+					indice:'',
+					autoincrement:'',
+					comentario:'',
+					exibirgradededados:'0',
+					chaveestrangeira:'0',
+					tipohtml:'3',
+					dataretroativa:'0',
+					ordem:'',
+					readonly:'0',
+					inicializacao:'',
+					exibirpesquisa:'',
+					tipoinicializacao:'1',
+					atributodependencia:'',
+					labelzerocheckbox:'',
+					labelumcheckbox:'',
+					criarsomatoriogradededados:'',
+					naoexibircampo:'0'
+				};
+			
+				td_atributo[862] = {
+					id:862,
+					entidade:'65',
+					nome:'cor',
+					descricao:'Cor',
+					tipo:'int',
+					tamanho:'0',
+					omissao:'',
+					collection:'',
+					atributos:'',
+					nulo:'1',
+					indice:'',
+					autoincrement:'',
+					comentario:'',
+					exibirgradededados:'0',
+					chaveestrangeira:'131',
+					tipohtml:'4',
+					dataretroativa:'0',
+					ordem:'',
+					readonly:'0',
+					inicializacao:'',
+					exibirpesquisa:'',
+					tipoinicializacao:'1',
+					atributodependencia:'',
+					labelzerocheckbox:'',
+					labelumcheckbox:'',
+					criarsomatoriogradededados:'',
+					naoexibircampo:'0'
+				};
+			
+				td_atributo[863] = {
+					id:863,
+					entidade:'63',
+					nome:'is_retirar_loja',
+					descricao:'Retirar na loja ?',
+					tipo:'tinyint',
+					tamanho:'0',
+					omissao:'',
+					collection:'',
+					atributos:'',
+					nulo:'1',
+					indice:'',
+					autoincrement:'',
+					comentario:'',
+					exibirgradededados:'0',
+					chaveestrangeira:'0',
+					tipohtml:'7',
+					dataretroativa:'0',
+					ordem:'',
+					readonly:'0',
+					inicializacao:'',
+					exibirpesquisa:'',
+					tipoinicializacao:'1',
+					atributodependencia:'',
+					labelzerocheckbox:'Não',
+					labelumcheckbox:'Sim',
+					criarsomatoriogradededados:'',
+					naoexibircampo:'0'
+				};
+			
+				td_atributo[864] = {
+					id:864,
+					entidade:'27',
+					nome:'adicionaridfiltro',
+					descricao:'Adicionar campo ID no filtro',
+					tipo:'boolean',
+					tamanho:'0',
+					omissao:'',
+					collection:'',
+					atributos:'',
+					nulo:'1',
+					indice:'',
+					autoincrement:'',
+					comentario:'',
+					exibirgradededados:'0',
+					chaveestrangeira:'0',
+					tipohtml:'7',
+					dataretroativa:'0',
+					ordem:'',
+					readonly:'0',
+					inicializacao:'',
+					exibirpesquisa:'',
+					tipoinicializacao:'1',
+					atributodependencia:'',
+					labelzerocheckbox:'Não',
+					labelumcheckbox:'Sim',
+					criarsomatoriogradededados:'',
+					naoexibircampo:'0'
+				};
+			
+				td_atributo[865] = {
+					id:865,
+					entidade:'133',
+					nome:'ordem',
+					descricao:'Ordem',
+					tipo:'tinyint',
+					tamanho:'0',
+					omissao:'',
+					collection:'',
+					atributos:'',
+					nulo:'1',
+					indice:'',
+					autoincrement:'',
+					comentario:'',
+					exibirgradededados:'0',
+					chaveestrangeira:'0',
+					tipohtml:'3',
+					dataretroativa:'0',
+					ordem:'',
+					readonly:'0',
+					inicializacao:'',
+					exibirpesquisa:'',
+					tipoinicializacao:'1',
+					atributodependencia:'',
+					labelzerocheckbox:'',
+					labelumcheckbox:'',
+					criarsomatoriogradededados:'',
+					naoexibircampo:'0'
+				};
+			
 				td_relacionamento[1] = {
 					id:1,
 					pai:'9',
@@ -27862,13 +28554,13 @@
 					cardinalidade:'11'
 				};
 			
-				td_relacionamento[21] = {
-					id:21,
-					pai:'85',
-					tipo:'2',
-					filho:'89',
-					atributo:'598',
-					descricao:'Tamanhos',
+				td_relacionamento[22] = {
+					id:22,
+					pai:'66',
+					tipo:'6',
+					filho:'68',
+					atributo:'0',
+					descricao:'Endereço',
 					controller:'',
 					cardinalidade:'1N'
 				};
@@ -29924,6 +30616,16 @@
 						consulta:2,
 						alinhamento:"left",
 						exibirid:"1"
+					},{
+						atributo:524,
+						consulta:2,
+						alinhamento:"right",
+						exibirid:"1"
+					},{
+						atributo:685,
+						consulta:2,
+						alinhamento:"left",
+						exibirid:"1"
 					}
 					]
 				}
@@ -29934,6 +30636,7 @@
 					empresa:'',
 					entidade:'105',
 					descricao:'PosiÃ§Ã£o Geral de Estoque',
+					urlpersonalizada:'',
 					filtros:{
 			"1":{"atributo":"683","operador":"="},"2":{"atributo":"684","operador":"="}
 					},
@@ -29948,6 +30651,7 @@
 					empresa:'',
 					entidade:'77',
 					descricao:'Relatório de Vendas',
+					urlpersonalizada:'',
 					filtros:{
 			
 					},

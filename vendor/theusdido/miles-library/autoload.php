@@ -1,8 +1,17 @@
 <?php
-	$_project_name_identifify_params = isset($_GET['project_name_identifify_params']) ? $_GET['project_name_identifify_params'] : '';
+	
+	$_current_project_name	= 'opticaadolfo';
+	$_current_environment 	= 'dev';
 
+	$_project_name_identifify_params = isset($_GET['project_name_identifify_params']) 
+	? $_GET['project_name_identifify_params']
+	: (isset($_POST['project_name_identifify_params']) ? $_POST['project_name_identifify_params'] : 
+	( isset($_project_name_identifify_params) ? $_project_name_identifify_params : $_current_project_name)
+	);
+
+	//$_project_name_identifify_params = 'villafrancioni';
 	if ($_project_name_identifify_params == ''){
-		$project_name_identify = str_replace(array('dev.','.com','.br','miles.','www.'),'',$_SERVER['HTTP_HOST']);
+		$project_name_identify = str_replace(array('dev.','.com','.br','miles.','www.','loja.'),'',$_SERVER['HTTP_HOST']);
 	}else{
 		$project_name_identify = $_project_name_identifify_params;
 	}
@@ -30,6 +39,7 @@
 	
 	$_path_miles_library 	= $_path_miles . PATH_REPOSITORY .  FOLDER_MILES_LIBRARY . '/';
 	$_path_library_system	= $_path_miles_library . FOLDER_LIBRARY_SYSTEM . '/';
+	$_path_root_project		= $_path_miles . $_project_name_identifify_params . '/';
 
 	// Onde está o Miles Framework, index.php
 	define('PATH_MILES',$_path_miles);

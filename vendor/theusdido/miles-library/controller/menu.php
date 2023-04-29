@@ -13,6 +13,7 @@
 					FROM td_menu a					
 					WHERE a.pai = 0
 					AND a.descricao <> ''
+					AND (a.inativo = false OR a.inativo IS NULL)
 					{$where}
 					ORDER BY a.pai,a.ordem;
 				";
@@ -24,6 +25,7 @@
 						SELECT a.id
 						FROM td_menu a
 						WHERE a.pai = {$menu_id}
+						AND (a.inativo = false OR a.inativo IS NULL)
 						{$where}
 						ORDER BY a.ordem;
 					";
@@ -43,6 +45,7 @@
 				FROM td_menu a
 				WHERE a.pai = 0
 				AND a.descricao <> ''
+				AND (a.inativo = false OR a.inativo IS NULL)
 				ORDER BY a.pai,a.ordem;
 			";
 			$queryMenu = $conn->query($sqlMenu);
@@ -53,6 +56,7 @@
 					SELECT id,descricao,pai
 					FROM td_menu
 					WHERE pai = {$menu_id}
+					AND (inativo = false OR inativo IS NULL)
 					ORDER BY ordem;
 				";
 				$querySubMenu = $conn->query($sqlSubMenu);
@@ -70,6 +74,9 @@
 				));
 			}
 			echo json_encode($menu);
+		break;
+		case 'submenu':
+			tdc::wj(Menu::Open(tdc::r('menuprincipal')));
 		break;
 		default:
 			$menuClass = tdClass::Criar("script");

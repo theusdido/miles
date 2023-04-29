@@ -312,4 +312,23 @@ class Entity {
 			return 0;
 		}
 	}
+
+	/*
+		* Método saveJSON
+	    * Data de Criacao: 26/04/2023
+	    * Autor @theusdido
+
+		Salva os registros em formato JSON
+		@params: ID da entidade
+		@return: void
+	*/
+	public static function saveJSON($_entidade_id){
+		$_entidade 		= tdc::e($_entidade_id);
+		$_entidade_name = $_entidade->nome;
+		$file_name 		= $_entidade_name . '.json';
+		$file_path		= PATH_CURRENT_DATA . $file_name;
+		$data 			= tdc::da($_entidade_name);
+		
+		tdFile::add($file_path,json_encode($data));
+	}
 }

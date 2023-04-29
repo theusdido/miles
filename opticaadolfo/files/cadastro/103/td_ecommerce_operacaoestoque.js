@@ -56,7 +56,7 @@ if (typeof funcionalidade === 'undefined') var funcionalidade = 'cadastro';
 */
 function addEstoque(){
 	$.ajax({
-		url:session.miles,
+		url:session.urlmiles,
 		data:{
 			controller:'ecommerce/posicaogeralestoque',
 			produto:$('[data-entidade=td_ecommerce_operacaoestoque]#produto').val(),

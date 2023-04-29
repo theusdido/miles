@@ -12,7 +12,7 @@
 	if (file_exists($userFotoPerfil)){
 		$img_user->src 	= $userFotoPerfil;
 	}else if (file_exists(PATH_SYSTEM_THEME . "sem-foto-usuario.png")){
-		$img_user->src 	= URL_SYSTEM_THEME . "sem-foto-usuario.png";	
+		$img_user->src 	= URL_SYSTEM_THEME . "sem-foto-usuario.png";
 	}else{
 		$img_user 		= null;
 	}

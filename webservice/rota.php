@@ -1,7 +1,7 @@
 <?php	
 	try {
 		$service_router = $service == '' ? $_service : $service;
-		$servico 		= str_replace(".","/",$service_router);
+		$servico 		= str_replace(['.','-'],"/",$service_router);
 		$path_service	= "servicos/{$servico}.php";
 
 		if (file_exists($path_service)){

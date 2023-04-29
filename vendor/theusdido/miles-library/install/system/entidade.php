@@ -28,3 +28,5 @@
 	criarCampoDicionario($conn,$entidade,"btnimprimirtodosregistroshtml","boolean",false,1,7);
 	criarCampoDicionario($conn,$entidade,"btnimprimirtodosregistrospdf","boolean",false,1,7);
 	criarCampoDicionario($conn,$entidade,"tipoaba","varchar",5,1,7);
+	criarCampoDicionario($conn,$entidade,"tipoaba","varchar",5,1,7);
+	criarCampoDicionario($conn,$entidade,"entidadeauxiliar","boolean",false,1,7);

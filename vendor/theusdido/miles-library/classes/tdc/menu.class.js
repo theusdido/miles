@@ -44,8 +44,7 @@ Menu.prototype.menuprincipal = function(dados){
 	let menu 	= $("<ul class='nav navbar-nav' >");
 	let instancia 	= this;	
 	dados.forEach(function(menu_item)
-	{
-		let pai 	= parseInt(menu_item.pai);
+	{		
 		let li 		= $("<li>");
 		let link 	= menu_item.link == "#"?menu_item.link:session.currentprojectregisterpath+menu_item.link;
 		let a 		= $("<a class='dropdown-toggle' role='button' aria-haspopup='true' data-toggle='dropdown' href='"+link+"' aria-expanded='false'>"+menu_item.descricao+"</span></a>");
@@ -59,7 +58,7 @@ Menu.prototype.menuprincipal = function(dados){
 			{
 				let li_submenu 	= $("<li>");
 				let linkpath 	= session.folderprojectfiles + subitem.link;
-				let a_submenu 	=  $("<a target='"+(subitem.target == ""?"_self":subitem.target)+"' data-path='"+linkpath+"' data-id='"+subitem.id+"' data-target='#conteudoprincipal' href='"+(subitem.target == "" || subitem.target == ""?"#":subitem.link)+"' data-tipomenu='"+subitem.tipomenu+"'>"+subitem.descricao+"</span></a>");				
+				let a_submenu 	=  $("<a target='"+(subitem.target == ""?"_self":subitem.target)+"' data-path='"+linkpath+"' data-id='"+subitem.id+"' data-target='#conteudoprincipal' href='"+(subitem.target == "" || subitem.target == ""?"#":subitem.link)+"' data-tipomenu='"+subitem.tipomenu+"'>"+subitem.descricao+"</span></a>");
 
 				if (subitem.target != "_blank"){
 					a_submenu.click(subitem,function(handler){
@@ -106,14 +105,19 @@ Menu.prototype.load = function(){
 	});
 }
 Menu.prototype.carregarpagina = function(path,target,dados_menu){
+	let instancia = this;
 	carregar(path,target,function(){
 		if (dados_menu == undefined || dados_menu == ''){
 			console.warn('Dados do menu não foram carregados.');
 			console.log('## Tente recarregar a página com CTRL + F5. ##');
 		}
 		carregarScriptCRUD(dados_menu.tipomenu,dados_menu.entidade);
+		clearMenuLeft();
+		if (dados_menu.filhos.length > 0){			
+			menuleft(dados_menu.id);
+		}
 	});
-	let instancia = this;
+
 	// Log de acesso ao menu
 	$.ajax({
 		url:config.urlrequisicoes,
@@ -121,5 +125,8 @@ Menu.prototype.carregarpagina = function(path,target,dados_menu){
 			op:"logmenu",
 			menu:instancia.menuselecionado
 		}
-	});	
+	});
+}
+Menu.prototype.loadSubMenu = function(){
+	
 }

@@ -84,7 +84,12 @@
 				<div class="col-md-10">
 		
 					<table width="100%" class="table table-hover">
-						<caption><strong>Lista de Atributos</strong></caption>
+						<caption>
+							<strong>Lista de Atributos</strong> 												
+							<button id="reordenar-campos" style="float:right" type='button' class='btn btn-info btn-sm' onclick="reordenarCampos()">
+								<span class='fas fa-sort' aria-hidden='true'></span>
+							</button>
+						</caption>
 						<tr>
 							<td width="10%">Id</td>
 							<td width="30%">Descrição</td>
@@ -194,6 +199,39 @@
 						}
 					}
 				});
+			}
+
+			function reordenarCampos(){
+				bootbox.confirm({
+					message:"Tem certeza que deseja reorganizar os campos ?",
+					buttons:{
+						confirm:{
+							label:"Sim",
+							className:"btn-success"
+						},
+						cancel:{
+							label:"Não",
+							className:"btn-danger"
+						}
+					},
+					callback:function(result){
+						if (result){
+							$.ajax({
+								url:"<?=URL_API?>",
+								data:{
+									controller:"mdm/reorganizarcampos",
+									_entidade:<?=$entidade?>
+								},
+								complete:function(retorno){
+									location.reload();
+								},
+								beforeSend:function(){
+
+								}
+							});
+						}
+					}
+				});								
 			}
 		</script>
 	</body>

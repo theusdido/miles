@@ -62,6 +62,12 @@
 				}
 			}
 		}
+
+		// Grava os registros em JSON para as entidades auxiliares ( Lista )
+		$_entidade = tdc::e($entidade->getID());
+		if ($_entidade->entidadeauxiliar){
+			Entity::saveJSON($_entidade->id);
+		}
 		$entidade->armazenar();
 	}
 

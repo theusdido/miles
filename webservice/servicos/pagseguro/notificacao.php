@@ -5,9 +5,10 @@
 
 	$notification_type 	= tdc::r('notificationType');
 	$notification_code	= tdc::r('notificationCode');
+	logPagSeguro('Notification Type => ' . $notification_type);
 	if($notification_type != ''){
+		
 		if ($notification_type == 'transaction'){
-
 			try{
 				$configucao_ecommerce = tdc::ru('td_ecommerce_configuracoes');
 				$sqlVendedor = "SELECT email,token,notificacaourl,producao FROM td_ecommerce_pagseguro WHERE id = 1;";
@@ -36,6 +37,8 @@
 				}
 				curl_close($curl);
 				$transaction = simplexml_load_string($transaction);
+				//var_dump($transaction);
+				$retorno['transaction'] = $transaction;
 
 				// Inativa o Carrinho de Compras
 				if ($transaction->status == 2 || $transaction->status == 3 || $transaction->status == 4){
@@ -53,6 +56,9 @@
 				$valorfrete 	= $linhaCarrinho["valorfrete"]==''?0:$linhaCarrinho["valorfrete"];
 				$valortotal		= $transaction->grossAmount;
 
+				$carrinho_cliente			= $linhaCarrinho["cliente"];
+				$carrinho_transportadora	= $linhaCarrinho["transportadora"];
+
 				// Pedido
 				$sqlVerificaPedido = "SELECT id FROM td_ecommerce_pedido WHERE carrinhocompras = " . $linhaCarrinho["id"] . " ORDER BY id DESC LIMIT 1;";
 				logPagSeguro($sqlVerificaPedido);
@@ -68,7 +74,7 @@
 					$idPedido = getProxId("ecommerce_pedido",$conn);
 					// Inseri o pedido
 					$sqlInserirPedido = "INSERT INTO td_ecommerce_pedido (id,cliente,datahoraenvio,datahoraretorno,carrinhocompras,status,metodopagamento,qtdetotalitens,valortotal,valorfrete) VALUES(
-					".$idPedido.",".$linhaCarrinho["cliente"].",'".$linhaCarrinho["datahoracriacao"]."',now(),".$linhaCarrinho["id"].",".$transaction->status.",".$transaction->paymentMethod->type.",".$transaction->itemCount.",".$valortotal.",".$valorfrete.");";
+					".$idPedido.",".$carrinho_cliente.",'".$linhaCarrinho["datahoracriacao"]."',now(),".$linhaCarrinho["id"].",".$transaction->status.",".$transaction->paymentMethod->type.",".$transaction->itemCount.",".$valortotal.",".$valorfrete.");";
 					logPagSeguro($sqlInserirPedido);
 					$queryPedido = $conn->query($sqlInserirPedido);
 				}
@@ -115,42 +121,12 @@
 						}
 						$valortotalproduto = $linhaItensCarrinho["qtde"] * $linhaItensCarrinho["valor"];						
 
+						// Atualização no Estoque - Inicio
+						logPagSeguro('Antes de realizar a baixa no estoque!');
 						if ($configucao_ecommerce->is_control_inventory){
-							/* ******************************
-								Atualização no Estoque - Inicio
-							****************************** */
-							$iscontrolaestoque 		= true;
-							$tipooepracaoestoque 	= 2;
-							if ($iscontrolaestoque){
-								// Selecione a Operação de Estoque
-								$sqlTipoOperacaoEstoque = "SELECT ifnull(operacaoestoque,{$tipooepracaoestoque}) operacao FROM td_ecommerce_statuspedido WHERE id = " . $transaction->status. ";";
-								logPagSeguro($sqlTipoOperacaoEstoque);
-								$queryTipoOperacaoEstoque = $conn->query($sqlTipoOperacaoEstoque);
-								if ($queryTipoOperacaoEstoque->rowCount() > 0){
-									$linhaTipoOperacaoEstoque 	= $queryTipoOperacaoEstoque->fetch();
-									$tipooepracaoestoque 		= $linhaTipoOperacaoEstoque["operacao"];
-								}
-							}
-							
-							/*
-							$data = array(
-								"controller" => "ecommerce/posicaogeralestoque",
-								"key" => "k",
-								"quantidade" => $linhaItensCarrinho["qtde"],
-								"operacao" => $tipooepracaoestoque,
-								"variacaoproduto" => $linhaItensCarrinho["produto"]
-							);
-		
-							$curl = curl_init();
-							curl_setopt_array($curl, [
-								CURLOPT_RETURNTRANSFER => 1,
-								CURLOPT_URL => $_SESSION["PATH_URL_SYSTEM"] . 'index.php',
-								CURLOPT_POSTFIELDS => $data
-							]);
-							$response = curl_exec($curl);
-							curl_close($curl);
-							*/
+							Estoque::Baixar($linhaItensCarrinho["produto"],$linhaItensCarrinho["qtde"],$transaction->status);
 						}
+						logPagSeguro('Após de realizar a baixa no estoque!');
 						if ($configucao_ecommerce->is_control_commission){
 							/*
 							// Comissão
@@ -200,8 +176,57 @@
 							}
 							*/
 						}
+
 					}
+					logPagSeguro('Antes dos Contas a Receber');
+					/* ***********************************
+						CONTAS À RECEBER DO PEDIDO
+					*********************************** */
+					try{
+						$_contas_receber 						= tdc::p('td_erp_financeiro_contasareceber');
+						$_contas_receber->inativo 				= true;
+						$_contas_receber->cliente				= $carrinho_cliente;
+						$_contas_receber->documento				= $idPedido;
+						$_contas_receber->valor					= $valortotal;
+						$_contas_receber->dataemissao			= date('Y-m-d');
+						$_contas_receber->datavencimento		= date('Y-m-d');
+						$_contas_receber->datarecebimento		= date('Y-m-d');
+						$_contas_receber->formarecebimento		= 1;
+						$_contas_receber->pago					= true;
+						#$_contas_receber->comprovante			=
+						$_contas_receber->receita				= 1;
+						#$_contas_receber->referencia			=
+						$_contas_receber->armazenar();
+					}catch(Exception $e){
+						logPagSeguro($e->getMessage());
+					}
+					logPagSeguro('Após dos Contas a Receber');
+
+					logPagSeguro('Antes dos Contas à Pagar');
+					/* ***********************************
+						CONTAS À PAGAR FRETE
+					*********************************** */
+					try{
+						$_contas_pagar 						= tdc::p('td_erp_financeiro_contasapagar');
+						$_contas_pagar->inativo 			= true;
+						$_contas_pagar->fornecedor			= $carrinho_transportadora;
+						$_contas_pagar->documento			= $idPedido;
+						$_contas_pagar->valor				= $valorfrete;
+						$_contas_pagar->dataemissao			= date('Y-m-d');
+						#$_contas_pagar->datavencimento		= date('Y-m-d');
+						#$_contas_pagar->datapagamento		= date('Y-m-d');
+						$_contas_pagar->formapagamento		= 1;
+						$_contas_pagar->pago				= false;
+						#$_contas_pagar->comprovante		=
+						$_contas_pagar->elementocusto		= 1;
+						#$_contas_pagar->referencia			=
+						$_contas_pagar->armazenar();
+					}catch(Exception $e){
+						logPagSeguro($e->getMessage());
+					}
+					logPagSeguro('Depois dos Contas à Pagar');
 				}
+				
 				logPagSeguro("\nParametro para enviar por e-mail => {$configucao_ecommerce->is_send_order_email} \n");
 				if ($configucao_ecommerce->is_send_order_email){
 					/* ***********************************
@@ -212,7 +237,7 @@
 					$_ecommerce_config			= tdc::ru('td_ecommerce_configuracoes');
 					include(PATH_LIB . "phpmailer/PHPMailerAutoload.php");
 					$mail 						= new PHPMailer();
-					$mail->SetLanguage("en",PATH_LIB . "phpmailer/language/");					
+					$mail->SetLanguage("en",PATH_LIB . "phpmailer/language/");
 					$mail->CharSet 				= $_email_config->chartset;
 					$mail->SMTPDebug 			= 0;
 					$mail->SMTPAuth 			= $_email_config->smtpauth ? true : false;
@@ -228,6 +253,7 @@
 
 					# E-Mail enviado para a loja
 					$mail->AddAddress($_ecommerce_config->emailenviopedido,"E-Mail Pedido");
+					$mail->AddAddress('edilson@teia.tec.br',"DESENVOLVIMENTO");
 					if ($_email_config->issmtp){
 						$mail->IsSMTP();
 					}
@@ -306,7 +332,7 @@
 						],
 						"data" => 
 							[
-								"id" 			=> $idPedidoFormat,
+								"id" 			=> $idPedidoFormat, 
 								"cliente" 		=> $nomeClienteAPP,
 								"datahoraenvio" => $datahoracriacaoAPP,
 								"valorfrete" 	=> $valorfreteAPP,

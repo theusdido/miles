@@ -8,6 +8,7 @@
 // Invocado ao clicar no botão Novo
 function beforeNew(){
 	 var btnnew = arguments[0];
+	 is_new_posicaoestoque = true;
 }
 // Executa após o carregamento padrão de uma novo registro
 function afterNew(){
@@ -21,9 +22,13 @@ function beforeSave(){
 function afterSave(){
 	 var fp = arguments[0];
 	 var btnsave = arguments[1];
+	 if (is_new_posicaoestoque){
+		addEstoque();
+	 }
 }
 // Invocado ao clicar no botão Editar 
 function beforeEdit(){
+	is_new_posicaoestoque = false;
 	 var entidade = arguments[0];
 	 var registro = arguments[1];
 }
@@ -51,3 +56,16 @@ if (typeof funcionalidade === 'undefined') var funcionalidade = 'cadastro';
 /* 
  ### Escreva seu código JavaScript abaixo dessa linha ou dentro das funções acima ### 
 */
+var is_new_posicaoestoque = true;
+function addEstoque(){
+	is_new_posicaoestoque = false;
+	$.ajax({
+		url:session.urlmiles,
+		data:{
+			controller:'ecommerce/posicaogeralestoque',
+			produto:$('[data-entidade=td_ecommerce_operacaoestoque]#produto').val(),
+			quantidade:$('[data-entidade=td_ecommerce_operacaoestoque]#quantidade').val(),
+			operacao:$('[data-entidade=td_ecommerce_operacaoestoque]#operacaoestoque').val()
+		}
+	});
+}

@@ -1,5 +1,4 @@
 <?php
-	
 	/*
 		* Framework MILES
 		* @license : Teia Online.
@@ -80,7 +79,10 @@
 		break;
 		case md5("ecommerce.primodas"): // 61d205a14cb39f75b93676bf97cf967f
 			$permissao = true;
-		break;		
+		break;
+		case md5("ecommerce.opticaadolfo"): // 302dfe099db99f9079447f1e3bbbe5ab
+			$permissao = true;
+		break;
 	}
 
 	if (!$permissao){
@@ -144,6 +146,8 @@
 
 		// Fecha a transação com o banco de dados
 		Transacao::Commit();
+
+		header("Content-Type: application/json");
 
 		// Retorna a requisição em formatado de Array
 		#echo json_encode( [$retorno] );

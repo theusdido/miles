@@ -70,6 +70,40 @@
 	$dataset					= tdClass::Criar("repositorio",array(FILTROCONSULTA))->carregar($sql);
 
 	$arrayCamposAtributos = array();
+
+	if ($consulta->adicionaridfiltro){
+		$obj_id 							= new stdclass();
+		$obj_id->id 						= 0;
+		$obj_id->entidade 					= $consulta->entidade;
+		$obj_id->nome 						= 'id';
+		$obj_id->descricao 					= 'ID';
+		$obj_id->tipo 						= 'int';
+		$obj_id->tamanho 					= 0;
+		$obj_id->nulo						= 0;
+		$obj_id->omissao 					= '';
+		$obj_id->collection 				= '';
+		$obj_id->atributos 					= '';
+		$obj_id->indice 					= '';
+		$obj_id->autoincrement 				= 0;
+		$obj_id->comentario 				= '';
+		$obj_id->exibirgradededados 		= 0;
+		$obj_id->chaveestrangeira 			= 0;
+		$obj_id->tipohtml 					= 3;
+		$obj_id->dataretroativa 			= 0;
+		$obj_id->ordem 						= -1;
+		$obj_id->inicializacao 				= '';
+		$obj_id->readonly 					= false;
+		$obj_id->exibirpesquisa 			= 0;
+		$obj_id->tipoinicializacao 			= 1;
+		$obj_id->atributodependencia 		= 0;
+		$obj_id->labelzerocheckbox 			= '';
+		$obj_id->labelumcheckbox 			= '';
+		$obj_id->legenda 					= '';
+		$obj_id->desabilitar 				= false;
+
+		array_push($arrayCamposAtributos,$obj_id);
+	}
+
 	$atributo = "";
 	$i =1;
 	foreach ($dataset as $ftConsulta){
@@ -112,7 +146,7 @@
 	$form->id 				= "form-consulta";
 	$form->ncolunas 		= 3;
 	$form->exibirid 		= true;
-	$form->funcionalidade 	= "consulta";
+	$form->funcionalidade 	= "consulta";	
 
 	if ($arrayCamposAtributos){
 		$form->camposHTML($arrayCamposAtributos);
@@ -120,7 +154,7 @@
 	
 	$blocoForm 			= tdClass::Criar("div");
 	$blocoForm->class 	= "col-md-12";
-	$blocoForm->id 		= "crud-contexto-add-" . $entidade->nome;
+	$blocoForm->id 		= "crud-contexto-form-" . $entidade->nome;
 	$blocoForm->add($btn_pesquisar,$form);
 	
 	$linhaForm 			= tdClass::Criar("div");
