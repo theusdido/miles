@@ -258,9 +258,10 @@
 						$mail->IsSMTP();
 					}
 
-					$mail->IsHTML(true);					
+					$mail->IsHTML(true);	
 					# Requisição da impressão do pedido
-					$url_impressao_pedido 	= URL_MILES. "index.php?controller=ecommerce/pedidoenvioemail/pedidoenvioemail&registro=" . $idPedido;
+					$_params_pedido 		= "registro=" . $idPedido;
+					$url_impressao_pedido 	= URL_MILES. "index.php?controller=ecommerce/pedidoenvioemail/pedidoenvioemail&$_params_pedido";
 					$curl = curl_init();
 					curl_setopt_array($curl, [
 						CURLOPT_RETURNTRANSFER => 1,
@@ -269,7 +270,8 @@
 					$response = curl_exec($curl);
 					curl_close($curl);
 
-					$mail->Body 			= $response;
+					$_link_visualizar_pedido = '<a href="'.$url_impressao_pedido.'" target="_blank">Clique aqui para visualizar o pedido</a>';
+					$mail->Body 			= $_link_visualizar_pedido . $response;
 					if(!$mail->Send())
 					{
 						$retorno['msg'] 	= $mail->ErrorInfo;

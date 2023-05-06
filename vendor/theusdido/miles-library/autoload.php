@@ -1,9 +1,20 @@
 <?php
-	
-	$_current_project_name	= 'opticaadolfo';
-	$_current_environment 	= 'dev';
 
-	$_project_name_identifify_params = isset($_GET['project_name_identifify_params']) 
+	// Config Miles ( miles.json ) na raiz
+	if (!isset($_miles_json_root_file)){
+		$_miles_json_root_file = 'miles.json';
+	}
+
+	if (!file_exists($_miles_json_root_file)){
+		echo 'Arquivo miles.json não encontrado ! ... ';
+		exit;
+	}
+
+	$_miles_config_root 	= json_decode(file_get_contents($_miles_json_root_file));
+	$_current_project_name	= $_miles_config_root->project->id;
+	$_current_environment 	= $_miles_config_root->enviromment;
+
+	$_project_name_identifify_params = isset($_GET['project_name_identifify_params'])
 	? $_GET['project_name_identifify_params']
 	: (isset($_POST['project_name_identifify_params']) ? $_POST['project_name_identifify_params'] : 
 	( isset($_project_name_identifify_params) ? $_project_name_identifify_params : $_current_project_name)

@@ -65,7 +65,7 @@ function validarEmail(email){
 }
 // Validar Telefone
 function validarTelefone(telefone){
-	valor = replaceAll(telefone,"()- ","");//.replace("(","").replace(")","").replace("-","").replace(" ","");
+	valor = replaceAll(telefone,"()- .","");//.replace("(","").replace(")","").replace("-","").replace(" ","");
 	if (valor.length == 10 || valor.length == 11){
 		return true;
 	}else{
@@ -81,7 +81,7 @@ function validarFormatacao(campos){
 				retorno = true;
 			}
 		});
-	}		
+	}
 	return retorno;
 }
 // Validar CPF

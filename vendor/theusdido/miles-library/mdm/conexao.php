@@ -1,7 +1,23 @@
 <?php
 
+	ini_set('display_errors',1);
+	ini_set('display_startup_erros',1);
+	error_reporting(E_ALL);
+
 	$relative_path	= '../../../../';
-	$miles_json 	= json_decode(file_get_contents($relative_path . 'opticaadolfo/dev.miles.json'));
+	
+	// Config Miles ( miles.json ) na raiz
+	$_miles_json_root_file = $relative_path . 'miles.json';
+	if (!file_exists($_miles_json_root_file)){
+		echo 'Arquivo miles.json não encontrado !';
+		exit;
+	}
+
+	$_miles_config_root 	= json_decode(file_get_contents($_miles_json_root_file));
+	$_current_project_name	= $_miles_config_root->project->id;
+	$_current_environment 	= $_miles_config_root->enviromment;
+
+	$miles_json 	= json_decode(file_get_contents($relative_path . $_current_project_name . '/'.$_current_environment.'.miles.json'));
 	date_default_timezone_set('America/Sao_Paulo');
 
 	if (isset($miles_json->currentproject)){

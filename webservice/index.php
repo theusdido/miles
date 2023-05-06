@@ -41,6 +41,9 @@
 	// Limpa cachê do SOAP
 	ini_set("soap.wsdl_cache_enabled", 0);
 
+	// Arquivo de configuração miles.json
+	$_miles_json_root_file = '../miles.json';
+
 	// Carrega os arquivos de configuração do sistema
 	require '../vendor/theusdido/miles-library/autoload.php';
 
