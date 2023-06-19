@@ -1,5 +1,5 @@
 <?php
-
+	
 	// Config Miles ( miles.json ) na raiz
 	if (!isset($_miles_json_root_file)){
 		$_miles_json_root_file = 'miles.json';
@@ -32,6 +32,7 @@
 	define('PATH_REPOSITORY', FOLDER_REPOSITORY . '/');
 	define('FOLDER_MILES_LIBRARY','miles-library');
 	define('FOLDER_LIBRARY_SYSTEM','system');
+	define('PROJECT_NAME_IDENTIFY_PARAMS',$_project_name_identifify_params);
 
 	// Raiz do servidor web, corresponde ao documentRoot
 	define('PATH_ROOT',$_SERVER['DOCUMENT_ROOT'] . '/');
@@ -90,10 +91,10 @@
 
 	// Carrega biblioteca de funções independentes
 	require $_path_system . 'functions.php';
-
+	
 	// Carrega as configurações do arquivo miles.json
 	require $_path_system . 'miles.json.php';
-
+	
 	// Carrega os arquivos de configuração do sistema	
 	require $_path_system . 'config.php';
 

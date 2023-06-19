@@ -5,8 +5,16 @@ $descricaoRel = $rel->descricao==""?$ent_filho->contexto->descricao:$rel->descri
 // Div para adicionar o form do relacionamento
 $div_rel = tdClass::Criar("div");
 
-$urlrequest = URL_MILES .  '?controller=gerarcadastro&entidade='.$ent_filho->contexto->id . "&relacionamento=" . $rel->id;
+$urlrequest = getURLProject(
+	array('controller' 		=> 'gerarcadastro',
+	'entidade' 			=> $ent_filho->contexto->id,
+	'relacionamento'	=> $rel->id)
+);
 $conteudo = getUrl($urlrequest);
+
+#echo '<br/>######################################################################';
+#var_dump($conteudo);
+#echo '<br/>######################################################################';
 if (!$conteudo){
 	$div_rel->add('<div class="alert alert-danger" role="alert"><b>Ops!</b> Não foi possível criar esta página.</div>');
 }else{

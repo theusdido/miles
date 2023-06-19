@@ -41,7 +41,7 @@ class Layout extends Div {
 	*/			
 	public function addCabecalho(){
 		$linha 			= tdClass::Criar("div");
-		$linha->class 	= "row";
+		$linha->class 	= "row topo";
 		
 		if (func_num_args() > 0){
 			foreach (func_get_args() as $obj){

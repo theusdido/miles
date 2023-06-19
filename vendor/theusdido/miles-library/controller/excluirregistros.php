@@ -14,8 +14,6 @@
 			$relacionamento_composicao 		= tdClass::Criar("repositorio",array(RELACIONAMENTO));
 			$dadosComposicao 				= $relacionamento_composicao->carregar($sql);
 			foreach($relacionamento_composicao->carregar($sql) as $dadosComposicao){
-				$atributo_relacionamento 	= tdClass::Criar("persistent",array(ATRIBUTO,$dadosComposicao->atributo)); #pega o campo que faz a vinculação
-				$campo_pai_relacionamento 	= $atributo_relacionamento->contexto->nome;
 				$entidade_rel 				= $dadosComposicao->filho;
 
 				// Excluir Lista
@@ -29,17 +27,21 @@
 					$lista[0]->deletar();
 				}
 
-				// Exclui registros na composição 1N e agregação 1N
-				if ($dadosComposicao->tipo == 2 || $dadosComposicao->tipo == 6){
-					$sql 				= tdClass::Criar("sqlcriterio");		
-					$nome_entidade_rel 	= tdClass::Criar("persistent",array(ENTIDADE,$entidade_rel));		
-					$dataset 			= tdClass::Criar("repositorio",array($nome_entidade_rel->contexto->nome));
-					$sql->add(tdClass::Criar("sqlfiltro",array($campo_pai_relacionamento,"=",$registrosID)));
-					$filhos 			= $dataset->carregar($sql);
+				if ($dadosComposicao->atributo > 0){
+					$atributo_relacionamento 	= tdClass::Criar("persistent",array(ATRIBUTO,$dadosComposicao->atributo)); #pega o campo que faz a vinculação
+					$campo_pai_relacionamento 	= $atributo_relacionamento->contexto->nome;
+					// Exclui registros na composição 1N e agregação 1N
+					if ($dadosComposicao->tipo == 2 || $dadosComposicao->tipo == 6){
+						$sql 				= tdClass::Criar("sqlcriterio");		
+						$nome_entidade_rel 	= tdClass::Criar("persistent",array(ENTIDADE,$entidade_rel));		
+						$dataset 			= tdClass::Criar("repositorio",array($nome_entidade_rel->contexto->nome));
+						$sql->add(tdClass::Criar("sqlfiltro",array($campo_pai_relacionamento,"=",$registrosID)));
+						$filhos 			= $dataset->carregar($sql);
 
-					if (sizeof($filhos) > 0){
-						foreach ($filhos as $filho){
-							$filho->deletar();
+						if (sizeof($filhos) > 0){
+							foreach ($filhos as $filho){
+								$filho->deletar();
+							}
 						}
 					}
 				}

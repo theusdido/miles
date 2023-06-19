@@ -123,13 +123,13 @@ class Elemento {
 			$this->fechar();
 	}
 
-	/*  
+	/*
 		* Método innerHTML 
 	    * Data de Criacao: 01/05/2020
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 
 		Retorna o conteúdo da tag
-	*/		
+	*/
 	function innerHTML(){
 		$innerhtml = "";
 		if ($this->filhos){

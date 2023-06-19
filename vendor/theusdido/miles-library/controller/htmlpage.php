@@ -9,9 +9,9 @@
 			}
 			$js = tdc::o("script");
 			$js->add('
-				formulario['.$entidade->id.']				 			= new tdFormulario('.$entidade->id.');
-				formulario['.$entidade->id.'].funcionalidade 	= "add-emexecucao";
-				formulario['.$entidade->id.'].setRegistroUnico();
+				formulario[cadastro_'.$entidade->id.']				 	= new tdFormulario('.$entidade->id.');
+				formulario[cadastro_'.$entidade->id.'].funcionalidade 	= "add-emexecucao";
+				formulario[cadastro_'.$entidade->id.'].setRegistroUnico();
 			');
 
 

@@ -24,10 +24,12 @@ function tdFormulario (){
 	this.entidades					= []; // Usada para carregar os dados na edição
 	this.cmodal						= ' .modal-body p'; // Complemento Modal
 	this.is_init					= true;
-	this.tipo						= '';
+	this.tipo						= 'cadastro';
 	this.indice_formulario			= '';
 	this.is_registrounico			= false;
     this.construct(arguments[0], arguments[1] , arguments[2],arguments[3]);
+	this.formulario;
+	this.is_loaded					= false;
 }
 
 tdFormulario.prototype.construct = function(entidade_id,registro_id = 0,entidade_pai = 0,extras = {}){
@@ -55,8 +57,10 @@ tdFormulario.prototype.setExtras = function(_extras){
 
 	if (typeof _extras.indice != 'undefined'){
 		this.setIndexForm(_extras.indice);
+	}else{
+		this.setIndexForm(this.tipo + '_' + this.entidade_id);
 	}
-	
+
 	if (typeof _extras.is_init != 'undefined') this.is_init = _extras.is_init;		
 	if(this.is_init) this.init();
 
@@ -199,6 +203,7 @@ tdFormulario.prototype.novo = function(){
 	});
 
 	$(".form-group",contextoAdd).removeClass("has-success");
+	$(".form-group",contextoAdd).removeClass("has-error");
 	$(".form-control-feedback").remove();
 
 	if ($("#select-generalizacao-unica",contextoAdd))
@@ -209,18 +214,21 @@ tdFormulario.prototype.novo = function(){
 		}
 		instancia.setaLayoutGeneralizao();
 	}
+	this.camposUnicos(contextoAdd);
 	this.setarformdadospreenchido();
-	this.naoExibirCampos(contextoAdd);	
+	this.naoExibirCampos(contextoAdd);
 
 	if (this.is_pai){
 		this.entidades_filho.forEach(function(e){
-			formulario[e] 				= new tdFormulario(e , 0, this.entidade.id);
-			formulario[e].is_pai 		= false;
-			formulario[e].is_principal	= false;
-			formulario[e].newGrade();
+			let indice_form 						= 'cadastro_' + e;
+			if (formulario[indice_form] == undefined){
+				formulario[indice_form] 				= new tdFormulario(e , 0, this.entidade.id,{indice:indice_form});
+			}
+			formulario[indice_form].is_pai 			= false;
+			formulario[indice_form].is_principal	= false;
+			formulario[indice_form].newGrade();
 		},this);
 	}
-	console.log('=>',$('#categoria','#modal-editar .modal-body #crud-contexto-add-td_ecommerce_produto').html());
 	$(contextoAdd).show();
 	$(contextoListar).hide();
 	if (typeof afterNew === "function") afterNew(contextoAdd);
@@ -236,11 +244,15 @@ tdFormulario.prototype.setContexto = function(contexto = null){
 tdFormulario.prototype.getContexto =  function(){
 	let contexto = 'add';
 	switch(this.tipo){
-		case 'cadastro': contexto = 'add'; break;
-		case 'consulta': contexto = 'form'; break;
+		case 'consulta': 
+			contexto = '#crud-contexto-form-' + this.entidade.nome;
+		break;
+		case 'cadastro':
+		default:
+			contexto = this.getContextoAdd(); 		
 	}
 
-	return '#crud-contexto-' + contexto + '-' + this.entidade.nome;
+	return contexto;
 }
 
 tdFormulario.prototype.getContextoAdd = function(){
@@ -519,26 +531,32 @@ tdFormulario.prototype.setEntidadesFilho = function(){
 }
 
 tdFormulario.prototype.setBotoes = function(){
-	this.btn_novo 	= $(".b-novo"	, this.getContextoListar()).first();
-	this.btn_voltar	= $(".b-voltar"	, this.getContexto()).first();
-	this.btn_salvar	= $(".b-salvar"	, this.getContexto()).first();
 
-	this.btn_novo.click(this,function(handler){
-		if (typeof beforeNew === "function") beforeNew(this);
-		handler.data.novo();
-	});
+	if (this.btn_novo == null){
+		this.btn_novo 	= $(".b-novo"	, this.getContextoListar()).first();
+		this.btn_novo.click(this,function(handler){
+			if (typeof beforeNew === "function") beforeNew(this);
+			handler.data.novo();
+		});		
+	}
 
-	this.btn_voltar.click(this,function(handler){
-		if (typeof beforeBack === "function") beforeBack(this);
-		handler.data.voltar();
-		if (typeof afterBack === "function") afterBack(this);
-	});
+	if (this.btn_voltar == null){
+		this.btn_voltar	= $(".b-voltar"	, this.getContexto()).first();
+		this.btn_voltar.click(this,function(handler){
+			if (typeof beforeBack === "function") beforeBack(this);
+			handler.data.voltar();
+			if (typeof afterBack === "function") afterBack(this);
+		});		
+	}
 
-	this.btn_salvar.click(this,function(handler){
-		if (typeof beforeSave === "function") beforeSave(this);
-		handler.data.salvar();
+	if (this.btn_salvar == null){
+		this.btn_salvar	= $(".b-salvar"	, this.getContexto()).first();
+		this.btn_salvar.click(this,function(handler){
+			if (typeof beforeSave === "function") beforeSave(this);
+			handler.data.salvar();
+		});
+	}
 
-	});
 }
 
 tdFormulario.prototype.loadGrade = function(){
@@ -609,6 +627,12 @@ tdFormulario.prototype.salvar = function(){
 		}
 	}
 
+	if ($(this.getContexto()).find("div").hasClass("has-error")){
+		abrirAlerta("Existem campos problemas!","alert-danger",contextoMsg);
+		this.liberaBotaoSalvar();
+		return false;
+	}
+
 	if (entidadepairel != "" && tiporelacionamentopai == 1){
 		// Caso seja Agregação 1:1 e se o usário não digitou nada no form então não enviar o formulário
 		let tdform = $(this.getContexto() + " .tdform");
@@ -669,12 +693,6 @@ tdFormulario.prototype.salvar = function(){
 		return false;
 	}
 
-	if ($(this.getContexto()).find("div").hasClass("has-error")){
-		abrirAlerta("Existem campos obrigat&oacute;rios n&atilde;o preenchidos","alert-danger",contextoMsg);
-		this.liberaBotaoSalvar();
-		return false;
-	}
-	
 	if (this.is_principal){
 		let parar = false;
 		for (c in this.composicao){
@@ -753,12 +771,17 @@ tdFormulario.prototype.salvar = function(){
 	// Salvar o formulário
 	if (this.is_principal){
 		let dadosenviar = [];
-
-		formulario.forEach(function(f){
-			f.dados.forEach(function(d){
+		
+		// Adiciona os dados das entidades filhos
+		formulario[this.getIndexForm()].entidades_filho.forEach(function(e){
+			formulario['cadastro_' + e].dados.forEach(function(d){
 				dadosenviar.push(d);
 			});
+			
 		});
+
+		// Dados da entidade principal
+		dadosenviar.push(formulario[this.getIndexForm()].dados[0]);
 
 		// AJAX que envia os dados a serem salvos
 		$.ajax({
@@ -769,6 +792,9 @@ tdFormulario.prototype.salvar = function(){
 			},
 			instancia:this,
 			dataType:"json",
+			beforeSend:function(){
+				this.instancia.addLoaderSalvar();
+			},
 			complete:function(req,req_status){
 				if (req_status == 'error' || req_status == 'parsererror') return false;
 				let retorno = JSON.parse(req.responseText);
@@ -776,8 +802,12 @@ tdFormulario.prototype.salvar = function(){
 					abrirAlerta("Salvo com Sucesso","alert-success",contextoMsg);
 					if (this.instancia.registro_id <= 0){
 						this.instancia.registro_id = retorno.id;
-						this.instancia.exibirDadosEdicao();
+						if (this.instancia.is_principal){
+							this.instancia.exibirDadosEdicao();
+						}
+						let _instancia = this.instancia;
 						retorno.entidadesID.forEach(function(entidades_retorno){
+							let index_form_retorno = 'cadastro_' + entidades_retorno.entidade;
 							switch(entidades_retorno.tipo_relacionamento){
 								case '':
 								case 0: 
@@ -785,16 +815,16 @@ tdFormulario.prototype.salvar = function(){
 								case 7:
 								case 3:
 									// Atualiza o ID do banco de dados no registro
-									formulario[getEntidadeId(entidades_retorno.entidade)].id = entidades_retorno.id;
+									formulario[index_form_retorno].id = entidades_retorno.id;
 									$('#id[data-entidade="'+entidades_retorno.entidade+'"]').val(entidades_retorno.id);
 								break;
 								default:
 								// Recarrega as grades de dados
-								formulario[getEntidadeId(entidades_retorno.entidade)].gradesdados.clear();
-								formulario[getEntidadeId(entidades_retorno.entidade)].gradesdados.addFiltroNN(retorno.entidade, retorno.id, getEntidadeId(entidades_retorno.entidade));
-								formulario[getEntidadeId(entidades_retorno.entidade)].gradesdados.reload();							
+								formulario[index_form_retorno].gradesdados.clear();
+								formulario[index_form_retorno].gradesdados.addFiltroNN(retorno.entidade, retorno.id, getEntidadeId(entidades_retorno.entidade));
+								formulario[index_form_retorno].gradesdados.reload();							
 							}
-							formulario[getEntidadeId(entidades_retorno.entidade)].dados = [];
+							formulario[index_form_retorno].dados = [];
 						});
 						this.instancia.setaPrimeiraAba();
 						if ($("#select-generalizacao-unica")){
@@ -807,7 +837,7 @@ tdFormulario.prototype.salvar = function(){
 					}).bind(this.instancia)(),3000);
 				}
 				if (typeof afterSave === "function") afterSave(this.instancia.is_principal,this);
-				unLoaderSalvar();
+				this.instancia.unLoaderSalvar();
 
 				// Retorna para o formulário que chamou o adição de registro
 				if (this.instancia.funcionalidade == 'add-emexecucao'){
@@ -819,15 +849,12 @@ tdFormulario.prototype.salvar = function(){
 				if (this.instancia.is_principal){
 					this.instancia.btn_salvar.attr("disabled",false);
 					this.instancia.btn_salvar.attr("readonly",false);
-					unLoaderSalvar();
+					this.instancia.unLoaderSalvar();
 				}
 				if (session.isproducao && session.isonline){
 					enviarEmailErro(ret.responseText);
 				}
 				abrirAlerta("<b>Erro ao Salvar</b> favor entrar em contato com a equipe de SUPORTE.","alert-danger",contextoMsg);
-			},
-			beforeSend:function(){
-				addLoaderSalvar(this.instancia.getContexto());
 			}
 		});
 	}else{
@@ -895,13 +922,13 @@ tdFormulario.prototype.exibirDadosEdicao =  function(){
 	}
 }
 
-tdFormulario.prototype.editar = function(){	
+tdFormulario.prototype.editar = function(){
+
 	if (typeof beforeEdit === "function") beforeEdit(this.entidade.id,this.registro_id);
 
 	//Limpa o formulário para edição de um novo registro
 	this.novo();
 
-	//this.setAtributoDependencia();
 	addLog("", "", "", this.entidade.id,this.registro_id, 7, "");
 	
 	// Verifica se o usuário tem permissão para editar
@@ -921,7 +948,7 @@ tdFormulario.prototype.editar = function(){
 			registroprincipal:this.registro_id,
 			rastrearrelacionamentos:true
 		},
-		instancia:this,
+		instancia:formulario[this.getIndexForm()],
 		dataType:"json",
 		beforeSend:function(){
 			addLoaderGeral();
@@ -941,11 +968,9 @@ tdFormulario.prototype.editar = function(){
 			}
 			retorno.forEach(function(r){
 				let dadosRetorno 			= r.dados;
-				let entidadeDados 			= td_entidade[r.entidade];
 				let tipoRelacionamento 		= "";
 				let atributoRelacionamento 	= "";
-				let nomeEntidadeDados 		= entidadeDados.nomecompleto;
-				
+
 				if (!r.fp){
 					// Verifica o tipo de relacionamento
 					this.entidade.relacionamentos.forEach(function(relacionamento){
@@ -991,9 +1016,10 @@ tdFormulario.prototype.editar = function(){
 
 				// Seta a grade de dados para as entidades de relacionamento
 				}else if (tipoRelacionamento == 2 || tipoRelacionamento == 6 || tipoRelacionamento == 5 || tipoRelacionamento == 8 || tipoRelacionamento == 10){
-					this.setGradeRelacionamento(r.entidade,r.id,r.dados);
-					$(formulario[r.entidade].getContexto(),this.getContexto()).hide();
-					$(formulario[r.entidade].getContextoListar(),this.getContexto()).show();
+					let index_form_rel = 'cadastro_' + r.entidade;
+					this.setGradeRelacionamento(index_form_rel,r.id,r.dados);
+					$(formulario[index_form_rel].getContexto(),this.getContexto()).hide();
+					$(formulario[index_form_rel].getContextoListar(),this.getContexto()).show();
 				}
 
 				if ($("#select-generalizacao-unica")){
@@ -1012,12 +1038,13 @@ tdFormulario.prototype.editar = function(){
 					}
 				}
 
-				if (r.fp){
+				if (this.is_principal){
 					this.exibirDadosEdicao();
-					this.setBotoes();
-					this.liberaBotaoSalvar()
+					//this.setBotoes();
+					this.liberaBotaoSalvar();
 				}
 			},this.instancia);
+
 			// Permissão dos atributos
 			this.instancia.setPermissoesAtributos('edicao');
 			if (typeof afterEdit === "function") afterEdit(this.instancia.entidade.id,this.instancia.registro_id);
@@ -1033,6 +1060,10 @@ tdFormulario.prototype.setDados = function(dados){
 	let id				= dados.id;
 	let atributos		= dados.dados;
 
+	if (id == '' || id == 0){
+		return;
+	}
+
 	// id do Formulário
 	$('#id[data-entidade='+entidade_nome+']',contextoAdd).val(id);
 	form.registro_id = id;
@@ -1047,7 +1078,7 @@ tdFormulario.prototype.setDados = function(dados){
 		let $_atributo 		= $('#' + dado.atributo + '[data-entidade="'+entidade_nome+'"]',contextoAdd);
 		// Apenas os campos do tipo SELECT <select>
 		if ($_atributo.prop("tagName") == "SELECT"){
-
+			valorDados = dado.valorreal;
 			let atributodependencia_id 	= td_atributo[getIdAtributo(dado.atributo,entidade_nome)].atributodependencia;
 			atributodependencia_id		= atributodependencia_id == '' ? 0 : atributodependencia_id;
 
@@ -1145,12 +1176,12 @@ tdFormulario.prototype.setDados = function(dados){
 	},this);
 }
 
-tdFormulario.prototype.setGradeRelacionamento = function(entidade,id,dados){
+tdFormulario.prototype.setGradeRelacionamento = function(index_form,id,dados){
 	let linha = [];
 	dados.forEach(function(d){
 		linha[d.atributo] = d.valor;
 	});
-	formulario[entidade].gradesdados.addLinha(id,linha);
+	formulario[index_form].gradesdados.addLinha(id,linha);
 }
 
 tdFormulario.prototype.buscarFiltro = function(termo,entidadeNome,nome,modalName,entidadeContexto){
@@ -1387,16 +1418,21 @@ tdFormulario.prototype.setBuscaFiltro = function()
 	);
 }
 
-
 tdFormulario.prototype.addHTMLPersonalizado = function()
 {
-	$("#div-htmlpersonalizado").load(
+	carregar(
 		session.folderprojectfiles + 
 		"files/cadastro/" + 
 		this.entidade_id + 
 		"/" + 
 		this.entidade.nome + 
-		".htm"
+		".htm",
+		"#div-htmlpersonalizado",
+		function(_res){
+			if (_res.status == 404){
+				$("#div-htmlpersonalizado").html('');
+			}
+		}
 	);
 }
 
@@ -1779,6 +1815,61 @@ tdFormulario.prototype.getIndexForm =  function(){
 }
 
 tdFormulario.prototype.setIndexForm =  function(indice_formulario){
-	this.indice_formulario = indice_formulario;
-	$(this)
+	this.indice_formulario = indice_formulario;	
+	this.setFormulario(indice_formulario);
+}
+tdFormulario.prototype.setFormulario = function(indice_formulario){
+	this.formulario			= formulario[indice_formulario];
+}
+
+tdFormulario.prototype.getFormulario = function(){
+	return this.formulario;
+}
+
+tdFormulario.prototype.addLoaderSalvar = function(){
+	addLoaderSalvar(this.getContexto());
+}
+tdFormulario.prototype.unLoaderSalvar = function(){
+	unLoaderSalvar(this.getContexto());
+}
+
+tdFormulario.prototype.camposUnicos = function(){	
+	$(".form-control",this.getContexto()).each(function(){
+		let atributo = $(this).attr("id");
+		if (atributo == ""){
+			alert('Existe um campo no formul\u00e1rio que n\u00e3o possui o atributo ID. Maiores detalhes no console do navegador');
+			return false;
+		}
+
+		let entidadeAttr 	= $(this).data("entidade");
+		let atributoID 		= getIdAtributo(atributo,entidadeAttr);
+
+		if (parseInt(atributoID) != 0){			
+			let atributoOBJ = td_atributo[atributoID];
+			if (parseInt(atributoOBJ.is_unique_key) == 1){
+				$(this).blur(function(){
+					$.ajax({
+						context:this,
+						url:config.urlrequisicoes,
+						data:{
+							op:"campo-unico",
+							data:this.value,
+							atributo:atributoID
+						},
+						complete:function(ret){
+							var retorno = parseInt(ret.responseText);
+							if (retorno > 0){
+							 	statusFormControl(this,"error");
+							}else{
+								statusFormControl(this,"default");
+							}
+						},
+						error:function(ret){
+							console.log("ERRO ao verificar campo único => " + ret.responseText);
+						}
+					});
+				});
+			}
+		}
+	});
 }

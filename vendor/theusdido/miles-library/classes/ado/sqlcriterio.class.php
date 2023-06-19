@@ -183,7 +183,7 @@ class SqlCriterio extends SqlExpressao {
 		$this->addFiltro($atributo,"=",1);
 
 		// Filtra os nulos
-		if ($isnull) $this->addFiltro($atributo,"IS",NULL);
+		if ($isnull) $this->addFiltro($atributo,"IS",NULL,OU);
 	}
 
 	/*  
@@ -198,6 +198,6 @@ class SqlCriterio extends SqlExpressao {
 		$this->addFiltro($atributo,"=",0);
 
 		// Filtra os nulos
-		if ($isnull) $this->addFiltro($atributo,"IS",NULL);
+		if ($isnull) $this->addFiltro($atributo,"IS",NULL,OU);
 	}	
 }

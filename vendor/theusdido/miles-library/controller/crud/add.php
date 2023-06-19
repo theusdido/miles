@@ -18,7 +18,7 @@
 	// Mensagem de Retorno
 	$retorno 		= tdClass::Criar("retorno");
 	$retorno->class = $msgRetorno;
-		
+
 	// Botão Novo
 	$btn_novo 			= tdClass::Criar("button");
 	$btn_novo->class 	= "btn {$btnNovoType} b-novo";

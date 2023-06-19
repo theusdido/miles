@@ -6,17 +6,17 @@
 	$nome = $descricao = $tipo = $tamanho = $linha = $nulo = $tipohtml = $exibirgradededados = 
 	$chaveestrangeira = $dataretroativa = $inicializacao = $readonly = $indice = $tipoinicializacao = 
 	$atributodependencia = $labelzerocheckbox = $labelumcheckbox = $legenda = $desabilitar = 
-	$criarsomatoriogradededados = $naoexibircampo = "";
+	$criarsomatoriogradededados = $naoexibircampo = $is_unique_key = "";
 
 	$id = isset($_GET["id"])?$_GET["id"]:"";
 	$entidade	= isset($_GET["entidade"])?$_GET['entidade']:$_POST['entidade'];
 		
 	if (isset($_POST["salvar"])){
 		#$conn->beginTransaction();
-		$nome = $_POST["nome"];
-		$descricao = executefunction("tdc::utf8",array($_POST["descricao"],6));
-		$tipo = $_POST["tipo"];		
-		$tamanho = isset($_POST["tamanho"])?$_POST["tamanho"]:0;
+		$nome 		= $_POST["nome"];
+		$descricao	= executefunction("tdc::utf8",array($_POST["descricao"]));
+		$tipo 		= $_POST["tipo"];		
+		$tamanho 	= isset($_POST["tamanho"])?$_POST["tamanho"]:0;
 		if ($tipo == "char" || $tipo == "varchar"){
 			if ((int)$tamanho <= 0){
 				$tamanho = "(200)";
@@ -26,12 +26,12 @@
 		}else{
 			$tamanho = '';
 		}
-		$tamanhoSQL = (is_numeric($_POST["tamanho"])?$_POST["tamanho"]:0);
-		$nulo = isset($_POST["nulo"])?'NULL':'NOT NULL';
-		$tipohtml = $_POST["tipohtml"];
-		$exibirgradededados = isset($_POST["exibirgradededados"])?1:0;
-		$dataretroativa = isset($_POST["dataretroativa"])?1:0;
-		$readonly = isset($_POST["readonly"])?1:0;
+		$tamanhoSQL 			= (is_numeric($_POST["tamanho"])?$_POST["tamanho"]:0);
+		$nulo 					= isset($_POST["nulo"])?'NULL':'NOT NULL';
+		$tipohtml 				= $_POST["tipohtml"];
+		$exibirgradededados 	= isset($_POST["exibirgradededados"])?1:0;
+		$dataretroativa 		= isset($_POST["dataretroativa"])?1:0;
+		$readonly 				= isset($_POST["readonly"])?1:0;
 		if (isset($_POST["chaveestrangeira"])){
 			$chaveestrangeira = ($_POST["chaveestrangeira"]=="")?0:($_POST["chaveestrangeira"]);
 		}else{
@@ -51,7 +51,7 @@
 		$desabilitar 				= isset($_POST["desabilitar"])?1:0;
 		$criarsomatoriogradededados = isset($_POST["criarsomatoriogradededados"])?1:0;
 		$naoexibircampo				= isset($_POST["naoexibircampo"])?1:0;
-		
+		$is_unique_key				= isset($_POST["is_unique_key"])?1:0;		
 		$inicializacao = str_replace("'","\'",$_POST["inicializacao"]);
 		$query = $conn->query("SELECT nome FROM ".PREFIXO."entidade WHERE id = {$_POST["entidade"]}");
 		$linha = $query->fetchAll();
@@ -64,7 +64,55 @@
 				$linha_ultimo = $query_ultimo->fetchAll();
 				$idRetorno = $linha_ultimo[0]["id"];				
 				
-				$sql = "INSERT INTO ".PREFIXO."atributo (id,entidade,nome,descricao,tipo,tamanho,nulo,tipohtml,exibirgradededados,chaveestrangeira,dataretroativa,inicializacao,readonly,indice,tipoinicializacao,atributodependencia,labelzerocheckbox,labelumcheckbox,legenda,desabilitar,criarsomatoriogradededados,naoexibircampo) VALUES ({$idRetorno},'{$_POST["entidade"]}','{$nome}','{$descricao}','{$tipo}',".$tamanhoSQL.",".((isset($_POST["nulo"]))?1:0).",'{$tipohtml}',{$exibirgradededados},{$chaveestrangeira},{$dataretroativa},'{$inicializacao}',{$readonly},'{$indice}',{$tipoinicializacao},{$atributodependencia},'{$labelzerocheckbox}','{$labelumcheckbox}','{$legenda}','{$desabilitar}',{$criarsomatoriogradededados},{$naoexibircampo});";
+				$sql = "INSERT INTO ".PREFIXO."atributo (
+					id,
+					entidade,
+					nome,
+					descricao,
+					tipo,
+					tamanho,
+					nulo,
+					tipohtml,
+					exibirgradededados,
+					chaveestrangeira,
+					dataretroativa,
+					inicializacao,
+					readonly,
+					indice,
+					tipoinicializacao,
+					atributodependencia,
+					labelzerocheckbox,
+					labelumcheckbox,
+					legenda,
+					desabilitar,
+					criarsomatoriogradededados,
+					naoexibircampo,
+					is_unique_key
+					) VALUES (
+					{$idRetorno},
+					'{$_POST["entidade"]}',
+					'{$nome}',
+					'{$descricao}',
+					'{$tipo}',
+					".$tamanhoSQL.",
+					".((isset($_POST["nulo"]))?1:0).",
+					'{$tipohtml}',
+					{$exibirgradededados},
+					{$chaveestrangeira},
+					{$dataretroativa},
+					'{$inicializacao}',
+					{$readonly},
+					'{$indice}',
+					{$tipoinicializacao},
+					{$atributodependencia},
+					'{$labelzerocheckbox}',
+					'{$labelumcheckbox}',
+					'{$legenda}',
+					'{$desabilitar}',
+					{$criarsomatoriogradededados},
+					{$naoexibircampo},
+					{$is_unique_key}
+				);";
 				$query = $conn->query($sql);
 			}
 		}else{
@@ -75,7 +123,32 @@
 			$sql = "ALTER TABLE {$linha[0]["nome"]} CHANGE {$linha_old[0]['nome']} {$nome} {$tipo}{$tamanho} {$nulo};";			
 			$atualizar = $conn->query($sql);
 			if ($atualizar){
-				$sql = ("UPDATE ".PREFIXO."atributo SET entidade='{$_POST["entidade"]}',nome='{$nome}',descricao='{$descricao}',tipo='{$tipo}',tamanho={$tamanhoSQL},nulo=".((isset($_POST["nulo"]))?1:0).", tipohtml = '{$tipohtml}', exibirgradededados = {$exibirgradededados} , chaveestrangeira = {$chaveestrangeira} , dataretroativa = {$dataretroativa}, inicializacao = '{$inicializacao}', readonly = {$readonly}, indice = '{$indice}', tipoinicializacao = {$tipoinicializacao}, atributodependencia = {$atributodependencia}, labelzerocheckbox = '{$labelzerocheckbox}' , labelumcheckbox = '{$labelumcheckbox}' , legenda = '{$legenda}' , desabilitar = '{$desabilitar}' , criarsomatoriogradededados = '{$criarsomatoriogradededados}' , naoexibircampo = {$naoexibircampo} WHERE id = {$_POST["id"]};");
+				$sql = ("UPDATE ".PREFIXO."atributo 
+					SET 
+					entidade='{$_POST["entidade"]}',
+					nome='{$nome}',
+					descricao='{$descricao}',
+					tipo='{$tipo}',
+					tamanho={$tamanhoSQL},
+					nulo=".((isset($_POST["nulo"]))?1:0).",
+					tipohtml = '{$tipohtml}',
+					exibirgradededados = {$exibirgradededados},
+					chaveestrangeira = {$chaveestrangeira},
+					dataretroativa = {$dataretroativa},
+					inicializacao = '{$inicializacao}',
+					readonly = {$readonly},
+					indice = '{$indice}',
+					tipoinicializacao = {$tipoinicializacao},
+					atributodependencia = {$atributodependencia},
+					labelzerocheckbox = '{$labelzerocheckbox}',
+					labelumcheckbox = '{$labelumcheckbox}',
+					legenda = '{$legenda}',
+					desabilitar = '{$desabilitar}',
+					criarsomatoriogradededados = '{$criarsomatoriogradededados}',
+					naoexibircampo = {$naoexibircampo},
+					is_unique_key = {$is_unique_key}
+					WHERE id = {$_POST["id"]};
+				");
 				$query = $conn->query($sql);
 			}
 		}
@@ -94,8 +167,40 @@
 	}
 	if ($id!=""){
 
-		$sql = "SELECT entidade,nome,descricao,tipo,tamanho,nulo,tipohtml,exibirgradededados,chaveestrangeira,dataretroativa,inicializacao,readonly,indice,tipoinicializacao,atributodependencia,labelzerocheckbox,labelumcheckbox,legenda,desabilitar,criarsomatoriogradededados,naoexibircampo FROM ".PREFIXO."atributo WHERE id = {$id}";
-		$query = $conn->query($sql);
+		$sql = "
+			SELECT 
+				entidade,
+				nome,
+				descricao,
+				tipo,
+				tamanho,
+				nulo,
+				tipohtml,
+				exibirgradededados,
+				chaveestrangeira,
+				dataretroativa,
+				inicializacao,
+				readonly,
+				indice,
+				tipoinicializacao,
+				atributodependencia,
+				labelzerocheckbox,
+				labelumcheckbox,
+				legenda,
+				desabilitar,
+				criarsomatoriogradededados,
+				naoexibircampo,
+				is_unique_key
+			FROM ".PREFIXO."atributo 
+			WHERE id = {$id};
+		";
+		try{
+			$query = $conn->query($sql);
+		}catch(SQLException $e){
+			echo $e->getMessage();
+			exit;
+		}
+		
 		foreach($query->fetchAll() as $linha){
 			$entidade					= executefunction("tdc::utf8",array($linha["entidade"]));
 			$nome						= $linha["nome"];
@@ -118,6 +223,7 @@
 			$desabilitar				= $linha["desabilitar"];
 			$criarsomatoriogradededados	= $linha["criarsomatoriogradededados"];
 			$naoexibircampo				= $linha["naoexibircampo"];
+			$is_unique_key				= $linha["is_unique_key"];
 		}
 	}
 ?>
@@ -147,6 +253,7 @@
 				document.getElementById("desabilitar").checked = (<?=(int)$readonly?>==0)?false:true;
 				document.getElementById("criarsomatoriogradededados").checked = (<?=(int)$criarsomatoriogradededados?>==0)?false:true;
 				document.getElementById("naoexibircampo").checked = (<?=(int)$naoexibircampo?>==0)?false:true;
+				document.getElementById("is_unique_key").checked = (<?=(int)$is_unique_key?>==0)?false:true;
 				
 				// Quando mudar o tipo de elemento HTML
 				document.getElementById("tipohtml").onchange = function(){
@@ -822,6 +929,11 @@
 									<input type="checkbox" name="naoexibircampo" id="naoexibircampo" />Não exibir campo
 								</label>
 							</div>
+							<div class="checkbox">
+								<label for="is_unique_key">
+									<input type="checkbox" name="is_unique_key" id="is_unique_key" />Chave Única
+								</label>
+							</div>							
 							<div class="form-group">
 								<label for="comentario">Comentário</label>
 								<textarea name="comentario" class="form-control"></textarea>

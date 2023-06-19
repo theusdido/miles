@@ -68,6 +68,8 @@
 		$bits=0;
 		$len=strlen($str);
 		for($i=0; $i<$len; $i++){
+			// Pula o caso o índice da array não seja encontrado by @theusdido 06/05/2023
+			if (!isset($str[$i])) continue;
 			$c=ord($str[$i]);
 			if($c > 128){
 				if(($c >= 254)) return false;

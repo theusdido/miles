@@ -923,9 +923,13 @@
 		break;
 
 		case 'retorna_atributos';
-			#$sql 	= "SELECT * FROM ".ATRIBUTO." WHERE entidade = " . tdc::r('_entidade');
-			#$query 	= $conn->query($sql);
-			#tdc::wj($query->fetchAll(PDO::FETCH_ASSOC));
 			tdc::wj(tdc::da(ATRIBUTO,['entidade','=',tdc::r('_entidade')]));
+		break;
+		case 'campo-unico':
+			$_atributo 	= tdc::a(tdc::r('atributo'));
+			$_entidade	= tdc::e($_atributo->entidade);
+			$_valor		= tdc::r('data');
+
+			echo tdc::c($_entidade->nome,tdc::f($_atributo->nome,'=',$_valor));
 		break;
 	}

@@ -69,7 +69,7 @@ if ($relacionamentos){
 					$btnNovoType 					= "btn-default";
 					$btnNovoLabel 					= " Adicionar";
 					$btnSalvarType 					= "btn-default";
-					$atributo_relacionamento 		= tdClass::Criar("persistent",array(ATRIBUTO,$rel->atributo))->contexto->nome;
+					$atributo_relacionamento 		= $rel->atributo == 0 ? '' : tdClass::Criar("persistent",array(ATRIBUTO,$rel->atributo))->contexto->nome;
 					$entidade_pai_relacionamento	= tdClass::Criar("persistent",array(ENTIDADE,$rel->pai))->contexto->nome;
 					$fp_form 						= "";
 					$composicao 					=  'composicao['.$rel->filho.'] = {descricao:"'.$rel->descricao.'",qtde:0};';
@@ -82,7 +82,7 @@ if ($relacionamentos){
 						$alerta->type = "alert-danger";
 						$bloco->add($alerta);
 					}else{
-						$atributo_relacionamento = tdClass::Criar("persistent",array(ATRIBUTO,$attr_pai_gen))->contexto->nome;
+						$atributo_relacionamento = $attr_pai_gen == 0 ? '' : tdClass::Criar("persistent",array(ATRIBUTO,$attr_pai_gen))->contexto->nome;
 						$contEntGen++;
 					}
 				break;
@@ -97,7 +97,7 @@ if ($relacionamentos){
 					$btnNovoType 					= "btn-default";
 					$btnNovoLabel 					= " Adicionar";
 					$btnSalvarType 					= "btn-default";
-					$atributo_relacionamento 		= tdClass::Criar("persistent",array(ATRIBUTO,$rel->atributo))->contexto->nome;
+					$atributo_relacionamento 		= $rel->atributo == 0 ? '' : tdClass::Criar("persistent",array(ATRIBUTO,$rel->atributo))->contexto->nome;
 					$entidade_pai_relacionamento	= tdClass::Criar("persistent",array(ENTIDADE,$rel->pai))->contexto->nome;
 					$fp_form 						= "";
 				break;
@@ -108,19 +108,18 @@ if ($relacionamentos){
 					$btnNovoType 	= "btn-default";
 					$btnNovoLabel 	= " Adicionar";
 					$btnSalvarType 	= "btn-default";
-					$fp_form = "";
+					$fp_form 		= "";
 					
-					$entidade_pai_relacionamento = tdClass::Criar("persistent",array(ENTIDADE,$rel->pai))->contexto->nome;
-					
-					$attr_pai_gen = tdClass::Criar("persistent",array(ENTIDADE,$rel->pai))->contexto->atributogeneralizacao;
-					$atributoGeneralizacaoPai = tdClass::Criar("persistent",array(ATRIBUTO,$attr_pai_gen))->contexto->nome;
-					$attr_filho_gen = tdClass::Criar("persistent",array(ENTIDADE,$rel->filho))->contexto->atributogeneralizacao;
-					$atributo_relacionamento = tdClass::Criar("persistent",array(ATRIBUTO,$attr_filho_gen))->contexto->nome;
+					$entidade_pai_relacionamento 	= tdClass::Criar("persistent",array(ENTIDADE,$rel->pai))->contexto->nome;
+					$attr_pai_gen 					= tdClass::Criar("persistent",array(ENTIDADE,$rel->pai))->contexto->atributogeneralizacao;
+					$atributoGeneralizacaoPai 		= tdClass::Criar("persistent",array(ATRIBUTO,$attr_pai_gen))->contexto->nome;
+					$attr_filho_gen 				= tdClass::Criar("persistent",array(ENTIDADE,$rel->filho))->contexto->atributogeneralizacao;
+					$atributo_relacionamento 		= $attr_filho_gen == 0 ? '' : tdClass::Criar("persistent",array(ATRIBUTO,$attr_filho_gen))->contexto->nome;
 					$contEntGen++;
 				break;
 				case 9:
-					$attr_pai_gen = tdClass::Criar("persistent",array(ENTIDADE,$rel->pai))->contexto->atributogeneralizacao;				
-					$atributo_relacionamento = tdClass::Criar("persistent",array(ATRIBUTO,$attr_pai_gen))->contexto->nome;
+					$attr_pai_gen 				= tdClass::Criar("persistent",array(ENTIDADE,$rel->pai))->contexto->atributogeneralizacao;				
+					$atributo_relacionamento 	= $attr_pai_gen == 0 ? '' : tdClass::Criar("persistent",array(ATRIBUTO,$attr_pai_gen))->contexto->nome;
 					$contEntGen++;			
 				break;
 				case 10:

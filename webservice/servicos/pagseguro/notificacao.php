@@ -270,8 +270,21 @@
 					$response = curl_exec($curl);
 					curl_close($curl);
 
-					$_link_visualizar_pedido = '<a href="'.$url_impressao_pedido.'" target="_blank">Clique aqui para visualizar o pedido</a>';
-					$mail->Body 			= $_link_visualizar_pedido . $response;
+					$_link_visualizar_pedido 	= '
+						<html>
+							<body>
+								<img src="http://dev.opticaadolfo.com.br/loja/img/logo.png" width="100" />
+								<br/><br/><br/>
+								<h3>Visualizar Pedido:</h3>
+								<p>
+									<a href="'.$url_impressao_pedido.'" target="_blank">Clique aqui para visualizar o pedido</a>
+								</p>
+								<br/>
+								<p><i>Esta &eacute; uma mensagem autom&aacute;tica. Por favor, n&atilde;o responda este e-mail.</i></p>
+							</body>
+						</html>
+					';
+					$mail->Body 				= $_link_visualizar_pedido;
 					if(!$mail->Send())
 					{
 						$retorno['msg'] 	= $mail->ErrorInfo;

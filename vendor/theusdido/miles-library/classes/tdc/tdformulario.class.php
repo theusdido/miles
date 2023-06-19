@@ -54,7 +54,17 @@ class TdFormulario Extends Elemento {
 	public function camposHTML($colunas,$retorno=false){
 
 		$i = 0;
-		$entidadeCOL = tdClass::Criar("persistent",array(ENTIDADE,$colunas[0]->entidade))->contexto->nome;
+		try{
+			if (!$colunas[0]->entidade){
+				showMessage('Atributo não encontrado. Verificar atributos retirados na Aba.');
+				return;
+				exit;
+			}
+			$entidadeCOL = tdClass::Criar("persistent",array(ENTIDADE,$colunas[0]->entidade))->contexto->nome;
+		}catch(Exception $e){
+			var_dump($e->getMessage());
+		}
+		
 		
 		// Coluna ID
 		$colunaID = tdClass::Criar("div");
@@ -886,7 +896,8 @@ class TdFormulario Extends Elemento {
 		return $retorno;
 	}
 	public function mostrar(){
-		$this->setGrupoBotoes();
+		// Verificar qual é o contexto para setar os botões
+		//$this->setGrupoBotoes();
 		$this->fieldset->add($this->linhacampos);
 		if ($this->exibirlegenda){
 			if ($this->legenda->qtde_filhos>0) $this->fieldset->add($this->legenda);

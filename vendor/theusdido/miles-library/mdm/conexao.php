@@ -35,14 +35,16 @@
 		echo 'Sessão foi encerrada!';
 		exit;
 	}
-	$request_schema = isset($_SERVER["HTTP_X_FORWARDED_PROTO"])?$_SERVER["HTTP_X_FORWARDED_PROTO"]:$_SERVER["REQUEST_SCHEME"];
-	
-	
+
+	$request_schema 	= isset($_SERVER["HTTP_X_FORWARDED_PROTO"])?$_SERVER["HTTP_X_FORWARDED_PROTO"]:$_SERVER["REQUEST_SCHEME"];
+	$_env 				= $miles_json->enviromments->{$miles_json->enviromment};
+	$is_fixed_domain 	= isset($_env->system->is_fixed_domain) ? $_env->system->is_fixed_domain : false;
+
 	define('CURRENT_PROJECT_ID',$_currentproject_id);
 	define('IS_SHOW_ERROR_MESSAGE',true);
 	define('URL_FAVICON','');
 	define('URL_LIB', $miles_json->system->url->lib);
-	define('URL_MILES',$request_schema . '://'.$_SERVER["HTTP_HOST"].'/' . $miles_json->folder);
+	define('URL_MILES',$request_schema . '://'.$_SERVER["HTTP_HOST"].'/' . ($is_fixed_domain ? '' : $miles_json->folder));
 	define('URL_MILES_LIBRARY',URL_MILES . 'vendor/theusdido/miles-library/');
 	define('PATH_CONFIG','../config/');
 	define('PREFIXO',$miles_json->prefix . '_');
@@ -60,7 +62,6 @@
 	require '../classes/bd/conexao.class.php';
 	$currenttypedatabase 	= $miles_json->database_current;
 	$currentprojectname 	= $miles_json->project->name;
-
 	define("DATABASECONNECTION",$currenttypedatabase);
 	
 	

@@ -279,7 +279,7 @@ class Pagina Extends Html {
 					project_name_identifify_params:"'.MILES_JSON_PROJECT.'",
 					env:"'._ENVIROMMENT.'"
 				}
-			});			
+			});
 		');
 
 		// Arquivo de Codificação/Decoficação em JS

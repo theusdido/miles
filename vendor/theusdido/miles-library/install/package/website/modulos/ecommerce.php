@@ -48,7 +48,9 @@
     array( "name" => "atendimento", "title" => "Atendimento", "components" => 
       array(
         array('name' => 'diafechado' , 'title' => 'Dia Fechado'),
-        array('name' => 'horaatendimento' , 'title' => 'Hora de Atendimento')
+        array('name' => 'horaatendimento' , 'title' => 'Hora de Atendimento'),
+        array('name' => 'trocarpontos' , 'title' => 'Trocar Produtos Pontos'),
+        array('name' => 'transferirpontos' , 'title' => 'Transferência de Pontos')
       )
     ),
     array( "name" => "representante", "title" => "Representante", "components" => 

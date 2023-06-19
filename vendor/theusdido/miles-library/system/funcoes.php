@@ -465,6 +465,17 @@ function getUrl($url,$opcoes = null){
 function getHTMLTipoFormato($htmltipo,$valor,$entidade=0,$atributo=0,$id=0){
 	
 	switch((int)$htmltipo){
+		case 4:
+			$retorno	= $valor;
+			$_atributo 	= tdc::a($atributo);
+			if ($_atributo->chaveestrangeira != '' && $_atributo->chaveestrangeira != 0){
+				$_fk_entidade = tdc::e($_atributo->chaveestrangeira);
+				if ($_fk_entidade->campodescchave != '' && $_fk_entidade->campodescchave != 0){
+					$_atributo_fk_entidade 	= tdc::a($_fk_entidade->campodescchave);
+					$retorno 				= tdc::ru($_fk_entidade->nome,$valor)->{$_atributo_fk_entidade->nome};
+				}
+			}
+		break;
 		case 10:
 			$retorno = formatarCPF($valor);
 		break;		
@@ -2194,7 +2205,11 @@ function getBoolean($boolean,$returntype){
 }
 function getURLProject($parametro = null){
 	$urlproject 		= URL_MILES . "index.php";
-	$parmsProject 		= array("currentproject" => CURRENT_PROJECT_ID);
+	$parmsProject 		= array(
+		"currentproject" 					=> CURRENT_PROJECT_ID,
+		'project_name_identifify_params' 	=> PROJECT_NAME_IDENTIFY_PARAMS,
+		'env'								=> _ENVIROMMENT
+	);
 	switch(gettype($parametro)){
 		case 'string':
 			if (strpos("?",$parametro) < 0) return $parametro;

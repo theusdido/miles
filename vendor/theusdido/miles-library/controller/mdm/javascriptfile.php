@@ -83,7 +83,8 @@
 					labelzerocheckbox:'{$atributo->labelzerocheckbox}',
 					labelumcheckbox:'{$atributo->labelumcheckbox}',
 					criarsomatoriogradededados:'{$atributo->criarsomatoriogradededados}',
-					naoexibircampo:'{$atributo->naoexibircampo}'
+					naoexibircampo:'{$atributo->naoexibircampo}',
+					is_unique_key:'{$atributo->is_unique_key}'
 				};
 			");		
 		}

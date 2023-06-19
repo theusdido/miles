@@ -64,12 +64,24 @@
 
 	// Sessão do Sistema
 	$sessionName = "miles_" . AMBIENTE . "_" . $currentProject;
-	
+
 	// Verificar se a sessão não já está aberta.
 	if (!$_session_isactive) {
 		session_name($sessionName);
 		@session_start();
 	}
+
+	if (isset($_GET['controller']) && isset($_GET['op'])){
+		if ($_GET['controller'] == 'requisicoes' && $_GET['op'] == 'is_session_active'){
+			if (isset($_SESSION['userid'])){						
+				echo json_encode(true);
+			}else{
+				echo json_encode(false);
+			}
+			exit;
+		}
+	}
+
 	if (!defined('SCHEMA')){
 		if (isset($_SESSION["db_base"])){
 			define('SCHEMA',$_SESSION["db_base"]);
@@ -128,7 +140,7 @@
 
 	// Exibir mensagem de erro
 	define("IS_TRANSACTION_LOG",$mjc->is_transaction_log);	
-
+	
 	// Arquivos que fazem parte da estrutura do sistema
 	$strutuct = json_decode(file_get_contents($_path_config . 'estrutura.json'));
 

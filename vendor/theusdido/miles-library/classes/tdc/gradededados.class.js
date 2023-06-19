@@ -242,18 +242,19 @@ GradeDeDados.prototype.cabecalho = function(){
 			th.append(this.attr_cabecalho_descricao[c]);
 			tr.append(th);
 		}
+
 		if (!this.retornaFiltro){
 			if (this.isExibirMovimentacao()){
-				tr.append($("<th class='movimentacao-coluna-gradededados'><center>Mov.</center></th>"));
+				tr.append($("<th class='movimentacao-coluna-gradededados text-center'>Mov.</th>"));
 			}
 			if (this.exibireditar){
-				tr.append($("<th class='editar-coluna-gradededados'><center>Editar</center></th>"));
+				tr.append($("<th class='editar-coluna-gradededados text-center'>Editar</th>"));
 			}
 			if (this.exibirexcluir){
-				tr.append($("<th class='excluir-coluna-gradededados'><center>Excluir</center></th>"));
+				tr.append($("<th class='excluir-coluna-gradededados text-center'>Excluir</th>"));
 			}
 
-			let thSelTodos 		= $("<th class='selectall-coluna-gradededados'>");
+			let thSelTodos 		= $("<th class='selectall-coluna-gradededados text-center'>");
 			let buttonSelTodos 	= $("<input type='checkbox' data-sel='false' aria-label='Selecionar Todos' class='gd-sel-todos' />");
 
 			$(buttonSelTodos).click(function(){
@@ -492,6 +493,7 @@ GradeDeDados.prototype.excluir = function(){
 	let btnExcluir;
 	let linhatable;
 	let loaderExcluir;
+
 	// Registro único ou em massa
 	if (excluirRegistroUnico){
 		registro 			= arguments[0];
@@ -551,7 +553,9 @@ GradeDeDados.prototype.excluir = function(){
 					instancia.irbloco(parseInt(instancia.blocoatual)+1);
 				}
 			}
+
 			if (typeof afterDelete === "function") afterDelete();
+
 			if (instancia.totalRegistros <= 0){
 				instancia.nenhumRegistro();
 				composicao[td_entidade[instancia.entidade].descricao] = false;
@@ -609,11 +613,14 @@ GradeDeDados.prototype.rodape = function(){
 	}
 }
 GradeDeDados.prototype.retornaid = function(termo){
+	let entidadeid 		= $(this).data("entidade");
+	let funcionalidade 	= $(this).data("funcionalidade");
+	let indice_form		= funcionalidade + '_' + entidadeid;	
 	if (this.retornaFiltro && this.funcaoretorno != ""){
 		eval(this.funcaoretorno + "("+termo+");");
 	}else{
 		let entidade = (td_entidade[this.entidade].pacote==""?"":td_entidade[this.entidade].pacote + ".") + td_entidade[this.entidade].nome;
-		formulario[this.entidade_contexto_id].buscarFiltro(termo,entidade,this.atributoRetorno,this.modalName,this.entidadeContexto);
+		formulario[indice_form].buscarFiltro(termo,entidade,this.atributoRetorno,this.modalName,this.entidadeContexto);
 	}
 }
 GradeDeDados.prototype.reload = function(){
@@ -775,14 +782,22 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
 		let valor 			= linha[_campo];
 		let valorreal 		= linhareal[_campo];
 		let idAtributo 		= getIdAtributo(_campo,this.nomeEntidade);
+		let _atributo		= td_atributo[idAtributo];
 		if (idAtributo != 0 && idAtributo != "" && idAtributo != undefined){
-			if (td_atributo[idAtributo] != undefined){
-				switch(parseInt(td_atributo[idAtributo].tipohtml)){
+			if (_atributo != undefined){
+				switch(parseInt(_atributo.tipohtml)){
 					case 7:
 						if (parseInt(valor) == 0){
-							valor = (td_atributo[idAtributo].labelzerocheckbox == ""?"Não":td_atributo[idAtributo].labelzerocheckbox);
+							valor = (_atributo.labelzerocheckbox == ""?"Não":_atributo.labelzerocheckbox);
 						}else if(parseInt(valor) == 1){
-							valor = (td_atributo[idAtributo].labelumcheckbox == ""?"Sim":td_atributo[idAtributo].labelumcheckbox);
+							valor = (_atributo.labelumcheckbox == ""?"Sim":_atributo.labelumcheckbox);
+						}
+					break;
+					case 4:
+						if (_atributo.chaveestrangeira!= ''){
+							//console.log(td_entidade[_atributo.chaveestrangeira].nome);
+							//console.log(linha);
+							//console.log(linhareal);
 						}
 					break;
 					case 19:
@@ -1044,7 +1059,8 @@ GradeDeDados.prototype.excluirRegistro = function (entidade,registro,linha){
 			if (retorno == 1){
 				linha.remove();
 				instancia.totalRegistros--;
-				if (instancia.totalRegistros <= 0){
+				let total_tr = instancia.table.find("tbody tr").length;	
+				if (instancia.totalRegistros <= 0 || total_tr <= 0){
 					instancia.nenhumRegistro();
 				}
 			}else{

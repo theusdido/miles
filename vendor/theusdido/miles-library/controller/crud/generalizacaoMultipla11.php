@@ -26,7 +26,11 @@ $div_rel = tdClass::Criar("div");
 $div_rel->class = "div-relacionamento-generalizacao-multipla";
 $div_rel->id = "drvm-".$ent_filho->contexto->nome;
 
-$urlrequest = URL_MILES . '?controller=gerarcadastro&entidade='.$ent_filho->contexto->id . "&relacionamento=" . $rel->id . "&currentproject=" . $_GET["currentproject"];
+$urlrequest = getURLProject(
+	array('controller' 		=> 'gerarcadastro',
+	'entidade' 			=> $ent_filho->contexto->id,
+	'relacionamento'	=> $rel->id)
+);
 $conteudo = getUrl($urlrequest);
 if (!$conteudo){
 	$div_rel->add('<div class="alert alert-danger" role="alert"><b>Ops!</b> Não foi possível criar esta página.</div>');

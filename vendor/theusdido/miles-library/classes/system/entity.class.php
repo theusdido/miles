@@ -42,7 +42,7 @@ class Entity {
 		$this->modulo_nome			= tdc::r('modulonome');
 		$this->modulo_descricao 	= tdc::r('modulodescricao');
 
-		$this->create();
+		return $this->create();
 	}
 
 	/* 
@@ -68,8 +68,8 @@ class Entity {
 				$entity->armazenar();
 			}else{
 				echo 'Entidade não encontrada';
-				return false;	
-			}			
+				return false;
+			}
 		}
 	}
 	/* 
@@ -149,7 +149,7 @@ class Entity {
 			case 'array':
 					$tipohtml	= isset($attr['tipohtml'])?$attr['tipohtml']:3;
 					$tipo 		= isset($attr['tipo'])?$attr['tipo']:'varchar';
-					$tamanho	= isset($attr['tamanho'])?$attr['tamanho']:($tipo=='varchar'?200:0);
+					$tamanho	= isset($attr['tamanho'])?$attr['tamanho']:($tipo=='varchar'?200:0);					
 					if (gettype($tipohtml) == 'string'){
 						switch($attr['tipohtml']){
 							case 'numero_inteiro':
@@ -209,6 +209,9 @@ class Entity {
 						$is_exibirgradedados,
 						$chave_estrangeira
 					);
+
+					$is_display	= isset($attr['is_display'])?$attr['is_display']:false;
+					if ($is_display) self::setDescriptionField($this->conn,$this->id,$a,true);
 			break;
 			default:
 				$a = $attr;

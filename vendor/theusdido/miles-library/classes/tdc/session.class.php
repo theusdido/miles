@@ -48,7 +48,7 @@
 
 				foreach($_SESSION as $key => $valor){
 					unset($_SESSION[$key]);
-				}
+				}				
 				// removendo todas as sessões
 				@session_start();
 				session_destroy();

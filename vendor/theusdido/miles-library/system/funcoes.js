@@ -12,18 +12,18 @@ function carregar(arquivo,elemento_retorno = "",callback_function = null){
 			}else{
 				loader(elemento_retorno);
 			}
-		},		
-		complete:function(retorno){
-			$(elemento_retorno).html(retorno.responseText);
+		},
+		success:function(res){
+			$(elemento_retorno).html(res);			
+		},
+		complete:function(res){
+			if (typeof callback_function == "function") callback_function(res);
 			if (elemento_retorno == "") unLoaderGeral();
-			if (typeof callback_function == "function") callback_function();
 		},
 		error:function(ret){
-			if (elemento_retorno == ""){
-				console.log("ERRO ao carregar página => " + ret.responseText);
-			}else{
-				$(elemento_retorno).html("ERRO ao carregar página => " + ret.responseText);
-			}
+			$(elemento_retorno).html('');
+			console.warn(ret.responseText);
+			$(elemento_retorno).html("<div class='alert alert-danger'>ERRO ao carregar página.</div>");
 		}
 	});
 }
@@ -863,10 +863,14 @@ function carregarScriptCRUD(tipo,entidade,registro_id = 0,contexto = '',_extras 
 			}else{
 				formulario[indice_form].loadGrade();
 			}
+
 			// Monta os formulários das entidades que compoem o relacionamento
-			formulario[indice_form].entidades_filho.forEach((entidade_id)=>{
-				formulario[entidade_id] = new tdFormulario(entidade_id);
-				formulario[entidade_id].loadGrade();    
+			formulario[indice_form].entidades_filho.forEach((entidade_id) => {
+				let indice_form_entidade_filho = 'cadastro_' + entidade_id;
+				if (formulario[indice_form_entidade_filho] == undefined){
+					formulario[indice_form_entidade_filho] = new tdFormulario(entidade_id,0,entidade);
+				}
+				formulario[indice_form_entidade_filho].loadGrade();
 			});
 		break;
 		case 'editarformulario':
