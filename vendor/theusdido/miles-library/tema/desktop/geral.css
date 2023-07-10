@@ -860,4 +860,13 @@ header #menu {
 	border:0px solid #FFF !important;
 	border-bottom:0px solid #FFF !important;
 }
+
+.label-max-size{
+	float: right !important;
+	font-size: 10px;
+	/* display: inline;
+	
+	height: 10px;
+	margin: 5px; */
+}
 -->

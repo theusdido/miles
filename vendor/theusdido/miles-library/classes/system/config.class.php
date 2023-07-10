@@ -10,6 +10,7 @@
 */
 class Config {
 	
+	
 	/*
 		* Método currentProject
 	    * Data de Criacao: 19/06/2021
@@ -240,4 +241,9 @@ class Config {
 		}
 		fclose($fpMySQLINIDesenv);
 	}	
+
+
+	public static function uploadMaxFile($_unidade = 'M'){
+		return (double)apenas_numero(ini_get('upload_max_filesize'));
+	}
 }

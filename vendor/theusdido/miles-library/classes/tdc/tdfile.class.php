@@ -172,4 +172,36 @@ class tdFile {
 		$chmod 	= chmod($destino, 0777);
 		return $handle;
 	}
-}
+
+	/*
+		* Método rmdir
+	    * Data de Criacao: 07/07/2023
+	    * Author @theusdido
+
+		Exclui o diretório com suas subpastas e arquivos
+		@diretorio: path
+	*/
+	public static function rmdir($diretorio){
+			/* valido se realmente é um diretorio */
+			if (is_dir($diretorio)) {
+		
+				/* Busco todos os arquivos que estão dentro da pasta */
+				$files = scandir($diretorio);
+				
+				/* Deleto um a um */
+				foreach ($files as $file) {
+					if ($file!= "." && $file!="..") {
+						if (filetype($diretorio. DIRECTORY_SEPARATOR . $file) == "dir") {
+							/* Se dentro da pasta conter outra pasta, deleto ela também recursivamente */
+							self::rmdir($diretorio. DIRECTORY_SEPARATOR . $file);
+						} else {
+							unlink($diretorio. DIRECTORY_SEPARATOR . $file);
+						}
+					}
+				}
+
+			  	reset($files);
+			  	rmdir($diretorio);
+			}
+		}
+	}

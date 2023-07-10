@@ -5,5 +5,5 @@
         {
             throw new ErrorException( $err_msg, 0, $err_severity, $err_file, $err_line);
         },
-        E_WARNING
+        E_WARNING | E_NOTICE
     );

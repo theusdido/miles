@@ -200,4 +200,19 @@ class SqlCriterio extends SqlExpressao {
 		// Filtra os nulos
 		if ($isnull) $this->addFiltro($atributo,"IS",NULL,OU);
 	}	
+	/*  
+		* Método filtro
+	    * Data de Criacao: 04/07/2023
+	    * Autor @theusdido
+		
+		Adiciona uma expressão sem precsar criar o objeto "sqlfiltro" na chamada do método
+		@parms $atributo		
+		@parms $valor
+		@parms $operador
+		@parms $operadorlogico
+	*/
+	public function filtro($atributo,$valor,$operador = '=',$operadorlogico = E){
+		$filtro = tdClass::Criar("sqlfiltro",array($atributo,$operador,$valor));
+		$this->add($filtro,$operadorlogico);		
+	}
 }

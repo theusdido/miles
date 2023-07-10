@@ -90,15 +90,15 @@ $("#btn-instalar").click(function(){
             $('#loader-instalar').show();
         },
         success:function(retorno){
-            if (retorno == 1 || retorno == "1"){
-                $("#barradeprogresso-instalacao .progress-bar").css("width","0%");
-                $("#barradeprogresso-instalacao .progress-bar").html("0%");
-                $("#barradeprogresso-instalacao").show();
-                executa(linhas[progressaoatual]);
-            }else{
-                $("#retorno").html('<div class="alert alert-danger" role="alert">Erro ao instalar o sistema. Motivo: ' +retorno+ '</div>');
-                $("#retorno").show();				
-            }
+            // if (retorno == 1 || retorno == "1"){
+            //     $("#barradeprogresso-instalacao .progress-bar").css("width","0%");
+            //     $("#barradeprogresso-instalacao .progress-bar").html("0%");
+            //     $("#barradeprogresso-instalacao").show();
+            //     executa(linhas[progressaoatual]);
+            // }else{
+            //     $("#retorno").html('<div class="alert alert-danger" role="alert">Erro ao instalar o sistema. Motivo: ' +retorno+ '</div>');
+            //     $("#retorno").show();				
+            // }
         },
         complete:function(){
             $('#loader-instalar').hide();
@@ -215,14 +215,14 @@ function executa(instrucao){
                             controller:'install/instalar',
                             op:"versao"
                         }
-                    });									
+                    });
                 }
             }else{
                 $("#retorno").html('<div class="alert alert-danger" role="alert">Erro ao instalar o sistema. Motivo: ' +retorno+ '</div>');
                 $("#retorno").show();
             }
         }
-    });					
+    });
 }
 
 function addComponentesPersonalizados(){

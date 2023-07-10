@@ -17,9 +17,13 @@
       array(
         array('name' => 'quemsomos'               ,'title' => 'Quem Somos'),
         array('name' => 'politicaprivacidade'     ,'title' => 'Política de Privacidade'),
-		array('name' => 'politicacookies'     ,'title' => 'Política de Cookies'),
+		    array('name' => 'politicacookies'         ,'title' => 'Política de Cookies'),
+        array('name' => 'termocondicaouso'        ,'title' => 'Termo e Condições de Uso'),
         array('name' => 'home'                    ,'title' => 'Home'),
-        array('name' => 'blog'                    ,'title' => 'Blog')
+        array('name' => 'blog'                    ,'title' => 'Blog'),
+        array('name' => 'perfil'                  ,'title' => 'Perfil'),
+        array('name' => 'comofunciona'            ,'title' => 'Como Funciona?'),
+        array('name' => 'perguntasfrequentes'     ,'title' => 'Perguntas Frequentes?')
       )
   ),
   array( "name" => "componente", "title" => "Componente", "components" => 

@@ -488,26 +488,30 @@ class TdFormulario Extends Elemento {
 				// Arquivo ( Caminho )
 				case "19":
 					
-					$campo = tdClass::Criar("div");
-					$campo->class = "form-group";
+					$campo 			= tdClass::Criar("div");
+					$campo->class 	= "form-group";
 					
-					$label = tdClass::Criar("label");
-					$label->for = $coluna->nome;
-					$label->class = "control-label";
+					$max_size_file			= tdc::html('label');
+					$max_size_file->class 	= 'label-max-size control-label';
+					
+					$label 			= tdClass::Criar("label");
+					$label->for 	= $coluna->nome;
+					$label->class 	= "control-label";
 					$label->add(tdc::utf8($coluna->descricao));
 					$label->add($asteriscoobrigatorio);
 					
-					$input = Campos::Oculto($coluna->nome,$coluna->nome,'');
-					$input->data_entidade = $entidadeCOL;
-					$input->class = "form-control td-file-hidden " . ($this->fp != ""?$this->fp:"");
+
+					$input 					= Campos::Oculto($coluna->nome,$coluna->nome,'');
+					$input->data_entidade 	= $entidadeCOL;
+					$input->class 			= "form-control td-file-hidden " . ($this->fp != ""?$this->fp:"");
 					if ($coluna->exibirgradededados ==1) $input->class = $this->gd;
 					if ($coluna->nulo==0) $input->required = "true";					
-					$input->atributo = $coluna->id;
+					$input->atributo 		= $coluna->id;
 					$iframe = tdClass::Criar("iframe");
-					$iframe->data_entidade = $coluna->entidade;
-					$iframe->data_atributo=$coluna->id;
-					$iframe->src = tdClass::Criar("persistent",array(CONFIG,1))->contexto->urlupload . "&atributo={$coluna->id}&valor={$initialValue}&id=" . ($initialValue!=''?$initialValue:-1) . "&currentproject=" . CURRENT_PROJECT_ID;
-					$campo->add($input,$label,$iframe);
+					$iframe->data_entidade 	= $coluna->entidade;
+					$iframe->data_atributo	= $coluna->id;
+					$iframe->src 			= tdClass::Criar("persistent",array(CONFIG,1))->contexto->urlupload . "&atributo={$coluna->id}&valor={$initialValue}&id=" . ($initialValue!=''?$initialValue:-1) . "&currentproject=" . CURRENT_PROJECT_ID;
+					$campo->add($input,$label,$max_size_file,$iframe);
 				break;
 				// CK Editor - Editor de Texto
 				case "21":

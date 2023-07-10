@@ -1,5 +1,4 @@
 <?php
-	
     $op 		= tdc::r('op');
 
 	if (!$conn || $conn == 'NULL'){

@@ -1,7 +1,7 @@
 <IfModule mod_rewrite.c>
 	RewriteEngine On
 
-	RewriteRule ^/?$ index.php?project_name_identifify_params=qeru&env=dev [L]
+	RewriteRule ^/?$ index.php?project_name_identifify_params=innovare&env=dev [L]
 </IfModule>
 
 # php -- BEGIN cPanel-generated handler, do not edit

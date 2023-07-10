@@ -11,10 +11,21 @@ function getStatusGuia(){
         },
         success:function(res){
             try{
-                let response = JSON.parse(res);
-                $('#guia-base').attr('src',response.check_criarbase);
-                $('#guia-instalacao').attr('src',response.check_instalacaosistema);
-                $('#guia-pacote').attr('src',response.check_pacoteconfigurado);
+                let _res = JSON.parse(res);
+                if (_res.installed){
+                    let all_fields = '#host,#base,#porta,#usuario,#senha,#tipo';
+                    $(all_fields).attr('disabled',true);
+                    $(all_fields).attr('readonly',true);
+                    $('#btn-criarbanco').remove();
+                }
+                $('#guia-base')         .attr('src',_res.check_criarbase);
+                $('#guia-instalacao')   .attr('src',_res.check_instalacaosistema);
+                $('#guia-pacote')       .attr('src',_res.check_pacoteconfigurado);
+                $('#host')              .val(_res.database.host);
+                $('#base')              .val(_res.database.base);
+                $('#porta')             .val(_res.database.porta);
+                $('#usuario')           .val(_res.database.usuario);
+                $('#senha')             .val(_res.database.senha);
             }catch(e){
                 console.log(res);
             }

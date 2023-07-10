@@ -11,7 +11,11 @@
 		$termo 	= isset($_GET['termo']) ? $_GET['termo'] : '';
 
 		if ($termo != ''){
-			$_where = "WHERE nome LIKE '%$termo%' OR descricao LIKE '%$termo%' ";
+			if (is_numeric($termo)){
+				$_where = "WHERE id = $termo";
+			}else{
+				$_where = "WHERE nome LIKE '%$termo%' OR descricao LIKE '%$termo%' ";
+			}
 		}
 
 		$sql = "SELECT id,nome,descricao FROM ".PREFIXO."entidade $_where ORDER BY id DESC";

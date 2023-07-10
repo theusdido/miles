@@ -16,6 +16,8 @@
 			$id = "";
 		}
 	}
+
+	$_url_current_files = URL_CURRENT_FILES . 'cadastro/' . $entidade . '/';
 ?>
 <html>
 	<head>
@@ -27,6 +29,16 @@
 				float:left;
 				width:100%;
 				padding:15px;
+			}
+			#lista-arquivos-gerados
+			{
+				display:none;
+				margin-top:30px;
+			}
+
+			#pagina-gerada.success{
+				background-color:#009900;
+				color:#FFF;
 			}
 		</style>
 	</head>
@@ -54,7 +66,16 @@
 								<input type="hidden" id="filenamehtm" name="filenamehtm" value="<?php echo $linha[0]["nome"]; ?>.htm" />
 								<div id="pagina-gerada"></div>
 							</div>
-						</fieldset>						
+						</fieldset>
+						<div class="list-group" id="lista-arquivos-gerados">
+							<a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+								Arquivos Gerados
+							</a>
+							<a id="view-filename-html" 	class="list-group-item" target="_blank"></a>
+							<a id="view-filename-js" 	class="list-group-item" target="_blank"></a>
+							<a id="view-filename-css" 	class="list-group-item" target="_blank"></a>
+							<a id="view-filename-htm" 	class="list-group-item" target="_blank"></a>
+						</div>
 				</div>
 			</div>
 		</div>
@@ -62,6 +83,8 @@
 </html>
 <script type="text/javascript">
 	$("#gerar").click(function(){
+		$('#lista-arquivos-gerados').hide();
+		$("#pagina-gerada").removeClass('success');
 		$.ajax({
 			url:"<?=URL_API?>",
 			data:{
@@ -97,7 +120,21 @@
 				urlupload:$("#urlupload").val(),
 			},
 			complete:function(){
-				$("#pagina-gerada").html("Carregou");
+
+				$('#view-filename-html').html($('#filename').val());
+				$('#view-filename-js').html($('#filenamejs').val());
+				$('#view-filename-css').html($('#filenamecss').val());
+				$('#view-filename-htm').html($('#filenamehtml').val());
+
+				$('#view-filename-html').attr('href',"<?=$_url_current_files?>" + $('#filename').val());
+				$('#view-filename-js').attr('href',"<?=$_url_current_files?>" + $('#filenamejs').val());
+				$('#view-filename-css').attr('href',"<?=$_url_current_files?>" + $('#filenamecss').val());
+				$('#view-filename-htm').attr('href',"<?=$_url_current_files?>" + $('#filenamehtml').val());
+
+				$('#lista-arquivos-gerados').show();
+				
+				$("#pagina-gerada").addClass('success');
+				$("#pagina-gerada").html("Arquivos gerados!");
 			}
 		});
 	}

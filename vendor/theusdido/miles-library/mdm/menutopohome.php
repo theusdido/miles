@@ -155,7 +155,6 @@
 				WHERE id = ".$id.";
 			";
 		}
-		
 		try{
 			$query = $conn->query($sql);
 			if ($query){

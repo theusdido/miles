@@ -9,15 +9,16 @@
 	$entidade = tdClass::Criar("persistent",array(ENTIDADE,$atributo->contexto->entidade));
 
 	$identicador	= $atributo->contexto->nome;
+	
 	$id 			= isset($_GET["id"])?$_GET["id"]:0;
 	$id_input 		= "file_" 		. $identicador;
 	$id_form		= "form_" 		. $identicador;
 	$id_registro	= "registro_" 	. $identicador;
 	$id_display		= "display_" 	. $identicador;
 
-	$bootstrap = tdClass::Criar("link");
-	$bootstrap->href = URL_LIB . 'bootstrap/3.3.1/css/bootstrap.css';
-	$bootstrap->rel = 'stylesheet';
+	$bootstrap 			= tdClass::Criar("link");
+	$bootstrap->href 	= URL_LIB . 'bootstrap/3.3.1/css/bootstrap.css';
+	$bootstrap->rel 	= 'stylesheet';
 	$bootstrap->mostrar();
 	
 	$fontAwesome 				= tdClass::Criar("script");
@@ -53,6 +54,7 @@
 
 	// Quando o arquivo for Uploaded
 	if (isset($_FILES[$id_input])){
+
 		$idregistro 		= isset($_POST["idregistro"])?$_POST["idregistro"]:0;
 		$valor  			= $_FILES[$id_input]["name"];
 		$extensao 			= getExtensao($_FILES[$id_input]["name"]);
@@ -167,7 +169,7 @@
 	$group->add($input_up,$span_up);
 
 	$file_oculto 				= tdClass::Criar("input");
-	$file_oculto->type="file";
+	$file_oculto->type			= "file";
 	$file_oculto->style 		= "display:none";
 	$file_oculto->id 			= $id_input;
 	$file_oculto->name 			= $id_input;
@@ -179,9 +181,19 @@
 
 	$form->add($group,$atributo,$registro,$file_oculto,$input_idregistro,$currentProject);
 	$form->mostrar();
+
 	$script = tdClass::Criar("script");
 	$script->add('		
 		$("#'.$id_input.'").change(function(){
+			let max_size_file 	= parseInt('.Config::uploadMaxFile().');
+			let file_size		= parseInt((($(this)[0].files[0].size / 1024) / 1024));
+			console.log(max_size_file, file_size);
+			if (file_size > max_size_file){
+				alert("Tamanho máximo do arquivo foi excedido");
+				return false;
+			}
+			console.log();
+			debugger;
 			$("#'.$id_registro.'").val(parent.$("#id").val());
 			$("#'.$id_form.'").attr("onsubmit","return true");
 			$("#'.$id_form.'").submit();

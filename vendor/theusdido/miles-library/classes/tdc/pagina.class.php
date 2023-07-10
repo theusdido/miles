@@ -263,7 +263,8 @@ class Pagina Extends Html {
 				this.pathfileupload					= "'.$this->config->pathfileupload.'";
 				this.pathfileuploadtemp				= "'.$this->config->pathfileuploadtemp.'";
 				this.casasdecimais					= "'.($this->config->casasdecimais==''?2:$this->config->casasdecimais).'";
-				this.currenttheme					= "'.CURRENT_THEME.'";
+				this.currenttheme					= "'.CURRENT_THEME.'";				
+				this.upload_max_filesize			= "'.ini_get('upload_max_filesize').'";
 			}
 			var config = new SystemConfig();
 		');

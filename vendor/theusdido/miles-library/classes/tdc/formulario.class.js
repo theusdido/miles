@@ -214,6 +214,8 @@ tdFormulario.prototype.novo = function(){
 		}
 		instancia.setaLayoutGeneralizao();
 	}
+
+	$('.label-max-size').html( 'Tamanho Máximo.: ' +  config.upload_max_filesize );
 	this.camposUnicos(contextoAdd);
 	this.setarformdadospreenchido();
 	this.naoExibirCampos(contextoAdd);
@@ -807,7 +809,7 @@ tdFormulario.prototype.salvar = function(){
 						}
 						let _instancia = this.instancia;
 						retorno.entidadesID.forEach(function(entidades_retorno){
-							let index_form_retorno = 'cadastro_' + entidades_retorno.entidade;
+							let index_form_retorno = 'cadastro_' + getEntidadeId(entidades_retorno.entidade);
 							switch(entidades_retorno.tipo_relacionamento){
 								case '':
 								case 0: 
@@ -815,7 +817,8 @@ tdFormulario.prototype.salvar = function(){
 								case 7:
 								case 3:
 									// Atualiza o ID do banco de dados no registro
-									formulario[index_form_retorno].id = entidades_retorno.id;
+									console.log(index_form_retorno);
+									formulario[index_form_retorno].registro_id = entidades_retorno.id;
 									$('#id[data-entidade="'+entidades_retorno.entidade+'"]').val(entidades_retorno.id);
 								break;
 								default:

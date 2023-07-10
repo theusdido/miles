@@ -1,0 +1,203 @@
+
+<input id="entidadeprincipalid" name="entidadeprincipalid" type="hidden" value="20" />
+<input id="funcionalidadetd" name="funcionalidadetd" type="hidden" value="movimentacao" />
+<script type="text/javascript" src="system/funcoes.js"></script>
+<script type="text/javascript" src="files/movimentacao/1/td_relacaocredores.js"></script>
+<script type="text/javascript" src="system/formulario.js"></script>
+<script type="text/javascript" src="system/validar.js"></script>
+<script type="text/javascript">
+			$("#salvar-movimentacao-historico").click(function(){
+				$.ajax({
+					url:"index.php?controller=gerarmovimentacao",
+					data:{
+						op:"salvarstatus",
+						movimentacao:getCookie("movimentacaoselecionada"),
+						id:getCookie("idmovdados")
+					}
+				});
+				atribuiValoresCKEditor();
+				var dadosHistorico = [];
+				$("#form-movimentacao").find(".form-control[data-entidade]").each(function(){
+					if ($(this).attr("id") != "" && $(this).attr("atributo") != undefined){
+						dadosHistorico.push({
+							entidade:$(this).data("entidade"),
+							atributo:$(this).attr("atributo"),
+							valor:$(this).val()
+						});
+					}
+				});
+				$.ajax({
+					url:"index.php?controller=gerarmovimentacao",
+					data:{
+						op:"salvarhistorico",
+						dadoshistorico:dadosHistorico,
+						entidadepai:getCookie("entidademovdados"),
+						identidadepai:getCookie("idmovdados")
+					}
+				});
+			});
+
+			$("#form-movimentacao .form-group .form-control").each(function(){
+				if ($(this).prop("tagName") == "SELECT"){
+					carregarListas($(this).attr("id"),$(this).attr("atributo"),"#form-movimentacao","");
+				}
+				$("#" + $(this).attr("id") + "-old").attr("disabled","disabled");
+			});
+			setTimeout(function(){
+				$.ajax({
+					url:"index.php?controller=gerarmovimentacao",
+					data:{
+						op:"retorna_dados",
+						atributos:"57,142",
+						id:getCookie("idmovdados")
+					},
+					complete:function(ret){
+						var retorno = JSON.parse(ret.responseText);
+						for(a in retorno){
+							var atributo = td_atributo[retorno[a].atributo];
+							$("#form-movimentacao #" + atributo.nome + "-old,#form-movimentacao #form-movimentacao #" + atributo.nome).val(retorno[a].valor);
+						}
+					}
+				});
+			},500);			
+			$("#td_motivo,#observacao").css("width","98%");
+			$("#salvar-movimentacao-alterar").click(function(){
+				var atributosID = "57,142";
+				var atributosArrayID = atributosID.split(",");
+				var dadosAlterar = [];
+				var obrigatorio = true;
+				for (a in atributosArrayID){
+					var idatributo = td_atributo[atributosArrayID[a]].nome;
+					$("#form-movimentacao #" + idatributo + "[required]").each(function(){
+						if ($(this).val() == ""){
+							obrigatorio = false;
+							statusFormControl($(this),"error");
+						}else{
+							statusFormControl($(this),"success");
+						}
+					});
+					dadosAlterar.push({
+						entidade:$("#" + idatributo).data("entidade"),
+						atributo:$("#" + idatributo).attr("atributo"),
+						valor:$("#form-movimentacao #" + idatributo).val()
+					});
+				}
+				if (!obrigatorio){
+					return false;
+				}
+				$.ajax({
+					url:"index.php?controller=gerarmovimentacao",
+					data:{
+						op:"salvaralterar",
+						dadosalterar:dadosAlterar,
+						entidadepai:getCookie("entidademovdados"),
+						identidadepai:getCookie("idmovdados"),
+						entidademotivo:"0",
+						motivo:$("#td_motivo").val(),
+						observacao:$("#observacao").val(),
+						movimentacao:1
+					},
+					complete:function(ret){
+						if (parseInt(ret.responseText) == 1){
+							abrirAlerta("Salvo com Sucesso","alert-success",".msg-retorno-form-td_relacaocredores");
+							for (a in atributosArrayID){
+								var idatributo = td_atributo[atributosArrayID[a]].nome;
+								$("#form-movimentacao #" + idatributo + "-old").val($("#" + idatributo).val());
+							}
+						}
+					}
+				});
+			});
+			$(".coluna[data-ncolunas=2]").css("width","50%");			
+		</script>
+<div class="row">
+<div class="col-md-12" id="crud-contexto-add-td_relacaocredores">
+<div class="form-grupo-botao">
+<div class="loader-salvar"></div>
+<button class="btn btn-success b-salvar b-movimentacao" id="salvar-movimentacao-alterar">
+<span class="glyphicon glyphicon-ok"></span> Salvar</button>
+<div class="retorno msg-retorno-form-td_relacaocredores" style="display:none">
+<div role="alert" class="alert alert-dismissible alert-success" style="text-align:right;font-weight:bold">
+<strong></strong>
+<button class="close" aria-label="Close" onclick="fecharAlerta();">
+<span aria-hidden="true">&times;</span></button></div></div></div>
+<form class="form-horizontal tdform" id="form-movimentacao">
+<fieldset>
+<div class="row-fluid form_campos">
+<div class="coluna" data-ncolunas="2"></div>
+<div class="coluna" data-ncolunas="2">
+<div class="form-group">
+<label for="cnpj" class="control-label">CNPJ
+<small> <small>( Novo )</small> </small></label>
+<input id="cnpj" name="cnpj" data-entidade="td_relacaocredores" class="form-control input-sm formato-cnpj " atributo="57" /></div></div>
+<div class="coluna" data-ncolunas="2">
+<div class="form-group">
+<label for="cnpj-old" class="control-label">CNPJ
+<small> <small>( Antigo )</small> </small></label>
+<input id="cnpj-old" name="cnpj-old" data-entidade="td_relacaocredores" class="form-control input-sm formato-cnpj " readonly="true" atributo="57" /></div></div>
+<div class="coluna" data-ncolunas="2">
+<div class="form-group">
+<label for="cpf" class="control-label">CPF
+<small> <small>( Novo )</small> </small></label>
+<input id="cpf" name="cpf" class="form-control input-sm formato-cpf" data-entidade="td_relacaocredores" atributo="142" /></div></div>
+<div class="coluna" data-ncolunas="2">
+<div class="form-group">
+<label for="cpf-old" class="control-label">CPF
+<small> <small>( Antigo )</small> </small></label>
+<input id="cpf-old" name="cpf-old" class="form-control input-sm formato-cpf" data-entidade="td_relacaocredores" readonly="true" atributo="142" /></div></div></div></fieldset></form></div></div>
+<script type="text/javascript">
+	
+		$(".b-salvar.b-movimentacao").click(function(){		
+			salvarStatus();
+		});
+		if ($("#form-movimentacao fieldset").length <= 0){
+			var fieldset = $("<fieldset>");
+			$("#form-movimentacao").append(fieldset);
+		}
+
+		var motivo = $("");
+		$("#form-movimentacao fieldset").append(motivo);
+		var observacao = $("<label for='observacao' class='control-label'>Observa&ccedil;&atilde;o</label><textarea class='form-control input-sm' required='true' id='observacao' name='observacao' data-entidade=''></textarea>");
+		$("#form-movimentacao fieldset").append(observacao);
+		$("#form-movimentacao fieldset").css("margin-bottom","15px");
+		
+		unLoaderGeral();
+
+		function carregarListaMotivo(){
+			$.ajax({
+				url:config.urlrequisicoes,
+				data:{
+					op:"carregar_options",
+					entidade:""
+				},
+				complete:function(ret){
+					$("#td_motivo").html(ret.responseText);
+				}
+			});
+		}
+
+		function salvarStatus(){
+			if (0 <= 0) return false;
+			$.ajax({
+				url:"index.php?controller=gerarmovimentacao",
+				data:{
+					op:"salvarstatus",
+					movimentacao:getCookie("movimentacaoselecionada"),
+					id:getCookie("idmovdados"),
+					entidademotivo:"0",
+					motivo:$("#td_motivo").val(),
+					observacao:$("#observacao").val(),
+				},
+				complete:function(ret){
+					if (parseInt(ret.responseText) == 1){
+						abrirAlerta("Salvo com Sucesso","alert-success",".msg-retorno-form-td_relacaocredores");	
+					}else{
+						abrirAlerta("Erro ao salvar. Entrar em contato com o administrador do sistema.","alert-danger",".msg-retorno-form-td_relacaocredores");
+						console.log("Erro ao Salvar Status");
+						console.log(ret.responseText);
+					}
+				}
+			});
+		}
+		$("#modal-movimentacao .modal-header .modal-title").html("Altera&ccedil;&atilde;o de Credor");
+	</script>

@@ -56,6 +56,7 @@
 	define('URL_CURRENT_THEME', URL_PROJECT . 'tema/' . $miles_json->theme .'/');
 	define('URL_THEME',URL_MILES_LIBRARY . 'tema/' . $miles_json->theme .'/');
 	define('PATH_TMP', $relative_path . 'tmp/');
+	define('URL_CURRENT_FILES', URL_PROJECT . 'files/');
 
 	$config_file 		= PATH_CURRENT_CONFIG_PROJECT. "current_config.inc";
 

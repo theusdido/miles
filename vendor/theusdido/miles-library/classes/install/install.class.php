@@ -136,4 +136,15 @@ class tdInstall {
 			return false;
 		}
 	}
+
+	/*  
+		* Método isCreatedDatabase
+	    * Data de Criacao: 19/06/2023
+	    * Author @theusdido
+
+		Retorna se o banco de dados está criado sem enviar parametro
+	*/
+	public static function getInstallDB(){
+		return tdc::ru('td_instalacao');
+	}
 }

@@ -1,14 +1,19 @@
 <?php
-
+	
+	#echo 'teste';
+	#exit;
 	ini_set('display_errors',1);
 	ini_set('display_startup_erros',1);
 	error_reporting(E_ALL);
 
 	// Permitir Acesso Externo
 	header("Access-Control-Allow-Origin: *");
+	header("Access-Control-Allow-Headers: *");
+	header('Access-Control-Allow-Methods: GET, POST');
+	header("Access-Control-Allow-Headers: X-Requested-With");
 
-	//echo 'teste';
-	//exit;
+	#unlink('teste');
+	#exit;
 	
 	// Define o ambiente como sistema	
 	define('AMBIENTE','SISTEMA');
