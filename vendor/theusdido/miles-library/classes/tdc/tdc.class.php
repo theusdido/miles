@@ -51,7 +51,7 @@ class tdc Extends tdClass{
 		Lê String ( Substitui o comando "$_GET","$_POST" e "$_FILES" )
 	*/	
 	public static function r($parms,$retornavazio = null){
-		if (($conteudo = tdClass::Read($parms)) != false){
+		if (($conteudo = tdClass::Read($parms)) !== false){
 			return $conteudo;
 		}else{
 			if ($retornavazio == null){

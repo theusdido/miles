@@ -30,16 +30,16 @@ class SelecaoUnica Extends Elemento{
 	}
 	private function montar(){
 		$sql 				= tdClass::Criar("sqlcriterio");
-		$entidade 			= tdClass::Criar("persistent",array(ENTIDADE,$this->entidade));				
-		$campodescricao 	= tdClass::Criar("persistent",array(ATRIBUTO,$entidade->contexto->campodescchave));		
-		$dataset 			= tdClass::Criar("repositorio",array($entidade->contexto->nome))->carregar($sql);		
-		$this->setOptions($dataset);
+		$entidade 			= tdClass::Criar("persistent",array(ENTIDADE,$this->entidade));
+		$campodescricao 	= tdClass::Criar("persistent",array(ATRIBUTO,$entidade->contexto->campodescchave));
+		$dataset 			= tdClass::Criar("repositorio",array($entidade->contexto->nome))->carregar($sql);
+		$this->setOptions($dataset,$campodescricao);
 	}
 	public function mostrar(){
 		$this->montar();
 		parent::mostrar();
 	}
-	public function setOptions($dataset){
+	public function setOptions($dataset,$campodescricao){
 		foreach($dataset as $dado){
 			$option 		= tdClass::Criar("option");
 			$option->value 	= $dado->id;

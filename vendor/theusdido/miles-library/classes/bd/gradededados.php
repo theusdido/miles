@@ -13,11 +13,6 @@ if ($op == "get_form"){
 	$jsScript->add('funcionalidade = "emmassa";');
 	$jsScript->mostrar();
 
-	// Formulário JS	
-	$jsFormulario = tdClass::Criar("script");
-	$jsFormulario->src = PATH_SYSTEM . "formulario.js";
-	$jsFormulario->mostrar();
-
 	$atributo = tdc::r("atributo");
 
 	$form = tdClass::Criar("tdformulario");

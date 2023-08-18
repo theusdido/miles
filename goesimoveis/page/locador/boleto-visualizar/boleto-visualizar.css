@@ -1,0 +1,330 @@
+/* ****************************************************************
+	VISUALIZAÇÃO DE BOLETO
+**************************************************************** */
+#margem{
+	padding:0.5cm;
+}
+body{
+	padding:0px;
+	margin:0px;	
+}
+.borda{
+	border:1px solid #000;
+}			
+.quadro{
+	border-right:1px solid #000;
+}
+.texto{
+	font-size:10px;
+	font-family:Tahoma;
+}
+.digito_banco{
+	font-size:24px;
+	font-weight:bold;		
+}
+.tboleto{
+	width:19cm;
+	height:25cm;
+}
+table tr td {
+	font-size:8px;
+	font-family:Tahoma;
+}
+.tenvelope{
+	width:19cm;
+	height:25cm;
+	display:none;
+}
+.texto-instrucao{
+	font-size:16px;
+}
+#teventos tr, #teventos tr td {
+	margin:0px;
+	padding:0px;
+}
+
+
+/* Folha de Estilo para Boleto em HTML */
+body{
+	padding:0px;
+	margin:0px;
+}
+.tboleto{
+	width:21cm;
+	margin:0cm;
+	font-size:14px;
+	font-weight:Tahoma;
+}
+.logo-empresa{
+	height:40px;
+}
+#identificacaousuario{
+	float: right;
+    color: #999;
+}
+.topo{
+	border-bottom:1px solid #AAA;
+	padding-bottom:5px;
+}
+.eventos span{
+	float:left;
+}
+
+.eventos .linha .codigo{
+	width:15%;
+}
+.eventos .linha .descricao{
+	width:70%;
+}
+.eventos .linha .valor{
+	width:15%;
+	text-align: right;
+}
+
+.eventos .cabecalho{
+	border-bottom:1px solid #000;
+	font-weight:bold;
+}	
+.eventos .cabecalho , .eventos .corpo , .eventos .rodape {
+	float:left;
+	clear:left;
+	width:100%;
+}
+.eventos .corpo .linha{
+	float:left;
+	width:100%;
+	border-bottom:1px solid #CCC;
+}
+.eventos .cabecalho span.codigo , .eventos .corpo span.codigo , .eventos .rodape span.codigo{
+	width:10%;
+}
+.eventos .cabecalho span.descricao , .eventos .corpo span.descricao , .eventos .rodape span.descricao{
+	width:50%;
+}
+.eventos .cabecalho span.debito , .eventos .corpo span.debito , .eventos .rodape span.debito{
+	width:20%;
+}
+.eventos .cabecalho span.credito , .eventos .corpo span.credito , .eventos .rodape span.credito{
+	width:20%;
+}
+.eventos .rodape .subtotal{
+	width:60%;
+}
+.eventos .rodape .total{
+	width:80%;
+	font-weight:bold;
+}
+.eventos .rodape .saldo{
+	width:20%;
+	font-weight:bold;
+}
+.recibo{
+	float:left;
+	clear:left;
+	width:100%;
+}
+.linha-logo-banco .dados-banco {
+	float:left;
+	padding-top:8px;
+}
+.recibo .linha-logo-banco .dados-banco {
+	width:60%;
+}	
+.recibo .autenticacao-mecanica , .recibo .recibo-pagador {
+	width:20%;
+	float:left;
+	text-align:right;
+}
+.logo-banco {
+	height:25px;
+	float:left;
+}
+.linha-logo-banco {
+	float: left;
+    width: 100%;
+    clear: left;
+    height: 35px; 
+    line-height: 50px;
+    border-top: 1px solid #000;
+}
+.digito-banco {
+	font-size: 18px;
+    margin-top: -15px;
+    float: left;	
+}
+.quadro{
+	border:1px solid #000;
+	float:left;
+}
+.recibo .quadro {
+	float:left;
+	border-width: 1px 1px 0px 0px;
+	padding:3px;
+}
+.recibo .quadro.beneficiario, .recibo .quadro.pagador{
+	width:11cm;
+	text-align:left;
+	border-left:1px solid #000;
+}
+.recibo .quadro.agencia, .recibo .quadro.datavencimento , 
+.recibo .quadro.nossonumero , .recibo .quadro.valordocumento ,
+.recibo .quadro.numerodocumento , .recibo .quadro.valorcobrado {
+	width:5cm;
+	text-align:right;
+}
+.recibo .quadro p {
+	margin:0px;
+	padding:0px;
+}
+.recibo .quadro.pagador , .recibo .quadro.numerodocumento , .recibo .quadro.valorcobrado {
+	border-bottom:1px solid #000;
+}
+.linha-cortar {
+	float:left;
+	width:100%;
+	height: 30px;
+}
+.linha-cortar span{
+	position: absolute;
+    background-color: #FFF;
+    padding: 3px;
+    left: 21cm;
+    line-height: 14px;
+	width: 200px;
+}
+.linha-cortar hr {
+	margin-top: 13px;
+    border: 1px dashed #000;
+}
+.img-linhadigitavel{
+	float:right;
+	margin-top:5px;
+}
+.bloqueto .quadro.localpagamento , .bloqueto .quadro.beneficiario , .bloqueto .quadro.instrucao {
+	width:15cm;
+	border-left:1px solid #000;
+}
+.bloqueto .quadro.vencimento , .bloqueto .quadro.agencia , .bloqueto .quadro.nossonumero , .bloqueto .quadro.valordocumento ,
+.bloqueto .quadro.desconto , .bloqueto .quadro.deducoes , .bloqueto .quadro.moramultajuro , .bloqueto .quadro.outrosacrescimento ,
+.bloqueto .quadro.valorcobrado , .bloqueto .quadro.pagador
+{
+	width: 6cm;
+	text-align:right;
+}
+.bloqueto .quadro.datadocumento , .bloqueto .quadro.numerodocumento , .bloqueto .quadro.especie , .bloqueto .quadro.aceite , .bloqueto .quadro.dataprocessamento ,
+.bloqueto .quadro.usobanco , .bloqueto .quadro.carteira , .bloqueto .quadro.especie , .bloqueto .quadro.quantidade , .bloqueto .quadro.valor {
+	width: 3cm;
+}
+
+.bloqueto .quadro {
+    float: left;
+    border-width: 1px 1px 0px 0px;
+    padding: 3px;	
+}
+
+.bloqueto .quadro p {
+	margin:0px;
+	padding:0px;
+}
+
+.bloqueto .quadro.pagador{
+    width: 21cm;
+    text-aligN: left;
+    border-bottom: 1px solid #000;
+    margin-bottom: 5px;
+}
+.linha-codigobarras{
+	width:70%;
+}
+.compensacao-rodape{
+	position: absolute;
+    margin-left: 75px;
+}
+
+.bloqueto .quadro.numerodocumento , .bloqueto .quadro.especie , .bloqueto .quadro.aceite , .bloqueto .quadro.carteira , .bloqueto .quadro.quantidade {
+	text-align:center;
+}
+
+.bloqueto .quadro.dataprocessamento , .bloqueto .quadro.valor {
+	text-align:right;
+}
+
+.bloqueto .quadro.datadocumento , .bloqueto .quadro.usobanco , .bloqueto .quadro.pagador{
+	border-left:1px solid #000;
+}
+.recibo{
+	margin-top:15px;
+}
+.quebra_pagina{
+	visibility: hidden;
+}
+
+.label{
+	font-size:10px;
+    color:#333;
+}
+.recibo .quadro.beneficiario, .recibo .quadro.agencia,.recibo .quadro.datavencimento, .recibo .quadro.agencia, .recibo .quadro.datavencimento, .recibo .quadro.nossonumero, .recibo .quadro.valordocumento, .recibo .quadro.numerodocumento, .recibo .quadro.valorcobrado {
+	height:70px;
+}
+
+.recibo .quadro.pagador {
+	 height: 140px;
+}
+
+.bloqueto .quadro.localpagamento, .bloqueto .quadro.vencimento, .bloqueto .quadro.beneficiario,.bloqueto .quadro.agencia,.bloqueto .quadro.datadocumento,
+.bloqueto .quadro.numerodocumento, .bloqueto .quadro.especie,.bloqueto .quadro.aceite, .bloqueto .quadro.dataprocessamento, .bloqueto .quadro.nossonumero,
+.bloqueto .quadro.usobanco, .bloqueto .quadro.carteira, .bloqueto .quadro.especie, .bloqueto .quadro.quantidade, .bloqueto .quadro.valor,
+.bloqueto .quadro.valordocumento, .bloqueto .quadro.desconto, .bloqueto .quadro.deducoes, .bloqueto .quadro.moramultajuro, .bloqueto .quadro.outrosacrescimento,
+.bloqueto .quadro.valorcobrado {
+	height:50px;
+}
+
+.bloqueto .quadro.instrucao {
+	height:250px;
+}
+
+@media print{
+	body {
+		-webkit-print-color-adjust: exact;
+	}
+	.recibo , .bloqueto {
+		page-break-inside:avoid;
+	}
+	.quebra_pagina {
+		page-break-after: always;
+	}
+	.tboleto{
+		width:100%;	
+	}
+	.recibo .quadro.beneficiario, .recibo .quadro.pagador{
+		width:60%;
+	}
+	.recibo .quadro.agencia, .recibo .quadro.datavencimento , 
+	.recibo .quadro.nossonumero , .recibo .quadro.valordocumento ,
+	.recibo .quadro.numerodocumento , .recibo .quadro.valorcobrado {	
+		width:20%;
+	}
+	.bloqueto .quadro.localpagamento , .bloqueto .quadro.beneficiario , .bloqueto .quadro.instrucao {
+		width:85%;
+	}
+	.bloqueto .quadro.vencimento , .bloqueto .quadro.agencia , .bloqueto .quadro.nossonumero , .bloqueto .quadro.valordocumento ,
+	.bloqueto .quadro.desconto , .bloqueto .quadro.deducoes , .bloqueto .quadro.moramultajuro , .bloqueto .quadro.outrosacrescimento ,
+	.bloqueto .quadro.valorcobrado
+	{
+		width:20%;
+	}	
+	.bloqueto .quadro.datadocumento , .bloqueto .quadro.numerodocumento , .bloqueto .quadro.especie , .bloqueto .quadro.aceite , .bloqueto .quadro.dataprocessamento ,
+	.bloqueto .quadro.usobanco , .bloqueto .quadro.carteira , .bloqueto .quadro.especie , .bloqueto .quadro.quantidade , .bloqueto .quadro.valor {
+		width:16%;
+	}
+	.bloqueto .quadro.localpagamento , .bloqueto .quadro.beneficiario , .bloqueto .quadro.instrucao {
+		width:80%;
+	}
+	.bloqueto .quadro.pagador {
+		width:100%;		
+	}
+    .quadro .label{
+        border:0px;
+    }
+    .quebra_pagina {page-break-after: always;}
+}

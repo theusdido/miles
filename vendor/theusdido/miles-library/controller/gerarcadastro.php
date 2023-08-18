@@ -68,7 +68,7 @@
 	$crudListar->class 				= "crud-contexto-listar " . ($isprincipal?"fp":"");
 	$crudListar->data_entidade 		= $entidade->contexto->nome;
 	$crudListar->data_entidadeid 	= $entidade->contexto->id;
-	$crudListar->data_entidadepai		= tdc::r("entidadepai");
+	$crudListar->data_entidadepai	= tdc::r("entidadepai");
 
 	// Span ADD
 	$contextoAdd 					= "#crud-contexto-add-" . $contexto;

@@ -124,7 +124,7 @@
 	$confighome->add($iconConfigHome);	
 
 	$aConfigHome 				= tdClass::Criar("hyperlink");
-	$aConfigHome->href 			= URL_MDM . "index.php?currentproject=" . CURRENT_PROJECT_ID;
+	$aConfigHome->href 			= URL_MDM;
 	$aConfigHome->target 		= "_blank";
 	$aConfigHome->add("Gerenciamento");
 	$confighome->add($aConfigHome);
@@ -141,7 +141,7 @@
 	$colBlocoIntalacao->add($iconInstallHome);
 	
 	$aInstallHome 			= tdClass::Criar("hyperlink");
-	$aInstallHome->href 	= URL_MILES . "index.php?controller=install";
+	$aInstallHome->href 	= URL_INSTALL;
 	$aInstallHome->target 	= "_blank";
 	$aInstallHome->add("Instalação");
 	$aInstallHome->id 		= "link-install-home";

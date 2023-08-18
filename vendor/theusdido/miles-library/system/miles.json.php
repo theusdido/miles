@@ -8,18 +8,18 @@
 	$_project_folder	= 
 	$_env 				= '';
 	$_enviromment		= isset($_GET['env']) ? $_GET['env'] : (isset($_POST['env']) ? $_POST['env'] : (isset($_enviromment) ? $_enviromment : $_current_environment));
-	$path_miles_json 	= $_path_root_project . $_enviromment . ".miles.json";
 
-	if (!file_exists($path_miles_json)){
+	// Deveria criar esse arquivo apenas na instalação ?
+	if (!file_exists($_miles_json_root_file)){
 		include $_path_controller_install . 'criarmilesjson.php';
 	}
 
-	if (sizeof(file($path_miles_json)) <= 0){
+	if (sizeof(file($_miles_json_root_file)) <= 0){
 		echo 'Arquivo <strong>miles.json</strong> está comrrompido.';
 		exit;
 	}
 
-	$miles_json 		= file_get_contents($path_miles_json);
+	$miles_json 		= file_get_contents($_miles_json_root_file);
 
 	if ($miles_json != false){
 
@@ -49,7 +49,6 @@
 			$_folder_miles_ = '';
 
 		}
-
 
 		// Nome do Projeto
 		$_project_name 		= isset($mjc->project->name)?$mjc->project->name:'';

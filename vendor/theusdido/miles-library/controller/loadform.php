@@ -49,7 +49,7 @@
 				}
 
 				$valor 			= isset($dado["valor"]) ? $dado["valor"] : '';
-				$atributoNome 	= isset($dado["atributo"]) ? $dado["atributo"] : '';
+				$atributoNome 	= $dado["atributo"] == 0 ? '' : $dado["atributo"];
 
 				if ($atributoNome != ''){
 					$buscaPorValor 	= true;
@@ -83,6 +83,7 @@
 					if ($IDs == "") continue;
 					$sql = "SELECT * FROM {$entidadeNome} WHERE id in ({$IDs})";				
 				}
+				
 				try{
 					$query = $conn->query($sql);	
 				}catch(Exception $e){

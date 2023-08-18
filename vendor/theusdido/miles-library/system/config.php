@@ -82,11 +82,25 @@
 		}
 	}
 
-	if (!defined('SCHEMA')){
-		if (isset($_SESSION["db_base"])){
-			define('SCHEMA',$_SESSION["db_base"]);
-		}
+	$_config_db = $_path_config_project . $mjc->database_current.'_mysql.ini';
+	if (file_exists($_config_db)){		
+		$_db 		= parse_ini_file($_config_db);
+		$_db_name 	= $_db['base'];
+	}else if (isset($_SESSION["db_base"])){
+		$_db_name 	= $_SESSION["db_base"];
+	}else{
+		$_db_name 	= '';
 	}
+
+	try{
+		if (!defined('SCHEMA')){
+			define('SCHEMA',$_db_name);
+		}
+	}catch(Throwable $t){
+		showMessage('Arquivo do banco de dados não está configurado!');
+		exit;
+	}
+
 	// Seta o ID do projeto atual
 	$_SESSION["currentproject"] = $currentProject;
 
@@ -224,5 +238,6 @@
 		default:
 			$_dados	= json_decode(tdc::r('dados') == '' ? (tdc::r('_dados')==''?'{}':tdc::r('_dados')) : tdc::r('dados'));		
 	}
+
 	$controller 		= tdc::r("_controller") == '' ? tdc::r("controller") : tdc::r("_controller");
 	$_controller		= tdc::r("_controller",$controller); # Novo padrão com _ na frente

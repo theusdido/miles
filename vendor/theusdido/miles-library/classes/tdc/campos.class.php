@@ -512,4 +512,49 @@
 			$alert->add($msg);
 			return $alert;
 		}		
+
+		public static function filter($nome,$descricao){
+			
+			$campo 					= tdClass::Criar("div");
+			$campo->class 			= "filtro-pesquisa form-group";
+
+			$label 					= tdClass::Criar("label");
+			$label->for 			= $nome;
+			$label->class 			= "control-label";
+			$label->add(tdc::utf8($descricao));
+
+			$input_group 			= tdClass::Criar("div");
+			$input_group->class 	= "input-group";
+
+			$input_group_btn 		= tdClass::Criar("span");
+			$input_group_btn->class = "input-group-btn";
+
+			$button 					= tdClass::Criar("button");
+			$button->class 				= "btn btn-default botao-filtro";
+			$button->id 				= "btn-pesquisar-" . $nome;
+			$button->name 				= "btn-pesquisar-" . $nome;
+			$span_icon_procura 			= tdClass::Criar("span");
+			$span_icon_procura->class 	= "fas fa-search";
+			$button->add($span_icon_procura);
+			
+			$termo 				= tdClass::Criar("input");
+			$termo->type 		= "text";
+			$termo->class 		= "form-control termo-filtro ";
+			$termo->id 			= 'termo-' . $nome;
+			$termo->name 		= 'termo-' . $nome;
+
+			$descricao_resultado 				= tdClass::Criar("input");
+			$descricao_resultado->type 			= "text";
+			$descricao_resultado->readonly 		= "true";
+			$descricao_resultado->class 		= "form-control descricao-filtro";
+			$descricao_resultado->id 			= "resultado-descricao-".$nome;
+			$descricao_resultado->name 			= "resultado-descricao-".$nome;
+
+			$input_group_btn->add($button);
+			$input_group->add($termo,$descricao_resultado,$input_group_btn);
+					
+		
+			$campo->add($label,$input_group);
+			return $campo;
+		}
 	}

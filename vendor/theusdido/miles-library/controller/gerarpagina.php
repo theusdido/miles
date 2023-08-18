@@ -123,11 +123,6 @@ if ($isprincipal){
 	    $js 		= tdClass::Criar("script");
 		$js->src 	= $urlfilepage . $entidade->contexto->nome . ".js";
 		$bloco->add($js);
-
-		// Adiciona a página padrão de validação dos campos do formulário
-		$jsFormulario 		= tdClass::Criar("script");
-		$jsFormulario->src 	= URL_SYSTEM . "formulario.js";
-		$bloco->add($jsFormulario);
 	}
 
 	// HTML Personalizado

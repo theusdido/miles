@@ -39,7 +39,7 @@ $(".checkbox-modulo-all").click(function(){
 
 $(document).ready(function(){
     $.ajax({
-        url:'index.php',
+        url:session.urlmiles,
         data:{
             controller:'install/modulos',
             op:'load',
@@ -49,7 +49,7 @@ $(document).ready(function(){
         complete:function(res){
             let retorno = JSON.parse(res.responseText);
             retorno.forEach((e) => {
-                let url_compoente = 'index.php?controller=install/componentes&package=' + package_selecionado + '&component=' + modulo_selecionado;
+                let url_compoente = session.urlmiles + '?controller=install/componentes&package=' + package_selecionado + '&component=' + modulo_selecionado;
                 $('#accordion-install-components').load(url_compoente);
             });
         }
@@ -59,7 +59,6 @@ $(document).ready(function(){
 // Adiciona o componente para instalação via componente HTML
 function addElementComponent( element  )
 {
-    console.log(element);
     var componentPath		= $(element).attr("id");
     var componenteNome 		= $(element).data("module-name");
     var componenteDescricao	= $(element).data("module-description");

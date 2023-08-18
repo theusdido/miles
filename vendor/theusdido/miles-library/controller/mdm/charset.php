@@ -67,4 +67,50 @@
 				}
 			}
 		break;
+		case 'listar':
+            $sql = "SELECT * FROM td_charset ORDER BY id ASC";
+            $query = $conn->query($sql);
+            while ($linha = $query->fetch()){
+                $id 		= $linha["id"];
+                $local 		= tdc::utf8($linha["local"]);
+                $id_modal 	= 'myModal' . $linha["id"];
+                echo '
+                        <tr>
+                            <td>'.$linha["id"].'
+                        </td>
+                        <td>'.$local.'</td>
+                        <td>
+                ';
+
+                //include 'charset_modal.php';
+
+                echo '
+                        </td>
+                            
+                            <td class="text-center">
+                                <input type="radio" name="charsetoption-'.$id.'" id="charsetoption-'.$id.'-N" value="N" '.($linha["charset"]=='N'?'checked':'').' onclick="setCharset('.$id.',this)">
+                            </td>
+                            <td class="text-center">
+                                <input type="radio" name="charsetoption-'.$id.'" id="charsetoption-'.$id.'-D" value="D" '.($linha["charset"]=='D'?'checked':'').' onclick="setCharset('.$id.',this)">
+                            </td>
+                            <td class="text-center">
+                                <input type="radio" name="charsetoption-'.$id.'" id="charsetoption-'.$id.'-E" value="E" '.($linha["charset"]=='E'?'checked':'').' onclick="setCharset('.$id.',this)">
+                            </td>
+                        </tr>
+                ';
+            }		
+		break;
+		case 'option-corrigir-entidade':
+			echo '
+				<option value="td_entidade">Entidade [ td_entidade ]</option>
+				<option value="td_atributo">Atributo [ td_atributo ]</option>
+			';
+
+			$sqlT 	= "SELECT id,nome,descricao FROM ".ENTIDADE;
+			$queryT = $conn->query($sqlT);
+			$linhaT = $queryT->fetchAll();
+			foreach($linhaT as $dado){
+				echo '<option value="'.$dado["id"].'">'. tdc::utf8($dado["descricao"]) .' [ '.$dado["nome"].' ]</option>';
+			}
+		break;
 	}

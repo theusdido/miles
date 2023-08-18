@@ -4,6 +4,8 @@
 	if (!$conn || $conn == 'NULL'){
 		$conn = Conexao::getTemp();
 	}
+
+
     switch($op){
         case 'instalar':
             $query = $conn->query("UPDATE ".INSTALACAO." SET sistemainstalado = 1 WHERE id = 1;");
@@ -13,9 +15,21 @@
                 }
             }
 
+			$_project_name 			= tdc::r('projectname');
+			$_project_folder		= tdc::r('projectfolder');
+			$_project_prefix		= tdc::r('prefixo');
+			$_path_project_install 	= 'projects/' . $_project_folder . '/';
+			$_project_dominio		= removeBarraRoot(str_replace(array('https://','http://','www.','//'),'',tdc::r('dominio')));
+
+
 			include PATH_MILES_LIBRARY . 'controller/install/criarestruturapastas.php';
 			include PATH_MILES_LIBRARY . 'controller/install/criarmysqlini.php';
 			include PATH_MILES_LIBRARY . 'controller/install/criarcurrentconfig.php';
+			include PATH_MILES_LIBRARY . 'controller/install/criarmilesjson.php';
+
+			// Cria o MDM File JavaScript Compile
+			include PATH_MDM_CONTROLLER . 'javascriptfile.php';
+			
             echo 1;
         break;
         case 'instrucao':
@@ -198,5 +212,12 @@
 		case 'versao':
 			include PATH_MILES_LIBRARY . 'controller/install/version.php';
 		break;
+		case 'default':
+			tdc::wj(array(
+				'nome'		=> isset($mjc->project->name) ? $mjc->project->name : '',
+				'diretorio'	=> $_project_name_identifify_params,
+				'prefixo'	=> 'td',
+				'dominio'	=> 'http://localhost/'
+			));
+		break;
     }
-

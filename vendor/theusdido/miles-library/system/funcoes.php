@@ -690,7 +690,7 @@ function criarEntidade(
 		}
 		exit;
 	}
-	$sqlExisteFisicamente = "SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE UPPER(TABLE_NAME) = UPPER('".$nome."') AND UPPER(TABLE_SCHEMA) = UPPER('".SCHEMA."')";
+	$sqlExisteFisicamente 	= "SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE UPPER(TABLE_NAME) = UPPER('".$nome."') AND UPPER(TABLE_SCHEMA) = UPPER('".SCHEMA."')";
 	$queryExisteFisicamente = $conn->query($sqlExisteFisicamente);
 	
 	if ($queryExisteFisicamente->rowCount() <= 0){
@@ -917,11 +917,18 @@ function criarAtributo(
 					$sql = "ALTER TABLE {$linha[0]["nome"]} CHANGE {$linha_old[0]['nome']} {$nome} {$tipo}{$tamanhoSQL} {$nuloSQL};";
 					$atualizar = $conn->query($sql);
 				}catch(Throwable $t){
-					if (IS_SHOW_ERROR_MESSAGE){
-						echo $sql;
-						var_dump($t->getMessage());
+
+					try{
+						$sql = "ALTER TABLE {$linha[0]["nome"]} CHANGE {$linha_old[0]['nome']} {$nome} {$tipo}{$tamanhoSQL};";
+						$atualizar = $conn->query($sql);
+					}catch(Throwable $t){
+						if (IS_SHOW_ERROR_MESSAGE){
+							echo $sql;
+							var_dump($t->getMessage());
+						}
+						exit;
 					}
-					exit;
+					
 				}
 				if (!$atualizar){
 					$sql = "ALTER TABLE {$linha[0]["nome"]} ADD COLUMN {$nome} {$tipo}{$tamanhoSQL} {$nuloSQL};";
@@ -969,6 +976,16 @@ function getProxId($entidade,$conn = null){
 	}
 	$prox = $query->fetch(PDO::FETCH_BOTH);
 	return $prox[0];
+}
+function getNextValue($entidade,$atributo = "id",$where = null){		
+	global $conn;
+	if (gettype($where) == "array"){
+		$where = " WHERE {$where[0]} {$where[1]} {$where[2]} "; 
+	}
+	$sql = "SELECT IFNULL(MAX({$atributo}),0) + 1 FROM ".getSystemPREFIXO().$entidade.$where;
+	$query = $conn->query($sql);
+	$linha = $query->fetch();
+	return $linha[0];
 }
 function addMenu(
 	$conn, #0 
@@ -1637,14 +1654,22 @@ function setAtributoGeneralizacao($conn,$entidade,$atributo){
 // Inclui e instala uma entidade na instalação
 function installDependencia($entidade_nome_install = "",$package = "package/sistema/"){
 	global $conn;
-	$pathfile = PATH_INSTALL . $package . ".php";
+	global $_componente_path;
+
+	$file_exists 	= false;
+	$pathfile 		= PATH_INSTALL . $package . ".php";	
 	if (file_exists($pathfile)){	
 		include_once $pathfile;
-		return getEntidadeId($entidade_nome_install,$conn);
-	}else{
-		echo 'Arquivo da entidade [ <b>'.$entidade_nome_install.'</b> ] não encotrado => ' . $pathfile . '<br/>\n';
-		return 0;
+		$file_exists 	= true;
+	}else if(file_exists($_componente_path)){
+		include_once $_componente_path;
+		$file_exists 	= true;
 	}
+	if ($file_exists){
+		return getEntidadeId($entidade_nome_install,$conn);
+	}
+	echo 'Arquivo da entidade [ <b>'.$entidade_nome_install.'</b> ] não encotrado => ' . $pathfile . '<br/>\n';
+	return 0;
 }
 // Funзгo que retorna o texto em formato HTML Especial
 function htmlespecialcaracteres($string,$tipo){
@@ -1921,7 +1946,9 @@ function addCampoFormatadoDB($dados,$entidade){
 			if (is_numeric_natural($value)){
 				$atributoOBJ 			= tdc::p(ATRIBUTO,getAtributoId($entidade,$key));		
 				$campodescdefault 		= tdc::p(ATRIBUTO,getCampoDescricaoDefault($atributoOBJ->chaveestrangeira));
-				$dados[$key . "_obj"]	= tdc::pj(tdc::e($atributoOBJ->chaveestrangeira)->nome,$value);
+				if ($key != 'entidade' && $atributoOBJ->chaveestrangeira != 0){
+					$dados[$key . "_obj"]	= tdc::pj(tdc::e($atributoOBJ->chaveestrangeira)->nome,$value);
+				}
 				if ($campodescdefault->hasData()){
 					$valorfk 				= is_numeric_natural($value)?$value:0;
 					$registro 				= getRegistro(null,tdc::p(ENTIDADE,$atributoOBJ->chaveestrangeira)->nome,$campodescdefault->nome, "id={$valorfk}" , "limit 1");
@@ -2260,9 +2287,8 @@ function apenas_numero($str){
 	*	@return:void
 */
 function ordenarAtributo($atributo){
-	$a = tdc::p(ATRIBUTO,$atributo);
-	
-	if (!$a->ordem) return false;
+	$a = tdc::a($atributo);
+	if (!isset($a->ordem)) return false;
 	if ($a->ordem <= 0 || $a->ordem == ''){
 		switch($a->tipohtml){
 			case 16:
@@ -2326,8 +2352,82 @@ function ordenarAtributo($atributo){
 		$a->ordem = $ordem;
 		$a->armazenar();
 	}
+	return true;
 }
-
+/*  
+	* reordenarAtributo
+	* Data de Criacao: 17/06/2023
+	* @author Edilson Valentim dos Santos Bitencourt (Theusdido)
+	* Reordena o atributo para ser exibido no formulário
+	* PARAMETROS
+	*	@params: Number atributo:"ID do Atributo"
+	* RETORNO
+	*	@return:void
+*/
+function reordenarAtributo($atributo){
+	$a = tdc::a($atributo);
+	switch($a->tipohtml){
+		case 16:
+			$ordem = 1;
+		break;
+		case 1:
+		case 2:
+		case 3:
+			$ordem = 2;
+		break;
+		case 4:
+		case 5:
+			$ordem = 3;
+		case 10:
+		case 15:
+		case 17:
+			$ordem = 4;
+		break;
+		case 11:
+		case 23:
+			$ordem = 5;
+		break;
+		case 12:
+		case 8:
+		case 6:
+		case 13:
+			$ordem = 6;
+		break;
+		case 9:
+		case 18:
+		case 29:
+			$ordem = 7;
+		break;
+		case 25:
+		case 26:
+		case 28:
+			$ordem = 8;
+		break;
+		case 21:
+		case 22:
+		case 24:
+			$ordem = 9;
+		break;
+		case 19:
+		case 20:
+			$ordem = 10;
+		break;
+		case 7:
+			$ordem = 11;
+		break;
+		case 14:
+		case 27:
+			$ordem = 12;
+		break;
+		case 30:
+			$ordem = 13;
+		break;
+		default:
+			$ordem = 0;
+	}
+	$a->ordem = $ordem;
+	$a->armazenar();
+}
 /*
 	* getTableName
 	* Data de Criacao: 14/11/2021
@@ -2417,4 +2517,30 @@ function noClick(){
 function is_exists($variable,$replace = null){
 	eval('$is_exists_variable = isset('.$variable.');');
 	return $is_exists_variable ? $variable : $replace;
+}
+
+/*
+	* semRegistro
+	* Data de Criacao: 19/07/2023
+	* Author @theusdido
+
+	Retorna uma linha da tabela com a informção que nenhum registro foi encontrado
+	@params: int colspan
+	@return: HtmlObject
+*/
+function trNenhumRegistro($colspan,$is_return = false){
+	$tr         = tdc::html('tr');
+	$tr->class  = 'warning';
+
+	$td = tdc::html('td');
+	$td->class = 'text-center';
+	$td->colspan = 2;
+	$td->add('Nenhuma Registro Encontrado');
+
+	$tr->add($td);
+
+	if ($is_return){
+		return $tr;
+	}
+	echo $tr->mostrar();
 }

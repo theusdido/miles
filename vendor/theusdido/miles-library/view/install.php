@@ -49,10 +49,11 @@
       $row->add($col_content);
       $install_page->addBody($row);
 
+      $install_view_home = $_is_installed ? 'package' : 'criarbase';
       $js     = tdc::html('script');
       $js->add('
             $("#menu-instalacao").load("'.URL_API.'?controller=page&page=install/guia");
-            $("#conteudo-instalacao").load("'.URL_API.'?controller=page&page=install/criarbase");
+            $("#conteudo-instalacao").load("'.URL_API.'?controller=page&page=install/'.$install_view_home.'");
       ');
       $install_page->addBody($js);
 

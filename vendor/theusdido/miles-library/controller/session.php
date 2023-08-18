@@ -20,6 +20,7 @@
 
 	// Sessão do Sistema
 	$sessionName = "miles_" . AMBIENTE . "_" . $currentProject;
+
 	// Verificar se a sessão não já está aberta
 	if (!$_session_isactive){
 		try{
@@ -34,7 +35,6 @@
 			}
 			exit;
 		}
-
 	}
 
 	if ($_op == 'verificasessao'){

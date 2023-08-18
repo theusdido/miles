@@ -1,6 +1,6 @@
 <?php
 	$relacionamentos = $entidadesIDRetorno = array();
-	$idRetorno = $entidadeRetorno = $entidadePrincipalNome = "";
+	$retorno_id = $entidadeRetorno = $entidadePrincipalNome = "";
 	
 	// Salva os dados
 	foreach (tdClass::read("dados") as $linha){
@@ -22,7 +22,7 @@
 
 		// Retorno para a requisição
 		if ($linha['fp'] == 'true'){
-			$idRetorno 				= $id;
+			$retorno_id 			= $id;
 			$entidadeRetorno 		= $entidade->getID();
 			$entidadePrincipalNome	= $entidade_nome;
 			$isfp = 1;
@@ -75,10 +75,10 @@
 	foreach($relacionamentos as $rel){
 
 		if (!is_numeric($rel->atributo) && $rel->atributo != null && $rel->atributo != ''){
-				// Seta o atributo de relacionamento
-				$_entidade_rel 	= tdc::p($rel->entidade,$rel->id);
-				$_entidade_rel->{$rel->atributo} = $objMain->id;
-				$_entidade_rel->armazenar();
+			// Seta o atributo de relacionamento
+			$_entidade_rel 						= tdc::p($rel->entidade,$rel->id);
+			$_entidade_rel->{$rel->atributo} 	= $objMain->id;
+			$_entidade_rel->armazenar();
 		}
 
 		// Seta na LISTA
@@ -97,5 +97,32 @@
 		}
 	}
 
+	// Checklist
+	foreach(tdc::r('checklist') as $checklist){
+
+		// Seta na LISTA
+		$entidadePai 		= $checklist['entidade_pai'];
+		$entidadeFilho 		= $checklist['entidade_filho'];
+		$regPai 			= $retorno_id;
+		$regFilho 			= $checklist['valor'];
+		
+		$sql	= tdc::f();
+		$sql->addFiltro('entidadepai','=', $entidadePai);
+		$sql->addFiltro('entidadefilho','=', $entidadeFilho);
+		$sql->addFiltro('regpai','=',$regPai);
+		$sql->addFiltro('regfilho','=',$regFilho);
+		
+		// Exclui todos os registros da Lista
+		tdc::de(LISTA,$sql);
+
+		// Adiciona novos registros na lista
+		$_lista 				= tdc::p(LISTA);
+		$_lista->entidadepai 	= $entidadePai;
+		$_lista->entidadefilho	= $entidadeFilho;
+		$_lista->regpai			= $regPai;
+		$_lista->regfilho 		= $regFilho;
+		$_lista->armazenar();
+	}
+
 	// Retorno
-	echo json_encode(array("status" => 1 , "id" => $idRetorno , "entidade" => (int)$entidadeRetorno , "entidadesID" => $entidadesIDRetorno));
+	echo json_encode(array("status" => 1 , "id" => $retorno_id , "entidade" => (int)$entidadeRetorno , "entidadesID" => $entidadesIDRetorno));

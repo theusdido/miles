@@ -1,5 +1,7 @@
 <?php
-	include 'autoload.php';
+	
+	//include 'autoload.php';
+
 ?>
 <div class="row">
 	<div class="col-md-12">

@@ -220,11 +220,15 @@ class Config {
 		* createFileDbIni
 		* Data de Criacao: 16/09/2022
 		* @author Edilson Valentim dos Santos Bitencourt (Theusdido)
-		* Retorna o valor da variável de ambiente
+		* Cria arquivo de conexão com o banco de dados
 		* PARAMETROS
-		*	@params: String variavel:string | any
+		*	@params: 
+		*		String path
+		*		Array data
+		*		String env_db
+		*		String sgdb
 		* RETORNO
-		*	@return: any
+		*	@return: void
 	*/
 	public static function createFileDbIni($path,$data = [], $env_db = 'temp',$sgdb = 'mysql'){
 		$ini_data = array(
@@ -242,7 +246,16 @@ class Config {
 		fclose($fpMySQLINIDesenv);
 	}	
 
-
+	/*
+		* uploadMaxFile
+		* Data de Criacao: 11/07/2023
+		* @author Edilson Valentim dos Santos Bitencourt (Theusdido)
+		* Retorna o tamanho máximo permitido para upload das variaveis de ambiente do PHP
+		* PARAMETROS
+		*	@params: String unidade:string
+		* RETORNO
+		*	@return: double
+	*/
 	public static function uploadMaxFile($_unidade = 'M'){
 		return (double)apenas_numero(ini_get('upload_max_filesize'));
 	}

@@ -1,0 +1,35 @@
+Definição de SQL	5			
+40	Instrução INSERT	5			
+41	Inserir omitindo os atributos	5			
+42	Efeito do auto increment no insert	5			
+43	Efeito do valor padrão ( defaul ) no Insert	5			
+44	Efeito da chave primária no insert	5			
+45	Inserindo com múltiplos registros	5			
+46	Selecionando Registro de forma geral - SELECT * FROM	5			
+47	Comentários
+
+
+
+
+72
+Capa
+Assuntos
+Assunto[ td_erp_escola_assunto ]89
+Pesquisar
+Digite um termo para pesquisar
+1
+ID	Descrição	Aula	Editar	Excluir	
+1	Instalação do Banco de Dados MariaDB ( MySQL )	1			
+2	Instalação do MySQL Workbench	1			
+3	Criar conexão com banco de dados via MySQL Workbench	1			
+4	Criar Banco de Dados utilizando linha de comando	1			
+5	Criar e salvar scripts de banco de dados com extensão .sql	1			
+6	Criação de tabela - Instrução CREATE TABLE	1			
+7	Conhecendo os principais Datatypes	1			
+8	Criação e definição de atributos	1			
+9	Chave primária - Foreign Key	1			
+10	Atributos obrigatórios - Not Null e Null	1			
+11	Extras em atributos - Auto Increment	1			
+12	Extras em Atributos - Default	1			
+13	Tipo de tabela - Engine INNODB	1			
+14	Definição de SQL

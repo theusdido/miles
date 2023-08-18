@@ -19,7 +19,9 @@
             *	@return: PATH de um arquivo
         */
         public static function path($file){
-            return  constant( str_replace('FILE_','PATH_',$file) ) . constant($file);
+            //var_dump(  constant( str_replace('FILE_','PATH_',$file) )  . constant($file) );
+            #echo '<br/><br/><br/><br/>' . constant( str_replace('FILE_','PATH_',$file) )  . constant($file);
+            return  constant( str_replace('FILE_','PATH_',$file) );
         }
 
         /*

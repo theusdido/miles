@@ -4,12 +4,12 @@
         case 'instalarcomponente':
             $componente = tdc::r('componente');
             if ($componente != ''){
-                $path = str_replace('-','/', str_replace('--','-',$componente));
-                $componente_path = PATH_PACKAGE . $path. ".php";
-                if (file_exists($componente_path)){
-                    include_once $componente_path;
+                $path               = str_replace('-','/', str_replace('--','-',$componente));
+                $_componente_path   = PATH_PACKAGE . $path. ".php";
+                if (file_exists($_componente_path)){
+                    include_once $_componente_path;
                 }else{
-                    echo 'Arquivo componente não encontrado =>  [ <b>'.$componente_path.'</b> ].';
+                    echo 'Arquivo componente não encontrado =>  [ <b>'.$_componente_path.'</b> ].';
                 }
             }
             $registro = tdc::r("registro");

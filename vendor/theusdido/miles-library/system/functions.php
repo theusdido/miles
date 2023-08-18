@@ -56,12 +56,14 @@ function showMessage($msg,$tipo = 'error'){
 				width:100%;
 				padding:15px;
 				box-sizing: border-box;
-				border-radius:10px;
+				//border-radius:10px;
+				font-size:16px;
+				margin: 10px auto;
 			}
 			.error{
-				background-color:#FF0000;
-				color:#FFF;
-				border:3px solid #D40100;
+				background-color:#ffe1e1;
+				color:#9a0000;
+				border-bottom:3px solid #D40100;
 			}
 	');
 	$_style->setAttribute("type","text/css");

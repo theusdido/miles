@@ -109,16 +109,17 @@ class Pagina Extends Html {
 		}
 		
 		if ($this->showCSSTheme){
-			#if (file_exists(PATH_PROJECT)){
+			$tema_project = NULL;
+			if (file_exists(PATH_CURRENT_PROJECT_THEME)){
 				$tema_project 			= tdClass::Criar("link");
 				$tema_project->href 	= URL_CURRENT_PROJECT_THEME . 'geral.css';
 				$tema_project->rel 		= 'stylesheet';				
-			#}else{
-				$tema 			= tdClass::Criar("link");
-				$tema->href 	= URL_SYSTEM_THEME . 'geral.css';
-				$tema->rel 		= 'stylesheet';	
-			#}
+			}
 
+			$tema 			= tdClass::Criar("link");
+			$tema->href 	= URL_SYSTEM_THEME . 'geral.css';
+			$tema->rel 		= 'stylesheet';
+	
 			$gradededadosCSS 		= tdClass::Criar("link");
 			$gradededadosCSS->href 	= URL_SYSTEM_THEME . 'gradesdedados.css';
 			$gradededadosCSS->rel 	= 'stylesheet';
@@ -243,6 +244,12 @@ class Pagina Extends Html {
 				this.curdate					= "'.date('d/m/Y').'";
 				this.urlcontrollerecommerce		= "'.URL_ECOMMERCE.'";
 				this.urldata					= "'.URL_CURRENT_DATA.'";
+				this.url_favicon				= "'.URL_FAVICON.'";
+				this.project_id					= "'.PROJECT_ID.'";
+				this.project_name				= "'.PROJECT_NAME.'";
+				this._environment				= "'._ENVIROMMENT.'";
+				this.url_files					= "'.URL_FILES.'";
+				this.url_files_cadastro			= "'.URL_FILES_CADASTRO.'";
 			}
 			var session = new SystemSession();
 			
@@ -278,9 +285,30 @@ class Pagina Extends Html {
 				headers: { "CustomHeader": "myValue" },
 				data: {
 					project_name_identifify_params:"'.MILES_JSON_PROJECT.'",
-					env:"'._ENVIROMMENT.'"
+					env:"'._ENVIROMMENT.'",
+					nocahe:new Date().getTime()
+				},
+				complete:function(){
+					scriptNoCache();
 				}
 			});
+
+			$(document).ready(function(){
+				scriptNoCache();
+			});
+
+			function scriptNoCache(){
+				$("script").each(function(){
+					let src		= $(this).attr("src");
+					if (src != undefined){
+						let src_old = $(this).attr("src").replace(".js?",".js");
+						let time	= new Date().getTime();
+						let src_new = src_old + "?" + time;
+						$(this).attr("src", src_new);
+					}
+				});				
+			}
+
 		');
 
 		// Arquivo de Codificação/Decoficação em JS
@@ -402,11 +430,15 @@ class Pagina Extends Html {
 			$jsGradeDados 			= tdClass::Criar("script");
 			$jsGradeDados->src	 	= URL_CLASS_TDC . "gradededados.class.js";
 
+			// Adiciona a classe Grade de Dados em JavaScript
+			$jsChecklist 			= tdClass::Criar("script");
+			$jsChecklist->src	 	= URL_CLASS_TDC . "checklist.class.js";
+
 			// Classe do formulário
 			$jsFormularioClass 			= tdClass::Criar("script");
 			$jsFormularioClass->src 	= URL_CLASS_TDC . "formulario.class.js";	
 
-			$this->body->add($jsFuncoes,$jsValidar,$jsGradeDados,$jsFormularioClass);
+			$this->body->add($jsFuncoes,$jsValidar,$jsGradeDados,$jsChecklist,$jsFormularioClass);
 		}
 	}
 
@@ -488,6 +520,15 @@ class Pagina Extends Html {
 			$multiSelectJS->src 	= URL_LIB . "jquery/multiselect-master/multiselect.min.js";
 			$this->head->add($multiSelectJS);
 		}
+
+		$toastifyCSS 			= tdClass::Criar("link");
+		$toastifyCSS->href 		= URL_LIB . "toastify-js/src/toastify.css";
+		$toastifyCSS->rel 		= "stylesheet";
+		$this->head->add($toastifyCSS);
+
+		$toastifyJS 			= tdClass::Criar("script");
+		$toastifyJS->src 		= URL_LIB . "toastify-js/src/toastify.js";
+		$this->body->add($toastifyJS);
 	}
 
 	/*  

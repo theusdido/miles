@@ -30,6 +30,8 @@ function tdFormulario (){
     this.construct(arguments[0], arguments[1] , arguments[2],arguments[3]);
 	this.formulario;
 	this.is_loaded					= false;
+	this.checklists					= [];
+	this._dados_checklist 			= [];
 }
 
 tdFormulario.prototype.construct = function(entidade_id,registro_id = 0,entidade_pai = 0,extras = {}){
@@ -229,8 +231,12 @@ tdFormulario.prototype.novo = function(){
 			formulario[indice_form].is_pai 			= false;
 			formulario[indice_form].is_principal	= false;
 			formulario[indice_form].newGrade();
+
+			console.log(e);
 		},this);
 	}
+
+	this.setChecklist();
 	$(contextoAdd).show();
 	$(contextoListar).hide();
 	if (typeof afterNew === "function") afterNew(contextoAdd);
@@ -730,32 +736,57 @@ tdFormulario.prototype.salvar = function(){
 		relacionamento 		=  {entidade:this.entidade.nomecompleto,atributo:'id'};
 		relacionamentoTipo 	= 0;
 		for(rSalvar in td_relacionamento){
+
+			let $_relacionamento		= td_relacionamento[rSalvar];
+			let $_relacionamento_tipo 	= $_relacionamento.tipo;
+			let $_relacionamento_filho	= $_relacionamento.filho;
+			let $_relacionamento_pai	= $_relacionamento.pai;
+
 			// Testa se a entidade é filho
-			if (td_relacionamento[rSalvar].filho == this.entidade_id){
+			if ($_relacionamento_filho == this.entidade_id){
 				if ($("#select-generalizacao-unica").length > 0){
-					if (td_relacionamento[rSalvar].tipo == "8"){
-						relacionamento 	= {entidade:td_entidade[td_relacionamento[rSalvar].pai].nome,atributo:td_atributo[td_relacionamento[rSalvar].atributo].nome};
-						relacionamentoTipo 	= td_relacionamento[rSalvar].tipo;
+					if ($_relacionamento_tipo == "8"){
+						relacionamento 	= {entidade:td_entidade[$_relacionamento.pai].nome,atributo:td_atributo[$_relacionamento.atributo].nome};
+						relacionamentoTipo 	= $_relacionamento_tipo;
 					}else{
-						if (td_relacionamento[rSalvar].atributo != "" && td_relacionamento[rSalvar].atributo > 0){
-							relacionamento 		= {entidade:td_entidade[$("#select-generalizacao-unica").val()].nome,atributo:td_atributo[td_relacionamento[rSalvar].atributo].nome};
-							relacionamentoTipo 	= td_relacionamento[rSalvar].tipo;
+						if ($_relacionamento.atributo != "" && $_relacionamento.atributo > 0){
+							relacionamento 		= {entidade:td_entidade[$("#select-generalizacao-unica").val()].nome,atributo:td_atributo[$_relacionamento.atributo].nome};
+							relacionamentoTipo 	= $_relacionamento_tipo;
 						}else if (td_entidade[$("#select-generalizacao-unica").val()].atributogeneralizacao != "" && td_entidade[$("#select-generalizacao-unica").val()].atributogeneralizacao > 0){
 							relacionamento 		= {entidade:td_entidade[$("#select-generalizacao-unica").val()].nome,atributo:td_atributo[td_entidade[$("#select-generalizacao-unica").val()].atributogeneralizacao].nome};
-							relacionamentoTipo 	= td_relacionamento[rSalvar].tipo;
+							relacionamentoTipo 	= $_relacionamento_tipo;
 						}else{
-							relacionamento 		= {entidade:td_entidade[td_relacionamento[rSalvar].pai].nome,atributo:''};
-							relacionamentoTipo 	= td_relacionamento[rSalvar].tipo;
+							relacionamento 		= {entidade:td_entidade[$_relacionamento.pai].nome,atributo:''};
+							relacionamentoTipo 	= $_relacionamento_tipo;
 						}
 					}
 				}else{
-					if (td_relacionamento[rSalvar].atributo == "" || td_relacionamento[rSalvar].atributo == undefined || td_relacionamento[rSalvar].atributo == 0){
-						relacionamento = {entidade:td_entidade[td_relacionamento[rSalvar].pai].nome,atributo:""};
+					if ($_relacionamento.atributo == "" || $_relacionamento.atributo == undefined || $_relacionamento.atributo == 0){
+						relacionamento = {entidade:td_entidade[$_relacionamento.pai].nome,atributo:""};
 					}else{
-						relacionamento = {entidade:td_entidade[td_relacionamento[rSalvar].pai].nome,atributo:td_atributo[td_relacionamento[rSalvar].atributo].nome};
+						relacionamento = {entidade:td_entidade[$_relacionamento.pai].nome,atributo:td_atributo[$_relacionamento.atributo].nome};
 					}
-					relacionamentoTipo = td_relacionamento[rSalvar].tipo;
+					relacionamentoTipo = $_relacionamento_tipo;
 				}		
+			}
+
+			if ($_relacionamento_pai == this.entidade_id && $_relacionamento_tipo == 11){				
+				console.log('Relacionamento Checklist ...');
+				console.log($_relacionamento);				 
+				 this.checklists.forEach(
+				 	(_checklist) => {
+				 		_checklist.getSelectedData().forEach(
+				 			(_item) => {
+				 				this._dados_checklist.push({
+				 					atributo:'id',
+				 					valor:_item.id,
+				 					entidade_pai:$_relacionamento_pai,
+				 					entidade_filho:$_relacionamento_filho
+				 				});
+				 			}
+				 		);
+				 	}
+				 );
 			}
 		}
 	}else{
@@ -778,19 +809,19 @@ tdFormulario.prototype.salvar = function(){
 		formulario[this.getIndexForm()].entidades_filho.forEach(function(e){
 			formulario['cadastro_' + e].dados.forEach(function(d){
 				dadosenviar.push(d);
-			});
-			
+			});			
 		});
 
 		// Dados da entidade principal
 		dadosenviar.push(formulario[this.getIndexForm()].dados[0]);
-
+		
 		// AJAX que envia os dados a serem salvos
 		$.ajax({
 			type:"POST",
 			url:config.urlsaveform,
 			data:{
-				dados:dadosenviar
+				dados:dadosenviar,
+				checklist:this._dados_checklist
 			},
 			instancia:this,
 			dataType:"json",
@@ -817,7 +848,6 @@ tdFormulario.prototype.salvar = function(){
 								case 7:
 								case 3:
 									// Atualiza o ID do banco de dados no registro
-									console.log(index_form_retorno);
 									formulario[index_form_retorno].registro_id = entidades_retorno.id;
 									$('#id[data-entidade="'+entidades_retorno.entidade+'"]').val(entidades_retorno.id);
 								break;
@@ -900,9 +930,9 @@ tdFormulario.prototype.salvar = function(){
 	}
 }
 
-tdFormulario.prototype.addDados = function(dados_obj,id,relacionamento,fp,tiporelacionamento){
+tdFormulario.prototype.addDados = function(dados_obj,id,relacionamento,fp,tiporelacionamento,entidade = ''){
 	this.dados.push({
-		entidade:this.entidade.nomecompleto,
+		entidade:entidade == '' ? this.entidade.nomecompleto : entidade,
 		dados:dados_obj,
 		id:id,
 		relacionamento:relacionamento,
@@ -969,13 +999,15 @@ tdFormulario.prototype.editar = function(){
 				console.log(err.message);
 				return false;
 			}
+			
 			retorno.forEach(function(r){
 				let dadosRetorno 			= r.dados;
 				let tipoRelacionamento 		= "";
 				let atributoRelacionamento 	= "";
 
-				if (!r.fp){
-					// Verifica o tipo de relacionamento
+				//if (!r.fp){
+
+					// Verifica o tipo de relacionamento					
 					this.entidade.relacionamentos.forEach(function(relacionamento){
 						const tipo 		= relacionamento.tipo;
 						const atributo 	= relacionamento.atributo;
@@ -1009,7 +1041,8 @@ tdFormulario.prototype.editar = function(){
 							$("#select-generalizacao-multipla")[0].sumo.selectItem(String(entidade));
 						}
 					},this);
-				}
+				//}
+
 				// Abre o formulário das entidades de relacionamento
 				if (tipoRelacionamento == "" || tipoRelacionamento == 1 || tipoRelacionamento == 7 || tipoRelacionamento == 3 || tipoRelacionamento == 9){
 					this.setDados(r);
@@ -1023,6 +1056,12 @@ tdFormulario.prototype.editar = function(){
 					this.setGradeRelacionamento(index_form_rel,r.id,r.dados);
 					$(formulario[index_form_rel].getContexto(),this.getContexto()).hide();
 					$(formulario[index_form_rel].getContextoListar(),this.getContexto()).show();
+				}else if(tipoRelacionamento == 11){
+					setTimeout(()=>{
+						this.checklists.forEach( (_checklist_list)=> {
+							_checklist_list.addSelectedItem(r.id);
+						});
+					},1000);
 				}
 
 				if ($("#select-generalizacao-unica")){
@@ -1874,5 +1913,22 @@ tdFormulario.prototype.camposUnicos = function(){
 				});
 			}
 		}
-	});
+	});	
+}
+
+tdFormulario.prototype.setChecklist = function(){
+	this.checklists					= [];
+	this._dados_checklist 			= [];	
+	this.entidade.relacionamentos.forEach(function(relacionamento){
+		if (relacionamento.tipo == 11){
+			let _list 				= new Checklist();
+			_list.entidade_pai	 	= relacionamento.pai;
+			_list.entidade_filho	= relacionamento.filho;
+			_list.reg_pai			= this.registro_id;
+			_list.nenhumRegistro();
+			_list.show();
+			this.checklists.push(_list);
+		}
+	},this);
+	console.log(this.checklists);
 }

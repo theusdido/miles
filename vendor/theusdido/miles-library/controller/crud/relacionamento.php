@@ -59,9 +59,12 @@ if ($relacionamentos){
 				case 10:
 					include 'composicaoNN.php';
 				break;
+				case 11:
+					include 'checklistAgregacao1N.php';
+				break;
 			}
 		}else if($rel->filho == $entidade->contexto->id && !$isprincipal && $rel->pai == tdc::r('entidadepai')){
-			$crudAdd->data_entidadepai		= $rel->pai;
+			//$crudAdd->data_entidadepai		= $rel->pai;
 			switch($rel->tipo){
 				case 1:				
 				break;
@@ -127,7 +130,14 @@ if ($relacionamentos){
 					$btnNovoLabel 	= " Adicionar";
 					$btnSalvarType 	= "btn-default";
 					$fp_form = "";
-					$entidade_pai_relacionamento = tdClass::Criar("persistent",array(ENTIDADE,$rel->pai))->contexto->nome;			
+					$entidade_pai_relacionamento = tdClass::Criar("persistent",array(ENTIDADE,$rel->pai))->contexto->nome;
+				break;
+				case 11:
+					$btnNovoType 	= "btn-default";
+					$btnNovoLabel 	= " Adicionar";
+					$btnSalvarType 	= "btn-default";					
+					$atributo_relacionamento 		= $rel->atributo == 0 ? '' : tdClass::Criar("persistent",array(ATRIBUTO,$rel->atributo))->contexto->nome;
+					$entidade_pai_relacionamento	= tdClass::Criar("persistent",array(ENTIDADE,$rel->pai))->contexto->nome;
 				break;
 			}
 		}

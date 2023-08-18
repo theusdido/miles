@@ -59,7 +59,7 @@ class tdFile {
 		@conteudo: Informação a ser gravada no arquivo
 		@permissao: Permissão de acesso ao arquivo
 	*/
-	public static function add($pathfile,$conteudo,$permissao = 0777){
+	public static function add($pathfile,$conteudo = '',$permissao = 0777){
 		try{
 			if (isvalidnamedir($pathfile)){
 				$fp = fopen($pathfile,"w");

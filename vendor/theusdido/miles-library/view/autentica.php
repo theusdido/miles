@@ -156,6 +156,7 @@
 
 	$urlBackground 		= URL_CURRENT_PROJECT_THEME . FILE_BACKGROUND;
 	$path_background	= PATH_CURRENT_PROJECT_THEME . FILE_BACKGROUND;
+
 	if (!file_exists($path_background)){
 		$urlBackground = URL_BACKGROUND;
 	}

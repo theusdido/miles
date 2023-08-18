@@ -7,8 +7,9 @@ $("#pesquisar").click( ()=> {
 
 function pesquisar(){
     $.ajax({
-        url:session.urlmiles + "?page=nfse/consultar",
+        url:session.urlmiles,
         data: {
+            controller:'nfse/consultar',
             op:"consultar",
             rps: $("#rps").val(),
             data: $("#data").val(),
@@ -24,7 +25,7 @@ function pesquisar(){
 
             if (notas_enviar.length > 0){
                 for (r in notas_enviar ){
-                    
+
                     var nota        = notas_enviar[r];
                     var tr          = $("<tr>");
                     var tdNumero    = $('<td class="text-center">'+nota.rpsnumero+'</td>');
@@ -32,12 +33,35 @@ function pesquisar(){
                     var tdTipo      = $('<td class="text-center">'+nota.rpstipo+'</td>');
                     var tdTomador   = $('<td>'+nota.tomador+'</td>');
                     var tdStatus    = $('<td class="text-center">'+nota.status+'</td>');
-                    
+                    let td_excluir  = $('<td align="center">');
+
+                    let btn_excluir = $('<button class="btn btn-danger"><i class="fa fa-trash"></i></button>');
+                    btn_excluir.click(function(){
+                        bootbox.confirm({
+                            message: 'Tem certeza que deseja excluir?',
+                            buttons: {
+                                confirm: {
+                                label: 'Yes',
+                                className: 'btn-success'
+                                },
+                                cancel: {
+                                label: 'No',
+                                className: 'btn-danger'
+                                }
+                            },
+                            callback: function (result) {
+                                console.log('This was logged in the callback: ' + result);
+                            }
+                        });
+                    });
+                    td_excluir.append(btn_excluir);
+
                     tr.append(tdNumero);
                     tr.append(tdSerie);
                     tr.append(tdTipo);
                     tr.append(tdTomador);
                     tr.append(tdStatus);
+                    tr.append(td_excluir);
                     
                     $("#tconsulta tbody").append(tr);                
                 }
@@ -50,18 +74,6 @@ function pesquisar(){
             }
             $("#load-pesquisar").hide();
             $('.after-search').show();
-            /*
-            var r = JSON.parse(retorno.responseText);
-            total = r.length;
-            notasSelecionadas = r;
-            if (total > 0) {
-                consultar();
-            }else{
-                progressbar(100);
-                $("#retorno").html('<div class="alert alert-danger" role="alert">Nenhuma nota encontrada com esses parâmetros.</div>');
-                $("#btn_enviar_pendentes").hide();
-            }
-            */
         }
     });
 }
@@ -70,8 +82,9 @@ $("#data").mask("99/99/9999");
 
 function enviar(indice = 0){
     $.ajax({
-        url:session.urlmiles + "?page=nfse/enviar",
+        url:session.urlmiles,
         data:{
+            controller:'nfse/enviar',
             op:'enviar',
             nota:notas_enviar[indice]
         },

@@ -4,6 +4,7 @@ var indiceRegistro 		= 0;
 var registros 			= [];
 var package_selecionado	= '';
 var modulo_selecionado	= '';
+
 $(".carregar-componentes").click(function(){
 
     // Icon abrir

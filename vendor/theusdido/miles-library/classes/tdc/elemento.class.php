@@ -169,7 +169,7 @@ class Elemento {
 		Retorna o elemento como String
 	*/
 	function toString(){
-		$this->istostring = true;		
+		$this->istostring = true;
 		$string = $this->abrir();
 		$string .= $this->innerHTML();
 		if(!in_array($this->tag, $this->tag_sem_fechamento))

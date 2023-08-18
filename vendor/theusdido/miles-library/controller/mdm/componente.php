@@ -3,6 +3,7 @@
 	$entidade 		= tdc::e(tdc::r('entidade'));
 	$descricao_doc 	= $entidade->id . " - " . $entidade->descricao . "[ ".$entidade->nome." ]";
 	$_reset_files	= tdc::r('reset',false);
+
 	switch(tdc::r('op')){
 		case 'criarcadastro':
 			$path 		= PATH_FILES_CADASTRO . $entidade->id . "/";
@@ -47,7 +48,7 @@
 		if (file_exists($_full_filename_css))	unlink($_full_filename_css);
 		if (file_exists($_full_filename_js)) 	unlink($_full_filename_js);
 	}
-	
+
 	// Cria o arquivo HTML
 	$fp = fopen($_full_filename_html ,'w');
 	fwrite($fp,htmlespecialcaracteres(isset($_POST["html"])?$_POST["html"]:'',1));

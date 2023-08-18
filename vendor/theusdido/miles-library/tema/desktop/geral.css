@@ -869,4 +869,45 @@ header #menu {
 	height: 10px;
 	margin: 5px; */
 }
+
+.form-control-feedback
+{
+	top:35px !important;
+}
+
+.td-checklist
+{
+	width: 100%;
+    float: right;
+}
+.td-checklist .list-group-item input[type=checkbox],
+.td-checklist .list-group-item .icon-excluir-listitem
+{
+	float:right;	
+}
+
+.td-checklist .list-group-item .icon-excluir-listitem
+{
+	cursor:pointer;
+	color:#FF0000;
+}
+.td-checklist-contexto
+{
+	margin-top:15px;
+}
+
+.td-checklist-contexto li:hover:not(.td-nenhumregistro-list-item)
+{
+	background-color: #EEE;
+} 
+
+.td-message-success
+{
+	background-color: #49b700 !important;
+	color:#FFF !important;
+	width:200px;
+	background: linear-gradient(135deg, #3c8d05, #286301);
+	text-align: center;
+	font-weight: bold;
+}
 -->

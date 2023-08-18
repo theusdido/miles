@@ -70,26 +70,26 @@
 	// URL COMPONENT
 	define('URL_COMPONENT', URL_MILES_LIBRARY . FOLDER_COMPONENT . '/');
 
-	define('URL_PROJECT',URL_MILES . $_project_folder);
-	define('URL_CURRENT_PROJECT',URL_MILES . $_project_folder);
+	define('URL_PROJECT',URL_MILES . $_url_relative_project );
+	define('URL_CURRENT_PROJECT',URL_MILES . $_url_relative_project);
 
 	// URL CLASSES	
 	define('URL_CLASS', URL_MILES_LIBRARY . FOLDER_CLASSES . '/');
 
 	// URL MDM
-	define('URL_MDM', URL_MILES_LIBRARY . 'mdm/');
+	define('URL_MDM', URL_MILES . 'mdm/');
 
 	// URL INSTALL
-	define('URL_INSTALL', URL_MILES_LIBRARY . 'install/');
+	define('URL_INSTALL', URL_MILES . 'install/');
 
 	// CLASSE TDC
 	define('URL_CLASS_TDC',URL_CLASS . 'tdc/');
-
+	
 	// CURRENT PROJECT THEME
-	define('URL_CURRENT_PROJECT_THEME', URL_PROJECT . PATH_THEME);
+	define('URL_CURRENT_PROJECT_THEME', URL_PROJECT . FOLDER_THEME . '/' . $mjc->theme . '/');
 
 	// SYSTEM THEME
-	define('URL_SYSTEM_THEME', URL_MILES_LIBRARY . PATH_THEME);
+	define('URL_SYSTEM_THEME', URL_MILES_LIBRARY . FOLDER_THEME . '/' . $mjc->theme . '/');
 
 	// CONFIG
 	define('URL_CURRENT_CONFIG_PROJECT', URL_CURRENT_PROJECT . FOLDER_CONFIG . '/');
@@ -105,11 +105,13 @@
 	// URL da Biblioteca
 	define('URL_LIB',$mjc->system->url->lib);
 
+	define('URL_FILES',URL_PROJECT . 'files/');
+
 	// URL dos arquivos de cadastro
-	define('URL_FILES_CADASTRO', URL_PROJECT . 'files/cadastro/');
+	define('URL_FILES_CADASTRO', URL_FILES . 'cadastro/');
     
 	// URL dos arquivos de movimentação
-	define('URL_FILES_MOVIMENTACAO', URL_PROJECT . 'files/movimentacao/');
+	define('URL_FILES_MOVIMENTACAO', URL_FILES . 'movimentacao/');
 
 	// URL padrão para as classes de WIDGETS
 	define('URL_CLASS_WIDGETS', URL_CLASS . 'widgets/');

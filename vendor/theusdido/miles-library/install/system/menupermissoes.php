@@ -23,6 +23,6 @@
 	addAutoIncrement($entidadeID);
 
 	// Criando Atributos
-	$menu = criarAtributo($conn,$entidadeID,"menu","Menu","int",0,0,4,0,getEntidadeId("menu",$conn),0,"");
-	$usuario = criarAtributo($conn,$entidadeID,"usuario","Usuário","int",0,0,4,0,getEntidadeId("usuario",$conn),0,"");
-	$permissao = criarAtributo($conn,$entidadeID,"permissao","Permissão","tinyint",0,0,7,0,0,0,"");
+	$menu 		= criarAtributo($conn,$entidadeID,"menu","Menu","int",0,0,4,0,getEntidadeId("menu",$conn),0,"");
+	$usuario 	= criarAtributo($conn,$entidadeID,"usuario","Usuário","int",0,0,4,0,getEntidadeId("usuario",$conn),0,"");
+	$permissao 	= criarAtributo($conn,$entidadeID,"permissao","Permissão","tinyint",0,0,7,0,0,0,"");

@@ -1,6 +1,14 @@
 <?php
 
-	$mdmJSCompile = fopen(Asset::path('FILE_MDM_JS_COMPILE'),"w");
+	$_file_mdm_js_compile = Asset::path('FILE_MDM_JS_COMPILE');
+
+	if (!file_exists($_file_mdm_js_compile)){
+		$_file_mdm_js_compile = $_path_project_install . FOLDER_BUILD_JS . FILE_MDM_JS_COMPILE;
+	}else{
+		$_file_mdm_js_compile = $_path_root_project . FOLDER_BUILD_JS . FILE_MDM_JS_COMPILE;
+	}
+	
+	$mdmJSCompile = fopen($_file_mdm_js_compile,"w");
 
 	// Entidades do Sistema
 	fwrite($mdmJSCompile,'
@@ -15,7 +23,7 @@
 		var td_movimentacao 	= [];
 		var formulario          = [];
 	');
-	
+
 	$dataset 		= tdClass::Criar("repositorio",array(ENTIDADE))->carregar();
 	if ($dataset){
 		foreach ($dataset as $entidade){
@@ -281,6 +289,7 @@
 		}	
 	}
 
+	// Status
 	$dataset = tdClass::Criar("repositorio",array("td_status"))->carregar();
 	if ($dataset){
 		$td_status_descricao = array();
@@ -297,6 +306,7 @@
 		fwrite($mdmJSCompile,'var td_status_class = ['.implode(',',$td_status_descricao).'];');
 	}
 
+	// Movimentação
 	$dataset = tdClass::Criar("repositorio",array("td_movimentacao"))->carregar();
 	if ($dataset){
 		foreach ($dataset as $movimentacao){

@@ -28,8 +28,8 @@ function carregar(arquivo,elemento_retorno = "",callback_function = null){
 	});
 }
 function anexar(arquivo,elemento_retorno){
-	var url = arquivo.replace(" ","");
-	session.urlloaded = url;
+	var url 			= arquivo.replace(" ","");
+	session.urlloaded 	= url;
 	$.ajax({
 		type:"GET",
 		url:getURLProject(url),
@@ -895,4 +895,19 @@ async function mdm_load_data($_entidade_name){
 	.then( _res => _res.json() )
 	.then( _result => _data = _result );
 	return _data;
+}
+
+function loadPage(path,local,params = {},callback = null){
+	let http_params_data = {
+		controller:'page',
+		page:path,
+	};
+	$.ajax({
+		url:session.urlmiles,
+		data: Object.assign(http_params_data,params),
+		complete:function(res){
+			$(local).html(res.responseText);
+			if (typeof callback == "function") callback(res);
+		}
+	});
 }

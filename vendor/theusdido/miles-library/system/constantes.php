@@ -15,7 +15,7 @@
 	#*************************************** 
 
 	// FOLDER PROJECT
-	define("FOLDER_PROJECT","project");
+	define("FOLDER_PROJECT","projects");
 
 	// FOLDER PROJECT
 	define("FOLDER_SYSTEM","system");
@@ -43,6 +43,13 @@
 
 	// FOLDER INSTALL
 	define('FOLDER_INSTALL', 'install');
+
+	// FOLDER BUILD JS
+	define('FOLDER_BUILD_JS', FOLDER_BUILD . '/js/');
+
+	// FOLDER INSTALL
+	define('FOLDER_THEME', 'tema');
+
 
 	#***************************************
 	# SQL
