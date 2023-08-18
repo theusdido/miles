@@ -16,5 +16,5 @@ nodejs/
 error_log/
 .htaccess
 .user.ini
-.api.http
-.composer.lock
+api.http
+composer.lock
