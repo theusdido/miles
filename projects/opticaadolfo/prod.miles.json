@@ -1,0 +1,64 @@
+{
+    "version": 2.0,
+    "project":{
+        "name":"Optica Adolfo",
+        "path":"opticaadolfo/",
+        "url":""
+    },
+    "currentproject": 1,
+    "folder":"miles/",
+    "system": {
+        "url": {
+            "lib": "https://teia.tec.br/miles/repository/lib/"
+        },
+        "request_protocol": "http",
+        "packages": ["ecommerce"]
+    },
+    "theme": "desktop",
+    "prefix": "td",
+    "is_show_error_message": true,
+    "is_show_warn_message": true,
+    "is_transaction_log": true,
+    "database_current": "producao",
+    "port": "hidden",
+    "enviromment":"prod",
+    "enviromments":{
+        "dev":{
+            "root":"/",
+            "url":{
+                "domain":"opticaadolfo.com.br"
+            },
+            "frameworks":{
+                "angular":{
+                    "port":4200
+                }
+            },
+            "system":{
+                "request_protocol": "http",
+                "force_https":false,
+                "is_fixed_domain":true
+            }
+        },
+		"homolog":{
+			"root":"/",
+			"url":{
+				"domain":"opticaadolfo.com.br"
+			},
+            "system":{
+                "request_protocol": "http",
+                "force_https":false
+            }
+		},        
+        "prod":{
+            "root":"/",
+            "url":{
+                "domain":"opticaadolfo.com.br"
+            },
+            "system":{
+                "request_protocol": "https",
+                "force_https":true,
+                "is_fixed_domain":true
+            }
+        }
+    }
+}

@@ -1,0 +1,9 @@
+#menu-entidade-cadastro
+{
+    display: flex;
+}
+
+#menu-entidade-cadastro a
+{
+    flex-grow: 1;
+}

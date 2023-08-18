@@ -1,0 +1,9 @@
+.config-relatorio-icon{
+    background-color:transparent;
+    color:#333;
+    cursor:pointer;
+}
+
+.config-relatorio-icon i {
+    margin-left:10px;
+}

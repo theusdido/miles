@@ -1,0 +1,103 @@
+<div class="panel-group" id="accordion_relatorios" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingThree">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion_relatorios" href="#collapseRelatorios" aria-expanded="false" aria-controls="collapseTrhee">
+                    Colunas						  
+                </a>
+            </h4>
+        </div>
+        <div id="collapseRelatorios" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+            <div class="panel-body">
+                <button type="button" class="btn btn-default" aria-label="Novo Filtro" style="float:right;margin-top:-3px;" onclick="novaColuna();">
+                    <span class="fas fa-plus-circle" aria-hidden="true"></span>
+                </button>
+                <br/><br/>
+                <ul id="lista-relatorios" class="list-group sortable"></ul>
+                
+                <!-- MODAL NOVA COLUNA -->
+                <div class="modal fade" id="modalNovaColuna" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Nova Coluna</h4>
+                        </div>
+                        <div class="modal-body">
+
+                            <!-- FORMULARIO DE NOVA COLUNA -->
+                            <form id="form-filtro-novacoluna">
+                                <fieldset>
+                                    <input type="hidden" id="idfiltro" name="idfiltro" />
+                                    <div class="form-group">
+                                        <label for="atributo">Atributo</label>
+                                        <select id="atributo" name="atributo" class="form-control">
+                                        </select>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        
+                        </div>
+                        <div class="modal-footer">
+                            <div id="error"></div>
+                        <button type="button" class="btn btn-primary" id="salvarFiltroNovaColuna">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- CONFIGURAÇÕES DA COLUNA -->
+<div class="modal fade" id="modalRelatorios" tabindex="-1" role="dialog" aria-labelledby="myModalRelatorios">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalRelatorios">Configurações</h4>
+            </div>
+            <div class="modal-body">
+
+                <form id="form-config-relatorio">
+                    <fieldset>
+                        <div class="form-group">
+                            <label for="alinhamento">Alinhamento</label>
+                            <select name="alinhamento" id="alinhamento" class="form-control">
+                                <option value="left">Esquerda</option>
+                                <option value="center">Center</option>
+                                <option value="right">Direita</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="descricao">Descrição</label>
+                            <input type="text" id="descricao" name="descricao" class="form-control" />
+                        </div>                        
+                        <div class="checkbox">
+                            <label for="exibirid">
+                                <input type="checkbox" name="exibirid" id="exibirid">Exibir <b>ID</b>
+                                <small>( Campo de chave estrangeira )</small>
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label for="is_somatorio">
+                                <input type="checkbox" name="is_somatorio" id="is_somatorio">Realizar Somatório
+                            </label>
+                        </div>                        
+                    </fieldset>
+                </form>
+        
+            </div>
+            <div class="modal-footer">
+                <div id="error"></div>
+                    <button 
+                        type="button" 
+                        class="btn btn-primary"
+                        onclick="salvarConfigRelatorio()"
+                        >Salvar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

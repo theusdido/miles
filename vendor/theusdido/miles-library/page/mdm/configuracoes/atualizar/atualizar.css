@@ -1,0 +1,14 @@
+.btn-atualizar{
+    float:right;
+}
+#retorno-ajax-desenvolvimentoToProducao{
+    float:right;
+}
+#fDesenvolvimentoToProducao .checkbox{
+    float:left;
+    width:33%;
+}
+#fDesenvolvimentoToProducao hr{
+    float:left;
+    width:100%;
+}

@@ -1,0 +1,115 @@
+/* Folha de Estilo */
+.navbar-default{
+	background-color:#fafafa;
+	border:0px;
+}
+.navbar-brand img{
+	margin:-3px auto;
+	float:left;
+}
+.navbar-brand label {
+	margin:auto 10px;
+	float:left;
+	color:#999;
+}
+.btn-default{
+	border:0px;
+}
+.icone-entidade{
+	float:right;
+	margin-top:-5px;
+}
+.blockquote-reverse{
+	background-color:#FAFAFA;
+}
+#fdependencia select{
+	margin-top:5px;
+}
+.dados-config-projeto{
+	margin:0px;
+	padding:3px 15px;
+}
+.subtitulo-legenda{
+	font-size:12px;
+	float:right;
+	margin-top:12px;
+}
+#titulo-mdm{
+	float:left;
+}
+#label-id-atributo{
+	position:absolute;
+	right:25px;
+}
+#label-id-atributo small {
+	font-size:14px;
+}
+#btn-edit-id-entidade
+{
+	height: 34px;
+}
+
+.sortable li {
+	cursor:move;
+}
+.sortable li:hover{
+	background-color:#EEE;
+}
+
+.b-mdm-voltar
+{
+	align-self: flex-start;
+}
+.btn-group-mdm
+{
+	display:flex;
+	margin:15px auto;
+}
+
+.btn-group-mdm .btn
+{
+	width:100px;
+	margin:auto 5px;
+}
+
+.btn-group-mdm > div {
+	width: 50%;
+}
+
+.btn-group-mdm .btn-group-left
+{
+	display: flex;
+	justify-content: start;
+}
+.btn-group-mdm .btn-group-right
+{
+	margin-left:50%;
+	justify-content: end;
+    display: flex;
+}
+
+.titulo-pagina-mdm
+{
+	font-size:3rem;
+	color:#666;
+}
+.subtitulo-pagina-mdm
+{
+    font-size: 2rem;
+    color: #337ab7;
+}
+.group-title-mdm
+{
+	display: flex;
+	justify-content: space-between;
+	border-bottom:1px solid #EEE;
+	align-items: center;
+	list-style: none;
+	margin:0;
+	padding: 0;
+}
+
+table tr td
+{
+	vertical-align: middle !important;
+}

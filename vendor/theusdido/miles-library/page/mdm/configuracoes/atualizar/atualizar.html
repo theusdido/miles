@@ -1,0 +1,90 @@
+<form>
+    <legend>Atualizar</legend>
+</form>
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">Desenvolvimento > Produção</div>
+    <div class="panel-body">
+
+        <form id="fDesenvolvimentoToProducao" class="form-inline">
+            <div class="checkbox">
+                <label>
+                    <b>Estrutura</b>
+                    <a id="selecionarEntidadeEstrutura" href="#"> [ Selecionar Entidades ]</a>
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" id="cbRegistro"> <b>Registro</b>
+                    <a id="selecionarEntidadeRegistro" href="#"> [ Selecionar Entidades ]</a>
+                </label>
+            </div>								
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" id="cbArquivo"> <b>Arquivo</b>
+                    <a id="selecionarEntidadeArquivo" href="#"> [ Selecionar Entidades ]</a>
+                </label>
+            </div>
+            <hr/>
+            <button type="button" class="btn btn-primary btn-atualizar" onclick="desenvolvimentoToProducao()">Atualizar</button>
+            <div id="retorno-ajax-desenvolvimentoToProducao"></div>
+        </form>						
+
+    </div>
+</div>
+
+
+<div class="modal fade" tabindex="-1" role="dialog" id="modalEntidadeEstrutura">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Entidade</h4>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="checkbox">
+                    <label for="cbEstruturaAll">
+                        <input type="checkbox" id="cbEstruturaAll"> <b>Selecionar Todas</b>
+                    </label>
+                </div>
+                <hr />
+                <div id='lista-estrutura'></div>
+            </form>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<div class="modal fade" tabindex="-1" role="dialog" id="modalEntidadeRegistro">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Selecionar Entidades</h4>
+      </div>
+      <div class="modal-body">
+            <form id='lista-registro'>
+
+            </form>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" tabindex="-1" role="dialog" id="modalEntidadeArquivo">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Selecionar Entidades</h4>
+      </div>
+      <div class="modal-body">
+            <form id="lista-arquivo">
+            </form>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->	
