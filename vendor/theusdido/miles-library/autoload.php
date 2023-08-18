@@ -36,6 +36,7 @@
 
 	// Config Miles ( miles.json ) na raiz
 	if (!file_exists($_miles_json_root_file)){
+		//header('location: install');
 		echo 'Arquivo miles.json não encontrado ! ... ';
 		exit;
 	}
