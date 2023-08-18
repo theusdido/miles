@@ -14,6 +14,7 @@ lib/
 webservice/servicos/pagseguro/log/
 nodejs/
 error_log/
-
-opticaadolfo/
-qeru/
+.htaccess
+.user.ini
+.api.http
+.composer.lock
