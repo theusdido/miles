@@ -32,13 +32,13 @@
 	}
 
 	// Se o arquivo miles.json do projeto não for encontrado
-	$_miles_json_root_file = file_exists($_path_project_miles_json) ? $_path_project_miles_json : $_path_main_miles_json;
+	$_miles_json_root_file = file_exists($_path_project_miles_json) && sizeof(file($_path_project_miles_json)) > 0 ? $_path_project_miles_json : $_path_main_miles_json;
 
 	// Config Miles ( miles.json ) na raiz
 	if (!file_exists($_miles_json_root_file)){
 		#header('location: install');
-		#echo 'Arquivo miles.json não encontrado ! ... ';
-		#exit;
+		echo 'Arquivo miles.json não encontrado ! ... ';
+		exit;
 	}
 
 	$_miles_config_root 	= json_decode(file_get_contents($_miles_json_root_file));
