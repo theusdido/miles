@@ -18,3 +18,14 @@
     background-color: #ffffff;
     font-weight: bold;
 }
+
+.guia-access
+{
+    border-bottom: 2px solid #014e18;
+    background-color:#dcffe7;
+    color:#000 !important;
+}
+
+.guia-access:hover{
+    background-color:#c5ffd7 !important;
+}

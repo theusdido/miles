@@ -109,7 +109,6 @@ final class Conexao{
 		$arq_config = PATH_CURRENT_CONFIG_PROJECT.$database.'_'.$sgdb.'.ini';
 		$arq_temp	= PATH_CONFIG . 'temp_'.$sgdb.'.ini';
 		$is_exists 	= !file_exists($arq_config) ? (file_exists($arq_temp) ? $arq_config = $arq_temp : false) : true;
-
 		if (!$is_exists){
 			try{
 				Debug::Log("Arquivo <b>{$database}</b> de configuração com o banco de dados não existe. => " . $arq_config . " <= ");

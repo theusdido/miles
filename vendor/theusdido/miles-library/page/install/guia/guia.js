@@ -16,30 +16,35 @@ function getStatusGuia(){
             _controller:"install/guia",
             _op:"status"
         },
-        success:function(res){
-            try{                
-                let _res = JSON.parse(res);
-                if (_res.installed){
+        success:function(_res){
+            try{
+                check_guia = JSON.parse(_res);
+                if (check_guia.installed){
                     let all_fields = '#host,#base,#porta,#usuario,#senha,#tipo';
                     $(all_fields).attr('disabled',true);
                     $(all_fields).attr('readonly',true);
                     $('#btn-criarbanco').remove();
-                }
-                check_guia = _res;
-                $('#guia-base')         .attr('src',_res.check_criarbase);
-                $('#guia-instalacao')   .attr('src',_res.check_instalacaosistema);
-                $('#guia-pacote')       .attr('src',_res.check_pacoteconfigurado);
+                }else{
+                    $('#host')              .val('localhost');
+                    $('#base')              .val('');
+                    $('#porta')             .val('3306');
+                    $('#usuario')           .val('root');
+                    $('#senha')             .val('');
+                }                
+                $('#guia-base')         .attr('src',check_guia.check_criarbase);
+                $('#guia-instalacao')   .attr('src',check_guia.check_instalacaosistema);
+                $('#guia-pacote')       .attr('src',check_guia.check_pacoteconfigurado);
 
-                if (_res.database){
-                    $('#host')              .val(_res.database.host);
-                    $('#base')              .val(_res.database.base);
-                    $('#porta')             .val(_res.database.porta);
-                    $('#usuario')           .val(_res.database.usuario);
-                    $('#senha')             .val(_res.database.senha);
+                if (check_guia.database){
+                    $('#host')              .val(check_guia.database.host);
+                    $('#base')              .val(check_guia.database.base);
+                    $('#porta')             .val(check_guia.database.porta);
+                    $('#usuario')           .val(check_guia.database.usuario);
+                    $('#senha')             .val(check_guia.database.senha);
                 }
                 permissoesGuia();
             }catch(e){
-                console.log(JSON.parse(res));
+                console.log(JSON.parse(_res));
             }
         }
     });
@@ -51,7 +56,7 @@ $('#menu-guia a').click(function(event){
     $('#menu-guia a').removeClass('guia-current');
     if ($(this).attr('data-habilitado')){
         $(this).addClass('guia-current');
-        $('#conteudo-instalacao').load(session.urlmiles + '?controller=page&page=install/' + $(this).data('href'));
+        loadContent($(this).data('href'));
     }
 });
 
@@ -76,6 +81,7 @@ function permissoesGuia(){
                 if (habilitado){
                     permissoes_guia.configurarpacotes = true;
                     $('#menu-guia [data-href="package"]').attr('data-habilitado',true);
+                    $('.guia-access').show();
                 }else{
                     desabilitarGuia('package');
                 }
@@ -90,4 +96,26 @@ function desabilitarGuia(_guia){
 
 function habilitarGuia(_guia){
     $('#menu-guia [data-href="'+_guia+'"]').removeClass('guia-disabled');
+    switch(_guia){
+        case 'criarbase':
+            permissoes_guia.criarbanco = true;
+        break;
+        case 'setup':
+            permissoes_guia.instalarsistema = true;
+        break;
+        case 'package':
+            permissoes_guia.configurarpacotes = true;
+        break;
+    }    
+}
+
+function setCurrentGuia(_guia){
+    $('#menu-guia a').removeClass('guia-current');
+    habilitarGuia(_guia);
+    $('#menu-guia a[data-href="'+_guia+'"]').addClass('guia-current');
+    loadContent(_guia);
+}
+
+function loadContent(_page){
+    $('#conteudo-instalacao').load(session.urlmiles + '?controller=page&page=install/' + _page);
 }

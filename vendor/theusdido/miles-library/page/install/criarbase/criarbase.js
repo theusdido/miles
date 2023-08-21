@@ -74,17 +74,17 @@
                 senha:$("#senha").val(),
                 tipo:$("#tipo").val()
             },
-            success:function(_res){
+            complete:function(_res){
                 let retorno = _res.responseText;
-                $("#retorno").show("5000");         
-                $("#loader-criarbanco").hide();
-                getStatusGuia();
+                $("#retorno-criar-base").show("5000");         
+                $("#loader-criarbanco").hide();                
                 if (retorno == 1){
-                    $("#retorno").html('<div class="alert alert-success" role="alert"><b>Parabéns !</b>. Base de dados criada com sucesso.</div>');
-                    habilitarGuia('setup');
-                    permissoes_guia.instalarsistema = true;
+                    $("#retorno").html('<div class="alert alert-success" role="alert"><b>Parabéns !</b>. Base de dados criada com sucesso.</div>');                    
+                    setCurrentGuia('setup');                    
+                    //permissoesGuia();
+                    getStatusGuia();
                 }else{
-                    $("#retorno").html(retorno);
+                    $("#retorno-criar-base").html(retorno);
                 }
                 $("#retorno-criar-base").show("5000");
                 setTimeout(function(){
