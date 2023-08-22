@@ -5,8 +5,9 @@
         // Seta o id com o nome do diretório na instação
         $_project_name_identifify_params    = $_project_folder;
     }else{
+        $_path_project_miles_json           = $_path_main_miles_json;
         if (file_exists($_path_project_miles_json)){
-            //unlink($_path_project_miles_json);
+            unlink($_path_project_miles_json);
         }
     }
 

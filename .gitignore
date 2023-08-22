@@ -18,3 +18,5 @@ error_log/
 .user.ini
 api.http
 composer.lock
+error.log
+access.log
