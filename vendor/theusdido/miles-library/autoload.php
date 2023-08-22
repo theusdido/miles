@@ -35,6 +35,9 @@
 	// Se o arquivo miles.json do projeto não for encontrado
 	$_miles_json_root_file = file_exists($_path_project_miles_json) && sizeof(file($_path_project_miles_json)) > 0 ? $_path_project_miles_json : $_path_main_miles_json;
 
+	// URL da chamada do MILES
+	$_http_host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : '';
+
 	// Config Miles ( miles.json ) na raiz
 	if (!file_exists($_miles_json_root_file)){
 		echo 'Arquivo miles.json não encontrado ! ... ';
@@ -46,7 +49,7 @@
 	$_current_environment 	= $_miles_config_root->enviromment;
 
 	if ($_project_name_identifify_params == ''){
-		$project_name_identify = str_replace(array('dev.','.com','.br','miles.','www.','loja.'),'',$_SERVER['HTTP_HOST']);
+		$project_name_identify = str_replace(array('dev.','.com','.br','miles.','www.','loja.'),'',$_http_host);
 	}else{
 		$project_name_identify = $_project_name_identifify_params;
 	}

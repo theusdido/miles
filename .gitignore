@@ -5,7 +5,7 @@ update.php
 index.dev.php
 frameworks/
 node_modules/
-vendor/
+./vendor/
 projects/
 project/
 lib/
