@@ -17,6 +17,7 @@
 	********************************* */
 
 	$_project_name_identifify_params 	= !getenv('_PROJECT_NAME_IDENTIFY_PARAMS') ? '' : getenv('_PROJECT_NAME_IDENTIFY_PARAMS');
+
 	$_env_params						= !getenv('_ENV') ? '' : getenv('_ENV');
 	$_path_main_miles_json 				= 'miles.json';
 	$_folder_project					= 'projects';
@@ -36,7 +37,6 @@
 
 	// Config Miles ( miles.json ) na raiz
 	if (!file_exists($_miles_json_root_file)){
-		#header('location: install');
 		echo 'Arquivo miles.json não encontrado ! ... ';
 		exit;
 	}
