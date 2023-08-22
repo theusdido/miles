@@ -1,11 +1,18 @@
 <?php
-
-    if (file_exists($_path_project_miles_json)){
-        unlink($_path_project_miles_json);
+    if (tdc::r('op') == 'instalar'){
+        // Na instalação o path do arquivo miles deve sero do projeto
+        $_path_project_miles_json	        = $_path_project_install . 'dev.miles.json';
+        // Seta o id com o nome do diretório na instação
+        $_project_name_identifify_params    = $_project_folder;
+    }else{
+        if (file_exists($_path_project_miles_json)){
+            //unlink($_path_project_miles_json);
+        }
     }
-    
+
     try {
 
+        
         $fpMilesJSON = fopen($_path_project_miles_json,"w");
         fwrite($fpMilesJSON,'
 {
@@ -47,7 +54,7 @@
             "system":{
                 "request_protocol": "http",
                 "force_https":false,
-                "is_fixed_domain":true
+                "is_fixed_domain":false
             }
         },
         "homolog":{

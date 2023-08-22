@@ -138,8 +138,8 @@ final class Conexao{
 		Retorna conexão do arquivo temporário do banco de dados
 	*/
 	public static function getTemp(){
-		$_data = self::getDados('temp');
-		$conn_temp = self::getConnection(
+		$_data 		= self::getDados('temp');
+		$conn_temp 	= self::getConnection(
 			$_data['tipo'],
 			$_data['host'],
 			$_data['base'],

@@ -17,8 +17,6 @@
 	********************************* */
 
 	$_project_name_identifify_params 	= !getenv('_PROJECT_NAME_IDENTIFY_PARAMS') ? '' : getenv('_PROJECT_NAME_IDENTIFY_PARAMS');
-	var_dump(getenv('_PROJECT_NAME_IDENTIFY_PARAMS'));
-	var_dump($_project_name_identifify_params);
 	$_env_params						= !getenv('_ENV') ? '' : getenv('_ENV');
 	$_path_main_miles_json 				= 'miles.json';
 	$_folder_project					= 'projects';
