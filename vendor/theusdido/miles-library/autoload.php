@@ -1,4 +1,9 @@
 <?php
+
+	// foreach($_SERVER as $key => $value){
+	// 	echo $key . ' = ' . $value . '<br/>';
+	// }
+	// exit;
 	/* *********************************
 
 		##### IMPORTANTE #####
@@ -40,6 +45,38 @@
 
 	// Config Miles ( miles.json ) na raiz
 	if (!file_exists($_miles_json_root_file)){
+
+		$_url_install_miles 	= $_http_host . $_SERVER['REQUEST_URI'];
+        $fpMilesJSON 			= fopen($_path_project_miles_json,"w");
+        fwrite($fpMilesJSON,'
+{
+    "version": 2.0,
+    "project":{
+        "id":"miles",
+        "name":"Miles",
+        "path":"miles/",
+        "url":"'.$_url_install_miles.'"
+    },
+    "currentproject": 1,
+    "folder":"miles/",
+    "system": {
+        "url": {
+            "lib": "https://teia.tec.br/miles/repository/lib/"
+        },
+        "request_protocol": "http",
+        "packages": []
+    },
+    "theme": "desktop",
+    "prefix": "td",
+    "is_show_error_message": false,
+    "is_show_warn_message": false,
+    "is_transaction_log": false,
+    "database_current": "desenv",
+    "port": "hidden",
+    "enviromment":"dev"
+    }
+}
+');		
 		echo 'Arquivo miles.json não encontrado ! ... ';
 		exit;
 	}
