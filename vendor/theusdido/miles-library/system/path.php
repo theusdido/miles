@@ -14,22 +14,22 @@
 	define('PATH_CONFIG', PATH_MILES_LIBRARY . FOLDER_CONFIG . DIRECTORY_SEPARATOR);
 
 	// Caminho padrão para a classes de models do MVC ( MODEL )
-	define('PATH_MVC_MODEL',PATH_MILES_LIBRARY.'model' . DIRECTORY_SEPARATOR . DIRECTORY_SEPARATOR);
+	define('PATH_MVC_MODEL',PATH_MILES_LIBRARY.'model' . DIRECTORY_SEPARATOR);
 
 	// Caminho padrão para a classes de views do MVC ( VIEW )
-	define('PATH_MVC_VIEW',PATH_MILES_LIBRARY.'view' . DIRECTORY_SEPARATOR . DIRECTORY_SEPARATOR);
+	define('PATH_MVC_VIEW',PATH_MILES_LIBRARY.'view' . DIRECTORY_SEPARATOR);
 
 	// Caminho padrão para a classes de controllers do MVC ( CONTROLLER )
-	define('PATH_MVC_CONTROLLER', PATH_MILES_LIBRARY . 'controller' . DIRECTORY_SEPARATOR . DIRECTORY_SEPARATOR);
+	define('PATH_MVC_CONTROLLER', PATH_MILES_LIBRARY . 'controller' . DIRECTORY_SEPARATOR);
 	
 	// Caminho padrão para as classes
-	define('PATH_CLASS',PATH_MILES_LIBRARY . 'classes' . DIRECTORY_SEPARATOR . DIRECTORY_SEPARATOR);
+	define('PATH_CLASS',PATH_MILES_LIBRARY . 'classes' . DIRECTORY_SEPARATOR);
 
 	// Caminho padrão para as blibiotecas
-	define('PATH_LIB',PATH_MILES_LIBRARY . 'lib' . DIRECTORY_SEPARATOR . DIRECTORY_SEPARATOR);
+	define('PATH_LIB',PATH_MILES_LIBRARY . 'lib' . DIRECTORY_SEPARATOR);
 
 	// Caminho padrão para as imagens
-	define('PATH_IMG',PATH_MILES_LIBRARY . 'images' . DIRECTORY_SEPARATOR . DIRECTORY_SEPARATOR);
+	define('PATH_IMG',PATH_MILES_LIBRARY . 'images' . DIRECTORY_SEPARATOR);
 
 	// Caminho padrão para a blibioteca ADO ( ADVANCED DATA OBJECT )
 	define('PATH_ADO',PATH_CLASS.'ado' . DIRECTORY_SEPARATOR);

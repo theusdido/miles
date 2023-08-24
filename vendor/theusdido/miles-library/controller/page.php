@@ -2,7 +2,7 @@
 
 	// Carrega o HTML antes por causa do file_get_contents, erro de cabeçaho
 	$htmlFile 	= PATH_SYSTEM_PAGE . $_page . '.html';
-
+		
 	if (file_exists($htmlFile)){
 		echo @getUrl(URL_PAGE . $_page . '.html');
 	}

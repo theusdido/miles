@@ -52,6 +52,13 @@
       $install_view_home = $_is_installed ? 'package' : 'criarbase';
       $js     = tdc::html('script');
       $js->add('
+            $.ajax({
+                  url:"'.URL_API.'?controller=page&page=install/guia",
+                  complete:function(res){
+                        console.log(res.responseText);
+                  }
+
+            });
             $("#menu-instalacao").load("'.URL_API.'?controller=page&page=install/guia");
             $("#conteudo-instalacao").load("'.URL_API.'?controller=page&page=install/'.$install_view_home.'");
       ');

@@ -1,9 +1,4 @@
 <?php
-
-	// foreach($_SERVER as $key => $value){
-	// 	echo $key . ' = ' . $value . '<br/>';
-	// }
-	// exit;
 	/* *********************************
 
 		##### IMPORTANTE #####
@@ -29,7 +24,9 @@
 	$_path_relative_project				=  $_folder_project . DIRECTORY_SEPARATOR . $_project_name_identifify_params . DIRECTORY_SEPARATOR;
 	$_path_project_miles_json			=  $_path_relative_project . DIRECTORY_SEPARATOR . $_env_params . '.'  . $_path_main_miles_json;
 	$_url_relative_project				=  $_folder_project . '/' . $_project_name_identifify_params . '/';
-	$_url_project_miles_json			=  $_url_relative_project . $_env_params . '.miles.json';	
+	$_url_project_miles_json			=  $_url_relative_project . $_env_params . '.miles.json';
+
+	
 
 	// Caso as variáveis venham por parametro
 	if (isset($_GET['project_name_identifify_params']) && isset($_GET['env'])){
@@ -40,14 +37,19 @@
 	// Se o arquivo miles.json do projeto não for encontrado
 	$_miles_json_root_file = file_exists($_path_project_miles_json) && sizeof(file($_path_project_miles_json)) > 0 ? $_path_project_miles_json : $_path_main_miles_json;
 
+	$_is_installed						= file_exists($_path_project_miles_json);
+
 	// URL da chamada do MILES
 	$_http_host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : '';
 
-	// Config Miles ( miles.json ) na raiz
-	if (!file_exists($_miles_json_root_file)){
+	$_url_install_miles 	= $_http_host . $_SERVER['REQUEST_URI'];
 
-		$_url_install_miles 	= $_http_host . $_SERVER['REQUEST_URI'];
-        $fpMilesJSON 			= fopen($_path_project_miles_json,"w");
+	$_is_miles_json_root_file = file_exists($_miles_json_root_file);
+
+	// Config Miles ( miles.json ) na raiz
+	if (!$_is_miles_json_root_file){
+		
+        $fpMilesJSON 			= fopen($_miles_json_root_file,"w");
         fwrite($fpMilesJSON,'
 {
     "version": 2.0,
@@ -74,11 +76,10 @@
     "database_current": "desenv",
     "port": "hidden",
     "enviromment":"dev"
-    }
 }
-');		
-		echo 'Arquivo miles.json não encontrado ! ... ';
-		exit;
+');
+
+		fclose($fpMilesJSON);
 	}
 
 	$_miles_config_root 	= json_decode(file_get_contents($_miles_json_root_file));
@@ -166,7 +167,7 @@
 
 	// Conexão com banco de dados
 	require $_path_system . 'connection.php';
-
+	
 	// Rotas
 	require $_path_system . 'rota.php';
 

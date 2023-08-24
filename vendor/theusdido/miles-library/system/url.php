@@ -1,21 +1,28 @@
 <?php
-	
+
 	$_full_port 		= (PORT == '' ? '' : ':') . PORT;
 	$_root_folder		= (isset($_env->root) ? $_env->root : '');
-	$_is_fixed_domain	= isset($_env->system->is_fixed_domain) ? $_env->system->is_fixed_domain : false;	
-	$_domain			= isset($_env->url->domain) ? $_env->url->domain : 'localhost';
-	$_url_miles			= REQUEST_PROTOCOL . 'miles.' .$_domain . $_full_port . '/';	
-	$_mainHost 			= REQUEST_PROTOCOL . $_domain . $_full_port . '/';
 
-	if (!$_is_fixed_domain){
+	if ($_is_installed){
+		$_is_fixed_domain	= isset($_env->system->is_fixed_domain) ? $_env->system->is_fixed_domain : false;
+		$_domain			= isset($_env->url->domain) ? $_env->url->domain : 'localhost';
+	}else{
+		$_is_fixed_domain	= false;
+		$_domain			= $_miles_config_root->project->url;
+	}
+
+	// Determina a URL principal se for fixa ou não
+	if ($_is_fixed_domain){
+		$_url_miles			= REQUEST_PROTOCOL . 'miles.' .$_domain . $_full_port . '/';
+		$_mainHost 			= REQUEST_PROTOCOL . $_domain . $_full_port . '/';
+	}else{
 		$_url_miles			= REQUEST_PROTOCOL .$_domain . $_full_port . '/miles/';
 		if (isset($_SERVER['SERVER_NAME'])){
 			$_mainHost 	= REQUEST_PROTOCOL . $_SERVER['SERVER_NAME'] . '/';
 			$_mainHost	= str_replace('www.','', $_mainHost);
 			$_domain	= HTTP_HOST;
-		}		
+		}
 	}
-	
 
     // URL ROOT
 	if (isset($_env->url->domain)){
@@ -38,17 +45,16 @@
 		define('URL_ALIAS',URL_ROOT);
 	}
 
-	if (isset($mjc->folder)){
-		$request_uri_dir 	= (isset($_env->root) ? $_env->root  : '/') . $mjc->folder;
-	}else{
-		$ruri 				= $_SERVER['REQUEST_URI'];
-		$request_uri 		= explode('?',(strpos($ruri,'index.php') > -1 ? dirname($ruri).'/' : $ruri));
-		$request_uri_dir	= str_replace("index.php","",$request_uri[0]);
-	}
+	// if (isset($mjc->folder)){
+	// 	$request_uri_dir 	= (isset($_env->root) ? $_env->root  : '/') . $mjc->folder;
+	// }else{
+	// 	$ruri 				= $_SERVER['REQUEST_URI'];
+	// 	$request_uri 		= explode('?',(strpos($ruri,'index.php') > -1 ? dirname($ruri).'/' : $ruri));
+	// 	$request_uri_dir	= str_replace("index.php","",$request_uri[0]);
+	// }
+	// $_url_miles	 = REQUEST_PROTOCOL .$_domain . $_full_port .  $request_uri_dir;
 
 	// URL MILES
-	#$_url_miles	 = REQUEST_PROTOCOL .$_domain . $_full_port .  $request_uri_dir;
-	
 	define('URL_MILES',$_url_miles);
 
 	define('URL_AUTOLOAD',$_url_miles . 'autoload.php');
@@ -64,7 +70,7 @@
 	// URL SYSTEM
 	define('URL_SYSTEM',URL_MILES_LIBRARY. FOLDER_SYSTEM . '/');
 
-	// URL PAGE
+	// URL PAGE	
 	define('URL_PAGE', URL_MILES_LIBRARY . FOLDER_PAGE . '/');
 
 	// URL COMPONENT

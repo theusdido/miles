@@ -45,8 +45,10 @@ class Elemento {
 		if ($nome == "href" || $nome == "src"){
 			$extensao = getExtensao($valor);
 			if ($extensao == "css" || $extensao == "js"){
-				
-				$valor .= (strpos($valor,"?") === false ?"?":"&") . getnocacheparams();
+				$no_cache_params = getnocacheparams();
+				if ($no_cache_params != ''){
+					$valor .= (strpos($valor,"?") === false ?"?":"&") . getnocacheparams();
+				}				
 			}
 		}
 		$this->propriedades[$nome] = isset($this->propriedades[$nome])?$this->propriedades[$nome]." ".$valor:$valor;

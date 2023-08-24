@@ -30,7 +30,6 @@
 
 	// Tratamento para requisição a uma página - by @theusdido 02/10/2021
 	$_page				= tdc::r("page",tdc::r('_page'));
-
 	if (strpos($_page,"/") > -1){
 		if (preg_match("/{{[a-z)]+}}/i",$_page,$match)){
 			$_page			= str_replace(array('{{','}}'),'',$_page);
@@ -48,7 +47,6 @@
 
 	$systemview 		= '';
 	$customview			= '';
-
 
 	if ($_controller == "page" && $_page != ''){
 		if (file_exists($customcontroller)) include $customcontroller;
