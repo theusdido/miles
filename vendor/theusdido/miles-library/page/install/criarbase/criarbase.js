@@ -75,21 +75,20 @@
                 tipo:$("#tipo").val()
             },
             complete:function(_res){
-                let retorno = _res.responseText;
-                $("#retorno-criar-base").show("5000");         
+                let retorno = _res.responseText;     
                 $("#loader-criarbanco").hide();                
                 if (retorno == 1){
-                    $("#retorno").html('<div class="alert alert-success" role="alert"><b>Parabéns !</b>. Base de dados criada com sucesso.</div>');                    
-                    setCurrentGuia('setup');                    
-                    //permissoesGuia();
+                    Toastify({
+                        text: 'Banco de Dados Criado com Sucesso!',
+                        duration: 5000,
+                        className:'td-message-success',
+                        escapeMarkup:false
+                    }).showToast();
+                    setCurrentGuia('setup');
                     getStatusGuia();
                 }else{
                     $("#retorno-criar-base").html(retorno);
                 }
-                $("#retorno-criar-base").show("5000");
-                setTimeout(function(){
-                    $("#retorno-criar-base").hide("5000");
-                },3000);
             }
         });
     });

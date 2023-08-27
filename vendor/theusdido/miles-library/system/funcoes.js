@@ -911,3 +911,10 @@ function loadPage(path,local,params = {},callback = null){
 		}
 	});
 }
+function toastMessage(message,class_name = 'td-message-success'){
+    Toastify({
+        text: message,
+        duration: 3000,
+        className:class_name
+    }).showToast(); 
+}
