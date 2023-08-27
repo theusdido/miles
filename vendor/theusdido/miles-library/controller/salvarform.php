@@ -98,31 +98,34 @@
 	}
 
 	// Checklist
-	foreach(tdc::r('checklist') as $checklist){
+	$_checklist = tdc::r('checklist');
+	if ($_checklist != ''){
+		foreach(tdc::r('checklist') as $checklist){
 
-		// Seta na LISTA
-		$entidadePai 		= $checklist['entidade_pai'];
-		$entidadeFilho 		= $checklist['entidade_filho'];
-		$regPai 			= $retorno_id;
-		$regFilho 			= $checklist['valor'];
-		
-		$sql	= tdc::f();
-		$sql->addFiltro('entidadepai','=', $entidadePai);
-		$sql->addFiltro('entidadefilho','=', $entidadeFilho);
-		$sql->addFiltro('regpai','=',$regPai);
-		$sql->addFiltro('regfilho','=',$regFilho);
-		
-		// Exclui todos os registros da Lista
-		tdc::de(LISTA,$sql);
+			// Seta na LISTA
+			$entidadePai 		= $checklist['entidade_pai'];
+			$entidadeFilho 		= $checklist['entidade_filho'];
+			$regPai 			= $retorno_id;
+			$regFilho 			= $checklist['valor'];
+			
+			$sql	= tdc::f();
+			$sql->addFiltro('entidadepai','=', $entidadePai);
+			$sql->addFiltro('entidadefilho','=', $entidadeFilho);
+			$sql->addFiltro('regpai','=',$regPai);
+			$sql->addFiltro('regfilho','=',$regFilho);
+			
+			// Exclui todos os registros da Lista
+			tdc::de(LISTA,$sql);
 
-		// Adiciona novos registros na lista
-		$_lista 				= tdc::p(LISTA);
-		$_lista->entidadepai 	= $entidadePai;
-		$_lista->entidadefilho	= $entidadeFilho;
-		$_lista->regpai			= $regPai;
-		$_lista->regfilho 		= $regFilho;
-		$_lista->armazenar();
+			// Adiciona novos registros na lista
+			$_lista 				= tdc::p(LISTA);
+			$_lista->entidadepai 	= $entidadePai;
+			$_lista->entidadefilho	= $entidadeFilho;
+			$_lista->regpai			= $regPai;
+			$_lista->regfilho 		= $regFilho;
+			$_lista->armazenar();
+		}
 	}
-
+	
 	// Retorno
 	echo json_encode(array("status" => 1 , "id" => $retorno_id , "entidade" => (int)$entidadeRetorno , "entidadesID" => $entidadesIDRetorno));
