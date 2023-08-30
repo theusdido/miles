@@ -41,10 +41,10 @@ class Elemento {
 		@params valor [ valor da propriedade ]
 	*/
 	public function __set($nome,$valor){
-		$nome = str_replace("_","-",$nome);
+		$nome = str_replace("_","-",$nome);	
 		if ($nome == "href" || $nome == "src"){
-			$extensao = getExtensao($valor);
-			if ($extensao == "css" || $extensao == "js"){
+			$extensao = getExtensao($valor);			
+			if ($extensao == "css" || $extensao == "js"){					
 				$no_cache_params = getnocacheparams();
 				if ($no_cache_params != ''){
 					$valor .= (strpos($valor,"?") === false ?"?":"&") . getnocacheparams();

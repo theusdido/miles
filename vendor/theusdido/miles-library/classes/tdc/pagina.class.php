@@ -299,9 +299,12 @@ class Pagina Extends Html {
 
 			function scriptNoCache(){
 				$("script").each(function(){
-					let src		= $(this).attr("src");
+					let src		= $(this).attr("src");					
 					if (src != undefined){
 						let src_old = $(this).attr("src").replace(".js?",".js");
+						if (src.indexOf(".js?") > 0){
+							src_old = src.split(".js?")[0] + ".js";
+						}
 						let time	= new Date().getTime();
 						let src_new = src_old + "?" + time;
 						$(this).attr("src", src_new);

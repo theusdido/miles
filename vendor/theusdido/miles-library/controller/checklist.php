@@ -1,7 +1,7 @@
 <?php
     switch(tdc::r('op')){
         case 'load':
-            tdc::wj( tdc::da('td_erp_escola_assunto') );
+            tdc::wj( tdc::da( tdc::r('entidade') ) );
         break;
         case 'excluir':
             $_entidade_pai      = tdc::r('entidadepai');

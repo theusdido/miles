@@ -231,12 +231,13 @@ tdFormulario.prototype.novo = function(){
 			formulario[indice_form].is_pai 			= false;
 			formulario[indice_form].is_principal	= false;
 			formulario[indice_form].newGrade();
-
-			console.log(e);
 		},this);
 	}
 
-	this.setChecklist();
+	if (this.is_principal){
+		this.setChecklist();	
+	}
+
 	$(contextoAdd).show();
 	$(contextoListar).hide();
 	if (typeof afterNew === "function") afterNew(contextoAdd);
@@ -767,28 +768,25 @@ tdFormulario.prototype.salvar = function(){
 						relacionamento = {entidade:td_entidade[$_relacionamento.pai].nome,atributo:td_atributo[$_relacionamento.atributo].nome};
 					}
 					relacionamentoTipo = $_relacionamento_tipo;
-				}		
-			}
-
-			if ($_relacionamento_pai == this.entidade_id && $_relacionamento_tipo == 11){				
-				console.log('Relacionamento Checklist ...');
-				console.log($_relacionamento);				 
-				 this.checklists.forEach(
-				 	(_checklist) => {
-				 		_checklist.getSelectedData().forEach(
-				 			(_item) => {
-				 				this._dados_checklist.push({
-				 					atributo:'id',
-				 					valor:_item.id,
-				 					entidade_pai:$_relacionamento_pai,
-				 					entidade_filho:$_relacionamento_filho
-				 				});
-				 			}
-				 		);
-				 	}
-				 );
+				}
 			}
 		}
+
+
+		this.checklists.forEach(
+			(_checklist) => {					
+				_checklist.getSelectedData().forEach(
+					(_item) => {
+						this._dados_checklist.push({
+							atributo:'id',
+							valor:_item.id,
+							entidade_pai:_checklist.entidade_pai,
+							entidade_filho:_checklist.entidade_filho
+						});
+					}
+				);
+			}
+		);
 	}else{
 		let atributorel		= 0;
 		if (currentrelacionamento.atributo != undefined && parseInt(currentrelacionamento.atributo) != 0){
@@ -1058,8 +1056,10 @@ tdFormulario.prototype.editar = function(){
 					$(formulario[index_form_rel].getContextoListar(),this.getContexto()).show();
 				}else if(tipoRelacionamento == 11){
 					setTimeout(()=>{
-						this.checklists.forEach( (_checklist_list)=> {
-							_checklist_list.addSelectedItem(r.id);
+						this.checklists.forEach( ( _checklist_list )=> {
+							if (r.entidade == _checklist_list.entidade_filho ){
+								_checklist_list.addSelectedItem(r.id);
+							}
 						});
 					},1000);
 				}
@@ -1918,17 +1918,14 @@ tdFormulario.prototype.camposUnicos = function(){
 
 tdFormulario.prototype.setChecklist = function(){
 	this.checklists					= [];
-	this._dados_checklist 			= [];	
+	this._dados_checklist 			= [];
 	this.entidade.relacionamentos.forEach(function(relacionamento){
 		if (relacionamento.tipo == 11){
-			let _list 				= new Checklist();
-			_list.entidade_pai	 	= relacionamento.pai;
-			_list.entidade_filho	= relacionamento.filho;
+			let _list 				= new Checklist(relacionamento);
 			_list.reg_pai			= this.registro_id;
-			_list.nenhumRegistro();
+			_list.setContexto(getHierarquiaRel(relacionamento));
 			_list.show();
 			this.checklists.push(_list);
 		}
 	},this);
-	console.log(this.checklists);
 }

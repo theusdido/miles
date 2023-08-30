@@ -1,30 +1,26 @@
 class Checklist {
-    constructor() {
+    constructor(_relacionamento)
+    {
 
         this.list;
         this.selecionados = [];
         this.data;
-        this.entidade_pai   = 0;
-        this.entidade_filho = 0;
+        this.entidade_pai   = _relacionamento.pai;
+        this.entidade_filho = _relacionamento.filho;
         this.reg_pai        = 0;
+        this.contexto       = '';
 
         // Método Construtor
-        this.construct();
-    }
-    construct() {
         this.createList();
     }
 
     createList() {
-        this.list = $('<ul class="list-group td-checklist" id="td-checklist-modal">');
-
-        $('#crud-contexto-checklist-td_erp_escola_aula-td_erp_escola_assunto .b-novo').click(function(){
-            $('#modal-checklist').modal('show');
-        });
+        this.list = $('<ul class="list-group td-checklist">');
+        this.nenhumRegistro();
     }
-    show() {
+    show() {        
         this.load();
-        $('#crud-contexto-checklist-td_erp_escola_aula-td_erp_escola_assunto #modal-checklist .modal-body').append(this.list);
+        $('#crud-contexto-checklist-'+this.contexto+' '+this.getModalName()+' .modal-body').append(this.list);
     }
     load(){
         $.ajax({
@@ -32,17 +28,22 @@ class Checklist {
             dataType:'json',
             data:{
                 controller:'checklist',
-                op:'load'
+                op:'load',
+                entidade:td_entidade[this.entidade_filho].nome
             },
             context:this,
             complete:function(_res){
-                this.data = _res.responseJSON;
-                this.setItens();
+                this.setItens(_res.responseJSON);
             }
         });
     }
 
-    setItens(_data){        
+    setItens(_data){
+        if (_data.length < 1){
+            this.nenhumRegistro();
+            return;
+        }
+        this.data = _data;
         this.data.forEach(item => {
             let checkbox    = $('<input type="checkbox" value="'+item.id+'">');
             let label       = $('<label>'+item.descricao+'</label>');
@@ -80,10 +81,10 @@ class Checklist {
     }
 
     nenhumRegistro(_lista = null){
-        $(this.getListContextId()).html('');
         let li              = $('<li class="list-group-item list-group-item-warning text-center td-nenhumregistro-list-item">Nenhum Registro</li>');
         if (_lista == null){
-            $(this.getListContextId()).append(li);
+            $( this.getListContextId() ).html('');
+            $( this.getListContextId() ).append(li);
         }else{
             $(_lista).append(li);
         }
@@ -94,6 +95,7 @@ class Checklist {
     }
 
     addSelectedItem(_item_id){
+        if (this.data == undefined) return;
         this.data.forEach((_item,_index) => {
             if (_item.id == _item_id){
                 this.selecionados.push(_item);
@@ -124,14 +126,13 @@ class Checklist {
 
                 li.append(span_text);
                 li.append(icon_excluir);
-                console.log(this.getListContextId());
                 $(this.getListContextId()).append(li);
             }
         });
     }
 
     inativarSelecionado(_item_selected_id){
-        $('#td-checklist-modal li').each(function(){
+        $(this.list).find('li').each(function(){
             if (_item_selected_id == $(this).data('id')){
                 $(this).addClass('disabled');
                 $(this).find('input[type="checkbox"]').hide();
@@ -140,7 +141,7 @@ class Checklist {
     }
 
     ativarSelecionado(_item_selected_id){
-        $('#td-checklist-modal li').each(function(){
+        $(this.list).find('li').each(function(){
             if (_item_selected_id == $(this).data('id')){
                 $(this).removeClass('disabled');
                 $(this).find('input[type="checkbox"]').show();
@@ -150,5 +151,26 @@ class Checklist {
 
     getListContextId(){
         return '#checklist-' + td_entidade[this.entidade_filho].nome;
+    }
+
+    setContexto(_contexto){
+        this.list.attr('id','td-checklist-modal-'+this.getNomeEntidadeFilho());
+        this.contexto = _contexto;
+        this.clickAdd();
+    }
+
+    clickAdd(){
+        let modalname = this.getModalName();
+        $('#crud-contexto-checklist-'+this.contexto+' .b-novo').click(function(){
+            $(modalname).modal('show');
+        });
+    }
+
+    getNomeEntidadeFilho(){
+        return td_entidade[this.entidade_filho].nome;
+    }
+
+    getModalName(){
+        return '#modal-checklist-' + this.getNomeEntidadeFilho();
     }
 }

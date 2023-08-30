@@ -273,10 +273,16 @@ function getHierarquia(pai = 0,filho = 0){
 		return getHierarquiaRel(getRelacionamento(pai,filho).id);
 	}
 }
-function getHierarquiaRel(rel){
-	var relacionamento 	= td_relacionamento[rel];
-	var pai 			= td_entidade[relacionamento.pai];
-	var filho 			= td_entidade[relacionamento.filho];
+function getHierarquiaRel(_rel){
+	let relacionamento;
+	if (typeof _rel === 'object'){
+		relacionamento 	= _rel;
+	}else{
+		relacionamento 	= td_relacionamento[_rel];
+	}
+	
+	let pai 			= td_entidade[relacionamento.pai];
+	let filho 			= td_entidade[relacionamento.filho];
 	return pai.nomecompleto + "-" + filho.nomecompleto;
 }
 function getEntidadePai(entidade){

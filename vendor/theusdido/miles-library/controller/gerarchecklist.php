@@ -124,11 +124,10 @@
 
     // Modal
     $modal_checklist          = tdc::o("modal");
-    $modal_checklist->nome    = "modal-checklist";
+    $modal_checklist->nome    = "modal-checklist-" . $entidade->contexto->nome;
     $modal_checklist->tamanho = "modal-lg";
-    $modal_checklist->addHeader('Adicionar',null);
+    $modal_checklist->addHeader(tdc::utf8($entidade->contexto->descricao),null);
     $modal_checklist->addBody('');
-    $modal_checklist->addFooter("");
 
     $crudChecklist->add($div_group_botao,$list_checklist,$modal_checklist);
     $bloco->add($crudChecklist);

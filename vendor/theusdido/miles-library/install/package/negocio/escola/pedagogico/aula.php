@@ -22,10 +22,9 @@
 	);
 
 	// Criando Atributos
+	$descricao          			= criarAtributo($conn,$entidadeID,"descricao","Descrição","text",0,1,21,1);
 	$unidadecurricular  			= criarAtributo($conn,$entidadeID,"unidadecurricular","Unidade Curricular","int",0,1,22,1,installDependencia("erp_escola_unidadecurricular",'package/negocio/itinerarioinformativo/unidadecurricular'));
 	$conteudo  						= criarAtributo($conn,$entidadeID,"conteudo","Conteúdo","int",0,1,4,0,installDependencia("erp_escola_conteudo","package/sistema"));
-	$atividade 						= criarAtributo($conn,$entidadeID,"atividade","Atividade","int",0,1,4,0,installDependencia("erp_escola_atividade"));
-    $descricao          			= criarAtributo($conn,$entidadeID,"descricao","Descrição","text",0,1,21,0);
 	$atividadeestudoorientada       = criarAtributo($conn,$entidadeID,"atividadeestudoorientada","AEO","text",0,1,21,0);
     $quantidade_aula    			= criarAtributo($conn,$entidadeID,"quantidade_aula","Quantidade de Aulas","int",0,0,25,0);
 
@@ -43,3 +42,6 @@
 
 	// Assunto - Relacionamento
 	criarRelacionamento($conn,11,$entidadeID,installDependencia("erp_escola_assunto"),"Assuntos");
+
+	// Atividade - Relacionamento
+	criarRelacionamento($conn,11,$entidadeID,installDependencia("erp_escola_atividade"),"Atividades");
