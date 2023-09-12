@@ -32,11 +32,13 @@
 	$_page				= tdc::r("page",tdc::r('_page'));
 	if (strpos($_page,"/") > -1){
 		if (preg_match("/{{[a-z)]+}}/i",$_page,$match)){
-			$_page			= str_replace(array('{{','}}'),'',$_page);
+			$_page_path			= str_replace(array('{{','}}'),'',$_page);
 		}else{
 			$_page_e		= explode("/",$_page);
-			$_page			= $_page . "/" . end($_page_e);
+			$_page_path			= $_page . "/" . end($_page_e);
 		}
+	}else{
+		$_page_path			= $_page . "/" . $_page;
 	}
 
 	if ($_page != ''){
@@ -49,9 +51,9 @@
 	$customview			= '';
 
 	if ($_controller == "page" && $_page != ''){
-		if (file_exists($customcontroller)) include $customcontroller;
-		if (file_exists($systemcontroller)) include $systemcontroller;
-		exit;
+		if (file_exists($_custompage)) include $_custompage;
+		if (file_exists($_systempage)) include $_systempage;
+		//exit;
 	}		
 	
 	if ($controller == "gerarcadastro" || tdClass::Read("key") == "k"){

@@ -1,8 +1,8 @@
 <?php
 	// Setando variáveis
-	$entidadeNome 		= "erp_geral_fornecedor";
-	$entidadeDescricao 	= "Fornecedor";
-	
+	$entidadeNome 		= "erp_geral_cliente";
+	$entidadeDescricao 	= "Cliente";
+
 	// Criando Entidade
 	$entidadeID = criarEntidade(
 		$conn,
@@ -30,11 +30,3 @@
 
 	// Adicionando Menu
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,8,'financeiro-' . $entidadeNome,$entidadeID,'cadastro');
-	
-	// Criar Aba
-	#criarAba($conn,$entidadeID,"Capa",$contato);
-
-	// Criando Relacionamento
-	#criarRelacionamento($conn,9,$entidadeID,installDependencia($conn,"erp_geral_pessoa"),"Fornecedor",0);
-	#criarRelacionamento($conn,5,$entidadeID,installDependencia($conn,"erp_geral_produto"),"Produtos",0);
-	#criarRelacionamento($conn,5,$entidadeID,installDependencia($conn,"erp_geral_servico"),"Serviços",0);

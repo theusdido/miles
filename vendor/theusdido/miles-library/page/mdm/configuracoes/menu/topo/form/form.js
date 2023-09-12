@@ -162,11 +162,3 @@ function configuracaoInicial(){
     $('#entidade').load(session.urlmiles + '?controller=mdm/menu/topo&op=option-entidade');
     $("#link").val("#");
 }
-function voltarMenuTopoListar(){
-    debugger;
-    if (_menutopo_pai == 0){
-        loadMDMContent('configuracoes/menu/topo');
-    }else{
-        versubmenu(_menutopo_pai,'');
-    }
-}

@@ -21,7 +21,8 @@
 	);
 	
 	// Criando Atributos
-	$cliente 			= criarAtributo($conn,$entidadeID,"cliente","Cliente","int",0,0,22,1,installDependencia("erp_pessoa",'package/sistema/erp/pessoa/pessoa'));
+	$descricao 			= criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar",200,0,3,1);
+	$cliente 			= criarAtributo($conn,$entidadeID,"cliente","Cliente","int",0,1,22,1,installDependencia("erp_geral_cliente",'package/sistema/erp/comercial/cliente'));
 	$documento 			= criarAtributo($conn,$entidadeID,"documento","Documento","varchar","50",1,3,0,0,0,"",0,0);
 	$valor 				= criarAtributo($conn,$entidadeID,"valor","Valor","float",0,1,13,1,0,0,"",0,0);
 	$dataemissao 		= criarAtributo($conn,$entidadeID,"dataemissao","Data de Emissão","date",0,1,11,0,0,0,"",0,0);

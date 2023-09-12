@@ -1,3 +1,4 @@
+var componentes_carregados = [];
 $(".checkbox-componente").click(function(){
     addElementComponent( this );
 });
@@ -47,11 +48,8 @@ $(document).ready(function(){
             module:modulo_selecionado
         },
         complete:function(res){
-            let retorno = JSON.parse(res.responseText);
-            retorno.forEach((e) => {
-                let url_compoente = session.urlmiles + '?controller=install/componentes&package=' + package_selecionado + '&component=' + modulo_selecionado;
-                $('#accordion-install-components').load(url_compoente);
-            });
+            componentes_carregados =  JSON.parse(res.responseText);
+            setCompoenent();
         }
     });
 });
@@ -77,4 +75,30 @@ function addElementComponent( element  )
 function removeElementComponent( element )
 {
 
+}
+
+$(document).on('click','.generate-menu[data-module='+package_selecionado+'-'+modulo_selecionado+']', function() {
+
+    $.ajax({
+        url:session.urlmiles,
+        data:{
+            controller:'install/modulos',
+            op:'generate-menu',
+            package:package_selecionado,
+            module:modulo_selecionado,
+            module_name:modulo_name_selecionado,
+            components:componentes_carregados
+        },
+        complete:function(res){
+            let retorno = JSON.parse(res.responseText);
+        }
+    });
+
+});
+
+function setCompoenent(){
+    componentes_carregados.forEach((e) => {
+        let url_compoente = session.urlmiles + '?controller=install/componentes&package=' + package_selecionado + '&component=' + modulo_selecionado;
+        $('#accordion-install-components').load(url_compoente);
+    });
 }

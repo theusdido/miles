@@ -13,7 +13,8 @@
     array( "name" => "comercial", "title" => "Comercial", "components" => 
       array(
         array('name' => 'pedidovenda'       ,'title' => 'Pedido de Venda'),
-        array('name' => 'statuspedidovenda' ,'title' => 'Status Pedido de Venda')
+        array('name' => 'statuspedidovenda' ,'title' => 'Status Pedido de Venda'),
+        array('name' => 'cliente' ,'title' => 'Cliente')
       )
     ),
 
@@ -39,7 +40,8 @@
         array('name' => 'formarecebimento'    ,'title' => 'Forma de Recebimento'),
         array('name' => 'operacaobancaria'    ,'title' => 'Operação Bancária'),
         array('name' => 'receita'             ,'title' => 'Receita'),
-        array('name' => 'tipocontabancaria'   ,'title' => 'Tipo Conta Bancária')
+        array('name' => 'tipocontabancaria'   ,'title' => 'Tipo Conta Bancária'),
+        array('name' => 'caixa'               ,'title' => 'Caixa')
       )
     ),
 

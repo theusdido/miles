@@ -99,4 +99,16 @@ class Panel Extends Elemento {
 	public function append($append){
 		$this->_append = $append;
 	}
+
+	/*
+		* Método addBody
+	    * Data de Criacao: 31/08/2023
+	    * Autor @theusdido
+		
+		Alias para o método body
+	*/
+
+	public function addBody($obj){
+		$this->body($obj);
+	}
 }

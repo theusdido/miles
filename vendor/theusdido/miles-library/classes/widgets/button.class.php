@@ -12,6 +12,11 @@ include_once PATH_TDC . 'elemento.class.php';
 	Tag Button utilizada no BootStrap
 */	
 class Button Extends Elemento {
+
+    public static $class   = 'btn';
+    public static $type    = 'btn-default';
+    public static $icon;
+
 	/*
 		* Método construct
 	    * Data de Criacao: 19/01/2015
@@ -22,4 +27,17 @@ class Button Extends Elemento {
 	public function __construct(){
 		parent::__construct('button');
 	}
+
+	public static function icon($_icon){
+		$_btn 			= tdc::o('button');
+		$_btn->class 	= self::$class . ' ' . self::$type;
+
+		if (gettype($_icon) == 'string'){
+			$icon_class     = $_icon;
+			$_icon 			= tdc::html('i');
+			$_icon->class 	= $icon_class;
+		}
+		$_btn->add($_icon);
+		return $_btn;
+	}	
 }

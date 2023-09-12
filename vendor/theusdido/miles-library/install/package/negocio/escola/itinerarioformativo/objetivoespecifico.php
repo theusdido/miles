@@ -23,7 +23,7 @@
 
 	// Criando Atributos
 	$descricao			= criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar",500,0,3,1,0,0,"");
-	$unidadecurricular 	= criarAtributo($conn,$entidadeID,"unidadecurricular","Unidade Curricular","int",0,0,16,1,installDependencia("erp_escola_unidadecurricular","package/sistema"));
+	$unidadecurricular 	= criarAtributo($conn,$entidadeID,"unidadecurricular","Unidade Curricular","int",0,0,22,1,installDependencia("erp_escola_unidadecurricular","package/sistema"));
 
 	// Seta o campo descrição
 	Entity::setDescriptionField($conn,$entidadeID,$descricao,true);

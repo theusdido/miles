@@ -4,11 +4,13 @@ var indiceRegistro 		= 0;
 var registros 			= [];
 var package_selecionado	= '';
 var modulo_selecionado	= '';
+var modulo_name_selecionado = '';
 
 $(".carregar-componentes").click(function(){
+    modulo_name_selecionado = $(this).html();
 
     // Icon abrir
-    $("#view-componente .modal-title").html($(this).html() + " <small>( Componentes )</small>");
+    $("#view-componente .modal-title").html(modulo_name_selecionado + " <small>( Componentes )</small>");
     package_selecionado	= $(this).data("pacote");
     modulo_selecionado	= $(this).data("componente");
     $("#view-componente .modal-body p").html("");

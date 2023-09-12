@@ -71,9 +71,9 @@ $('#entidade-termo').keyup(function(e){
     listarEntidades();
 });
 
-function editarCadastro(_entidade_id,entidade_display_){
+function editarCadastro(_entidade_id){
     _entidade = _entidade_id;
-    setTituloPagina('Editar',entidade_display_);
+    setTituloPagina('Editar',td_entidade[_entidade_id].descricao);
     goCadastro();
 }
 
@@ -83,9 +83,9 @@ function criar(){
     goCadastro();
 }
 
-function listarCampos(_entidade_id,entidade_display_){
+function listarCampos(_entidade_id){
     _entidade           = _entidade_id;
-    setTituloPagina('Campos',entidade_display_);
+    setTituloPagina('Campos',td_entidade[_entidade_id].descricao);
     loadCadastroContent('campos');
 }
 
@@ -93,14 +93,14 @@ function goCadastro(){
     loadCadastroContent('form');
 }
 
-function goAbasCadastro(_entidade_id,entidade_display_){
+function goAbasCadastro(_entidade_id){
     _entidade           = _entidade_id;
-    setTituloPagina('Aba',entidade_display_);
+    setTituloPagina('Aba',td_entidade[_entidade_id].descricao);
     loadCadastroContent('aba');
 }
 
-function goRelacionamentos(_entidade_id,entidade_display_){
+function goRelacionamentos(_entidade_id){
     _entidade           = _entidade_id;
-    setTituloPagina('Relacionamento',entidade_display_);
+    setTituloPagina('Relacionamento',td_entidade[_entidade_id].descricao);
     loadCadastroContent('relacionamento');
 }

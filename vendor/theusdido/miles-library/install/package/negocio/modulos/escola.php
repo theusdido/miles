@@ -31,7 +31,9 @@
             array('name' => 'curso' , 'title' => 'Curso'),
             array('name' => 'habilidade' , 'title' => 'Habilidade'),
             array('name' => 'objetivoespecifico' , 'title' => 'Objetivos Específicos'),
-            array('name' => 'unidadecurricular' , 'title' => 'Unidade Curricular')
+            array('name' => 'unidadecurricular' , 'title' => 'Unidade Curricular'),
+            array('name' => 'trilha' , 'title' => 'Trilha'),
+            array('name' => 'eixo' , 'title' => 'Eixo')
         )
     ),
     array( "name" => "planoensino", "title" => "Plano de Ensino", "components" =>

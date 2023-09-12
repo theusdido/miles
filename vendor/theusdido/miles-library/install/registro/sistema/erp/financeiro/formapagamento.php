@@ -8,3 +8,4 @@
     inserirRegistro($conn,$entidadeNome,2,$campos,array("'Cartão de Débito'"));
     inserirRegistro($conn,$entidadeNome,3,$campos,array("'Pix'"));
     inserirRegistro($conn,$entidadeNome,4,$campos,array("'Espécie'"));
+    inserirRegistro($conn,$entidadeNome,5,$campos,array("'Boleto'"));

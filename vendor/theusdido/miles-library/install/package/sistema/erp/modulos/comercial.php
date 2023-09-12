@@ -38,6 +38,11 @@
 						<td>Cadastro de Status do Pedido de Venda</td>
 						<td><input type="checkbox" class="checkbox-componente" id="sistema-erp-comercial-statuspedidovenda"></td>
 					</tr>
+					<tr>
+						<td>Cliente</td>
+						<td>Cadastro de Cliente</td>
+						<td><input type="checkbox" class="checkbox-componente" id="sistema-erp-comercial-cliente"></td>
+					</tr>					
 				</tbody>
 			</table>
       </div>

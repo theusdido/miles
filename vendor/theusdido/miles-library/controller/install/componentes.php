@@ -1,5 +1,6 @@
 <?php
-	$package				= tdc::o('package',array( tdc::r('package') . '-' . tdc::r('component') ));
+	$package_reference		= tdc::r('package') . '-' . tdc::r('component');
+	$package				= tdc::o('package',array($package_reference));
 	$listComponents 		= tdc::o('accordion');
 	$listComponents->class	= 'accordion-install';
 
@@ -35,6 +36,21 @@
 
 			$table->addBodyTR($c->getTitle() , $checkboxRecord , $checkboxInstall);
 		}
+
 		$listComponents->addItem($m->getTitle(),$table);
 	}
+
+
+	$btn_menu				= Button::icon('fas fa-list');
+	$btn_menu->class		= 'generate-menu';
+	$btn_menu->data_module	= $package_reference;
+
+	$btn_all			= Button::icon('fa-solid fa-asterisk');
+
+	$panel_menu 		= tdc::o('panel');
+	$panel_menu->class 	= 'panel-menu-accordion-component';
+	$panel_menu->addBody($btn_all);
+	$panel_menu->addBody($btn_menu);
+
+	$panel_menu->mostrar();
 	$listComponents->mostrar();

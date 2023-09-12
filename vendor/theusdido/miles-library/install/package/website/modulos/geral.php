@@ -1,16 +1,29 @@
 <?php
   // Geral
   $modules = array(
-    array( "name" => "default", "title" => "Default", "components" => 
+    array(
+      "name" => "default", "title" => "Default", "components" => 
       array(
-        array('name' => 'configuracoes'           ,'title' => 'Configurações')
+        array(
+          'name' => 'configuracoes'           ,'title' => 'Configurações'
+        )
       )
     ),
-    array( "name" => "menu", "title" => "Menu", "components" => 
+    array(
+      "name" => "menu", "title" => "Menu", "components" => 
       array(
-        array('name' => 'menutopo'                ,'title' => 'Menu Topo'),
-        array('name' => 'menuprincipal'           ,'title' => 'Menu Principal'),
-        array('name' => 'menurodape'              ,'title' => 'Menu Rodapé')
+        array(
+          'name' => 'menutopo',
+          'title' => 'Menu Topo'
+        ),
+        array(
+          'name' => 'menuprincipal',
+          'title' => 'Menu Principal'
+        ),
+        array(
+          'name' => 'menurodape',
+          'title' => 'Menu Rodapé'
+        )
       )
     ),
     array( "name" => "pagina", "title" => "Página", "components" => 
@@ -32,13 +45,21 @@
         array('name' => 'googlemaps'              ,'title' => 'Google Maps')
       )
   ),
-  array( "name" => "sessao", "title" => "Sessão ( Section )", "components" => 
+  array(
+    "name" => "sessao", "title" => "Sessão ( Section )", "components" => 
       array(
         array('name' => 'newsletter'              ,'title' => 'Newsletter'),
         array('name' => 'rodape'                  ,'title' => 'Rodapé'),
         array('name' => 'redesocial'              ,'title' => 'Rede Social'),
 		    array('name' => 'redessociais'              ,'title' => 'Redes Sociais'),
         array('name' => 'whatsapp'              ,'title' => 'Whatsapp')	
+      )
+  ),
+  array(
+    "name" => "institucional", "title" => "Institucional", "components" =>
+      array(
+        array('name' => 'cargo'              ,'title' => 'Cargo'),
+        array('name' => 'equipe'                  ,'title' => 'Equipe')	
       )
     )
   );

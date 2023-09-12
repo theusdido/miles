@@ -165,7 +165,7 @@ tdFormulario.prototype.novo = function(){
 			if (td_atributo[atributoID].chaveestrangeira != "" && (_tipo_html == "4" || _tipo_html == "5")){
 				// Só carrega as listas se for acessado o botão novo do formulário principal
 				if (instancia.is_principal){
-					instancia.carregarListas();
+					//instancia.carregarListas();
 					//carregarListas(entidadeAttr,atributoID,contextoAdd,valor);
 				}
 			}
@@ -235,7 +235,8 @@ tdFormulario.prototype.novo = function(){
 	}
 
 	if (this.is_principal){
-		this.setChecklist();	
+		this.carregarListas();
+		this.setChecklist();
 	}
 
 	$(contextoAdd).show();
@@ -551,12 +552,19 @@ tdFormulario.prototype.setBotoes = function(){
 
 	if (this.btn_voltar == null){
 		this.btn_voltar	= $(".b-voltar"	, this.getContexto()).first();
-		this.btn_voltar.click(this,function(handler){
-			if (typeof beforeBack === "function") beforeBack(this);
-			handler.data.voltar();
-			if (typeof afterBack === "function") afterBack(this);
-		});		
 	}
+
+	// this.btn_voltar.on('click',this,function(handler){
+	// 	if (typeof beforeBack === "function") beforeBack(this);
+	// 	handler.data.voltar();
+	// 	if (typeof afterBack === "function") afterBack(this);
+	// });
+	
+	this.btn_voltar.click(this,function(handler){
+		if (typeof beforeBack === "function") beforeBack(this);
+		handler.data.voltar();
+		if (typeof afterBack === "function") afterBack(this);
+	});
 
 	if (this.btn_salvar == null){
 		this.btn_salvar	= $(".b-salvar"	, this.getContexto()).first();
@@ -1022,6 +1030,7 @@ tdFormulario.prototype.editar = function(){
 						if (pai == entidade && (tipo == 3 || tipo == 8)){
 							for(d in dadosRetorno){
 								if (td_atributo[td_entidade[entidade].atributogeneralizacao].nome == dadosRetorno[d].atributo){
+									/*
 									if (dadosRetorno[d].valor  == td_relacionamento[rel].filho){
 
 										$("#select-generalizacao-unica")[0].sumo.selectItem(td_relacionamento[rel].filho);
@@ -1030,6 +1039,7 @@ tdFormulario.prototype.editar = function(){
 										$(".generalizacaoABA." + td_entidade[td_relacionamento[rel].filho].nome).show();
 										$(".div-relacionamento-generalizacao#drv-" + td_entidade[td_relacionamento[rel].filho].nome,this.getContexto()).show();
 									}
+									*/
 								}
 							}
 						}
@@ -1082,7 +1092,6 @@ tdFormulario.prototype.editar = function(){
 
 				if (this.is_principal){
 					this.exibirDadosEdicao();
-					//this.setBotoes();
 					this.liberaBotaoSalvar();
 				}
 			},this.instancia);
@@ -1220,10 +1229,12 @@ tdFormulario.prototype.setDados = function(dados){
 
 tdFormulario.prototype.setGradeRelacionamento = function(index_form,id,dados){
 	let linha = [];
-	dados.forEach(function(d){
-		linha[d.atributo] = d.valor;
-	});
-	formulario[index_form].gradesdados.addLinha(id,linha);
+	if (dados != ''){
+		dados.forEach(function(d){
+			linha[d.atributo] = d.valor;
+		});
+		formulario[index_form].gradesdados.addLinha(id,linha);
+	}
 }
 
 tdFormulario.prototype.buscarFiltro = function(termo,entidadeNome,nome,modalName,entidadeContexto){
@@ -1514,40 +1525,27 @@ tdFormulario.prototype.setRelatorio = function(id_relatorio){
 					}
 				}
 			});
-			$.ajax({
-				url:config.urlrelatorio,
-				data:{
-					entidade:entidadeID,
-					filtros:filtros
-				},
-				complete:function(){
-					
-					let parametros = "&entidade=" + entidadeID + "&currentproject=" + session.projeto
-					+ "&filtros=" + filtros
-					+ "&campos=" + campos
-					+ "&relatorio_id=" + _relatorio.id;
-
-					if (urlpersonalizada == ""){
-						window.open(config.urlrelatorio +  parametros,"_blank");
-					}else{
-						window.open(urlpersonalizada + (urlpersonalizada.indexOf("?") >= 0?"&":"?") + "filtros=" + filtros,"_blank");
-					}
-				}
-			});				
-		}else{
-			$.ajax({
-				url:config.urlrelatorio,
-				data:{
-					entidade:entidadeID
-				},
-				complete:function(){
-					var parametros = "&entidade=" + entidadeID + "&currentproject=" + session.projeto
-					+ "&campos=" + campos
-					+ "&relatorio_id=" + _relatorio.id;
-					window.open(config.urlrelatorio +  parametros,"_blank");
-				}
-			});
 		}
+		$.ajax({
+			url:config.urlrelatorio,
+			data:{
+				entidade:entidadeID,
+				filtros:filtros
+			},
+			complete:function(){
+				
+				let parametros = "&entidade=" + entidadeID + "&currentproject=" + session.projeto
+				+ "&filtros=" + filtros
+				+ "&campos=" + campos
+				+ "&relatorio_id=" + _relatorio.id;
+
+				if (urlpersonalizada == ""){
+					window.open(config.urlrelatorio +  parametros,"_blank");
+				}else{
+					window.open(urlpersonalizada + (urlpersonalizada.indexOf("?") >= 0?"&":"?") + "filtros=" + filtros,"_blank");
+				}
+			}
+		});
 	});
 	let i = 1;
 	for (f in _relatorio.filtros){
@@ -1569,7 +1567,8 @@ tdFormulario.prototype.setRelatorio = function(id_relatorio){
 
 tdFormulario.prototype.carregarListas = function(){
 	let contexto = this.getContexto();
-	$(".tdform.form_campos .form-control",contexto).each(function(){
+	//console.log($(".tdform.form_campos select.form-control",contexto).length);
+	$(".tdform.form_campos select.form-control",contexto).each(function(){
 		if ($(this).prop("tagName") == "SELECT"){
 			$(this).removeAttr("required");
 			if (!$(this).hasClass('atributodependenciafilho')){
@@ -1913,12 +1912,12 @@ tdFormulario.prototype.camposUnicos = function(){
 				});
 			}
 		}
-	});	
+	});
 }
 
 tdFormulario.prototype.setChecklist = function(){
-	this.checklists					= [];
-	this._dados_checklist 			= [];
+	this.checklists										= [];
+	this._dados_checklist 								= [];
 	this.entidade.relacionamentos.forEach(function(relacionamento){
 		if (relacionamento.tipo == 11){
 			let _list 				= new Checklist(relacionamento);

@@ -35,9 +35,9 @@
             if ($query->rowCount() > 0){
                 foreach ($query->fetchAll() as $linha){
                     $id         		= $linha["id"];
+					$entidade_id		= $linha["entidade"];
                     $descricao  		= tdc::utf8($linha["descricao"]);
                     $query      		= $conn->query("SELECT descricao FROM td_entidade WHERE id = $entidade_id;")->fetch();
-                    $entidade_id		= $linha["entidade"];
 					$entidade_descricao	= tdc::utf8($query["descricao"]);
                     echo "
                         <tr id='linha-registro-consulta-{$id}'>

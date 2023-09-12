@@ -25,19 +25,19 @@
                             <td>{$nome}</td>
 
                             <td align='center'>
-                                <button type='button' class='btn btn-primary' onclick=editarCadastro({$id},\"$descricao\");>
+                                <button type='button' class='btn btn-primary' onclick=editarCadastro({$id});>
                                     <span class='fas fa-pencil-alt' aria-hidden='true'></span>
                                 </button>	
                             </td>
 
                             <td align='center'>
-                                <button type='button' class='btn btn-warning' onclick='listarCampos({$id},\"$descricao\");'>
+                                <button type='button' class='btn btn-warning' onclick='listarCampos({$id});'>
                                     <span class='fas fa-list-alt' aria-hidden='true'></span>
                                 </button>	
                             </td>
                             
                             <td align='center'>
-                                <button type='button' class='btn btn-default' onclick='goAbasCadastro({$id},\"$descricao\");'>
+                                <button type='button' class='btn btn-default' onclick='goAbasCadastro({$id});'>
                                     <span class='fas fa-list-alt' aria-hidden='true'></span>
                                 </button>	
                             </td>
@@ -118,8 +118,35 @@
 
                     // ID Última entidade
                     $linha_ultimo 	= $conn->query("SELECT MAX(id)+1 id FROM ".ENTIDADE)->fetchAll();
-                    $prox 			= $linha_ultimo[0]['id'];
-                    $sql 			= "INSERT INTO ".ENTIDADE." (id,nome,descricao,exibirmenuadministracao,exibircabecalho,ncolunas,atributogeneralizacao,exibirlegenda,registrounico,carregarlibjavascript,tipoaba,entidadeauxiliar) VALUES ({$prox},'{$nome}','{$descricao}',{$exibirmenuadministracao},{$exibircabecalho},{$ncolunas},{$atributogeneralizacao},{$exibirlegenda},{$registrounico},{$carregarlibjavascript},'{$tipoaba}',{$entidadeauxiliar});";
+                    $id 			= $linha_ultimo[0]['id'];
+                    $sql 			= "
+                        INSERT INTO ".ENTIDADE." (
+                            id,
+                            nome,
+                            descricao,
+                            exibirmenuadministracao,
+                            exibircabecalho,
+                            ncolunas,
+                            atributogeneralizacao,
+                            exibirlegenda,
+                            registrounico,
+                            carregarlibjavascript,
+                            tipoaba,
+                            entidadeauxiliar
+                        ) VALUES (
+                            {$id},
+                            '{$nome}',
+                            '{$descricao}',
+                            {$exibirmenuadministracao},
+                            {$exibircabecalho},
+                            {$ncolunas},
+                            {$atributogeneralizacao},
+                            {$exibirlegenda},
+                            {$registrounico},
+                            {$carregarlibjavascript},
+                            '{$tipoaba}',
+                            {$entidadeauxiliar}
+                        );";
                     $query 			= $conn->query($sql);
 
                     if($query){
@@ -160,6 +187,8 @@
                 $sql 	= "UPDATE ".ENTIDADE." SET nome = '{$nome}' , descricao = '{$descricao}' , ncolunas = {$ncolunas} , exibirmenuadministracao = {$exibirmenuadministracao} , exibircabecalho = {$exibircabecalho} , campodescchave = {$campodescchave} , atributogeneralizacao = {$atributogeneralizacao} , exibirlegenda = {$exibirlegenda} , registrounico = {$registrounico} , carregarlibjavascript = {$carregarlibjavascript}, tipoaba = '{$tipoaba}' , entidadeauxiliar = {$entidadeauxiliar} WHERE id = ".$id.";";
                 $query 	= $conn->query($sql);
             }
+
+            tdc::wj(['id' => $id]);
         break;
 
         case 'listar-campos':

@@ -523,7 +523,8 @@ function movimentacao(entidade,id,movimentacao){
 	setCookie("entidademovdados",entidade,"");
 	setCookie("idmovdados",id,"");
 	setCookie("movimentacaoselecionada",movimentacao,"");
-	$("#modal-movimentacao .modal-body p").load(session.folderprojectfiles + "files/movimentacao/"+movimentacao+"/"+td_entidade[entidade].nomecompleto+".html");
+	let classe = td_movimentacao[movimentacao].classe;
+	$("#modal-movimentacao .modal-body p").load(session.folderprojectfiles + "files/movimentacao/"+movimentacao+"/"+td_entidade[classe].nomecompleto+".html");
 	$("#modal-movimentacao").modal("show");
 }
 function limpaArraysFormularioDados(){
@@ -667,14 +668,16 @@ function getRelacionamento(entidadepai,entidadefilho){
 	}
 	return retorno;
 }
-function getURLProject(parametro = null){
+function getURLProject(parametro = ''){
 	let nocache = new Date().getTime();
-	if (parametro.indexOf("?") < 0 && typeof parametro == "string"){
-		if (parametro.indexOf(".html") > -1 || parametro.indexOf(".htm") > -1){
-			//parametro = parametro + "?nocahe=" + nocache
+	if (parametro != ''){
+		if (parametro.indexOf("?") < 0 && typeof parametro == "string"){
+			if (parametro.indexOf(".html") > -1 || parametro.indexOf(".htm") > -1){
+				//parametro = parametro + "?nocahe=" + nocache
+			}
+			return parametro;
 		}
-		return parametro;
-	}
+	}	
 	var urlproject 		= session.urlmiles.replace("index.php","") + "index.php";
 	var parmsProject 	= [];
 	parmsProject.push(getParamsOBJ("currentproject",session.projeto));
@@ -697,7 +700,7 @@ function getURLProject(parametro = null){
 	var url = urlproject + params;
 	return url;
 }
-function getURLParamsArray(url){
+function getURLParamsArray(url = location.href){
 	var arrayParams = [];
 	paramsURL 			= url.split("?");
 	if (paramsURL[1] != undefined){

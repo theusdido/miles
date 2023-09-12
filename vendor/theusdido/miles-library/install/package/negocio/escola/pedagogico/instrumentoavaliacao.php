@@ -22,7 +22,7 @@
 	);
 
 	// Criando Atributos
-	$descricao			= criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar",200,0,3);
+	$descricao			= criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar",200,0,3,1);
 
 	// Seta o campo descrição
 	Entity::setDescriptionField($conn,$entidadeID,$descricao,true);

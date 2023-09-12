@@ -20,8 +20,9 @@
 	);
 
 	// Criando Atributos
+	$descricao 		= criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar",200,0,3,1);
 	$despesa 		= criarAtributo($conn,$entidadeID,"despesa","Despesa","int",0,1,22,1,installDependencia("erp_financeiro_despesa",'package/sistema/erp/financeiro/despesa'),0,"",0,0);
-	$fornecedor 	= criarAtributo($conn,$entidadeID,"fornecedor","Fornecedor","int",0,1,22,1,installDependencia("erp_geral_fornecedor",'package/sistema/erp/geral/fornecedor'));
+	$fornecedor 	= criarAtributo($conn,$entidadeID,"fornecedor","Fornecedor","int",0,1,22,0,installDependencia("erp_geral_fornecedor",'package/sistema/erp/produto/fornecedor'),0,"",0,0);
 	$elementocusto 	= criarAtributo($conn,$entidadeID,"elementocusto","Elemento de Custo","int",0,1,4,1,installDependencia("erp_contabil_elementocusto",'package/sistema/erp/contabil/elementocusto'),0,"",0,0);
 	$documento 		= criarAtributo($conn,$entidadeID,"documento","Documento","varchar","50",1,3,1,0,0,"",0,0);
 	$valor 			= criarAtributo($conn,$entidadeID,"valor","Valor","float",0,1,13,1,0,0,"",0,0);

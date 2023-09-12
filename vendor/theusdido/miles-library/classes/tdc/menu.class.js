@@ -111,6 +111,10 @@ Menu.prototype.carregarpagina = function(path,target,dados_menu){
 			console.warn('Dados do menu não foram carregados.');
 			console.log('## Tente recarregar a página com CTRL + F5. ##');
 		}
+
+		// Zera a variável formulário para garantir o escopo
+		formulario = [];
+
 		carregarScriptCRUD(dados_menu.tipomenu,dados_menu.entidade);
 		clearMenuLeft();
 		if (dados_menu.filhos.length > 0){			

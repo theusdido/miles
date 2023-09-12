@@ -8,6 +8,8 @@ $('#criarprojeto').attr('checked',false);
 $('#criarauth').attr('checked',false);
 $('#entidadeauxiliar').attr('checked',false);
 
+var _registro_entidade = {};
+
 $(document).ready(function(){
     $('#campodescchave,#atributogeneralizacao').load(session.urlmiles + '?controller=mdm/cadastro&_entidade=' + _entidade + '&op=listar-atributos');
     if (_entidade != 0){
@@ -60,37 +62,44 @@ function alterarIdEntidade()
     });
 }
 
-$('#btn-salvar-cadastro').click(function(){
+$('#btn-salvar-cadastro').click(function(){ 
+    _registro_entidade = {
+        // Campos Inputs
+        nome:$('#nome').val(),
+        descricao:$('#descricao').val(),
+        ncolunas:$('#ncolunas').val(),
+        campodescchave:$('#campodescchave').val(),
+        atributogeneralizacao:$('#atributogeneralizacao').val(),
+
+        // Campos Checkbox
+        exibirmenuadministracao:$('#exibirmenuadministracao').prop('checked'),
+        exibirlegenda:$('#exibirlegenda').prop('checked'),
+        registrounico:$('#registrounico').prop('checked'),
+        carregarlibjavascript:$('#carregarlibjavascript').prop('checked'),
+        exibircabecalho:$('#exibircabecalho').prop('checked'),
+        entidadeauxiliar:$('#entidadeauxiliar').prop('checked'),
+        criarprojeto:$('#criarprojeto').prop('checked'),
+        criarempresa:$('#criarempresa').prop('checked'),
+        criarauth:$('#criarauth').prop('checked'),
+        tipoaba:$('input[type=radio][name=tipoaba]:checked').val()
+    }
+
+    let _opt = {
+        // Parametros
+        controller:'mdm/cadastro',
+        entidade:_entidade,
+        op:'salvar',
+    }
     $.ajax({
         url:session.urlmiles,
         type:"POST",
         dataType:'json',
         data:{
-            // Parametros
-            controller:'mdm/cadastro',
-            entidade:_entidade,
-            op:'salvar',
-
-            // Campos Inputs
-            nome:$('#nome').val(),
-            descricao:$('#descricao').val(),
-            ncolunas:$('#ncolunas').val(),
-            campodescchave:$('#campodescchave').val(),
-            atributogeneralizacao:$('#atributogeneralizacao').val(),
-
-            // Campos Checkbox
-            exibirmenuadministracao:$('#exibirmenuadministracao').prop('checked'),
-            exibirlegenda:$('#exibirlegenda').prop('checked'),
-            registrounico:$('#registrounico').prop('checked'),
-            carregarlibjavascript:$('#carregarlibjavascript').prop('checked'),
-            exibircabecalho:$('#exibircabecalho').prop('checked'),
-            entidadeauxiliar:$('#entidadeauxiliar').prop('checked'),
-            criarprojeto:$('#criarprojeto').prop('checked'),
-            criarempresa:$('#criarempresa').prop('checked'),
-            criarauth:$('#criarauth').prop('checked'),
-            tipoaba:$('#tipoaba').prop('checked'),
+            ..._opt,..._registro_entidade
         },
         complete:function(_res){
+            let _ret        = _res.responseJSON;
+            setEntidade(_ret.id);
             mdmToastMessage("Salvo com Sucesso");
         }
     });
@@ -107,7 +116,7 @@ function load(){
         },
         complete:function(_res){
             let _data       = _res.responseJSON;
-            _entidade_obj   = _data;
+            _entidade_obj   = _data;            
             
             $('#id').val(_data.id);
             $('#nome').val(_data.nome);
@@ -126,4 +135,11 @@ function load(){
             setTipoAba(_data.tipoaba);
         }
     });
+}
+
+function setEntidade(_id){
+    td_entidade[_id] =  {
+        ...{id:_id},
+        ..._registro_entidade
+    }
 }

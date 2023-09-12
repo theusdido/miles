@@ -1,15 +1,14 @@
 <?php
-	
 	// Setando variáveis
-	$entidadeNome 		= "erp_escola_metodologia";
-	$entidadeDescricao 	= "Metodologia";
+	$entidadeNome       = "erp_escola_eixo";
+	$entidadeDescricao  = "Eixo";
 
 	// Criando Entidade
 	$entidadeID = criarEntidade(
 		$conn,
 		$entidadeNome,
 		$entidadeDescricao,
-		$ncolunas=3,
+		$ncolunas=1,
 		$exibirmenuadministracao = 0,
 		$exibircabecalho = 1,
 		$campodescchave = 0,
@@ -20,13 +19,13 @@
 		$criarauth = 0,
 		$registrounico = 0
 	);
-
+	
 	// Criando Atributos
-	$descricao			= criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar",500,0,3,1,0,0,"");
-
+	$descricao 	= criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar","200",0,3,1,0,0,"");
+	
 	// Seta o campo descrição
 	Entity::setDescriptionField($conn,$entidadeID,$descricao,true);
-	
+
 	// Criando Acesso
 	$menu = addMenu($conn,'Escola','#','',0,0,'escola');
 

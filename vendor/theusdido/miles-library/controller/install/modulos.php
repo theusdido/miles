@@ -44,6 +44,13 @@
             include PATH_PACKAGE . $package . '/modulos/' . $module .'.php';
             echo json_encode($modules);
         break;
-        default:            
-            include PATH_MILES_LIBRARY . 'install/configuracaopacotes.php';        
+        case 'generate-menu':
+            $menu = addMenu($conn,tdc::r('module_name'),'#','',0,0,tdc::r('module'));
+
+            foreach(tdc::r('components') as $c){
+                addMenu($conn,$c['title'],'#','',$menu,1,tdc::r('module') . '-' . $c['name'],0,'personalizado');
+            }
+        break;
+        default:
+            include PATH_MILES_LIBRARY . 'install/configuracaopacotes.php';
     }

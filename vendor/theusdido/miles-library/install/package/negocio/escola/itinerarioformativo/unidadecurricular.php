@@ -34,3 +34,6 @@
 
 	// Adicionando Menu
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu,1,'escola-' . $entidadeNome,$entidadeID,'cadastro');
+
+	// Referencia - Relacionamento
+	criarRelacionamento($conn,6,$entidadeID,installDependencia("erp_escola_referencia",'package/negocio/escola/itinerarioformativo/referencia'),"Referências");	

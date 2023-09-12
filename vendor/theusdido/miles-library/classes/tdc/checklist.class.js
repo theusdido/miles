@@ -3,8 +3,9 @@ class Checklist {
     {
 
         this.list;
-        this.selecionados = [];
+        this.selecionados   = [];
         this.data;
+        this.relacionamento = _relacionamento;
         this.entidade_pai   = _relacionamento.pai;
         this.entidade_filho = _relacionamento.filho;
         this.reg_pai        = 0;
@@ -14,13 +15,15 @@ class Checklist {
         this.createList();
     }
 
-    createList() {
-        this.list = $('<ul class="list-group td-checklist">');
+    createList() {        
+        this.list = $('<ul class="list-group td-checklist" id="'+getHierarquiaRel(this.relacionamento)+'">');
         this.nenhumRegistro();
     }
-    show() {        
+    show() {
         this.load();
-        $('#crud-contexto-checklist-'+this.contexto+' '+this.getModalName()+' .modal-body').append(this.list);
+        let modal_body = $('#crud-contexto-checklist-'+this.contexto+' '+this.getModalName()+' .modal-body');
+        modal_body.html('');
+        modal_body.append(this.list);
     }
     load(){
         $.ajax({
@@ -39,6 +42,7 @@ class Checklist {
     }
 
     setItens(_data){
+        
         if (_data.length < 1){
             this.nenhumRegistro();
             return;

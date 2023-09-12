@@ -23,12 +23,12 @@
 			include PATH_MILES_LIBRARY . 'controller/install/criarestruturapastas.php';
 			include PATH_MILES_LIBRARY . 'controller/install/criarhtaccess.php';
 			include PATH_MILES_LIBRARY . 'controller/install/criarmysqlini.php';
-			include PATH_MILES_LIBRARY . 'controller/install/criarcurrentconfig.php';			
+			include PATH_MILES_LIBRARY . 'controller/install/criarcurrentconfig.php';
 			include PATH_MILES_LIBRARY . 'controller/install/criarmilesjson.php';
 
 			// Cria o MDM File JavaScript Compile
 			include PATH_MDM_CONTROLLER . 'javascriptfile.php';
-			
+
             echo 1;
         break;
         case 'instrucao':

@@ -1,13 +1,18 @@
+<div class="btn-group-mdm">
+    <div class="btn-group-left">
+        <button class="btn btn-warning" onclick="voltarMenuTopoListar()">
+            <i class="fa fa-arrow-left"></i>
+            Voltar
+        </button>
+    </div>
+    <div class="btn-group-right">
+        <button type="button" class="btn btn-primary" name="salvar" id="btn-salvar">Salvar</button>        
+    </div>
+</div>
+<div id="retorno" class="alert"></div>
 <form>
     <fieldset>
-        <legend>Menu</legend>
         <input type="hidden" id="id" name="id" />
-        <div style="display:flex;justify-content: end;">
-            <button class="btn btn-warning" style="width:100px;" onclick="voltarMenuTopoListar()">
-                <i class="fa fa-arrow-left"></i>
-                Voltar
-            </button>
-        </div>
         <div class="form-group">
             <label for="tipomenu">Tipo</label>
             <select id="tipomenu" name="tipomenu" class="form-control">
@@ -63,7 +68,5 @@
             <label for="pai">Pai</label>
             <select id="pai" name="pai" class="form-control"></select>
         </div>
-        <button type="button" class="btn btn-primary" name="salvar" id="btn-salvar">Salvar</button>
-        <div id="retorno" class="alert"></div>
     </fieldset>    
 </form>

@@ -31,7 +31,6 @@
 			$filtro_atributo->addFiltro('entidade','=',(int)$entidade->id);
 			$filtro_atributo->setPropriedade('order','ordem ASC');
 
-			// 
 			$filtro_relacionamento	= tdc::f();
 			$filtro_relacionamento->addFiltro("pai","=",$entidade->id);
 			$_entidadeauxiliar = $entidade->entidadeauxiliar == 1 ? 'true' : 'false';
