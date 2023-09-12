@@ -203,7 +203,7 @@ function unloader(){
 		$(arguments[0]).hide();
 	}	
 }
-function retornaFiltroDescricao(entidade,id){
+function retornaFiltroDescricao(entidade,atributo,id){
 	var r = "";	
 	$.ajax({
 		type:"GET",
@@ -833,11 +833,12 @@ function carregarListas(entidade,atributo,contextoAdd,valor){ // Argumento 4 é 
 					}
 					$(".form-control[id=" + td_atributo[atributo].nome+"][data-entidade="+td_entidade[td_atributo[atributo].entidade].nomecompleto+"]",contextoAdd).html(htmlretorno);
 					$(".form-control[id=" + td_atributo[atributo].nome +"-old][data-entidade="+td_entidade[td_atributo[atributo].entidade].nomecompleto+"]",contextoAdd).html(htmlretorno);
-					if (valor != ""){
+					if (valor == ''){
+						$(".form-control[id=" + td_atributo[atributo].nome +"] option:first",contextoAdd).attr("selected",true);
+					}else{
 						$(".form-control[id=" + td_atributo[atributo].nome+"][data-entidade="+td_entidade[td_atributo[atributo].entidade].nomecompleto+"]",contextoAdd).val(valor);
 						$(".form-control[id=" + td_atributo[atributo].nome+"-old][data-entidade="+td_entidade[td_atributo[atributo].entidade].nomecompleto+"]",contextoAdd).val(valor);
-					}
-					$(".form-control[id=" + td_atributo[atributo].nome +"] option:first",contextoAdd).attr("selected",true);
+					}					
 				},
 				error:function(ret){
 					console.log("ERRO ao carregar lista => " + ret.responseText);

@@ -782,7 +782,7 @@ tdFormulario.prototype.salvar = function(){
 
 
 		this.checklists.forEach(
-			(_checklist) => {					
+			(_checklist) => {	
 				_checklist.getSelectedData().forEach(
 					(_item) => {
 						this._dados_checklist.push({
@@ -880,8 +880,14 @@ tdFormulario.prototype.salvar = function(){
 
 				// Retorna para o formulário que chamou o adição de registro
 				if (this.instancia.funcionalidade == 'add-emexecucao'){
-					parent.$(".modal[id='modal-add-emexecucao'] iframe[fk_entidade='"+this.instancia.entidade.nome+"']").attr("em_execucao_id",this.instancia.registro_id);
-					parent.$(".modal[id='modal-add-emexecucao']").modal('hide');
+
+					parent
+					.$(".modal[id='modal-add-emexecucao'] iframe[fk_entidade='"+this.instancia.entidade.nome+"']")
+					.attr("em_execucao_id",this.instancia.registro_id);
+
+					parent
+					.$(".modal[id='modal-add-emexecucao']")
+					.modal('hide');
 				}
 			},
 			error:function(ret){
@@ -1262,7 +1268,9 @@ tdFormulario.prototype.buscarFiltro = function(termo,entidadeNome,nome,modalName
 				$('#' + nome + '[data-entidade="'+entidadeContexto+'"]').val(termo);
 				this.instancia.habilitafiltro(nome,"",true,entidadeContexto);
 			}
-			$('#' + modalName).modal('hide');
+			if (modalName != ''){
+				$('#' + modalName).modal('hide');
+			}
 		},
 		error:function(ret){
 			console.log("ERRO ao buscar filtro => " + ret.responseText);
@@ -1340,15 +1348,23 @@ tdFormulario.prototype.emExecucao = function(){
 		let modal 		= $("#modal-add-emexecucao",contextoAdd);
 		let campo 		= $(this).parents(".input-group").first().find(".form-control");
 		let atributo 	= campo.attr("atributo");
+		let atributo_n	= td_atributo[atributo].nome;
 		let fk			= td_atributo[atributo].chaveestrangeira;
 		let entidade	= campo.data("entidade");
 		let iframe		= $('#modal-add-emexecucao iframe[data-contexto="'+contextoAdd+'"]');
+		let entidade_fk	= td_entidade[fk];
 		iframe.attr("em_execucao_id",0);
-		iframe.attr("fk_entidade",td_entidade[fk].nome);
+		iframe.attr("fk_entidade",entidade_fk.nome);
 		iframe.attr("src",session.urlmiles + '?controller=htmlpage&entidade='+fk+'&op=cadastro');		
-
+		
 		modal.on('hide.bs.modal', function (e) {
-			//carregarListas(entidade,atributo,contextoAdd,iframe[0].attributes.em_execucao_id.value);
+			let valor_id = iframe[0].attributes.em_execucao_id.value;
+			if (campo.prop("tagName") == "SELECT"){
+				carregarListas(entidade,atributo,contextoAdd,valor_id);
+			}else{
+				debugger;				
+				instancia.buscarFiltro(valor_id,entidade_fk.nome,atributo_n,'',contextoAdd);
+			}
 		});
 		modal.modal('show');
 	});
