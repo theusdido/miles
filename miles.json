@@ -5,7 +5,7 @@
         "id":"miles",
         "name":"Miles",
         "path":"miles/",
-        "url":"localhost/"
+        "url":"ws.teia.tec.br/financeiro/"
     },
     "currentproject": 1,
     "folder":"miles/",
