@@ -1243,7 +1243,11 @@ tdFormulario.prototype.setGradeRelacionamento = function(index_form,id,dados){
 	}
 }
 
-tdFormulario.prototype.buscarFiltro = function(termo,entidadeNome,nome,modalName,entidadeContexto){
+tdFormulario.prototype.buscarFiltro = function(termo,entidadeNome,nome,modalName = '',entidadeContexto = ''){
+
+	if (entidadeContexto == ''){
+		entidadeContexto = entidadeNome;
+	}
 	if (termo == "" || termo == undefined){
 		$('#descricao-' + nome + '[data-entidade="'+entidadeContexto+'"]').val("");
 		this.habilitafiltro(nome,"",false);
@@ -1343,7 +1347,7 @@ tdFormulario.prototype.habilitafiltro = function(atributo,contexto,habilita,enti
 tdFormulario.prototype.emExecucao = function(){
 	let instancia = this;
 	$('.btn-add-emexecucao',this.getContexto()).click(function(){
-
+		
 		let contextoAdd	= instancia.getContexto();
 		let modal 		= $("#modal-add-emexecucao",contextoAdd);
 		let campo 		= $(this).parents(".input-group").first().find(".form-control");
@@ -1362,8 +1366,7 @@ tdFormulario.prototype.emExecucao = function(){
 			if (campo.prop("tagName") == "SELECT"){
 				carregarListas(entidade,atributo,contextoAdd,valor_id);
 			}else{
-				debugger;				
-				instancia.buscarFiltro(valor_id,entidade_fk.nome,atributo_n,'',contextoAdd);
+				instancia.buscarFiltro(valor_id,entidade_fk.nome,atributo_n,'',entidade);
 			}
 		});
 		modal.modal('show');
