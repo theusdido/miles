@@ -1,7 +1,7 @@
 <?php
 	// Setando variáveis
-	$entidadeNome = "erp_financeiro_banco";
-	$entidadeDescricao = "Banco";
+	$entidadeNome 		= "erp_financeiro_banco";
+	$entidadeDescricao 	= "Banco";
 
 	// Criando Entidade
 	$entidadeID = criarEntidade(

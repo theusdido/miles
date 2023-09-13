@@ -29,7 +29,7 @@
 	Entity::setDescriptionField($conn,$entidadeID,$descricao,true);
 
 	// Criando Acesso
-	$menu_webiste = addMenu($conn,'Financeiro','#','',0,0,'financeiro-banco');
+	$menu_webiste = addMenu($conn,'Financeiro','#','',0,0,'financeiro');
 
 	// Adicionando Menu
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'','financeiro-banco',8,'financeiro-' . $entidadeNome,$entidadeID, 'cadastro');

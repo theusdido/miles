@@ -28,7 +28,7 @@
 	$valor 				= criarAtributo($conn,$entidadeID,"valor","Valor","float",0,1,13,0,0,0,"",0,0);
 
 	// Criando Acesso
-	#$menu_webiste = addMenu($conn,'Financeiro','#','',0,0,'financeiro');
+	$menu_webiste = addMenu($conn,'Financeiro','#','',0,0,'financeiro');
 
 	// Adicionando Menu
-	#addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,8,'financeiro-' . $entidadeNome,$entidadeID, 'cadastro');
+	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,8,'financeiro-' . $entidadeNome,$entidadeID, 'cadastro');

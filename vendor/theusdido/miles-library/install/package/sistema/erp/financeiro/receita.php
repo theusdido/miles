@@ -30,8 +30,5 @@
 	// Criando Acesso
 	$menu_webiste = addMenu($conn,'Financeiro','#','',0,0,'financeiro');
 
-	// Criando Acesso
-	$menu_webiste = addMenu($conn,'Financeiro','#','',0,0,'financeiro');
-
 	// Adicionando Menu
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,8,'financeiro-' . $entidadeNome,$entidadeID, 'cadastro');
