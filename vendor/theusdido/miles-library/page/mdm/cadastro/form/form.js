@@ -62,7 +62,7 @@ function alterarIdEntidade()
     });
 }
 
-$('#btn-salvar-cadastro').click(function(){ 
+$('#btn-salvar-cadastro').click(function(){    
     _registro_entidade = {
         // Campos Inputs
         nome:$('#nome').val(),
@@ -100,7 +100,18 @@ $('#btn-salvar-cadastro').click(function(){
         complete:function(_res){
             let _ret        = _res.responseJSON;
             setEntidade(_ret.id);
+            unLoaderSalvar();
             mdmToastMessage("Salvo com Sucesso");
+
+            let _gerarhtml = new gerarHTML();
+            _gerarhtml._entidade_id    = _entidade;
+            _gerarhtml._conceito       = 'cadastro';
+            _gerarhtml._conceito_id    = _entidade;
+            _gerarhtml.conceito();
+
+        },
+        beforeSend:function(){
+            addLoaderSalvar();
         }
     });
 });

@@ -40,11 +40,15 @@ $('#btn-salvar-consulta').click(function(){
         complete:function(_res){
             let _retorno = _res.responseJSON;
             if (_retorno.status == 'success'){
+                unLoaderSalvar();
                 mdmToastMessage("Salvo com Sucesso");
                 _consulta = _retorno.id;
                 load();
             }
-        }
+        },
+        beforeSend:function(){
+            addLoaderSalvar();
+        }        
     });
 });
 

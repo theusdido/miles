@@ -25,11 +25,15 @@ $('#btn-salvar-movimentacao').click(function(){
             $("#modalCadastroAlterar").modal('hide');
             let _retorno = _res.responseJSON;
             if (_retorno.status == 'success'){
+                unLoaderSalvar();
                 mdmToastMessage("Salvo com Sucesso");
                 _movimentacao = _retorno.id;
                 load();
             }            
-        }
+        },
+        beforeSend:function(){
+            addLoaderSalvar();
+        }        
     });
 });
 

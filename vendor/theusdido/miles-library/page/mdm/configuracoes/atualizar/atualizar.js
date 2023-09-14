@@ -45,7 +45,7 @@ function desenvolvimentoToProducao(){
         },
         complete:function(){
             $("#retorno-ajax-desenvolvimentoToProducao").html("");
-        }
+        }        
     });
 }
 $("#selecionarEntidadeEstrutura").click(function(e){

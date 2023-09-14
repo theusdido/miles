@@ -38,7 +38,11 @@ $('#btn-salvar-aba').click(function(){
             atributos:$('#atributos').val(),
        },
         complete:function(_res){
+            unLoaderSalvar();
             mdmToastMessage("Salvo com Sucesso");
+        },
+        beforeSend:function(){
+            addLoaderSalvar();
         }
     });  
 });

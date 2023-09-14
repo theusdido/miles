@@ -36,6 +36,7 @@ $("#btn-salvar").click(function(){
                 if ($("#tipomenu").val() == 'conceito'){
                     gerarConceito($("#entidade").val());
                 }
+                unLoaderSalvar();
                 $("#retorno").addClass("alert-success");
                 $("#retorno").html(retorno.msg);
             }
@@ -44,7 +45,10 @@ $("#btn-salvar").click(function(){
             console.log(res.responseText);
             $("#retorno").addClass("alert-danger");
             $("#retorno").html('Erro Interno.');
-        }
+        },
+        beforeSend:function(){
+            addLoaderSalvar();
+        }        
     });
 });
 

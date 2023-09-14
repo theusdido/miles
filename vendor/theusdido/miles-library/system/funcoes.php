@@ -465,6 +465,15 @@ function getUrl($url,$opcoes = null){
 function getHTMLTipoFormato($htmltipo,$valor,$entidade=0,$atributo=0,$id=0){
 	
 	switch((int)$htmltipo){
+		case 1:
+		case 2:
+		case 3:
+			if ($valor === null || $valor === false){
+				$retorno = '';
+			}else{
+				$retorno = $valor;
+			}
+		break;
 		case 4:
 			$retorno	= $valor;
 			$_atributo 	= tdc::a($atributo);
@@ -563,6 +572,13 @@ function getHTMLTipoFormato($htmltipo,$valor,$entidade=0,$atributo=0,$id=0){
 		break;
 		case 26:
 			$retorno = moneyToFloat($valor,true);
+		break;
+		case 29:
+			if ($valor === null || $valor === false){
+				$retorno = '';
+			}else{
+				$retorno = $valor;
+			}			
 		break;
 		default:
 			$retorno = $valor;

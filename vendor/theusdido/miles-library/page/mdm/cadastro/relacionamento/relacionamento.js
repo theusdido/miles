@@ -110,7 +110,6 @@ $('#btn-salvar-relacionamento').click(function(){
         type:"POST",
         dataType:'json',
         data:{
-
             // Parametros
             controller:'mdm/cadastro/relacionamento',
             entidade:_entidade,
@@ -122,10 +121,14 @@ $('#btn-salvar-relacionamento').click(function(){
             tipo:$('#tipo').val(),
             entidadefilho:$('#entidadefilho').val(),
             descricao:$('#descricao').val()
-       },
+        },
         complete:function(_res){
+            unLoaderSalvar();
             mdmToastMessage("Salvo com Sucesso");
-        }
+        },
+        beforeSend:function(){
+            addLoaderSalvar();
+        }        
     });  
 });
 

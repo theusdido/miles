@@ -90,18 +90,18 @@ if (tdClass::Criar("persistent",array(CONFIG,1))->contexto->tipogradedados == "t
 	$sql->addFiltro("exibirgradededados","=",1);
 }	
 $sql->setPropriedade("order","ordem ASC");
-$dataset = tdClass::Criar("repositorio",array(ATRIBUTO))->carregar($sql);
-$campos_nome = "id";
-$campos_descricao = "ID";
-$campos_tipo = "int";
-$campos_html = "3";
-$campos_fk = "0";
+$dataset 			= tdClass::Criar("repositorio",array(ATRIBUTO))->carregar($sql);
+$campos_nome 		= "id";
+$campos_descricao 	= "ID";
+$campos_tipo 		= "int";
+$campos_html 		= "3";
+$campos_fk 			= "0";
 foreach ($dataset as $dado){
-	$campos_nome .= "," . $dado->nome;
-	$campos_descricao .= "," . $dado->descricao;
-	$campos_tipo .= "," . $dado->tipo;
-	$campos_html .= "," . $dado->tipohtml;
-	$campos_fk .= "," . $dado->chaveestrangeira;
+	$campos_nome 		.= "," . $dado->nome;
+	$campos_descricao 	.= "," . $dado->descricao;
+	$campos_tipo 		.= "," . $dado->tipo;
+	$campos_html 		.= "," . $dado->tipohtml;
+	$campos_fk 			.= "," . $dado->chaveestrangeira;
 }
 
 // Carrega Dados
@@ -224,6 +224,7 @@ foreach($dataset as $dado){
 		}else{
 			$valor_campo = $dado->{$c};
 		}
+
 		$campos_dados[$c] 		= getHTMLTipoFormato($camposhtml[$i],$valor_campo,$entidade->contexto->id,$c,$dado->id);
 		$campos_dados_reais[$c] = $dado->{$c};
 		$i++;

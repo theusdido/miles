@@ -439,9 +439,12 @@ class Pagina Extends Html {
 
 			// Classe do formulário
 			$jsFormularioClass 			= tdClass::Criar("script");
-			$jsFormularioClass->src 	= URL_CLASS_TDC . "formulario.class.js";	
+			$jsFormularioClass->src 	= URL_CLASS_TDC . "formulario.class.js";
 
-			$this->body->add($jsFuncoes,$jsValidar,$jsGradeDados,$jsChecklist,$jsFormularioClass);
+			$jsGerarHtmlClass 			= tdClass::Criar("script");
+			$jsGerarHtmlClass->src 		= URL_CLASS_TDC . "gerarhtml.class.js";
+
+			$this->body->add($jsFuncoes,$jsValidar,$jsGradeDados,$jsChecklist,$jsFormularioClass,$jsGerarHtmlClass);
 		}
 	}
 

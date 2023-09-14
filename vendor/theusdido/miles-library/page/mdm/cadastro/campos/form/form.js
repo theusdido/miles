@@ -239,8 +239,12 @@ $('#btn-salvar-campo').click(function(){
             is_unique_key:$('#is_unique_key').prop('checked')
         },
         complete:function(_res){
+            unLoaderSalvar();
             mdmToastMessage("Salvo com Sucesso");
-        }
+        },
+        beforeSend:function(){
+            addLoaderSalvar();
+        }        
     });
 });
 

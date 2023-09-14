@@ -67,8 +67,12 @@ $('#btn-conf-sistema-salvar').click(function(){
             data:dados
         },
         complete:function(_res){
+            unLoaderSalvar();
             mdmToastMessage("Salvo com Sucesso");
             load();
-        }
+        },
+        beforeSend:function(){
+            addLoaderSalvar();
+        }        
     });
 });

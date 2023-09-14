@@ -1,5 +1,5 @@
 _entidade_nome = td_entidade[_entidade].nome;
-$('#filename').val(_entidade_nome + '.html');    
+$('#filename').val(_entidade_nome + '.html');
 $('#filenamejs').val(_entidade_nome + '.js');
 $('#filenamecss').val(_entidade_nome + '.css');
 $('#filenamehtm').val(_entidade_nome + '.htm');
