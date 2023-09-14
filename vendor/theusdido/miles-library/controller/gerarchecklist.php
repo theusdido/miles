@@ -49,7 +49,7 @@
 		$titulo->class 			= $isprincipal ? "" : "td-titulopagina-relacionamento";
 		
 		$titulo->add(
-			tdc::html("span",utf8charset($entidade->contexto->descricao,7),null,"descricao-entidade"),
+			tdc::html("span",$entidade->contexto->descricao,null,"descricao-entidade"),
 			tdc::html("small","[ {$entidade->contexto->nome} ]",null,"nome-entidade"),
 			tdc::o("badge",array($entidade->contexto->id))
 		);

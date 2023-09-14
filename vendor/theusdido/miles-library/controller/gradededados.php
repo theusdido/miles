@@ -207,6 +207,7 @@
 		$i = $attrRel = 0;
 		$idRegistro = 0;
 		foreach($array_campos_nome as $c){
+			$valor_campo = '';
 			$_is_fk = $camposfk[$i] != "0" && $camposfk[$i] != "" ? true : false;
 			if ($_is_fk){
 				$atributo_fk_id = 0;

@@ -1424,18 +1424,20 @@ tdFormulario.prototype.setConsulta = function(id_consulta){
 	consulta.filtros_iniciais.forEach(function(ft){
 		this.addFiltro(ft.atributo,ft.operador,ft.valor);
 	},_gradedados);
+
 	_gradedados.consulta 		= id_consulta;
 	_gradedados.funcionalidade	= 'consulta';
-	_gradedados.movimentacao 	= consulta.movimentacao;
-	_gradedados.exibireditar	= consulta.exibireditar;
-	_gradedados.exibirexcluir	= consulta.exibirexcluir;
-	_gradedados.exibiremmassa	= consulta.exibiremmassa;		
+	_gradedados.movimentacao 	= consulta.movimentacao  == 0 ? false : true;
+	_gradedados.exibireditar	= consulta.exibireditar  == 0 ? false : true;
+	_gradedados.exibirexcluir	= consulta.exibirexcluir  == 0 ? false : true;
+	_gradedados.exibiremmassa	= consulta.exibiremmassa  == 0 ? false : true;
 	_gradedados.exibirpesquisa 	= false;
-	_gradedados.exibircolunaid = consulta.exibircolunaid == 1 ? true : false;	
+	_gradedados.exibircolunaid 	= consulta.exibircolunaid == 1 ? true : false;	
 	_gradedados.setOrder("id","DESC");
 	_gradedados.show();
 }
-/* 
+
+/*
 	*********** FILTRO ************* 
 	Configuração dos campos tipo filtro
 */

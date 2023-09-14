@@ -264,6 +264,7 @@
             $labelzerocheckbox 			= $_POST["labelzerocheckbox"];
             $labelumcheckbox 			= $_POST["labelumcheckbox"];
             $legenda 					= $_POST["legenda"];
+            
             $desabilitar 				= $_POST["desabilitar"];
             $criarsomatoriogradededados = $_POST["criarsomatoriogradededados"];
             $naoexibircampo				= $_POST["naoexibircampo"];
@@ -338,7 +339,7 @@
                     '{$labelzerocheckbox}',
                     '{$labelumcheckbox}',
                     '{$legenda}',
-                    '{$desabilitar}',
+                    {$desabilitar},
                     {$criarsomatoriogradededados},
                     {$naoexibircampo},
                     {$is_unique_key}
@@ -370,8 +371,8 @@
                     labelzerocheckbox = '{$labelzerocheckbox}',
                     labelumcheckbox = '{$labelumcheckbox}',
                     legenda = '{$legenda}',
-                    desabilitar = '{$desabilitar}',
-                    criarsomatoriogradededados = '{$criarsomatoriogradededados}',
+                    desabilitar = $desabilitar,
+                    criarsomatoriogradededados = $criarsomatoriogradededados,
                     naoexibircampo = {$naoexibircampo},
                     is_unique_key = {$is_unique_key}
                     WHERE id = {$id};

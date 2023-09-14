@@ -105,7 +105,14 @@ Menu.prototype.load = function(){
 	});
 }
 Menu.prototype.carregarpagina = function(path,target,dados_menu){
-	let instancia = this;
+	let instancia 				= this;
+
+	let _gerarhtml 				= new gerarHTML();
+	_gerarhtml._entidade_id    	= dados_menu.entidade;
+	_gerarhtml._conceito       	= dados_menu.tipomenu;
+	_gerarhtml._conceito_id    	= dados_menu.entidade;
+	_gerarhtml.conceito();
+
 	carregar(path,target,function(){
 		if (dados_menu == undefined || dados_menu == ''){
 			console.warn('Dados do menu não foram carregados.');

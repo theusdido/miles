@@ -190,7 +190,7 @@
 	if ($movimentacao->exibirtitulo == 1){
 		$titulo 			= tdClass::Criar("p");
 		$titulo->class 		= "titulo-pagina";
-		$titulo->add(tdc::utf8($movimentacao->descricao));
+		$titulo->add($movimentacao->descricao);
 		$blocoTitulo->add($titulo);
 		$linhaTitulo 		= tdClass::Criar("div");
 		$linhaTitulo->class = "row";

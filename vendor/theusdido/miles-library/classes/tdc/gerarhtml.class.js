@@ -28,10 +28,10 @@ class gerarHTML {
                 controller:"mdm/componente",
                 op:"criar" + this._conceito,
                 html:_html,
-                filename:td_entidade[_entidade].nome + '.html',
-                filenamejs:td_entidade[_entidade].nome + '.js',
-                filenamecss:td_entidade[_entidade].nome + '.css',
-                filenamehtm:td_entidade[_entidade].nome + '.htm',
+                filename:td_entidade[this._entidade_id].nome + '.html',
+                filenamejs:td_entidade[this._entidade_id].nome + '.js',
+                filenamecss:td_entidade[this._entidade_id].nome + '.css',
+                filenamehtm:td_entidade[this._entidade_id].nome + '.htm',
                 entidade:this._entidade_id,
                 id:this._conceito_id,
                 reset:false
@@ -41,4 +41,13 @@ class gerarHTML {
             }
         });
     }
+
+    cadastro(_entidade){
+        this._conceito      = 'cadastro';
+        this._entidade_id   = _entidade;
+        this._entidade_nome = td_entidade[_entidade].nome;
+        this._conceito_id   = _entidade;
+        this.conceito();
+    }
+
 }

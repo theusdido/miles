@@ -795,16 +795,16 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
 					break;
 					case 4:
 						if (_atributo.chaveestrangeira!= ''){
-							//console.log(td_entidade[_atributo.chaveestrangeira].nome);
-							//console.log(linha);
-							//console.log(linhareal);
+							// console.log(td_entidade[_atributo.chaveestrangeira].nome);
+							// console.log(linha);
+							// console.log(linhareal);
 						}
 					break;
 					case 19:
 						if (valor != ''){
 							let dadosarquivo = JSON.parse(valor);
 							if (dadosarquivo.tipo == "imagem"){
-								let srcfile = dadosarquivo.src;
+								let srcfile 		= dadosarquivo.src;
 								let hyperlinkimagem = $("<a data-lightbox='img-gd-lightbox' data-title='' data-filename='"+srcfile+"' href='"+srcfile+"'>");
 								let img = $("<img src='"+srcfile+"' class='img-gradededadosicon img-rounded'>");
 								img.css("height","35px");
@@ -818,7 +818,7 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
 				}
 			}
 
-			if (typeof td_consulta[this.consulta] != "undefined"){
+			if (typeof td_consulta[this.consulta] != "undefined"){				
 				for (f in td_consulta[this.consulta].status){
 					var ft = td_consulta[this.consulta].status[f];
 					if (ft.atributo == idAtributo){
@@ -830,7 +830,7 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
 
 						let tipohtml = td_atributo[ft.atributo].tipohtml;
 						if (valorreal != ""){
-							if (parseInt(tipohtml) == 11){
+							if (parseInt(tipohtml) == 11){								
 								let dt = valorreal.split(" ")[0];
 								if (dt != undefined && dt != null && dt != ''){
 									let data1 	= new Date(dt.split("-")[0],dt.split("-")[1],dt.split("-")[2]).toUTCString();

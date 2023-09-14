@@ -1,7 +1,9 @@
 /* Funções Padrão do Sistema */
 function carregar(arquivo,elemento_retorno = "",callback_function = null){
-	var url = arquivo.replace(" ","");
-	session.urlloaded = url;
+	var tentar_recarregar_pagina 	= true;
+	var url 						= arquivo.replace(" ","");
+	session.urlloaded 				= url;	
+
 	$.ajax({
 		type:"GET",
 		url:getURLProject(url),
@@ -21,9 +23,17 @@ function carregar(arquivo,elemento_retorno = "",callback_function = null){
 			if (elemento_retorno == "") unLoaderGeral();
 		},
 		error:function(ret){
-			$(elemento_retorno).html('');
-			console.warn(ret.responseText);
-			$(elemento_retorno).html("<div class='alert alert-danger'>ERRO ao carregar página.</div>");
+			console.log('D1');
+			if (tentar_recarregar_pagina){
+				tentar_recarregar_pagina = false;
+				setTimeout(function(){
+					carregar(arquivo,elemento_retorno,callback_function);
+				},500);
+			}else{
+				$(elemento_retorno).html('');
+				console.warn(ret.responseText);
+				$(elemento_retorno).html("<div class='alert alert-danger'>ERRO ao carregar página.</div>");
+			}
 		}
 	});
 }

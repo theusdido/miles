@@ -47,7 +47,7 @@
 	// Titulo
 	$titulo = tdClass::Criar("p");
 	$titulo->class = "titulo-pagina";
-	$titulo->add(utf8_encode($consulta->descricao));
+	$titulo->add($consulta->descricao);
 	$blocoTitulo->add($titulo);
 	
 	$linhaTitulo = tdClass::Criar("div");
