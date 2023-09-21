@@ -28,7 +28,6 @@
 
 			// Cria o MDM File JavaScript Compile
 			include PATH_MDM_CONTROLLER . 'javascriptfile.php';
-
             echo 1;
         break;
         case 'instrucao':

@@ -1,0 +1,80 @@
+/* Background */
+#logon,
+.navbar-default,
+#miles-root > div > footer,
+#menu .nav .open, 
+.navbar-default .navbar-nav > .open > a, 
+header .topo,
+#menuprincipal .dropdown-menu
+{
+	background-color: #232123 !important;
+	color: #ab9170 !important;
+
+}
+
+.navbar-default .navbar-nav > .open > a:hover, 
+.navbar-default .navbar-nav > .open > a:focus,
+#menuprincipal .dropdown-menu li a:hover,
+#menuprincipal .dropdown-menu li a:active,
+#menuprincipal .dropdown-menu li a:focus,
+#menuprincipal .dropdown-menu li:hover,
+.headersystem-col
+{
+	background-color: #000 !important;
+}
+
+#logon{
+	border-width:0 !important;
+}
+
+#f-autenticacao-usuario label,
+#logon form a
+{
+	color:#FFF !important;
+}
+
+#info, #userinfo{
+	border-bottom: 2px solid #DDD !important;
+}
+
+#miles-root > div > footer {
+    color: #FFF !important;
+    text-align: center !important;
+    font-size: 12px !important;
+	height: 30px !important;
+	position: fixed !important;
+	bottom: 0 !important;
+	width: 100% !important;
+}
+
+#miles-root > div > footer a {
+	color: #FFF;
+	font-weight: bold;
+}
+
+#info .nome-projeto,
+#menuprincipal .dropdown-menu li a,
+#userinfo a
+{
+	color: #FFF !important;	
+}
+
+#menulateralesquerdoprincipal .primary-nav
+{
+	margin-top: -20px;
+}
+
+#menuprincipal .dropdown-menu li
+{
+	border-top: 1px solid #000;
+}
+
+.form-signin .btn-primary
+{
+    background-color: #000;
+    border:none;
+}
+
+.icone-pequeno-cabecalho-collapse{
+	float:right;
+}

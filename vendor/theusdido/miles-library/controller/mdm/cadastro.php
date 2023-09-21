@@ -23,7 +23,6 @@
                             <td>{$id}</td>
                             <td>{$descricao}</td>
                             <td>{$nome}</td>
-
                             <td align='center'>
                                 <button type='button' class='btn btn-primary' onclick=editarCadastro({$id});>
                                     <span class='fas fa-pencil-alt' aria-hidden='true'></span>

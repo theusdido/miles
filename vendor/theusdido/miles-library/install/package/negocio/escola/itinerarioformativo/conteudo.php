@@ -27,7 +27,6 @@
 
 	// Seta o campo descrição
 	Entity::setDescriptionField($conn,$entidadeID,$descricao,true);
-
 	// Criando Acesso
 	$menu = addMenu($conn,'Escola','#','',0,0,'escola');
 

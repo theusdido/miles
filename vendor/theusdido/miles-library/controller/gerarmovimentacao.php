@@ -228,7 +228,6 @@
 	$arrayCamposAtributos 	= array();
 	$atributo 				= "";
 	$i 						=1;
-
 	if (sizeof($dataset) > 0){
 		foreach ($dataset as $ftMovimentacao){
 			$atributo = tdClass::Criar("persistent",array(ATRIBUTO,(int)$ftMovimentacao->atributo))->contexto;
