@@ -22,6 +22,8 @@
 
 	// Criando Atributos
 	$descricao 			= criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar",200,0,3,1);
+	$lancamento			= criarAtributo($conn,$entidadeID,"lancamento","Lançamento","int",0,1,16,0);
+	$tipolancamento		= criarAtributo($conn,$entidadeID,"tipolancamento","Tipo de Lançamento","int",0,0,4,0,installDependencia("erp_financeiro_caixa_lancamentotipo","package/sistema/erp/financeiro/caixalancamentotipo"));
 	$dataemissao 		= criarAtributo($conn,$entidadeID,"dataemissao","Data de Emissão","date",0,1,11,0,0,0,"",0,0);
 	$datalancamento 	= criarAtributo($conn,$entidadeID,"datalancamento","Data de Lançamento","date",0,1,11,0,0,0,"",0,0);
 	$operacao 		    = criarAtributo($conn,$entidadeID,"operacao","Operação","tinyint",0,1,7,0);

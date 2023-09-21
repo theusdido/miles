@@ -1403,38 +1403,45 @@ tdFormulario.prototype.setConsulta = function(id_consulta){
 		$("#form-consulta .form-control[atributo="+ft.atributo+"]").attr("data-tipo",td_atributo[ft.atributo].tipo);
 	}
 
-	let _gradedados = this.getGrade();
+	_gradedados_mov_current = this.getGrade();
+
+	// Filtros Iniciais
+	const filtros_iniciais_consulta = () => {
+		consulta.filtros_iniciais.forEach(function(ft){
+			this.addFiltro(ft.atributo,ft.operador,ft.valor);
+		},_gradedados_mov_current);
+	}
+	
 	$("#pesquisa-consulta").click(function(){
-		_gradedados.clear();
+		_gradedados_mov_current.clear();
+		filtros_iniciais_consulta();
 		$("#form-consulta.tdform .form_campos .form-control").each(function(){
 			if ($(this).hasClass("input-sm") || $(this).hasClass("termo-filtro") || $(this).hasClass("checkbox-sn")){
 				if ($(this).val() != "" && $(this).val() != undefined && $(this).val() != null){
 					var operador 	= $(this).data("operador");
 					var tipo 		= $(this).data("tipo");
 					var atributo 	= $(this).attr("id");
-					_gradedados.addFiltro(atributo,(operador == undefined?"=":operador),$(this).val(),(tipo == undefined?"int":tipo));
+					_gradedados_mov_current.addFiltro(atributo,(operador == undefined?"=":operador),$(this).val(),(tipo == undefined?"int":tipo));
 				}
 			}
 		});
-		_gradedados.qtdeMaxRegistro = 500;
-		_gradedados.reload();
+		_gradedados_mov_current.qtdeMaxRegistro = 500;
+		_gradedados_mov_current.reload();
 	});
 
-	// Filtros Iniciais
-	consulta.filtros_iniciais.forEach(function(ft){
-		this.addFiltro(ft.atributo,ft.operador,ft.valor);
-	},_gradedados);
+	filtros_iniciais_consulta();
 
-	_gradedados.consulta 		= id_consulta;
-	_gradedados.funcionalidade	= 'consulta';
-	_gradedados.movimentacao 	= consulta.movimentacao  == 0 ? false : true;
-	_gradedados.exibireditar	= consulta.exibireditar  == 0 ? false : true;
-	_gradedados.exibirexcluir	= consulta.exibirexcluir  == 0 ? false : true;
-	_gradedados.exibiremmassa	= consulta.exibiremmassa  == 0 ? false : true;
-	_gradedados.exibirpesquisa 	= false;
-	_gradedados.exibircolunaid 	= consulta.exibircolunaid == 1 ? true : false;	
-	_gradedados.setOrder("id","DESC");
-	_gradedados.show();
+	_gradedados_mov_current.consulta 		= id_consulta;
+	_gradedados_mov_current.funcionalidade	= 'consulta';
+	_gradedados_mov_current.movimentacao 	= consulta.movimentacao;
+	_gradedados_mov_current.exibireditar	= consulta.exibireditar  == 0 ? false : true;
+	_gradedados_mov_current.exibirexcluir	= consulta.exibirexcluir  == 0 ? false : true;
+	_gradedados_mov_current.exibiremmassa	= consulta.exibiremmassa  == 0 ? false : true;
+	_gradedados_mov_current.exibirpesquisa 	= false;
+	_gradedados_mov_current.exibircolunaid 	= consulta.exibircolunaid == 1 ? true : false;
+	_gradedados_mov_current.setOrder("id","DESC");
+	_gradedados_mov_current.show();
+
 }
 
 /*

@@ -24,6 +24,7 @@
 	$descricao 				= criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar",200,0,3,1,0,0,"");
 	$entidade	 			= criarAtributo($conn,$entidadeID,"entidade","Entidade","int",0,0,4,0,0,0,"");	
 	$motivo 				= criarAtributo($conn,$entidadeID,"motivo","Motivo","int",0,0,4,0,0,0,"");
+	$displaybutton 			= criarAtributo($conn,$entidadeID,"displaybutton","Display","varchar",200,1,3,0,0,0,"");
 	$exigirobrigatorio 		= criarAtributo($conn,$entidadeID,"exigirobrigatorio","Exigir Obrigátorio","tinyint",0,1,7,0,0,0,"",1,0);
 	$exibirtitulo 			= criarAtributo($conn,$entidadeID,"exibirtitulo","Exigir Título","tinyint",0,1,7,0,0,0,"",1,0);	
 	$exibirvaloresantigos 	= criarAtributo($conn,$entidadeID,"exibirvaloresantigos","Exigir Valores Antigos","boolean",0,1,7);	

@@ -53,19 +53,49 @@
         case 'salvar':
 			$id			 			= $_POST["id"];
 			$descricao				= $_POST["descricao"];
+			$displaybutton			= $_POST["displaybutton"];
 			$entidade	 			= $_POST["entidade"];
 			$motivo					= $_POST["motivo"];
-			$exigirobrigatorio		= isset($_POST["exigirobrigatorio"])?1:0;;
-			$exibirtitulo			= isset($_POST["exibirtitulo"])?1:0;;
-			$exibirvaloresantigos	= isset($_POST["exibirvaloresantigos"])?1:0;
+			$exigirobrigatorio		= $_POST["exigirobrigatorio"] == 'true' ? 1 : 0;;
+			$exibirtitulo			= $_POST["exibirtitulo"] == 'true' ? 1 : 0;;
+			$exibirvaloresantigos	= $_POST["exibirvaloresantigos"] == 'true' ? 1 : 0;
 
 			if ($id == 0){
 				$query_prox = $conn->query("SELECT IFNULL(MAX(id),0)+1 FROM ".MOVIMENTACAO);
 				$prox 		= $query_prox->fetch();
 			 	$id 		= $prox[0];
-			 	$sql 		= "INSERT INTO ".MOVIMENTACAO." (id,descricao,entidade,motivo,exigirobrigatorio,exibirtitulo,exibirvaloresantigos) VALUES ({$id},'{$descricao}',{$entidade},{$motivo},{$exigirobrigatorio},{$exibirtitulo},{$exibirvaloresantigos});";
+			 	$sql 		= "
+					INSERT INTO ".MOVIMENTACAO." (
+						id,
+						descricao,
+						entidade,
+						motivo,
+						exigirobrigatorio,
+						exibirtitulo,
+						exibirvaloresantigos,
+						displaybutton
+					) VALUES (
+						{$id},
+						'{$descricao}',
+						{$entidade},
+						{$motivo},
+						{$exigirobrigatorio},
+						{$exibirtitulo},
+						{$exibirvaloresantigos},
+						'{$displaybutton}'
+					);";
 			}else{
-			 	$sql 		= "UPDATE ".MOVIMENTACAO." SET entidade = {$entidade} , descricao = '{$descricao}' , motivo = {$motivo} , exigirobrigatorio = {$exigirobrigatorio} , exibirtitulo = {$exibirtitulo} , exibirvaloresantigos = {$exibirvaloresantigos} WHERE id = {$id};";
+			 	$sql 		= "
+					UPDATE ".MOVIMENTACAO." SET 
+						entidade = {$entidade}, 
+						descricao = '{$descricao}',
+						motivo = {$motivo},
+						exigirobrigatorio = {$exigirobrigatorio},
+						exibirtitulo = {$exibirtitulo},
+						exibirvaloresantigos = {$exibirvaloresantigos},
+						displaybutton = '{$displaybutton}'
+					WHERE id = {$id};
+				";
 			}
 			$query = $conn->query($sql);
 			if($query){
@@ -146,14 +176,15 @@
 			$legenda				= $_POST["legenda"];
 			$atributo	 			= $_POST["atributo"];
 			$movimentacao	 		= $_POST["movimentacao"];
+			$entidade				= tdc::p(MOVIMENTACAO,$movimentacao)->entidade;
 
 			if ($id == ""){
 				$query_prox = $conn->query("SELECT IFNULL(MAX(id),0)+1 FROM td_movimentacaohistorico");
 				$prox = $query_prox->fetch();
 				$id = $prox[0];
-				$sql = "INSERT INTO td_movimentacaohistorico (id,atributo,movimentacao,legenda) VALUES ({$id},{$atributo},{$movimentacao},'{$legenda}');";
+				$sql = "INSERT INTO td_movimentacaohistorico (id,entidade,atributo,movimentacao,legenda) VALUES ({$id},{$entidade},{$atributo},{$movimentacao},'{$legenda}');";
 			}else{
-				$sql = "UPDATE td_movimentacaohistorico SET atributo = {$atributo} , movimentacao = {$movimentacao} , legenda = '{$legenda}' WHERE id = {$id};";
+				$sql = "UPDATE td_movimentacaohistorico SET entidade = {$entidade}, atributo = {$atributo} , movimentacao = {$movimentacao} , legenda = '{$legenda}' WHERE id = {$id};";
 			}
 			$query = $conn->query($sql);
 			if($query){
