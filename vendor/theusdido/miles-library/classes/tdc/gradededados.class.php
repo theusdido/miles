@@ -10,7 +10,7 @@ include_once PATH_WIDGETS . 'tabela.class.php';
     * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
 */
-class GradedeDados extends Tabela{
+class GradedeDados extends Tabela {
 	public $entidade;
 	protected $colunas;
 	protected $colspan = 5;
@@ -167,6 +167,9 @@ class GradedeDados extends Tabela{
 		if ($this->exibircorpo) $this->tbody();
 		if ($this->exibirrodape) $this->tfoot();		
 		
+		if ($this->contexto != ''){
+			$this->class = $this->contexto;
+		}
 		parent::mostrar();
 	}
 	/*

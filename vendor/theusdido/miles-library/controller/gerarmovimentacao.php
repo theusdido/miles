@@ -204,12 +204,14 @@
 	$retorno 				= tdClass::Criar("retorno");
 	$retorno->class 		= $msgRetornoContexto;
 	
+	$diplay_button_salvar	= $movimentacao->displaybutton == '' ? 'Salvar' : $movimentacao->displaybutton;
+
 	// Botão SALVAR
 	$btn_salvar 			= tdClass::Criar("button");
 	$btn_salvar->class 		= "btn btn-success b-salvar b-movimentacao";
 	$span_salvar 			= tdClass::Criar("span");
 	$span_salvar->class 	= "fas fa-check";	
-	$btn_salvar->add($span_salvar," Salvar");	
+	$btn_salvar->add($span_salvar," ".$diplay_button_salvar);	
 		
 	// Formulário Principal ( Personalizado )
 	$form 					= tdClass::Criar("tdformulario");
@@ -220,13 +222,13 @@
 
 	// ***** HISTORICO de MOVIMENTACAO *****/
 	$sql 		= tdClass::Criar("sqlcriterio");
-	$sql->add(tdClass::Criar("sqlfiltro",array(MOVIMENTACAO,'=',$movimentacao->id)));
+	$sql->add(tdClass::Criar("sqlfiltro",array('movimentacao','=',$movimentacao->id)));
 	$dataset 	= tdClass::Criar("repositorio",array(HISTORICOMOVIMENTACAO))->carregar($sql);
 
 	$arrayCamposAtributos 	= array();
 	$atributo 				= "";
 	$i 						=1;
-	
+
 	if (sizeof($dataset) > 0){
 		foreach ($dataset as $ftMovimentacao){
 			$atributo = tdClass::Criar("persistent",array(ATRIBUTO,(int)$ftMovimentacao->atributo))->contexto;
@@ -308,6 +310,7 @@
 	$atributo 				= "";
 	$atributosID 			= "";
 	if (sizeof($dataset) > 0){
+		$contextoGradeDados = null;
 		foreach ($dataset as $ftMovimentacao){
 			$atributo 		= tdClass::Criar("persistent",array(ATRIBUTO,(int)$ftMovimentacao->atributo))->contexto;
 			$atributosID 	.= ($atributosID == ""?"":",") . $atributo->id;
@@ -497,6 +500,25 @@
 			$(".coluna[data-ncolunas=2]").css("width","50%");			
 		');
 		$js->mostrar();
+	}else{
+
+		$contexto_grade					= 'gradededados-movimentacao';
+		$contextoGradeDados 			= tdc::html('span');
+		$contextoGradeDados->class		= $contexto_grade;
+
+		$jsGD = tdc::o('script');
+		$jsGD->add('
+			var gd_filtro_mov 					= new GradeDeDados('.$entidade->id.');
+			gd_filtro_mov.contexto 				= ".'.$contexto_grade.'";
+			gd_filtro_mov.exibirpesquisa		= false;
+			gd_filtro_mov.exibireditar			= false;
+			gd_filtro_mov.exibirexcluir			= false;
+			gd_filtro_mov.exibiremmassa			= false;
+			gd_filtro_mov.exibirmovimentacao	= false;
+			gd_filtro_mov.addFiltro("id","=",getCookie("idmovdados"));
+			gd_filtro_mov.show();
+		');
+		$jsGD->mostrar();
 	}
 	// ***** ALTERAR MOVIMENTACAO *****/
 			
@@ -514,7 +536,7 @@
 	$blocoForm 				= tdClass::Criar("div");
 	$blocoForm->class 		= "col-md-12";
 	$blocoForm->id 			= "crud-contexto-add-" . $entidade->nome;
-	$blocoForm->add($grupo_botoes,$form);
+	$blocoForm->add($grupo_botoes,$contextoGradeDados,$form);
 
 	$linhaForm 				= tdClass::Criar("div");
 	$linhaForm->class 		= "row";
@@ -589,7 +611,12 @@
 				},
 				complete:function(ret){
 					if (parseInt(ret.responseText) == 1){
-						'.$msgSalvar.'	
+						'.$msgSalvar.'
+						// Aguarda para fechar a mensagem de sucesso
+						setTimeout(function(){
+							_gradedados_mov_current.reload();
+							$("#modal-movimentacao").modal("hide");
+						},3000);
 					}else{
 						abrirAlerta("Erro ao salvar. Entrar em contato com o administrador do sistema.","alert-danger",".'.$msgRetornoContexto.'");
 						console.log("Erro ao Salvar Status");

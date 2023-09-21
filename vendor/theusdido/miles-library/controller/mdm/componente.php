@@ -6,19 +6,24 @@
 
 	switch(tdc::r('op')){
 		case 'criarcadastro':
-			$path 		= PATH_FILES_CADASTRO . $entidade->id . "/";
+			$path 			= PATH_FILES_CADASTRO . $entidade->id . "/";
+			$_conceito		= 'cadastro';
 		break;
 		case 'criarconsulta':
-			$path 		= PATH_FILES_CONSULTA . tdc::r('id') . "/";
+			$path 			= PATH_FILES_CONSULTA . tdc::r('id') . "/";
+			$_conceito		= 'consulta';
 		break;
 		case 'criarmovimentacao':
-			$path 		= PATH_FILES_MOVIMENTACAO . tdc::r('id') . '/';
+			$path 			= PATH_FILES_MOVIMENTACAO . tdc::r('id') . '/';
+			$_conceito		= 'movimentacao';
 		break;
 		case 'criarrelatorio':
-			$path 		= PATH_FILES_RELATORIO . tdc::r('id') . '/';	
+			$path 			= PATH_FILES_RELATORIO . tdc::r('id') . '/';
+			$_conceito		= 'relatorio';
 		break;
 		default:
 			$path = PATH_FILES_CADASTRO . $entidade->id . "/";
+			$_conceito		= 'cadastro';
 	}
 
 	// Documentação
@@ -143,7 +148,7 @@
 		fwrite($fp,"\n");
 		fwrite($fp,"}");
 		fwrite($fp,"\n");
-		fwrite($fp,"if (typeof funcionalidade === 'undefined') var funcionalidade = 'cadastro';");
+		fwrite($fp,"if (typeof funcionalidade === 'undefined') var funcionalidade = '$_conceito';");
 		fwrite($fp,"\n\n/* \n ### Escreva seu código JavaScript abaixo dessa linha ou dentro das funções acima ### \n*/\n");
 		fclose($fp);
 	}

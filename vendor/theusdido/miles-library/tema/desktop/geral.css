@@ -909,4 +909,10 @@ header #menu {
 	text-align: center;
 	font-weight: bold;
 }
+
+table thead tr.td-info
+{
+	background-color: #158abd;
+	color:#FFF;
+}
 -->

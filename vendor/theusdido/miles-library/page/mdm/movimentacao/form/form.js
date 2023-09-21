@@ -17,8 +17,12 @@ $('#btn-salvar-movimentacao').click(function(){
             op:"salvar",
             id:_movimentacao,
             entidade: $("#entidade").val(),
-            descricao: $("#descricao").val(),            
-            motivo:$("#motivo").val()
+            descricao: $("#descricao").val(),
+            displaybutton:$('#displaybutton').val(),
+            motivo:$("#motivo").val(),
+            exigirobrigatorio:$('#exigirobrigatorio').prop('checked'),
+            exibirtitulo:$('#exibirtitulo').prop('checked'),
+            exibirvaloresantigos:$('#exibirvaloresantigos').prop('checked')
         },
         complete:function(_res){
             atualizarListaAlterar();
@@ -51,6 +55,7 @@ function load(){
 
             // Campos Inputs
             $("#descricao").val(_data.descricao);
+            $('#displaybutton').val(_data.displaybutton);
             $("#entidade").val(_data.entidade);
             $("#motivo").val(_data.motivo);
 

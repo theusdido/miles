@@ -27,7 +27,7 @@
 						<td>Forma de Recebimento</td>
 						<td>Tipos de formas de recebimentos</td>
 						<td><input type="checkbox" class="checkbox-componente" id="sistema-erp-financeiro-formarecebimento"></td>
-					</tr>					
+					</tr>
 					<tr>
 						<td>Contas a Pagar</td>
 						<td>Cadastro de Contas a pagar</td>
@@ -48,8 +48,18 @@
 						<td>Cadastro de Despesas</td>
 						<td><input type="checkbox" class="checkbox-componente" id="sistema-erp-financeiro-despesa"></td>
 					</tr>
+					<tr>
+						<td>Caixa</td>
+						<td>Lançamentos financeiros no Caixa</td>
+						<td><input type="checkbox" class="checkbox-componente" id="sistema-erp-financeiro-caixa"></td>
+					</tr>
+					<tr>
+						<td>Tipo de Lançamento no Caixa</td>
+						<td>Lançamentos no caixa, ex: ( Pagamento de contas, Recebimentos de atrasados .... )</td>
+						<td><input type="checkbox" class="checkbox-componente" id="sistema-erp-financeiro-caixalancamentotipo"></td>
+					</tr>
 				</tbody>
 			</table>
       </div>
     </div>
-  </div>  
+  </div>
