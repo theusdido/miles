@@ -594,7 +594,7 @@ tdFormulario.prototype.salvar = function(){
 
 	let contextoMsg = '';
 	if ($("#select-generalizacao-unica").length > 0){
-		contextoMsg = " .msg-retorno-form-" + td_entidade[EntidadePrincipalID].nomecompleto;
+		contextoMsg = " .msg-retorno-form-" + td_entidade[this.entidade_id].nomecompleto;
 	}else{
 		contextoMsg = this.getContexto() + " .msg-retorno-form-" + this.entidade.nomecompleto;
 	}

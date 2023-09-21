@@ -1,6 +1,6 @@
 /* Funções Padrão do Sistema */
-function carregar(arquivo,elemento_retorno = "",callback_function = null){
-	var tentar_recarregar_pagina 	= true;
+var tentar_recarregar_pagina 	= true;
+function carregar(arquivo,elemento_retorno = "",callback_function = null){	
 	var url 						= arquivo.replace(" ","");
 	session.urlloaded 				= url;	
 
@@ -23,7 +23,6 @@ function carregar(arquivo,elemento_retorno = "",callback_function = null){
 			if (elemento_retorno == "") unLoaderGeral();
 		},
 		error:function(ret){
-			console.log('D1');
 			if (tentar_recarregar_pagina){
 				tentar_recarregar_pagina = false;
 				setTimeout(function(){
