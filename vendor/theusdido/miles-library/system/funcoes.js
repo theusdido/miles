@@ -937,3 +937,7 @@ function toastMessage(message,class_name = 'td-message-success'){
         className:class_name
     }).showToast(); 
 }
+
+function setNenhumRegistroTable(tabela_selector,colspan = 0){
+	$(tabela_selector + " tbody").html('<tr class="warning"><td class="text-center" colspan="'+colspan+'">Nenhum registro encontrado.</td></tr>');
+}

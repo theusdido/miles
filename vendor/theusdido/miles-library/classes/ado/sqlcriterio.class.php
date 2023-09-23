@@ -57,7 +57,7 @@ class SqlCriterio extends SqlExpressao {
 			foreach($this->expressao as $i => $expressao){
 
 				$operador 	= $this->operador[$i];
-				$aRetirar 	= array("'RETIRAR","RETIRAR'");
+				$aRetirar 	= array("'RETIRAR","RETIRAR'","RETIRAR '","' RETIRAR");
 				$dump 		= str_replace($aRetirar,"",$expressao->dump());
 				
 				// Concatena os operadores com a respectiva expressão

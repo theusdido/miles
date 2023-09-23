@@ -27,6 +27,9 @@
 	$valor 				= criarAtributo($conn,$entidadeID,"valor","Valor","float",0,1,13,0,0,0,"",0,0);
 	$formapagamento 	= criarAtributo($conn,$entidadeID,"formapagamento","Forma de Pagamento","int",0,1,4,0,installDependencia("erp_financeiro_formapagamento",'package/sistema/erp/financeiro/formapagamento'),0,"",0,0);
 	$despesafixa 		= criarAtributo($conn,$entidadeID,"despesafixa","Despesa Fixa","tinyint",0,1,7,0,0,0,"",0,0);
+	
+	// Campo descrição
+	Entity::setDescriptionField($conn,$entidadeID,$descricao,true);
 
 	// Criando Acesso
 	$menu_webiste = addMenu($conn,'Financeiro','#','',0,0,'financeiro');

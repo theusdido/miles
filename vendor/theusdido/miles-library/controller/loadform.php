@@ -2,36 +2,32 @@
 	if ($conn = Transacao::get()){
 
 		// Rever a variável $dadosParams
-		$dadosParams 				= gettype(tdClass::Read("dados")) == 'string' ? json_decode(tdClass::Read("dados"),true) : tdClass::Read("dados");
 		$rastrearrelacionamentos 	= tdc::r("rastrearrelacionamentos") != '' ? json_decode(tdc::r("rastrearrelacionamentos")) : false;
-		$dados 						= array();
+		$dados 						= array();				
+		$dadosParams				= [];
+		array_push($dadosParams,array(
+			"entidade" 		=> tdc::r("entidadeprincipal"),
+			"atributo" 		=> 'id',
+			"valor" 		=> tdClass::Read("registroprincipal"),
+			"tipoRel" 		=> 0,
+			"entidadepai" 	=> 0
+		));
 
 		// Rastreia os relacionamentos para a entidade principal
-		if ($rastrearrelacionamentos){
-			$dadosParams			= [];
-			array_push($dadosParams,array(
-				"entidade" 		=> tdc::r("entidadeprincipal"),
-				"atributo" 		=> 'id',
-				"valor" 		=> tdClass::Read("registroprincipal"),
-				"tipoRel" 		=> 0,
-				"entidadepai" 	=> 0
-			));
-
-			
+		if ($rastrearrelacionamentos){	
 			$dataset = tdc::d(RELACIONAMENTO,tdc::f("pai","=",tdc::r("entidadeprincipal")));
 			foreach($dataset as $d){
 				array_push($dadosParams,array(
 					"entidade" 		=> (int)$d->filho,
-					"atributo" 		=> $d->atributo!=0?tdc::a($d->atributo)->nome:0,
+					"atributo" 		=> $d->atributo!=0?tdc::a($d->atributo)->nome:'',
 					"valor" 		=> tdClass::Read("registroprincipal"),
 					"tipoRel" 		=> (int)$d->tipo,
 					"entidadepai" 	=> (int)$d->pai
 				));
 			}
-
 		}
 
-		if ($dadosParams != false){
+		if (sizeof($dadosParams) > 0){
 			foreach($dadosParams as $dado){
 				if (is_numeric($dado["entidade"])){
 					$entidadeID 	= (int)$dado["entidade"];
@@ -49,7 +45,7 @@
 				}
 
 				$valor 			= isset($dado["valor"]) ? $dado["valor"] : '';
-				$atributoNome 	= $dado["atributo"] == 0 ? '' : $dado["atributo"];
+				$atributoNome 	= $dado["atributo"];
 
 				if ($atributoNome != ''){
 					$buscaPorValor 	= true;
@@ -83,7 +79,7 @@
 					if ($IDs == "") continue;
 					$sql = "SELECT * FROM {$entidadeNome} WHERE id in ({$IDs})";				
 				}
-				
+
 				try{
 					$query = $conn->query($sql);	
 				}catch(Exception $e){

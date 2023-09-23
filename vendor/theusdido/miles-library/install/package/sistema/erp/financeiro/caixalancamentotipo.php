@@ -23,6 +23,9 @@
 	// Criando Atributos
 	$descricao 			= criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar",200,0,3,1);
 
+	// Campo descrição
+	Entity::setDescriptionField($conn,$entidadeID,$descricao,true);
+
 	// Criando Acesso
 	$menu_webiste 		= addMenu($conn,'Financeiro','#','',0,0,'financeiro');
 
