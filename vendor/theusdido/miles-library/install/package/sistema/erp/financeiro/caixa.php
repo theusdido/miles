@@ -29,6 +29,9 @@
 	$operacao 		    = criarAtributo($conn,$entidadeID,"operacao","Operação","tinyint",0,1,7,0);
 	$valor 				= criarAtributo($conn,$entidadeID,"valor","Valor","float",0,1,13,0,0,0,"",0,0);
 
+	// Campo descrição
+	Entity::setDescriptionField($conn,$entidadeID,$descricao,true);
+
 	// Criando Acesso
 	$menu_webiste = addMenu($conn,'Financeiro','#','',0,0,'financeiro');
 

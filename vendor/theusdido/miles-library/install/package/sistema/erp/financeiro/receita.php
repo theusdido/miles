@@ -25,7 +25,11 @@
 	$fonte       		= criarAtributo($conn,$entidadeID,"fonte","Fonte","smallint",0,1,4,0,installDependencia("erp_contabil_fonterenda",'package/sistema/erp/contabil/fonterenda'),0,"",0,0);
 	$valor 				= criarAtributo($conn,$entidadeID,"valor","Valor","float",0,1,13,0,0,0,"",0,0);
 	$formarecebimento 	= criarAtributo($conn,$entidadeID,"formarecebimento","Forma de Recebimento","int",0,1,4,0,installDependencia("erp_financeiro_formarecebimento",'package/sistema/erp/financeiro/formarecebimento'),0,"",0,0);
+	$cliente 			= criarAtributo($conn,$entidadeID,"cliente","Cliente","int",0,1,22,0,installDependencia("erp_geral_cliente",'package/sistema/erp/comercial/cliente'));
 	$receitafixa 		= criarAtributo($conn,$entidadeID,"receitafixa","Receita Fixa","tinyint",0,1,7,0,0,0,"",0,0);
+
+	// Campo descrição
+	Entity::setDescriptionField($conn,$entidadeID,$descricao,true);
 
 	// Criando Acesso
 	$menu_webiste = addMenu($conn,'Financeiro','#','',0,0,'financeiro');

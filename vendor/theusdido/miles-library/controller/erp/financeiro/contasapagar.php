@@ -14,4 +14,7 @@
                 $cp->armazenar();
             }
         break;
+        case 'get':
+            tdc::wj( tdc::pa('td_erp_financeiro_despesa',tdc::r('cp')) );
+        break;
     }
