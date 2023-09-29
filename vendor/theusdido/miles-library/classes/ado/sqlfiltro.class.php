@@ -5,7 +5,7 @@ require_once PATH_ADO . 'sqlexpressao.class.php';
     * @license : Estilo Site Ltda.
     * @link http://www.estilosite.com.br
 		
-    * Classe que prov� interface para a defini��o de filtros de sele��o (SQL)
+    * Classe que provê interface para a definição de filtros de seleção (SQL)
     * Data de Criacao: 28/06/2012
     * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 */	
@@ -18,7 +18,7 @@ class SqlFiltro extends SqlExpressao {
 	private $valorreal;
 	
 	/*  
-		* M�todo construtor
+		* Método construtor
 	    * Data de Criacao: 28/06/2012
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 	*/			

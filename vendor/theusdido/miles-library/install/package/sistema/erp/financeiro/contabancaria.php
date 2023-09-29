@@ -1,7 +1,7 @@
 <?php
 	// Setando variáveis
-	$entidadeNome = "erp_financeiro_contabancaria";
-	$entidadeDescricao = "Conta Bancária";
+	$entidadeNome 		= "erp_financeiro_contabancaria";
+	$entidadeDescricao 	= "Conta Bancária";
 
 	// Criando Entidade
 	$entidadeID = criarEntidade(
@@ -30,6 +30,9 @@
 	$tipo 		= criarAtributo($conn,$entidadeID,"tipo","Tipo","int",0,0,4,1,installDependencia("erp_financeiro_tipocontabancaria",'package/sistema/erp/financeiro/tipocontabancaria'),0,"",0,0);
 	$cpf 		= criarAtributo($conn,$entidadeID,"cpf","CPF","char",14,1,10);
 	$favorecido = criarAtributo($conn,$entidadeID,"favorecido","Nome do Favorecido","varchar",200,1,3);
+
+	// Campo descrição
+	Entity::setDescriptionField($conn,$entidadeID,$descricao,true);
 
 	// Criando Acesso
 	$menu_webiste = addMenu($conn,'Financeiro','#','',0,0,'financeiro');

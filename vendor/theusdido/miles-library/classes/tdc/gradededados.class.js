@@ -49,6 +49,7 @@ function GradeDeDados(entidade){
 	this.btnEditarEmMassa = null; // Elemento DOM do botão para editar em massa
 	this.exibircolunaid = true;
 	this.modal_editar_id = 'modal-editar';
+	this.index_form = '';
 	// Método Construtor
 	this.construct(entidade);
 }
@@ -608,18 +609,21 @@ GradeDeDados.prototype.rodape = function(){
 				tr.append(td);
 				tfoot.append(tr);
 				this.table.append(tfoot);
-			}	
+			}
 		}	
 	}
 }
 GradeDeDados.prototype.retornaid = function(termo){
 	let entidadeid 		= $(this).data("entidade");
 	let funcionalidade 	= $(this).data("funcionalidade");
-	let indice_form		= funcionalidade + '_' + entidadeid;	
+	let indice_form		= this.index_form == '' ? funcionalidade + '_' + entidadeid : this.index_form;
+
 	if (this.retornaFiltro && this.funcaoretorno != ""){
-		eval(this.funcaoretorno + "("+termo+");");
+		setTimeout(()=>{
+			eval(this.funcaoretorno + "("+termo+");");
+		});
 	}else{
-		let entidade = (td_entidade[this.entidade].pacote==""?"":td_entidade[this.entidade].pacote + ".") + td_entidade[this.entidade].nome;z
+		let entidade = (td_entidade[this.entidade].pacote==""?"":td_entidade[this.entidade].pacote + ".") + td_entidade[this.entidade].nome;	
 		formulario[indice_form].buscarFiltro(termo,entidade,this.atributoRetorno,this.modalName,this.entidadeContexto);
 	}
 }

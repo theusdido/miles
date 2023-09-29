@@ -1,0 +1,36 @@
+<h1 class="titulo-pagina">Balanço</h1>
+<form id="form-pesquisa" class="form-inline">
+    <div class="form-group">
+        
+        <select id="referencia" class="form-control">
+        </select>
+    </div>
+    <button id="btn-pesquisa-balanco" class="btn btn-primary" type="button">Pesquisar</button>
+
+</form>
+<div id="loader-balanco"></div>
+<table id="table-balanco" class="table table-hover">
+    <thead>
+        <tr class="td-info">
+            <th width="10%" class="text-left">Data</th>
+            <th width="60%" class="text-left">Descritivo</th>
+            <th width="20%" class="text-right">Valor</th>
+            <th width="10%" class="text-center">Tipo</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+    <tfoot>
+        <tr>
+            <td class="cell-despesa" colspan="3">Total das Despesas</td>
+            <td class="cell-despesa text-right" id="total_despesa"></td>
+        </tr>
+        <tr>
+            <td class="cell-receita" colspan="3">Total das Receitas</td>
+            <td class="cell-receita text-right" id="total_receita"></td>
+        </tr>
+        <tr>
+            <td class="cell-saldo" colspan="3">Saldo</td>
+            <td class="cell-saldo text-right" id="saldo"></td>
+        </tr>
+    </tfoot>
+</table>

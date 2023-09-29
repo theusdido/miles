@@ -26,7 +26,10 @@
 	$descricao 		= criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar",50,0,3,1);
 	$codigo 		= criarAtributo($conn,$entidadeID,"codigo","Código","int",0,1,25);
 	$banco			= criarAtributo($conn,$entidadeID,"banco","Banco","int",0,0,4,0,installDependencia("erp_financeiro_banco","package/sistema/erp/financeiro/banco"));
+
+	// Campo descrição
 	Entity::setDescriptionField($conn,$entidadeID,$descricao,true);
+
 
 	// Criando Acesso
 	$menu_webiste = addMenu($conn,'Financeiro','#','',0,0,'financeiro');

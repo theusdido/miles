@@ -465,4 +465,6 @@ class tdc Extends tdClass{
 		$dataset = self::d($entidade,$sql);
 		return sizeof($dataset) > 0 ? $dataset[0] : self::p($entidade);
 	}
+
+	
 }

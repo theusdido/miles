@@ -975,7 +975,7 @@ tdFormulario.prototype.editar = function(){
 	this.novo();
 
 	addLog("", "", "", this.entidade.id,this.registro_id, 7, "");
-	
+
 	// Verifica se o usuário tem permissão para editar
 	for (permissao in td_permissoes){
 		if (session.userid == td_permissoes[permissao].usuario && this.entidade.id == td_permissoes[permissao].entidade){
@@ -985,13 +985,14 @@ tdFormulario.prototype.editar = function(){
 			}
 		}
 	}
+
 	$.ajax({
 		url:config.urlloadform,
 		async:false,
 		data:{
 			entidadeprincipal:this.entidade.id,
 			registroprincipal:this.registro_id,
-			rastrearrelacionamentos:true
+			rastrearrelacionamentos:isPaiEntidade(this.entidade.id)
 		},
 		instancia:formulario[this.getIndexForm()],
 		dataType:"json",
@@ -1475,6 +1476,7 @@ tdFormulario.prototype.setBuscaFiltro = function()
 						// Atributo uma grade de dados
 						let gd_filtro 					= new GradeDeDados(chaveestrangeira);
 						gd_filtro.contexto 				= contextoGrade;
+						gd_filtro.index_form			= instancia.getIndexForm();
 						gd_filtro.pesquisar				= true;
 						gd_filtro.retornaFiltro 		= true;
 						gd_filtro.atributoRetorno 		= atributo;
