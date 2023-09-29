@@ -619,7 +619,7 @@ GradeDeDados.prototype.retornaid = function(termo){
 	if (this.retornaFiltro && this.funcaoretorno != ""){
 		eval(this.funcaoretorno + "("+termo+");");
 	}else{
-		let entidade = (td_entidade[this.entidade].pacote==""?"":td_entidade[this.entidade].pacote + ".") + td_entidade[this.entidade].nome;
+		let entidade = (td_entidade[this.entidade].pacote==""?"":td_entidade[this.entidade].pacote + ".") + td_entidade[this.entidade].nome;z
 		formulario[indice_form].buscarFiltro(termo,entidade,this.atributoRetorno,this.modalName,this.entidadeContexto);
 	}
 }
