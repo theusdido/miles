@@ -421,6 +421,10 @@ class Pagina Extends Html {
 	public function addJSLbiSystem(){
 		if ($this->showJSLibSystem){
 
+			// Classe de Interface para o SessionStorage
+			$_session_storage_class			= tdClass::Criar("script");
+			$_session_storage_class->src 	= URL_CLASS_TDC_JS . "sessionstorage.class.js";
+
 			// Adiciona o arquivo de funções em JS
 			$jsFuncoes 			= tdClass::Criar("script");
 			$jsFuncoes->src 	= URL_SYSTEM . "funcoes.js";
@@ -441,10 +445,11 @@ class Pagina Extends Html {
 			$jsFormularioClass 			= tdClass::Criar("script");
 			$jsFormularioClass->src 	= URL_CLASS_TDC . "formulario.class.js";
 
+			// Classe Gerar Arquivos WEBCOMPONENTES
 			$jsGerarHtmlClass 			= tdClass::Criar("script");
 			$jsGerarHtmlClass->src 		= URL_CLASS_TDC . "gerarhtml.class.js";
 
-			$this->body->add($jsFuncoes,$jsValidar,$jsGradeDados,$jsChecklist,$jsFormularioClass,$jsGerarHtmlClass);
+			$this->body->add($_session_storage_class,$jsFuncoes,$jsValidar,$jsGradeDados,$jsChecklist,$jsFormularioClass,$jsGerarHtmlClass);
 		}
 	}
 

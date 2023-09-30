@@ -144,3 +144,6 @@
 	define('URL_PICTURE', URL_MILES_LIBRARY . 'picture/');
 	
 	define('URL_CURRENT_DATA',URL_PROJECT . "data/");
+
+	// CLASSE TDC / JS
+	define('URL_CLASS_TDC_JS',URL_CLASS_TDC . 'js/');

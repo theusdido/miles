@@ -161,3 +161,6 @@ entidadesAuxiliares();
 
 // Global com a grade de dados da movimentação
 var _gradedados_mov_current;
+
+// SessionStorage
+var _session = new tdSessionStorage();
