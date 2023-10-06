@@ -174,3 +174,6 @@
 
 	// Caminho padrão para os arquivos de banco de dados
 	define("PATH_CURRENT_DATA", PATH_PROJECT . "data" . DIRECTORY_SEPARATOR);
+
+	// Caminho padrão para a classe WebSocket
+	//define('PATH_WEBSOCKET',PATH_TDC);
