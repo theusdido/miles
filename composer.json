@@ -17,8 +17,7 @@
       }
     },
     "require": {
-		    "theusdido/miles-library":"^1.0.1",
-        "vlucas/phpdotenv": "^5.5",
-        "cboden/ratchet": "^0.4.4"
+		"theusdido/miles-library":"^1.0.1",
+		"vlucas/phpdotenv": "^5.5"
     }
 }

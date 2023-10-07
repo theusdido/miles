@@ -114,7 +114,7 @@ class Config {
 				if ($valor == ""){
 					$retorno = $valor;
 				}else{
-					$val 				= json_decode(utf8_decode($valor),true);
+					$val 				= json_decode(tdc::utf8($valor),true);
 					$op             	= isset($val["op"])?$val["op"]:'';
 					$filename 			= isset($val["filename"])?$val["filename"]: (isset($val[1])?$val[1]:'');
 					$tipo 				= isset($val["tipo"])?$val["tipo"]:'';
@@ -149,6 +149,7 @@ class Config {
 						$filename != '' && 
 						$file_full_temp != ''
 					){
+
 						// Envia arquivo para o FTP Externo do Projeto
 						$ftp = new FTP();
 						$ftp->put($file_full_temp,$pathexternalfile);
