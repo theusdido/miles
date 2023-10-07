@@ -129,6 +129,9 @@ function load(){
             let _data       = _res.responseJSON;
             _entidade_obj   = _data;            
             
+            setEntidade(_data);
+            debugger;
+
             $('#id').val(_data.id);
             $('#nome').val(_data.nome);
             $('#descricao').val(_data.descricao);
@@ -148,9 +151,21 @@ function load(){
     });
 }
 
-function setEntidade(_id){
-    td_entidade[_id] =  {
-        ...{id:_id},
-        ..._registro_entidade
-    }
+function setEntidade(_data){ 
+    localStorage.setItem('monitor_entidade',
+    JSON.stringify({
+        id:_data.id,
+        nome:_data.nome,
+        descricao:_data.descricao,
+        exibirmenuadministracao:_data.exibirmenuadministracao,
+        exibircabecalho:_data.exibircabecalho,
+        pai:_data.pai,
+        ncolunas:_data.ncolunas,
+        campodescchave:_data.campodescchave,
+        atributogeneralizacao:_data.atributogeneralizacao,
+        exibirlegenda:_data.exibirlegenda,
+        registrounico:_data.registrounico,
+        pacote:_data.pacote,
+        nomecompleto:((_data.pacote==""?"":_data.pacote + ".")) + _data.nome
+    }));
 }

@@ -311,7 +311,7 @@ class Pagina Extends Html {
 					}
 				});				
 			}
-
+		
 		');
 
 		// Arquivo de Codificação/Decoficação em JS

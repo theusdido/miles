@@ -164,3 +164,26 @@ var _gradedados_mov_current;
 
 // SessionStorage
 var _session = new tdSessionStorage();
+
+
+// Ouça eventos de mudanças no localStorage
+window.addEventListener("storage", function (event) {
+    if (event.key === "monitor_entidade") {
+
+        let entidade_obj    = JSON.parse(event.newValue);
+        let entidade_id     = entidade_obj.id;
+
+        td_entidade[entidade_id].nome                       = entidade_obj.nome;
+        td_entidade[entidade_id].descricao                  = entidade_obj.descricao;
+        td_entidade[entidade_id].exibirmenuadministracao    = entidade_obj.exibirmenuadministracao;
+        td_entidade[entidade_id].exibircabecalho            = entidade_obj.exibircabecalho;
+        td_entidade[entidade_id].pai                        = entidade_obj.pai;
+        td_entidade[entidade_id].ncolunas                   = entidade_obj.ncolunas;
+        td_entidade[entidade_id].campodescchave             = entidade_obj.campodescchave;
+        td_entidade[entidade_id].atributogeneralizacao      = entidade_obj.atributogeneralizacao;
+        td_entidade[entidade_id].exibirlegenda              = entidade_obj.exibirlegenda;
+        td_entidade[entidade_id].registrounico              = entidade_obj.registrounico;
+        td_entidade[entidade_id].pacote                     = entidade_obj.pacote;
+        td_entidade[entidade_id].nomecompleto               = entidade_obj.nomecompleto;
+    }
+});	
