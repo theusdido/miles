@@ -1,8 +1,8 @@
 <?php
 
 	// Setando variáveis
-	$entidadeNome 		= "erp_escola_avaliacaoaluno";
-	$entidadeDescricao 	= "Avaliação do Aluno";
+	$entidadeNome 		= "erp_escola_avaliacaofeedback";
+	$entidadeDescricao 	= "Feedback da Avaliação";
 
 	// Criando Entidade
 	$entidadeID = criarEntidade(
@@ -25,6 +25,7 @@
 	$avaliacao 			= criarAtributo($conn,$entidadeID,"avaliacao","Avaliação","int",0,1,16,1,installDependencia("erp_escola_avaliacaoturma","package/sistema"));
 	$aluno	 			= criarAtributo($conn,$entidadeID,"aluno","Aluno","int",0,1,16,1,installDependencia("erp_escola_aluno","package/sistema"));
 	$nota				= criarAtributo($conn,$entidadeID,"nota","Nota","float",0,0,11);
+	$feedback 			= criarAtributo($conn,$entidadeID,"feedback","Feedback","text",0,1,21,0,0,0,"");
 
 	// Criando Acesso
 	$menu = addMenu($conn,'Escola','#','',0,0,'escola');

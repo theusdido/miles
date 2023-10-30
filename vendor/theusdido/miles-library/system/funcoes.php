@@ -1161,6 +1161,11 @@ function criarRelacionamento($conn,$tipo,$entidadePai,$entidadeFilho,$descricao 
 	}
 	try{
 		$query = $conn->query($sql);
+
+		if ($tipo == 3){
+			// Seta atributo generalização
+			setAtributoGeneralizacao($conn,$entidadeFilho,$atributo);
+		}
 		return $idRetorno;
 	}catch(Throwable $t){
 		if (IS_SHOW_ERROR_MESSAGE){

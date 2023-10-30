@@ -8,9 +8,9 @@ $div_rel 		= tdClass::Criar("div");
 
 $urlrequest 	= getURLProject(
 	array('controller' 		=> 'gerarcadastro',
-	'entidade' 			=> $ent_filho->contexto->id,
-	'relacionamento'	=> $rel->id,
-	'entidadepai' 		=> $ent_pai->contexto->id)
+	'entidade' 				=> $ent_filho->contexto->id,
+	'relacionamento'		=> $rel->id,
+	'entidadepai' 			=> $ent_pai->contexto->id)
 );
 $conteudo 		= getUrl($urlrequest);
 if (!$conteudo){

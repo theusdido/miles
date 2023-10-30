@@ -25,6 +25,9 @@
 	$contato 	= criarAtributo($conn,$entidadeID,"contato","Contato","varchar","200",1,3,1,0,0,"");
 	Entity::setDescriptionField($conn,$entidadeID,$nome,true);
 
+	// Dependencias
+	$_dp_pessoa 		= installDependencia('erp_geral_pessoa','package/sistema/erp/pessoa/pessoa');	
+
 	// Criando Acesso
 	$menu_webiste 	= addMenu($conn,'Geral','#','',0,0,'geral');
 
@@ -35,6 +38,6 @@
 	#criarAba($conn,$entidadeID,"Capa",$contato);
 
 	// Criando Relacionamento
-	#criarRelacionamento($conn,9,$entidadeID,installDependencia($conn,"erp_geral_pessoa"),"Fornecedor",0);
+	criarRelacionamento($conn,9,$_dp_pessoa,$entidadeID,"Fornecedor",0);
 	#criarRelacionamento($conn,5,$entidadeID,installDependencia($conn,"erp_geral_produto"),"Produtos",0);
 	#criarRelacionamento($conn,5,$entidadeID,installDependencia($conn,"erp_geral_servico"),"Serviços",0);

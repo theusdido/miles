@@ -1,7 +1,7 @@
 <?php
 	// Setando variáveis
-	$entidadeNome = "erp_geral_pessoa";
-	$entidadeDescricao = "Pessoa";
+	$entidadeNome 		= "erp_geral_pessoa";
+	$entidadeDescricao 	= "Pessoa";
 
 	// Criando Entidade
 	$entidadeID = criarEntidade(
@@ -29,14 +29,18 @@
 	// Seta atributo generalização
 	setAtributoGeneralizacao($conn,$entidadeID,$tipopessoa);
 
+	// Dependencias
+	$_dp_telefone 		= installDependencia("erp_geral_telefone",'geral/contato/telefone');
+	$_dp_email			= installDependencia("erp_geral_email",'geral/contato/email');
+
 	// Criando Acesso
 	$menu_webiste 	= addMenu($conn,'Geral','#','',0,0,'geral');
 
 	// Adicionando Menu
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_webiste,0,'geral-' . $entidadeNome,$entidadeID,'cadastro');
 
-	$aba = criarAba($conn,$entidadeID,"Capa",array($nome));
+	$aba = criarAba($conn,$entidadeID,"Capa",array($nome,$tipopessoa));
 
 	// Criando Relacionamento
-	criarRelacionamento($conn,10,$entidadeID,installDependencia("erp_geral_telefone",'geral/contato/telefone'),"Telefone",0);
-	criarRelacionamento($conn,10,$entidadeID,installDependencia("erp_geral_email",'geral/contato/email'),"E-Mail",0);
+	criarRelacionamento($conn,10,$entidadeID,$_dp_telefone,"Telefone",0);
+	criarRelacionamento($conn,10,$entidadeID,$_dp_email,"E-Mail",0);	

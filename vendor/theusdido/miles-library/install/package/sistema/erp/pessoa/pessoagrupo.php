@@ -1,7 +1,7 @@
 <?php
 	// Setando variáveis
-	$entidadeNome = "erp_geral_profissao";
-	$entidadeDescricao = "Profissão";
+	$entidadeNome 		= "erp_geral_pessoagrupo";
+	$entidadeDescricao 	= "Grupo de Pessoa";
 
 	// Criando Entidade
 	$entidadeID = criarEntidade(
@@ -21,7 +21,7 @@
 	);
 
 	// Criando Atributos
-	$descricao = criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar","200",1,3,1,0,0,"");
+	$descricao = criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar",200,0,3);
 
 	// Criando Acesso
 	$menu_webiste 	= addMenu($conn,'Geral','#','',0,0,'geral');

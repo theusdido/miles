@@ -1,8 +1,8 @@
 <?php
 	// Setando variáveis
-	$entidadeNome = "erp_geral_nacionalidade";
-	$entidadeDescricao = "Nacionalidade";
-	
+	$entidadeNome 		= "erp_geral_nacionalidade";
+	$entidadeDescricao 	= "Nacionalidade";
+
 	// Criando Entidade
 	$entidadeID = criarEntidade(
 		$conn,
@@ -20,9 +20,12 @@
 		$registrounico = 0
 	);
 
+	// Dependencias
+	$_dp_pais 	= installDependencia('erp_geral_pais','package/sistema/erp/geral/pais');
+
 	// Criando Atributos
-	$descricao = criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar","200",1,3,1,0,0,"");
-	$pais = criarAtributo($conn,$entidadeID,"pais","País","int",0,0,4,0,installDependencia($conn,'erp_geral_pais'),0,"",1,0);
+	$descricao 	= criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar","200",1,3,1,0,0,"");
+	$pais 		= criarAtributo($conn,$entidadeID,"pais","País","int",0,0,4,0,$_dp_pais,0,"",1,0);
 
 	// Criando Acesso
 	$menu_webiste 	= addMenu($conn,'Geral','#','',0,0,'geral');
