@@ -840,6 +840,7 @@ function carregarListas(entidade,atributo,contextoAdd,valor){ // Argumento 4 é 
 					}else{
 						var htmlretorno = retorno;						
 					}
+					console.log( ".form-control[id=" + td_atributo[atributo].nome+"][data-entidade="+td_entidade[td_atributo[atributo].entidade].nomecompleto+"]" , contextoAdd);
 					$(".form-control[id=" + td_atributo[atributo].nome+"][data-entidade="+td_entidade[td_atributo[atributo].entidade].nomecompleto+"]",contextoAdd).html(htmlretorno);
 					$(".form-control[id=" + td_atributo[atributo].nome +"-old][data-entidade="+td_entidade[td_atributo[atributo].entidade].nomecompleto+"]",contextoAdd).html(htmlretorno);
 					if (valor == ''){
@@ -847,7 +848,7 @@ function carregarListas(entidade,atributo,contextoAdd,valor){ // Argumento 4 é 
 					}else{
 						$(".form-control[id=" + td_atributo[atributo].nome+"][data-entidade="+td_entidade[td_atributo[atributo].entidade].nomecompleto+"]",contextoAdd).val(valor);
 						$(".form-control[id=" + td_atributo[atributo].nome+"-old][data-entidade="+td_entidade[td_atributo[atributo].entidade].nomecompleto+"]",contextoAdd).val(valor);
-					}					
+					}
 				},
 				error:function(ret){
 					console.log("ERRO ao carregar lista => " + ret.responseText);

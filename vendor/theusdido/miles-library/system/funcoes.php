@@ -2254,7 +2254,7 @@ function getBoolean($boolean,$returntype){
 function getURLProject($parametro = null){
 	$urlproject 		= URL_MILES . "index.php";
 	$parmsProject 		= array(
-		"currentproject" 					=> CURRENT_PROJECT_ID,
+		#"currentproject" 					=> CURRENT_PROJECT_ID,
 		'project_name_identifify_params' 	=> PROJECT_NAME_IDENTIFY_PARAMS,
 		'env'								=> _ENVIROMMENT
 	);

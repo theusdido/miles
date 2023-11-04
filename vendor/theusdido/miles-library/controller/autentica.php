@@ -17,8 +17,7 @@
 			$sql = tdClass::Criar("sqlcriterio");
 			$sql->add($sqlCriterio1);
 			$sql->add($sqlCriterio2);
-			
-			echo $sql->dump();
+
 			$dataset = tdClass::Criar("repositorio",array(USUARIO))->carregar($sql);
 			if ($dataset){
 

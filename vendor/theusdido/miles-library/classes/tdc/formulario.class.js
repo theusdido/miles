@@ -27,7 +27,7 @@ function tdFormulario (){
 	this.tipo						= 'cadastro';
 	this.indice_formulario			= '';
 	this.is_registrounico			= false;
-    this.construct(arguments[0], arguments[1] , arguments[2],arguments[3]);
+    this.construct(arguments[0], arguments[1], arguments[2], arguments[3]);
 	this.formulario;
 	this.is_loaded					= false;
 	this.checklists					= [];
