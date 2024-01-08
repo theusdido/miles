@@ -27,7 +27,7 @@ function tdFormulario (){
 	this.tipo						= 'cadastro';
 	this.indice_formulario			= '';
 	this.is_registrounico			= false;
-    this.construct(arguments[0], arguments[1] , arguments[2],arguments[3]);
+    this.construct(arguments[0], arguments[1], arguments[2], arguments[3]);
 	this.formulario;
 	this.is_loaded					= false;
 	this.checklists					= [];
@@ -73,14 +73,13 @@ tdFormulario.prototype.setExtras = function(_extras){
 	}	
 }
 
-
 tdFormulario.prototype.init = function(){
 	this.setContexto();
 	this.setEntidadesFilho();
 	this.setBotoes();
 	this.emExecucao();
 	this.setBuscaFiltro();
-	this.addHTMLPersonalizado();
+	//this.addHTMLPersonalizado(); # Retirado, terá outra abordagem o carregamento de HTML personalizado
 	this.setAtributoDependencia();
 	this.setMascara();
 }
@@ -90,6 +89,7 @@ tdFormulario.prototype.novo = function(){
 	let indicetemp          = 1;
 	let id_init_val			= 0;
 
+	$('.retorno',contextoAdd).hide();
 	if (this.textcase == 'uppercase'){	
 		$(".form-control").val().toUpperCase();
 	}
@@ -161,15 +161,6 @@ tdFormulario.prototype.novo = function(){
 		}
 
 		if (parseInt(atributoID) != 0 && atributoID != "" && atributoID != undefined){
-			let _tipo_html = td_atributo[atributoID].tipohtml;
-			if (td_atributo[atributoID].chaveestrangeira != "" && (_tipo_html == "4" || _tipo_html == "5")){
-				// Só carrega as listas se for acessado o botão novo do formulário principal
-				if (instancia.is_principal){
-					//instancia.carregarListas();
-					//carregarListas(entidadeAttr,atributoID,contextoAdd,valor);
-				}
-			}
-
 			let attr_selector = "#" + td_atributo[atributoID].nome + '[data-entidade="'+entidadeAttr+'"]';
 
 			if (valor == ''){
@@ -193,30 +184,54 @@ tdFormulario.prototype.novo = function(){
 		$(".checkbox-s",contextoAdd).removeClass("active");
 		$(".checkbox-n",contextoAdd).addClass("active");
 
-		if (instancia.is_principal){
-			if ($('#select-generalizacao-multipla').length > 0){
-				$('#select-generalizacao-multipla').SumoSelect({placeholder: 'Selecione'});
-				$('#select-generalizacao-multipla option').removeAttr("selected");
-				$('#select-generalizacao-multipla')[0].sumo.reload();
-				$('#select-generalizacao-multipla').change();
-				$('#select-generalizacao-multipla')[0].sumo.unSelectAll();
-			}	
-		}
 	});
 
 	$(".form-group",contextoAdd).removeClass("has-success");
 	$(".form-group",contextoAdd).removeClass("has-error");
 	$(".form-control-feedback").remove();
 
-	if ($("#select-generalizacao-unica",contextoAdd))
-	{
-		if (instancia.is_principal){
+	if (instancia.is_principal){
+		if ($("#select-generalizacao-unica",contextoAdd))
+		{
+			$("#select-generalizacao-unica option:first",contextoAdd).prop('selected',true);
 			$("#select-generalizacao-unica",contextoAdd).removeAttr("readonly");
 			$("#select-generalizacao-unica",contextoAdd).removeAttr("disabled");
-		}
-		instancia.setaLayoutGeneralizao();
-	}
+			$("#select-generalizacao-unica",contextoAdd).change(function(e){
+				e.preventDefault();
+				e.stopPropagation();
+				instancia.alterGeneralizaoUnicaAbas();
+			});
 
+			instancia.setaLayoutGeneralizao();
+		}
+
+		if ($('#select-generalizacao-multipla').length > 0){
+			this.setGeneralizacaoMultipla();
+
+			$('#select-generalizacao-multipla').SumoSelect({placeholder: 'Selecione'});
+			$('#select-generalizacao-multipla option').removeAttr("selected");
+			$('#select-generalizacao-multipla')[0].sumo.reload();
+			$('#select-generalizacao-multipla').change();
+			$('#select-generalizacao-multipla')[0].sumo.unSelectAll();
+
+			$("#select-generalizacao-multipla").change(function(){
+				var i = 0;
+				$(this).find("option").each(function(){
+					$(".generalizacaoABA-M")[i].style.display = (this.selected?"":"none");
+					$(".div-relacionamento-generalizacao-multipla")[i].style.display = (this.selected?"":"none");
+					$(this).css("margin-top",(i>0?"-":"")+(i * 10) + "px"); // Corrigi o posicionamento
+					
+					i++;
+				});
+				if ($(this).find("option:selected").length <= 0){
+					$(".div-relacionamento-generalizacao-multipla").hide();
+				}
+				return false;
+			});			
+
+		}	
+	}
+	
 	$('.label-max-size').html( 'Tamanho Máximo.: ' +  config.upload_max_filesize );
 	this.camposUnicos(contextoAdd);
 	this.setarformdadospreenchido();
@@ -234,8 +249,8 @@ tdFormulario.prototype.novo = function(){
 		},this);
 	}
 
-	if (this.is_principal){
-		this.carregarListas();
+	this.carregarListas();
+	if (this.is_principal){		
 		this.setChecklist();
 	}
 
@@ -349,9 +364,6 @@ tdFormulario.prototype.setPermissoesAtributos = function(funcao){
 			}
 		}
 	}
-
-	// Atributo dependencia
-	//this.setAtributoDependencia();
 }
 
 /*
@@ -376,59 +388,17 @@ tdFormulario.prototype.setAtributoDependencia = function(){
 
 			let _atributo_filho 	= td_atributo[$(this).data('atributodependenciafilho')];
 			let $_atributo_filho	= $("#" + _atributo_filho.nome,instancia.getContexto());
-
-			//if (
-			//	td_atributo[idatributo].atributodependencia != "" && 
-			//	td_atributo[idatributo].atributodependencia > 0 && 
-			//	td_atributo[idatributo].atributodependencia != undefined
-			//){
-
-				let $_atributo = $("#" + _atributo.nome,instancia.getContexto());
-				//$("#" + _atributo.nome,instancia.getContexto()).attr("disabled",true);
-				//$("#" + _atributo.nome,instancia.getContexto()).parents(".filtro-pesquisa").find(".descricao-filtro").val("");
-				//$("#" + _atributo.nome,instancia.getContexto()).parents(".filtro-pesquisa").find(".botao-filtro").hide();
-				//if ($(this).prop("tagName") == "SELECT"){
-				//	$("#" + _atributo.nome,instancia.getContexto()).html("<option value=''>Selecione</option>");
-				//}
-				
-				//let atributodependencia = td_atributo[_atributo.atributodependencia];
-				$_atributo.change(function(){
-					let _valor = $(this).val();
-					//let atributofiltro = "";
-					if (_valor == ''){
-						$_atributo_filho.html("<option value=''>-- Selecione --</option>");
-						$_atributo_filho.attr("disabled",true);
-					}else{
-						// for (a in td_atributo){
-						// 	if (td_atributo[a].entidade == atributo_dependencia.chaveestrangeira){
-						// 		if (atributo_dependencia.chaveestrangeira == td_atributo[a].chaveestrangeira){
-						// 			atributofiltro = td_atributo[a].nome;
-						// 			break;
-						// 		}
-						// 	}
-						// }
-
-						// let valordependencia = "";
-						// for(dap in this.dadosatributodependencia){
-						// 	let d = dadosatributodependencia[dap];
-						// 	if (td_entidade[td_atributo[idatributo].entidade].nomecompleto == d.entidade && td_atributo[idatributo].nome == d.atributo){
-						// 		valordependencia = d.valor;
-						// 	}
-						// }
-
-						// $("#" + td_atributo[idatributo].nome).removeAttr("disabled");
-						// let filtro = atributofiltro!=""?atributofiltro+ "^=^" + $(this).val():"";
-						// carregarListas(td_entidade[td_atributo[idatributo].entidade].nomecompleto,td_atributo[idatributo].nome,instancia.getContexto(),valordependencia,filtro);
-						let filtro = _atributo.nome+ "^=^" + _valor;
-						carregarListas(td_entidade[_atributo_filho.entidade].nomecompleto,_atributo_filho.nome,instancia.getContexto(),_valor,filtro);
-
-						// (async function(){
-						// 	let categorias = await mdm_load_data('td_ecommerce_categoria');
-						// 	console.log(categorias);
-						// })();
-					}
-				});
-			//}
+			let $_atributo 			= $("#" + _atributo.nome,instancia.getContexto());
+			$_atributo.change(function(){
+				let _valor = $(this).val();
+				if (_valor == ''){
+					$_atributo_filho.html("<option value=''>-- Selecione --</option>");
+					$_atributo_filho.attr("disabled",true);
+				}else{
+					let filtro = _atributo.nome+ "^=^" + _valor;
+					carregarListas(td_entidade[_atributo_filho.entidade].nomecompleto,_atributo_filho.nome,instancia.getContexto(),_valor,filtro);
+				}
+			});
 		}
 	});	
 
@@ -464,6 +434,7 @@ tdFormulario.prototype.setaLayoutGeneralizao = function(){
 	if ($(".div-relacionamento-generalizacao",contexto)[0]){
 		$(".div-relacionamento-generalizacao",contexto)[0].style.display = "";		
 	}
+	
 	if ($(".select-flag-generalizacao").length > 0){
 		var entidadeid = parseInt($(".select-flag-generalizacao").parents(".crud-contexto-add").data("entidadeid"));
 		var atributogeneralizacao = td_entidade[entidadeid].atributogeneralizacao;
@@ -472,6 +443,14 @@ tdFormulario.prototype.setaLayoutGeneralizao = function(){
 			return false;
 		}
 		$("#" + td_atributo[atributogeneralizacao].nome, contexto).val($(".select-flag-generalizacao").val());
+		
+		td_entidade[entidadeid].relacionamentos
+		.forEach((el) => {
+			if ((el.tipo == 3  || el.tipo == 9) && el.pai == entidadeid){
+				// Oculta a aba quando for Generalização Única 1:1 e Generalização Múltiplia 1:1
+				$('.crud-contexto-listar[data-entidadeid='+el.filho+']').hide();
+			}
+		});
 	}
 }
 
@@ -554,12 +533,6 @@ tdFormulario.prototype.setBotoes = function(){
 		this.btn_voltar	= $(".b-voltar"	, this.getContexto()).first();
 	}
 
-	// this.btn_voltar.on('click',this,function(handler){
-	// 	if (typeof beforeBack === "function") beforeBack(this);
-	// 	handler.data.voltar();
-	// 	if (typeof afterBack === "function") afterBack(this);
-	// });
-	
 	this.btn_voltar.click(this,function(handler){
 		if (typeof beforeBack === "function") beforeBack(this);
 		handler.data.voltar();
@@ -624,6 +597,7 @@ tdFormulario.prototype.salvar = function(){
 				}else if(td_relacionamento[RelEnt].tipo == "3"){
 					if (td_relacionamento[RelEnt].filho == $("#select-generalizacao-unica").val()){
 						entidadesRel = $("#select-generalizacao-unica").val();
+						$('input[atributo=' + td_entidade[td_relacionamento[RelEnt].pai].atributogeneralizacao + ']').val(entidadesRel);
 					}
 				}else if(td_relacionamento[RelEnt].tipo == "9"){
 					$("#select-generalizacao-multipla option[value="+td_relacionamento[RelEnt].filho+"]:selected").each(function(){
@@ -938,7 +912,7 @@ tdFormulario.prototype.salvar = function(){
 				}
 				if (typeof afterSave === "function") afterSave(this.is_principal,this);
 			}
-		}		
+		}
 	}
 }
 
@@ -1032,24 +1006,17 @@ tdFormulario.prototype.editar = function(){
 							tipoRelacionamento 		= tipo;
 							atributoRelacionamento	= atributo;
 						}
-
+						
 						// Configura o cadastro para a generalização simples
 						if (pai == entidade && (tipo == 3 || tipo == 8)){
 							for(d in dadosRetorno){
 								if (td_atributo[td_entidade[entidade].atributogeneralizacao].nome == dadosRetorno[d].atributo){
-									/*
-									if (dadosRetorno[d].valor  == td_relacionamento[rel].filho){
-
-										$("#select-generalizacao-unica")[0].sumo.selectItem(td_relacionamento[rel].filho);
-										$(".div-relacionamento-generalizacao,.generalizacaoABA",this.getContexto()).hide();
-										$("#select-generalizacao-unica").attr("readonly","true");
-										$(".generalizacaoABA." + td_entidade[td_relacionamento[rel].filho].nome).show();
-										$(".div-relacionamento-generalizacao#drv-" + td_entidade[td_relacionamento[rel].filho].nome,this.getContexto()).show();
+									if (dadosRetorno[d].valor  == filho){
+										this.setGeneralizaoUnica(filho);
 									}
-									*/
 								}
 							}
-						}
+						}						
 
 						// Seleciona a lista da generalização multipla
 						if (tipo == 9 && pai == entidade){
@@ -1060,8 +1027,11 @@ tdFormulario.prototype.editar = function(){
 
 				// Abre o formulário das entidades de relacionamento
 				if (tipoRelacionamento == "" || tipoRelacionamento == 1 || tipoRelacionamento == 7 || tipoRelacionamento == 3 || tipoRelacionamento == 9){
+					if (r.fp){
+						this.setaPrimeiraAba();
+					}
+					
 					this.setDados(r);
-					this.setaPrimeiraAba();
 					$(this.getContextoListar()).hide();
 					$(this.getContexto()).show();
 
@@ -1079,15 +1049,6 @@ tdFormulario.prototype.editar = function(){
 							}
 						});
 					},1000);
-				}
-
-				if ($("#select-generalizacao-unica")){
-					$("#select-generalizacao-unica").attr("readonly","true");
-					$("#select-generalizacao-unica").attr("disabled","true");
-					this.setaLayoutGeneralizao();
-					if (r.fp){
-						$("#select-generalizacao-unica").change();
-					}
 				}
 
 				if ($('#select-generalizacao-multipla')){
@@ -1113,7 +1074,7 @@ tdFormulario.prototype.editar = function(){
 
 tdFormulario.prototype.setDados = function(dados){
 	let form	 		= this;
-	let entidade_nome 	= form.entidade.nome;
+	let entidade_nome 	= td_entidade[dados.entidade].nome;
 	let contextoAdd		= form.getContexto();
 	let id				= dados.id;
 	let atributos		= dados.dados;
@@ -1160,18 +1121,15 @@ tdFormulario.prototype.setDados = function(dados){
 				
 				const atributodependenciapai	= $_atributo.data('atributodependenciapai');
 				const atributodependente		= td_atributo[atributodependenciapai];
-				let valorfiltro = 0;
+				let valorfiltro 				= 0;
 				// Procura o valor do atributo dependencia pai
 				atributos.forEach(function(dado_pai){
 					if (dado_pai.atributo == atributodependente.nome){
 						valorfiltro = dado_pai.valor;
 					}
 				});
-				//const valorfiltro 				= $('#' + atributodependente.nome+'[data-entidade="'+entidade_nome+'"]',contextoAdd).val();
 				carregarListas(entidade_nome,dado.atributo,contextoAdd,valorDados,atributodependente.nome+"^=^"+valorfiltro);
 			}else{
-				//carregarListas(entidade_nome,dado.atributo,contextoAdd,valorDados);
-	
 				if (valorDados != "" && valorDados != undefined){
 					$('#' + dado.atributo + '[data-entidade="'+entidade_nome+'"]',contextoAdd).val(valorDados);
 				}else{
@@ -1181,13 +1139,6 @@ tdFormulario.prototype.setDados = function(dados){
 					}
 				}
 			}
-			/*
-			if (dado.nulo == 1){
-				$('#' + dado.atributo + '[data-entidade="'+entidade_nome+'"]').removeAttr("readonly");
-				$('#' + dado.atributo + '[data-entidade="'+entidade_nome+'"]').removeAttr("disabled");
-			}
-			*/			
-			
 		}
 		if ($('#' + dado.atributo + '[data-entidade="'+entidade_nome+'"]',contextoAdd).hasClass("termo-filtro")){
 			try{
@@ -1314,7 +1265,6 @@ tdFormulario.prototype.habilitafiltro = function(atributo,contexto,habilita,enti
 									valordependencia = d.valor;
 								}
 							}
-							//carregarListas(entidadeFiltro.nomecompleto,attr.nome,contexto,valordependencia,campofiltro + "^=^" + $("#" + campofiltro).val());
 						}else{					
 
 							$("#" + attr.nome).parents(".filtro-pesquisa").find(".botao-filtro").show();
@@ -1394,7 +1344,7 @@ tdFormulario.prototype.setConsulta = function(id_consulta){
 	this.carregarListas();
 	this.flatCampos();
 	this.setCkEditores();
-	//this.setAtributoDependencia();
+
 	let consulta = td_consulta[id_consulta];
 
 	// Monta os filtros
@@ -1468,6 +1418,7 @@ tdFormulario.prototype.setBuscaFiltro = function()
 					});
 
 					$(this).parent('.input-group').find('.botao-filtro').click(function(){
+						debugger;
 						let modalName 			= $(this).parents(".filtro-pesquisa").data("modalname");
 						let chaveestrangeira 	= $(this).data("fk");
 						let atributo 			= $(this).parents(".filtro-pesquisa").find(".termo-filtro").attr("id");
@@ -1597,8 +1548,8 @@ tdFormulario.prototype.setRelatorio = function(id_relatorio){
 
 tdFormulario.prototype.carregarListas = function(){
 	let contexto = this.getContexto();
-	//console.log($(".tdform.form_campos select.form-control",contexto).length);
-	$(".tdform.form_campos select.form-control",contexto).each(function(){
+
+	$(".tdform.form_campos select.form-control[data-entidade='"+this.entidade.nome+"']",contexto).each(function(){
 		if ($(this).prop("tagName") == "SELECT"){
 			$(this).removeAttr("required");
 			if (!$(this).hasClass('atributodependenciafilho')){
@@ -1957,4 +1908,44 @@ tdFormulario.prototype.setChecklist = function(){
 			this.checklists.push(_list);
 		}
 	},this);
+}
+
+tdFormulario.prototype.alterGeneralizaoUnicaAbas = function(){	
+	let entidade_filho_id 	= $("#select-generalizacao-unica",this.getContexto()).val();
+	let entidade_filho 		= td_entidade[entidade_filho_id].nome;
+	this.setGeneralizaoAba(entidade_filho_id);
+	$(".generalizacaoABA." + entidade_filho + ' a').tab('show');
+}
+
+tdFormulario.prototype.setGeneralizaoUnica = function(_entidade_filho){
+	//if ($("#select-generalizacao-unica")){
+		$("#select-generalizacao-unica").attr("readonly","true");
+		$("#select-generalizacao-unica").attr("disabled","true");		
+		$("#select-generalizacao-unica",this.getContexto()).val(_entidade_filho);
+		this.setGeneralizaoAba(_entidade_filho);
+		//this.setaLayoutGeneralizao();
+		if (r.fp){
+			//$("#select-generalizacao-unica").change();
+		}
+	//}
+}
+
+tdFormulario.prototype.setGeneralizaoAba = function(_entidade_filho){
+	$(".div-relacionamento-generalizacao,.generalizacaoABA",this.getContexto()).hide();
+
+	let entidade_filho 		= td_entidade[_entidade_filho].nome;
+	$(".generalizacaoABA." + entidade_filho).show();
+	$(".div-relacionamento-generalizacao#drv-" + entidade_filho,this.getContexto()).show();
+}
+
+tdFormulario.prototype.setGeneralizacaoMultipla = function (){
+	//if ($("#select-generalizacao-multipla").length > 0){
+		$(".generalizacaoABA-M").hide();
+		for(rm in td_relacionamento){
+			if (td_relacionamento[rm].tipo == 9 && td_relacionamento[rm].pai == this.entidade_id){
+				var opt = $("<option value='"+td_relacionamento[rm].filho+"'>"+td_relacionamento[rm].descricao+"</option>");
+				$("#select-generalizacao-multipla").append(opt);
+			}
+		}
+	//}
 }

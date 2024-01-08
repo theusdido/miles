@@ -748,7 +748,7 @@ function carregarListas(entidade,atributo,contextoAdd,valor){ // Argumento 4 é 
 	}
 
 	var obrigatorio = $("#" + td_atributo[atributo].nome + "[data-entidade="+entidade+"]",contextoAdd).attr("required") == undefined?0:1;
-	var filtro = "";
+	var filtro 		= "";
 	for (tda in td_filtroatributo){
 		if (td_filtroatributo[tda].atributo == atributo){
 			var ft = td_atributo[td_filtroatributo[tda].td_campo].nome + "^" + td_filtroatributo[tda].operador + "^" + td_filtroatributo[tda].valor;
@@ -773,87 +773,49 @@ function carregarListas(entidade,atributo,contextoAdd,valor){ // Argumento 4 é 
 		if (td_atributo[atributo].atributodependencia != '' && td_atributo[atributo].atributodependencia != 0){
 			$(".form-control[id=" + td_atributo[atributo].nome + "]",contextoAdd).attr('disabled',false);
 		}
-		// if (td_atributo[atributo].atributodependencia != '' && td_atributo[atributo].atributodependencia != 0){
-		// 	try{
-		// 		let _atributo = td_atributo[atributo];
-		// 		let _entidade_auxiliar = td_entidadeauxiliar[_atributo.chaveestrangeira];
-		// 		if (typeof _entidade_auxiliar == "object"){
-		// 			//let _atributo 					= td_atributo[td_atributo[atributo].chaveestrangeira];					
-		// 			//let _atributo_dependencia_id 	= $('data-atributodependencia=' + ).data('atributodependencia');
-					
-		// 			let _atributo_dependencia 		= $('#' + _atributo.nome).data('atributodependenciafilho'); 
-		// 			console.log(_atributo_dependencia);
-		// 			debugger;
-					
-		// 			$(".form-control[id=" + td_atributo[atributo].nome +"]",contextoAdd).html("");
-		// 			var entaux = _entidade_auxiliar;
-		// 			let _valor = _atributo_dependencia.val();
-		// 			console.log(_valor);
-		// 			if (_valor == undefined){
-		// 				$(".form-control[id=" + td_atributo[atributo].nome + "]",contextoAdd).attr('disabled',true);
-		// 			}else{
-		// 				console.log(_valor);
-		// 				for (ea in entaux){
-		// 					console.log(valor , entaux[ea].id);
-		// 					var htmlOPT;
-		// 					eval("ophtmlOPTt = entaux[ea]." + td_atributo[td_entidade[td_atributo[atributo].chaveestrangeira].campodescchave].nome);
-		// 					var opt = "<option value='"+entaux[ea].id+"'>" + ophtmlOPTt + "</option>";
-		// 					$(".form-control[id=" + td_atributo[atributo].nome +"]",contextoAdd).append(opt);
-		// 				}
-		// 				if (valor != "" && valor != undefined && valor != 0){
-		// 					$(".form-control[id=" + td_atributo[atributo].nome + "]",contextoAdd).val(valor);
-		// 				}
-		// 			}
-		// 		}else{
-		// 			console.warn('Entidade auxiliar não encontrada.');	
-		// 		}
-		// 	}catch(e){
-		// 		console.warn('Entidade auxiliar não encontrada.');
-		// 	}
-		// }else{
-			try{
-				var campochavedescricao = td_entidade[td_atributo[atributo].chaveestrangeira].campodescchave;
-				if (campochavedescricao <= 0){
-					console.log("Campo descrição da tabela ( ["+td_entidade[td_atributo[atributo].chaveestrangeira].id+"]"+td_entidade[td_atributo[atributo].chaveestrangeira].nomecompleto+" ) não encontrado ");
-				}
-			}catch(e){
-				var campochavedescricao = 0;
-				console.log('Chave estrangeira não encontrada e/ou atributo descrição não encontrado');
+
+		try{
+			var campochavedescricao = td_entidade[td_atributo[atributo].chaveestrangeira].campodescchave;
+			if (campochavedescricao <= 0){
+				console.log("Campo descrição da tabela ( ["+td_entidade[td_atributo[atributo].chaveestrangeira].id+"]"+td_entidade[td_atributo[atributo].chaveestrangeira].nomecompleto+" ) não encontrado ");
 			}
-			$.ajax({
-				url:config.urlrequisicoes,
-				type:"GET",
-				async:false,
-				data:{
-					op:"carregar_options",
-					entidade:td_atributo[atributo].chaveestrangeira,
-					atributo:campochavedescricao,
-					filtro:filtro
-				},
-				beforeSend:function(){
-					$(".form-control[id=" + td_atributo[atributo].nome +"]",contextoAdd).html("<option value=''>Aguarde ...</option>");
-				},
-				complete:function(ret){					
-					var retorno = ret.responseText;
-					if (obrigatorio == 0){
-						var htmlretorno = "<option value=''>-- Selecione --</option>" + retorno;
-					}else{
-						var htmlretorno = retorno;						
-					}
-					$(".form-control[id=" + td_atributo[atributo].nome+"][data-entidade="+td_entidade[td_atributo[atributo].entidade].nomecompleto+"]",contextoAdd).html(htmlretorno);
-					$(".form-control[id=" + td_atributo[atributo].nome +"-old][data-entidade="+td_entidade[td_atributo[atributo].entidade].nomecompleto+"]",contextoAdd).html(htmlretorno);
-					if (valor == ''){
-						$(".form-control[id=" + td_atributo[atributo].nome +"] option:first",contextoAdd).attr("selected",true);
-					}else{
-						$(".form-control[id=" + td_atributo[atributo].nome+"][data-entidade="+td_entidade[td_atributo[atributo].entidade].nomecompleto+"]",contextoAdd).val(valor);
-						$(".form-control[id=" + td_atributo[atributo].nome+"-old][data-entidade="+td_entidade[td_atributo[atributo].entidade].nomecompleto+"]",contextoAdd).val(valor);
-					}					
-				},
-				error:function(ret){
-					console.log("ERRO ao carregar lista => " + ret.responseText);
+		}catch(e){
+			var campochavedescricao = 0;
+			console.log('Chave estrangeira não encontrada e/ou atributo descrição não encontrado');
+		}
+		$.ajax({
+			url:config.urlrequisicoes,
+			type:"GET",
+			async:false,
+			data:{
+				op:"carregar_options",
+				entidade:td_atributo[atributo].chaveestrangeira,
+				atributo:campochavedescricao,
+				filtro:filtro
+			},
+			beforeSend:function(){
+				$(".form-control[id=" + td_atributo[atributo].nome +"]",contextoAdd).html("<option value=''>Aguarde ...</option>");
+			},
+			complete:function(ret){					
+				var retorno = ret.responseText;
+				if (obrigatorio == 0){
+					var htmlretorno = "<option value=''>-- Selecione --</option>" + retorno;
+				}else{
+					var htmlretorno = retorno;						
 				}
-			});
-		//}	
+				$(".form-control[id=" + td_atributo[atributo].nome+"][data-entidade="+td_entidade[td_atributo[atributo].entidade].nomecompleto+"]",contextoAdd).html(htmlretorno);
+				$(".form-control[id=" + td_atributo[atributo].nome +"-old][data-entidade="+td_entidade[td_atributo[atributo].entidade].nomecompleto+"]",contextoAdd).html(htmlretorno);
+				if (valor == ''){
+					$(".form-control[id=" + td_atributo[atributo].nome +"] option:first",contextoAdd).attr("selected",true);
+				}else{
+					$(".form-control[id=" + td_atributo[atributo].nome+"][data-entidade="+td_entidade[td_atributo[atributo].entidade].nomecompleto+"]",contextoAdd).val(valor);
+					$(".form-control[id=" + td_atributo[atributo].nome+"-old][data-entidade="+td_entidade[td_atributo[atributo].entidade].nomecompleto+"]",contextoAdd).val(valor);
+				}
+			},
+			error:function(ret){
+				console.log("ERRO ao carregar lista => " + ret.responseText);
+			}
+		});
 	}
 }
 

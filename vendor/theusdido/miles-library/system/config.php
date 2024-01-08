@@ -171,7 +171,7 @@
 	require $_path_system . 'url.php';
 	require $_path_system . 'file.php';
 	require $_path_system . 'entidade.php';
-	require $_path_system . 'atributo.php';
+	require $_path_system . 'atributo.php';	
 
 	// Inclui a classe AutoLoad
 	require PATH_MILES_LIBRARY . $strutuct->auto_load_class;	

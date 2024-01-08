@@ -780,11 +780,12 @@ error_reporting(E_ALL);
 						});
 					}
 				');
-				//$div_list_arquivos->add($formADDFile,$iframeADDFile,$jsAddFile);
+				# $div_list_arquivos->add($formADDFile,$iframeADDFile,$jsAddFile);
 
 				
 				$sql_arquivos = tdClass::Criar("sqlcriterio");
 				$sql_arquivos->addFiltro("relacaocredores","=",$credor->contexto->id);
+
 				$dataset_arquivos = tdClass::Criar("repositorio",array("td_arquivos_credor"))->carregar($sql_arquivos);
 
 				$formT = tdClass::Criar("form");
@@ -804,17 +805,19 @@ error_reporting(E_ALL);
 				$formZ->add($iframeZ);
 
 				foreach ($dataset_arquivos as $arquivo){
-					$a = tdClass::Criar("hyperlink");
-					$input 			= tdClass::Criar("input");
-					$input->name 	= $arquivo->id;
-					$input->type 	= "hidden";
-					$urlfile 		= "http://www.innovareadministradora.com.br/site/enviodocumentos_/verificaarquivo.php?filename=" . $arquivo->nome;
-					$a->href 		= urldecode($urlfile);
-					$input->value 	= $urlfile;
-					$a->target 		= "_blank";
-					$a->class 		= "list-group-item";
-					$a->add($arquivo->descricao);
-					$divFileNew->add($a);
+					if ($arquivo->descricao != '#'){
+						$a 				= tdClass::Criar("hyperlink");
+						$input 			= tdClass::Criar("input");
+						$input->name 	= $arquivo->id;
+						$input->type 	= "hidden";
+						$urlfile 		= "http://www.innovareadministradora.com.br/site/enviodocumentos_/verificaarquivo.php?filename=" . $arquivo->nome;
+						$a->href 		= urldecode($urlfile);
+						$input->value 	= $urlfile;
+						$a->target 		= "_blank";
+						$a->class 		= "list-group-item";
+						$a->add($arquivo->descricao);
+						$divFileNew->add($a);
+					}
 				}
 
 				$btnDownload = tdClass::Criar("input");

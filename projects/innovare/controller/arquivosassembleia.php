@@ -328,41 +328,42 @@ $op = isset($_POST["op"])?$_POST["op"]: (isset($_GET["op"])?$_GET["op"]:'');
 				$div_list_arquivos->add($formADDFile,$iframeADDFile,$jsAddFile,$divFileNew);
 				
 				$sql_arquivos = tdClass::Criar("sqlcriterio");
-				$sql_arquivos->addFiltro("td_relacaocredores","=",$credor->contexto->id);
+				$sql_arquivos->addFiltro("relacaocredores","=",$credor->contexto->id);
 				$sql_arquivos->addFiltro("origem","in",array(2,9));
 				
-				//echo $sql_arquivos->dump() . "<br/>";
 				$dataset_arquivos = tdClass::Criar("repositorio",array("td_arquivos_credor"))->carregar($sql_arquivos);
 				$arquivosLinks = array();
 				foreach ($dataset_arquivos as $arquivo){
-					$link = urldecode("http://www.innovareadministradora.com.br/site/enviodocumentos_/verificaarquivo.php?filename=" . $arquivo->nome);
+					if ($arquivo->descricao != '#'){
+						$link = urldecode("http://www.innovareadministradora.com.br/site/enviodocumentos_/verificaarquivo.php?filename=" . $arquivo->nome);
 
-					$nomeA = "arquivo-link-assembleia-" . $arquivo->id;
-					$a = tdClass::Criar("hyperlink");
-					$a->href = "#";
-					array_push($arquivosLinks,$link);
-					$a->target = "_blank";
-					$a->class = "list-group-item link-open-file " . $nomeA;
-					$a->add($arquivo->descricao==""?"Sem Arquivo":$arquivo->descricao);
-					$a->style = "float:left;width:95%;";
-					$a->data_linkfile = $link;
-					$div_list_arquivos->add($a);
+						$nomeA = "arquivo-link-assembleia-" . $arquivo->id;
+						$a = tdClass::Criar("hyperlink");
+						$a->href = "#";
+						array_push($arquivosLinks,$link);
+						$a->target = "_blank";
+						$a->class = "list-group-item link-open-file " . $nomeA;
+						$a->add($arquivo->descricao==""?"Sem Arquivo":$arquivo->descricao);
+						$a->style = "float:left;width:95%;";
+						$a->data_linkfile = $link;
+						$div_list_arquivos->add($a);
 
-					// Botão Excluir
-					$btnExcluirFiles = tdClass::Criar("button");
-						$btnExcluirSpan = tdClass::Criar("span");
-						$btnExcluirSpan->class = "fas fa-trash";
-						$btnExcluirSpan->aria_hidden = "true";
-					$nomeExcluirFiles = "arquivo-link-assembleia-files";
-					$idExcluirFiles = "arquivo-file-lista-" . $arquivo->id;
-					$btnExcluirFiles->id = $idExcluirFiles;
-					$btnExcluirFiles->class = "list-group-item " . $nomeExcluirFiles;
-					$btnExcluirFiles->data_id = $arquivo->id;
-					$btnExcluirFiles->data_nomea = $nomeA;
-					$btnExcluirFiles->add($btnExcluirSpan);
-					$btnExcluirFiles->style = "float:left;width:5%;cursor:pointer;";
-					$btnExcluirFiles->onclick = "excluirArquivo(this)";
-					$div_list_arquivos->add($btnExcluirFiles);
+						// Botão Excluir
+						$btnExcluirFiles = tdClass::Criar("button");
+							$btnExcluirSpan = tdClass::Criar("span");
+							$btnExcluirSpan->class = "fas fa-trash";
+							$btnExcluirSpan->aria_hidden = "true";
+						$nomeExcluirFiles = "arquivo-link-assembleia-files";
+						$idExcluirFiles = "arquivo-file-lista-" . $arquivo->id;
+						$btnExcluirFiles->id = $idExcluirFiles;
+						$btnExcluirFiles->class = "list-group-item " . $nomeExcluirFiles;
+						$btnExcluirFiles->data_id = $arquivo->id;
+						$btnExcluirFiles->data_nomea = $nomeA;
+						$btnExcluirFiles->add($btnExcluirSpan);
+						$btnExcluirFiles->style = "float:left;width:5%;cursor:pointer;";
+						$btnExcluirFiles->onclick = "excluirArquivo(this)";
+						$div_list_arquivos->add($btnExcluirFiles);
+					}
 				}
 
 				$btnDownload = tdClass::Criar("input");
@@ -582,7 +583,7 @@ $op = isset($_POST["op"])?$_POST["op"]: (isset($_GET["op"])?$_GET["op"]:'');
 				echo '
 					<div class="panel panel-primary">
 						<div class="panel-heading">
-							<span style="cursor:pointer;" class="cabecalho-farein" data-params="'.$parms.'">'.$linha->id . " - " . utf8charset($linha->{$descricao}).' - Data do <i>' . $datapedidosetenca . '</i></span>
+							<span style="cursor:pointer;" class="cabecalho-farein" data-params="'.$parms.'">'.$linha->id . " - " . tdc::utf8($linha->{$descricao}).' - Data do <i>' . $datapedidosetenca . '</i></span>
 							<button class="btn btn-default btn-xs icone-pequeno-cabecalho-collapse cabecalho-farein-atualizar" data-params="'.$parms.'" aria-label="Atualizar Lista de Habilitação/Impugnação">
 								<span class="fas fa-right-left" aria-hidden="true"></span>
 							</button>

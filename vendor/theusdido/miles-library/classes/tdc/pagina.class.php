@@ -34,6 +34,7 @@ class Pagina Extends Html {
 	private $favicon				= null;
 	public $showChartJS				= true;
 	private $script;
+	public $show_mdbootstrap		= true;
 	/*  
 		* Método construct 
 	    * Data de Criacao: 31/08/2012
@@ -62,13 +63,13 @@ class Pagina Extends Html {
 		$bootstrap_js->src 				= URL_LIB . "bootstrap/3.3.1/js/bootstrap.js";
 		$bootstrap_js->language 		= "JavaScript";
 				
-		$tdlib_css       = tdc::html('link');
-		$tdlib_css->href = URL_LIB . 'tdlib/css/tdlib.css';
-		$tdlib_css->rel 	= "stylesheet";
+		$tdlib_css       				= tdc::html('link');
+		$tdlib_css->href 				= URL_LIB . 'tdlib/css/tdlib.css';
+		$tdlib_css->rel 				= "stylesheet";
 
-		$tdlib_js 					= tdClass::Criar("script");
-		$tdlib_js->src 				= URL_LIB . "tdlib/js/tdlib.js";
-		$tdlib_js->language 		= "JavaScript";
+		$tdlib_js 						= tdClass::Criar("script");
+		$tdlib_js->src 					= URL_LIB . "tdlib/js/tdlib.js";
+		$tdlib_js->language 			= "JavaScript";
 	
 		$meta_charset = tdClass::Criar("meta");		
 		if ($this->ishtml5){
@@ -191,7 +192,19 @@ class Pagina Extends Html {
 			$chart_js = tdc::html('script');
 			$chart_js->src = 'https://cdn.jsdelivr.net/npm/chart.js';
 			$this->body->add($chart_js);
-		}		
+		}
+
+		if ($this->show_mdbootstrap)
+		{
+			$mdbootstrapCSS 			= tdClass::Criar("link");
+			$mdbootstrapCSS->href 		= URL_LIB . 'mdb-ui-kit-master/css/mdb.min.css';
+			$mdbootstrapCSS->rel 		= 'stylesheet';
+			//$this->head->add($mdbootstrapCSS);
+
+			$mdbootstrapJS				= tdClass::Criar("script");
+			$mdbootstrapJS->src 		= URL_LIB . 'mdb-ui-kit-master/js/mdb.min.js';
+			//$this->body->add($mdbootstrapJS);
+		}
 
 		// Javascript inicial da página
 		$this->jsInicial();
@@ -311,7 +324,7 @@ class Pagina Extends Html {
 					}
 				});				
 			}
-
+		
 		');
 
 		// Arquivo de Codificação/Decoficação em JS
@@ -421,6 +434,10 @@ class Pagina Extends Html {
 	public function addJSLbiSystem(){
 		if ($this->showJSLibSystem){
 
+			// Classe de Interface para o SessionStorage
+			$_session_storage_class			= tdClass::Criar("script");
+			$_session_storage_class->src 	= URL_CLASS_TDC_JS . "sessionstorage.class.js";
+
 			// Adiciona o arquivo de funções em JS
 			$jsFuncoes 			= tdClass::Criar("script");
 			$jsFuncoes->src 	= URL_SYSTEM . "funcoes.js";
@@ -441,10 +458,11 @@ class Pagina Extends Html {
 			$jsFormularioClass 			= tdClass::Criar("script");
 			$jsFormularioClass->src 	= URL_CLASS_TDC . "formulario.class.js";
 
+			// Classe Gerar Arquivos WEBCOMPONENTES
 			$jsGerarHtmlClass 			= tdClass::Criar("script");
 			$jsGerarHtmlClass->src 		= URL_CLASS_TDC . "gerarhtml.class.js";
 
-			$this->body->add($jsFuncoes,$jsValidar,$jsGradeDados,$jsChecklist,$jsFormularioClass,$jsGerarHtmlClass);
+			$this->body->add($_session_storage_class,$jsFuncoes,$jsValidar,$jsGradeDados,$jsChecklist,$jsFormularioClass,$jsGerarHtmlClass);
 		}
 	}
 

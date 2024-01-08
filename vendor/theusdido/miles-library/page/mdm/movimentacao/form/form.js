@@ -171,7 +171,6 @@ $(document).ready(function(){
     });
     carregarValoresAtributo($("#form-status #atributo"));
     $("#form-historico #entidade").change(function(){
-        console.log("TESTE");
         carregarAtributosHistorico();
     });				
 });

@@ -116,7 +116,7 @@
 					$retorno["dados"] 		= "";
 					$retorno["id"] 			= "";
 					$retorno["fp"]			= true;
-					array_push($dados,$retorno);
+					//array_push($dados,$retorno);
 				}
 			}
 		}

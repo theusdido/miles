@@ -79,17 +79,26 @@
 	$crudAdd->data_entidadeid 		= $entidade->contexto->id;
 	$crudAdd->data_entidadepai		= tdc::r("entidadepai");
 
-	if (tdClass::Read("relacionamento") == "" || $relacionamentoTipo == "2" || $relacionamentoTipo == "6" || $relacionamentoTipo == "5" || $relacionamentoTipo == "8" || $relacionamentoTipo == "10"){
-		$crudAdd->style = "display:none;";
-		$crudListar->style = "display:inline;";
+	//var_dump($relacionamentoTipo);
+	//var_dump(tdClass::Read("relacionamento"));
+	if (
+		tdClass::Read("relacionamento") == "" || 
+		$relacionamentoTipo == "2" || 
+		$relacionamentoTipo == "6" || 
+		$relacionamentoTipo == "5" || 
+		$relacionamentoTipo == "8" || 
+		$relacionamentoTipo == "10"
+	){
+		$crudAdd->style 		= "display:none;";
+		$crudListar->style 		= "display:inline;";
 	}else{
-		$crudAdd->style = "display:inline;";
-		$crudListar->style = "display:none;";
+		$crudAdd->style 		= "display:inline;";
+		$crudListar->style 		= "display:none;";
 	}
 
 	if ($entidade->contexto->registrounico == 1){
-		$crudAdd->style = "display:inline;";
-		$crudListar->style = "display:none;";
+		$crudAdd->style 		= "display:inline;";
+		$crudListar->style 		= "display:none;";
 	}
 
 	// Configuração Visual dos Botões
@@ -103,7 +112,7 @@
 	if ($isprincipal){
 
 		// Adiciona CSS personalizado
-		$cssCustom = tdClass::Criar("link");
+		$cssCustom 			= tdClass::Criar("link");
 		$cssCustom->type 	= "text/css";
 		$cssCustom->href 	= $urlfilepage . $entidade->contexto->nome . ".css";
 		$cssCustom->rel 	= "stylesheet";

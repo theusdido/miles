@@ -175,7 +175,6 @@
 				while ($linhaListaCredores = $queryListaCredores->fetch()){
 					$idsListaCredores .= ($idsListaCredores==""?"":",") . $linhaListaCredores["regfilho"];
 				}
-				#echo ">>>>" . $idsListaCredores;
 				if ($idsListaCredores == ""){
 					$bootstrap = tdClass::Criar("link");
 					$bootstrap->href = PATH_LIB . 'bootstrap/3.3.1/css/bootstrap.css';
@@ -186,7 +185,6 @@
 					exit;
 				} 
 				$sql = "SELECT a.id,a.descricao FROM td_classificacao a WHERE exists(SELECT 1 FROM td_relacaocredores b WHERE b.id in ({$idsListaCredores}) AND  b.classificacao = a.id AND b.farein = {$farein} AND b.processo = {$processo} AND (b.origemcredor is null OR b.origemcredor = 1)) ORDER BY a.ordem ASC ";;
-				//echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>$sql<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<";
 				$query = $conn->query($sql);
 				$tr = "";
 				$total = 0;

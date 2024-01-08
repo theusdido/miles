@@ -1161,6 +1161,11 @@ function criarRelacionamento($conn,$tipo,$entidadePai,$entidadeFilho,$descricao 
 	}
 	try{
 		$query = $conn->query($sql);
+
+		if ($tipo == 3){
+			// Seta atributo generalização
+			setAtributoGeneralizacao($conn,$entidadeFilho,$atributo);
+		}
 		return $idRetorno;
 	}catch(Throwable $t){
 		if (IS_SHOW_ERROR_MESSAGE){
@@ -2249,7 +2254,7 @@ function getBoolean($boolean,$returntype){
 function getURLProject($parametro = null){
 	$urlproject 		= URL_MILES . "index.php";
 	$parmsProject 		= array(
-		"currentproject" 					=> CURRENT_PROJECT_ID,
+		#"currentproject" 					=> CURRENT_PROJECT_ID,
 		'project_name_identifify_params' 	=> PROJECT_NAME_IDENTIFY_PARAMS,
 		'env'								=> _ENVIROMMENT
 	);

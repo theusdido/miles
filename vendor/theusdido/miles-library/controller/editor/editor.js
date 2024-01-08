@@ -937,7 +937,6 @@ function addAlcasRedimensionamneto(elemento){
 			
 		},
 		stop: function( event, ui ) {
-			console.log();
 			elemento.css("position","absolute");
 			var topabsoluto = parseFloat(elemento.css("top").replace("px",""));
 			elemento.css("position","relative");			

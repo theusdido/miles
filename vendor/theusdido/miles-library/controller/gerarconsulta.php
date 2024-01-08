@@ -4,7 +4,8 @@
 		echo 'Parametro "ID" não foi enviado.';
 		exit;
 	}
-	$pathfileconsulta = PATH_FILES_CONSULTA . $id;
+	$pathfileconsulta 	= PATH_FILES_CONSULTA . $id;
+	$urlfileconsulta	= URL_FILES_CONSULTA . $id . "/";
 	
 	// Cria diretório
 	if (!file_exists($pathfileconsulta)){
@@ -41,20 +42,20 @@
 	$consultaID->value 			= $id;
 	$consultaID->mostrar();
 
-	$blocoTitulo = tdClass::Criar("bloco");
-	$blocoTitulo->class = "col-md-12";
+	$blocoTitulo 			= tdClass::Criar("bloco");
+	$blocoTitulo->class 	= "col-md-12";
 
 	// Titulo
-	$titulo = tdClass::Criar("p");
-	$titulo->class = "titulo-pagina";
+	$titulo 				= tdClass::Criar("p");
+	$titulo->class 			= "titulo-pagina";
 	$titulo->add($consulta->descricao);
 	$blocoTitulo->add($titulo);
 	
-	$linhaTitulo = tdClass::Criar("div");
-	$linhaTitulo->class = "row";
+	$linhaTitulo 			= tdClass::Criar("div");
+	$linhaTitulo->class 	= "row";
 	$linhaTitulo->add($blocoTitulo);
 	$linhaTitulo->mostrar();
-	
+
 	// Botão PESQUISAR
 	$btn_pesquisar 				= tdClass::Criar("button");
 	$btn_pesquisar->class 		= "btn btn-primary b-pesquisar";
@@ -196,3 +197,17 @@
 	$modal->addHeader("Movimentação",null);
 	$modal->addBody('');
 	$modal->mostrar();
+
+
+	// Adiciona CSS personalizado
+	$cssCustom 			= tdClass::Criar("link");
+	$cssCustom->type 	= "text/css";
+	$cssCustom->href 	= $urlfileconsulta . $entidade->nome . ".css";
+	$cssCustom->rel 	= "stylesheet";
+	$cssCustom->mostrar();
+
+
+	// Arquivo JS Incorporado
+	$js 		= tdClass::Criar("script");
+	$js->src 	= $urlfileconsulta . $entidade->nome . ".js";
+	$js->mostrar();

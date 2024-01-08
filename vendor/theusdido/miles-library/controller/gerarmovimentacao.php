@@ -173,11 +173,6 @@
 	$funcionalidadeTD->value 	= "movimentacao";
 	$funcionalidadeTD->mostrar();
 
-	// JS Formulário
-	$jsFormulario 		= tdClass::Criar("script");
-	$jsFormulario->src 	= URL_SYSTEM . "funcoes.js";
-	$jsFormulario->mostrar();
-
 	// Arquivo JS Incorporado
 	$jsIncorporado 		= tdClass::Criar("script");
 	$jsIncorporado->src = $url_files_movimentacao . $entidade->nome . ".js";
@@ -228,6 +223,7 @@
 	$arrayCamposAtributos 	= array();
 	$atributo 				= "";
 	$i 						=1;
+
 	if (sizeof($dataset) > 0){
 		foreach ($dataset as $ftMovimentacao){
 			$atributo = tdClass::Criar("persistent",array(ATRIBUTO,(int)$ftMovimentacao->atributo))->contexto;
@@ -438,7 +434,6 @@
 						var retorno = JSON.parse(ret.responseText);
 						for(a in retorno){
 							var atributo = '.getSystemPrefixo().'atributo[retorno[a].atributo];
-							console.log("campos => #form-movimentacao #" + atributo.nome + "-old,#form-movimentacao #" + atributo.nome);
 							$("#form-movimentacao #" + atributo.nome + "-old,#form-movimentacao #" + atributo.nome).val(retorno[a].valor);
 						}
 					}

@@ -1,7 +1,7 @@
 <?php
 	// Setando variáveis
-	$entidadeNome = "erp_geral_referenciacomercial";
-	$entidadeDescricao = "Referencia Comercial";
+	$entidadeNome 			= "erp_pessoa_referenciacomercial";
+	$entidadeDescricao 		= "Referencia Comercial";
 
 	// Criando Entidade
 	$entidadeID = criarEntidade(

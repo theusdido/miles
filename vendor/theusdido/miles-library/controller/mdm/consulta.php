@@ -27,7 +27,7 @@
                 'alinhamento'   => $_alinhamento,
                 'exibirid'      => $_exibirid
             ));            
-        break; 
+        break;
         case 'listar-consulta':
             $sql    = "SELECT id,descricao,entidade FROM ".CONSULTA;
             $query  = $conn->query($sql);
@@ -37,8 +37,7 @@
                     $id         		= $linha["id"];
 					$entidade_id		= $linha["entidade"];
                     $descricao  		= tdc::utf8($linha["descricao"]);
-                    $query      		= $conn->query("SELECT descricao FROM td_entidade WHERE id = $entidade_id;")->fetch();
-					$entidade_descricao	= tdc::utf8($query["descricao"]);
+					$entidade_descricao	= $entidade_id . ' - ' . tdc::e($entidade_id)->descricao;
                     echo "
                         <tr id='linha-registro-consulta-{$id}'>
                             <td>{$id}</td>

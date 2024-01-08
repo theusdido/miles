@@ -26,13 +26,13 @@
 		}
 	}
 	if (isset($_FILES["arquivo"])){
-		$processo 	= explode("^",$_POST["processo"]);
-		$xml 		= simplexml_load_file($_FILES["arquivo"]["tmp_name"]);
-		$cLinha 	= 0;
+		$processo 		= explode("^",$_POST["retorno_empresa"]);
+		$xml 			= simplexml_load_file($_FILES["arquivo"]["tmp_name"]);
+		$cLinha 		= 0;
 		if ($conn = Transacao::get()){
 			
 			$bootstrap = tdClass::Criar("link");
-			$bootstrap->href = PATH_LIB . 'bootstrap/3.3.1/css/bootstrap.css';
+			$bootstrap->href = URL_LIB . 'bootstrap/3.3.1/css/bootstrap.css';
 			$bootstrap->rel = 'stylesheet';
 			$bootstrap->mostrar();
 
@@ -60,7 +60,7 @@
 							<th width="5%">Farein</th>
 						</tr>	
 			';
-			$valores 			= array();
+
 			$linhaDadosCredor 	= "";
 			$error 				= 0;
 			// Os credores importados ficaram com a origem 8
@@ -130,52 +130,52 @@
 					)";
 				$queryExiste = $conn->query($sqlExiste);
 				if ($queryExiste->rowcount() <= 0){
-					$valores[$cpfj] = moneyToFloat($vlr);
-					$entidadecredor = "td_relacaocredores";
-					$credor = tdClass::Criar("persistent",array($entidadecredor));
+					$entidadecredor 					= "td_relacaocredores";
+					$credor 							= tdClass::Criar("persistent",array($entidadecredor));
 					$idCredor 							= $credor->contexto->getUltimo() + 1;
 					$credor->contexto->id 				= $idCredor;
 					$credor->contexto->nome				= utf8_encode($nome);
 					if ($cpfj == ""){
-						//var_dump($cpfj);
 						$credor->contexto->cnpj 		= "#" . $idCredor;
 						$credor->contexto->cpf 			= "#" . $idCredor;
 					}else{
 						if (strlen($cpfj) > 11){
 							$credor->contexto->cnpj 		= formatarCNPJ(completaString($cpfj,14));
+							$credor->contexto->tipo			= 1;
 						}else{
 							$credor->contexto->cpf			= formatarCPF(completaString($cpfj,11));
+							$credor->contexto->tipo			= 2;
 						}
 					}
 
-					$credor->contexto->classificacao = $classificacao;
-					$credor->contexto->moeda 		= $moeda;
+					$credor->contexto->classificacao 	= $classificacao;
+					$credor->contexto->moeda 			= $moeda;
 					$credor->contexto->valor 			= $valor;
 
-					$credor->contexto->processo		= (int)$processo[1];
-					$credor->contexto->origemcredor	= $origemcredor;
-					$credor->contexto->farein		= (int)$processo[0];
+					$credor->contexto->processo			= (int)$processo[1];
+					$credor->contexto->origemcredor		= $origemcredor;
+					$credor->contexto->farein			= (int)$processo[0];
 					$credor->contexto->armazenar();
 
 					// Salvando Relcionamento na Lista
 					$lista = tdClass::Criar("persistent",array(LISTA))->contexto;
-					$lista->entidadepai 		= $processo[2];
-					$lista->entidadefilho 		= 20;
-					$lista->regpai 			= $processo[0];
-					$lista->regfilho 			= $idCredor;
-					$lista->id 					= $lista->getUltimo() + 1;
-					//echo $processo[2] . '^' . $processo[0] . '^' . $idCredor . '^' . $lista->id;
+					$lista->entidadepai 			= $processo[2];
+					$lista->entidadefilho 			= 20;
+					$lista->regpai 					= $processo[0];
+					$lista->regfilho 				= $idCredor;
+					$lista->id 						= $lista->getUltimo() + 1;
+
 					$lista->armazenar();
 				}else{
 					$linhaExiste = $queryExiste->fetch();
 					if (is_numeric($linhaExiste["id"])){
 						if ($linhaExiste["id"] > 0){
-							$credor = tdClass::Criar("persistent",array("td_relacaocredores",$linhaExiste["id"]));
+							$credor 						= tdClass::Criar("persistent",array("td_relacaocredores",$linhaExiste["id"]));
 							$credor->contexto->moeda 		= $moeda;
-							$credor->contexto->valor 			= $valor;
+							$credor->contexto->valor 		= $valor;
 							$credor->contexto->armazenar();
-						}	
-					}	
+						}
+					}
 				}
 				echo '<tr>' .$linhaDadosCredor . '</tr>';
 			}
@@ -184,7 +184,7 @@
 			if ($error > 0){
 				exit;
 			}
-			Transacao::Fechar();
+			Transacao::Commit();
 			echo '<div class="alert alert-success" role="alert"><b> Que Bom !</b> Os arquivos foram importados com sucesso</div>';
 			finalizar();
 		}
@@ -205,37 +205,37 @@
 	$form->enctype 	= "multipart/form-data";
 	$form->target 	= "retorno";
 	
-	$select_processo 		= tdClass::Criar("select");
-	$select_processo->class = "form-control";
-	$select_processo->id 	= "processo";
-	$select_processo->name 	= "processo";
+	$select_processo 			= tdClass::Criar("select");
+	$select_processo->class 	= "form-control";
+	$select_processo->id 		= "processo";
+	$select_processo->name 		= "processo";
 	
 	// Recuperanda
-	$sql = tdClass::Criar("sqlcriterio");
-	$dataset = tdClass::Criar("repositorio",array("td_recuperanda"))->carregar($sql);
+	$sql 		= tdClass::Criar("sqlcriterio");
+	$dataset 	= tdClass::Criar("repositorio",array("td_recuperanda"))->carregar($sql);
 	foreach ($dataset as $dado){
-		$op = tdClass::Criar("option");
-		$op->value = $dado->id . "^" . $dado->processo . "^16";
+		$op 		= tdClass::Criar("option");
+		$op->value 	= $dado->id . "^" . $dado->processo . "^16";
 		$op->add("[ ".completaString($dado->id,3)." ][ ".($dado->cnpj==""?$dado->cpf:$dado->cnpj)." ] - " . $dado->razaosocial);
 		$select_processo->add($op);
 	}
 	
 	// Falida
-	$sql = tdClass::Criar("sqlcriterio");
-	$dataset = tdClass::Criar("repositorio",array("td_falencia"))->carregar($sql);
+	$sql 		= tdClass::Criar("sqlcriterio");
+	$dataset 	= tdClass::Criar("repositorio",array("td_falencia"))->carregar($sql);
 	foreach ($dataset as $dado){
-		$op = tdClass::Criar("option");
-		$op->value = $dado->id . "^" . $dado->processo . "^19";
+		$op 		= tdClass::Criar("option");
+		$op->value 	= $dado->id . "^" . $dado->processo . "^19";
 		$op->add("[ ".completaString($dado->id,3)." ][ ".($dado->cnpj==""?$dado->cpf:$dado->cnpj)." ] - " . $dado->razaosocial);
 		$select_processo->add($op);
 	}
 
 	// Insolvente
-	$sql = tdClass::Criar("sqlcriterio");
-	$dataset = tdClass::Criar("repositorio",array("td_insolvente"))->carregar($sql);
+	$sql 		= tdClass::Criar("sqlcriterio");
+	$dataset 	= tdClass::Criar("repositorio",array("td_insolvente"))->carregar($sql);
 	foreach ($dataset as $dado){
-		$op = tdClass::Criar("option");
-		$op->value = $dado->id . "^" . $dado->processo . "^18";
+		$op 			= tdClass::Criar("option");
+		$op->value 		= $dado->id . "^" . $dado->processo . "^18";
 		$op->add("[ ".completaString($dado->id,3)." ][ ".($dado->cnpj==""?$dado->cpf:$dado->cnpj)." ] - " . $dado->razaosocial);
 		$select_processo->add($op);
 	}
@@ -244,51 +244,66 @@
 	$label_processo = tdClass::Criar("label");
 	$label_processo->add("Selecione o processo");
 	
-	$file = tdClass::Criar("input");
-	$file->type = "file";
-	$file->id = "arquivo";
-	$file->name = "arquivo";
-	
 	// Botão Gerar	
-	$btn_gerar = tdClass::Criar("button");
-	$btn_gerar->value = "Importar";	
-	$btn_gerar->class = "btn btn-primary b-gerar";
-	$span_gerar = tdClass::Criar("span");
-	$span_gerar->class = "fas fa-file";
+	$btn_gerar 			= tdClass::Criar("button");
+	$btn_gerar->value 	= "Importar";	
+	$btn_gerar->class 	= "btn btn-primary b-gerar";
+	$span_gerar 		= tdClass::Criar("span");
+	$span_gerar->class 	= "fas fa-file";
 	$btn_gerar->add($span_gerar," Importar");
-	$btn_gerar->id = "b-gerar";
-	$btn_gerar->type = "submit";
+	$btn_gerar->id 		= "b-gerar";
+	$btn_gerar->type 	= "submit";
 
 	// Baixar Modelo de Importação do Execel
-	$btn_modelo = tdClass::Criar("button");
+	$btn_modelo 			= tdClass::Criar("button");
 	$btn_modelo->id 		= "btn-abrir-modelo";	
 	$btn_modelo->value 		= "Modelo";
 	$btn_modelo->class 		= "btn btn-default";
 	$span_modelo 			= tdClass::Criar("span");
 	$span_modelo->class 	= "fas fa-file";
 	$btn_modelo->add($span_modelo," Modelo ( Excel )");	
-	$btn_modelo->style="float:right;margin-right:10px;";
+	$btn_modelo->style		= "float:right;margin-right:10px;";
 
 	// Grupo de botões
-	$grupo_botoes = tdClass::Criar("div");
-	$grupo_botoes->class = "form-grupo-botao";
+	$grupo_botoes 			= tdClass::Criar("div");
+	$grupo_botoes->class 	= "form-grupo-botao";
 	$grupo_botoes->add($btn_gerar,$btn_modelo);
 	
-	$linha = tdClass::Criar("div");
-	$linha->class = "row-fluid form_campos";
+	$linha 			= tdClass::Criar("div");
+	$linha->class 	= "row-fluid form_campos";
 	
 	$label = tdClass::Criar("label");
 	$label->add("Selecione o arquivo");
 	
+	# -- Input File Label -- #
+	$file 			= tdClass::Criar("input");
+	$file->type 	= "file";
+	$file->id 		= "arquivo";
+	$file->name 	= "arquivo";
+	$file->style	= 'display:none';
+	$file->onchange	= "tdChangeInputFile(this.value);";
+	
+	$input_file_label_icon			= tdc::html('i');
+	$input_file_label_icon->class 	= 'fas fa-upload';
+
+	$input_file_label_text			= tdc::html('span');
+	$input_file_label_text->add('Carregar Arquivo');
+
+	$input_file_label				= tdClass::Criar("label");
+	$input_file_label->for			= "arquivo";
+	$input_file_label->class		= 'td-label-input-file';
+	$input_file_label->add($input_file_label_icon,$input_file_label_text);
+	# -- // -- #
+
 	$coluna 				= tdClass::Criar("div");
 	$coluna->class 			= "coluna";
 	$coluna->data_ncolunas 	= 1;
-	$coluna->add($label,$file);	
+	$coluna->add($label,$input_file_label,$file);
 
-	$coluna_processo 				= tdClass::Criar("div");
-	$coluna_processo->class 		= "coluna";
-	$coluna_processo->data_ncolunas = 1;
-	$coluna_processo->add($label_processo,$select_processo);
+	$coluna_empresa 				= tdClass::Criar("div");
+	$coluna_empresa->class 			= "coluna";
+	$coluna_empresa->data_ncolunas 	= 1;
+	$coluna_empresa->add(Empresa::Filtro());
 
 	$checkboxOrigemCredor = '
 		<div id="opcoes-importacao">
@@ -316,7 +331,7 @@
 	$colunaOrigemCredor->data_ncolunas 	= 1;
 	$colunaOrigemCredor->add($label,$checkboxOrigemCredor);	
 	
-	$linha->add($coluna_processo,$coluna,$colunaOrigemCredor);
+	$linha->add($coluna_empresa,$coluna,$colunaOrigemCredor);
 	
 	$iframe					= tdClass::Criar("iframe");
 	$iframe->id 			= "retorno";
@@ -351,17 +366,24 @@
 		$("#btn-abrir-modelo").click(function(e){
 			e.stopPropagation();
 			e.preventDefault();
-			window.open(session.urlsystem + "projects/2/arquivos/modelo-importacao/ModelodeImportacao-RelacaoodeCredoresAssembleia.xlsx","_blank");
+			window.open("'.URL_CURRENT_ASSETS.'modelo-importacao/ModelodeImportacao-RelacaoodeCredoresAssembleia.xlsx","_blank");
 		});
 
 		$("#form-importar-assembleia").submit(function(){			
 			$("#progress-importar-assembleia").show();
 			$("#retorno,#form-importar-assembleia").hide();
 		});
+
+		function tdChangeInputFile(_filename)
+		{
+			$(".td-label-input-file").html(_filename);
+			$(".td-label-input-file").css("background-color","#006600");
+			$(".td-label-input-file").css("color","#FFF");
+		}		
 	');
 
-	$aviso = tdClass::Criar("div");
-	$aviso->class = "alert alert-info";
+	$aviso 			= tdClass::Criar("div");
+	$aviso->class 	= "alert alert-info";
 	$aviso->add('
 		<ul>
 			<li>Importação de credores para a Assembleia.</li>

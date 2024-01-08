@@ -1,6 +1,33 @@
 <?php
   // Módulo ERP
   $modules = array(
+
+    // Geral
+    array( "name" => "geral", "title" => "Geral", "components" => 
+      array(
+        array('name' => 'orgaoemissorrg'      ,'title' => 'Orgão Emissor RG'),
+        array('name' => 'profissao'           ,'title' => 'Profissão'),
+        array('name' => 'redesocial'          ,'title' => 'Rede Social'),
+        array('name' => 'email'               ,'title' => 'E-Mail'),
+        array('name' => 'endereco'            ,'title' => 'Endereço'),
+        array('name' => 'estadocivil'         ,'title' => 'Estado Civíl'),
+        array('name' => 'fabricante'          ,'title' => 'Fabricante'),
+        array('name' => 'foto'                ,'title' => 'Foto'),
+        array('name' => 'funcionario'         ,'title' => 'Funcionário'),
+        array('name' => 'genero'              ,'title' => 'Gênero'),
+        array('name' => 'marca'               ,'title' => 'Marca'),
+        array('name' => 'nacionalidade'       ,'title' => 'Colaborador'),
+        array('name' => 'operadoratelefone'   ,'title' => 'Nacionalidade'),
+        array('name' => 'pais'                ,'title' => 'País'),
+        array('name' => 'produto'             ,'title' => 'Produto'),
+        array('name' => 'redesocial'          ,'title' => 'Rede Social'),
+        array('name' => 'servico'             ,'title' => 'Serviço'),
+        array('name' => 'telefone'            ,'title' => 'Telefone'),
+        array('name' => 'tiposervico'         ,'title' => 'Tipo de Serviço'),
+        array('name' => 'tipotelefone'        ,'title' => 'Tipo de Telefone'),
+        array('name' => 'unidademedida'       ,'title' => 'Unidade de Medida')
+      )
+    ),
     
     // Boleto
     array( "name" => "boleto", "title" => "Boleto", "components" => 
@@ -48,9 +75,9 @@
     // Material
     array( "name" => "material", "title" => "Material", "components" => 
       array(
-        array('name' => 'operacaoestoque'     ,'title' => 'Operação Estoque'),
+        array('name' => 'operacaoestoque'       ,'title' => 'Operação Estoque'),
         array('name' => 'posicaogeralestoque'   ,'title' => 'Posição Geral de Estoque'),
-        array('name' => 'tipooperacaoestoque'      ,'title' => 'Tipo de Operação de Estoque')
+        array('name' => 'tipooperacaoestoque'   ,'title' => 'Tipo de Operação de Estoque')
       )
     ),
 
@@ -72,14 +99,10 @@
 
     // Pessoa
     array( "name" => "pessoa", "title" => "Pessoa", "components" => 
-      array(
-        array('name' => 'orgaoemissorrg'      ,'title' => 'Orgão Emissor RG'),
+      array(        
         array('name' => 'pessoa'              ,'title' => 'Pessoa'),
         array('name' => 'pessoafisica'        ,'title' => 'Pessoa Física'),
         array('name' => 'pessoajuridica'      ,'title' => 'Pessoa Jurídica'),
-        array('name' => 'profissao'           ,'title' => 'Profissão'),
-        array('name' => 'redesocial'          ,'title' => 'Rede Social'),
-        array('name' => 'referenciacomercial' ,'title' => 'Referencia Comercial'),
         array('name' => 'relacao'             ,'title' => 'Relação')
       )
     ),

@@ -28,6 +28,7 @@ $conteudo					= "";
 // Abre Relacionamentos
 $sqlRel 			= tdClass::Criar("sqlcriterio");
 $relacionamentos 	= tdClass::Criar("repositorio",array(RELACIONAMENTO))->carregar($sqlRel);
+
 if ($relacionamentos){
 	foreach($relacionamentos as $rel){
 		if ($rel->pai == $entidade->contexto->id){
@@ -64,7 +65,6 @@ if ($relacionamentos){
 				break;
 			}
 		}else if($rel->filho == $entidade->contexto->id && !$isprincipal && $rel->pai == tdc::r('entidadepai')){
-			//$crudAdd->data_entidadepai		= $rel->pai;
 			switch($rel->tipo){
 				case 1:				
 				break;
@@ -129,7 +129,7 @@ if ($relacionamentos){
 					$btnNovoType 	= "btn-default";
 					$btnNovoLabel 	= " Adicionar";
 					$btnSalvarType 	= "btn-default";
-					$fp_form = "";
+					$fp_form 		= "";
 					$entidade_pai_relacionamento = tdClass::Criar("persistent",array(ENTIDADE,$rel->pai))->contexto->nome;
 				break;
 				case 11:

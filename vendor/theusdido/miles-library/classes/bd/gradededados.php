@@ -224,6 +224,7 @@ foreach($dataset as $dado){
 		}else{
 			$valor_campo = $dado->{$c};
 		}
+
 		$campos_dados[$c] 		= getHTMLTipoFormato($camposhtml[$i],$valor_campo,$entidade->contexto->id,$c,$dado->id);
 		$campos_dados_reais[$c] = $dado->{$c};
 		$i++;

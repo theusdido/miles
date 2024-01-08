@@ -115,7 +115,10 @@
 
 	// URL dos arquivos de cadastro
 	define('URL_FILES_CADASTRO', URL_FILES . 'cadastro/');
-    
+
+	// URL dos arquivos da consulta
+	define('URL_FILES_CONSULTA', URL_FILES . 'consulta/');	
+
 	// URL dos arquivos de movimentação
 	define('URL_FILES_MOVIMENTACAO', URL_FILES . 'movimentacao/');
 
@@ -144,3 +147,6 @@
 	define('URL_PICTURE', URL_MILES_LIBRARY . 'picture/');
 	
 	define('URL_CURRENT_DATA',URL_PROJECT . "data/");
+
+	// CLASSE TDC / JS
+	define('URL_CLASS_TDC_JS',URL_CLASS_TDC . 'js/');

@@ -6,7 +6,7 @@ var permissoes_guia = {
 }
 var check_guia = {};
 $(document).ready(function(){
-    getStatusGuia();
+    //getStatusGuia();
 });
 
 function getStatusGuia(){
@@ -86,7 +86,7 @@ function permissoesGuia(){
                     desabilitarGuia('package');
                 }
             break;
-        }
+        }        
     });
 }
 
@@ -106,7 +106,7 @@ function habilitarGuia(_guia){
         case 'package':
             permissoes_guia.configurarpacotes = true;
         break;
-    }    
+    }
 }
 
 function setCurrentGuia(_guia){

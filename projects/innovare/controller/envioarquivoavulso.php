@@ -18,98 +18,112 @@
 	}
 
 	if (tdClass::Read("op") == "listarprotocolo"){
-		$processo = tdClass::Read("processo");
-		$farein = tdClass::Read("farein");
-		$conn = Transacao::Get();
-		$sql = 'select a.numero,a.credor credor,b.nome nome from td_habilitacaodivergencia a,td_relacaocredores b where a.credor = b.id and a.processo = '.$processo.' AND b.farein = '.$farein.' order by a.id DESC';
-		$query = $conn->query($sql);
+		$processo 	= tdClass::Read("processo");
+		$farein 	= tdClass::Read("farein");
+		$tipo		= tdc::r('tipo');
+
+		$entidade_protocolo = $tipo == 8 ? 'td_arquivosassembleia' : 'td_habilitacaodivergencia';			
+		$conn 				= Transacao::Get();
+		$sql 				= "
+			SELECT 
+				a.numero,
+				a.credor credor, 
+				b.nome nome 
+			FROM $entidade_protocolo a,td_relacaocredores b 
+			WHERE a.credor = b.id 
+			AND a.processo = $processo
+			AND b.farein = $farein
+			AND b.origemcredor = $tipo
+			ORDER BY a.id DESC;
+		";
+		$query 		= $conn->query($sql);
 		while ($linha = $query->fetch()){
 			echo '<option value="'.$linha["credor"].'">[ <b>'.$linha["numero"].'</b> ] - '.strtoupper($linha["nome"]).'</option>';
 		}
+		
 		exit;
 	}
 
 	if (tdClass::Read("op") == "addfile"){
 
-		$credor = $_GET["credor"];
-		
-		$arquivofile = tdClass::Criar("persistent",array("td_arquivos_credor"))->contexto;
-		$proxID = $arquivofile->proximoID();
-		$arquivofile->id = $proxID;
-		$filename = $_FILES["file"]["name"];
-		$arquivofile->descricao = $filename;
-		$arquivofile->nome = $proxID . ".pdf";
-		$arquivofile->relacaocredores = $credor;
-		$arquivofile->origem = 9;
-		$arquivofile->armazenar();
+		$credor 						= $_GET["credor"];
+		$_uploaded_file 				= isset($_FILES["fileToUpload"]) ? $_FILES["fileToUpload"] : $_FILES["file"];
+		$arquivo_file 					= tdc::p('td_arquivos_credor');
+		$proxID 						= $arquivo_file->proximoID();
+		$filename 						= $_uploaded_file["name"];
+		$arquivo_file->descricao 		= $filename;
+		$arquivo_file->nome 			= $proxID . ".pdf";
+		$arquivo_file->relacaocredores 	= $credor;
+		$arquivo_file->origem 			= 9;
+		$arquivo_file->armazenar();
 
-		// Dados do servidor
-		Transacao::abrir("miles");
-		$ftpOBJ = tdc::da("td_connectionftp",tdc::f("projeto","=",Session::Get()->projeto))[0];
-		
-		$servidor 	= $ftpOBJ["host"]; // Endereço
-		$usuario 	= $ftpOBJ["user"]; // Usuário
-		$senha 		= $ftpOBJ["password"]; // Senha
+		$_uploaded_path					= PATH_CURRENT_FILE . 'credor/' .  $proxID . ".pdf";
+		move_uploaded_file($_uploaded_file["tmp_name"],$_uploaded_path);
+		chmod($_uploaded_path,0777);
 
-		// Abre a conexão com o servidor FTP
-		$ftp = ftp_connect($servidor); // Retorno: true ou false
-		if ($ftp){
-			// Faz o login no servidor FTP
-			$login = ftp_login($ftp, $usuario, $senha); // Retorno: true ou false
-			if ($login){
-				ftp_pasv($ftp, true);
-				// Envia o arquivo pelo FTP em modo ASCII
-				$envio = ftp_put($ftp,"/public_html/site/enviodocumentos/arquivos_temp/" .  $proxID . ".pdf",$_FILES["file"]["tmp_name"], FTP_BINARY); // Retorno: true / false
-				//$envio = ftp_put($ftp,$_FILES["file"]["tmp_name"], "/" .$proxID . ".pdf", FTP_ASCII); // Retorno: true / false
-			}
-		}
-		ftp_close($ftp);
-		#move_uploaded_file($_FILES["file"]["tmp_name"],"../site/enviodocumentos/arquivos_temp/" .  $proxID . ".pdf");
-		echo $proxID . "^" . utf8_encode($filename);
+		Transacao::Commit();
 		exit;
 	}
 
 	// Bloco
-	$bloco = tdClass::Criar("bloco");
-	$bloco->class="col-md-12";	
+	$bloco 			= tdClass::Criar("bloco");
+	$bloco->class	= "col-md-12";	
 	
-	$titulo = tdClass::Criar("p");
-	$titulo->class = "titulo-pagina";
+	$titulo 		= tdClass::Criar("p");
+	$titulo->class 	= "titulo-pagina";
 	$titulo->add(utf8_decode("Envio Arquivo Avulso"));
 	
-	$processos = array();
-	$sql = tdClass::Criar("sqlcriterio");
+	$processos 		= array();
+	$sql 			= tdClass::Criar("sqlcriterio");
 	$sql->setPropriedade("order","id DESC");
-	$dataset = tdClass::Criar("repositorio",array("td_processo"))->carregar($sql);
+	$dataset 		= tdClass::Criar("repositorio",array("td_processo"))->carregar($sql);
 	foreach($dataset as $p){
 		$option = tdClass::Criar("option");
 		$option->value = $p->id;
 		$option->add("[ {$p->id} ] - {$p->numeroprocesso}");
 		array_push($processos,$option);
 	}
-
-	$lprocesso = Campos::Lista("processo","processo","Processo",$processos);
-	$lfarein = Campos::Lista("farein","farein","Recuperanda / Falida / Insolvente");
-	$lprotocolo = Campos::Lista("protocolo","protocolo","Protocolo");	
-
-	$urlupload = getURLProject("index.php?controller=envioarquivoavulso&credor=");
-
-	$formDropZone = tdClass::Criar("form");
-	$formDropZone->action = $urlupload;
-	$formDropZone->class = "dropzone";
-	$formDropZone->id = "DropzoneForm";
 	
-	$divFallback = tdClass::Criar("div");
-	$divFallback->class = "fallback";
+	$tipos_protocolos	= array();
+
+	$option 			= tdClass::Criar("option");
+	$option->value 		= 3;
+	$option->add("HABILITAÇÃO");
+	array_push($tipos_protocolos,$option);
+
+	$option 			= tdClass::Criar("option");
+	$option->value 		= 2;
+	$option->add("DIVERGÊNCIA");	
+	array_push($tipos_protocolos,$option);
 	
-	$inputFile = tdClass::Criar("input");
-	$inputFile->name = "fileToUpload";
-	$inputFile->type = "file";
-	$inputFile->multiple = true;
+	$option 			= tdClass::Criar("option");
+	$option->value 		= 8;
+	$option->add("ASSEMBLEIA");	
+	array_push($tipos_protocolos,$option);
+
+	$lprocesso 			= Campos::Lista("processo","processo","Processo",$processos);
+	$lfarein 			= Campos::Lista("farein","farein","Empresa");
+	$tipo_protocolo		= Campos::Lista("tipo","tipo","Tipo de Protocolo",$tipos_protocolos);
+	$lprotocolo 		= Campos::Lista("protocolo","protocolo","Protocolo");	
+
+	$urlupload 			= getURLProject("index.php?controller=envioarquivoavulso&credor=");
+
+	$formDropZone 			= tdClass::Criar("form");
+	$formDropZone->action 	= $urlupload;
+	$formDropZone->class 	= "dropzone";
+	$formDropZone->id 		= "DropzoneForm";
 	
-	$inputCredor = tdClass::Criar("input");
-	$inputCredor->type = "hidden";
-	$inputCredor->value = "dido";
+	$divFallback 			= tdClass::Criar("div");
+	$divFallback->class 	= "fallback";
+	
+	$inputFile 				= tdClass::Criar("input");
+	$inputFile->name 		= "fileToUpload";
+	$inputFile->type 		= "file";
+	$inputFile->multiple 	= true;
+	
+	$inputCredor 			= tdClass::Criar("input");
+	$inputCredor->type 		= "hidden";
+	$inputCredor->value 	= "dido";
 
 	$divFallback->add($inputFile,$inputCredor);
 	$formDropZone->add($divFallback);
@@ -144,17 +158,18 @@
 				},
 				complete:function(ret){
 					$("#farein").html(ret.responseText);
-					carregarProtocolo($("#farein").val());
+					carregarProtocolo();
 				}
 			});
 		}
-		function carregarProtocolo(farein){
+		function carregarProtocolo(){
 			$.ajax({
 				url:session.urlmiles,
 				data:{
 					controller:"envioarquivoavulso",
 					op:"listarprotocolo",
-					farein:farein,
+					farein:$("#farein").val(),
+					tipo:$("#tipo").val(),
 					processo:$("#processo").val()
 				},
 				complete:function(ret){
@@ -163,6 +178,8 @@
 						habilitarEnvio();
 						$("#protocolo").html(ret.responseText);
 						setarURLFormEnvio($("#protocolo").val());
+					}else{
+						habilitarEnvio(false);	
 					}
 				}
 			});
@@ -172,8 +189,8 @@
 			carregarFarein($(this).val());
 		});
 
-		$("#farein").change(function(){
-			carregarProtocolo($(this).val());
+		$("#farein,#tipo").change(function(){
+			carregarProtocolo();
 		});
 
 		$("#protocolo").change(function(){
@@ -186,10 +203,11 @@
 		function habilitarEnvio(habilitar = true){
 			if (habilitar){
 				$("#protocolo").prop("disabled",false);
-				$("#DropzoneForm").show();
+				$("#DropzoneForm").css("visibility","visible");
 			}else{
 				$("#protocolo").prop("disabled",true);
-				$("#DropzoneForm").hide();
+				$("#protocolo").html("");
+				$("#DropzoneForm").css("visibility","hidden");
 			}
 		}
 	');
@@ -207,5 +225,5 @@
 			margin-bottom:30px;
 		}
 	');
-	$bloco->add($titulo,$lprocesso,$lfarein,$lprotocolo,$formDropZone,$script,$style);
+	$bloco->add($titulo,$lprocesso,$lfarein,$tipo_protocolo,$lprotocolo,$formDropZone,$script,$style);
 	$bloco->mostrar();

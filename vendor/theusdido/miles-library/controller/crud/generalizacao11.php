@@ -25,18 +25,17 @@ $op->add($descricaoRel);
 $op->value = $ent_filho->contexto->id;
 $op->data_entidade_nome = $ent_filho->contexto->nome;
 
-
-if ($ent_filho->contexto->atributogeneralizacao != ""){
+if ($ent_filho->contexto->atributogeneralizacao != "" && $ent_filho->contexto->atributogeneralizacao != 0){
 	$op->data_atributo_rel = tdClass::Criar("persistent",array(ATRIBUTO,$ent_filho->contexto->atributogeneralizacao))->contexto->nome;
-	$select->add($op);		
+	$select->add($op);
 }else{
 	echo 'Entidade <b>[ '.$ent_filho->contexto->descricao.' ]</b> não possui atributo de generalização<br/>';
 }
 
 // Div para adicionar o form do relacionamento
-$div_rel = tdClass::Criar("div");
-$div_rel->class = "div-relacionamento-generalizacao";
-$div_rel->id = "drv-".$ent_filho->contexto->nome;
+$div_rel 			= tdClass::Criar("div");
+$div_rel->class 	= "div-relacionamento-generalizacao";
+$div_rel->id 		= "drv-".$ent_filho->contexto->nome;
 
 $urlrequest = getURLProject(
 	array('controller' 		=> 'gerarcadastro',

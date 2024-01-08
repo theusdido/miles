@@ -516,11 +516,10 @@
 		public static function filter($nome,$descricao){
 			
 			$campo 					= tdClass::Criar("div");
-			$campo->class 			= "filtro-pesquisa form-group";
+			$campo->class 			= "filtro-pesquisa";
 
 			$label 					= tdClass::Criar("label");
 			$label->for 			= $nome;
-			$label->class 			= "control-label";
 			$label->add(tdc::utf8($descricao));
 
 			$input_group 			= tdClass::Criar("div");
