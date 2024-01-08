@@ -165,7 +165,6 @@ var _gradedados_mov_current;
 // SessionStorage
 var _session = new tdSessionStorage();
 
-
 // Ouça eventos de mudanças no localStorage
 window.addEventListener("storage", function (event) {
     if (event.key === "monitor_entidade") {
