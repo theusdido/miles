@@ -96,9 +96,9 @@
             $registrounico				= $_POST["registrounico"];
             $carregarlibjavascript		= $_POST["carregarlibjavascript"];
             $tipoaba					= isset($_POST["tipoaba"])?$_POST["tipoaba"]:'';
-            $entidadeauxiliar			= $_POST["entidadeauxiliar"];		
+            $entidadeauxiliar			= $_POST["entidadeauxiliar"];
 
-            if ($id == 0){
+            if ($id == 0 || $id == 96){
 
                 $nome = getSystemPREFIXO() . str_replace('td_','',$nome);
                 $atributos_iniciais = "";
