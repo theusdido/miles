@@ -5,7 +5,7 @@
         "id":"miles",
         "name":"Miles",
         "path":"miles/",
-        "url":"ws.teia.tec.br/cedup/"
+        "url":"ws.teia.tec.br/cedup/miles/webservice/index.php?_controller=escola/avaliacoes&op=all&unidade_curricular=1&token=24c6d9674796dc7dcc66d6f6122ea070"
     },
     "currentproject": 1,
     "folder":"miles/",

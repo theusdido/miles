@@ -22,9 +22,9 @@
 	);
 
 	// Criando Atributos
-	$avaliacao 			= criarAtributo($conn,$entidadeID,"avaliacao","Avaliação","int",0,1,16,1,installDependencia("erp_escola_avaliacaoturma","package/sistema"));
+	$avaliacao 			= criarAtributo($conn,$entidadeID,"avaliacao","Avaliação","int",0,1,16,1,installDependencia("erp_escola_avaliacao","package/sistema"));
 	$aluno	 			= criarAtributo($conn,$entidadeID,"aluno","Aluno","int",0,1,16,1,installDependencia("erp_escola_aluno","package/sistema"));
-	$nota				= criarAtributo($conn,$entidadeID,"nota","Nota","float",0,0,11);
+	$is_feedback		= criarAtributo($conn,$entidadeID,"is_feedback","Feedback ?","boolean",0,1,7);
 
 	// Criando Acesso
 	$menu = addMenu($conn,'Escola','#','',0,0,'escola');
