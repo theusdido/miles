@@ -86,6 +86,9 @@
 		case md5("ecommerce.opticaadolfo"): // 302dfe099db99f9079447f1e3bbbe5ab
 			$permissao = true;
 		break;
+		case md5("app.turmas"): // 24c6d9674796dc7dcc66d6f6122ea070
+			$permissao = true;
+		break;
 	}
 
 	if (!$permissao){

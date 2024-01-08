@@ -1,8 +1,8 @@
 <?php
-	
+
 	// Setando variáveis
-	$entidadeNome       = "erp_escola_criterioavaliacao";
-	$entidadeDescricao  = "Critério de Avaliação";
+	$entidadeNome 		= "erp_escola_avaliacaofeedback";
+	$entidadeDescricao 	= "Feedback da Avaliação";
 
 	// Criando Entidade
 	$entidadeID = criarEntidade(
@@ -22,13 +22,11 @@
 	);
 
 	// Criando Atributos
-	$avaliacao          = criarAtributo($conn,$entidadeID,"avaliacao","Avaliação","int",0,1,22,1,installDependencia("erp_escola_avaliacao","package/sistema"));
-	$descricao			= criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar",200,0,3,1);
-	$peso				= criarAtributo($conn,$entidadeID,"peso","Peso","float",0,0,26);
+	$avaliacao 			= criarAtributo($conn,$entidadeID,"avaliacao","Avaliação","int",0,1,22,1,installDependencia("erp_escola_avaliacao","package/sistema"));
+	$aluno	 			= criarAtributo($conn,$entidadeID,"aluno","Aluno","int",0,1,22,1,installDependencia("erp_escola_aluno","package/sistema"));	
+	$nota				= criarAtributo($conn,$entidadeID,"nota","Nota","float",0,0,26);
+	$feedback			= criarAtributo($conn,$entidadeID,"feedback","Feedback","text",0,1,21);
 
-	// Seta o campo descrição
-	Entity::setDescriptionField($conn,$entidadeID,$descricao,true);
-	
 	// Criando Acesso
 	$menu = addMenu($conn,'Escola','#','',0,0,'escola');
 

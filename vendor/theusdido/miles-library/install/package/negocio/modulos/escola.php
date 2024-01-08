@@ -20,6 +20,11 @@
             array('name' => 'avaliacao' , 'title' => 'Avaliação'),
             array('name' => 'criterioavaliacao' , 'title' => 'Critério de Avaliação'),
             array('name' => 'instrumentoavaliacao' , 'title' => 'Instrumento de Avaliação'),
+            array('name' => 'avaliacaotipo' , 'title' => 'Tipo de Avaliação'),
+            array('name' => 'avaliacaoturma' , 'title' => 'Avaliação da Turma'),
+            array('name' => 'avaliacaoaluno' , 'title' => 'Avaliação do Aluno(a)'),
+            array('name' => 'avaliacaofeedback' , 'title' => 'Feedback da Avaliação'),
+            array('name' => 'avaliacaofeedbackcriterio' , 'title' => 'Feedback dos Critérios da Avaliação'),
             array('name' => 'metodologia' , 'title' => 'Metodologia'),
             array('name' => 'assunto' , 'title' => 'Assunto')
         )
