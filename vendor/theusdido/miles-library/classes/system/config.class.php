@@ -240,7 +240,8 @@ class Config {
 			'tipo='		.$data["db_type"],
 			'porta='	.$data["db_port"]
 		);
-		$fpMySQLINIDesenv    = fopen($path . $env_db . '_' . $sgdb .'.ini',"w");
+		$_file 					= $path . $env_db . '_' . $sgdb .'.ini';
+		$fpMySQLINIDesenv    	= fopen($_file,"w");
 		foreach($ini_data as $c){
 			fwrite($fpMySQLINIDesenv,trim($c)."\n");
 		}

@@ -1,6 +1,6 @@
 <?php
-	$entidadeNome 		= "website_geral_equipe";
-	$entidadeDescricao 	= "Equipe";
+	$entidadeNome 		= "website_geral_sobrenos";
+	$entidadeDescricao 	= "Sobre Nós";
 	
 	// 1 PASSO
 	$entidadeID = criarEntidade(
@@ -16,17 +16,13 @@
 		$criarprojeto = 1,
 		$criarempresa = 1,
 		$criarauth = 0,
-		$registrounico = 0
+		$registrounico = 1
 	);
 
 	// 2 PASSO
-	$nome 		= criarAtributo($conn,$entidadeID,"nome","Nome"	,"varchar",200,0,3	,1,0,0,"");
 	$foto		= criarAtributo($conn,$entidadeID,"foto","Foto"	,"text","",1,19	,0,0,0,"");
-	$biografia	= criarAtributo($conn,$entidadeID,"biografia"	,"Biografia"	,"text","",1,21	,0,0,0,"");
-	$cargo		= criarAtributo($conn,$entidadeID,"cargo"	,"Cargo","int",0,1,4,1,installDependencia("website_geral_cargo","package/website/geral/institucional/equipe"));
-
-	// Seta o campo descrição
-	Entity::setDescriptionField($conn,$entidadeID,$nome,true);
+	$texto	    = criarAtributo($conn,$entidadeID,"texto"	,"Texto"	,"text","",1,21	,0,0,0,"");
+    $video      = criarAtributo($conn,$entidadeID,"youtube"	,"Youtube ( LINK )"	,"varchar",500,1,3	,0,0,0,"");
 
 	// 3 PASSO
 	$menu = addMenu($conn,'WebSite','#','',0,0,'website');

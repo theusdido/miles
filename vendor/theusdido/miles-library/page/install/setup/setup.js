@@ -248,6 +248,12 @@
             },
             complete:function(_res){
                 let _data = _res.responseJSON;
+
+                if (_data == undefined){
+                    console.warn('Arquivo de configuração padrão não foi encontrado!');
+                    return;
+                }
+
                 $('#projectname').val(_data.nome);
                 $('#projectfolder').val(_data.diretorio);
                 $('#prefixo').val(_data.prefixo);

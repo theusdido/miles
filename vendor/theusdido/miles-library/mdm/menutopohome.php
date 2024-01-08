@@ -708,7 +708,6 @@
 						}
 					},
 					error:function(res){
-						console.log(res.responseText);
 						$("#retorno").addClass("alert-danger");
 						$("#retorno").html('Erro Interno.');
 					}

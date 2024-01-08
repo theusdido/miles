@@ -1,6 +1,7 @@
+const URL_IMPORTAR = '?controller=nfse/importar';
 var quantidade_notas = 0;
 var meuDropzone = new Dropzone("#formulario" , {
-    url:session.urlmiles + "?page=nfse/importar",
+    url:session.urlmiles + URL_IMPORTAR,
     paramName: "arquivo", 
     dictDefaultMessage: "Arraste seus arquivos para cá!",
     maxFilesize: 300, 
@@ -40,7 +41,7 @@ function iniciarSalvamento(){
 
 function salvar(){
     $.ajax({
-        url:session.urlmiles + "?page=nfse/importar",
+        url:session.urlmiles + URL_IMPORTAR,
         data: {
             op:"salvar",
             indice: quantidade_notas

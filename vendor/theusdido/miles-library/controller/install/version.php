@@ -85,4 +85,17 @@
                 }
             }
         break;
+
+        case 'movimentacao':
+            try{
+                // Excluir o campo datetime da tabela de Movimentação de Histórico de Alteração
+                $instrucao  = "ALTER TABLE td_movimentacaohistoricoalteracao DROP COLUMN datatime;";
+                $execute    = $conn->exec($instrucao);
+            }catch(Throwable $t){
+                transacao::rollback();
+                if (IS_SHOW_ERROR_MESSAGE){
+                    var_dump($t->getMessage());
+                }
+            }        
+        break;
     }

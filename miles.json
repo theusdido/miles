@@ -5,7 +5,7 @@
         "id":"miles",
         "name":"Miles",
         "path":"miles/",
-        "url":"ws.teia.tec.br/cedup/"
+        "url":"localhost"
     },
     "currentproject": 1,
     "folder":"miles/",

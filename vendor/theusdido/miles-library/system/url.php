@@ -115,7 +115,10 @@
 
 	// URL dos arquivos de cadastro
 	define('URL_FILES_CADASTRO', URL_FILES . 'cadastro/');
-    
+
+	// URL dos arquivos da consulta
+	define('URL_FILES_CONSULTA', URL_FILES . 'consulta/');	
+
 	// URL dos arquivos de movimentação
 	define('URL_FILES_MOVIMENTACAO', URL_FILES . 'movimentacao/');
 

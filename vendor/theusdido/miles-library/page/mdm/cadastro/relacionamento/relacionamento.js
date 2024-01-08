@@ -20,7 +20,6 @@ function load(){
         },
         complete:function(_res){
             let _data = _res.responseJSON;
-            console.log(_data);
             $("#tipo").val(_data.tipo);
             $("#descricao").val(_data.descricao);
             $("#entidadefilho").val(_data.filho);

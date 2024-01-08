@@ -31,4 +31,14 @@
 	$menu = addMenu($conn,'WebSite','#','',0,0,'website');
 
 	// Adicionando Menu
-	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu,0,'website-' . $entidadeNome,$entidadeID,'cadastro');
+	addMenu(
+		$conn,
+		$entidadeDescricao,
+		"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",
+		'',
+		$menu,
+		0,
+		'website-' . $entidadeNome,
+		$entidadeID,
+		'cadastro'
+	);

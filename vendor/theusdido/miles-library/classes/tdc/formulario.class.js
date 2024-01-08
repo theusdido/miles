@@ -249,8 +249,8 @@ tdFormulario.prototype.novo = function(){
 		},this);
 	}
 
-	if (this.is_principal){
-		this.carregarListas();
+	this.carregarListas();
+	if (this.is_principal){		
 		this.setChecklist();
 	}
 
@@ -391,15 +391,12 @@ tdFormulario.prototype.setAtributoDependencia = function(){
 			let $_atributo 			= $("#" + _atributo.nome,instancia.getContexto());
 			$_atributo.change(function(){
 				let _valor = $(this).val();
-				//let atributofiltro = "";
 				if (_valor == ''){
 					$_atributo_filho.html("<option value=''>-- Selecione --</option>");
 					$_atributo_filho.attr("disabled",true);
 				}else{
 					let filtro = _atributo.nome+ "^=^" + _valor;
 					carregarListas(td_entidade[_atributo_filho.entidade].nomecompleto,_atributo_filho.nome,instancia.getContexto(),_valor,filtro);
-
-
 				}
 			});
 		}
@@ -446,15 +443,15 @@ tdFormulario.prototype.setaLayoutGeneralizao = function(){
 			return false;
 		}
 		$("#" + td_atributo[atributogeneralizacao].nome, contexto).val($(".select-flag-generalizacao").val());
+		
+		td_entidade[entidadeid].relacionamentos
+		.forEach((el) => {
+			if ((el.tipo == 3  || el.tipo == 9) && el.pai == entidadeid){
+				// Oculta a aba quando for Generalização Única 1:1 e Generalização Múltiplia 1:1
+				$('.crud-contexto-listar[data-entidadeid='+el.filho+']').hide();
+			}
+		});
 	}
-	
-	td_entidade[entidadeid].relacionamentos
-	.forEach((el) => {
-		if ((el.tipo == 3  || el.tipo == 9) && el.pai == entidadeid){
-			// Oculta a aba quando for Generalização Única 1:1 e Generalização Múltiplia 1:1
-			$('.crud-contexto-listar[data-entidadeid='+el.filho+']').hide();
-		}
-	});
 }
 
 tdFormulario.prototype.newGrade = function (){
@@ -1124,7 +1121,7 @@ tdFormulario.prototype.setDados = function(dados){
 				
 				const atributodependenciapai	= $_atributo.data('atributodependenciapai');
 				const atributodependente		= td_atributo[atributodependenciapai];
-				let valorfiltro = 0;
+				let valorfiltro 				= 0;
 				// Procura o valor do atributo dependencia pai
 				atributos.forEach(function(dado_pai){
 					if (dado_pai.atributo == atributodependente.nome){
@@ -1347,7 +1344,7 @@ tdFormulario.prototype.setConsulta = function(id_consulta){
 	this.carregarListas();
 	this.flatCampos();
 	this.setCkEditores();
-	//this.setAtributoDependencia();
+
 	let consulta = td_consulta[id_consulta];
 
 	// Monta os filtros
@@ -1421,6 +1418,7 @@ tdFormulario.prototype.setBuscaFiltro = function()
 					});
 
 					$(this).parent('.input-group').find('.botao-filtro').click(function(){
+						debugger;
 						let modalName 			= $(this).parents(".filtro-pesquisa").data("modalname");
 						let chaveestrangeira 	= $(this).data("fk");
 						let atributo 			= $(this).parents(".filtro-pesquisa").find(".termo-filtro").attr("id");
@@ -1550,7 +1548,8 @@ tdFormulario.prototype.setRelatorio = function(id_relatorio){
 
 tdFormulario.prototype.carregarListas = function(){
 	let contexto = this.getContexto();
-	$(".tdform.form_campos select.form-control",contexto).each(function(){
+
+	$(".tdform.form_campos select.form-control[data-entidade='"+this.entidade.nome+"']",contexto).each(function(){
 		if ($(this).prop("tagName") == "SELECT"){
 			$(this).removeAttr("required");
 			if (!$(this).hasClass('atributodependenciafilho')){

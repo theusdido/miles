@@ -1,12 +1,12 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    
+
     RewriteRule ^install[\/]?$ index.php?controller=install [L]
     RewriteRule ^mdm[\/]?$ index.php?controller=mdm/index
 </IfModule>
-    
+
 <IfModule mod_env.c>
-    SetEnv _PROJECT_NAME_IDENTIFY_PARAMS "innovare"
+    SetEnv _PROJECT_NAME_IDENTIFY_PARAMS "launer"
     SetEnv _ENV "dev"
 </IfModule>
 

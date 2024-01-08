@@ -1012,16 +1012,34 @@ function addMenu(
 	$ordem = 0, #5
 	$fixo = "" , #6
 	$entidade = 0, #7
-	$tipomenu = "" #8
+	$tipomenu = "", #8
+	$conceito = 0, #9
+	$coluna = 0 #10
 ){
+	$_conceito	= $conceito == 0 ? $entidade : $conceito;
 	$pai		= $pai == '' ? 0 : $pai;
 	$descricao 	= tdc::utf8($descricao);
-	$sql 		= "SELECT id FROM " . MENU. " WHERE fixo = '".$fixo."';";
+	$sql 		= "SELECT id,ordem FROM " . MENU. " WHERE fixo = '".$fixo."';";
 	$query 		= $conn->query($sql);
 	if ($query->rowCount() > 0){
 		$linha = $query->fetch();
-		$menu_webiste = $linha["id"];
-		$sqlMenu = 	"UPDATE " . MENU ." SET descricao = '".$descricao."',link = '".$link."',target = '".$target."',pai = ".$pai.",fixo = '".$fixo."' , entidade = {$entidade} , tipomenu = '{$tipomenu}' WHERE id = ".$menu_webiste.";";
+		$menu_webiste 	= $linha["id"];
+		$ordem			= $linha["ordem"];
+		$sqlMenu = 	"
+			UPDATE " . MENU ." 
+			SET 
+				descricao = '".$descricao."',
+				link = '".$link."',
+				target = '".$target."',
+				pai = ".$pai.",
+				ordem = $ordem,
+				fixo = '".$fixo."',
+				entidade = {$entidade},
+				tipomenu = '{$tipomenu}',
+				conceito = {$_conceito},
+				coluna = $coluna
+			WHERE id = ".$menu_webiste.";
+		";
 	}else{
 		$menu_webiste = getProxId("menu",$conn);
 		if ($ordem == 0){
@@ -1030,15 +1048,43 @@ function addMenu(
 			$linhaOrdem = $queryOrdem->fetch();
 			$ordem 		= $linhaOrdem["ordem"];
 		}
-		$sqlMenu = 	"INSERT INTO ". MENU." (id,descricao,link,target,pai,ordem,fixo,entidade,tipomenu) VALUES 
-		(".$menu_webiste.",'".$descricao."','".$link."','".$target."',".$pai.",'".$ordem."','".$fixo."',".$entidade.",'".$tipomenu."');";
+		$sqlMenu = 	"
+			INSERT INTO ". MENU." (
+				id,
+				descricao,
+				link,
+				target,
+				pai,
+				ordem,
+				fixo,
+				entidade,
+				tipomenu,
+				conceito,
+				coluna
+			) VALUES (
+				".$menu_webiste.",
+				'".$descricao."',
+				'".$link."',
+				'".$target."',
+				".$pai.",
+				".$ordem.",
+				'".$fixo."',
+				".$entidade.",
+				'".$tipomenu."',
+				$_conceito,
+				$coluna
+			);
+		";
 	}
 	try{
 		if ($conn->exec($sqlMenu)){
 			addMenuPermissao($menu_webiste);
 		}
 	}catch(Throwable $t){
-		if (IS_SHOW_ERROR_MESSAGE) var_dump($sqlMenu);
+		if (IS_SHOW_ERROR_MESSAGE){
+			var_dump($sqlMenu);
+			echo $t->getMessage();
+		} 
 	}
 
 	return $menu_webiste;
@@ -1051,20 +1097,28 @@ function addMenuPermissao(
 ){
 	global $conn;	
 	if ($usuario == null) $usuario = isset($_SESSION["userid"])?$_SESSION["userid"]:1;
-	$idMP = installDependencia("menupermissoes","system/menupermissoes");
-	$sqlv = "SELECT id FROM td_menupermissoes WHERE menu = {$menu} AND usuario = {$usuario};";
+	$idMP 	= installDependencia("menupermissoes","system/menupermissoes");
+	$sqlv 	= "SELECT id FROM td_menupermissoes WHERE menu = {$menu} AND usuario = {$usuario};";
 	$queryv = $conn->query($sqlv);
 	if ($queryv->rowCount() > 0){
 		$linhav = $queryv->fetch();
-		$id = $linhav["id"];
-		$sql = "UPDATE td_menupermissoes SET permissao = {$permissao} WHERE id = {$id};";
+		$id 	= $linhav["id"];
+		$sql 	= "UPDATE td_menupermissoes SET permissao = {$permissao} WHERE id = {$id};";
 	}else{
-		$id = getProxId("menupermissoes");
-		$sql = "INSERT INTO td_menupermissoes (id,projeto,empresa,menu,usuario,permissao) VALUES ({$id},1,1,{$menu},$usuario,$permissao);";
+		$id 	= getProxId("menupermissoes");
+		$sql 	= "INSERT INTO td_menupermissoes (id,projeto,empresa,menu,usuario,permissao) VALUES ({$id},1,1,{$menu},$usuario,$permissao);";
 	}
-	if ($conn->exec($sql)){
-		return true;
-	}else{
+	try{
+		if ($conn->exec($sql)){
+			return true;
+		}else{
+			return false;
+		}
+	}catch(Throwable $t){
+		if (IS_SHOW_ERROR_MESSAGE){
+			var_dump($sql);
+			echo $t->getMessage();			
+		}
 		return false;
 	}
 }
@@ -1089,18 +1143,26 @@ $atributos #3
 		$atributos = arrayToString($atributos);
 	}
 	if ($query_verificar->rowCount() > 0){
-		$id = $linha_verificar[0];
-		$sql = "UPDATE ".ABAS." SET descricao = '{$descricao}' , atributos = '{$atributos}' WHERE id = {$id};";
+		$id 	= $linha_verificar[0];
+		$sql 	= "UPDATE ".ABAS." SET descricao = '{$descricao}' , atributos = '{$atributos}' WHERE id = {$id};";
 	}else{
-		$id = getProxId("abas",$conn);
-		$sql = "INSERT INTO ".ABAS." (id,entidade,descricao,atributos) values ({$id},{$entidade},'{$descricao}','{$atributos}');";
+		$id 	= getProxId("abas",$conn);
+		$sql 	= "INSERT INTO ".ABAS." (id,entidade,descricao,atributos) values ({$id},{$entidade},'{$descricao}','{$atributos}');";
 	}
-	$query = $conn->query($sql);
-	if ($query){
-		return $id;
-	}else{
+	try{
+		$query = $conn->query($sql);
+		if ($query){
+			return $id;
+		}else{
+			echo 'Não foi possível criar aba!';
+			return false;
+		}
+	}catch(Exception $e){
+		echo 'Não foi possível criar aba!';
 		return false;
 	}
+	
+
 }
 
 function getEntidadeId($entidadeString,$conn = null){

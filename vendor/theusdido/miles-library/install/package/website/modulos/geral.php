@@ -59,7 +59,8 @@
     "name" => "institucional", "title" => "Institucional", "components" =>
       array(
         array('name' => 'cargo'              ,'title' => 'Cargo'),
-        array('name' => 'equipe'                  ,'title' => 'Equipe')	
+        array('name' => 'equipe'             ,'title' => 'Equipe'),
+        array('name' => 'sobrenos'            ,'title' => 'Sobre Nós')
       )
     )
   );
