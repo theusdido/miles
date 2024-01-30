@@ -19,3 +19,4 @@ api.http
 composer.lock
 error.log
 access.log
+reset.php
