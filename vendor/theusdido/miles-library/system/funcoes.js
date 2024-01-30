@@ -923,3 +923,23 @@ function setMonitorStorage(conceito,data){
 		_data:data
 	});
 }
+
+function loadAllJSConcepts(){
+	debugger;
+	$.ajax({
+		url:session.urlmiles,
+		dataType:'json',
+		data:{
+			controller:'mdm/conceitojson'
+		},
+		complete:function(_res){
+			let _ret = _res.responseJSON;
+
+			_ret.forEach(function(e){
+				e._data.forEach(function(d){
+					setMonitorStorage(e._conceito,JSON.parse(d));
+				});
+			});
+		}
+	});	
+}

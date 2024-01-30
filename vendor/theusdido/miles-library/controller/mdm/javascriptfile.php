@@ -38,7 +38,7 @@
 	if ($dataset){
 		foreach ($dataset as $atributo){
 			fwrite($mdmJSCompile,"
-				td_atributo[{$atributo->id}] =".Attribute::getJSON($entidade->id).";
+				td_atributo[{$atributo->id}] =".Field::getJSON($atributo->id).";
 			");
 		}
 	}

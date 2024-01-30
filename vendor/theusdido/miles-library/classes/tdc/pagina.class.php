@@ -308,6 +308,7 @@ class Pagina Extends Html {
 
 			$(document).ready(function(){
 				scriptNoCache();
+				loadAllJSConcepts();
 			});
 
 			function scriptNoCache(){
