@@ -74,7 +74,7 @@
     "is_transaction_log": false,
     "database_current": "desenv",
     "port": "hidden",
-    "enviromment":"dev"
+    "environment":"dev"
 }
 ');
 
@@ -83,7 +83,7 @@
 
 	$_miles_config_root 	= json_decode(file_get_contents($_miles_json_root_file));
 	$_current_project_name	= isset($_miles_config_root->project->id) ? $_miles_config_root->project->id : $_project_name_identifify_params;
-	$_current_environment 	= $_miles_config_root->enviromment;
+	$_current_environment 	= $_miles_config_root->environment;
 
 	if ($_project_name_identifify_params == ''){
 		$project_name_identify = str_replace(array('dev.','.com','.br','miles.','www.','loja.'),'',$_http_host);

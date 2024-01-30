@@ -23,5 +23,5 @@
     "is_transaction_log": false,
     "database_current": "desenv",
     "port": "hidden",
-    "enviromment":"dev"
+    "environment":"dev"
 }

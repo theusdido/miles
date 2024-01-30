@@ -2346,7 +2346,7 @@ function getURLProject($parametro = null){
 	$parmsProject 		= array(
 		#"currentproject" 					=> CURRENT_PROJECT_ID,
 		'project_name_identifify_params' 	=> PROJECT_NAME_IDENTIFY_PARAMS,
-		'env'								=> _ENVIROMMENT
+		'env'								=> _ENVIRONMENT
 	);
 	switch(gettype($parametro)){
 		case 'string':

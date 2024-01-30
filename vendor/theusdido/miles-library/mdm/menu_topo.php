@@ -51,7 +51,7 @@
   </div>
 	<div class="alert alert-info text-right dados-config-projeto">
 		<?php
-			echo '<b id="titulo-mdm">MILES DATABASE MANAGEMENT</b> ID: [ <b>'.PROJECT_ID.'</b> ] - Projeto: <b>'.PROJECT_NAME.'</b> | Instância: <b>'._ENVIROMMENT.'</b>';
+			echo '<b id="titulo-mdm">MILES DATABASE MANAGEMENT</b> ID: [ <b>'.PROJECT_ID.'</b> ] - Projeto: <b>'.PROJECT_NAME.'</b> | Instância: <b>'._ENVIRONMENT.'</b>';
 		?>
 	</div>  
 </nav>
