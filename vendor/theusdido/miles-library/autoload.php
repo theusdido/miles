@@ -24,7 +24,7 @@
 	$_path_project_miles_json			= $_path_relative_project . $_env_params . '.'  . $_path_main_miles_json;
 	$_url_relative_project				= $_folder_project . '/' . $_project_name_identifify_params . '/';
 	$_url_project_miles_json			= $_url_relative_project . $_env_params . '.miles.json';
-	$_folder_miles_default				= 'miles' . DIRECTORY_SEPARATOR;
+	$_folder_miles_default				= 'miles/';
 
 	// Caso as variáveis venham por parametro
 	if (isset($_GET['project_name_identifify_params']) && isset($_GET['env'])){
