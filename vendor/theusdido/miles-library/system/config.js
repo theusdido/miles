@@ -68,7 +68,8 @@ window.addEventListener("storage", function (event) {
 
     if (event.key === '_monitor_mdm'){
         let _obj = JSON.parse(event.newValue);
-        eval('td_'+_obj._conceito+'['+_obj._data.id+'] = JSON.parse(\''+event.newValue+'\');');
+        console.log(_obj._data);
+        eval('td_'+_obj._conceito+'['+_obj._data.id+'] = JSON.parse(\''+_obj._data+'\');');
     }
 
 });

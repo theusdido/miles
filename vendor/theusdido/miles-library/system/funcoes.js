@@ -925,7 +925,6 @@ function setMonitorStorage(conceito,data){
 }
 
 function loadAllJSConcepts(){
-	debugger;
 	$.ajax({
 		url:session.urlmiles,
 		dataType:'json',
@@ -934,12 +933,14 @@ function loadAllJSConcepts(){
 		},
 		complete:function(_res){
 			let _ret = _res.responseJSON;
-
-			_ret.forEach(function(e){
-				e._data.forEach(function(d){
-					setMonitorStorage(e._conceito,JSON.parse(d));
+			if (_ret.length > 0){
+				_ret.forEach(function(e){
+					e._data.forEach(function(d){
+						setMonitorStorage(e._conceito,d);
+					});
 				});
-			});
+			}
+
 		}
 	});	
 }
