@@ -24,6 +24,7 @@
 	$_path_project_miles_json			= $_path_relative_project . $_env_params . '.'  . $_path_main_miles_json;
 	$_url_relative_project				= $_folder_project . '/' . $_project_name_identifify_params . '/';
 	$_url_project_miles_json			= $_url_relative_project . $_env_params . '.miles.json';
+	$_folder_miles_default				= 'miles' . DIRECTORY_SEPARATOR;
 
 	// Caso as variáveis venham por parametro
 	if (isset($_GET['project_name_identifify_params']) && isset($_GET['env'])){
@@ -54,11 +55,11 @@
     "project":{
         "id":"miles",
         "name":"Miles",
-        "path":"miles/",
-        "url":"'.$_url_install_miles.'"
+        "path":"'.$_folder_miles_default.'",
+        "url":"'.str_replace($_folder_miles_default,'',$_url_install_miles).'"
     },
     "currentproject": 1,
-    "folder":"miles/",
+    "folder":"'.$_folder_miles_default.'",
     "system": {
         "url": {
             "lib": "https://teia.tec.br/miles/repository/lib/"
