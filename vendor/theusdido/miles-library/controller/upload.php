@@ -192,8 +192,6 @@
 				alert("Tamanho máximo do arquivo foi excedido");
 				return false;
 			}
-			console.log();
-			debugger;
 			$("#'.$id_registro.'").val(parent.$("#id").val());
 			$("#'.$id_form.'").attr("onsubmit","return true");
 			$("#'.$id_form.'").submit();

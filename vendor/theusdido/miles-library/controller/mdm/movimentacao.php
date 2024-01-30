@@ -101,7 +101,8 @@
 			if($query){
 				tdc::wj(array(
 					'status' 	=> 'success',
-					'id'		=> $id
+					'id'		=> $id,
+					'_data' 	=> Movimentation::getJSON($id)
 				));
 			}else{
 				if (IS_SHOW_ERROR_MESSAGE){
@@ -284,7 +285,8 @@
             }
 		break;
         case 'load':
-            tdc::wj( tdc::rua(MOVIMENTACAO,tdc::r('id')) );
+            $id = tdc::r('id');
+			tdc::wj(['id' => $id , '_data' => Movimentation::getJSON($id)]);
         break;
         case 'listar-atributos':
             echo '<option value="0" selected>Nenhum Selecionado</option>';

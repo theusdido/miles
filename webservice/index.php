@@ -17,9 +17,6 @@
 	ini_set('display_startup_erros',1);
 	error_reporting(E_ALL);	
 
-	// Retorna os dados da requisição em JSON
-	//header("Content-Type: application/json", true);
-
 	// Projeto Consumidor
 	$projetoconsumidor = isset($_GET["project"]) ? $_GET["project"] : ( isset($_POST["project"]) ? $_POST["project"] : '' );
 	if ($projetoconsumidor == ''){
@@ -41,9 +38,6 @@
 	// Limpa cachê do SOAP
 	ini_set("soap.wsdl_cache_enabled", 0);
 
-	// Arquivo de configuração miles.json
-	$_miles_json_root_file = '../miles.json';
-
 	// Carrega os arquivos de configuração do sistema
 	require '../vendor/theusdido/miles-library/autoload.php';
 
@@ -59,6 +53,9 @@
 
 	$permissao = false;
 	switch($tokenparms){
+		case md5("miles.ws"): // e03c3599f75d548acc0232f2f3dcaa11
+			$permissao = true;
+		break;		
 		case md5("appfarmaciaonline"): // 1a09b8446aa30b7ae9247fa644a4e23b
 			$permissao = true;
 		break;
@@ -144,7 +141,10 @@
 
 	// Variável padrão para o recebimento de dados
 	$_data = tdc::r('_data') != '' ? json_decode(tdc::r('_data')) : new stdClass;
-	
+
+	// Sessão de seleção de língua para idioma
+	Session::append('selected_language', tdc::r('_language') != '' ? tdc::r('_language') : 0);
+
 	// Encaminha para o serviço solicitado
 	require 'rota.php';
 

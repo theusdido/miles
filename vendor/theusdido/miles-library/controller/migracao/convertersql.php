@@ -1,4 +1,4 @@
-<?php
+t<?php
 
 	$fp	 	= fopen(PATH_CURRENT_FILE . 'convert.sql','w+');
 	$file 	= file(PATH_CURRENT_FILE_TEMP . 'bkp.sql');

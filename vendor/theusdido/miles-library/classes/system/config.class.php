@@ -261,4 +261,31 @@ class Config {
 	public static function uploadMaxFile($_unidade = 'M'){
 		return (double)apenas_numero(ini_get('upload_max_filesize'));
 	}
+
+	/*  
+		* Método getJsInicial
+		* Data de Criacao: 04/10/2022
+		* @author Edilson Valentim dos Santos Bitencourt (Theusdido)
+
+		Retorna tag Javascript principal no sistema
+	*/
+	public static function getJsInicial(){
+		$script 		= tdc::o('script');
+		$script->src 	= URL_SYSTEM . 'inicial.js';
+		return $script;
+	}
+
+	/*  
+		* Método getJsConfig
+		* Data de Criacao: 24/01/2024
+		* Author @theusdido
+
+		Retorna tag Javascript de configuração do sistema
+	*/
+	public static function getJsConfig(){
+		$script 		= tdc::o('script');
+		//$script->src 	= URL_SYSTEM . 'config.js';
+		$script->add(getURL(URL_SYSTEM . 'config.js'));
+		return $script;
+	}	
 }

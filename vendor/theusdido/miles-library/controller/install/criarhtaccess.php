@@ -1,6 +1,8 @@
 <?php
-    if (tdc::r('op') == 'instalar'){
-        $_htaccess_file = '.htaccess';
+    $_htaccess_file = '.htaccess';
+
+    if (tdc::r('op') == 'instalar' && !file_exists($_htaccess_file)){
+
         $fpHtaccess = fopen($_htaccess_file,"w");
         fwrite($fpHtaccess,'
 <IfModule mod_rewrite.c>

@@ -679,8 +679,8 @@ function criarEntidade(
 	$nome 		= getSystemPREFIXO() . $nome;
 	$descricao 	= tdc::utf8($descricao);
 	
-	$sqlExisteEntidade = "SELECT id,nome FROM " . ENTIDADE . " WHERE nome='{$nome}'";
-	$queryExisteEntidade = $conn->query($sqlExisteEntidade);
+	$sqlExisteEntidade 		= "SELECT id,nome FROM " . ENTIDADE . " WHERE nome='{$nome}';";
+	$queryExisteEntidade 	= $conn->query($sqlExisteEntidade);
 	if (!$queryExisteEntidade){
 		if (IS_SHOW_ERROR_MESSAGE){
 			echo $sqlExisteEntidade;
@@ -706,12 +706,12 @@ function criarEntidade(
 		}
 		exit;
 	}
-	$sqlExisteFisicamente 	= "SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE UPPER(TABLE_NAME) = UPPER('".$nome."') AND UPPER(TABLE_SCHEMA) = UPPER('".SCHEMA."')";
+	$sqlExisteFisicamente 	= "SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE UPPER(TABLE_NAME) = UPPER('".$nome."') AND UPPER(TABLE_SCHEMA) = UPPER('".SCHEMA."');";
 	$queryExisteFisicamente = $conn->query($sqlExisteFisicamente);
 	
 	if ($queryExisteFisicamente->rowCount() <= 0){
-		$sql = "CREATE TABLE IF NOT EXISTS {$nome}(id int not null primary key) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
-		$query = $conn->query($sql);
+		$sql 	= "CREATE TABLE IF NOT EXISTS {$nome}(id int not null primary key) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
+		$query 	= $conn->query($sql);
 		if (!$query){
 			if (IS_SHOW_ERROR_MESSAGE){
 				echo $sql;
@@ -746,6 +746,14 @@ function criarEntidade(
 	
 	if ($criarinativo){
 		criarAtributo($conn,$entidade,'inativo','Inativo','boolean',0,1,7);
+	}
+
+	// Adiciona as entidades instaladas para retornar ao front end
+	global $_entidades_instaladas;
+	if (isset($_entidades_instaladas)){
+		array_push($_entidades_instaladas,array(
+			Entity::getJSON($entidade)
+		));
 	}
 	return $entidade;
 }
@@ -2046,8 +2054,28 @@ function addCampoFormatadoDB($dados,$entidade){
 		}else if ($tipohtml == 23){
 			$dados[$key . '_formated']	= datetimeToMysqlFormat($value,true);
 		}
+		$_lingua_selecionada_sessao 	= getLanguageSelectedSession();
+
+		if ($entidade != 'td_website_idioma_traducao'){
+			$dados['_traducoes'] 			= Idioma::Traduzir($entidade,$key,$dados['id'],$_lingua_selecionada_sessao);
+			if ($_lingua_selecionada_sessao > 0){
+				$lingua_filtrada = array_filter($dados['_traducoes'],'fLinguaSelecionada');				
+				if (sizeof($lingua_filtrada) > 0){
+					$dados[$key] = $lingua_filtrada[0]['texto'];
+				}
+			}
+		}
+
 	}
 	return $dados;
+}
+
+function fLinguaSelecionada($e){
+	return $e['lingua'] == getLanguageSelectedSession();
+}
+
+function getLanguageSelectedSession(){
+	return Session::Get('selected_language') != '' ? Session::Get('selected_language') : 0;
 }
 function getCampoDescricaoDefault($_entidade){
 	if ($_entidade == 0) return 0;

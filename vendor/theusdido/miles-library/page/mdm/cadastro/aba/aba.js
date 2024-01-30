@@ -1,7 +1,7 @@
 var aba_id = 0;
 $(document).ready(function(){
     $('#atributos').load(session.urlmiles + '?controller=mdm/cadastro/aba&op=lista-atributos-aba&entidade=' + _entidade);
-    $('#lista-atributos-aba').load(session.urlmiles + '?controller=mdm/cadastro/aba&op=listar-aba&entidade=' + _entidade);
+    listarAbas();
 });
 function load(){
     $.ajax({
@@ -39,7 +39,9 @@ $('#btn-salvar-aba').click(function(){
        },
         complete:function(_res){
             unLoaderSalvar();
+            resetar();
             mdmToastMessage("Salvo com Sucesso");
+            listarAbas();
         },
         beforeSend:function(){
             addLoaderSalvar();
@@ -70,4 +72,14 @@ function excluirAba(id_aba_excluir,entidade){
 function editarAba(entidade,_aba_id_edicao,atributos){
     aba_id = _aba_id_edicao
     load();
+}
+
+function listarAbas(){
+    $('#lista-atributos-aba').load(session.urlmiles + '?controller=mdm/cadastro/aba&op=listar-aba&entidade=' + _entidade);
+}
+
+function resetar(){
+    aba_id = 0;
+    $('#descricao').val('');
+    $('#atributos').val([]);
 }

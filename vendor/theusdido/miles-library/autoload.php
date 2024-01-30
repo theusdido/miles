@@ -14,19 +14,16 @@
 		Autor: @theusdido
 		Data: 11/07/2023
 
-	********************************* */
-
+	********************************* */	
 	$_project_name_identifify_params 	= !getenv('_PROJECT_NAME_IDENTIFY_PARAMS') ? '' : getenv('_PROJECT_NAME_IDENTIFY_PARAMS');
-
 	$_env_params						= !getenv('_ENV') ? '' : getenv('_ENV');
 	$_path_main_miles_json 				= 'miles.json';
 	$_folder_project					= 'projects';
-	$_path_relative_project				=  $_folder_project . DIRECTORY_SEPARATOR . $_project_name_identifify_params . DIRECTORY_SEPARATOR;
-	$_path_project_miles_json			=  $_path_relative_project . DIRECTORY_SEPARATOR . $_env_params . '.'  . $_path_main_miles_json;
-	$_url_relative_project				=  $_folder_project . '/' . $_project_name_identifify_params . '/';
-	$_url_project_miles_json			=  $_url_relative_project . $_env_params . '.miles.json';
-
-	
+	$_relative_root						= (AMBIENTE == 'SISTEMA' ? '' : '../');
+	$_path_relative_project				= $_relative_root . $_folder_project . DIRECTORY_SEPARATOR . $_project_name_identifify_params . DIRECTORY_SEPARATOR;
+	$_path_project_miles_json			= $_path_relative_project . $_env_params . '.'  . $_path_main_miles_json;
+	$_url_relative_project				= $_folder_project . '/' . $_project_name_identifify_params . '/';
+	$_url_project_miles_json			= $_url_relative_project . $_env_params . '.miles.json';
 
 	// Caso as variáveis venham por parametro
 	if (isset($_GET['project_name_identifify_params']) && isset($_GET['env'])){
@@ -34,17 +31,18 @@
 		$_path_project_miles_json			= $_path_relative_project . $_GET['env'] . '.'  . $_path_main_miles_json;
 	}
 
-	// Se o arquivo miles.json do projeto não for encontrado
-	$_miles_json_root_file = file_exists($_path_project_miles_json) && sizeof(file($_path_project_miles_json)) > 0 ? $_path_project_miles_json : $_path_main_miles_json;
+	// Se o arquivo miles do projeto for encontrado, considerar o sistema instalado
+	$_is_installed				= file_exists($_path_project_miles_json);
 
-	$_is_installed						= file_exists($_path_project_miles_json);
+	// Se o arquivo miles.json do projeto não for encontrado
+	$_miles_json_root_file 		= $_is_installed && sizeof(file($_path_project_miles_json)) > 0 ? $_path_project_miles_json : $_path_main_miles_json;
 
 	// URL da chamada do MILES
 	$_http_host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : '';
 
-	$_url_install_miles 	= $_http_host . $_SERVER['REQUEST_URI'];
+	$_url_install_miles 		= $_http_host . $_SERVER['REQUEST_URI'];
 
-	$_is_miles_json_root_file = file_exists($_miles_json_root_file);
+	$_is_miles_json_root_file 	= file_exists($_miles_json_root_file);
 
 	// Config Miles ( miles.json ) na raiz
 	if (!$_is_miles_json_root_file){
@@ -106,7 +104,7 @@
 
 	// Global com o nome do diretório da instalação do MILES
 	if (AMBIENTE == 'SISTEMA'){
-		$_path_miles 			= str_replace(array(PATH_ROOT,FOLDER_REPOSITORY),'',dirname(__DIR__));
+		$_path_miles 			= str_replace(array(PATH_ROOT,FOLDER_REPOSITORY,$_miles_config_root->project->path,$_miles_config_root->folder . '/'),'',dirname(__DIR__));
 		if (!file_exists($_path_miles)){
 			$_path_miles = str_replace('miles'.DIRECTORY_SEPARATOR,'',$_path_miles);
 		}
@@ -114,6 +112,8 @@
 		$_path_miles 			= str_replace(array(FOLDER_REPOSITORY),'',dirname(__DIR__));
 	}
 
+	// Caminho absoluto do diretório do projeto atual
+	$_project_path			= $_path_miles . $_folder_project . DIRECTORY_SEPARATOR . PROJECT_NAME_IDENTIFY_PARAMS . DIRECTORY_SEPARATOR;
 	$_path_miles_library 	= $_path_miles . PATH_REPOSITORY .  FOLDER_MILES_LIBRARY . DIRECTORY_SEPARATOR;
 	$_path_library_system	= $_path_miles_library . FOLDER_LIBRARY_SYSTEM . DIRECTORY_SEPARATOR;	
 	$_path_root_project		= $_path_miles . $_path_relative_project;
@@ -129,6 +129,7 @@
 
 	// Tratamento de Erros
 	$_path_exception = PATH_LIBRARY_SYSTEM . 'exception.php';
+
 	if (file_exists($_path_exception)){
 		include $_path_exception;
 	}else{
@@ -145,13 +146,19 @@
 		exit;
 	}
 
+	// Apaga o arquivo reset.php caso esteja em produção
+	$_reset_file = 'reset.php';
+	if (AMBIENTE == 'SISTEMA' && $_env_params == 'prod' && file_exists($_reset_file)){
+		unlink($_reset_file);
+	}
+
 	// Diretório de sistema para carregar as principais funcionaliades
 	$_path_system				= PATH_LIBRARY_SYSTEM;
-	$_path_config				= PATH_MILES_LIBRARY . FOLDER_CONFIG . DIRECTORY_SEPARATOR;
-	$_path_class				= PATH_MILES_LIBRARY . FOLDER_CLASSES . DIRECTORY_SEPARATOR;
-	$_path_controller			= PATH_MILES_LIBRARY . FOLDER_CONTROLLER . DIRECTORY_SEPARATOR;
-	$_path_controller_install	= $_path_controller . FOLDER_INSTALL . DIRECTORY_SEPARATOR;
-	$_path_config_project		= $_path_root_project . FOLDER_CONFIG . DIRECTORY_SEPARATOR;
+	$_path_config				= PATH_MILES_LIBRARY 	. FOLDER_CONFIG 		. DIRECTORY_SEPARATOR;
+	$_path_class				= PATH_MILES_LIBRARY 	. FOLDER_CLASSES 		. DIRECTORY_SEPARATOR;
+	$_path_controller			= PATH_MILES_LIBRARY 	. FOLDER_CONTROLLER 	. DIRECTORY_SEPARATOR;
+	$_path_controller_install	= $_path_controller 	. FOLDER_INSTALL 		. DIRECTORY_SEPARATOR;
+	$_path_config_project		= $_path_root_project 	. FOLDER_CONFIG 		. DIRECTORY_SEPARATOR;
 
 	// Carrega biblioteca de funções independentes
 	require $_path_system . 'functions.php';

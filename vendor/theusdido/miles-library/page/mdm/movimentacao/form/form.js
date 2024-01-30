@@ -25,13 +25,17 @@ $('#btn-salvar-movimentacao').click(function(){
             exibirvaloresantigos:$('#exibirvaloresantigos').prop('checked')
         },
         complete:function(_res){
+            let _ret    = _res.responseJSON;
+            let _data   = _ret._data;
+
+            setMonitorStorage('movimentacao',JSON.parse(_data));
+
             atualizarListaAlterar();
             $("#modalCadastroAlterar").modal('hide');
-            let _retorno = _res.responseJSON;
-            if (_retorno.status == 'success'){
+            if (_ret.status == 'success'){
                 unLoaderSalvar();
                 mdmToastMessage("Salvo com Sucesso");
-                _movimentacao = _retorno.id;
+                _movimentacao = _ret.id;
                 load();
             }            
         },
@@ -51,7 +55,10 @@ function load(){
             op:'load'
         },
         complete:function(_res){
-            let _data = _res.responseJSON;
+            let _ret    = _res.responseJSON;
+            let _data   = JSON.parse(_ret._data);
+
+            setMonitorStorage('movimentacao',_data);
 
             // Campos Inputs
             $("#descricao").val(_data.descricao);

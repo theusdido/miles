@@ -17,7 +17,7 @@
                 $response['database']                   = $conn_temp;
                 $response['installed']                  = false;
             // Sem base criada
-            }else if(!$_install->dados){
+            }else if(!$_install->bancodedadoscriado){
                 $response['case']                       = 5;
                 $response['check_criarbase']            = $check_no;
                 $response['check_instalacaosistema']    = $check_no;

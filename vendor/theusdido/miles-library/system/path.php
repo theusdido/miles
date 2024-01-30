@@ -59,7 +59,7 @@
 	define('PATH_DEBUG',PATH_MILES . "debug" . DIRECTORY_SEPARATOR);
 	
 	// Caminho padrão para os arquivos de cada projeto
-	define('PATH_PROJECT',$_project_path == '' ? PATH_MILES . FOLDER_PROJECT . DIRECTORY_SEPARATOR : FOLDER_PROJECT . DIRECTORY_SEPARATOR . $_project_path);
+	define('PATH_PROJECT',$_project_path);
 
 	// Caminho padrão para arquivos do E-Commerce
 	define('PATH_ECOMMERCE', PATH_MVC_CONTROLLER . "ecommerce" . DIRECTORY_SEPARATOR);
@@ -69,6 +69,7 @@
 
 	// Caminho padrão para os arquivos de classe do E-Commerce
 	define('PATH_CLASS_ECOMMERCE',PATH_CLASS.'ecommerce' . DIRECTORY_SEPARATOR);
+
 
 	// Caminho padrão para os arquivos de classe do Sistema
 	define('PATH_CLASS_SYSTEM',PATH_CLASS.'system' . DIRECTORY_SEPARATOR);
@@ -177,3 +178,12 @@
 
 	// Caminho padrão para a classe WebSocket
 	//define('PATH_WEBSOCKET',PATH_TDC);
+
+
+	define('PATH_MVC_CONTROLLER_IDIOMA', PATH_MVC_CONTROLLER . 'idioma' . DIRECTORY_SEPARATOR);
+
+	// Caminho padrão para os arquivos de classe de Idioma
+	define('PATH_CLASS_IDIOMA',PATH_CLASS . 'idioma' . DIRECTORY_SEPARATOR);	
+
+	// Caminho padrão para os arquivos do WebService
+	define("PATH_CURRENT_WEBSERVICE",PATH_PROJECT . "webservice" . DIRECTORY_SEPARATOR);

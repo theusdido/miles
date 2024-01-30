@@ -2,6 +2,7 @@
     $op = tdc::r('op');
     switch($op){
         case 'instalarcomponente':
+            $_entidades_instaladas = array();
             $componente = tdc::r('componente');
             if ($componente != ''){
                 $path               = str_replace('-','/', str_replace('--','-',$componente));
@@ -29,7 +30,8 @@
                     }
 				}
 			}
-            echo 1;            
+
+            tdc::wj(['_status' => 'success' , '_entidades' => $_entidades_instaladas]);
         break;
         case 'atualizar':
             $query = $conn->query("UPDATE td_instalacao SET pacoteconfigurado = 1 WHERE id = 1;");

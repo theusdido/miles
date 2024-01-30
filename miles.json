@@ -8,7 +8,7 @@
         "url":"localhost"
     },
     "currentproject": 1,
-    "folder":"miles/",
+    "folder":"miles",
     "system": {
         "url": {
             "lib": "https://teia.tec.br/miles/repository/lib/"

@@ -239,8 +239,13 @@ $('#btn-salvar-campo').click(function(){
             is_unique_key:$('#is_unique_key').prop('checked')
         },
         complete:function(_res){
+            
+            let _ret        = _res.responseJSON;
+            setMonitorStorage('atributo',_ret._data);
+
             unLoaderSalvar();
             mdmToastMessage("Salvo com Sucesso");
+
         },
         beforeSend:function(){
             addLoaderSalvar();
@@ -258,7 +263,9 @@ function load(){
             op:'load-atributo'
         },
         complete:function(_res){
-            let _data = _res.responseJSON;
+            let _data       = JSON.parse(_res.responseText);
+
+            setMonitorStorage('atributo',_data);
 
             // Campos Inputs
             $('#nome').val(_data.nome),

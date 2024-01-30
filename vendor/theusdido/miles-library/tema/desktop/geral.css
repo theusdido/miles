@@ -650,6 +650,7 @@ html, body { margin:0; height: 100%;} /* Para funcionar altura dos elementos aut
 .btn-group-atualizar-personalizado{
 	display: block;
 	text-align: right;
+	margin:5px auto;
 }
 .btn-add-emexecucao{
 	height:30px;
@@ -944,4 +945,24 @@ table thead tr.td-info
 {
 	font-weight:normal;
 }
+
+.div-traduzir-campo
+{
+	width: 100%;
+	height: 25px;
+	text-align: right;
+	line-height: 25px;
+}
+
+.div-traduzir-campo .btn-traduzir-campo
+{
+	border:none;
+	padding: 1px 5px;
+	
+}
+
+.div-traduzir-campo .btn-traduzir-campo i {
+	font-size:12px;
+}
+
 -->

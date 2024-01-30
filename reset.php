@@ -1,6 +1,7 @@
 <?php
+    $project_identify   = 'armazemcarvoeiro';
     $htaccessFile       = '.htaccess';
-    $cedupDirectory     = './projects/financeiro';
+    $_directory         = './projects/' . $project_identify;
 
     // Excluir o arquivo .htaccess
     if (file_exists($htaccessFile)) {
@@ -14,7 +15,7 @@
     }
 
     // Excluir o diretório ./projects/cedup e seus arquivos
-    if (is_dir($cedupDirectory)) {
+    if (is_dir($_directory)) {
         // Função para excluir o diretório e seus conteúdos
         function deleteDirectory($dir) {
             if (!file_exists($dir)) return;
@@ -26,20 +27,20 @@
             return rmdir($dir);
         }
 
-        if (deleteDirectory($cedupDirectory)) {
-            echo "O diretório $cedupDirectory foi excluído com sucesso.<br>";
+        if (deleteDirectory($_directory)) {
+            echo "O diretório $_directory foi excluído com sucesso.<br>";
         } else {
-            echo "Ocorreu um erro ao tentar excluir o diretório $cedupDirectory e seus conteúdos.<br>";
+            echo "Ocorreu um erro ao tentar excluir o diretório $_directory e seus conteúdos.<br>";
         }
     } else {
-        echo "O diretório $cedupDirectory não existe.<br>";
+        echo "O diretório $_directory não existe.<br>";
     }
 
     // Conexão com o banco de dados MySQL usando PDO
     $servername     = "localhost";
     $username       = "root";
-    $password       = ""; // Deixar vazia para senha em branco
-    $dbname         = "financeiro";
+    $password       = "spespcfc10"; // Deixar vazia para senha em branco
+    $dbname         = $project_identify;
     $port           = 3306;
 
     try {

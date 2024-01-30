@@ -37,6 +37,12 @@
 		// Carrega os dados do ambiente selecionado
 		$_env = isset($mjc->enviromments->{$_enviromment}) ? $mjc->enviromments->{$_enviromment} : $mjc;
 
+		// Nome do Projeto
+		$_project_name 		= isset($mjc->project->name)?$mjc->project->name:'';
+
+		// Id do Projeto
+		$_project_id		= isset($mjc->project->id)?$mjc->project->id:'';
+
 		$_folder_miles_ = PATH_MILES;
 		if (AMBIENTE == 'SISTEMA'){
 
@@ -44,16 +50,13 @@
 			define("FOLDER_MILES",$mjc->folder);
 
 			// Atualiza o nome do diretório de instalação do MILES
-			$_folder_miles = FOLDER_MILES;
-
-			$_folder_miles_ = '';
-
+			$_folder_miles 		= FOLDER_MILES;
+			$_folder_miles_ 	= '';
+			$_project_folder	= isset($mjc->project->path)?$mjc->project->path:'';
+			$_project_path 		= $_folder_project . DIRECTORY_SEPARATOR . $_project_folder;
+		}else{
+			$_project_path 		= $_folder_miles_ . $_folder_project . DIRECTORY_SEPARATOR . $_project_folder . $_project_name_identifify_params . DIRECTORY_SEPARATOR;
 		}
-
-		// Nome do Projeto
-		$_project_name 		= isset($mjc->project->name)?$mjc->project->name:'';
-		$_project_folder	= isset($mjc->project->path)?$mjc->project->path:'';
-		$_project_path 		= $_folder_miles_ . $_project_folder;
 	}	
 
 	define('PROJECT_NAME',$_project_name);

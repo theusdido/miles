@@ -462,6 +462,9 @@ class Pagina Extends Html {
 			$jsGerarHtmlClass 			= tdClass::Criar("script");
 			$jsGerarHtmlClass->src 		= URL_CLASS_TDC . "gerarhtml.class.js";
 
+			$jsConfig 		= tdc::o('script');
+			$jsConfig->src 	= URL_SYSTEM . 'config.js';
+
 			$this->body->add($_session_storage_class,$jsFuncoes,$jsValidar,$jsGradeDados,$jsChecklist,$jsFormularioClass,$jsGerarHtmlClass);
 		}
 	}

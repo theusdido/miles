@@ -125,7 +125,8 @@
 			if($query){
                 tdc::wj(array(
                     'status' 	=> 'success',
-                    'id'		=> $id
+                    'id'		=> $id,
+                    '_data' 	=> Reporty::getJSON($id)
                 ));
             }else{                
 				if (IS_SHOW_ERROR_MESSAGE){
@@ -134,12 +135,13 @@
 					tdc::wj(array(
 						'status' 	=> 'error',
 						'id'		=> $id
-					));                    
+					));
                 }
 			}
         break;
         case 'load':
-            tdc::wj( tdc::rua(RELATORIO,tdc::r('id')) );
+            $id = tdc::r('id');
+			tdc::wj(['id' => $id , '_data' => Reporty::getJSON($id)]);
         break;
         case 'listar-atributos':
             echo '<option value="0" selected>Nenhum Selecionado</option>';

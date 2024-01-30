@@ -85,7 +85,7 @@ class Layout extends Div {
 		if (!empty($this->footer)) 	parent::add($this->footer);
 
 		// Adiciona script inicial
-		parent::add($this->addJsInicial());		
+		parent::add(Config::getJsInicial());
 		parent::mostrar();
 	}
 	/*  
@@ -114,20 +114,4 @@ class Layout extends Div {
 			$this->addRodape($rodape);
 		}
 	}
-
-	/*  
-		* Método jsInicial
-		* Data de Criacao: 04/10/2022
-		* @author Edilson Valentim dos Santos Bitencourt (Theusdido)
-
-		Adiciona javascript principal no sistema
-	*/
-	public function addJsInicial(){
-		$script 		= tdc::o('script');
-		$script->src 	= URL_SYSTEM . 'inicial.js';
-		return $script;
-		#include (PATH_MVC_CONTROLLER . 'JSinicial.php');
-		#return $JSinicial;
-	}
-
 }

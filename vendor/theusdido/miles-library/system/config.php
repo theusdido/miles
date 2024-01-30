@@ -163,7 +163,7 @@
 	if (file_exists($path_composer)){
 		require $path_composer;
 	}
-
+	
 	// Inclui os arquivos de funções do sistema
 	require $_path_system . 'path.php';
 	require $_path_system . 'funcoes.php';

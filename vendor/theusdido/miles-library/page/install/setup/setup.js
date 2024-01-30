@@ -71,6 +71,12 @@
     let progressaoatual     = 0;
 
     $("#btn-instalar").click(function(){
+
+        if ($("#projectfolder").val() == ''){
+            $("#retorno").html('<div class="alert alert-danger" role="alert">Defina o diretório do projeto.</div>');
+            $("#retorno").show();
+            return;
+        }
         for (c in componentes){
             linhas.push(componentes[c]);
         }
@@ -97,7 +103,7 @@
                     executa(linhas[progressaoatual]);
                 }else{
                     $("#retorno").html('<div class="alert alert-danger" role="alert">Erro ao instalar o sistema. Motivo: ' +retorno+ '</div>');
-                    $("#retorno").show();				
+                    $("#retorno").show();
                 }
             },
             complete:function(){
@@ -179,7 +185,7 @@
                                 op:"projeto",
                                 nome:$("#projectname").val()
                             }
-                        });
+                        });                        
                         $.ajax({
                             type:"POST",
                             url:session.urlmiles,
@@ -215,6 +221,15 @@
                             data:{
                                 controller:'install/instalar',
                                 op:"versao"
+                            }
+                        });
+                        // Javascript File MDM
+                        $.ajax({
+                            type:"POST",
+                            url:session.urlmiles,
+                            data:{
+                                controller:'install/instalar',
+                                op:"javascriptfile"
                             }
                         });
                     }

@@ -19,7 +19,13 @@ function load(){
             op:'load'
         },
         complete:function(_res){
-            let _data = _res.responseJSON;
+            let _ret    = _res.responseJSON;
+            let _data   = JSON.parse(_ret._data);
+
+            if (_id_relacionamento != 0){
+                setMonitorStorage('relacionamento',_data);
+            }
+
             $("#tipo").val(_data.tipo);
             $("#descricao").val(_data.descricao);
             $("#entidadefilho").val(_data.filho);
@@ -122,6 +128,12 @@ $('#btn-salvar-relacionamento').click(function(){
             descricao:$('#descricao').val()
         },
         complete:function(_res){
+            let _ret    = _res.responseJSON;
+            let _data   = _ret._data;
+
+            if (_id_relacionamento != 0){
+                setMonitorStorage('relacionamento',JSON.parse(_data));
+            }
             unLoaderSalvar();
             mdmToastMessage("Salvo com Sucesso");
         },

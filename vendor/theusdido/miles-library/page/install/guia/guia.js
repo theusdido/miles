@@ -6,7 +6,7 @@ var permissoes_guia = {
 }
 var check_guia = {};
 $(document).ready(function(){
-    //getStatusGuia();
+    getStatusGuia();
 });
 
 function getStatusGuia(){
@@ -55,6 +55,7 @@ $('#menu-guia a').click(function(event){
     event.preventDefault();
     event.stopPropagation();
     $('#menu-guia a').removeClass('guia-current');
+    console.log($(this).attr('data-habilitado'));
     if ($(this).attr('data-habilitado')){
         $(this).addClass('guia-current');
         loadContent($(this).data('href'));
@@ -69,12 +70,14 @@ function permissoesGuia(){
         let src_img     = item.find('img').attr('src');
 
         if (src_img != '' && src_img != undefined){
+
             if (src_img.indexOf('check.gif') > 0){
                 habilitado = true;            
             }
-        }else{
+        }else{            
             console.warn('Ícone check do menu guia não foi encontrado.');
         }
+
         switch(item.data('href')){
             case 'criarbase':
                 if (habilitado){

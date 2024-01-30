@@ -86,8 +86,12 @@ function instalarcomponentes(){
             $("#loader-pacotes").show();
         },
         complete:function(ret){
-            var retorno = parseInt(ret.responseText);
-            if (retorno == 1){
+            let retorno = JSON.parse(ret.responseText);
+
+            if (retorno._status == 'success'){
+                retorno._entidades.forEach((_entidade) => {
+                    setEntidade(JSON.parse(_entidade));
+                });
                 instalarregistros();
                 indiceComponente++;								
                 if (componentes[indiceComponente] != undefined){									

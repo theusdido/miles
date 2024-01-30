@@ -23,24 +23,28 @@ class TdFormulario Extends Elemento {
 	public $exibirlegenda 	= true;
 	public $grupo_botoes;
 	private $botoes 		= array();
-	public $onsubmit		= 'return false'; # Não retirar devido ao CKEditor
+	public $is_multiidioma	= false;
 	/*  
 		* Método construct 
 	    * Data de Criacao: 27/12/2014
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
-		
+
 		Formulário padrão
-	*/		
+	*/
 	function __construct(){
 		parent::__construct('form');
 		$this->fieldset 			= tdClass::Criar("fieldset");
 		$this->legenda 				= tdClass::Criar("legend");		
-		$this->class 				= "form-horizontal tdform";
+		$this->class 				= "form-horizontal tdform 3";
 		$this->linhacampos 			= tdClass::Criar("div");
-		$this->linhacampos->class 	= "row-fluid form_campos tdform";
-		$this->grupo_botoes			= tdc::html("div" , array("class" => "form-grupo-botao"));
+		$this->linhacampos->class 	= "row-fluid form_campos tdform 2";
+		$this->grupo_botoes			= tdc::html("div" , array("class" => "form-grupo-botao"));		
+
+		# Não retirar devido ao CKEditor
 		$this->onsubmit 			= "return false";
-		//$this->funcionalidade		= $funcionalidade;
+
+		$this->is_multiidioma		= tdc::ru('td_config')->multiidioma;
+		#$this->funcionalidade		= $funcionalidade;
 	}
 	/*  
 		* Método CamposHTML 
@@ -69,8 +73,8 @@ class TdFormulario Extends Elemento {
 		// Coluna ID
 		$colunaID = tdClass::Criar("div");
 		if ($this->ncolunas >0){
-			$colunaID->class = "coluna";
-			$colunaID->data_ncolunas = $this->ncolunas;
+			$colunaID->class 			= "coluna";
+			$colunaID->data_ncolunas 	= $this->ncolunas;
 		}
 		
 		// ID
@@ -105,18 +109,31 @@ class TdFormulario Extends Elemento {
 			$colunaID->add($id);
 		
 		}
-		$this->linhacampos->add($colunaID);		
+		$this->linhacampos->add($colunaID);
 		foreach($colunas as $coluna){
-			$campo = tdClass::Criar("labeledit");
-			$label = null;
-			$atributodependencia 		= $coluna->atributodependencia;
-			
+			$campo 					= tdClass::Criar("labeledit");
+			$label 					= null;
+			$atributodependencia 	= $coluna->atributodependencia;
+			$asteriscoobrigatorio 	= null;
+			$btn_traduzir			= null;
+
+			// Asteristico nos campos obrigatórios
 			if ((int)$coluna->nulo != 1 && $this->funcionalidade == 'cadastro'){
-				$asteriscoobrigatorio = tdClass::Criar("span");
-				$asteriscoobrigatorio->class = "asteriscoobrigatorio";
+				$asteriscoobrigatorio 			= tdClass::Criar("span");
+				$asteriscoobrigatorio->class 	= "asteriscoobrigatorio";
 				$asteriscoobrigatorio->add("*");
-			}else{
-				$asteriscoobrigatorio = null;
+			}
+
+			// Botão para traduzir texto
+			if ($this->is_multiidioma){
+
+				$div_traduzir					= tdc::html('div');
+				$div_traduzir->class			= 'div-traduzir-campo';
+				$btn_traduzir 					= Button::Icon('fas fa-language');
+				$btn_traduzir->class			= 'btn-traduzir-campo btn-sm';
+				$btn_traduzir->data_atributo	= $coluna->id;
+
+				$div_traduzir->add($btn_traduzir);
 			}
 
 			$initialValue = $this->initialValue($coluna);
@@ -125,6 +142,7 @@ class TdFormulario Extends Elemento {
 				case "3":
 					$campo = Campos::TextoLongo($coluna->nome,$coluna->nome,tdc::utf8($coluna->descricao),$initialValue);
 					$campo->label->add($asteriscoobrigatorio);
+					$campo->add($div_traduzir);
 					$campo->input->data_entidade = $entidadeCOL;
 					if ($this->fp != "") $campo->input->class = $this->fp;
 					if ($coluna->exibirgradededados ==1) $campo->input->class = $this->gd;
@@ -543,6 +561,8 @@ class TdFormulario Extends Elemento {
 					$modalName = "myModal-ckeditor" . $nomeCompleto;
 					$campo = tdClass::Criar("div");
 					$campo->class = "form-group";
+					
+
 					$input_group = tdClass::Criar("div");
 					$input_group->class = "input-group ckeditor-group " ;
 					
@@ -589,7 +609,7 @@ class TdFormulario Extends Elemento {
 					$modal->addBody($campoCKEDITOR);
 					$modal->addFooter("<small>* Componente externo <b>CK Editor</b>. Saiba mais em <a href='http://www.ckeditor.com' target='_blank'>www.ckeditor.com</a></small>");
 
-					$campo->add($label,$input_group,$modal);
+					$campo->add($label,$div_traduzir,$input_group,$modal);
 				break;
 				// Filtro
 				case "22":
@@ -828,6 +848,18 @@ class TdFormulario Extends Elemento {
 			}
 			$this->addCampo($campo);
 		}
+
+		if ($this->is_multiidioma){
+			$modal_traduzir 					= tdClass::Criar("modal");
+			$modal_traduzir->class			= 'modal-traduzir-campo';
+			$modal_traduzir->tamanho 		= "modal-lg";
+			$modal_traduzir->addHeader("Traduzir");
+			$modal_traduzir->addBody("");
+			$modal_traduzir->addFooter("");
+
+			$this->linhacampos->add($modal_traduzir);
+		}
+
 		if ($retorno){
 			return $this->linhacampos;
 		}

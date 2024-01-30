@@ -27,7 +27,7 @@
 		$_customcomponent			= PATH_CURRENT_COMPONENT . $_component_path . ".php";
 	}
 	// Fim Component
-
+	
 	// Tratamento para requisição a uma página - by @theusdido 02/10/2021
 	$_page				= tdc::r("page",tdc::r('_page'));
 	if (strpos($_page,"/") > -1){
@@ -46,7 +46,7 @@
 		$_custompage		= PATH_CURRENT_PAGE . $_page . ".php";
 	}
 	// Fim Page
-
+	
 	$systemview 		= '';
 	$customview			= '';
 
@@ -61,12 +61,11 @@
 		if (file_exists($systemcontroller)) include $systemcontroller;
 		exit;
 	}
-
+	
 	if ($controller == "permissaoinicial"){
 		if (file_exists($systemrequisicoes)) include $systemrequisicoes;
 		exit;
 	}
-
 	switch(AMBIENTE){
 		case 'SISTEMA':
 			if ($controller == '' && $_page == '' && $_component == ''){
@@ -87,6 +86,13 @@
 						{							
 							include $ecommerce_main_controller;
 						}
+					break;
+					case 'idioma':
+						$idioma_main_controller = PATH_MVC_CONTROLLER_IDIOMA . 'main.php';
+						if (file_exists($idioma_main_controller))
+						{							
+							include $idioma_main_controller;
+						}						
 					break;
 				}
 			}

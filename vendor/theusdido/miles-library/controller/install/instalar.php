@@ -26,9 +26,6 @@
 			include PATH_MILES_LIBRARY . 'controller/install/criarcurrentconfig.php';
 			include PATH_MILES_LIBRARY . 'controller/install/criarmilesjson.php';
 
-			// Cria o MDM File JavaScript Compile
-			include PATH_MDM_CONTROLLER . 'javascriptfile.php';
-
             echo 1;
         break;
         case 'instrucao':
@@ -112,7 +109,8 @@
 				"pathfileuploadtemp",
 				"testecharset",
 				"tipogradedados",
-				"casasdecimais"
+				"casasdecimais",
+				"multiidioma"
 			), array(
 				"'index.php?controller=upload'",
 				"'index.php?controller=requisicoes'",
@@ -133,7 +131,8 @@
 				"'project/arquivos/temp'",
 				"'á'",
 				"'table'",
-				2
+				2,
+				0
 			));
 
 			// Status
@@ -210,6 +209,12 @@
         break;
 		case 'versao':
 			include PATH_MILES_LIBRARY . 'controller/install/version.php';
+		break;
+		case 'javascriptfile':
+
+			// Cria o MDM File JavaScript Compile
+			include PATH_MDM_CONTROLLER . 'javascriptfile.php';
+
 		break;
 		case 'default':
 			tdc::wj(array(

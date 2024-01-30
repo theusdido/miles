@@ -100,7 +100,7 @@
 
             $query = $conn->query($sql);
             if($query){
-
+                tdc::wj([ 'id' => $id , '_data' => Relationship::getJSON($id) ]);
             }else{
                 if (IS_SHOW_ERROR_MESSAGE){
                     echo $sql;
@@ -110,7 +110,8 @@
             }
         break;
         case 'load';
-            tdc::wj( tdc::rua(RELACIONAMENTO,tdc::r('id')));
+            $id = tdc::r('id');
+            tdc::wj([ 'id' => $id , '_data' => Relationship::getJSON($id) ]);
         break;
         case 'excluir':
             $sql = "DELETE FROM ".RELACIONAMENTO." WHERE id = {$_GET["id"]};";

@@ -100,6 +100,7 @@ tdFormulario.prototype.novo = function(){
 		this.dados.splice(0,this.dados.length); // Limpa array "dados"
 		this.dadosatributodependencia.splice(0,this.dadosatributodependencia.length);
 		this.setCkEditores();
+		this.setBotaoTraduzir();
 		$(".descricaoExibirEdicao").hide();
 	}else{
 		$('.form-control[id=id][data-entidade="' + this.entidade.id + '"]').val(id_init_val);
@@ -179,11 +180,13 @@ tdFormulario.prototype.novo = function(){
 			if ($(attr_selector,contextoAdd).hasClass("td-file-hidden")){
 				$(attr_selector,contextoAdd).parents(".form-group").find("iframe").first().attr("src",getURLProject("index.php?controller=upload&atributo="+td_atributo[atributoID].id+"&valor=&id=" + indicetemp));
 			}
+			
 		}
 
 		$(".checkbox-s",contextoAdd).removeClass("active");
 		$(".checkbox-n",contextoAdd).addClass("active");
 
+		
 	});
 
 	$(".form-group",contextoAdd).removeClass("has-success");
@@ -1939,13 +1942,44 @@ tdFormulario.prototype.setGeneralizaoAba = function(_entidade_filho){
 }
 
 tdFormulario.prototype.setGeneralizacaoMultipla = function (){
-	//if ($("#select-generalizacao-multipla").length > 0){
-		$(".generalizacaoABA-M").hide();
-		for(rm in td_relacionamento){
-			if (td_relacionamento[rm].tipo == 9 && td_relacionamento[rm].pai == this.entidade_id){
-				var opt = $("<option value='"+td_relacionamento[rm].filho+"'>"+td_relacionamento[rm].descricao+"</option>");
-				$("#select-generalizacao-multipla").append(opt);
-			}
+	$(".generalizacaoABA-M").hide();
+	for(rm in td_relacionamento){
+		if (td_relacionamento[rm].tipo == 9 && td_relacionamento[rm].pai == this.entidade_id){
+			var opt = $("<option value='"+td_relacionamento[rm].filho+"'>"+td_relacionamento[rm].descricao+"</option>");
+			$("#select-generalizacao-multipla").append(opt);
 		}
-	//}
+	}
+}
+
+tdFormulario.prototype.setBotaoTraduzir = function(){
+
+	$('.btn-traduzir-campo',this.getContexto()).click(function(e){
+		e.preventDefault();
+		e.stopPropagation();
+
+		let _atributo 	= $(this).parents('.form-group').first().find('input').attr('atributo');
+		let _registro	= $(this).parents('.crud-contexto-add').first().find('#id').val();
+		let _texto		= $(this).parents('.form-group').first().find('input').val();
+
+		$.ajax({
+			url:session.urlmiles,
+			data:{
+				controller:'page',
+				page:'idioma/traduzir'
+			},
+			complete:function(res){
+				$('.modal-traduzir-campo .modal-body').html(res.responseText);
+				$('.modal-traduzir-campo').modal('show');
+
+				$('.modal-traduzir-campo .modal-body #atributo').val(_atributo);
+				$('.modal-traduzir-campo .modal-body #registro').val(_registro);
+				$('.texto-traduzir').html(_texto);
+
+				$(".modal-traduzir-campo").on('hidden.bs.modal', function (e){
+					console.log('Fechou o modal de tradução ... ');
+				});				
+			}
+		});
+	});
+
 }

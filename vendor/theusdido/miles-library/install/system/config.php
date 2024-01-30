@@ -41,4 +41,5 @@
 	$urlupload 					= criarAtributo($conn,$entidadeID,"testecharset","Teste CharSet","text",0,0,3);
 	$tipogradedados 			= criarAtributo($conn,$entidadeID,"tipogradedados","Tipo de Grade de Dados","varchar",10,1,3);
 	$casasdecimais 				= criarAtributo($conn,$entidadeID,"casasdecimais","Quantidade de Casas Decimais","int",0,1,25);
+	$multiidioma 				= criarAtributo($conn,$entidadeID,"multiidioma","Ativar Multi Idioma","boolean",0,1,7);
 	

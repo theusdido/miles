@@ -470,4 +470,22 @@ abstract class Registro {
 		if ($this->carregar($this->id) == false) return false;
 		else return true;
 	}
+
+	/*  
+		* Método appendC
+	    * Data de Criacao: 14/01/2022
+	    * Author @theusdido
+
+		Retorna o registro vazio caso não encontre o critério
+	*/
+	public function newNotExistsCriteria($criterio){
+		$dataset = tdc::d($this->getEntidade(),$criterio);
+		if (sizeof($dataset) <= 0){
+			$entidade = tdc::p($this->getEntidade());
+			return $entidade;
+		}else{
+			$dataset[0]->isUpdate();
+			return $dataset[0];
+		}
+	}
 }

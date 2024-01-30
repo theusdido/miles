@@ -110,7 +110,8 @@
 			if($query){
 				tdc::wj(array(
 					'status' 	=> 'success',
-					'id'		=> $id
+					'id'		=> $id,
+					'_data' 	=> Query::getJSON($id)
 				));
 			}else{
 				if (IS_SHOW_ERROR_MESSAGE){
@@ -126,7 +127,8 @@
         break;
 
         case 'load':
-            tdc::wj( tdc::rua(CONSULTA,tdc::r('id')) );
+            $id = tdc::r('id');
+			tdc::wj(['id' => $id , '_data' => Query::getJSON($id)]);
         break;
         case 'listarconsulta':
 			$sql = "
