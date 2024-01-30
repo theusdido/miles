@@ -90,7 +90,7 @@ function instalarcomponentes(){
 
             if (retorno._status == 'success'){
                 retorno._entidades.forEach((_entidade) => {
-                    setEntidade(JSON.parse(_entidade));
+                    setMonitorStorage('entidade',JSON.parse(_entidade));
                 });
                 instalarregistros();
                 indiceComponente++;								
