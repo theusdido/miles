@@ -1,9 +1,0 @@
-POST http://miles.villafrancioni.com.br/webservice/
-Content-Type: application/x-www-form-urlencoded
-Content-Disposition: form-data;
-
-&notificationType=transaction
-&notificationCode=1F8D38412F0B2F0B6A7BB435CFA13D64BDC1
-&env=dev&project_name_identifify_params=villafrancioni
-&token=6d4e3a2c112f673fde3e92361614feb7
-&service=pagseguro-notificacao

@@ -260,7 +260,7 @@ class Pagina Extends Html {
 				this.url_favicon				= "'.URL_FAVICON.'";
 				this.project_id					= "'.PROJECT_ID.'";
 				this.project_name				= "'.PROJECT_NAME.'";
-				this._environment				= "'._ENVIROMMENT.'";
+				this._environment				= "'._ENVIRONMENT.'";
 				this.url_files					= "'.URL_FILES.'";
 				this.url_files_cadastro			= "'.URL_FILES_CADASTRO.'";
 			}
@@ -298,7 +298,7 @@ class Pagina Extends Html {
 				headers: { "CustomHeader": "myValue" },
 				data: {
 					project_name_identifify_params:"'.MILES_JSON_PROJECT.'",
-					env:"'._ENVIROMMENT.'",
+					env:"'._ENVIRONMENT.'",
 					nocahe:new Date().getTime()
 				},
 				complete:function(){

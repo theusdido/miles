@@ -198,7 +198,7 @@ class Config {
 		return $retorno;
 	}
 	/*
-		* getEnvirommentVariable
+		* getEnvironmentVariable
 		* Data de Criacao: 16/09/2022
 		* @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		* Retorna o valor da variável de ambiente
@@ -207,7 +207,7 @@ class Config {
 		* RETORNO
 		*	@return: any
 	*/
-	public static function getEnvirommentVariable($path_variable,$default = NULL){
+	public static function getEnvironmentVariable($path_variable,$default = NULL){
 		global $_env;
 		global $mjc;
 

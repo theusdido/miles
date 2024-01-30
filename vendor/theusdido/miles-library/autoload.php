@@ -24,6 +24,7 @@
 	$_path_project_miles_json			= $_path_relative_project . $_env_params . '.'  . $_path_main_miles_json;
 	$_url_relative_project				= $_folder_project . '/' . $_project_name_identifify_params . '/';
 	$_url_project_miles_json			= $_url_relative_project . $_env_params . '.miles.json';
+	$_folder_miles_default				= 'miles/';
 
 	// Caso as variáveis venham por parametro
 	if (isset($_GET['project_name_identifify_params']) && isset($_GET['env'])){
@@ -54,11 +55,11 @@
     "project":{
         "id":"miles",
         "name":"Miles",
-        "path":"miles/",
-        "url":"'.$_url_install_miles.'"
+        "path":"'.$_folder_miles_default.'",
+        "url":"'.str_replace($_folder_miles_default,'',$_url_install_miles).'"
     },
     "currentproject": 1,
-    "folder":"miles/",
+    "folder":"'.$_folder_miles_default.'",
     "system": {
         "url": {
             "lib": "https://teia.tec.br/miles/repository/lib/"
@@ -73,7 +74,7 @@
     "is_transaction_log": false,
     "database_current": "desenv",
     "port": "hidden",
-    "enviromment":"dev"
+    "environment":"dev"
 }
 ');
 
@@ -82,7 +83,7 @@
 
 	$_miles_config_root 	= json_decode(file_get_contents($_miles_json_root_file));
 	$_current_project_name	= isset($_miles_config_root->project->id) ? $_miles_config_root->project->id : $_project_name_identifify_params;
-	$_current_environment 	= $_miles_config_root->enviromment;
+	$_current_environment 	= $_miles_config_root->environment;
 
 	if ($_project_name_identifify_params == ''){
 		$project_name_identify = str_replace(array('dev.','.com','.br','miles.','www.','loja.'),'',$_http_host);
