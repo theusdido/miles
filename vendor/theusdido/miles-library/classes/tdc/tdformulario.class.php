@@ -115,6 +115,7 @@ class TdFormulario Extends Elemento {
 			$label 					= null;
 			$atributodependencia 	= $coluna->atributodependencia;
 			$asteriscoobrigatorio 	= null;
+			$div_traduzir			= null;
 			$btn_traduzir			= null;
 
 			// Asteristico nos campos obrigatórios
