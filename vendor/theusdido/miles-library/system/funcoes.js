@@ -933,6 +933,7 @@ function loadAllJSConcepts(){
 		},
 		complete:function(_res){
 			let _ret = _res.responseJSON;
+			// # Erro aqui
 			if (_ret.length > 0){
 				_ret.forEach(function(e){
 					e._data.forEach(function(d){
