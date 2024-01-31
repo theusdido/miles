@@ -67,9 +67,11 @@ var _session = new tdSessionStorage();
 window.addEventListener("storage", function (event) {
 
     if (event.key === '_monitor_mdm'){
-        let _obj = JSON.parse(event.newValue);
-        console.log(_obj._data);
-        eval('td_'+_obj._conceito+'['+_obj._data.id+'] = JSON.parse(\''+_obj._data+'\');');
+        let _obj            = JSON.parse(event.newValue);
+        let _content_obj    = typeof _obj._data === 'string' ? JSON.parse(_obj._data) : _obj._data;
+        let _content_text   = typeof _obj._data === 'string' ? _obj._data : JSON.stringify(_obj._data);
+
+        eval('td_'+_obj._conceito+'['+_content_obj.id+'] = JSON.parse(\''+_content_text+'\');');
     }
 
 });
