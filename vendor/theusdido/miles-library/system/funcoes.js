@@ -837,9 +837,8 @@ function carregarScriptCRUD(tipo,entidade,registro_id = 0,contexto = '',_extras 
 	}
 	switch(tipo){
 		case 'cadastro':
-			// Registro Único
-			let is_registrounico = typeof registrounico == 'undefined' ? formulario[indice_form].entidade.registrounico : registrounico;
-			if (is_registrounico){
+			// Registro Únicogit
+			if (formulario[indice_form].isRegistroUnico()){
 				formulario[indice_form].setRegistroUnico();
 			}else{
 				formulario[indice_form].loadGrade();

@@ -1984,11 +1984,12 @@ tdFormulario.prototype.setBotaoTraduzir = function(){
 }
 
 tdFormulario.prototype.isRegistroUnico = function(){
-	if (this.is_registrounico == 0) return false;
-	if (this.is_registrounico == 1) return true;
 
 	if (this.entidade.registrounico == 0) this.is_registrounico = false;
 	if (this.entidade.registrounico == 1) this.is_registrounico = true;
+
+	if (this.is_registrounico == 0) return false;
+	if (this.is_registrounico == 1) return true;
 
 	return this.is_registrounico;
 }
