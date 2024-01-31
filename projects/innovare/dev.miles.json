@@ -21,8 +21,8 @@
     "is_transaction_log": false,   
     "database_current": "desenv",
     "port": "hidden",
-    "enviromment":"dev",
-    "enviromments":{
+    "environment":"dev",
+    "environments":{
         "dev":{
             "root":"/",
             "url":{

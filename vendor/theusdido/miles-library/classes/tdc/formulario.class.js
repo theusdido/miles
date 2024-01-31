@@ -1976,7 +1976,7 @@ tdFormulario.prototype.setBotaoTraduzir = function(){
 
 				$(".modal-traduzir-campo").on('hidden.bs.modal', function (e){
 					console.log('Fechou o modal de tradução ... ');
-				});				
+				});
 			}
 		});
 	});
