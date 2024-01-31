@@ -11,7 +11,6 @@ function tdFormulario (){
 	this.temp_registro				= 0;
     this.CKEditores                 = [];
     this.dadosatributodependencia   = [];
-    this.registrounico              = false;
 	this.monitorformdadospreenchido	= [];
 	this.entidades_filho			= [];
 	this.is_pai						= false;
@@ -107,7 +106,7 @@ tdFormulario.prototype.novo = function(){
 	}
 
 	if (this.entidade != undefined){
-		if (this.entidade.registrounico){
+		if (this.isRegistroUnico()){
 			$(contextoAdd).find(".b-voltar").first().hide();
 		}
 	}else{
@@ -1982,4 +1981,14 @@ tdFormulario.prototype.setBotaoTraduzir = function(){
 		});
 	});
 
+}
+
+tdFormulario.prototype.isRegistroUnico = function(){
+	if (this.is_registrounico == 0) return false;
+	if (this.is_registrounico == 1) return true;
+
+	if (this.entidade.registrounico == 0) this.is_registrounico = false;
+	if (this.entidade.registrounico == 1) this.is_registrounico = true;
+
+	return this.is_registrounico;
 }
