@@ -323,9 +323,9 @@ class Pagina Extends Html {
 						let src_new = src_old + "?" + time;
 						$(this).attr("src", src_new);
 					}
-				});				
+				});
 			}
-		
+
 		');
 
 		// Arquivo de Codificação/Decoficação em JS

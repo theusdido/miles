@@ -21,8 +21,8 @@
     "is_transaction_log": false,   
     "database_current": "producao",
     "port": "hidden",
-    "enviromment":"prod",
-    "enviromments":{
+    "environment":"prod",
+    "environments":{
         "dev":{
             "root":"/",
             "url":{

@@ -27,7 +27,7 @@ class Status {
 		@return: string
 	*/
 	public static function getJSON($_id){
-		$_status 		= tdc::d(STATUS,$_id);
+		$_status 		= tdc::ru(STATUS,$_id);
 		
 		return json_encode(array(
             'id'            => $_status->id,

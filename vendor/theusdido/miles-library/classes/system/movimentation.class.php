@@ -27,7 +27,7 @@ class Movimentation {
 		@return: string
 	*/
 	public static function getJSON($_id){
-		$_movimentacao 		= tdc::d(MOVIMENTACAO,$_id);
+		$_movimentacao 		= tdc::ru(MOVIMENTACAO,$_id);
 		
 		return json_encode(array(
             'id'            => $_movimentacao->id,
