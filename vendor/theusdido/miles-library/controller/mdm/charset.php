@@ -49,8 +49,8 @@
 			}
 
 			// Caracteres desformatados
-			$_de 	= array('Ã§','Ã£','Ã“','Ãµ','Ã³');
-			$_para	= array('ç','ã','Ó','õ','ó');
+			$_de 	= array('Ã§','Ã£','Ã“','Ãµ','Ã³','Ã¡','Ã©','Ãª','Ã­','Ãº');
+			$_para	= array('ç','ã','Ó','õ','ó','á','é','ê','í','ú');
 			$sqlv 	= "SELECT id,{$atributo} valor FROM {$entidade};";
 			$queryv = $conn->query($sqlv);
 			while ($linhav = $queryv->fetch()){
@@ -111,6 +111,13 @@
 			$linhaT = $queryT->fetchAll();
 			foreach($linhaT as $dado){
 				echo '<option value="'.$dado["id"].'">'. tdc::utf8($dado["descricao"]) .' [ '.$dado["nome"].' ]</option>';
+			}
+		break;
+		case 'corrigirtipohtml7':
+			// Entidade atributo
+			if ($entidade == 'td_atributo'){
+				$sql 	= 'UPDATE '.$entidade.' SET labelzerocheckbox = "Não" WHERE labelzerocheckbox = "NÃ£o";';
+				$query 	= $conn->query($sql);
 			}
 		break;
 	}

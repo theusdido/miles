@@ -1,14 +1,23 @@
 <?php
 	// Exibição do ID e do Campo Descrição da Entidade
 	if ($isprincipal){
-		$idDescricao 			= tdClass::Criar("span");
+		$idDescricao 			= tdClass::Criar("p");
 		$idDescricao->class 	= "idExibirEdicao";
-		$campoDescricao 		= tdClass::Criar("span");
+		$campoDescricao 		= tdClass::Criar("p");
 		$campoDescricao->class 	= "campodescricaoExibirEdicao";
 		$divDescricao 			= tdClass::Criar("div");
 		$divDescricao->class 	= "descricaoExibirEdicao alert alert-info";
-		$divDescricao->add($idDescricao);
-		$divDescricao->add($campoDescricao);
+
+		// Campo Inativo ( Switch )
+		$switch_inativo 		= Campos::tdSwitchCheck('inativo','inativo','Inativo');
+
+		// Descrição do registro em modo de edição
+		$div_info_descricao 	= tdc::html('div');		
+		$div_info_descricao->add($idDescricao);
+		$div_info_descricao->add($campoDescricao);
+		$divDescricao->add($div_info_descricao);
+		$divDescricao->add($switch_inativo);
+
 		$crudAdd->add($divDescricao);
 	}
 

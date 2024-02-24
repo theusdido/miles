@@ -31,6 +31,7 @@ function tdFormulario (){
 	this.is_loaded					= false;
 	this.checklists					= [];
 	this._dados_checklist 			= [];
+	this.switch_inativo_selector 	= '.descricaoExibirEdicao .td-switch-inativo input';
 }
 
 tdFormulario.prototype.construct = function(entidade_id,registro_id = 0,entidade_pai = 0,extras = {}){
@@ -725,7 +726,6 @@ tdFormulario.prototype.salvar = function(){
 			let $_relacionamento		= td_relacionamento[rSalvar];
 			let $_relacionamento_tipo 	= $_relacionamento.tipo;
 			let $_relacionamento_filho	= $_relacionamento.filho;
-			let $_relacionamento_pai	= $_relacionamento.pai;
 
 			// Testa se a entidade é filho
 			if ($_relacionamento_filho == this.entidade_id){
@@ -803,7 +803,8 @@ tdFormulario.prototype.salvar = function(){
 			url:config.urlsaveform,
 			data:{
 				dados:dadosenviar,
-				checklist:this._dados_checklist
+				checklist:this._dados_checklist,
+				inativo:this.getSwitchInativoValue()
 			},
 			instancia:this,
 			dataType:"json",
@@ -937,9 +938,13 @@ tdFormulario.prototype.liberaBotaoSalvar = function(){
 tdFormulario.prototype.exibirDadosEdicao =  function(){
 	let campodescchave = this.entidade.campodescchave;
 	if (campodescchave != "" && campodescchave != 0){
-		$(".descricaoExibirEdicao .campodescricaoExibirEdicao").html($("#" + td_atributo[campodescchave].nome,this.getContexto()).val());
-		$(".descricaoExibirEdicao .idExibirEdicao").html("<small>ID: </small>" + this.registro_id);
-		$(".descricaoExibirEdicao").show();
+		let display_campochavedesc 	= $(".descricaoExibirEdicao");
+		let campo_descricao 		= display_campochavedesc.find('.campodescricaoExibirEdicao');
+		let campo_id 				= display_campochavedesc.find('.idExibirEdicao');
+
+		campo_descricao.html($("#" + td_atributo[campodescchave].nome,this.getContexto()).val());
+		campo_id.html("<small>ID: </small>" + this.registro_id + ' <br/> ');
+		display_campochavedesc.show();
 	}
 }
 
@@ -947,7 +952,7 @@ tdFormulario.prototype.editar = function(){
 
 	if (typeof beforeEdit === "function") beforeEdit(this.entidade.id,this.registro_id);
 
-	//Limpa o formulário para edição de um novo registro
+	// Limpa o formulário para edição de um novo registro
 	this.novo();
 
 	addLog("", "", "", this.entidade.id,this.registro_id, 7, "");
@@ -1031,6 +1036,7 @@ tdFormulario.prototype.editar = function(){
 				if (tipoRelacionamento == "" || tipoRelacionamento == 1 || tipoRelacionamento == 7 || tipoRelacionamento == 3 || tipoRelacionamento == 9){
 					if (r.fp){
 						this.setaPrimeiraAba();
+						this.setSwitchInativoValue(r.inativo);
 					}
 					
 					this.setDados(r);
@@ -1180,7 +1186,7 @@ tdFormulario.prototype.setDados = function(dados){
 				console.log("Erro ao abrir CKEditor no Celular");
 				console.log(e);
 			}
-		}	
+		}
 		if (direto){
 			$('#' + dado.atributo + '[data-entidade="'+entidade_nome+'"]',contextoAdd).val(valorDados);
 		}	
@@ -1994,4 +2000,11 @@ tdFormulario.prototype.isRegistroUnico = function(){
 	if (this.is_registrounico == 1) return true;
 
 	return this.is_registrounico;
+}
+
+tdFormulario.prototype.setSwitchInativoValue = function(inativo_value){
+	$(this.switch_inativo_selector).prop('checked',inativo_value);
+}
+tdFormulario.prototype.getSwitchInativoValue = function(){
+	return $(this.switch_inativo_selector).prop('checked');
 }

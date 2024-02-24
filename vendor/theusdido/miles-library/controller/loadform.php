@@ -95,6 +95,7 @@
 						$sqlAttr 		= "SELECT id,nome,tipohtml FROM " . ATRIBUTO . " WHERE entidade = " . $entidadeID . " ORDER BY ordem ASC;";
 						$queryAttr 		= $conn->query($sqlAttr);
 						$dados_retorno 	= array();
+						$inativo_value 	= isset($linha['inativo']) ? ($linha['inativo'] ? true : false) : false;
 						while ($linhaAttr = $queryAttr->fetch()){
 							$valor			= $linha[$linhaAttr["nome"]];
 							$dados_array = array(
@@ -109,6 +110,7 @@
 						$retorno["dados"] 		= $dados_retorno;
 						$retorno["id"] 			= $linha["id"];
 						$retorno["fp"]			= tdc::r("entidadeprincipal") == $entidadeID ? true : false;
+						$retorno["inativo"]		= $inativo_value;
 						array_push($dados,$retorno);
 					}	
 				}else{
@@ -116,6 +118,7 @@
 					$retorno["dados"] 		= "";
 					$retorno["id"] 			= "";
 					$retorno["fp"]			= true;
+					$retorno["inativo"]		= false;
 					//array_push($dados,$retorno);
 				}
 			}

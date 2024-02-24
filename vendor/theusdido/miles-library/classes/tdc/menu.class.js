@@ -8,7 +8,7 @@ function Menu (){
 	this.dados;
 }
 Menu.prototype.criar = function(){
-	this.navbar = $("<nav class='navbar navbar-default'>");	
+	this.navbar = $("<nav class='navbar navbar-default navbar-expand-lg'>");	
 }
 Menu.prototype.mostrar = function(){
 	this.criar();
@@ -40,19 +40,19 @@ Menu.prototype.collapse = function(){
 }
 Menu.prototype.menuprincipal = function(dados){
 
-	let caret  	= " <span class='caret'>";
-	let menu 	= $("<ul class='nav navbar-nav' >");
+	
+	let menu 	= $("<ul class='nav navbar-nav'>");
 	let instancia 	= this;	
 	dados.forEach(function(menu_item)
 	{		
-		let li 		= $("<li>");
+		let li 		= $("<li class='nav-item'>");
 		let link 	= menu_item.link == "#"?menu_item.link:session.currentprojectregisterpath+menu_item.link;
 		let a 		= $("<a class='dropdown-toggle' role='button' aria-haspopup='true' data-toggle='dropdown' href='"+link+"' aria-expanded='false'>"+menu_item.descricao+"</span></a>");
 		li.append(a);
 		menu.append(li);
 
 		if (menu_item.filhos.length > 0){
-			li.find("a").append(caret);
+
 			let	submenu = $('<ul class="dropdown-menu" role="menu">');
 			menu_item.filhos.forEach(function(subitem)
 			{

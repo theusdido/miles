@@ -14,17 +14,33 @@
     </thead>
     <tbody></tbody>
 </table>
-<form class="form-inline">
-    <legend>Corrigir <small class="subtitulo-legenda text-warning">Corrigi palavras desformatadas no banco de dados</small></legend>
-    
-    <div class="form-group">
-        <select id="entidadelista" name="entidadelista" class="form-control">
-        </select>
-    </div>	
-    <div class="form-group">
-        <select id="atributolista" name="atributolista" class="form-control">
-        </select>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <form class="form">
+                <small class="subtitulo-legenda text-warning">Corrigi palavras desformatadas no banco de dados</small>
+                <label for="entidadelista">Entidade</label>    
+                <div class="form-group">
+                    <select id="entidadelista" name="entidadelista" class="form-control">
+                    </select>
+                </div>	
+                <div class="form-group">
+                    <label for="atributolista">Atributo</label>
+                    <select id="atributolista" name="atributolista" class="form-control">
+                    </select>
+                </div>
+                <button type="button" class="btn btn-primary" id="btn-corrigir-charset">Corrigir</button>
+                <img id="loading-corrigir-charset" style="display:none" />
+            </form>	
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">Corrigir campo do TipoHTML 7</div>
+                <div class="panel-body">
+                    <p>Esta função corrigi o problema de assento nas opções do campo do tipo checkbox personalizado. Ex: <b>NÃ£o</b>.</p>
+                    <button onclick="corrigirTipoHTML7()" class="btn btn-primary">Corrigr</button>
+                </div>
+            </div>
+        </div>
     </div>
-    <button type="button" class="btn btn-primary" id="btn-corrigir-charset">Corrigir</button>
-    <img id="loading-corrigir-charset" style="display:none"/>
-</form>	
+</div>

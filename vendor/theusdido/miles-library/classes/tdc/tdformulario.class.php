@@ -321,6 +321,10 @@ class TdFormulario Extends Elemento {
 					}
 					$grupo_btn->add($sim,$nao);
 					$campo->add($br,$grupo_btn);
+					
+					if ($coluna->nome == 'inativo'){
+						$campo->style = 'display:none';
+					}
 				break;
 				// Telefone (xx) xxxx-xxxxx
 				case "8":
@@ -851,7 +855,7 @@ class TdFormulario Extends Elemento {
 		}
 
 		if ($this->is_multiidioma){
-			$modal_traduzir 					= tdClass::Criar("modal");
+			$modal_traduzir 				= tdClass::Criar("modal");
 			$modal_traduzir->class			= 'modal-traduzir-campo';
 			$modal_traduzir->tamanho 		= "modal-lg";
 			$modal_traduzir->addHeader("Traduzir");

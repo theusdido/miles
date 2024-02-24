@@ -1336,6 +1336,7 @@ function inserirRegistro($conn,$tabela,$id,$atributos,$valores,$criarnovoregistr
 		$valores_i	= implode(",",$valores);
 		$valores_ 	= tdc::utf8($valores_i);
 		$sqlInserir = "INSERT " . $tabela . " (id,".implode(",",$atributos).") VALUES (".$id.",".$valores_.");";
+		var_dump($sqlInserir);
 		$query 		= $conn->query($sqlInserir);
 		return $id;
 	}catch(Throwable $t){

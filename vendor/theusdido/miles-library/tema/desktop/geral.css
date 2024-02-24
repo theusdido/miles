@@ -477,19 +477,27 @@ html, body { margin:0; height: 100%;} /* Para funcionar altura dos elementos aut
 }
 
 .descricaoExibirEdicao{
-	padding:15px;
+	padding:5px;
 	margin:5px 0 20px 0;
-	float:left;width:100%;
-	color:#3c4692;
+	float:left;
+	width:100%;
+	color:#666;
+	background-color: transparent;
+	border:none;
+	border-bottom:2px solid #333;
+	border-radius: 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 .idExibirEdicao{
-	float:right;
+
 	font-weight:bold;
 }
 .campodescricaoExibirEdicao{
-	float:left;
+
 	font-weight:bold;
-	color:#3c4692;
+	color:#333;
 }
 #dados-config-projeto{
 	padding:3px;	
@@ -965,4 +973,8 @@ table thead tr.td-info
 	font-size:12px;
 }
 
+.td-switch-inativo
+{
+	float:right;
+}
 -->

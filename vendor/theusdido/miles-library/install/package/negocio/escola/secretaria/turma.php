@@ -19,10 +19,11 @@
 		$criarauth = 0,
 		$registrounico = 0
 	);
-	
+
 	// Criando Atributos
 	$descricao 	= criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar","200",0,3,1,0,0,"");
-	
+	$anoletivo 	= criarAtributo($conn,$entidadeID,"anoletivo","Ano Letivo","char",4,1,3,1);
+
 	// Seta o campo descrição
 	Entity::setDescriptionField($conn,$entidadeID,$descricao,true);
 

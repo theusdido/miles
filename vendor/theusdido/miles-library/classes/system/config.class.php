@@ -92,7 +92,7 @@ class Config {
 			case 6: # Senha
 				$retorno = strlen($valor) == 32 ? $valor : md5($valor);
 			break;
-			case 7:				
+			case 7:
 				$retorno = $valor == "" ? 0 : $valor;
 			break;
 			case 10:
@@ -100,11 +100,14 @@ class Config {
 			break;
 			case 11: # Data
 				if ($valor != ""){
+					if (str_replace(array('-','/'),'',$valor) == '00000000'){
+						return NULL;
+					}
 					$separador = (strpos($valor,"/") > 0)?"/":"-";
 					$dt = explode($separador,$valor);
 					return $dt[2] . "-" . $dt[1] . "-" . $dt[0];
 				}else{
-					return null;
+					return NULL;
 				}
 			break;
 			case 13:
