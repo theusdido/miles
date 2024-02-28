@@ -977,4 +977,9 @@ table thead tr.td-info
 {
 	float:right;
 }
+
+#menuprincipal .dropdown-menu
+{
+	z-index:1001;
+}
 -->
