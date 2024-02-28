@@ -189,7 +189,8 @@
                                 op:"projeto",
                                 nome:$("#projectname").val()
                             }
-                        });                        
+                        });
+                        // Registros Default
                         $.ajax({
                             type:"POST",
                             url:session.urlmiles,
@@ -210,6 +211,7 @@
                                 });
                             }
                         });
+                        // Estrutura de arquivos
                         $.ajax({
                             type:"POST",
                             url:session.urlmiles,
@@ -219,6 +221,7 @@
                                 nome:$("#projectname").val()
                             }
                         });
+                        // Compatibilidade de versões
                         $.ajax({
                             type:"POST",
                             url:session.urlmiles,

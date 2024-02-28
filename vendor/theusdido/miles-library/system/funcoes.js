@@ -931,8 +931,10 @@ function loadAllJSConcepts(){
 			controller:'mdm/conceitojson'
 		},
 		complete:function(_res){
-			let _ret = _res.responseJSON;
-			if (typeof _ret === 'array'){
+			let _ret 	= _res.responseJSON;
+			let _type	= typeof _ret;
+
+			if (_type === 'array' || _type === 'object'){
 				_ret.forEach(function(e){
 					e._data.forEach(function(d){
 						setMonitorStorage(e._conceito,d);

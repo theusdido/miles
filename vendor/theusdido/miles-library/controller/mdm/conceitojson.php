@@ -1,15 +1,15 @@
 <?php
 
-    $_entidade 		    = [];
-    $_atributo 		    = [];
-    $_relacionamento 	= [];
-    $_permissoes 		= [];
-    $_filtroatributo 	= [];
-    $_consulta 		    = [];
-    $_relatorio 		= [];
-    $_status 			= [];
-    $_movimentacao 	    = [];
-    $_retorno           = [];
+    $_entidade                =
+    $_atributo                =
+    $_relacionamento          =
+    $_permissoes              =
+    $_filtroatributo          =
+    $_consulta                =
+    $_relatorio               =
+    $_status                  =
+    $_movimentacao            =
+    $_retorno                 = [];
 
     $dataset 		= tdClass::Criar("repositorio",array(ENTIDADE))->carregar();
     if ($dataset){

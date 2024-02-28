@@ -85,17 +85,18 @@
         </div>
     </fieldset>	  
 </form>		
+<button type="button" data-bs-toggle="modal" data-bs-target="#view-componente">Launch modal</button>
 <!-- Modal -->
-<div class="modal fade" id="view-componente" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="view-componente" tabindex="-1" aria-labelledby="#view-componente-aria-label">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel"></h4>
-        </div>
-        <div class="modal-body">
-            <p></p>
-        </div>
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="view-componente-aria-label"></h4>
+            </div>
+            <div class="modal-body">
+                <p></p>
+            </div>
         </div>
     </div>
-    </div>	
+</div>

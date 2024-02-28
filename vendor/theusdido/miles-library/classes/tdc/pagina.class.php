@@ -82,7 +82,7 @@ class Pagina Extends Html {
 		$tdlib_js 						= tdClass::Criar("script");
 		$tdlib_js->src 					= URL_LIB . "tdlib/js/tdlib.js";
 		$tdlib_js->language 			= "JavaScript";
-	
+
 		$meta_charset = tdClass::Criar("meta");		
 		if ($this->ishtml5){
 			$meta_charset->charset 		= "utf-8";
@@ -98,6 +98,9 @@ class Pagina Extends Html {
 		$meta_robots 			= tdClass::Criar("meta");
 		$meta_robots->name	 	= "robots";
 		$meta_robots->content 	= "noindex, nofollow";
+
+
+		$bootstrap_5 = $bootstrap_5_js = null;
 
 		$this->setTitle();
 		$this->head->add($meta_charset,$meta_viewport,$meta_robots,$bootstrap_5,$bootstrap,$tdlib_css);
