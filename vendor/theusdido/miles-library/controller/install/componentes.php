@@ -47,10 +47,10 @@
 
 	$btn_all			= Button::icon('fa-solid fa-asterisk');
 
-	$panel_menu 		= tdc::o('panel');
-	$panel_menu->class 	= 'panel-menu-accordion-component';
-	$panel_menu->addBody($btn_all);
-	$panel_menu->addBody($btn_menu);
+	$_card_menu 		= tdc::o('card');
+	$_card_menu->class 	= 'panel-menu-accordion-component';
+	$_card_menu->addBody($btn_all);
+	$_card_menu->addBody($btn_menu);
 
-	$panel_menu->mostrar();
+	$_card_menu->mostrar();
 	$listComponents->mostrar();

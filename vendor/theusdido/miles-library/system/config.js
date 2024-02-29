@@ -67,7 +67,7 @@ var _session = new tdSessionStorage();
 
 // Ouça eventos de mudanças no sessionStorage e localStorage
 window.addEventListener("storage", function (event) {
-    console.log('Monitor MDM');
+
     if (event.key === '_monitor_mdm'){
         let _obj            = JSON.parse(event.newValue);
         let _content_obj    = typeof _obj._data === 'string' ? JSON.parse(_obj._data) : _obj._data;

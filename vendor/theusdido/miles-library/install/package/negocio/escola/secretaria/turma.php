@@ -1,7 +1,7 @@
 <?php
 	// Setando variáveis
-	$entidadeNome = "erp_escola_turma";
-	$entidadeDescricao = "Turma";
+	$entidadeNome 			= "erp_escola_turma";
+	$entidadeDescricao 		= "Turma";
 
 	// Criando Entidade
 	$entidadeID = criarEntidade(
@@ -28,7 +28,7 @@
 	Entity::setDescriptionField($conn,$entidadeID,$descricao,true);
 
 	// Criando Acesso
-	$menu = addMenu($conn,'Escola','#','',0,0,'escola');
+	$menu = addMenu($conn,'Secretaria','#','',0,0,'escola-secretaria');
 
 	// Adicionando Menu
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu,1,'escola-' . $entidadeNome,$entidadeID,'cadastro');

@@ -55,33 +55,38 @@ header, article{
 	color:#333;
 }
 #logon .autentica-div-logo{
-	height: 250px;
+	/* height: 250px; */
+	display: flex;	
 }
 #logon .autentica-div-logo img {
-    width: 80%;
+    /* width: 80%;
     position: absolute;
     top: 25%;
     left: 10%;
-	height:50%;
+	height:50%; */
 	object-fit: scale-down;	
 }
 
 #logon form{
 	padding:15px;
 }
+#div-form-logon
+{
+	display:flex;
+	align-content: center;
+}
+
 #div-form-logon .tdform fieldset {
 	color:#333;
 }
 .botao {
 	cursor:pointer;
 }
-.navbar-default {
-	border:0px;
-	background-color: #0098da;
-}
+
 .navbar-default .navbar-nav > li > a {
 	color:#FFF;
 }
+
 .navbar-default .navbar-nav > li > a:hover{
 	color:#DDD;
 }
@@ -241,9 +246,7 @@ legend {
 	padding:2px;
 	margin:3px;
 }
-#menu .btn .caret,.pesquisa-grade .btn .caret{
-	margin-left:7px;
-}
+
 .tdform .coluna > .form-group > .input-group .input-group-btn .add_list{
     height: 30px;
 }
@@ -696,12 +699,15 @@ header #menu {
 #menuprincipal .dropdown-menu li {
 	border-top:1px dotted #DDD;	
 }
-#menuprincipal .dropdown-menu li:hover , #menuprincipal .dropdown-menu li a:hover {
-	background-color: #158ABD;
-	color:#FFF;
+#menuprincipal .dropdown-menu li:hover,
+#menuprincipal .dropdown-menu li a:hover
+{
+	/* background-color: #158ABD;
+	color:#FFF; */
 }
-#menuprincipal .dropdown-menu li a {
-	color:#158ABD;
+#menuprincipal .dropdown-menu li a
+{
+	/* color:#158ABD; */
 }
 .headersystem-col{
 	background-color: #253544;
@@ -724,10 +730,12 @@ header #menu {
 #temposessao-home , #data-home {
 	text-align: right;
 }
+
 #menu .navbar {
 	margin-bottom:0px !important;
 	border-radius: 0px;
 }
+
 #breadcrumb-principal{
 	margin-left: -15px;
 	margin-right: -15px;
@@ -757,7 +765,7 @@ header #menu {
 	background-color: #0098da;	
 }
 .modal-header * {
-	color:#FFF;
+	color:#333;
 }
 /* *****************************************************************
 * TDFORM
@@ -981,5 +989,9 @@ table thead tr.td-info
 #menuprincipal .dropdown-menu
 {
 	z-index:1001;
+	padding:0;
+	border:none;
+	border-radius: 0;
 }
+
 -->

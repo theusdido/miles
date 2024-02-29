@@ -1,8 +1,8 @@
 <?php
 	
 	// Setando variáveis
-	$entidadeNome       = "erp_escola_criterioavaliacao";
-	$entidadeDescricao  = "Critério de Avaliação";
+	$entidadeNome       = "erp_escola_avaliacaotipo";
+	$entidadeDescricao  = "Tipo de Avaliação";
 
 	// Criando Entidade
 	$entidadeID = criarEntidade(
@@ -22,15 +22,13 @@
 	);
 
 	// Criando Atributos
-	$avaliacao          = criarAtributo($conn,$entidadeID,"avaliacao","Avaliação","int",0,1,22,1,installDependencia("erp_escola_avaliacao","package/sistema"));
 	$descricao			= criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar",200,0,3,1);
-	$peso				= criarAtributo($conn,$entidadeID,"peso","Peso","float",0,0,26);
 
 	// Seta o campo descrição
 	Entity::setDescriptionField($conn,$entidadeID,$descricao,true);
 	
 	// Criando Acesso
-	$menu = addMenu($conn,'Escola','#','',0,0,'escola');
+	$menu = addMenu($conn,'Pedagógico','#','',0,0,'escola-pedagogico-avaliacao');
 
 	// Adicionando Menu
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu,1,'escola-' . $entidadeNome,$entidadeID,'cadastro');

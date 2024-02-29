@@ -39,18 +39,17 @@ class Pagina Extends Html {
 		* Método construct 
 	    * Data de Criacao: 31/08/2012
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
-		
+
 		Cria uma pagina/documento HTML
-	*/		
-	public function __construct(){		
+	*/
+	public function __construct(){
 		parent::__construct();
-		
+
 		$this->config 					= tdClass::Criar("persistent",array(CONFIG,1))->contexto;
 		$this->lang 					= "pt-br";
 		$this->header				 	= tdClass::Criar("header");
 		$this->head 					=  tdClass::Criar("head");
 		$this->body 					= tdClass::Criar("body");
-		
 
 		$bootstrap_5 						= tdClass::Criar("link");
 		$bootstrap_5->href 				= 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css';
@@ -99,13 +98,23 @@ class Pagina Extends Html {
 		$meta_robots->name	 	= "robots";
 		$meta_robots->content 	= "noindex, nofollow";
 
-
-		$bootstrap_5 = $bootstrap_5_js = null;
-
 		$this->setTitle();
-		$this->head->add($meta_charset,$meta_viewport,$meta_robots,$bootstrap_5,$bootstrap,$tdlib_css);
-		$this->body->add($jquery,$bootstrap_5_js,$bootstrap_js,$tdlib_js);
-		
+		$this->head->add(
+			$meta_charset,
+			$meta_viewport,
+			$meta_robots,
+			#$bootstrap,
+			$bootstrap_5,
+			$tdlib_css
+		);
+
+		$this->body->add(
+			$jquery,
+			#$bootstrap_js,
+			$bootstrap_5_js,
+			$tdlib_js
+		);
+
 	}
 
 	/*
