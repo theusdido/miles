@@ -71,16 +71,16 @@ class Modal Extends Elemento {
 		if (!isset($this->id)){
 			$this->id = $this->nome == ""?"myModal":$this->nome;
 		}
-		
-		$dialog = tdClass::Criar("div");
-		$dialog->class = "modal-dialog " . $this->tamanho;
-		$content = tdClass::Criar("div");
-		$content->class = "modal-content";
+
+		$dialog 			= tdClass::Criar("div");
+		$dialog->class 		= "modal-dialog modal-dialog-centered " . $this->tamanho;
+		$content 			= tdClass::Criar("div");
+		$content->class 	= "modal-content";
 		
 		if ($this->header!="") $content->add($this->header);
 		if ($this->body!="") $content->add($this->body);
 		if ($this->footer!="") $content->add($this->footer);
-		
+
 		$dialog->add($content);
 		$this->add($dialog);
 		parent::mostrar();

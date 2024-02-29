@@ -39,18 +39,24 @@ class Pagina Extends Html {
 		* Método construct 
 	    * Data de Criacao: 31/08/2012
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
-		
+
 		Cria uma pagina/documento HTML
-	*/		
-	public function __construct(){		
+	*/
+	public function __construct(){
 		parent::__construct();
-		
+
 		$this->config 					= tdClass::Criar("persistent",array(CONFIG,1))->contexto;
 		$this->lang 					= "pt-br";
 		$this->header				 	= tdClass::Criar("header");
 		$this->head 					=  tdClass::Criar("head");
 		$this->body 					= tdClass::Criar("body");
-		
+
+		$bootstrap_5 						= tdClass::Criar("link");
+		$bootstrap_5->href 				= 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css';
+		$bootstrap_5->rel 				= 'stylesheet';
+		$bootstrap_5->integrity			= 'sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH';
+		$bootstrap_5->crossorigin			= 'anonymous';
+
 		$bootstrap 						= tdClass::Criar("link");
 		$bootstrap->href 				= URL_LIB . 'bootstrap/3.3.1/css/bootstrap.css';
 		$bootstrap->rel 				= 'stylesheet';		
@@ -59,6 +65,11 @@ class Pagina Extends Html {
 		$jquery->src 					= URL_LIB . "jquery/jquery.js";
 		$jquery->language 				= "JavaScript";
 		
+		$bootstrap_5_js					= tdClass::Criar("script");
+		$bootstrap_5_js->src			= 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js';
+		$bootstrap_5_js->integrity		= 'sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz';
+		$bootstrap_5_js->crossorigin	= 'anonymous';
+
 		$bootstrap_js 					= tdClass::Criar("script");
 		$bootstrap_js->src 				= URL_LIB . "bootstrap/3.3.1/js/bootstrap.js";
 		$bootstrap_js->language 		= "JavaScript";
@@ -70,7 +81,7 @@ class Pagina Extends Html {
 		$tdlib_js 						= tdClass::Criar("script");
 		$tdlib_js->src 					= URL_LIB . "tdlib/js/tdlib.js";
 		$tdlib_js->language 			= "JavaScript";
-	
+
 		$meta_charset = tdClass::Criar("meta");		
 		if ($this->ishtml5){
 			$meta_charset->charset 		= "utf-8";
@@ -88,9 +99,22 @@ class Pagina Extends Html {
 		$meta_robots->content 	= "noindex, nofollow";
 
 		$this->setTitle();
-		$this->head->add($meta_charset,$meta_viewport,$meta_robots,$bootstrap,$tdlib_css);
-		$this->body->add($jquery,$bootstrap_js,$tdlib_js);
-		
+		$this->head->add(
+			$meta_charset,
+			$meta_viewport,
+			$meta_robots,
+			#$bootstrap,
+			$bootstrap_5,
+			$tdlib_css
+		);
+
+		$this->body->add(
+			$jquery,
+			#$bootstrap_js,
+			$bootstrap_5_js,
+			$tdlib_js
+		);
+
 	}
 
 	/*
@@ -323,9 +347,9 @@ class Pagina Extends Html {
 						let src_new = src_old + "?" + time;
 						$(this).attr("src", src_new);
 					}
-				});				
+				});
 			}
-		
+
 		');
 
 		// Arquivo de Codificação/Decoficação em JS

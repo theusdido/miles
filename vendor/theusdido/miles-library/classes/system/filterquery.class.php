@@ -27,10 +27,10 @@ class FilterQuery {
 		@return: string
 	*/
 	public static function getJSON($_id){
-		$_filter 		= tdc::d(FILTROCONSULTA,$_id);
+		$_filter 		= tdc::rua(FILTROCONSULTA,$_id);
 		
 		return json_encode(array(
-            $_filter->id => array(
+            $_filter['id'] => array(
                 'atributo' => $_filter["atributo"],
                 'operador' => $_filter["operador"]
             )

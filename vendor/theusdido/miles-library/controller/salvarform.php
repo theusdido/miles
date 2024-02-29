@@ -33,7 +33,8 @@
 			$objMain->id			= $id;
 			$objMain->is_fp 		= $isfp;
 			$objMain->atributo		= $linha["relacionamento"]["atributo"];
-			$objMain->tipo_rel 		= $tipo_relacionamento;			
+			$objMain->tipo_rel 		= $tipo_relacionamento;
+
 		}else{
 			$isfp = 0;
 
@@ -61,6 +62,11 @@
 					$entidade->{$dado["atributo"]} = Config::Integridade($entidade->getID(),$dado["atributo"],$dado["valor"],$id);
 				}
 			}
+		}
+
+		if ($linha['fp'] == 'true'){
+			// Seta Inativo
+			$entidade->setInativar(tdc::r('inativo'));
 		}
 
 		// Grava os registros em JSON para as entidades auxiliares ( Lista )

@@ -20,11 +20,13 @@ function entidadesAuxiliares(){
                     entidadeid:td_entidade[ea].id
                 },
                 dataType:"json",
-                complete:function(ret){
+                complete:function(ret){                    
                     try{
                         var retorno = JSON.parse(ret.responseText);				
                         td_entidadeauxiliar[retorno.entidadeid] = retorno.dados;
                     }catch(e){
+                        //console.log(ret.responseText);
+                        //console.log(retorno);
                         console.warn(e);
                     }
 

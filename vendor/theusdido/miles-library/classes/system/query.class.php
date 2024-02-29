@@ -27,25 +27,25 @@ class Query {
 		@return: string
 	*/
 	public static function getJSON($_id){
-		$_consulta 		= tdc::d(CONSULTA,$_id);
+		$_consulta 		= tdc::ru(CONSULTA,$_id);
 	    $_filtros       = $_status = $_filtros_iniciais = $_colunas = array();
 
-        $filters         = tdc::da(FILTROCONSULTA,tdc::f('consulta','=',$_consulta->id));
+        $filters         = tdc::d(FILTROCONSULTA,tdc::f('consulta','=',$_consulta->id));
         foreach($filters as $filter){
-            array_push($_filtros, FilterQuery::getJSON($filer->id));
+            array_push($_filtros, FilterQuery::getJSON($filter->id));
         }
 
-        $status         = tdc::da(STATUSCONSULTA,tdc::f('consulta','=',$_consulta->id));
+        $status         = tdc::d(STATUSCONSULTA,tdc::f('consulta','=',$_consulta->id));
         foreach($status as $s){
             array_push($_status, StatusQuery::getJSON($s->id));
         }
 
-        $filters         = tdc::da(FILTROINICIALCONSULTA,tdc::f('consulta','=',$_consulta->id));
+        $filters         = tdc::d(FILTROINICIALCONSULTA,tdc::f('consulta','=',$_consulta->id));
         foreach($filters as $f){
             array_push($_filtros_iniciais, InitialFilterQuery::getJSON($f->id));
         }
         
-        $colunas         = tdc::da(COLUNACONSULTA,tdc::f('consulta','=',$_consulta->id));
+        $colunas         = tdc::d(COLUNACONSULTA,tdc::f('consulta','=',$_consulta->id));
         foreach($colunas as $c){
             array_push($_colunas, ColumnQuery::getJSON($c->id));
         }

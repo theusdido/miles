@@ -6,7 +6,9 @@ var package_selecionado	= '';
 var modulo_selecionado	= '';
 var modulo_name_selecionado = '';
 
+
 $(".carregar-componentes").click(function(){
+
     modulo_name_selecionado = $(this).html();
 
     // Icon abrir
@@ -34,6 +36,7 @@ $(".carregar-componentes").click(function(){
         }
 
     });
+    console.log($("#view-componente"));
     $("#view-componente").modal({
         backdrop:false
     });

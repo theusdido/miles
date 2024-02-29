@@ -488,4 +488,23 @@ abstract class Registro {
 			return $dataset[0];
 		}
 	}
+
+	/*  
+		* Método setInativar
+	    * Data de Criacao: 24/02/2024
+	    * Author @theusdido
+
+		Inativa ou ativa um registro		
+	*/	
+	public function setInativar($inativo = true){
+		try{
+			if (gettype($inativo) == 'string'){
+				$inativo = json_decode($inativo);
+			} 
+			$this->inativo = $inativo;
+			return true;
+		}catch(Throwable $t){
+			return false;
+		}
+	}
 }

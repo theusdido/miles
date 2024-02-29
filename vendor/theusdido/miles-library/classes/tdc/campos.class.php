@@ -556,4 +556,33 @@
 			$campo->add($label,$input_group);
 			return $campo;
 		}
+
+		/*  
+			* Método tdSwitchCheck
+			* Data de Criacao: 24/02/2024
+			* Autor @theusdido
+
+			Retorna um campo de checkbox personalizado do Bootstrap 5
+		*/	
+		public static function tdSwitchCheck($id = '',$nome = '',$descricao = '',$valor=null){
+			$div_switch = tdc::html('div');
+			$div_switch->class = 'td-switch-inativo form-check form-switch';
+
+			$input_check = tdc::html('input');
+			$input_check->class = 'form-check-input';
+			$input_check->type = 'checkbox';
+			$input_check->role = 'switch';
+			$input_check->id = $id;
+			$input_check->name = $nome;
+
+			$label_check = tdc::html('div');
+			$label_check->class = 'form-check-label';
+			$label_check->for = $id;
+			$label_check->add($descricao);
+
+			$div_switch->add($input_check);
+			$div_switch->add($label_check);
+
+			return $div_switch;
+		}
 	}

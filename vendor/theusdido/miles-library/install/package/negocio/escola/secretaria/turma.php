@@ -1,7 +1,7 @@
 <?php
 	// Setando variáveis
-	$entidadeNome = "erp_escola_turma";
-	$entidadeDescricao = "Turma";
+	$entidadeNome 			= "erp_escola_turma";
+	$entidadeDescricao 		= "Turma";
 
 	// Criando Entidade
 	$entidadeID = criarEntidade(
@@ -19,15 +19,16 @@
 		$criarauth = 0,
 		$registrounico = 0
 	);
-	
+
 	// Criando Atributos
 	$descricao 	= criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar","200",0,3,1,0,0,"");
-	
+	$anoletivo 	= criarAtributo($conn,$entidadeID,"anoletivo","Ano Letivo","char",4,1,3,1);
+
 	// Seta o campo descrição
 	Entity::setDescriptionField($conn,$entidadeID,$descricao,true);
 
 	// Criando Acesso
-	$menu = addMenu($conn,'Escola','#','',0,0,'escola');
+	$menu = addMenu($conn,'Secretaria','#','',0,0,'escola-secretaria');
 
 	// Adicionando Menu
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu,1,'escola-' . $entidadeNome,$entidadeID,'cadastro');

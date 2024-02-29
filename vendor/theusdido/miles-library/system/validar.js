@@ -441,14 +441,21 @@ if (typeof $().mask == "function"){
 		}
 	});
 
-	// AddList
-	$('.add_list').popover({
-	 html : true
-	});
-	$('.add_list').click(function(){
-		$(".popover").css("max-width","500px");
-		carregar("index.php?controller=crud&op=add&t='.$coluna->chaveestrangeira.'&popover=true","#content-popover-'.$coluna->id.'");
-	});
+	try
+	{
+		// AddList
+		$('.add_list').popover({
+			html : true
+		});
+
+		$('.add_list').click(function(){
+			$(".popover").css("max-width","500px");
+			carregar("index.php?controller=crud&op=add&t='.$coluna->chaveestrangeira.'&popover=true","#content-popover-'.$coluna->id.'");
+		});
+	}catch(e){
+		console.warn('Popover não encontrado!');
+	}
+
 	
 	//Mês-Ano
 	$(".formato-mesano").mask("99/9999");

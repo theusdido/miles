@@ -81,9 +81,16 @@
 		fclose($fpMilesJSON);
 	}
 
-	$_miles_config_root 	= json_decode(file_get_contents($_miles_json_root_file));
+	$_miles_config_root 	= json_decode(file_get_contents($_miles_json_root_file));	
 	$_current_project_name	= isset($_miles_config_root->project->id) ? $_miles_config_root->project->id : $_project_name_identifify_params;
-	$_current_environment 	= $_miles_config_root->environment;
+
+	if (isset($_miles_config_root->environment)){
+		$_current_environment 	= $_miles_config_root->environment;
+	}else{
+		echo 'Variável <b>environment</b> não encontrada no arquivo de configuração.';
+		exit;
+	}
+	
 
 	if ($_project_name_identifify_params == ''){
 		$project_name_identify = str_replace(array('dev.','.com','.br','miles.','www.','loja.'),'',$_http_host);

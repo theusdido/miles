@@ -1,8 +1,21 @@
 <?php
 	$op = tdc::r("op");
-	
+		
 	switch($op){
-		case 'desenvolvimentotoproducao':
+		case 'update':
+
+			$environment = tdc::r('environment');
+			switch($environment){
+				case 'producaotodesenvolvimento':
+					$_conn_origem	= Conexao::abrir("producao");
+					$_conn_destino	= Conexao::abrir("current");
+				break;
+				case 'desenvolvimentotoproducao':				
+				default:
+					$_conn_origem	= Conexao::abrir("current");
+					$_conn_destino	= Conexao::abrir("producao");
+			}
+
 
 			$entidadesestrutura = tdc::r("entidadesestrutura");
 			$entidadesregistro 	= tdc::r("entidadesregistro");
@@ -16,15 +29,13 @@
 				}else{
 					$where = "";
 				}
-				
-				$connProducao = Conexao::abrir("producao");
 
 				// Entidades
 				$sqlAtual = "SELECT * FROM td_entidade $where";
-				$queryAtual = $conn->query($sqlAtual);
+				$queryAtual = $_conn_origem->query($sqlAtual);
 				while ($linhaAtual = $queryAtual->fetch()){
 					$entidadeID = criarEntidade(
-						$connProducao, #0
+						$_conn_destino, #0
 						str_replace(PREFIXO,"",$linhaAtual["nome"]), #1
 						utf8_encode($linhaAtual["descricao"]), #2
 						$linhaAtual["ncolunas"], #3
@@ -39,19 +50,19 @@
 						$linhaAtual["registrounico"], #12
 						$linhaAtual["carregarlibjavascript"] #13
 					);
-					
+
 					// Atributos
-					$sqlAtributoAtual = "SELECT * FROM td_atributo WHERE " . PREFIXO . "entidade = " . $entidadeID;
-					$queryAtualAtributo = $conn->query($sqlAtributoAtual);
+					$sqlAtributoAtual 	= "SELECT * FROM td_atributo WHERE " . PREFIXO . "entidade = " . $entidadeID;
+					$queryAtualAtributo = $_conn_origem->query($sqlAtributoAtual);
 					while ($linhaAtualAtributo = $queryAtualAtributo->fetch()){
-						
+
 						if ($linhaAtualAtributo["chaveestrangeira"] != "" && (int)$linhaAtualAtributo["chaveestrangeira"] != 0){
 							$nomeatributo = str_replace(PREFIXO,"",$linhaAtualAtributo["nome"]);
 						}else{
 							$nomeatributo = $linhaAtualAtributo["nome"];
 						}
 						$atributoID = criarAtributo (
-							$connProducao, #0
+							$_conn_destino, #0
 							$entidadeID,#1
 							$nomeatributo, #2
 							utf8_encode($linhaAtualAtributo["descricao"]), #3
@@ -71,6 +82,7 @@
 				}
 			}
 			if ($entidadesregistro != ''){
+
 				if (isset($_GET["entidade"])){
 					$entidades = array($_GET["entidade"]);
 				}else if (isset($_GET["entidadesregistro"])){
@@ -81,53 +93,63 @@
 					exit;
 				}
 
+
 				foreach($entidades as $e){
+
+					$_entidade 		= tdc::e($e);
+
 					// Entidade
-					$sqlEntidade = "SELECT nome FROM td_entidade WHERE id = {$e};";
-					$queryEntidade = $conn->query($sqlEntidade);
+					$sqlEntidade 	= "SELECT id,nome FROM td_entidade WHERE nome = '{$_entidade->nome}' LIMIT 1;";
+					$queryEntidade 	= $_conn_origem->query($sqlEntidade);
 					if ($linhaEntidade = $queryEntidade->fetch()){
-						$entidadeNome =$linhaEntidade["nome"];
+						$entidade_origem_nome 	= $linhaEntidade["nome"];
+						$entidade_origem_id		= $linhaEntidade["id"];
+					 	$entidade_nome 			= $linhaEntidade["nome"];
 					}
 
 					// Atributos
-					$atributos = $atributosdados = array();
-					$sqlAtual = "SELECT id,nome,tipohtml,tipo FROM td_atributo WHERE entidade = {$e};";
-					$queryAtual = $conn->query($sqlAtual);
+					$atributos 	= $atributosdados = array();
+					$sqlAtual 	= "SELECT id,nome,tipohtml,tipo FROM td_atributo WHERE entidade = {$entidade_origem_id};";
+					$queryAtual = $_conn_origem->query($sqlAtual);
+					
 					while ($linhaAtual = $queryAtual->fetch()){
 						array_push($atributosdados,array(
-							"nome" => $linhaAtual["nome"],
-							"tipohtml" => $linhaAtual["tipohtml"],
-							"tipo" => $linhaAtual["tipo"]
+							"nome" 			=> $linhaAtual["nome"],
+							"tipohtml" 		=> $linhaAtual["tipohtml"],
+							"tipo" 			=> $linhaAtual["tipo"]
 						));
 						array_push($atributos,$linhaAtual["nome"]);
 					}
 
 					// Valores
-					$valores = array();
-					$dadosinsert = array();
-					$sqlDesenv = "SELECT id,".implode(",",$atributos)." FROM {$entidadeNome};";
-					$queryDesenv = $conn->query($sqlDesenv);
-					while ($linhaDesenv = $queryDesenv->fetch()){
+					$valores 			= array();
+					$dadosinsert 		= array();
+					$sql_desenv 		= "SELECT id,".implode(",",$atributos)." FROM {$entidade_nome};";
+					$query_origem 		= $_conn_origem->query($sql_desenv);
+					
+					while ($linha_origem = $query_origem->fetch()){
 						$valoresLinha = array();
 						foreach($atributos as $key => $a){
-							array_push($valoresLinha,getValorDefaultAtributo($linhaDesenv[$a] , $atributosdados[$key]["tipohtml"] , $atributosdados[$key]["tipo"]));
+							array_push($valoresLinha,getValorDefaultAtributo(utf8_decode($linha_origem[$a]) , $atributosdados[$key]["tipohtml"] , $atributosdados[$key]["tipo"]));
 						}
 						array_push($valores ,
 							array (
-								"id" => $linhaDesenv["id"] ,
+								"id" 	=> $linha_origem["id"],
 								"dados" => $valoresLinha
 							)
 						);
 					}
 
 					foreach($valores as $v){
-						inserirRegistro($connProducao,$entidadeNome,(int)$v["id"],$atributos,$v["dados"]);
+					 	inserirRegistro($_conn_destino,$entidade_nome,(int)$v["id"],$atributos,$v["dados"]);
 					}
 				}
+
+				echo 1;
 			}
 			if ($entidadesarquivo != ''){
 				$sqlftp = 'SELECT * FROM td_connectionftp WHERE projeto = ' . PROJETO;
-				$queryftp = $connMiles->query($sqlftp);
+				$queryftp = $_conn_origem->query($sqlftp);
 				$linhaftp = $queryftp->fetch();
 
 				// Dados do servidor
@@ -149,7 +171,7 @@
 							$local_arquivo 	= '../../project/files/cadastro/' . $e . '/'; // Localização (local)
 							$ftp_pasta 		= '/public_html/miles/project/files/cadastro/' . $e . '/'; // Pasta (externa)
 							if (file_exists($local_arquivo)){
-								$res = getRegistro($conn,"td_entidade","nome","id=".$e);
+								$res = getRegistro($_conn_origem,"td_entidade","nome","id=".$e);
 								$extensoes = array("html","js");
 								foreach($extensoes as $ext){
 									// Envio dos arquivos
@@ -180,7 +202,6 @@
 					}else{
 						echo 'Erro na autenticação';
 					}
-
 					
 				}else{
 					echo 'Erro ao conectar no ftp';

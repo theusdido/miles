@@ -27,7 +27,7 @@ class Permission {
 		@return: string
 	*/
 	public static function getJSON($_id){
-		$_permissao 		= tdc::d(PERMISSOES,$_id);
+		$permissoes 		= tdc::ru(PERMISSOES,$_id);
 		
 		return json_encode(array(
             'id'            => $permissoes->id,

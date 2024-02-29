@@ -1,0 +1,64 @@
+{
+    "version": 2.0,
+    "project":{
+        "name":"Innovare Administradora Judicial",
+        "path":"innovare/",
+        "url":""
+    },
+    "currentproject": 1,
+    "folder":"miles/",
+    "system": {
+        "url": {
+            "lib": "http://ws.teia.tec.br/miles/repository/lib/"
+        },
+        "request_protocol": "http",
+        "packages": []
+    },
+    "theme": "desktop",
+    "prefix": "td",
+    "is_show_error_message": false,
+    "is_show_warn_message": false,
+    "is_transaction_log": false,   
+    "database_current": "producao",
+    "port": "hidden",
+    "environment":"prod",
+    "environments":{
+        "dev":{
+            "root":"/",
+            "url":{
+                "domain":"innovareadministradora.com.br"
+            },
+            "frameworks":{
+                "angular":{
+                    "port":4200
+                }
+            },
+            "system":{
+                "request_protocol": "http",
+                "force_https":false,
+                "is_fixed_domain":true
+            }
+        },
+		"homolog":{
+			"root":"/",
+			"url":{
+				"domain":"ws.teia.tec.br/innovareadministradora.com.br"
+			},
+            "system":{
+                "request_protocol": "http",
+                "force_https":false
+            }
+		},        
+        "prod":{
+            "root":"/",
+            "url":{
+                "domain":"ws.teia.tec.br/innovareadministradora.com.br"
+            },
+            "system":{
+                "request_protocol": "http",
+                "force_https":false,
+                "is_fixed_domain":false
+            }
+        }
+    }
+}
