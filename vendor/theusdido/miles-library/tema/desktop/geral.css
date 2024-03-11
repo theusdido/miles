@@ -854,6 +854,7 @@ header #menu {
 
 #menulateralesquerdoprincipal{
 	/* display:none; */
+	z-index: 1001;
 }
 
 #pedido-aberto-home table tbody tr .label-status

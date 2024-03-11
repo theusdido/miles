@@ -60,7 +60,14 @@ Menu.prototype.menuprincipal = function(dados){
 			menu_item.filhos.forEach(function(subitem)
 			{
 				let li_submenu 	= $("<li>");
-				let linkpath 	= session.folderprojectfiles + subitem.link;
+				let linkpath 	= '';
+
+				if (subitem.tipomenu == 'conceito' && subitem.link == '#'){
+					linkpath 	= session.urlmiles + '?controller=menu&op=conceito';
+				}else{
+					linkpath 	= session.folderprojectfiles + subitem.link;	
+				}
+				
 				let a_submenu 	=  $("<a class='dropdown-item' target='"+(subitem.target == ""?"_self":subitem.target)+"' data-path='"+linkpath+"' data-id='"+subitem.id+"' data-target='#conteudoprincipal' href='"+(subitem.target == "" || subitem.target == ""?"#":subitem.link)+"' data-tipomenu='"+subitem.tipomenu+"'>"+subitem.descricao+"</span></a>");
 
 				if (subitem.target != "_blank"){
@@ -71,7 +78,6 @@ Menu.prototype.menuprincipal = function(dados){
 						}
 						menuprincipalselecionado 	= $(this).data("id");
 						instancia.menuselecionado 	= menuprincipalselecionado;
-						
 						instancia.carregarpagina($(this).data("path"),$(this).data("target"),handler.data);
 						addLog("","","", getEntidadeId("administracao-menu"),menuprincipalselecionado, 5, $(this).data("path"));
 					});
@@ -109,7 +115,6 @@ Menu.prototype.load = function(){
 }
 Menu.prototype.carregarpagina = function(path,target,dados_menu){
 	let instancia 				= this;
-
 	if (dados_menu.tipomenu != 'personalizado'){
 		let _gerarhtml 				= new gerarHTML();
 		_gerarhtml._entidade_id    	= dados_menu.entidade;
@@ -117,7 +122,6 @@ Menu.prototype.carregarpagina = function(path,target,dados_menu){
 		_gerarhtml._conceito_id    	= dados_menu.entidade;
 		_gerarhtml.conceito();
 	}
-
 	carregar(path,target,function(){
 		if (dados_menu == undefined || dados_menu == ''){
 			console.warn('Dados do menu não foram carregados.');
@@ -126,10 +130,9 @@ Menu.prototype.carregarpagina = function(path,target,dados_menu){
 
 		// Zera a variável formulário para garantir o escopo
 		formulario = [];
-
 		carregarScriptCRUD(dados_menu.tipomenu,dados_menu.entidade);
 		clearMenuLeft();
-		if (dados_menu.filhos.length > 0){			
+		if (dados_menu.filhos.length > 0){
 			menuleft(dados_menu.id);
 		}
 	});
