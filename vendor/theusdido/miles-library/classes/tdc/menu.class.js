@@ -8,7 +8,7 @@ function Menu (){
 	this.dados;
 }
 Menu.prototype.criar = function(){
-	this.navbar = $("<nav class='navbar navbar-default navbar-expand-lg'>");	
+	this.navbar = $("<nav class='navbar navbar-expand-lg'>");	
 }
 Menu.prototype.mostrar = function(){
 	this.criar();

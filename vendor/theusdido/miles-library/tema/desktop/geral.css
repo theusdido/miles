@@ -305,17 +305,18 @@ border: 1px solid #ddd;
 	float:left;
 	clear:left;
 }
-.filtro-pesquisa .termo-filtro{	
-	width:25%;
+.filtro-pesquisa .termo-filtro{
 	text-align:center;
-	height:30px;
+	max-width: 20%;
 }
 .filtro-pesquisa .descricao-filtro{
-	width:75%;
-	height:30px;
+	background-color: #EEE;
 }
-.filtro-pesquisa .botao-filtro{
-	height:30px;
+
+.filtro-pesquisa .botao-filtro,
+.filtro-pesquisa .btn-add-emexecucao
+{
+	border:1px solid #EEE;
 }
 
 .tdform{
@@ -377,8 +378,28 @@ html, body { margin:0; height: 100%;} /* Para funcionar altura dos elementos aut
 .panel-flag-generalizacao .SumoSelect{
 	width:100%;
 }
-.checkbox-s,.checkbox-n{
-	height:30px;
+.checkbox-s,.checkbox-n
+{
+	border:1px solid #EEE;
+	text-align: center;
+}
+.checkbox-s input[type="radio"],
+.checkbox-n input[type="radio"]
+{
+	/* visibility: hidden;
+	position: absolute; */
+}
+.checkbox-s.active
+{
+	background-color:#dbf8c8;
+	border:1px solid #EEE;
+	color:#000;	
+}
+.checkbox-n.active
+{
+	background-color:#ffdede;
+	border:1px solid #EEE;
+	color:#000;
 }
 .input-td-uploadfile,.button-td-uploadfile,.deletar-td-upload,.visualizar-td-upload{
 	height:30px;
@@ -663,9 +684,7 @@ html, body { margin:0; height: 100%;} /* Para funcionar altura dos elementos aut
 	text-align: right;
 	margin:5px auto;
 }
-.btn-add-emexecucao{
-	height:30px;
-}
+
 .td-titulopagina-relacionamento .nome-entidade {
 	display: inline;
     position: relative;
@@ -734,6 +753,7 @@ header #menu {
 #menu .navbar {
 	margin-bottom:0px !important;
 	border-radius: 0px;
+	background-color: #4393dd;
 }
 
 #breadcrumb-principal{

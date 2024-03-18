@@ -54,4 +54,10 @@
             array('name' => 'professor' , 'title' => 'Professor')
         )
     ),
+    array( "name" => "administrativo", "title" => "Administrativo", "components" =>
+        array(
+            array('name' => 'encontro' , 'title' => 'Encontro'),
+            array('name' => 'ambiente' , 'title' => 'Ambiente')
+        )
+    )
   );

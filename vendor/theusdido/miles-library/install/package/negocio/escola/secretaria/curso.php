@@ -1,7 +1,7 @@
 <?php
 	// Setando variáveis
-	$entidadeNome = "erp_escola_curso";
-	$entidadeDescricao = "Curso";
+	$entidadeNome 		= "erp_escola_curso";
+	$entidadeDescricao 	= "Curso";
 
 	// Criando Entidade
 	$entidadeID = criarEntidade(
