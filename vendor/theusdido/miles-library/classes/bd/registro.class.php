@@ -309,10 +309,18 @@ abstract class Registro {
 		Retorna se os dados da entidade foram carregados
 	*/
 	public function hasData(){
-		if ($this->dados == null || empty($this->dados) || $this->dados == ''){
-			return false;
+		if (gettype($this->dados) === 'array'){
+			if (sizeof($this->dados) <= 0){
+				return false;
+			}else{
+				return true;
+			}
 		}else{
-			return true;
+			if ($this->dados == null || empty($this->dados) || $this->dados == ''){
+				return false;
+			}else{
+				return true;
+			}
 		}
 	}
 	

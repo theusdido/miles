@@ -164,6 +164,7 @@
 			if ($modalName == ""){
 				$modalName = "modal-" . $nome;
 			}
+
 			$entidadePK = tdClass::Criar("persistent",array(ENTIDADE,$chaveestrangeira));
 			if ($entidadePK->contexto == NULL){
 				return self::MsgFieldError('Chave estrangeira não encontrada no campo '.$nome.' [ '.$descricao.' ] !');
@@ -181,11 +182,9 @@
 			$input_group 			= tdClass::Criar("div");
 			$input_group->class 	= "input-group";
 
-			$input_group_btn 		= tdClass::Criar("span");
-			$input_group_btn->class = "input-group-btn";
-
 			$button 					= tdClass::Criar("button");
 			$button->class 				= "btn btn-default botao-filtro";
+			$button->class 				= "btn btn-default";
 			$button->id 				= "pesquisa-" . $nome;
 			$button->name 				= $nome;
 			$button->data_fk 			= $chaveestrangeira;
@@ -197,9 +196,11 @@
 			$termo 				= tdClass::Criar("input");
 			$termo->type 		= "text";
 			$termo->class 		= "form-control termo-filtro {$gd}";
+			$termo->class 		= "form-control";
 			$termo->id 			= $nome;
 			$termo->name 		= $nome;
 			$termo->data_fk 	= $entidadePK->contexto->nome;
+			$termo->size		= "5";
 			if ($obrigatorio != null){
 				$termo->required = "true";
 				$label->add($obrigatorio);
@@ -211,6 +212,7 @@
 			$descricao_resultado->type 			= "text";
 			$descricao_resultado->readonly 		= "true";
 			$descricao_resultado->class 		= "form-control descricao-filtro";
+			$descricao_resultado->class 		= "form-control";
 			$descricao_resultado->id 			= "descricao-".$nome;
 			$descricao_resultado->name 			= "descricao-".$nome;
 			$descricao_resultado->data_entidade = $entidade;
@@ -221,11 +223,11 @@
 			$button_add 			= tdc::o("button");
 			$button_add->type 		= "button";
 			$button_add->class 		= "btn btn-default btn-add-emexecucao";
+			$button_add->class 		= "btn btn-default";
 			$button_add->add($icon_add);
 
-			$input_group_btn->add($button,$button_add);
-			$input_group->add($termo,$descricao_resultado,$input_group_btn);
-					
+			$input_group->add($termo,$descricao_resultado,$button,$button_add);
+
 			$modal 					= tdClass::Criar("modal");
 			$modal->nome 			= $modalName;
 			$modal->tamanho 		= "modal-lg";
@@ -550,34 +552,34 @@
 			$descricao_resultado->name 			= "resultado-descricao-".$nome;
 
 			$input_group_btn->add($button);
-			$input_group->add($termo,$descricao_resultado,$input_group_btn);
+			$input_group->add($termo,$descricao_resultado,$button);
 					
 		
 			$campo->add($label,$input_group);
 			return $campo;
 		}
 
-		/*  
+		/*
 			* Método tdSwitchCheck
 			* Data de Criacao: 24/02/2024
 			* Autor @theusdido
 
 			Retorna um campo de checkbox personalizado do Bootstrap 5
-		*/	
+		*/
 		public static function tdSwitchCheck($id = '',$nome = '',$descricao = '',$valor=null){
-			$div_switch = tdc::html('div');
-			$div_switch->class = 'td-switch-inativo form-check form-switch';
+			$div_switch 			= tdc::html('div');
+			$div_switch->class 		= 'td-switch-inativo form-check form-switch';
 
-			$input_check = tdc::html('input');
-			$input_check->class = 'form-check-input';
-			$input_check->type = 'checkbox';
-			$input_check->role = 'switch';
-			$input_check->id = $id;
-			$input_check->name = $nome;
+			$input_check 			= tdc::html('input');
+			$input_check->class 	= 'form-check-input';
+			$input_check->type 		= 'checkbox';
+			$input_check->role 		= 'switch';
+			$input_check->id 		= $id;
+			$input_check->name 		= $nome;
 
-			$label_check = tdc::html('div');
-			$label_check->class = 'form-check-label';
-			$label_check->for = $id;
+			$label_check 			= tdc::html('div');
+			$label_check->class 	= 'form-check-label';
+			$label_check->for 		= $id;
 			$label_check->add($descricao);
 
 			$div_switch->add($input_check);

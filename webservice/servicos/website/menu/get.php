@@ -1,9 +1,16 @@
 <?php
     switch($_op){
         case 'rodape':
-            $retorno['data'] = tdc::da('td_website_geral_menurodape');
+            $_entidade = 'td_website_geral_menurodape';
+            
         break;
+        case 'principal':
         default:
-            $retorno['data'] = tdc::da('td_website_geral_menuprincipal');
+            $_entidade = 'td_website_geral_menuprincipal';
     }
+    
+    $_criterio  = tdc::f();
+    $_criterio->onlyActive();
+
+    $retorno['data'] = tdc::da($_entidade,$_criterio);
     

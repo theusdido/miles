@@ -282,42 +282,28 @@ class TdFormulario Extends Elemento {
 					$grupo_btn 				= tdClass::Criar("div");
 					$grupo_btn->class 		= "btn-group";
 					$grupo_btn->data_toggle	= "buttons";
-					
-					$sim 					= tdClass::Criar("label");
+					$grupo_btn->role		= "group";
+
+					// Sim - Button
+					$sim 					= tdClass::Criar("button");
 					$sim->class				= "btn btn-default checkbox-s ";
+					$sim->value				= 1;
+					$sim->add($coluna->labelumcheckbox==""?"Sim":$coluna->labelumcheckbox);					
 
-					$sim->add($coluna->labelumcheckbox==""?"Sim":$coluna->labelumcheckbox);
-					$sim->onclick 				= "$('#{$coluna->nome}[data-entidade={$entidadeCOL}]').val(1);";
-					$sim_input 					= tdClass::Criar("input");
-					$sim_input->type			= "radio"; 
-					$sim_input->name			= "check".$coluna->nome;	
-					$sim_input->data_entidade 	= $entidadeCOL;					
-					$sim_input->autocomplete	= "off";
-					$sim_input->value 			= 1;
-
-					$sim->add($sim_input);
-
-					$nao 						= tdClass::Criar("label");
+					// Não - Button
+					$nao 						= tdClass::Criar("button");
 					$nao->class					= "btn btn-default checkbox-n ";
+					$nao->value					= 0;
 					$nao->add($coluna->labelzerocheckbox==""?"Sim":$coluna->labelzerocheckbox);
-					$nao->onclick 				= "$('#{$coluna->nome}[data-entidade={$entidadeCOL}]').val(0);";
-					$nao_input 					= tdClass::Criar("input");
-					$nao_input->type			= "radio"; 
-					$nao_input->name			= "check".$coluna->nome;
-					$nao_input->data_entidade 	= $entidadeCOL;
-					$nao_input->autocomplete	= "off";
-					$nao_input->value 			= 0;
-					$nao->add($nao_input);			
-					
+
+					$active_class				= 'active'; # "active" in outhers version
 					if (!empty($this->dados)){
-						if ($initialValue == 0) $nao->class = "active";
-						else $sim->class="active";
+						if ($initialValue == 0) $nao->class = $active_class;
+						else $sim->class = $active_class;
 						$campo->input->value = $initialValue;
 					}else{
 						$campo->input->value 	= 0;
-						$nao->class 			= "active";
-						$nao_input->checked		= "true";
-						
+						$nao->class 			= $active_class;
 					}
 					$grupo_btn->add($sim,$nao);
 					$campo->add($br,$grupo_btn);

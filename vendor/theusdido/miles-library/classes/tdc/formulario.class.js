@@ -164,6 +164,16 @@ tdFormulario.prototype.novo = function(){
 		if (parseInt(atributoID) != 0 && atributoID != "" && atributoID != undefined){
 			let attr_selector = "#" + td_atributo[atributoID].nome + '[data-entidade="'+entidadeAttr+'"]';
 
+
+			if ($(attr_selector,contextoAdd).hasClass("checkbox-sn")){
+				let checkbox_element = $(attr_selector,contextoAdd).parent('.form-group').find('.checkbox-s,.checkbox-n');
+				checkbox_element.click(function(){
+					checkbox_element.removeClass('active');
+					$(attr_selector,contextoAdd).val($(this).val());
+					$(this).addClass('active');
+				});
+			}
+
 			if (valor == ''){
 				if ($(attr_selector,contextoAdd).hasClass("checkbox-sn")){
 					$(attr_selector,contextoAdd).val(0);
@@ -185,7 +195,6 @@ tdFormulario.prototype.novo = function(){
 
 		$(".checkbox-s",contextoAdd).removeClass("active");
 		$(".checkbox-n",contextoAdd).addClass("active");
-
 		
 	});
 

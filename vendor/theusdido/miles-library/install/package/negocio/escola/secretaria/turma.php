@@ -22,7 +22,8 @@
 
 	// Criando Atributos
 	$descricao 	= criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar","200",0,3,1,0,0,"");
-	$anoletivo 	= criarAtributo($conn,$entidadeID,"anoletivo","Ano Letivo","char",4,1,3,1);
+	$anoletivo 	= criarAtributo($conn,$entidadeID,"anoletivo","Ano Letivo","char",4,1,3,0);
+	$curso 		= criarAtributo($conn,$entidadeID,"curso","Curso","int",0,1,22,1,installDependencia("erp_escola_curso","package/sistema"));
 
 	// Seta o campo descrição
 	Entity::setDescriptionField($conn,$entidadeID,$descricao,true);
