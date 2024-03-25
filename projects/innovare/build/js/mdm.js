@@ -1986,6 +1986,25 @@
 					entidadeauxiliar:false
 				};
 			
+				td_entidade[122] = {
+					id:122,
+					nome:'td__falencia',
+					descricao:'Falida',
+					exibirmenuadministracao:'0',
+					exibircabecalho:'0',
+					pai:'',
+					ncolunas:'3',
+					campodescchave:'',
+					atributogeneralizacao:'125',
+					exibirlegenda:'0',
+					registrounico:0,
+					pacote:'',
+					nomecompleto:'td__falencia',
+					atributos:[{"id":"778","entidade":"122","nome":"inativo","descricao":"Inativo","tipo":"boolean","tamanho":"0","omissao":null,"collection":null,"atributos":null,"nulo":"1","indice":null,"auto_increment":null,"comentario":null,"exibirgradededados":"0","chaveestrangeira":"0","tipohtml":"7","dataretroativa":"0","ordem":null,"readonly":"0","inicializacao":"","exibirpesquisa":null,"tipoinicializacao":"1","atributodependencia":null,"autoincrement":null,"labelzerocheckbox":"N\u00e3o","labelumcheckbox":"Sim","legenda":"","desabilitar":null,"criarsomatoriogradededados":null,"naoexibircampo":"0","is_unique_key":null}],
+					relacionamentos:[],
+					entidadeauxiliar:false
+				};
+			
 				td_atributo[2] = {
 					id:2,
 					entidade:'1',
@@ -23686,6 +23705,37 @@
 					is_unique_key:''
 				};
 			
+				td_atributo[778] = {
+					id:778,
+					entidade:'122',
+					nome:'inativo',
+					descricao:'Inativo',
+					tipo:'boolean',
+					tamanho:'0',
+					omissao:'',
+					collection:'',
+					atributos:'',
+					nulo:'1',
+					indice:'',
+					autoincrement:'',
+					comentario:'',
+					exibirgradededados:'0',
+					chaveestrangeira:'0',
+					tipohtml:'7',
+					dataretroativa:'0',
+					ordem:'',
+					readonly:'0',
+					inicializacao:'',
+					exibirpesquisa:'',
+					tipoinicializacao:'1',
+					atributodependencia:'',
+					labelzerocheckbox:'Não',
+					labelumcheckbox:'Sim',
+					criarsomatoriogradededados:'',
+					naoexibircampo:'0',
+					is_unique_key:''
+				};
+			
 				td_relacionamento[1] = {
 					id:1,
 					pai:'3',
@@ -34287,6 +34337,111 @@
 					empresa:'',
 					entidade:'117',
 					usuario:'11',
+					inserir:'1',
+					excluir:'1',
+					editar:'1',
+					visualizar:'1',
+					atributos:{
+			
+					}
+				};
+			
+				td_permissoes[769] = {
+					id:'769',
+					projeto:'1',
+					empresa:'1',
+					entidade:'5',
+					usuario:'12',
+					inserir:'1',
+					excluir:'1',
+					editar:'1',
+					visualizar:'0',
+					atributos:{
+			
+					}
+				};
+			
+				td_permissoes[770] = {
+					id:'770',
+					projeto:'1',
+					empresa:'1',
+					entidade:'8',
+					usuario:'12',
+					inserir:'1',
+					excluir:'1',
+					editar:'1',
+					visualizar:'0',
+					atributos:{
+			
+					}
+				};
+			
+				td_permissoes[771] = {
+					id:'771',
+					projeto:'1',
+					empresa:'1',
+					entidade:'6',
+					usuario:'12',
+					inserir:'1',
+					excluir:'1',
+					editar:'1',
+					visualizar:'1',
+					atributos:{
+			
+					}
+				};
+			
+				td_permissoes[772] = {
+					id:'772',
+					projeto:'1',
+					empresa:'1',
+					entidade:'9',
+					usuario:'12',
+					inserir:'1',
+					excluir:'1',
+					editar:'1',
+					visualizar:'1',
+					atributos:{
+			
+					}
+				};
+			
+				td_permissoes[773] = {
+					id:'773',
+					projeto:'1',
+					empresa:'1',
+					entidade:'10',
+					usuario:'12',
+					inserir:'1',
+					excluir:'1',
+					editar:'1',
+					visualizar:'1',
+					atributos:{
+			
+					}
+				};
+			
+				td_permissoes[774] = {
+					id:'774',
+					projeto:'1',
+					empresa:'1',
+					entidade:'11',
+					usuario:'12',
+					inserir:'1',
+					excluir:'1',
+					editar:'1',
+					visualizar:'0',
+					atributos:{
+			
+					}
+				};
+			
+				td_permissoes[775] = {
+					id:'775',
+					projeto:'1',
+					empresa:'1',
+					entidade:'15',
+					usuario:'12',
 					inserir:'1',
 					excluir:'1',
 					editar:'1',

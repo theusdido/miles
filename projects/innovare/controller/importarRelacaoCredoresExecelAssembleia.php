@@ -31,23 +31,11 @@
 		$cLinha 		= 0;
 		if ($conn = Transacao::get()){
 			
-			$bootstrap = tdClass::Criar("link");
-			$bootstrap->href = URL_LIB . 'bootstrap/3.3.1/css/bootstrap.css';
-			$bootstrap->rel = 'stylesheet';
+			$bootstrap 			= tdClass::Criar("link");
+			$bootstrap->href 	= URL_LIB . 'bootstrap/3.3.1/css/bootstrap.css';
+			$bootstrap->rel 	= 'stylesheet';
 			$bootstrap->mostrar();
 
-			// Quais credores serão afetados
-			$_origem_credor = array();
-			if (isset($_POST["origem_credor_4"])) array_push($_origem_credor,'origemcredor = 4');
-			if (isset($_POST["origem_credor_7"])) array_push($_origem_credor,'origemcredor = 7');
-			if (isset($_POST["origem_credor_8"])) array_push($_origem_credor,'origemcredor = 8');
-
-			if (sizeof($_origem_credor) < 1){
-				msgErroValidacao('<b>Origem do Credor</b> não foi selecionado.');
-				finalizar();
-				exit;
-			}
-			
 			echo '	<table class="table table-hover table-bordered">
 						<tr>
 							<th width="50%">Nome</th>
@@ -58,23 +46,24 @@
 							<th width="5%">Processo</th>
 							<th width="5%">Origem</th>
 							<th width="5%">Farein</th>
-						</tr>	
+						</tr>
 			';
 
 			$linhaDadosCredor 	= "";
 			$error 				= 0;
 			// Os credores importados ficaram com a origem 8
-			$origemcredor 		= 8;
+			$_origem_credor 		= 8;
 
 			foreach ($xml->Worksheet->Table->Row as $cell){
 				$cLinha++;
 				if ($cLinha<=1) continue; # Pula a primeira linha
+
 				$nome 				= trocavazio("{$cell->Cell[0]->Data}");
 				$cpfj 				= validaColuna($cell->Cell,1);
 				$cpfjSemFormatar 	= ($cpfj!=""?(strlen($cpfj) > 11?$cpfj!=""?(completaString(trim($cpfj),14)):"":(completaString(trim($cpfj),11))):"");
-				$classificacao 		= trocavazio((int)$cell->Cell[4]->Data);
-				$moeda 				= trocavazio((int)$cell->Cell[2]->Data);
-				$vlr 				= $cell->Cell[3]->Data;
+				$classificacao 		= trocavazio((int)$cell->Cell[2]->Data);
+				$moeda 				= trocavazio((int)$cell->Cell[3]->Data);
+				$vlr 				= $cell->Cell[4]->Data;
 				$valor 				= number_format((double)$vlr, 2, ',', '.');
 				$linhaDadosCredor 	=
 										"<td>" . $nome . "</td>".
@@ -83,9 +72,9 @@
 										"<td>" . $moeda . "</td>".
 										"<td>" . $valor  . "</td>".										
 										"<td>" . $processo[1] . "</td>".
-										"<td>" . $origemcredor . "</td>".
+										"<td>" . $_origem_credor . "</td>".
 										"<td>" . (int)$processo[0] . "</td>";
-				
+
 				if ($cpfjSemFormatar != ""){
 					if (!isCPFJ($cpfjSemFormatar)){
 						$error = 2;
@@ -124,10 +113,9 @@
 					) 
 					AND classificacao = {$classificacao} 
 					AND processo = {$processo[1]} 
-					AND farein = {$processo[0]} 
-					AND (
-						".implode(' OR ',$_origem_credor)."
-					)";
+					AND farein = {$processo[0]} 					
+					AND origemcredor = $_origem_credor;
+				";
 				$queryExiste = $conn->query($sqlExiste);
 				if ($queryExiste->rowcount() <= 0){
 					$entidadecredor 					= "td_relacaocredores";
@@ -153,7 +141,7 @@
 					$credor->contexto->valor 			= $valor;
 
 					$credor->contexto->processo			= (int)$processo[1];
-					$credor->contexto->origemcredor		= $origemcredor;
+					$credor->contexto->origemcredor		= $_origem_credor;
 					$credor->contexto->farein			= (int)$processo[0];
 					$credor->contexto->armazenar();
 
