@@ -1,7 +1,7 @@
 <?php
 	// Setando variáveis
-	$entidadeNome 		= "erp_escola_curso";
-	$entidadeDescricao 	= "Curso";
+	$entidadeNome 		= "erp_escola_cursomodalidade";
+	$entidadeDescricao 	= "Modalidade";
 
 	// Criando Entidade
 	$entidadeID = criarEntidade(
@@ -19,13 +19,12 @@
 		$criarauth = 0,
 		$registrounico = 0
 	);
-
+	
 	// Criando Atributos
-	$nome 			= criarAtributo($conn,$entidadeID,"nome","Nome","varchar","200",0,3,1,0,0,"");
-	$modalidade		= criarAtributo($conn,$entidadeID,"modalidade","Modalidade","int",0,1,22,1,installDependencia("erp_escola_cursomodalidade","package/negocio/escola/secretaria/cursomodalidade")); 
+	$descricao 	= criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar",200,0,3,1,0,0,"");
 
 	// Seta o campo descrição
-	Entity::setDescriptionField($conn,$entidadeID,$nome,true);
+	Entity::setDescriptionField($conn,$entidadeID,$descricao,true);
 
 	// Criando Acesso
 	$menu = addMenu($conn,'Secretaria','#','',0,0,'escola-secretaria');
