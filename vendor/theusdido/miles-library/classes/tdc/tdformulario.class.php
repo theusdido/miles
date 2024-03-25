@@ -24,6 +24,8 @@ class TdFormulario Extends Elemento {
 	public $grupo_botoes;
 	private $botoes 		= array();
 	public $is_multiidioma	= false;
+	private $_onsubmit		= '';
+
 	/*  
 		* Método construct 
 	    * Data de Criacao: 27/12/2014
@@ -41,7 +43,7 @@ class TdFormulario Extends Elemento {
 		$this->grupo_botoes			= tdc::html("div" , array("class" => "form-grupo-botao"));		
 
 		# Não retirar devido ao CKEditor
-		$this->onsubmit 			= "return false";
+		$this->_onsubmit 			= "return false";
 
 		$this->is_multiidioma		= tdc::ru('td_config')->multiidioma;
 		#$this->funcionalidade		= $funcionalidade;
@@ -925,6 +927,7 @@ class TdFormulario Extends Elemento {
 	public function mostrar(){
 		// Verificar qual é o contexto para setar os botões
 		//$this->setGrupoBotoes();
+		$this->onsubmit = $this->_onsubmit;
 		$this->fieldset->add($this->linhacampos);
 		if ($this->exibirlegenda){
 			if ($this->legenda->qtde_filhos>0) $this->fieldset->add($this->legenda);
@@ -1148,5 +1151,20 @@ class TdFormulario Extends Elemento {
 			$this->grupo_botoes->add($b);
 		}
 		$this->add($this->grupo_botoes);
+	}
+
+	/*
+		* Método setOnSubmit
+	    * Data de Criacao: 21/03/2024
+	    * Author: @theusdido
+
+		Adiciona a propriedade de submissão do formulário
+		@params $content:string = Conteúdo do evento onsubmit
+		@return void
+	*/
+
+	public function setOnSubmit($content)
+	{
+		$this->_onsubmit = $content;
 	}
 }
