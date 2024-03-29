@@ -2,22 +2,28 @@
 	$bloco_breadcrumb = tdClass::Criar("bloco");
 	$bloco_breadcrumb->class = "col-md-12";
 	
-	$breadcrumbID = "breadcrumb-principal";
+	$breadcrumbID 	= "breadcrumb-principal";
 
-	$ol = tdClass::Criar("ol");
-	$ol->class = "breadcrumb";
-	$ol->id = $breadcrumbID;
+	$ol 			= tdClass::Criar("ol");
+	$ol->class 		= "breadcrumb";
+	$ol->id 		= $breadcrumbID;
 
-	$li = tdClass::Criar("li");
-	$li->href = "#";
+	$breadcrumb_nav 			= tdc::html('nav');
+	$breadcrumb_nav->aria_label = 'breadcrumb';
+
+	$li 		= tdClass::Criar("li");
+	$li->href 	= "#";	
+	$li->class	= "active";
+	$li->id 	= "li-home-bc";
 	$li->add("Home");
-	$li->class="active";
-	$li->id = "li-home-bc";
 
 	$ol->add($li);
+	$breadcrumb_nav->add($ol);
 
 	$scriptBClass 		= tdClass::Criar("script");
 	$scriptBClass->src 	= URL_CLASS_WIDGETS . "bootstrap/breadcrumb.class.js";
 
-	$bloco_breadcrumb->add($scriptBClass,$ol);
-	$template->addCorpo($bloco_breadcrumb);
+	$bloco_breadcrumb->add($scriptBClass,$breadcrumb_nav);
+
+	// Desabilitado para revisão de utilidade
+	#$template->addCorpo($bloco_breadcrumb);

@@ -829,8 +829,8 @@ function criarAtributo(
 			var_dump($conn->errorInfo());
 		}
 	}
-	
-	$linha = $query->fetchAll();		
+
+	$linha = $query->fetchAll();
 	if ($queryExisteAtributo->rowCount() <= 0){		
 		$id = getProxId("atributo",$conn);
 		$sql = "
@@ -902,7 +902,6 @@ function criarAtributo(
 			}
 		}
 		$linha_old = $query_old->fetchAll();
-		
 		$sql = "
 			UPDATE {$entidadeatributodefault} 
 			SET 
@@ -1174,7 +1173,7 @@ $atributos #3
 }
 
 function getEntidadeId($entidadeString,$conn = null){
-	$conn 		= getCurrentConnection();
+	$conn 		= $conn == null ? getCurrentConnection() : $conn;
 	$PREFIXO 	= getSystemPREFIXO();
 	if ($entidadeString == "" || $entidadeString == null){
 		return 0;
@@ -2043,7 +2042,7 @@ function addCampoFormatadoDB($dados,$entidade){
 				}
 				if ($campodescdefault->hasData()){
 					$valorfk 				= is_numeric_natural($value)?$value:0;
-					$registro 				= getRegistro(null,tdc::p(ENTIDADE,$atributoOBJ->chaveestrangeira)->nome,$campodescdefault->nome, "id={$valorfk}" , "limit 1");
+					$registro 				= getRegistro(null,tdc::p(ENTIDADE,$atributoOBJ->chaveestrangeira)->nome,$campodescdefault->nome, "id={$valorfk}" , "LIMIT 1");
 					$dados[$key . "_desc"] 	= tdc::utf8($registro[$campodescdefault->nome]);
 				}
 			}

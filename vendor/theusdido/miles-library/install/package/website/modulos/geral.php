@@ -65,5 +65,13 @@
         array('name' => 'equipe'             ,'title' => 'Equipe'),
         array('name' => 'sobrenos'            ,'title' => 'Sobre Nós')
       )
-    )
+      ),
+  array(
+        "name" => "idioma", "title" => "Idioma", "components" => 
+        array(
+            array('name' => 'lingua' , 'title' => 'Língua'),
+            array('name' => 'traducao' , 'title' => 'Tradução'),
+            array('name' => 'configuracao' , 'title' => 'Configurações')
+        )
+    )      
   );

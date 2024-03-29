@@ -125,3 +125,19 @@
 .accordion-install .panel-heading .panel-title a {
 	text-decoration: none;
 }
+
+#pacotes-install
+{
+	display: flex;
+	flex-wrap: wrap;
+}
+.panel-pacote{
+	border:none !important;
+	width:50%;
+	padding:5px;
+}
+
+.carregar-componentes:hover
+{
+	background-color: #EEE;
+}

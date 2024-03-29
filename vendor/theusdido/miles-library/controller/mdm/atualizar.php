@@ -22,22 +22,24 @@
 			$entidadesarquivo 	= tdc::r("entidadesarquivo");
 
 			if ($entidadesestrutura != ''){
+
 				if (isset($_GET["entidade"])){
-					$where = " WHERE id = " . $_GET["entidade"];
-				}else if (isset($_GET["entidadesestrutura"])){
+					$where 				= " WHERE id = " . $_GET["entidade"];
+				}else if (isset($_GET["entidadesestrutura"])){					
 					$where = " WHERE id in (" . $_GET["entidadesestrutura"] . ")";
 				}else{
 					$where = "";
 				}
-
+				
 				// Entidades
-				$sqlAtual = "SELECT * FROM td_entidade $where";
-				$queryAtual = $_conn_origem->query($sqlAtual);
+				$sqlAtual 		= "SELECT * FROM td_entidade $where";
+				$queryAtual 	= $_conn_origem->query($sqlAtual);
 				while ($linhaAtual = $queryAtual->fetch()){
+					$_entidade_id_atual = $linhaAtual["id"];
 					$entidadeID = criarEntidade(
 						$_conn_destino, #0
-						str_replace(PREFIXO,"",$linhaAtual["nome"]), #1
-						utf8_encode($linhaAtual["descricao"]), #2
+						str_replace(getSystemPREFIXO(),"",$linhaAtual["nome"]), #1
+						tdc::utf8($linhaAtual["descricao"]), #2
 						$linhaAtual["ncolunas"], #3
 						$linhaAtual["exibirmenuadministracao"], #4
 						$linhaAtual["exibircabecalho"], #5
@@ -52,26 +54,29 @@
 					);
 
 					// Atributos
-					$sqlAtributoAtual 	= "SELECT * FROM td_atributo WHERE " . PREFIXO . "entidade = " . $entidadeID;
+					$sqlAtributoAtual 	= "SELECT * FROM td_atributo WHERE " . "entidade = " . $_entidade_id_atual;
 					$queryAtualAtributo = $_conn_origem->query($sqlAtributoAtual);
 					while ($linhaAtualAtributo = $queryAtualAtributo->fetch()){
 
 						if ($linhaAtualAtributo["chaveestrangeira"] != "" && (int)$linhaAtualAtributo["chaveestrangeira"] != 0){
-							$nomeatributo = str_replace(PREFIXO,"",$linhaAtualAtributo["nome"]);
+							$_entidade_fk 			= tdc::e($linhaAtualAtributo["chaveestrangeira"]);							
+							$_entidade_fk_destino 	= getEntidadeId($_entidade_fk->nome,$_conn_destino);
+							$nomeatributo 			= str_replace(getSystemPREFIXO(),'',$linhaAtualAtributo["nome"]);
 						}else{
-							$nomeatributo = $linhaAtualAtributo["nome"];
+							$_entidade_fk_destino 	= 0;
+							$nomeatributo 			= $linhaAtualAtributo["nome"];
 						}
 						$atributoID = criarAtributo (
 							$_conn_destino, #0
 							$entidadeID,#1
 							$nomeatributo, #2
-							utf8_encode($linhaAtualAtributo["descricao"]), #3
+							tdc::utf8($linhaAtualAtributo["descricao"]), #3
 							$linhaAtualAtributo["tipo"], #4
 							$linhaAtualAtributo["tamanho"], #5
 							$linhaAtualAtributo["nulo"], #6
 							$linhaAtualAtributo["tipohtml"], #7
 							$linhaAtualAtributo["exibirgradededados"], #8
-							$linhaAtualAtributo["chaveestrangeira"], #9
+							$_entidade_fk_destino, #9
 							$linhaAtualAtributo["dataretroativa"], #10
 							$linhaAtualAtributo["inicializacao"], #11
 							$linhaAtualAtributo["tipoinicializacao"], #12
@@ -80,7 +85,9 @@
 					}
 
 				}
+
 			}
+
 			if ($entidadesregistro != ''){
 
 				if (isset($_GET["entidade"])){
@@ -130,7 +137,14 @@
 					while ($linha_origem = $query_origem->fetch()){
 						$valoresLinha = array();
 						foreach($atributos as $key => $a){
-							array_push($valoresLinha,getValorDefaultAtributo(utf8_decode($linha_origem[$a]) , $atributosdados[$key]["tipohtml"] , $atributosdados[$key]["tipo"]));
+							array_push(
+								$valoresLinha,
+								getValorDefaultAtributo(
+									tdc::utf8($linha_origem[$a]) , 
+									$atributosdados[$key]["tipohtml"] , 
+									$atributosdados[$key]["tipo"]
+								)
+							);
 						}
 						array_push($valores ,
 							array (
@@ -145,7 +159,6 @@
 					}
 				}
 
-				echo 1;
 			}
 			if ($entidadesarquivo != ''){
 				$sqlftp = 'SELECT * FROM td_connectionftp WHERE projeto = ' . PROJETO;
@@ -206,9 +219,8 @@
 				}else{
 					echo 'Erro ao conectar no ftp';
 				}
-
-				exit;
 			}
+			echo 1;
 		break;
 		case 'lista-estrutura':
 			$sql 	= "SELECT descricao,id FROM td_entidade";
