@@ -56,7 +56,8 @@
 					session_destroy();
 					unset( $_SESSION );
 				}catch(Throwable $t){
-					header('Location: /');
+					$_url = defined('URL_MILES') ? URL_MILES : '/';
+					header('Location: ' . $_url);
 				}
 			}
 		}

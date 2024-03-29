@@ -82,7 +82,7 @@
 	// Recebendos dados
 	$dados = json_decode(utf8_decode(isset($_GET["dados"])?$_GET["dados"]:(isset($_POST["dados"])?$_POST["dados"]:'')),true);
 
-	// Opção dentro do servições ( Será removido )
+	// Opção dentro do serviços ( Será removido )
 	$op = isset($_GET['op']) ? $_GET['op'] : ( isset($_POST['op']) ? $_POST['op'] : '' );
 
 	$service = '';
@@ -127,8 +127,11 @@
 
 		// Retorna a requisição em formatado de Array
 		#echo json_encode( [$retorno] );
-		echo json_encode( $retorno );
+		$retorno['status'] 	= 'success';
 
 	}catch(Exeception $e){
-		echo json_encode($e->getMessage());
+		$retorno['status'] 	= 'error';
+		$retorno['error']	= $e->getMessage();
+	}finally{
+		echo json_encode($retorno);
 	}
