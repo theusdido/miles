@@ -92,7 +92,7 @@ class Config {
 			case 6: # Senha
 				$retorno = strlen($valor) == 32 ? $valor : md5($valor);
 			break;
-			case 7:				
+			case 7:
 				$retorno = $valor == "" ? 0 : $valor;
 			break;
 			case 10:
@@ -100,11 +100,14 @@ class Config {
 			break;
 			case 11: # Data
 				if ($valor != ""){
+					if (str_replace(array('-','/'),'',$valor) == '00000000'){
+						return NULL;
+					}
 					$separador = (strpos($valor,"/") > 0)?"/":"-";
 					$dt = explode($separador,$valor);
 					return $dt[2] . "-" . $dt[1] . "-" . $dt[0];
 				}else{
-					return null;
+					return NULL;
 				}
 			break;
 			case 13:
@@ -198,7 +201,7 @@ class Config {
 		return $retorno;
 	}
 	/*
-		* getEnvirommentVariable
+		* getEnvironmentVariable
 		* Data de Criacao: 16/09/2022
 		* @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		* Retorna o valor da variável de ambiente
@@ -207,7 +210,7 @@ class Config {
 		* RETORNO
 		*	@return: any
 	*/
-	public static function getEnvirommentVariable($path_variable,$default = NULL){
+	public static function getEnvironmentVariable($path_variable,$default = NULL){
 		global $_env;
 		global $mjc;
 
@@ -240,7 +243,8 @@ class Config {
 			'tipo='		.$data["db_type"],
 			'porta='	.$data["db_port"]
 		);
-		$fpMySQLINIDesenv    = fopen($path . $env_db . '_' . $sgdb .'.ini',"w");
+		$_file 					= $path . $env_db . '_' . $sgdb .'.ini';
+		$fpMySQLINIDesenv    	= fopen($_file,"w");
 		foreach($ini_data as $c){
 			fwrite($fpMySQLINIDesenv,trim($c)."\n");
 		}
@@ -260,4 +264,31 @@ class Config {
 	public static function uploadMaxFile($_unidade = 'M'){
 		return (double)apenas_numero(ini_get('upload_max_filesize'));
 	}
+
+	/*  
+		* Método getJsInicial
+		* Data de Criacao: 04/10/2022
+		* @author Edilson Valentim dos Santos Bitencourt (Theusdido)
+
+		Retorna tag Javascript principal no sistema
+	*/
+	public static function getJsInicial(){
+		$script 		= tdc::o('script');
+		$script->src 	= URL_SYSTEM . 'inicial.js';
+		return $script;
+	}
+
+	/*  
+		* Método getJsConfig
+		* Data de Criacao: 24/01/2024
+		* Author @theusdido
+
+		Retorna tag Javascript de configuração do sistema
+	*/
+	public static function getJsConfig(){
+		$script 		= tdc::o('script');
+		//$script->src 	= URL_SYSTEM . 'config.js';
+		$script->add(getURL(URL_SYSTEM . 'config.js'));
+		return $script;
+	}	
 }

@@ -5,13 +5,13 @@
   margin: 0;
   background-color: #fff;
 }
-  
+
 #main {
   padding: 4% 1.5em;
   max-width: 55em;
   margin: 0 auto;
 }
-  
+
 #header {
   padding: 1.5em;
   margin: 0 0 1em 0;
@@ -46,20 +46,19 @@
   background-color:#fff;
   padding: 0;
 }
-  
+
 .hamburger {
-  background: #253544;
   position: absolute;
   display: block;
   text-align: center;
-  padding: 5px 0;
+  padding: 2px 0;
   width: 50px;
   left: 0;
   top: 0;
   z-index: 1000;
   cursor: normal;
 }
-  
+
 .hamburger:before {
   content:"\2630"; /* hamburger icon */
   display: block;
@@ -87,13 +86,11 @@
   pointer-events: none;
   width: 24px;
   height: 24px;
-  color: #fff;
 }
   
 .menu,
 .menu a,
 .menu a:visited {
-  color: #FFF;
   text-decoration: none!important;
   position: relative;
 }
@@ -104,20 +101,12 @@
   padding: 1em;
 }
   
-.menu a:hover {
+/* .menu a:hover {
   color: #fff;
-}
+} */
   
 .menu {
   margin-bottom: 3em;
-}
-  
-.menu-dropdown li .icon {
-  color: #FFF;
-}
-  
-.menu-dropdown li:hover .icon {
-  color: #fff;
 }
 
 .menu label {
@@ -202,21 +191,21 @@ input#menu[type="checkbox"] {
   height: -moz-calc(100% - 60px);
   height: calc(100% - 60px);
   overflow-y: auto;
-  border-top: 30px solid #253544;
+  border-top-width: 30px;
+  border-top-style: solid;
   z-index: -1;
   display:block;
 }
   
 .menu a.logotype {
-  position: absolute!important;
+  position: absolute !important;
   top: 0;
   left: 55px;
   display: block;
   font-family: 'Work Sans', sans-serif;
   text-transform: uppercase;
   font-weight: 800;
-  color: #FFF;
-  padding: 5px;
+  padding: 2px;
   cursor:default;
 }
 
@@ -228,9 +217,9 @@ input#menu[type="checkbox"] {
   color: #EEE;
 }
   
-.sub-menu-dropdown {
+/* .sub-menu-dropdown {
   background-color: #253544;
-}
+} */
   
 .menu:hover {
   /* position: absolute;

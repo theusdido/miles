@@ -1,40 +1,8 @@
-var td_entidadeauxiliar = [];
-function entidadesAuxiliares(){
-    for(ea in td_entidade){
-        if (td_entidade[ea].entidadeauxiliar == 1){
-            var atributos = "id";
-            for(a in td_atributo){
-                if (td_atributo[a].entidade == td_entidade[ea].id){
-                    if (td_atributo[a].nome != "empresa" && td_atributo[a].nome != "projeto"){
-                        atributos += "," + td_atributo[a].nome;
-                    }
-                }
-            }
-            $.ajax({
-                url:config.urlrequisicoes,
-                data:{
-                    op:"retorna_dados_entidade",
-                    entidade:td_entidade[ea].nomecompleto.replace("-","."),
-                    atributos:atributos,
-                    entidadeid:td_entidade[ea].id
-                },
-                dataType:"json",
-                complete:function(ret){
-                    try{
-                        var retorno = JSON.parse(ret.responseText);				
-                        td_entidadeauxiliar[retorno.entidadeid] = retorno.dados;
-                    }catch(e){
-                        console.warn(e);
-                    }
-
-                }
-            });
-        }
-    }
-}
-
 // Relógio
 function relogio(){
+
+    if (typeof config === 'undefined') return;
+
     var data 	= config.relogio.split(" ")[0];
     var tempo 	= config.relogio.split(" ")[1];
     
@@ -135,54 +103,3 @@ if (config.currenttheme == 'desktop')
 {
     $("body").css("background-image","none");
 }
-
-// Carrega Entidades Auxiliares
-entidadesAuxiliares();
-
-// Sessão
-// let time_session = setInterval(()=>{
-//     $.ajax({
-//         url:config.urlrequisicoes,
-//         data:{
-//             op:"is_session_active"
-//         },
-//         dataType:'json',
-//         complete:function(res){
-//             if (!res.responseJSON){
-//                 clearInterval(time_session);
-//                 bootbox.alert('Sua sessão expirou!',() => {
-//                     location.href = session.urlmiles;
-//                 });
-//             }
-//         }
-//     });
-// },60000);
-
-
-// Global com a grade de dados da movimentação
-var _gradedados_mov_current;
-
-// SessionStorage
-var _session = new tdSessionStorage();
-
-// Ouça eventos de mudanças no localStorage
-window.addEventListener("storage", function (event) {
-    if (event.key === "monitor_entidade") {
-
-        let entidade_obj    = JSON.parse(event.newValue);
-        let entidade_id     = entidade_obj.id;
-
-        td_entidade[entidade_id].nome                       = entidade_obj.nome;
-        td_entidade[entidade_id].descricao                  = entidade_obj.descricao;
-        td_entidade[entidade_id].exibirmenuadministracao    = entidade_obj.exibirmenuadministracao;
-        td_entidade[entidade_id].exibircabecalho            = entidade_obj.exibircabecalho;
-        td_entidade[entidade_id].pai                        = entidade_obj.pai;
-        td_entidade[entidade_id].ncolunas                   = entidade_obj.ncolunas;
-        td_entidade[entidade_id].campodescchave             = entidade_obj.campodescchave;
-        td_entidade[entidade_id].atributogeneralizacao      = entidade_obj.atributogeneralizacao;
-        td_entidade[entidade_id].exibirlegenda              = entidade_obj.exibirlegenda;
-        td_entidade[entidade_id].registrounico              = entidade_obj.registrounico;
-        td_entidade[entidade_id].pacote                     = entidade_obj.pacote;
-        td_entidade[entidade_id].nomecompleto               = entidade_obj.nomecompleto;
-    }
-});	

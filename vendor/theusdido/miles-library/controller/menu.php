@@ -78,6 +78,9 @@
 		case 'submenu':
 			tdc::wj(Menu::Open(tdc::r('menuprincipal')));
 		break;
+		case 'conceito':
+			echo '';
+		break;
 		default:
 			$menuClass = tdClass::Criar("script");
 			$menuClass->src = URL_CLASS_TDC . "menu.class.js";

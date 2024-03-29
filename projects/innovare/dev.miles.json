@@ -3,7 +3,7 @@
     "project":{
         "name":"Innovare",
         "path":"innovare/",
-        "url":""
+        "url":"localhost"
     },
     "currentproject": 1,
     "folder":"miles/",
@@ -17,16 +17,16 @@
     "theme": "desktop",
     "prefix": "td",
     "is_show_error_message": true,
-    "is_show_warn_message": false,
-    "is_transaction_log": false,   
+    "is_show_warn_message": true,
+    "is_transaction_log": false,
     "database_current": "desenv",
     "port": "hidden",
-    "enviromment":"dev",
-    "enviromments":{
+    "environment":"dev",
+    "environments":{
         "dev":{
             "root":"/",
             "url":{
-                "domain":"innovareadministradora.com.br"
+                "domain":"localhost"
             },
             "frameworks":{
                 "angular":{
@@ -36,7 +36,7 @@
             "system":{
                 "request_protocol": "http",
                 "force_https":false,
-                "is_fixed_domain":true
+                "is_fixed_domain":false
             }
         },
 		"homolog":{

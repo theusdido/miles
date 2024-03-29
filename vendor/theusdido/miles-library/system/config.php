@@ -22,7 +22,7 @@
 	define('_IS_HTTP',isset($_SERVER['HTTPS']) ? true : false);
 	
 	// Variável global apenas para o HTTP
-	$_http_request = isset($_env->system->request_protocol) ? $_env->system->request_protocol :  Config::getEnvirommentVariable('system->request_protocol','http');
+	$_http_request = isset($_env->system->request_protocol) ? $_env->system->request_protocol :  Config::getEnvironmentVariable('system->request_protocol','http');
 	
 	// REQUEST PROTOCOLO
 	define("REQUEST_PROTOCOL",$_http_request."://");
@@ -163,7 +163,7 @@
 	if (file_exists($path_composer)){
 		require $path_composer;
 	}
-
+	
 	// Inclui os arquivos de funções do sistema
 	require $_path_system . 'path.php';
 	require $_path_system . 'funcoes.php';

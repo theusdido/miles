@@ -60,7 +60,7 @@
             $entidade       = tdc::r('entidade');
             $descricao      = tdc::utf8($_POST["descricao"]);
             $atributos      = implode(",",$_POST["atributos"]);
-            if ($_POST["id"] == ""){
+            if ($_POST["id"] == '' || $_POST["id"] == 0){
                 $sql = "INSERT INTO ".ABAS." (id,entidade,descricao,atributos) values ({$idRetorno},{$entidade},'{$descricao}','{$atributos}');";
                 $id = $idRetorno;
             }else{

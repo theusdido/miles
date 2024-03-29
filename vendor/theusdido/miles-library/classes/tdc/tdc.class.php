@@ -466,5 +466,37 @@ class tdc Extends tdClass{
 		return sizeof($dataset) > 0 ? $dataset[0] : self::p($entidade);
 	}
 
-	
+	/*
+		* Método rs
+		* Data de Criacao: 10/01/2024
+		* Author: @theusdido
+
+		Retorna um ResultSet baseado em uma consulta SQL
+	*/
+	public static function rs($entidade,$sql = null , $return_type = 'array'){
+		switch($return_type){
+			case 'object':
+				return self::d($entidade,$sql);
+			break;
+			case 'json':
+				return self::dj($entidade,$sql);
+			break;
+			case 'array': 
+			default:
+				return self::da($entidade,$sql);
+		}	
+	}
+
+	/*
+		* Método dua
+		* Data de Criacao: 15/01/2023
+		* Author: @theusdido
+
+		Retorna um DataSet com um único registro do banco de dados
+		baseado em uma consulta SQL no formato de array
+	*/
+	public static function dua($entidade,$sql = null){
+		$dataset = self::da($entidade,$sql);
+		return sizeof($dataset) > 0 ? $dataset[0] : self::da($entidade);
+	}
 }

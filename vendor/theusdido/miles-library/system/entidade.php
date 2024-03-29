@@ -20,8 +20,12 @@
 	define("FILTROATRIBUTO",		$prefixo_format . "atributofiltro");
 	define("CONSULTA",				$prefixo_format . "consulta");
 	define("FILTROCONSULTA",		$prefixo_format . "consultafiltro");
+	define("STATUSCONSULTA",		$prefixo_format . "consultastatus");
+	define("FILTROINICIALCONSULTA",	$prefixo_format . "consultafiltroinicial");
+	define("COLUNACONSULTA",		$prefixo_format . "consultacoluna");	
 	define("RELATORIO",				$prefixo_format . "relatorio");
 	define("FILTRORELATORIO",		$prefixo_format . "relatoriofiltro");
+	define("STATUSRELATORIO",		$prefixo_format . "relatoriostatus");
 	define("MOVIMENTACAO",			$prefixo_format . "movimentacao");
 	define("HISTORICOMOVIMENTACAO",	$prefixo_format . "movimentacaohistorico");
 	define("ALTERARMOVIMENTACAO",	$prefixo_format . "movimentacaoalterar");

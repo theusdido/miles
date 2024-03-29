@@ -23,24 +23,30 @@ class TdFormulario Extends Elemento {
 	public $exibirlegenda 	= true;
 	public $grupo_botoes;
 	private $botoes 		= array();
-	public $onsubmit		= '';
+	public $is_multiidioma	= false;
+	private $_onsubmit		= '';
+
 	/*  
 		* Método construct 
 	    * Data de Criacao: 27/12/2014
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
-		
+
 		Formulário padrão
-	*/		
+	*/
 	function __construct(){
 		parent::__construct('form');
 		$this->fieldset 			= tdClass::Criar("fieldset");
 		$this->legenda 				= tdClass::Criar("legend");		
-		$this->class 				= "form-horizontal tdform";
+		$this->class 				= "form-horizontal tdform 3";
 		$this->linhacampos 			= tdClass::Criar("div");
-		$this->linhacampos->class 	= "row-fluid form_campos tdform";
-		$this->grupo_botoes			= tdc::html("div" , array("class" => "form-grupo-botao"));
-		$this->onsubmit 			= "return false";
-		//$this->funcionalidade		= $funcionalidade;
+		$this->linhacampos->class 	= "row-fluid form_campos tdform 2";
+		$this->grupo_botoes			= tdc::html("div" , array("class" => "form-grupo-botao"));		
+
+		# Não retirar devido ao CKEditor
+		$this->_onsubmit 			= "return false";
+
+		$this->is_multiidioma		= tdc::ru('td_config')->multiidioma;
+		#$this->funcionalidade		= $funcionalidade;
 	}
 	/*  
 		* Método CamposHTML 
@@ -69,8 +75,8 @@ class TdFormulario Extends Elemento {
 		// Coluna ID
 		$colunaID = tdClass::Criar("div");
 		if ($this->ncolunas >0){
-			$colunaID->class = "coluna";
-			$colunaID->data_ncolunas = $this->ncolunas;
+			$colunaID->class 			= "coluna";
+			$colunaID->data_ncolunas 	= $this->ncolunas;
 		}
 		
 		// ID
@@ -105,18 +111,32 @@ class TdFormulario Extends Elemento {
 			$colunaID->add($id);
 		
 		}
-		$this->linhacampos->add($colunaID);		
+		$this->linhacampos->add($colunaID);
 		foreach($colunas as $coluna){
-			$campo = tdClass::Criar("labeledit");
-			$label = null;
-			$atributodependencia 		= $coluna->atributodependencia;
-			
+			$campo 					= tdClass::Criar("labeledit");
+			$label 					= null;
+			$atributodependencia 	= $coluna->atributodependencia;
+			$asteriscoobrigatorio 	= null;
+			$div_traduzir			= null;
+			$btn_traduzir			= null;
+
+			// Asteristico nos campos obrigatórios
 			if ((int)$coluna->nulo != 1 && $this->funcionalidade == 'cadastro'){
-				$asteriscoobrigatorio = tdClass::Criar("span");
-				$asteriscoobrigatorio->class = "asteriscoobrigatorio";
+				$asteriscoobrigatorio 			= tdClass::Criar("span");
+				$asteriscoobrigatorio->class 	= "asteriscoobrigatorio";
 				$asteriscoobrigatorio->add("*");
-			}else{
-				$asteriscoobrigatorio = null;
+			}
+
+			// Botão para traduzir texto
+			if ($this->is_multiidioma){
+
+				$div_traduzir					= tdc::html('div');
+				$div_traduzir->class			= 'div-traduzir-campo';
+				$btn_traduzir 					= Button::Icon('fas fa-language');
+				$btn_traduzir->class			= 'btn-traduzir-campo btn-sm';
+				$btn_traduzir->data_atributo	= $coluna->id;
+
+				$div_traduzir->add($btn_traduzir);
 			}
 
 			$initialValue = $this->initialValue($coluna);
@@ -125,6 +145,7 @@ class TdFormulario Extends Elemento {
 				case "3":
 					$campo = Campos::TextoLongo($coluna->nome,$coluna->nome,tdc::utf8($coluna->descricao),$initialValue);
 					$campo->label->add($asteriscoobrigatorio);
+					$campo->add($div_traduzir);
 					$campo->input->data_entidade = $entidadeCOL;
 					if ($this->fp != "") $campo->input->class = $this->fp;
 					if ($coluna->exibirgradededados ==1) $campo->input->class = $this->gd;
@@ -263,45 +284,35 @@ class TdFormulario Extends Elemento {
 					$grupo_btn 				= tdClass::Criar("div");
 					$grupo_btn->class 		= "btn-group";
 					$grupo_btn->data_toggle	= "buttons";
-					
-					$sim 					= tdClass::Criar("label");
+					$grupo_btn->role		= "group";
+
+					// Sim - Button
+					$sim 					= tdClass::Criar("button");
 					$sim->class				= "btn btn-default checkbox-s ";
+					$sim->value				= 1;
+					$sim->add($coluna->labelumcheckbox==""?"Sim":$coluna->labelumcheckbox);					
 
-					$sim->add($coluna->labelumcheckbox==""?"Sim":$coluna->labelumcheckbox);
-					$sim->onclick 				= "$('#{$coluna->nome}[data-entidade={$entidadeCOL}]').val(1);";
-					$sim_input 					= tdClass::Criar("input");
-					$sim_input->type			= "radio"; 
-					$sim_input->name			= "check".$coluna->nome;	
-					$sim_input->data_entidade 	= $entidadeCOL;					
-					$sim_input->autocomplete	= "off";
-					$sim_input->value 			= 1;
-
-					$sim->add($sim_input);
-
-					$nao 						= tdClass::Criar("label");
+					// Não - Button
+					$nao 						= tdClass::Criar("button");
 					$nao->class					= "btn btn-default checkbox-n ";
+					$nao->value					= 0;
 					$nao->add($coluna->labelzerocheckbox==""?"Sim":$coluna->labelzerocheckbox);
-					$nao->onclick 				= "$('#{$coluna->nome}[data-entidade={$entidadeCOL}]').val(0);";
-					$nao_input 					= tdClass::Criar("input");
-					$nao_input->type			= "radio"; 
-					$nao_input->name			= "check".$coluna->nome;
-					$nao_input->data_entidade 	= $entidadeCOL;
-					$nao_input->autocomplete	= "off";
-					$nao_input->value 			= 0;
-					$nao->add($nao_input);			
-					
+
+					$active_class				= 'active'; # "active" in outhers version
 					if (!empty($this->dados)){
-						if ($initialValue == 0) $nao->class = "active";
-						else $sim->class="active";
+						if ($initialValue == 0) $nao->class = $active_class;
+						else $sim->class = $active_class;
 						$campo->input->value = $initialValue;
 					}else{
 						$campo->input->value 	= 0;
-						$nao->class 			= "active";
-						$nao_input->checked		= "true";
-						
+						$nao->class 			= $active_class;
 					}
 					$grupo_btn->add($sim,$nao);
 					$campo->add($br,$grupo_btn);
+					
+					if ($coluna->nome == 'inativo'){
+						$campo->style = 'display:none';
+					}
 				break;
 				// Telefone (xx) xxxx-xxxxx
 				case "8":
@@ -543,6 +554,8 @@ class TdFormulario Extends Elemento {
 					$modalName = "myModal-ckeditor" . $nomeCompleto;
 					$campo = tdClass::Criar("div");
 					$campo->class = "form-group";
+					
+
 					$input_group = tdClass::Criar("div");
 					$input_group->class = "input-group ckeditor-group " ;
 					
@@ -589,7 +602,7 @@ class TdFormulario Extends Elemento {
 					$modal->addBody($campoCKEDITOR);
 					$modal->addFooter("<small>* Componente externo <b>CK Editor</b>. Saiba mais em <a href='http://www.ckeditor.com' target='_blank'>www.ckeditor.com</a></small>");
 
-					$campo->add($label,$input_group,$modal);
+					$campo->add($label,$div_traduzir,$input_group,$modal);
 				break;
 				// Filtro
 				case "22":
@@ -828,6 +841,18 @@ class TdFormulario Extends Elemento {
 			}
 			$this->addCampo($campo);
 		}
+
+		if ($this->is_multiidioma){
+			$modal_traduzir 				= tdClass::Criar("modal");
+			$modal_traduzir->class			= 'modal-traduzir-campo';
+			$modal_traduzir->tamanho 		= "modal-lg";
+			$modal_traduzir->addHeader("Traduzir");
+			$modal_traduzir->addBody("");
+			$modal_traduzir->addFooter("");
+
+			$this->linhacampos->add($modal_traduzir);
+		}
+
 		if ($retorno){
 			return $this->linhacampos;
 		}
@@ -902,6 +927,7 @@ class TdFormulario Extends Elemento {
 	public function mostrar(){
 		// Verificar qual é o contexto para setar os botões
 		//$this->setGrupoBotoes();
+		$this->onsubmit = $this->_onsubmit;
 		$this->fieldset->add($this->linhacampos);
 		if ($this->exibirlegenda){
 			if ($this->legenda->qtde_filhos>0) $this->fieldset->add($this->legenda);
@@ -1125,5 +1151,20 @@ class TdFormulario Extends Elemento {
 			$this->grupo_botoes->add($b);
 		}
 		$this->add($this->grupo_botoes);
+	}
+
+	/*
+		* Método setOnSubmit
+	    * Data de Criacao: 21/03/2024
+	    * Author: @theusdido
+
+		Adiciona a propriedade de submissão do formulário
+		@params $content:string = Conteúdo do evento onsubmit
+		@return void
+	*/
+
+	public function setOnSubmit($content)
+	{
+		$this->_onsubmit = $content;
 	}
 }

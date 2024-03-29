@@ -6,7 +6,7 @@ var permissoes_guia = {
 }
 var check_guia = {};
 $(document).ready(function(){
-    //getStatusGuia();
+    getStatusGuia();
 });
 
 function getStatusGuia(){
@@ -44,6 +44,7 @@ function getStatusGuia(){
                 }
                 permissoesGuia();
             }catch(e){
+                console.warn(e.message);
                 console.log(JSON.parse(_res));
             }
         }
@@ -54,6 +55,7 @@ $('#menu-guia a').click(function(event){
     event.preventDefault();
     event.stopPropagation();
     $('#menu-guia a').removeClass('guia-current');
+    console.log($(this).attr('data-habilitado'));
     if ($(this).attr('data-habilitado')){
         $(this).addClass('guia-current');
         loadContent($(this).data('href'));
@@ -63,11 +65,19 @@ $('#menu-guia a').click(function(event){
 function permissoesGuia(){
     $('#menu-guia [data-href="criarbase"]').attr('data-habilitado',true);
     $('#menu-guia a').each(function(){
-        let habilitado = false;
-        let item = $(this);
-        if (item.find('img').attr('src').indexOf('check.gif') > 0){
-            habilitado = true;            
+        let habilitado  = false;
+        let item        = $(this);
+        let src_img     = item.find('img').attr('src');
+
+        if (src_img != '' && src_img != undefined){
+
+            if (src_img.indexOf('check.gif') > 0){
+                habilitado = true;            
+            }
+        }else{            
+            console.warn('Ícone check do menu guia não foi encontrado.');
         }
+
         switch(item.data('href')){
             case 'criarbase':
                 if (habilitado){

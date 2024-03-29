@@ -1,53 +1,54 @@
 <?php
 	// Carrega o layout do sistema
-	$pagina = tdClass::Criar("pagina");
+	$pagina 	= tdClass::Criar("pagina");
 
-	$bloco = tdClass::Criar("bloco",array("logon"));			
+	$bloco 			= tdClass::Criar("bloco",array("logon"));
+	$bloco->class 	= 'row';
 
-	$form = tdClass::Criar("tdformulario");
-	$form->id = "f-autenticacao-usuario";
-	$form->class = 'form-signin';
-	$form->target = "retorno";
+	$form 						= tdClass::Criar("tdformulario");
+	$form->id 					= "f-autenticacao-usuario";
+	$form->class 				= 'form-signin';
+	$form->target 				= "retorno";
 
-	$email = tdClass::Criar("labeledit");
+	$email 						= tdClass::Criar("labeledit");
 	$email->label->add("Login");
-	$email->label->for = "email";
-	$email->input->id ="email";
-	$email->input->name = "email";
-	$email->input->class = "form-control";
-	$email->input->placeholder="Digite seu login";
+	$email->label->for 			= "email";
+	$email->input->id 			= "email";
+	$email->input->name 		= "email";
+	$email->input->class 		= "form-control";
+	$email->input->placeholder	= "Digite seu login";
 
-	$senha = tdClass::Criar("labeledit");
+	$senha 						= tdClass::Criar("labeledit");
 	$senha->label->add("Senha");
-	$senha->label->for = "senha";
-	$senha->input->id ="senha";
-	$senha->input->name = "senha";
-	$senha->input->type = "password";
-	$senha->input->class = "form-control";
-	$senha->input->placeholder="Digite sua senha";
-		
-	$minhasenha = tdClass::Criar("hyperlink");
-	$minhasenha->href = "?controller=recuperarsenha";
-	$minhasenha->add("Esqueci Minha Senha");
-	$minhasenha->id = "esqueci-minhasenha-home";
+	$senha->label->for 			= "senha";
+	$senha->input->id 			= "senha";
+	$senha->input->name 		= "senha";
+	$senha->input->type 		= "password";
+	$senha->input->class 		= "form-control";
+	$senha->input->placeholder	= "Digite sua senha";
 
-	$div_minhasenha = tdClass::Criar("div");
-	$div_minhasenha->class = "form-group";
+	$minhasenha 				= tdClass::Criar("hyperlink");
+	$minhasenha->href 			= "?controller=recuperarsenha";
+	$minhasenha->add("Esqueci Minha Senha");
+	$minhasenha->id 			= "esqueci-minhasenha-home";
+
+	$div_minhasenha 			= tdClass::Criar("div");
+	$div_minhasenha->class 		= "form-group";
 	$div_minhasenha->add($minhasenha);
-	
-	$botao_formgroup = tdClass::Criar("div");
-	$botao_formgroup->class = "form-group";
+
+	$botao_formgroup 			= tdClass::Criar("div");
+	$botao_formgroup->class 	= "form-group";
 	$botao = tdClass::Criar("input");
-	$botao->id = "btn-entrar";
-	$botao->type = "button";
-	$botao->value = "Entrar";
-	$botao->class = "btn btn-block btn-primary";
+	$botao->id 					= "btn-entrar";
+	$botao->type 				= "button";
+	$botao->value 				= "Entrar";
+	$botao->class 				= "btn btn-block btn-primary";
 	$botao_formgroup->add($botao);
 
 	$form->fieldset->add($email,$senha,$botao_formgroup,$div_minhasenha);
 
 	$div_logo 			= tdClass::Criar("div");
-	$div_logo->class 	= "autentica-div-logo col-sm-6";
+	$div_logo->class 	= "autentica-div-logo col-sm-6 col-lg-6";
 	$div_logo->add(Theme::logo());
 
 	$jsLogon = tdc::o("script");
@@ -121,21 +122,21 @@
 		}
 	');
 
-	$div_form = tdClass::Criar("div");
-	$div_form->id = "div-form-logon";
-	$div_form->class = "col-sm-6";
+	$div_form 				= tdClass::Criar("div");
+	$div_form->id 			= "div-form-logon";
+	$div_form->class 		= "col-sm-6 col-lg-6";
 	$div_form->add($form);
 
-	$retorno = tdClass::Criar("div");
-	$retorno->class = "alert alert-danger";
-	$retorno->role = "alert";
-	$retorno->id = "retorno";
+	$retorno 				= tdClass::Criar("div");
+	$retorno->class 		= "alert alert-danger";
+	$retorno->role 			= "alert";
+	$retorno->id 			= "retorno";
 
 	$bloco->add($div_logo,$div_form,$retorno,$jsLogon);
 	$pagina->body->add($bloco);
-	
-	$style = tdClass::Criar("style");
-	$style->type = "text/css";
+
+	$style 					= tdClass::Criar("style");
+	$style->type 			= "text/css";
 
 	// Adiciona personalização no Tema
 	if (isset($mjc->themes)){

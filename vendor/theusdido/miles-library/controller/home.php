@@ -8,7 +8,7 @@
 
 	// Chamado
 	include PATH_MVC_CONTROLLER . "chamado.php";
-
+	
 	// Adiciona pacotes na home 
 	foreach($mjc->system->packages as $p){
 		switch($p){
@@ -20,5 +20,5 @@
 				#include PATH_ECOMMERCE . 'vendasmensaishome/vendasmensaishome.php';
 				include PATH_ECOMMERCE . 'pedidohome/pedidohome.php';				
 			break;
-		}
+		}		
 	}

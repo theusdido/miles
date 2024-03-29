@@ -16,6 +16,14 @@
                 $response['check_pacoteconfigurado']    = $_install->pacoteconfigurado  ? $check_yes : $check_no;
                 $response['database']                   = $conn_temp;
                 $response['installed']                  = false;
+            // Sem base criada
+            }else if(!$_install->bancodedadoscriado){
+                $response['case']                       = 5;
+                $response['check_criarbase']            = $check_no;
+                $response['check_instalacaosistema']    = $check_no;
+                $response['check_pacoteconfigurado']    = $check_no;
+                $response['installed']                  = false;            
+            // Se já tiver a base criada sem a instalação    
             }else if (!$_is_installed){
                 $response['case']                       = 2;
                 $response['check_criarbase']            = $check_yes;

@@ -7,7 +7,7 @@
 	$_project_path 		= 
 	$_project_folder	= 
 	$_env 				= '';
-	$_enviromment		= isset($_GET['env']) ? $_GET['env'] : (isset($_POST['env']) ? $_POST['env'] : (isset($_enviromment) ? $_enviromment : $_current_environment));
+	$_environment		= isset($_GET['env']) ? $_GET['env'] : (isset($_POST['env']) ? $_POST['env'] : (isset($_environment) ? $_environment : $_current_environment));
 
 	// Deveria criar esse arquivo apenas na instalação ?
 	if (!file_exists($_miles_json_root_file)){
@@ -30,12 +30,18 @@
 		define('MILES_PROJECT',isset($mjc->currentproject)?$mjc->currentproject:1);
 
 		// Ambiente selecionado
-		if ($_enviromment == ''){
-			$_enviromment = isset($mjc->enviromment) ? $mjc->enviromment : '';
+		if ($_environment == ''){
+			$_environment = isset($mjc->environment) ? $mjc->environment : '';
 		}
 
 		// Carrega os dados do ambiente selecionado
-		$_env = isset($mjc->enviromments->{$_enviromment}) ? $mjc->enviromments->{$_enviromment} : $mjc;
+		$_env = isset($mjc->environments->{$_environment}) ? $mjc->environments->{$_environment} : $mjc;
+
+		// Nome do Projeto
+		$_project_name 		= isset($mjc->project->name)?$mjc->project->name:'';
+
+		// Id do Projeto
+		$_project_id		= isset($mjc->project->id)?$mjc->project->id:'';
 
 		$_folder_miles_ = PATH_MILES;
 		if (AMBIENTE == 'SISTEMA'){
@@ -44,22 +50,19 @@
 			define("FOLDER_MILES",$mjc->folder);
 
 			// Atualiza o nome do diretório de instalação do MILES
-			$_folder_miles = FOLDER_MILES;
-
-			$_folder_miles_ = '';
-
+			$_folder_miles 		= FOLDER_MILES;
+			$_folder_miles_ 	= '';
+			$_project_folder	= isset($mjc->project->path)?$mjc->project->path:'';
+			$_project_path 		= $_folder_project . DIRECTORY_SEPARATOR . $_project_folder;
+		}else{
+			$_project_path 		= $_folder_miles_ . $_folder_project . DIRECTORY_SEPARATOR . $_project_folder . $_project_name_identifify_params . DIRECTORY_SEPARATOR;
 		}
-
-		// Nome do Projeto
-		$_project_name 		= isset($mjc->project->name)?$mjc->project->name:'';
-		$_project_folder	= isset($mjc->project->path)?$mjc->project->path:'';
-		$_project_path 		= $_folder_miles_ . $_project_folder;
 	}	
 
 	define('PROJECT_NAME',$_project_name);
 
 	// Define o ambiente do sistema
-	define('_ENVIROMMENT',$_enviromment);
+	define('_ENVIRONMENT',$_environment);
 
 	if (!isset($mjc->system->request_protocol)){
 		showMessage('Parametro <b>system:"request_protocol"</b> em miles.json não especificado.');

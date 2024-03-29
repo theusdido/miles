@@ -187,6 +187,16 @@ class Entity {
 								$tipo 		= 'varchar';
 								$tamanho  	= 200;
 							break;
+							case 'arquivo_caminho':
+								$tipohtml	= 19;
+								$tipo 		= 'text';
+								$tamanho  	= 0;
+							break;
+							case 'filtro_pesquisa':
+								$tipohtml	= 22;
+								$tipo 		= 'int';
+								$tamanho  	= 0;
+							break;
 							case 'datahora':
 								$tipohtml	= 23;
 								$tipo 		= 'datetime';
@@ -334,4 +344,59 @@ class Entity {
 		
 		tdFile::add($file_path,json_encode($data));
 	}
+
+	/*
+		* Método setRegistroUnico
+	    * Data de Criacao: 10/01/2024
+	    * Autor @theusdido
+
+		Seta entidade como registro único
+		@params: boolean status 
+		@return: void
+	*/
+	public function setRegistroUnico($status = true){
+		$e 					= tdc::e($this->id);
+		$e->registrounico 	= $status;
+		$e->armazenar();
+	}
+
+	/*
+		* Método getJSON
+	    * Data de Criacao: 24/01/2024
+	    * Autor @theusdido
+
+		Retorna a entidade no formato JSON
+		@params: ID da entidade
+		@return: string
+	*/
+	public static function getJSON($_entidade_id){
+		$_entidade 		= tdc::e($_entidade_id);
+
+		$filtro_atributo = tdc::f();
+		$filtro_atributo->addFiltro('entidade','=',(int)$_entidade->id);
+		$filtro_atributo->setPropriedade('order','ordem ASC');
+
+		$filtro_relacionamento	= tdc::f();
+		$filtro_relacionamento->addFiltro("pai","=",$_entidade->id);
+		$_entidadeauxiliar = $_entidade->entidadeauxiliar == 1 ? 'true' : 'false';
+		
+		return json_encode(array(
+			'id' 								=> $_entidade->id,
+			'nome' 								=> $_entidade->nome,
+			'descricao' 						=> $_entidade->descricao,
+			'exibirmenuadministracao' 			=> $_entidade->exibirmenuadministracao,
+			'exibircabecalho' 					=> $_entidade->exibircabecalho,
+			'pai' 								=> $_entidade->pai,
+			'ncolunas' 							=> $_entidade->ncolunas,
+			'campodescchave' 					=> $_entidade->campodescchave,
+			'atributogeneralizacao' 			=> $_entidade->atributogeneralizacao,
+			'exibirlegenda' 					=> $_entidade->exibirlegenda,
+			'registrounico' 					=> $_entidade->registrounico,
+			'pacote' 							=> $_entidade->pacote,
+			'nomecompleto' 						=> (($_entidade->pacote==""?"":$_entidade->pacote.".")).$_entidade->nome,
+			'atributos' 						=> tdc::da(ATRIBUTO,$filtro_atributo),
+			'relacionamentos' 					=> tdc::da(RELACIONAMENTO,$filtro_relacionamento),
+			'entidadeauxiliar' 					=> $_entidadeauxiliar
+		));
+	}	
 }

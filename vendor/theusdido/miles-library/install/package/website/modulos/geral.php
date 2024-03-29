@@ -36,7 +36,10 @@
         array('name' => 'blog'                    ,'title' => 'Blog'),
         array('name' => 'perfil'                  ,'title' => 'Perfil'),
         array('name' => 'comofunciona'            ,'title' => 'Como Funciona?'),
-        array('name' => 'perguntasfrequentes'     ,'title' => 'Perguntas Frequentes?')
+        array('name' => 'perguntasfrequentes'     ,'title' => 'Perguntas Frequentes?'),
+        array('name' => 'trabalheconosco'         ,'title' => 'Trabalhe Conosco'),
+        array('name' => 'portifolio'              ,'title' => 'Portifólio'),
+        array('name' => 'faleconosco'             ,'title' => 'Fale Conosco')
       )
   ),
   array( "name" => "componente", "title" => "Componente", "components" => 
@@ -59,7 +62,16 @@
     "name" => "institucional", "title" => "Institucional", "components" =>
       array(
         array('name' => 'cargo'              ,'title' => 'Cargo'),
-        array('name' => 'equipe'                  ,'title' => 'Equipe')	
+        array('name' => 'equipe'             ,'title' => 'Equipe'),
+        array('name' => 'sobrenos'            ,'title' => 'Sobre Nós')
       )
-    )
+      ),
+  array(
+        "name" => "idioma", "title" => "Idioma", "components" => 
+        array(
+            array('name' => 'lingua' , 'title' => 'Língua'),
+            array('name' => 'traducao' , 'title' => 'Tradução'),
+            array('name' => 'configuracao' , 'title' => 'Configurações')
+        )
+    )      
   );

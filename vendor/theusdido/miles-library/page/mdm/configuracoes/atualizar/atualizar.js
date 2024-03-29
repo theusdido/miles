@@ -1,4 +1,18 @@
+{
+const environments = [
+    {origem:'dev' , destino:'prod' , op:'desenvolvimentotoproducao' , descricao:'Desenvolvimento > Produção'},
+    {origem:'prod' , destino:'dev' , op:'producaotodesenvolvimento' , descricao:'Produção > Desenvolvimento'}
+];
+
 $(document).ready( () => {
+
+    environments.forEach(
+        (e) => {
+            let option = $('<option value="'+e.op+'">'+e.descricao+'</option>');
+            $('#ambiente').append(option);
+        }
+    );
+
     $("#cbEstruturaAll").click( function() {
         selectAllEstrutura($(this).is(":checked"));
     });
@@ -6,16 +20,16 @@ $(document).ready( () => {
         selectAllEstrutura($("#cbEstruturaAll").is(":checked"));
     });
 
-    $('#lista-estrutura').load(session.urlmiles + '?controller=mdm/atualizar&op=lista-estrutura');
-    $('#lista-registro').load(session.urlmiles + '?controller=mdm/atualizar&op=lista-registro');
-    $('#lista-arquivo').load(session.urlmiles + '?controller=mdm/atualizar&op=lista-arquivo');
+    $('#lista-estrutura')   .load(session.urlmiles + '?controller=mdm/atualizar&op=lista-estrutura');
+    $('#lista-registro')    .load(session.urlmiles + '?controller=mdm/atualizar&op=lista-registro');
+    $('#lista-arquivo')     .load(session.urlmiles + '?controller=mdm/atualizar&op=lista-arquivo');
 });
 
 function desenvolvimentoToProducao(){
     var entidadeestrutura 	= "";
     var entidaderegistro 	= "";
     var entidadearquivo 	= "";
-    
+
     if ($(".entidadeestrutura:checked,.entidaderegistro:checked,.entidadearquivo:checked").length <= 0){
         bootbox.alert('Selecione uma opção.');
         return false;
@@ -35,17 +49,21 @@ function desenvolvimentoToProducao(){
         url:session.urlmiles,
         data:{
             controller:"mdm/atualizar",
-            op:"desenvolvimentotoproducao",
+            op:'update',
+            environment:$('#ambiente').val(),
             entidadesestrutura:entidadeestrutura,
             entidadesregistro:entidaderegistro,
             entidadesarquivo:entidadearquivo
         },
         beforeSend:function(){
-            $("#retorno-ajax-desenvolvimentoToProducao").html('<img src="../tema/padrao/loading2.gif" id="loading" style="float:left;margin-left:48%;" />');
+            $("#retorno-ajax-desenvolvimentoToProducao").html('<img src="'+getSRCLoader()+'" id="loading" />');
         },
-        complete:function(){
+        complete:function(ret){
             $("#retorno-ajax-desenvolvimentoToProducao").html("");
-        }        
+            if (ret.responseText == 1){
+                mdmToastMessage("Atualizado com Sucesso");
+            }
+        }
     });
 }
 $("#selecionarEntidadeEstrutura").click(function(e){
@@ -81,4 +99,5 @@ $("#selecionarEntidadeArquivo").click(function(e){
 
 function selectAllEstrutura(check){
     $(".entidadeestrutura").attr("checked",check);
+}
 }

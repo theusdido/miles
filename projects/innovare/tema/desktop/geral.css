@@ -6,11 +6,17 @@
 .navbar-default .navbar-nav > .open > a, 
 header .topo,
 #menuprincipal .dropdown-menu,
-.modal-header
+.modal-header,
+#menu .navbar
 {
 	background-color: #232123 !important;
 	color: #ab9170 !important;
 
+}
+
+#menuprincipal .nav-item a
+{
+	color:#FFF !important;
 }
 
 .navbar-default .navbar-nav > .open > a:hover, 

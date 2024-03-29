@@ -679,8 +679,8 @@ function criarEntidade(
 	$nome 		= getSystemPREFIXO() . $nome;
 	$descricao 	= tdc::utf8($descricao);
 	
-	$sqlExisteEntidade = "SELECT id,nome FROM " . ENTIDADE . " WHERE nome='{$nome}'";
-	$queryExisteEntidade = $conn->query($sqlExisteEntidade);
+	$sqlExisteEntidade 		= "SELECT id,nome FROM " . ENTIDADE . " WHERE nome='{$nome}';";
+	$queryExisteEntidade 	= $conn->query($sqlExisteEntidade);
 	if (!$queryExisteEntidade){
 		if (IS_SHOW_ERROR_MESSAGE){
 			echo $sqlExisteEntidade;
@@ -706,12 +706,12 @@ function criarEntidade(
 		}
 		exit;
 	}
-	$sqlExisteFisicamente 	= "SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE UPPER(TABLE_NAME) = UPPER('".$nome."') AND UPPER(TABLE_SCHEMA) = UPPER('".SCHEMA."')";
+	$sqlExisteFisicamente 	= "SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE UPPER(TABLE_NAME) = UPPER('".$nome."') AND UPPER(TABLE_SCHEMA) = UPPER('".SCHEMA."');";
 	$queryExisteFisicamente = $conn->query($sqlExisteFisicamente);
 	
 	if ($queryExisteFisicamente->rowCount() <= 0){
-		$sql = "CREATE TABLE IF NOT EXISTS {$nome}(id int not null primary key) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
-		$query = $conn->query($sql);
+		$sql 	= "CREATE TABLE IF NOT EXISTS {$nome}(id int not null primary key) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
+		$query 	= $conn->query($sql);
 		if (!$query){
 			if (IS_SHOW_ERROR_MESSAGE){
 				echo $sql;
@@ -746,6 +746,14 @@ function criarEntidade(
 	
 	if ($criarinativo){
 		criarAtributo($conn,$entidade,'inativo','Inativo','boolean',0,1,7);
+	}
+
+	// Adiciona as entidades instaladas para retornar ao front end
+	global $_entidades_instaladas;
+	if (isset($_entidades_instaladas)){
+		array_push($_entidades_instaladas,array(
+			Entity::getJSON($entidade)
+		));
 	}
 	return $entidade;
 }
@@ -821,8 +829,8 @@ function criarAtributo(
 			var_dump($conn->errorInfo());
 		}
 	}
-	
-	$linha = $query->fetchAll();		
+
+	$linha = $query->fetchAll();
 	if ($queryExisteAtributo->rowCount() <= 0){		
 		$id = getProxId("atributo",$conn);
 		$sql = "
@@ -894,7 +902,6 @@ function criarAtributo(
 			}
 		}
 		$linha_old = $query_old->fetchAll();
-		
 		$sql = "
 			UPDATE {$entidadeatributodefault} 
 			SET 
@@ -1012,16 +1019,34 @@ function addMenu(
 	$ordem = 0, #5
 	$fixo = "" , #6
 	$entidade = 0, #7
-	$tipomenu = "" #8
+	$tipomenu = "", #8
+	$conceito = 0, #9
+	$coluna = 0 #10
 ){
+	$_conceito	= $conceito == 0 ? $entidade : $conceito;
 	$pai		= $pai == '' ? 0 : $pai;
 	$descricao 	= tdc::utf8($descricao);
-	$sql 		= "SELECT id FROM " . MENU. " WHERE fixo = '".$fixo."';";
+	$sql 		= "SELECT id,ordem FROM " . MENU. " WHERE fixo = '".$fixo."';";
 	$query 		= $conn->query($sql);
 	if ($query->rowCount() > 0){
 		$linha = $query->fetch();
-		$menu_webiste = $linha["id"];
-		$sqlMenu = 	"UPDATE " . MENU ." SET descricao = '".$descricao."',link = '".$link."',target = '".$target."',pai = ".$pai.",fixo = '".$fixo."' , entidade = {$entidade} , tipomenu = '{$tipomenu}' WHERE id = ".$menu_webiste.";";
+		$menu_webiste 	= $linha["id"];
+		$ordem			= $linha["ordem"];
+		$sqlMenu = 	"
+			UPDATE " . MENU ." 
+			SET 
+				descricao = '".$descricao."',
+				link = '".$link."',
+				target = '".$target."',
+				pai = ".$pai.",
+				ordem = $ordem,
+				fixo = '".$fixo."',
+				entidade = {$entidade},
+				tipomenu = '{$tipomenu}',
+				conceito = {$_conceito},
+				coluna = $coluna
+			WHERE id = ".$menu_webiste.";
+		";
 	}else{
 		$menu_webiste = getProxId("menu",$conn);
 		if ($ordem == 0){
@@ -1030,15 +1055,43 @@ function addMenu(
 			$linhaOrdem = $queryOrdem->fetch();
 			$ordem 		= $linhaOrdem["ordem"];
 		}
-		$sqlMenu = 	"INSERT INTO ". MENU." (id,descricao,link,target,pai,ordem,fixo,entidade,tipomenu) VALUES 
-		(".$menu_webiste.",'".$descricao."','".$link."','".$target."',".$pai.",'".$ordem."','".$fixo."',".$entidade.",'".$tipomenu."');";
+		$sqlMenu = 	"
+			INSERT INTO ". MENU." (
+				id,
+				descricao,
+				link,
+				target,
+				pai,
+				ordem,
+				fixo,
+				entidade,
+				tipomenu,
+				conceito,
+				coluna
+			) VALUES (
+				".$menu_webiste.",
+				'".$descricao."',
+				'".$link."',
+				'".$target."',
+				".$pai.",
+				".$ordem.",
+				'".$fixo."',
+				".$entidade.",
+				'".$tipomenu."',
+				$_conceito,
+				$coluna
+			);
+		";
 	}
 	try{
 		if ($conn->exec($sqlMenu)){
 			addMenuPermissao($menu_webiste);
 		}
 	}catch(Throwable $t){
-		if (IS_SHOW_ERROR_MESSAGE) var_dump($sqlMenu);
+		if (IS_SHOW_ERROR_MESSAGE){
+			var_dump($sqlMenu);
+			echo $t->getMessage();
+		} 
 	}
 
 	return $menu_webiste;
@@ -1051,20 +1104,28 @@ function addMenuPermissao(
 ){
 	global $conn;	
 	if ($usuario == null) $usuario = isset($_SESSION["userid"])?$_SESSION["userid"]:1;
-	$idMP = installDependencia("menupermissoes","system/menupermissoes");
-	$sqlv = "SELECT id FROM td_menupermissoes WHERE menu = {$menu} AND usuario = {$usuario};";
+	$idMP 	= installDependencia("menupermissoes","system/menupermissoes");
+	$sqlv 	= "SELECT id FROM td_menupermissoes WHERE menu = {$menu} AND usuario = {$usuario};";
 	$queryv = $conn->query($sqlv);
 	if ($queryv->rowCount() > 0){
 		$linhav = $queryv->fetch();
-		$id = $linhav["id"];
-		$sql = "UPDATE td_menupermissoes SET permissao = {$permissao} WHERE id = {$id};";
+		$id 	= $linhav["id"];
+		$sql 	= "UPDATE td_menupermissoes SET permissao = {$permissao} WHERE id = {$id};";
 	}else{
-		$id = getProxId("menupermissoes");
-		$sql = "INSERT INTO td_menupermissoes (id,projeto,empresa,menu,usuario,permissao) VALUES ({$id},1,1,{$menu},$usuario,$permissao);";
+		$id 	= getProxId("menupermissoes");
+		$sql 	= "INSERT INTO td_menupermissoes (id,projeto,empresa,menu,usuario,permissao) VALUES ({$id},1,1,{$menu},$usuario,$permissao);";
 	}
-	if ($conn->exec($sql)){
-		return true;
-	}else{
+	try{
+		if ($conn->exec($sql)){
+			return true;
+		}else{
+			return false;
+		}
+	}catch(Throwable $t){
+		if (IS_SHOW_ERROR_MESSAGE){
+			var_dump($sql);
+			echo $t->getMessage();			
+		}
 		return false;
 	}
 }
@@ -1089,22 +1150,30 @@ $atributos #3
 		$atributos = arrayToString($atributos);
 	}
 	if ($query_verificar->rowCount() > 0){
-		$id = $linha_verificar[0];
-		$sql = "UPDATE ".ABAS." SET descricao = '{$descricao}' , atributos = '{$atributos}' WHERE id = {$id};";
+		$id 	= $linha_verificar[0];
+		$sql 	= "UPDATE ".ABAS." SET descricao = '{$descricao}' , atributos = '{$atributos}' WHERE id = {$id};";
 	}else{
-		$id = getProxId("abas",$conn);
-		$sql = "INSERT INTO ".ABAS." (id,entidade,descricao,atributos) values ({$id},{$entidade},'{$descricao}','{$atributos}');";
+		$id 	= getProxId("abas",$conn);
+		$sql 	= "INSERT INTO ".ABAS." (id,entidade,descricao,atributos) values ({$id},{$entidade},'{$descricao}','{$atributos}');";
 	}
-	$query = $conn->query($sql);
-	if ($query){
-		return $id;
-	}else{
+	try{
+		$query = $conn->query($sql);
+		if ($query){
+			return $id;
+		}else{
+			echo 'Não foi possível criar aba!';
+			return false;
+		}
+	}catch(Exception $e){
+		echo 'Não foi possível criar aba!';
 		return false;
 	}
+	
+
 }
 
 function getEntidadeId($entidadeString,$conn = null){
-	$conn 		= getCurrentConnection();
+	$conn 		= $conn == null ? getCurrentConnection() : $conn;
 	$PREFIXO 	= getSystemPREFIXO();
 	if ($entidadeString == "" || $entidadeString == null){
 		return 0;
@@ -1266,6 +1335,7 @@ function inserirRegistro($conn,$tabela,$id,$atributos,$valores,$criarnovoregistr
 		$valores_i	= implode(",",$valores);
 		$valores_ 	= tdc::utf8($valores_i);
 		$sqlInserir = "INSERT " . $tabela . " (id,".implode(",",$atributos).") VALUES (".$id.",".$valores_.");";
+		var_dump($sqlInserir);
 		$query 		= $conn->query($sqlInserir);
 		return $id;
 	}catch(Throwable $t){
@@ -1972,7 +2042,7 @@ function addCampoFormatadoDB($dados,$entidade){
 				}
 				if ($campodescdefault->hasData()){
 					$valorfk 				= is_numeric_natural($value)?$value:0;
-					$registro 				= getRegistro(null,tdc::p(ENTIDADE,$atributoOBJ->chaveestrangeira)->nome,$campodescdefault->nome, "id={$valorfk}" , "limit 1");
+					$registro 				= getRegistro(null,tdc::p(ENTIDADE,$atributoOBJ->chaveestrangeira)->nome,$campodescdefault->nome, "id={$valorfk}" , "LIMIT 1");
 					$dados[$key . "_desc"] 	= tdc::utf8($registro[$campodescdefault->nome]);
 				}
 			}
@@ -1984,8 +2054,28 @@ function addCampoFormatadoDB($dados,$entidade){
 		}else if ($tipohtml == 23){
 			$dados[$key . '_formated']	= datetimeToMysqlFormat($value,true);
 		}
+		$_lingua_selecionada_sessao 	= getLanguageSelectedSession();
+
+		if ($entidade != 'td_website_idioma_traducao'){
+			$dados['_traducoes'] 			= Idioma::Traduzir($entidade,$key,$dados['id'],$_lingua_selecionada_sessao);
+			if ($_lingua_selecionada_sessao > 0){
+				$lingua_filtrada = array_filter($dados['_traducoes'],'fLinguaSelecionada');				
+				if (sizeof($lingua_filtrada) > 0){
+					$dados[$key] = $lingua_filtrada[0]['texto'];
+				}
+			}
+		}
+
 	}
 	return $dados;
+}
+
+function fLinguaSelecionada($e){
+	return $e['lingua'] == getLanguageSelectedSession();
+}
+
+function getLanguageSelectedSession(){
+	return Session::Get('selected_language') != '' ? Session::Get('selected_language') : 0;
 }
 function getCampoDescricaoDefault($_entidade){
 	if ($_entidade == 0) return 0;
@@ -2256,7 +2346,7 @@ function getURLProject($parametro = null){
 	$parmsProject 		= array(
 		#"currentproject" 					=> CURRENT_PROJECT_ID,
 		'project_name_identifify_params' 	=> PROJECT_NAME_IDENTIFY_PARAMS,
-		'env'								=> _ENVIROMMENT
+		'env'								=> _ENVIRONMENT
 	);
 	switch(gettype($parametro)){
 		case 'string':

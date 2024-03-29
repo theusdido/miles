@@ -8,7 +8,7 @@ function Menu (){
 	this.dados;
 }
 Menu.prototype.criar = function(){
-	this.navbar = $("<nav class='navbar navbar-default'>");	
+	this.navbar = $("<nav class='navbar navbar-expand-lg'>");	
 }
 Menu.prototype.mostrar = function(){
 	this.criar();
@@ -31,7 +31,9 @@ Menu.prototype.header = function(){
             '<span class="icon-bar"></span>' +
         '</button>'
 	);
-	this.header.append(navbartoggle);
+
+	// Retirado na versão 5 do bootstrap
+	//this.header.append(navbartoggle);
 	this.navbar.append(this.header);
 }
 Menu.prototype.collapse = function(){
@@ -40,25 +42,33 @@ Menu.prototype.collapse = function(){
 }
 Menu.prototype.menuprincipal = function(dados){
 
-	let caret  	= " <span class='caret'>";
-	let menu 	= $("<ul class='nav navbar-nav' >");
+	
+	let menu 	= $("<ul class='nav navbar-nav'>");
 	let instancia 	= this;	
 	dados.forEach(function(menu_item)
 	{		
-		let li 		= $("<li>");
+		let li 		= $("<li class='nav-item'>");
 		let link 	= menu_item.link == "#"?menu_item.link:session.currentprojectregisterpath+menu_item.link;
-		let a 		= $("<a class='dropdown-toggle' role='button' aria-haspopup='true' data-toggle='dropdown' href='"+link+"' aria-expanded='false'>"+menu_item.descricao+"</span></a>");
+		let a 		= $("<a class='nav-link dropdown-toggle' role='button' aria-haspopup='true' data-toggle='dropdown' href='"+link+"' aria-expanded='false' data-bs-toggle='dropdown'>"+menu_item.descricao+"</span></a>");
 		li.append(a);
 		menu.append(li);
 
 		if (menu_item.filhos.length > 0){
-			li.find("a").append(caret);
+
+			li.addClass('dropdown');
 			let	submenu = $('<ul class="dropdown-menu" role="menu">');
 			menu_item.filhos.forEach(function(subitem)
 			{
 				let li_submenu 	= $("<li>");
-				let linkpath 	= session.folderprojectfiles + subitem.link;
-				let a_submenu 	=  $("<a target='"+(subitem.target == ""?"_self":subitem.target)+"' data-path='"+linkpath+"' data-id='"+subitem.id+"' data-target='#conteudoprincipal' href='"+(subitem.target == "" || subitem.target == ""?"#":subitem.link)+"' data-tipomenu='"+subitem.tipomenu+"'>"+subitem.descricao+"</span></a>");
+				let linkpath 	= '';
+
+				if (subitem.tipomenu == 'conceito' && subitem.link == '#'){
+					linkpath 	= session.urlmiles + '?controller=menu&op=conceito';
+				}else{
+					linkpath 	= session.folderprojectfiles + subitem.link;	
+				}
+				
+				let a_submenu 	=  $("<a class='dropdown-item' target='"+(subitem.target == ""?"_self":subitem.target)+"' data-path='"+linkpath+"' data-id='"+subitem.id+"' data-target='#conteudoprincipal' href='"+(subitem.target == "" || subitem.target == ""?"#":subitem.link)+"' data-tipomenu='"+subitem.tipomenu+"'>"+subitem.descricao+"</span></a>");
 
 				if (subitem.target != "_blank"){
 					a_submenu.click(subitem,function(handler){
@@ -68,7 +78,6 @@ Menu.prototype.menuprincipal = function(dados){
 						}
 						menuprincipalselecionado 	= $(this).data("id");
 						instancia.menuselecionado 	= menuprincipalselecionado;
-						
 						instancia.carregarpagina($(this).data("path"),$(this).data("target"),handler.data);
 						addLog("","","", getEntidadeId("administracao-menu"),menuprincipalselecionado, 5, $(this).data("path"));
 					});
@@ -106,7 +115,6 @@ Menu.prototype.load = function(){
 }
 Menu.prototype.carregarpagina = function(path,target,dados_menu){
 	let instancia 				= this;
-
 	if (dados_menu.tipomenu != 'personalizado'){
 		let _gerarhtml 				= new gerarHTML();
 		_gerarhtml._entidade_id    	= dados_menu.entidade;
@@ -114,7 +122,6 @@ Menu.prototype.carregarpagina = function(path,target,dados_menu){
 		_gerarhtml._conceito_id    	= dados_menu.entidade;
 		_gerarhtml.conceito();
 	}
-
 	carregar(path,target,function(){
 		if (dados_menu == undefined || dados_menu == ''){
 			console.warn('Dados do menu não foram carregados.');
@@ -123,10 +130,9 @@ Menu.prototype.carregarpagina = function(path,target,dados_menu){
 
 		// Zera a variável formulário para garantir o escopo
 		formulario = [];
-
 		carregarScriptCRUD(dados_menu.tipomenu,dados_menu.entidade);
 		clearMenuLeft();
-		if (dados_menu.filhos.length > 0){			
+		if (dados_menu.filhos.length > 0){
 			menuleft(dados_menu.id);
 		}
 	});

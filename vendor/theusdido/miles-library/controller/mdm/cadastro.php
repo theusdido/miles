@@ -72,7 +72,7 @@
             }
         break;
         case 'load';
-            tdc::wj( tdc::rua(ENTIDADE,tdc::r('_entidade')));
+            tdc::w( Entity::getJSON(tdc::r('_entidade')) );
         break;
 		case 'alterar_id':
             $_entidade      = tdc::r('_entidade');
@@ -188,7 +188,7 @@
                 $query 	= $conn->query($sql);
             }
 
-            tdc::wj(['id' => $id]);
+            tdc::wj(['id' => $id , '_data' => Entity::getJSON($id)]);
         break;
 
         case 'listar-campos':
@@ -386,11 +386,11 @@
                     var_dump($error);
                 }
             }else{
-                echo $id_retorno;
+                tdc::wj(['id' => $id , '_data' => Field::getJSON($id)]);
             }
         break;
         case 'load-atributo';
-            tdc::wj( tdc::rua(ATRIBUTO,tdc::r('_atributo')));
+            tdc::w( Field::getJSON(tdc::r('_atributo')) );
         break;
         case 'excluir-campo':
             $atributo   = tdc::a(tdc::r('_atributo'));

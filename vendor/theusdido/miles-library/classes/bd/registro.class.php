@@ -309,10 +309,18 @@ abstract class Registro {
 		Retorna se os dados da entidade foram carregados
 	*/
 	public function hasData(){
-		if ($this->dados == null || empty($this->dados) || $this->dados == ''){
-			return false;
+		if (gettype($this->dados) === 'array'){
+			if (sizeof($this->dados) <= 0){
+				return false;
+			}else{
+				return true;
+			}
 		}else{
-			return true;
+			if ($this->dados == null || empty($this->dados) || $this->dados == ''){
+				return false;
+			}else{
+				return true;
+			}
 		}
 	}
 	
@@ -469,5 +477,42 @@ abstract class Registro {
 	{
 		if ($this->carregar($this->id) == false) return false;
 		else return true;
+	}
+
+	/*  
+		* Método appendC
+	    * Data de Criacao: 14/01/2022
+	    * Author @theusdido
+
+		Retorna o registro vazio caso não encontre o critério
+	*/
+	public function newNotExistsCriteria($criterio){
+		$dataset = tdc::d($this->getEntidade(),$criterio);
+		if (sizeof($dataset) <= 0){
+			$entidade = tdc::p($this->getEntidade());
+			return $entidade;
+		}else{
+			$dataset[0]->isUpdate();
+			return $dataset[0];
+		}
+	}
+
+	/*  
+		* Método setInativar
+	    * Data de Criacao: 24/02/2024
+	    * Author @theusdido
+
+		Inativa ou ativa um registro		
+	*/	
+	public function setInativar($inativo = true){
+		try{
+			if (gettype($inativo) == 'string'){
+				$inativo = json_decode($inativo);
+			} 
+			$this->inativo = $inativo;
+			return true;
+		}catch(Throwable $t){
+			return false;
+		}
 	}
 }

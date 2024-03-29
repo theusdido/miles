@@ -33,7 +33,7 @@ class Aba Extends Elemento {
 		$this->role 			= "tabpanel";
 		$this->class			= "td-aba";
 
-		$this->menu = tdClass::Criar("ul");
+		$this->menu 			= tdClass::Criar("ul");
 		$this->menu->class 		= "nav";
 		$this->menu->role 		= "tablist";		
 
@@ -43,23 +43,30 @@ class Aba Extends Elemento {
 	}
 
 	public function addItem($item,$conteudo="",$classABA = "",$indiceAba = ""){
-		$id = $indiceAba . "-" . $this->contexto . "-conteudo-aba" . $this->indice;
-		$li = tdClass::Criar("li");
-		$li->role = "presentation";		
-		if ($classABA!=""){
+		$id 			= $indiceAba . "-" . $this->contexto . "-conteudo-aba" . $this->indice;
+		$li 			= tdClass::Criar("li");
+		$li->role 		= "presentation";
+		$li->class 		= 'nav-item';
+
+		if ($classABA != ''){
 			$li->class = $classABA;
 		}
+
 		if ($this->indice == 0){
-			$li->class = " active";
+			$li->class 			= " active";
+			$li->aria_current	= "page";
 		}
-		
-		$a = tdClass::Criar("hyperlink");
+
+		$a 						= tdClass::Criar("hyperlink");
+		$a->class				= 'nav-link';
 		$a->add($item);
-		$a->href				= '#'.$id;
+		$a->href				= '#' . $id;
 		$a->data_toggle			= "tab";
 		$a->role 				= "tab";
 		$a->aria_controls		= $id;
 		$a->aria_expanded 		= ($this->indice==0)?"true":"false";
+		$a->data_bs_toggle		= "tab";
+		$a->data_bs_target		= '#' . $id;
 		$li->add($a);
 		$this->menu->add($li);
 

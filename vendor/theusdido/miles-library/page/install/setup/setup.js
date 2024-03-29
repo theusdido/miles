@@ -4,6 +4,10 @@
         loadDefault();
         $('#loader-instalar').attr('src',session.urlloading2);
         $('#loading-atualizar-personalizado').attr('src',session.urlloading2);
+
+        $('#projectfolder').blur(function(){
+            $('#dominio').val('http://localhost/' + $(this).val() + '/');
+        });
     });
 
     var showpersonalizar    = false;
@@ -71,6 +75,12 @@
     let progressaoatual     = 0;
 
     $("#btn-instalar").click(function(){
+
+        if ($("#projectfolder").val() == ''){
+            $("#retorno").html('<div class="alert alert-danger" role="alert">Defina o diretório do projeto.</div>');
+            $("#retorno").show();
+            return;
+        }
         for (c in componentes){
             linhas.push(componentes[c]);
         }
@@ -97,7 +107,7 @@
                     executa(linhas[progressaoatual]);
                 }else{
                     $("#retorno").html('<div class="alert alert-danger" role="alert">Erro ao instalar o sistema. Motivo: ' +retorno+ '</div>');
-                    $("#retorno").show();				
+                    $("#retorno").show();
                 }
             },
             complete:function(){
@@ -180,6 +190,7 @@
                                 nome:$("#projectname").val()
                             }
                         });
+                        // Registros Default
                         $.ajax({
                             type:"POST",
                             url:session.urlmiles,
@@ -200,6 +211,7 @@
                                 });
                             }
                         });
+                        // Estrutura de arquivos
                         $.ajax({
                             type:"POST",
                             url:session.urlmiles,
@@ -209,12 +221,22 @@
                                 nome:$("#projectname").val()
                             }
                         });
+                        // Compatibilidade de versões
                         $.ajax({
                             type:"POST",
                             url:session.urlmiles,
                             data:{
                                 controller:'install/instalar',
                                 op:"versao"
+                            }
+                        });
+                        // Javascript File MDM
+                        $.ajax({
+                            type:"POST",
+                            url:session.urlmiles,
+                            data:{
+                                controller:'install/instalar',
+                                op:"javascriptfile"
                             }
                         });
                     }
@@ -248,6 +270,12 @@
             },
             complete:function(_res){
                 let _data = _res.responseJSON;
+
+                if (_data == undefined){
+                    console.warn('Arquivo de configuração padrão não foi encontrado!');
+                    return;
+                }
+
                 $('#projectname').val(_data.nome);
                 $('#projectfolder').val(_data.diretorio);
                 $('#prefixo').val(_data.prefixo);

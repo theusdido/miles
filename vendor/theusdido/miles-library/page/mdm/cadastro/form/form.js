@@ -65,23 +65,23 @@ function alterarIdEntidade()
 $('#btn-salvar-cadastro').click(function(){    
     _registro_entidade = {
         // Campos Inputs
-        nome:$('#nome').val(),
-        descricao:$('#descricao').val(),
-        ncolunas:$('#ncolunas').val(),
-        campodescchave:$('#campodescchave').val(),
-        atributogeneralizacao:$('#atributogeneralizacao').val(),
+        nome                            :$('#nome').val(),
+        descricao                       :$('#descricao').val(),
+        ncolunas                        :$('#ncolunas').val(),
+        campodescchave                  :$('#campodescchave').val(),
+        atributogeneralizacao           :$('#atributogeneralizacao').val(),
 
         // Campos Checkbox
-        exibirmenuadministracao:$('#exibirmenuadministracao').prop('checked'),
-        exibirlegenda:$('#exibirlegenda').prop('checked'),
-        registrounico:$('#registrounico').prop('checked'),
-        carregarlibjavascript:$('#carregarlibjavascript').prop('checked'),
-        exibircabecalho:$('#exibircabecalho').prop('checked'),
-        entidadeauxiliar:$('#entidadeauxiliar').prop('checked'),
-        criarprojeto:$('#criarprojeto').prop('checked'),
-        criarempresa:$('#criarempresa').prop('checked'),
-        criarauth:$('#criarauth').prop('checked'),
-        tipoaba:$('input[type=radio][name=tipoaba]:checked').val()
+        exibirmenuadministracao         :$('#exibirmenuadministracao').prop('checked'),
+        exibirlegenda                   :$('#exibirlegenda').prop('checked'),
+        registrounico                   :$('#registrounico').prop('checked'),
+        carregarlibjavascript           :$('#carregarlibjavascript').prop('checked'),
+        exibircabecalho                 :$('#exibircabecalho').prop('checked'),
+        entidadeauxiliar                :$('#entidadeauxiliar').prop('checked'),
+        criarprojeto                    :$('#criarprojeto').prop('checked'),
+        criarempresa                    :$('#criarempresa').prop('checked'),
+        criarauth                       :$('#criarauth').prop('checked'),
+        tipoaba                         :$('input[type=radio][name=tipoaba]:checked').val()
     }
 
     let _opt = {
@@ -99,14 +99,16 @@ $('#btn-salvar-cadastro').click(function(){
         },
         complete:function(_res){
             let _ret        = _res.responseJSON;
-            setEntidade(_ret.id);
+            _entidade       = _ret.id;
+
+            setMonitorStorage('entidade',JSON.parse(_ret._data));
             unLoaderSalvar();
             mdmToastMessage("Salvo com Sucesso");
 
-            let _gerarhtml = new gerarHTML();
-            _gerarhtml._entidade_id    = _entidade;
-            _gerarhtml._conceito       = 'cadastro';
-            _gerarhtml._conceito_id    = _entidade;
+            let _gerarhtml              = new gerarHTML();
+            _gerarhtml._entidade_id     = _entidade;
+            _gerarhtml._conceito        = 'cadastro';
+            _gerarhtml._conceito_id     = _entidade;
             _gerarhtml.conceito();
 
         },
@@ -126,46 +128,24 @@ function load(){
             op:'load'
         },
         complete:function(_res){
-            let _data       = _res.responseJSON;
-            _entidade_obj   = _data;            
-            
-            setEntidade(_data);
-            debugger;
+            let _data       = JSON.parse(_res.responseText);
 
-            $('#id').val(_data.id);
-            $('#nome').val(_data.nome);
-            $('#descricao').val(_data.descricao);
-            $('#ncolunas').val(_data.ncolunas);
-            $('#campodescchave').val(_data.campodescchave == null ? 0 : _data.campodescchave);
-            $('#atributogeneralizacao').val(_data.atributogeneralizacao == null ? 0 : _data.atributogeneralizacao);
-
-            $('#exibirmenuadministracao').attr('checked',_data.exibirmenuadministracao == 0 ? false : true);
-            $('#exibirlegenda').attr('checked',_data.exibirlegenda == 0 ? false : true);
-            $('#registrounico').attr('checked',_data.registrounico == 0 ? false : true);
-            $('#carregarlibjavascript').attr('checked',_data.carregarlibjavascript == 0 ? false : true);
-            $('#exibircabecalho').attr('checked',_data.exibircabecalho == 0 ? false : true);
-            $('#entidadeauxiliar').attr('checked',_data.entidadeauxiliar == 0 ? false : true);
-
+            setMonitorStorage('entidade',_data);
             setTipoAba(_data.tipoaba);
+            
+            $('#id')                            .val(_data.id);
+            $('#nome')                          .val(_data.nome);
+            $('#descricao')                     .val(_data.descricao);
+            $('#ncolunas')                      .val(_data.ncolunas);
+            $('#campodescchave')                .val(_data.campodescchave == null ? 0 : _data.campodescchave);
+            $('#atributogeneralizacao')         .val(_data.atributogeneralizacao == null ? 0 : _data.atributogeneralizacao);
+
+            $('#exibirmenuadministracao')       .attr('checked',_data.exibirmenuadministracao == 0 ? false : true);
+            $('#exibirlegenda')                 .attr('checked',_data.exibirlegenda == 0 ? false : true);
+            $('#registrounico')                 .attr('checked',_data.registrounico == 0 ? false : true);
+            $('#carregarlibjavascript')         .attr('checked',_data.carregarlibjavascript == 0 ? false : true);
+            $('#exibircabecalho')               .attr('checked',_data.exibircabecalho == 0 ? false : true);
+            $('#entidadeauxiliar')              .attr('checked',_data.entidadeauxiliar == 0 ? false : true);
         }
     });
-}
-
-function setEntidade(_data){ 
-    localStorage.setItem('monitor_entidade',
-    JSON.stringify({
-        id:_data.id,
-        nome:_data.nome,
-        descricao:_data.descricao,
-        exibirmenuadministracao:_data.exibirmenuadministracao,
-        exibircabecalho:_data.exibircabecalho,
-        pai:_data.pai,
-        ncolunas:_data.ncolunas,
-        campodescchave:_data.campodescchave,
-        atributogeneralizacao:_data.atributogeneralizacao,
-        exibirlegenda:_data.exibirlegenda,
-        registrounico:_data.registrounico,
-        pacote:_data.pacote,
-        nomecompleto:((_data.pacote==""?"":_data.pacote + ".")) + _data.nome
-    }));
 }

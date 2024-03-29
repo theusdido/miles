@@ -11,7 +11,6 @@ function tdFormulario (){
 	this.temp_registro				= 0;
     this.CKEditores                 = [];
     this.dadosatributodependencia   = [];
-    this.registrounico              = false;
 	this.monitorformdadospreenchido	= [];
 	this.entidades_filho			= [];
 	this.is_pai						= false;
@@ -32,6 +31,7 @@ function tdFormulario (){
 	this.is_loaded					= false;
 	this.checklists					= [];
 	this._dados_checklist 			= [];
+	this.switch_inativo_selector 	= '.descricaoExibirEdicao .td-switch-inativo input';
 }
 
 tdFormulario.prototype.construct = function(entidade_id,registro_id = 0,entidade_pai = 0,extras = {}){
@@ -100,13 +100,14 @@ tdFormulario.prototype.novo = function(){
 		this.dados.splice(0,this.dados.length); // Limpa array "dados"
 		this.dadosatributodependencia.splice(0,this.dadosatributodependencia.length);
 		this.setCkEditores();
+		this.setBotaoTraduzir();
 		$(".descricaoExibirEdicao").hide();
 	}else{
 		$('.form-control[id=id][data-entidade="' + this.entidade.id + '"]').val(id_init_val);
 	}
 
 	if (this.entidade != undefined){
-		if (this.entidade.registrounico){
+		if (this.isRegistroUnico()){
 			$(contextoAdd).find(".b-voltar").first().hide();
 		}
 	}else{
@@ -163,6 +164,16 @@ tdFormulario.prototype.novo = function(){
 		if (parseInt(atributoID) != 0 && atributoID != "" && atributoID != undefined){
 			let attr_selector = "#" + td_atributo[atributoID].nome + '[data-entidade="'+entidadeAttr+'"]';
 
+
+			if ($(attr_selector,contextoAdd).hasClass("checkbox-sn")){
+				let checkbox_element = $(attr_selector,contextoAdd).parent('.form-group').find('.checkbox-s,.checkbox-n');
+				checkbox_element.click(function(){
+					checkbox_element.removeClass('active');
+					$(attr_selector,contextoAdd).val($(this).val());
+					$(this).addClass('active');
+				});
+			}
+
 			if (valor == ''){
 				if ($(attr_selector,contextoAdd).hasClass("checkbox-sn")){
 					$(attr_selector,contextoAdd).val(0);
@@ -179,11 +190,12 @@ tdFormulario.prototype.novo = function(){
 			if ($(attr_selector,contextoAdd).hasClass("td-file-hidden")){
 				$(attr_selector,contextoAdd).parents(".form-group").find("iframe").first().attr("src",getURLProject("index.php?controller=upload&atributo="+td_atributo[atributoID].id+"&valor=&id=" + indicetemp));
 			}
+			
 		}
 
 		$(".checkbox-s",contextoAdd).removeClass("active");
 		$(".checkbox-n",contextoAdd).addClass("active");
-
+		
 	});
 
 	$(".form-group",contextoAdd).removeClass("has-success");
@@ -723,7 +735,6 @@ tdFormulario.prototype.salvar = function(){
 			let $_relacionamento		= td_relacionamento[rSalvar];
 			let $_relacionamento_tipo 	= $_relacionamento.tipo;
 			let $_relacionamento_filho	= $_relacionamento.filho;
-			let $_relacionamento_pai	= $_relacionamento.pai;
 
 			// Testa se a entidade é filho
 			if ($_relacionamento_filho == this.entidade_id){
@@ -801,7 +812,8 @@ tdFormulario.prototype.salvar = function(){
 			url:config.urlsaveform,
 			data:{
 				dados:dadosenviar,
-				checklist:this._dados_checklist
+				checklist:this._dados_checklist,
+				inativo:this.getSwitchInativoValue()
 			},
 			instancia:this,
 			dataType:"json",
@@ -935,9 +947,13 @@ tdFormulario.prototype.liberaBotaoSalvar = function(){
 tdFormulario.prototype.exibirDadosEdicao =  function(){
 	let campodescchave = this.entidade.campodescchave;
 	if (campodescchave != "" && campodescchave != 0){
-		$(".descricaoExibirEdicao .campodescricaoExibirEdicao").html($("#" + td_atributo[campodescchave].nome,this.getContexto()).val());
-		$(".descricaoExibirEdicao .idExibirEdicao").html("<small>ID: </small>" + this.registro_id);
-		$(".descricaoExibirEdicao").show();
+		let display_campochavedesc 	= $(".descricaoExibirEdicao");
+		let campo_descricao 		= display_campochavedesc.find('.campodescricaoExibirEdicao');
+		let campo_id 				= display_campochavedesc.find('.idExibirEdicao');
+
+		campo_descricao.html($("#" + td_atributo[campodescchave].nome,this.getContexto()).val());
+		campo_id.html("<small>ID: </small>" + this.registro_id + ' <br/> ');
+		display_campochavedesc.show();
 	}
 }
 
@@ -945,7 +961,7 @@ tdFormulario.prototype.editar = function(){
 
 	if (typeof beforeEdit === "function") beforeEdit(this.entidade.id,this.registro_id);
 
-	//Limpa o formulário para edição de um novo registro
+	// Limpa o formulário para edição de um novo registro
 	this.novo();
 
 	addLog("", "", "", this.entidade.id,this.registro_id, 7, "");
@@ -1029,6 +1045,7 @@ tdFormulario.prototype.editar = function(){
 				if (tipoRelacionamento == "" || tipoRelacionamento == 1 || tipoRelacionamento == 7 || tipoRelacionamento == 3 || tipoRelacionamento == 9){
 					if (r.fp){
 						this.setaPrimeiraAba();
+						this.setSwitchInativoValue(r.inativo);
 					}
 					
 					this.setDados(r);
@@ -1178,7 +1195,7 @@ tdFormulario.prototype.setDados = function(dados){
 				console.log("Erro ao abrir CKEditor no Celular");
 				console.log(e);
 			}
-		}	
+		}
 		if (direto){
 			$('#' + dado.atributo + '[data-entidade="'+entidade_nome+'"]',contextoAdd).val(valorDados);
 		}	
@@ -1939,13 +1956,64 @@ tdFormulario.prototype.setGeneralizaoAba = function(_entidade_filho){
 }
 
 tdFormulario.prototype.setGeneralizacaoMultipla = function (){
-	//if ($("#select-generalizacao-multipla").length > 0){
-		$(".generalizacaoABA-M").hide();
-		for(rm in td_relacionamento){
-			if (td_relacionamento[rm].tipo == 9 && td_relacionamento[rm].pai == this.entidade_id){
-				var opt = $("<option value='"+td_relacionamento[rm].filho+"'>"+td_relacionamento[rm].descricao+"</option>");
-				$("#select-generalizacao-multipla").append(opt);
-			}
+	$(".generalizacaoABA-M").hide();
+	for(rm in td_relacionamento){
+		if (td_relacionamento[rm].tipo == 9 && td_relacionamento[rm].pai == this.entidade_id){
+			var opt = $("<option value='"+td_relacionamento[rm].filho+"'>"+td_relacionamento[rm].descricao+"</option>");
+			$("#select-generalizacao-multipla").append(opt);
 		}
-	//}
+	}
+}
+
+tdFormulario.prototype.setBotaoTraduzir = function(){
+
+	$('.btn-traduzir-campo',this.getContexto()).click(function(e){
+		e.preventDefault();
+		e.stopPropagation();
+
+		let _atributo 	= $(this).parents('.form-group').first().find('input').attr('atributo');
+		let _registro	= $(this).parents('.crud-contexto-add').first().find('#id').val();
+		let _texto		= $(this).parents('.form-group').first().find('input').val();
+
+		$.ajax({
+			url:session.urlmiles,
+			data:{
+				controller:'page',
+				page:'idioma/traduzir'
+			},
+			complete:function(res){
+				$('.modal-traduzir-campo .modal-body').html(res.responseText);
+				$('.modal-traduzir-campo').modal('show');
+
+				$('.modal-traduzir-campo .modal-body #atributo').val(_atributo);
+				$('.modal-traduzir-campo .modal-body #registro').val(_registro);
+				$('.texto-traduzir').html(_texto);
+
+				$(".modal-traduzir-campo").on('hidden.bs.modal', function (e){
+					console.log('Fechou o modal de tradução ... ');
+				});
+			}
+		});
+	});
+
+}
+
+tdFormulario.prototype.isRegistroUnico = function(){
+
+	if (this.entidade != null && this.entidade != undefined){
+		if (this.entidade.registrounico == 0) this.is_registrounico = false;
+		if (this.entidade.registrounico == 1) this.is_registrounico = true;
+	}
+
+	if (this.is_registrounico == 0) return false;
+	if (this.is_registrounico == 1) return true;
+
+	return this.is_registrounico;
+}
+
+tdFormulario.prototype.setSwitchInativoValue = function(inativo_value){
+	$(this.switch_inativo_selector).prop('checked',inativo_value);
+}
+tdFormulario.prototype.getSwitchInativoValue = function(){
+	return $(this.switch_inativo_selector).prop('checked');
 }

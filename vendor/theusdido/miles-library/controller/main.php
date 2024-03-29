@@ -4,8 +4,8 @@
 	$pagina = tdClass::Criar("pagina");
 
 	// Root do Sistema
-	$root = tdc::o("div");
-    $root->id = "miles-root";
+	$root 		= tdc::o("div");
+    $root->id 	= "miles-root";
 
 	if (Session::get()->autenticado){
         // Renderiza o template
@@ -37,4 +37,5 @@
 		if (file_exists($systemautentica)) include $systemautentica;
     }
 	$pagina->body->add($root,$jsTemplate);
+	$pagina->addScript(Config::getJsConfig());
 	$pagina->mostrar();

@@ -24,13 +24,14 @@
             $pathfileuploadtemp		= $_data["pathfileuploadtemp"];
             $tipogradedados			= $_data["tipogradedados"];
             $casasdecimais			= $_data["casasdecimais"];
+            $multiidioma			= $_data["multiidioma"];
     
             $sql = "UPDATE ".CONFIG." SET urlupload = '{$urlupload}' ,urlrequisicoes = '{$urlrequisicoes}', urlsaveform = '{$urlsaveform}' 
             , urlloadform = '{$urlloadform}', urlpesquisafiltro = '{$urlpesquisafiltro}', urlenderecofiltro = '{$urlenderecofiltro}'
             , urlexcluirregistros = '{$urlexcluirregistros}', linguagemprogramacao = '{$linguagemprogramacao}', bancodados = '{$bancodados}' 
             , urlinicializacao = '{$urlinicializacao}', urlloadgradededados = '{$urlloadgradededados}', urlloading = '{$urlloading}'
             , urlrelatorio = '{$urlrelatorio}' , urlmenu = '{$urlmenu}', pathfileupload = '{$pathfileupload}' , pathfileuploadtemp = '{$pathfileuploadtemp}'
-            , tipogradedados = '{$tipogradedados}' , urluploadform = '{$urluploadform}', casasdecimais = {$casasdecimais}
+            , tipogradedados = '{$tipogradedados}' , urluploadform = '{$urluploadform}', casasdecimais = {$casasdecimais}, multiidioma = {$multiidioma}
 
             WHERE id=1; ";
             $query = $conn->query($sql);

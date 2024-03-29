@@ -28,11 +28,16 @@ $('#btn-salvar-relatorio').click(function(){
 			urlpersonalizada    :$('#urlpersonalizada').val()
         },
         complete:function(_res){
-            let _retorno = _res.responseJSON;
-            if (_retorno.status == 'success'){
+            let _ret    = _res.responseJSON;
+            let _data   = _ret._data;
+
+
+            setMonitorStorage('relatorio',JSON.parse(_data));
+            
+            if (_ret.status == 'success'){
                 unLoaderSalvar();
                 mdmToastMessage("Salvo com Sucesso");
-                _relatorio = _retorno.id;
+                _relatorio = _ret.id;
                 load();
             }
         },
@@ -52,7 +57,11 @@ function load(){
             op:'load'
         },
         complete:function(_res){
-            let _data = _res.responseJSON;
+            let _ret    = _res.responseJSON;
+            let _data   = JSON.parse(_ret._data);
+
+            setMonitorStorage('relatorio',_data);
+
 
             // Campos Inputs
 			$('#descricao').val(_data.descricao);

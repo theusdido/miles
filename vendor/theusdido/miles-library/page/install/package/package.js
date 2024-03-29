@@ -6,7 +6,9 @@ var package_selecionado	= '';
 var modulo_selecionado	= '';
 var modulo_name_selecionado = '';
 
+
 $(".carregar-componentes").click(function(){
+
     modulo_name_selecionado = $(this).html();
 
     // Icon abrir
@@ -34,6 +36,7 @@ $(".carregar-componentes").click(function(){
         }
 
     });
+    console.log($("#view-componente"));
     $("#view-componente").modal({
         backdrop:false
     });
@@ -86,8 +89,12 @@ function instalarcomponentes(){
             $("#loader-pacotes").show();
         },
         complete:function(ret){
-            var retorno = parseInt(ret.responseText);
-            if (retorno == 1){
+            let retorno = JSON.parse(ret.responseText);
+
+            if (retorno._status == 'success'){
+                retorno._entidades.forEach((_entidade) => {
+                    setMonitorStorage('entidade',JSON.parse(_entidade));
+                });
                 instalarregistros();
                 indiceComponente++;								
                 if (componentes[indiceComponente] != undefined){									

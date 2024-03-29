@@ -30,7 +30,8 @@ class AutoLoad
 			PATH_CLASS_INTERFACE,
 			PATH_CLASS_SYSTEM,
 			PATH_CLASS_INSTALL,
-			PATH_CLASS_ECOMMERCE
+			PATH_CLASS_ECOMMERCE,
+			PATH_CLASS_IDIOMA
 		);
 		foreach ($pacote as &$p){
 			$className = strtolower($className);

@@ -61,3 +61,19 @@ function carregarAtributo(entidade){
         }
     });
 }
+
+function corrigirTipoHTML7(){
+    $.ajax({
+        url:session.urlmiles,
+        data:{
+            controller:'mdm/charset',
+            op:"corrigirtipohtml7"
+        },
+        beforeSend:function(){
+
+        },
+        complete:function(ret){
+            mdmToastMessage("Salvo com Sucesso");
+        }
+    });    
+}

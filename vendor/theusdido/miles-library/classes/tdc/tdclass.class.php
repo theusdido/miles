@@ -33,7 +33,7 @@
 					}
 				}
 			}
-			eval('$obj = new '.$classe.'('.$argumentos.');');		
+			eval('$obj = new '.$classe.'('.$argumentos.');');
 			return $obj;
 		}
 		/*

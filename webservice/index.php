@@ -17,9 +17,6 @@
 	ini_set('display_startup_erros',1);
 	error_reporting(E_ALL);	
 
-	// Retorna os dados da requisição em JSON
-	//header("Content-Type: application/json", true);
-
 	// Projeto Consumidor
 	$projetoconsumidor = isset($_GET["project"]) ? $_GET["project"] : ( isset($_POST["project"]) ? $_POST["project"] : '' );
 	if ($projetoconsumidor == ''){
@@ -41,9 +38,6 @@
 	// Limpa cachê do SOAP
 	ini_set("soap.wsdl_cache_enabled", 0);
 
-	// Arquivo de configuração miles.json
-	$_miles_json_root_file = '../miles.json';
-
 	// Carrega os arquivos de configuração do sistema
 	require '../vendor/theusdido/miles-library/autoload.php';
 
@@ -59,34 +53,7 @@
 
 	$permissao = false;
 	switch($tokenparms){
-		case md5("appfarmaciaonline"): // 1a09b8446aa30b7ae9247fa644a4e23b
-			$permissao = true;
-		break;
-		case md5("ecommerce.jp"): // 43fa61c213c85fb565748a5dd50c8186
-			$permissao = true;
-		break;
-		case md5("ecommerce.villafrancioni"): // 6d4e3a2c112f673fde3e92361614feb7
-			$permissao = true;
-		break;
-		case md5("website.cedup"): // 4beac02ce154dc140b030b95fd4bee5a
-			$permissao = true;
-		break;
-		case md5("app.idaevolta"): // d8fab2b972d2abc677a050ece3102b3e
-			$permissao = true;
-		break;
-		case md5("ecommerce.granuemporio"): // 5bbc1f5977be278e8521ee0fb2b3658a
-			$permissao = true;
-		break;
-		case md5("ecommerce.sidercomp"): // 9c372ce9eeaa680bc3c6a0252c711643
-			$permissao = true;
-		break;
-		case md5("ecommerce.primodas"): // 61d205a14cb39f75b93676bf97cf967f
-			$permissao = true;
-		break;
-		case md5("ecommerce.opticaadolfo"): // 302dfe099db99f9079447f1e3bbbe5ab
-			$permissao = true;
-		break;
-		case md5("app.turmas"): // 24c6d9674796dc7dcc66d6f6122ea070
+		case md5("miles.ws"): // e03c3599f75d548acc0232f2f3dcaa11
 			$permissao = true;
 		break;
 	}
@@ -96,7 +63,7 @@
 		exit;
 	}
 
-	//Filtros
+	//Filtrosgit 
 	$criterio = null;
 	$filtro = retornar("filtros");
 	if ($filtro!=""){
@@ -115,7 +82,7 @@
 	// Recebendos dados
 	$dados = json_decode(utf8_decode(isset($_GET["dados"])?$_GET["dados"]:(isset($_POST["dados"])?$_POST["dados"]:'')),true);
 
-	// Opção dentro do servições ( Será removido )
+	// Opção dentro do serviços ( Será removido )
 	$op = isset($_GET['op']) ? $_GET['op'] : ( isset($_POST['op']) ? $_POST['op'] : '' );
 
 	$service = '';
@@ -144,7 +111,10 @@
 
 	// Variável padrão para o recebimento de dados
 	$_data = tdc::r('_data') != '' ? json_decode(tdc::r('_data')) : new stdClass;
-	
+
+	// Sessão de seleção de língua para idioma
+	Session::append('selected_language', tdc::r('_language') != '' ? tdc::r('_language') : 0);
+
 	// Encaminha para o serviço solicitado
 	require 'rota.php';
 
@@ -157,8 +127,11 @@
 
 		// Retorna a requisição em formatado de Array
 		#echo json_encode( [$retorno] );
-		echo json_encode( $retorno );
+		$retorno['status'] 	= 'success';
 
 	}catch(Exeception $e){
-		echo json_encode($e->getMessage());
+		$retorno['status'] 	= 'error';
+		$retorno['error']	= $e->getMessage();
+	}finally{
+		echo json_encode($retorno);
 	}

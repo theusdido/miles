@@ -491,14 +491,14 @@ function retornaDadoFormatadoCampo(campo,nomeEntidadeDados,contextoAdd,valorDado
 		var nomeEntidadeReplace = td_entidade[td_atributo[getIdAtributo(campo,nomeEntidadeDados)].chaveestrangeira].nomecompleto;
 		//buscarFiltro(valorDados,nomeEntidadeReplace.replace("-","."),campo,pModalName + campo + cmodal,nomeEntidadeDados);
 	}
-	if ($("#" + campo + "[data-entidade="+nomeEntidadeDados+"]",contextoAdd).hasClass("checkbox-sn")){
-		if (valorDados == 1){
+	if ($("#" + campo + "[data-entidade="+nomeEntidadeDados+"]",contextoAdd).hasClass("checkbox-sn")){		
+		if ($_valor == 1){
 			$("#" + campo + "[data-entidade="+nomeEntidadeDados+"]",contextoAdd).parents(".form-group").find(".checkbox-s").addClass("active");
 			$("#" + campo + "[data-entidade="+nomeEntidadeDados+"]",contextoAdd).parents(".form-group").find(".checkbox-n").removeClass("active");
 		}else{
 			$("#" + campo + "[data-entidade="+nomeEntidadeDados+"]",contextoAdd).parents(".form-group").find(".checkbox-n").addClass("active");
 			$("#" + campo + "[data-entidade="+nomeEntidadeDados+"]",contextoAdd).parents(".form-group").find(".checkbox-s").removeClass("active");
-			valorDados = 0;
+			$_valor = 0;
 		}
 	}
 	if ($("#" + campo + "[data-entidade="+nomeEntidadeDados+"]",contextoAdd).hasClass("td-file-hidden")){
@@ -837,9 +837,8 @@ function carregarScriptCRUD(tipo,entidade,registro_id = 0,contexto = '',_extras 
 	}
 	switch(tipo){
 		case 'cadastro':
-			// Registro Único
-			let is_registrounico = typeof registrounico == 'undefined' ? formulario[indice_form].entidade.registrounico : registrounico;
-			if (is_registrounico){
+			// Registro Únicogit
+			if (formulario[indice_form].isRegistroUnico()){
 				formulario[indice_form].setRegistroUnico();
 			}else{
 				formulario[indice_form].loadGrade();
@@ -902,4 +901,47 @@ function toastMessage(message,class_name = 'td-message-success'){
 
 function setNenhumRegistroTable(tabela_selector,colspan = 0){
 	$(tabela_selector + " tbody").html('<tr class="warning"><td class="text-center" colspan="'+colspan+'">Nenhum registro encontrado.</td></tr>');
+}
+
+function setTdCheckboxSN($_group, $_valor){
+	if ($_valor == 1){
+		$_group.find(".checkbox-s").addClass("active");
+		$_group.find(".checkbox-n").removeClass("active");
+	}else{
+		$_group.find(".checkbox-n").addClass("active");
+		$_group.find(".checkbox-s").removeClass("active");
+		$_valor = 0;
+	}
+
+	$_group.find('.checkbox-value').val($_valor);
+}
+
+function setMonitorStorage(conceito,data){
+	_session.set('_monitor_mdm',{
+		_conceito:conceito,
+		_data:data
+	});
+}
+
+function loadAllJSConcepts(){
+	$.ajax({
+		url:session.urlmiles,
+		dataType:'json',
+		data:{
+			controller:'mdm/conceitojson'
+		},
+		complete:function(_res){
+			let _ret 	= _res.responseJSON;
+			let _type	= typeof _ret;
+
+			if (_type === 'array' || _type === 'object'){
+				_ret.forEach(function(e){
+					e._data.forEach(function(d){
+						setMonitorStorage(e._conceito,d);
+					});
+				});
+			}
+
+		}
+	});	
 }

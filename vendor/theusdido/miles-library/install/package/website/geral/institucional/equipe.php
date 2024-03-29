@@ -23,7 +23,7 @@
 	$nome 		= criarAtributo($conn,$entidadeID,"nome","Nome"	,"varchar",200,0,3	,1,0,0,"");
 	$foto		= criarAtributo($conn,$entidadeID,"foto","Foto"	,"text","",1,19	,0,0,0,"");
 	$biografia	= criarAtributo($conn,$entidadeID,"biografia"	,"Biografia"	,"text","",1,21	,0,0,0,"");
-	$cargo		= criarAtributo($conn,$entidadeID,"cargo"	,"Cargo","int",0,1,4,1,installDependencia("website_geral_cargo"));
+	$cargo		= criarAtributo($conn,$entidadeID,"cargo"	,"Cargo","int",0,1,4,1,installDependencia("website_geral_cargo","package/website/geral/institucional/equipe"));
 
 	// Seta o campo descrição
 	Entity::setDescriptionField($conn,$entidadeID,$nome,true);
