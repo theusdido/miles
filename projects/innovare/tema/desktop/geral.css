@@ -7,14 +7,17 @@
 header .topo,
 #menuprincipal .dropdown-menu,
 .modal-header,
-#menu .navbar
+.modal-header *,
+#menu .navbar,
+#nav-menu-left
 {
 	background-color: #232123 !important;
 	color: #ab9170 !important;
 
 }
 
-#menuprincipal .nav-item a
+#menuprincipal .nav-item a,
+#nav-menu-left a
 {
 	color:#FFF !important;
 }
@@ -84,4 +87,19 @@ header .topo,
 
 .icone-pequeno-cabecalho-collapse{
 	float:right;
+}
+
+.overflow-container
+{
+	border-top-color: #111;
+}
+
+#nav-menu-left
+{
+	background-color: transparent;
+}
+
+#nav-menu-left .menu-dropdown li:hover
+{
+	background-color: #000;
 }

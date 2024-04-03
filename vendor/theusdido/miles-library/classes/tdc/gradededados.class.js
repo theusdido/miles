@@ -337,14 +337,14 @@ GradeDeDados.prototype.paginacao = function(){
 
 		let center 		= $("<center>");
 		let ul 			= $('<ul class="pagination">');
-		let primeiro 	= $("<li><a class='primeiro' aria-label='Primeiro' href='#'><span class='fas fa-angle-double-left' aria-hidden='true'></span></a></li>");
+		let primeiro 	= $("<li class='page-item'><a class='page-link primeiro' aria-label='Primeiro' href='#'><span class='fas fa-angle-double-left' aria-hidden='true'></span></a></li>");
 		primeiro.click(function(e){
 			e.preventDefault();
 			e.stopPropagation();
 			instancia.irbloco(1);
 		});
 
-		let voltar 		= $("<li><a class='anterior' href='#'><span class='fas fa-angle-left' aria-hidden='true'></span></a></li>");
+		let voltar 		= $("<li class='page-item'><a class='page-link anterior' href='#'><span class='fas fa-angle-left' aria-hidden='true'></span></a></li>");
 		voltar.click(function(e){
 			e.preventDefault();
 			e.stopPropagation();			
@@ -352,7 +352,7 @@ GradeDeDados.prototype.paginacao = function(){
 		});
 
 		let li 		= $("<li>");
-		let irInput = $("<input type='text' class='irbloco-paginacao'>");
+		let irInput = $("<input type='text' class='form-control irbloco-paginacao'>");
 		irInput.val(this.blocoatual);
 		irInput.keypress(function(e){
 			var tecla = e.which;
@@ -362,14 +362,14 @@ GradeDeDados.prototype.paginacao = function(){
 		});
 
 		let ir 			= li.append(irInput);
-		let proximo 	= $("<li><a class='proximo' href='#'><span class='fas fa-angle-right' aria-hidden='true'></span></a></li>");
+		let proximo 	= $("<li class='page-item'><a class='page-link proximo' href='#'><span class='fas fa-angle-right' aria-hidden='true'></span></a></li>");
 		proximo.click(function(e){
 			e.preventDefault();
 			e.stopPropagation();			
 			instancia.irbloco(parseInt(instancia.blocoatual)+1);
 		});
 
-		let ultimo 		= $("<li><a class='ultimo' aria-label='Último' href='#'><span class='fas fa-angle-double-right' aria-hidden='true' ></span></a></li>");
+		let ultimo 		= $("<li class='page-item'><a class='page-link ultimo' aria-label='Último' href='#'><span class='fas fa-angle-double-right' aria-hidden='true' ></span></a></li>");
 		ultimo.click(function(e){
 			e.preventDefault();
 			e.stopPropagation();			
@@ -380,7 +380,7 @@ GradeDeDados.prototype.paginacao = function(){
 		ul.append(voltar);
 
 		for (i=1;i<=10;i++){
-			var bloco = $("<li><a class='pagina' data-bloco='"+i+"' href='#' onclick="+this.instancia+"GD.irbloco("+i+")>"+i+"</a></li>");
+			var bloco = $("<li class='page-item'><a class='page-link pagina' data-bloco='"+i+"' href='#' onclick="+this.instancia+"GD.irbloco("+i+")>"+i+"</a></li>");
 			if (5 == i){
 				ul.append(ir);
 			}
@@ -423,13 +423,13 @@ GradeDeDados.prototype.pesquisa = function(){
 		let inputGroup 		= $("<div class='input-group'>");
 		let input 			= $("<input type='text' placeholder='Digite um termo para pesquisar' name='termo_pesquisa_gd' id='"+this.nomeEntidade+"_termo_pesquisa_gd' aria-label='Digite um termo para pesquisar' class='form-control'>");
 		let inputGroupBtn 	= $("<div class='input-group-btn'>");
-		let btnSalvar 		= $("<button aria-expanded='false' data-toggle='dropdown' class='btn btn-default dropdown-toggle' type='button'>");
+		let btnSalvar 		= $("<button aria-expanded='false' data-toggle='dropdown' data-bs-toggle='dropdown' class='btn btn-secondary dropdown-toggle' type='button'>");
 		let spanSalvar 		= $("<span id='ajb_pessoa_span_atributo_pesquisa_gd' data-atributopesquisa='id' data-atributotipo='int'>"+this.attr_cabecalho_descricao[0]+"</span>");
 		let caret 			= $("<span class='caret'>");
-		let ul 				= $("<ul role='menu' class='dropdown-menu dropdown-menu-right' id='ajb_pessoa_ul_atributo_pesquisa_gd'>");	
+		let ul 				= $("<ul role='menu' class='dropdown-menu dropdown-menu-right'>");	
 		for (a in this.attr_cabecalho_descricao){
 			let li 		= $("<li>");
-			let link 	= $("<a data-tipo='"+this.attr_cabecalho_tipo[a]+"' data-entidadenome='"+this.nomeEntidade+"' data-atributoname='"+this.attr_cabecalho_nome[a]+"' href='#'>"+this.attr_cabecalho_descricao[a]+"</a>");
+			let link 	= $("<a class='dropdown-item' data-tipo='"+this.attr_cabecalho_tipo[a]+"' data-entidadenome='"+this.nomeEntidade+"' data-atributoname='"+this.attr_cabecalho_nome[a]+"' href='#'>"+this.attr_cabecalho_descricao[a]+"</a>");
 			link.click(function(){
 				spanSalvar.attr("data-atributopesquisa",$(this).data("atributoname"));
 				spanSalvar.attr("data-atributotipo",$(this).data("tipo"));
@@ -438,7 +438,7 @@ GradeDeDados.prototype.pesquisa = function(){
 			li.append(link);
 			ul.append(li);
 		}
-		let btnbuscargd 	= $("<button class='btn btn-default'>Pesquisar</button>");
+		let btnbuscargd 	= $("<button class='btn btn-light btn-pesquisa-grade'>Pesquisar</button>");
 		btnbuscargd.click(function(){
 			if (input.val() != ""){				
 				instancia.filtroPesquisa = spanSalvar.attr("data-atributopesquisa") + "^" + input.val() + "^" + spanSalvar.attr("data-atributotipo");
@@ -593,7 +593,7 @@ GradeDeDados.prototype.rodape = function(){
 				let instancia 	= this;
 
 				// Excluir Selecionados
-				let btnExcluirTodos = $("<input type='button' style='float:right;' value='Excluir Selecionados' class='btn btn-default btn-excluir-selecionados'>");
+				let btnExcluirTodos = $("<input type='button' style='float:right;' value='Excluir Selecionados' class='btn btn-light btn-excluir-selecionados'>");
 				btnExcluirTodos.click(function(){
 					instancia.excluir();
 				});
@@ -916,16 +916,16 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
 		tr.append(td);
 	}
 
-	let btnOutraJanela = "<td align='center'><span onclick=outrajanela(this,38978,'index.php?controller=crud&amp;id=38978&amp;op=add&amp;t=19&amp;filtro_rel_nn=&amp;modal=true'); class='botao fas fa-external-link-alt btn btn-default'></span></td>";
+	let btnOutraJanela = "<td align='center'><span onclick=outrajanela(this,38978,'index.php?controller=crud&amp;id=38978&amp;op=add&amp;t=19&amp;filtro_rel_nn=&amp;modal=true'); class='botao fas fa-external-link-alt btn btn-light'></span></td>";
 
 	let btnMovimentacao;
 	if (this.isExibirMovimentacao()){
-		let spanMovimentacao 	= $("<span reg='"+tr_indice+"' class='botao fas fa-share btn btn-default' onclick=movimentacao('"+this.entidade+"','"+tr_indice+"',"+this.movimentacao+")></span>");
+		let spanMovimentacao 	= $("<span reg='"+tr_indice+"' class='botao fas fa-share btn btn-light' onclick=movimentacao('"+this.entidade+"','"+tr_indice+"',"+this.movimentacao+")></span>");
 		btnMovimentacao 		= $("<td align='center' class='editar-coluna-gradededados'></td>");
 		btnMovimentacao.append(spanMovimentacao);
 	}
 	
-	let spanEditar = $("<span reg='"+tr_indice+"' data-entidade='"+this.entidade+"' data-funcionalidade='"+this.funcionalidade+"' class='botao fas fa-pencil-alt btn btn-default' ></span>");	
+	let spanEditar = $("<span reg='"+tr_indice+"' data-entidade='"+this.entidade+"' data-funcionalidade='"+this.funcionalidade+"' class='botao fas fa-pencil-alt btn btn-light' ></span>");	
 	spanEditar.on("click",function(){
 		let entidadeid 		= $(this).data("entidade");
 		let id 				= $(this).attr("reg");

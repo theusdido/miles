@@ -1,17 +1,4 @@
 /* Folha de Estilo */
-.navbar-default{
-	background-color:#fafafa;
-	border:0px;
-}
-.navbar-brand img{
-	margin:-3px auto;
-	float:left;
-}
-.navbar-brand label {
-	margin:auto 10px;
-	float:left;
-	color:#999;
-}
 #table-lista-entidade .btn-default{
 	border:0px;
 }

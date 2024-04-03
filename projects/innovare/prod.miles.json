@@ -9,7 +9,7 @@
     "folder":"miles/",
     "system": {
         "url": {
-            "lib": "http://ws.teia.tec.br/miles/repository/lib/"
+            "lib": "https://ws.teia.tec.br/miles/repository/lib/"
         },
         "request_protocol": "http",
         "packages": []
@@ -55,7 +55,7 @@
                 "domain":"ws.teia.tec.br/innovareadministradora.com.br"
             },
             "system":{
-                "request_protocol": "http",
+                "request_protocol": "https",
                 "force_https":false,
                 "is_fixed_domain":false
             }

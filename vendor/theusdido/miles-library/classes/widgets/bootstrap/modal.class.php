@@ -35,16 +35,6 @@ class Modal Extends Elemento {
 	public function addHeader($titulo="",$bloco=null){
 		$this->header 			= tdClass::Criar("div");
 		$this->header->class 	= "modal-header";
-		
-		if ($this->exibirbotaofechar){
-			$btn_fechar 					= tdClass::Criar("button");
-			$btn_fechar->class 				= "close";
-			$btn_fechar->data_dismiss 		= "modal";
-			$btn_fechar->data_bs_dismiss 	= "modal";
-			$btn_fechar->aria_hidden 		= "true";
-			$btn_fechar->add("&times;");
-			$this->header->add($btn_fechar);
-		}
 
 		if ($titulo != ""){
 			$h = tdClass::Criar("h",array(4));
@@ -52,7 +42,18 @@ class Modal Extends Elemento {
 			$h->id = "myModalLabel";
 			$h->add($titulo);
 			$this->header->add($h);
+		}		
+		
+		if ($this->exibirbotaofechar){
+			$btn_fechar 					= tdClass::Criar("button");
+			$btn_fechar->class 				= "close btn-close";
+			$btn_fechar->data_dismiss 		= "modal";
+			$btn_fechar->data_bs_dismiss 	= "modal";
+			$btn_fechar->aria_hidden 		= "true";
+			$btn_fechar->add("&times;");
+			$this->header->add($btn_fechar);
 		}
+
 		if ($bloco!=null) $this->header->add($bloco);
 	}
 	public function AddBody($bloco){

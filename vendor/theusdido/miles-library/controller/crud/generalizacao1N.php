@@ -12,7 +12,7 @@
 		
 		// Cria um SELECT para opção de escolha
 		$select 		= tdClass::Criar("select");
-		$select->class 	= "form-control input-sm select-flag-generalizacao";
+		$select->class 	= "form-control input-sm select-flag-generalizacao form-select";
 		$select->id 	= "select-generalizacao-unica";
 	}
 
