@@ -251,20 +251,20 @@ class TdFormulario Extends Elemento {
 				// Campo Senha
 				case "6":
 					$campo->label->add(tdc::utf8($coluna->descricao));
-					$campo->label->for = $coluna->nome;
-					$campo->label->class = "control-label";
+					$campo->label->for 		= $coluna->nome;
+					$campo->label->class 	= "control-label";
 					$campo->label->add($asteriscoobrigatorio);
-					$campo->input->id = $coluna->nome;
-					$campo->input->name = $coluna->nome;
-					$campo->input->type = "password";
-					$campo->input->class = "form-control input-sm " . ($this->fp != ""?$this->fp:"");
+					$campo->input->id 		= $coluna->nome;
+					$campo->input->name 	= $coluna->nome;
+					$campo->input->type 	= "password";
+					$campo->input->class 	= "form-control input-sm " . ($this->fp != ""?$this->fp:"");
 					if ($coluna->exibirgradededados ==1) $campo->input->class = $this->gd;
 					if ($coluna->readonly) $campo->input->readonly = "true";
 					if ($coluna->desabilitar) $campo->input->disabled = "true";
 					if ($coluna->nulo==0) $campo->input->required = "true";
-					$campo->input->data_entidade = $entidadeCOL;
-					$campo->input->atributo = $coluna->id;
-					$campo->input->value = $initialValue;
+					$campo->input->data_entidade 	= $entidadeCOL;
+					$campo->input->atributo 		= $coluna->id;
+					$campo->input->value 			= $initialValue;
 				break;
 				// Checkbox
 				case "7":
