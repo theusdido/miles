@@ -20,5 +20,5 @@ composer.lock
 error.log
 access.log
 reset.php
-projects/*
+projects/innovare
 miles.json
