@@ -156,19 +156,19 @@ class TdFormulario Extends Elemento {
 				break;
 				// Lista de Seleção Única
 				case "4":
-					$label = tdClass::Criar("label");
-					$label->for = $coluna->nome;
-					$label->class = "control-label";
+					$label 			= tdClass::Criar("label");
+					$label->for 	= $coluna->nome;
+					$label->class 	= "control-label";
 					$label->add(tdc::utf8($coluna->descricao));
 					$label->add($asteriscoobrigatorio);
-					$select = tdClass::Criar("select");
-					$select->class = "form-control input-sm " . ($this->fp != ""?$this->fp:"");
+					$select 		= tdClass::Criar("select");
+					$select->class 	= "form-control input-sm form-select " . ($this->fp != ""?$this->fp:"");
 					if ($coluna->exibirgradededados ==1) $select->class = $this->gd;
 					if ($coluna->nulo==0) $select->required = "true";
-					$select->atributo = $coluna->id;
-					$select->id = $coluna->nome;
-					$select->name = $coluna->nome;
-					$select->data_entidade = $entidadeCOL;
+					$select->atributo 		= $coluna->id;
+					$select->id 			= $coluna->nome;
+					$select->name 			= $coluna->nome;
+					$select->data_entidade 	= $entidadeCOL;
 
 					if ((int)$coluna->nulo == 1){
 						$op = tdClass::Criar("option");
@@ -191,9 +191,9 @@ class TdFormulario Extends Elemento {
 					$icon_add->class = "fas fa-plus";
 
 					if ($this->funcionalidade == 'cadastro'){
-						$button_add = tdc::o("button");
-						$button_add->type = "button";
-						$button_add->class = "btn btn-default btn-add-emexecucao";
+						$button_add 			= tdc::o("button");
+						$button_add->type 		= "button";
+						$button_add->class 		= "btn btn-light btn-add-emexecucao";
 						$button_add->add($icon_add);
 						$input_group_btn->add($button_add);
 					}
@@ -214,40 +214,40 @@ class TdFormulario Extends Elemento {
 				break;
 				// Lista de Seleção Múltipla
 				case "5":
-					$label = tdClass::Criar("label");
-					$label->for = $coluna->nome;
-					$label->class = "control-label";
+					$label 				= tdClass::Criar("label");
+					$label->for 		= $coluna->nome;
+					$label->class 		= "control-label";
 					$label->add(tdc::utf8($coluna->descricao));
 					$label->add($asteriscoobrigatorio);
-					$select = tdClass::Criar("select");
-					$select->class = "form-control input-sm " . ($this->fp != ""?$this->fp:"");
+					$select 			= tdClass::Criar("select");
+					$select->class 		= "form-control input-sm form-select " . ($this->fp != ""?$this->fp:"");
 					if ($coluna->exibirgradededados ==1) $select->class = $this->gd;
 					if ($coluna->nulo==0) $select->required = "true";
-					$select->atributo = $coluna->id;
-					$select->id = $coluna->nome;
-					$select->name = $coluna->nome;
-					$select->data_entidade = $entidadeCOL;
-					$select->multiple = "multiple";
-					$select->size = 0;
+					$select->atributo 		= $coluna->id;
+					$select->id 			= $coluna->nome;
+					$select->name 			= $coluna->nome;
+					$select->data_entidade 	= $entidadeCOL;
+					$select->multiple 		= "multiple";
+					$select->size 			= 0;
 					if ((int)$coluna->nulo == 1){
 						$op = tdClass::Criar("option");
 						$op->add(("-- Selecione uma opção --"));
 						$op->value = "";
 						$select->add($op);
 					}
-					$add = $JsPopover = "";
-					$campo = tdClass::Criar("div");
-					$campo->class = "form-group";
+					$add 			= $JsPopover = "";
+					$campo 			= tdClass::Criar("div");
+					$campo->class 	= "form-group";
 	
-					$input_group = tdClass::Criar("div");
-					$input_group->class = "input-group";
+					$input_group 			= tdClass::Criar("div");
+					$input_group->class 	= "input-group";
 
-					$input_group_btn = tdClass::Criar("span");
+					$input_group_btn 		= tdClass::Criar("span");
 					$input_group_btn->class = "input-group-btn";					
 
 					$input_group->add($select,$input_group_btn);
 					$campo->add($label,$input_group);
-				break;				
+				break;
 				// Campo Senha
 				case "6":
 					$campo->label->add(tdc::utf8($coluna->descricao));

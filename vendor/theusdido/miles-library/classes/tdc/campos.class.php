@@ -377,14 +377,14 @@
 			Campo de lista única
 		*/
 		public static function Lista($id, $nome, $descricao, $opcoes = null){
-			$label = tdClass::Criar("label");
-			$label->for = $id;
-			$label->class = "control-label";
+			$label 			= tdClass::Criar("label");
+			$label->for 	= $id;
+			$label->class 	= "control-label";
 			$label->add(tdc::utf8($descricao));
-			$select = tdClass::Criar("select");
-			$select->id = $id;
-			$select->name = $nome;
-			$select->class = "form-control";
+			$select 		= tdClass::Criar("select");
+			$select->id 	= $id;
+			$select->name 	= $nome;
+			$select->class 	= "form-control form-select";
 
 			switch(gettype($opcoes)){
 				case  'array':

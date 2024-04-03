@@ -153,7 +153,7 @@ legend {
 	float:left;
 	clear:left;
 	width:100%;
-	padding:10px;
+	padding-top:10px;
 }
 .tdform .coluna {
 	float:left;
@@ -265,10 +265,9 @@ legend {
 	padding:20px;
 }
 .irbloco-paginacao{
-border: 1px solid #ddd;
+	border: 1px solid #ddd;
     float: left;
     font-weight: bold;
-	height: 33px;
     text-align: center;
     width: 50px;
 	color:#337ab7;
@@ -293,7 +292,6 @@ border: 1px solid #ddd;
 	padding-left: 6px;
 }
 .calendar-picker-group .input-group-btn button {
-	height:29px;
 	border:1px solid #DDD;
 	color:#666;
 }
@@ -310,7 +308,8 @@ border: 1px solid #ddd;
 }
 
 .filtro-pesquisa .botao-filtro,
-.filtro-pesquisa .btn-add-emexecucao
+.filtro-pesquisa .btn-add-emexecucao,
+.btn-add-emexecucao
 {
 	border:1px solid #EEE;
 }
@@ -328,7 +327,6 @@ border: 1px solid #ddd;
 	width:100%;
 }
 .tdform .coluna .form-group{
-	height:50px;
 	width:100%;
 }
 
@@ -778,6 +776,7 @@ header #menu {
 .modal-header * {
 	color:#333;
 }
+
 /* *****************************************************************
 * TDFORM
 ***************************************************************** */
@@ -798,6 +797,8 @@ header #menu {
 .paginacao-gradededados{
 	width: 100%;
 	float:left;
+	display: flex;
+	justify-content: center;
 }
 .gradededados .btn-editar-emmassa{
 	margin-right:10px;
@@ -866,6 +867,7 @@ header #menu {
 #menulateralesquerdoprincipal{
 	/* display:none; */
 	z-index: 1001;
+	margin: 20px -12px;	
 }
 
 #pedido-aberto-home table tbody tr .label-status
@@ -1006,4 +1008,20 @@ table thead tr.td-info
 	border-radius: 0;
 }
 
+.ckeditor-group .input-group-btn
+{
+	border:1px solid #CCC;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+.open-panel
+{
+	background-color: transparent;
+}
+
+.pesquisa-grade .btn-pesquisa-grade
+{
+	border:1px solid #CCC;
+}
 -->
