@@ -827,35 +827,35 @@ tdFormulario.prototype.salvar = function(){
 					abrirAlerta("Salvo com Sucesso","alert-success",contextoMsg);
 					if (this.instancia.registro_id <= 0){
 						this.instancia.registro_id = retorno.id;
-						if (this.instancia.is_principal){
-							this.instancia.exibirDadosEdicao();
+					}
+					if (this.instancia.is_principal){
+						this.instancia.exibirDadosEdicao();
+					}
+					let _instancia = this.instancia;
+					retorno.entidadesID.forEach(function(entidades_retorno){
+						let index_form_retorno = 'cadastro_' + getEntidadeId(entidades_retorno.entidade);
+						switch(entidades_retorno.tipo_relacionamento){
+							case '':
+							case 0: 
+							case 1:
+							case 7:
+							case 3:
+								// Atualiza o ID do banco de dados no registro
+								formulario[index_form_retorno].registro_id = entidades_retorno.id;
+								$('#id[data-entidade="'+entidades_retorno.entidade+'"]').val(entidades_retorno.id);
+							break;
+							default:
+							// Recarrega as grades de dados
+							formulario[index_form_retorno].gradesdados.clear();
+							formulario[index_form_retorno].gradesdados.addFiltroNN(retorno.entidade, retorno.id, getEntidadeId(entidades_retorno.entidade));
+							formulario[index_form_retorno].gradesdados.reload();							
 						}
-						let _instancia = this.instancia;
-						retorno.entidadesID.forEach(function(entidades_retorno){
-							let index_form_retorno = 'cadastro_' + getEntidadeId(entidades_retorno.entidade);
-							switch(entidades_retorno.tipo_relacionamento){
-								case '':
-								case 0: 
-								case 1:
-								case 7:
-								case 3:
-									// Atualiza o ID do banco de dados no registro
-									formulario[index_form_retorno].registro_id = entidades_retorno.id;
-									$('#id[data-entidade="'+entidades_retorno.entidade+'"]').val(entidades_retorno.id);
-								break;
-								default:
-								// Recarrega as grades de dados
-								formulario[index_form_retorno].gradesdados.clear();
-								formulario[index_form_retorno].gradesdados.addFiltroNN(retorno.entidade, retorno.id, getEntidadeId(entidades_retorno.entidade));
-								formulario[index_form_retorno].gradesdados.reload();							
-							}
-							formulario[index_form_retorno].dados = [];
-						});
-						this.instancia.setaPrimeiraAba();
-						if ($("#select-generalizacao-unica")){
-							$("#select-generalizacao-unica").attr("readonly","true");
-							$("#select-generalizacao-unica").attr("disabled","true");
-						}
+						formulario[index_form_retorno].dados = [];
+					});
+					this.instancia.setaPrimeiraAba();
+					if ($("#select-generalizacao-unica")){
+						$("#select-generalizacao-unica").attr("readonly","true");
+						$("#select-generalizacao-unica").attr("disabled","true");
 					}
 					setTimeout((function(){
 						this.liberaBotaoSalvar();
