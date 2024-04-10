@@ -16,13 +16,13 @@ class Alert Extends Elemento {
 	public $exibirfechar 	= true;
 	public $alinhar 		= "right";
 	public $weight 			= "bold";
-	/*  
+	/*
 		* Método construct 
 	    * Data de Criacao: 17/03/2015
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
 		Mensagem de alerta
-	*/		
+	*/
 	public function __construct($msg=""){		
 		parent::__construct('div');		
 		$this->add($msg);
