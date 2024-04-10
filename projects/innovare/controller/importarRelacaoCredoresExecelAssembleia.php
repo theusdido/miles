@@ -67,7 +67,7 @@
 				$valor 				= number_format((double)$vlr, 2, ',', '.');
 				$linhaDadosCredor 	=
 										"<td>" . $nome . "</td>".
-										"<td>" . ($cpfj!=""?(strlen($cpfj) > 11?$cpfj!=""?formatarCNPJ(completaString(trim($cpfj),14)):"":formatarCPF(completaString(trim($cpfj),11))):"") . "</td>".
+										"<td>" .$cpfj . "-" . ($cpfj!=""?(strlen($cpfj) > 11?$cpfj!=""?formatarCNPJ(completaString(trim($cpfj),14)):"":formatarCPF(completaString(trim($cpfj),11))):"") . "</td>".
 										"<td>" . $classificacao . "</td>".
 										"<td>" . $moeda . "</td>".
 										"<td>" . $valor  . "</td>".										
@@ -192,6 +192,7 @@
 	$form->method 	= "POST";
 	$form->enctype 	= "multipart/form-data";
 	$form->target 	= "retorno";
+	$form->setOnSubmit('return true');
 	
 	$select_processo 			= tdClass::Criar("select");
 	$select_processo->class 	= "form-control";
