@@ -67,7 +67,7 @@
 				$valor 				= number_format((double)$vlr, 2, ',', '.');
 				$linhaDadosCredor 	=
 										"<td>" . $nome . "</td>".
-										"<td>" .$cpfj . "-" .$cpfjSemFormatar."-". ($cpfj!=""?(strlen($cpfj) > 11?$cpfj!=""?formatarCNPJ(completaString(trim($cpfj),14)):"":formatarCPF(completaString(trim($cpfj),11))):"") . "</td>".
+										"<td>" .$cpfj . "-" . ($cpfj!=""?(strlen($cpfj) > 11?$cpfj!=""?formatarCNPJ(completaString(trim($cpfj),14)):"":formatarCPF(completaString(trim($cpfj),11))):"") . "</td>".
 										"<td>" . $classificacao . "</td>".
 										"<td>" . $moeda . "</td>".
 										"<td>" . $valor  . "</td>".										

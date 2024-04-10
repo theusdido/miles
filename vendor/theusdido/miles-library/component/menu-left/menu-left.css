@@ -43,7 +43,6 @@
   
 .open-panel {
   border: none;
-  background-color:#fff;
   padding: 0;
 }
 
@@ -328,7 +327,7 @@ address {
 }
   
 pre {
-  background: #eee;
+  /* background: #eee; */
   font-family: "Courier 10 Pitch", Courier, monospace;
   line-height: 1.6;
   margin-bottom: 1.6em;

@@ -12,7 +12,7 @@
 
 		// Cria um SELECT para opção de escolha
 		$selectM 				= tdClass::Criar("select");
-		$selectM->class 		= "form-control input-sm select-flag-generalizacao";
+		$selectM->class 		= "form-control input-sm select-flag-generalizacao form-select";
 		$selectM->multiple 		= "multiple";
 		$selectM->id 			= "select-generalizacao-multipla";
 		$selectM->data_indexM 	= $contEntGenM;

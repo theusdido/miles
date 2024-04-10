@@ -1,6 +1,10 @@
 /*
  * JS Personalizado 
+<<<<<<< HEAD
  * @Data de Criacao: 30/03/2024 16:57:08 
+=======
+ * @Data de Criacao: 03/04/2024 01:03:58 
+>>>>>>> 1273d453b229ab39fdfc63305f7f969f3ed1d054
  * @Criado por: Edilson Bitencourt, @id: 1 
  * @Página: 15 - Processo[ td_processo ] 
  */

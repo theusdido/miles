@@ -9,7 +9,7 @@ include_once PATH_TDC . 'elemento.class.php';
     * Data de Criacao: 31/01/2015
     * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
-*/	
+*/
 class Aba Extends Elemento {
 	private $conteudo;
 	private $menu;

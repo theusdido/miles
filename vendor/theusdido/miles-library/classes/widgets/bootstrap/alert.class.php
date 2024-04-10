@@ -11,33 +11,29 @@ include_once PATH_TDC . 'elemento.class.php';
 		
 */	
 class Alert Extends Elemento {
-	public $type = "alert-success";
-	public $onclick="";
-	public $exibirfechar = true;
-	public $alinhar = "right";
-	public $weight = "bold";
-	/*  
+	public $type 			= "alert-success";
+	public $onclick			= '';
+	public $exibirfechar 	= true;
+	public $alinhar 		= "right";
+	public $weight 			= "bold";
+	/*
 		* Método construct 
 	    * Data de Criacao: 17/03/2015
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
 		Mensagem de alerta
-	*/		
+	*/
 	public function __construct($msg=""){		
 		parent::__construct('div');		
 		$this->add($msg);
 		$this->role = "alert";		
 	}	
 	public function botaoFechar(){
-		
-		$button = tdClass::Criar("button");
-		$button->class="close";
-		#$button->data_dismiss = "alert";
-		$button->aria_label = "Close";		
-		$span_button = tdClass::Criar("span");
-		$span_button->aria_hidden = "true";
-		$span_button->add("&times;");
-		$button->add($span_button);
+		$button 					= tdClass::Criar("button");
+		$button->class				= "btn-close close";
+		$button->data_dismiss 		= "alert";
+		$button->data_bs_dismiss	= 'alert';
+		$button->aria_label 		= "Close";
 		if ($this->onclick!="") $button->onclick = $this->onclick;
 		return $button;
 	}

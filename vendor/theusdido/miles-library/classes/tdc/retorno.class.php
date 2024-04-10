@@ -25,9 +25,9 @@ class Retorno extends Div {
 	}	
 	
 	public function mensagem(){
-		$alerta = tdClass::Criar("alert");		
-		$alerta->onclick = "fecharAlerta();";		
-		$strong = tdClass::Criar("strong");
+		$alerta 			= tdClass::Criar("alert");		
+		$alerta->onclick 	= "fecharAlerta();";		
+		$strong 			= tdClass::Criar("strong");
 		
 		$alerta->add($strong);
 		$this->add($alerta);			
