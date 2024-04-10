@@ -67,7 +67,7 @@
 				$valor 				= number_format((double)$vlr, 2, ',', '.');
 				$linhaDadosCredor 	=
 										"<td>" . $nome . "</td>".
-										"<td>" . ($cpfj!=""?(strlen($cpfj) > 11?$cpfj!=""?formatarCNPJ(completaString(trim($cpfj),14)):"":formatarCPF(completaString(trim($cpfj),11))):"") . "</td>".
+										"<td>" .$cpfj . "-" .$cpfjSemFormatar."-". ($cpfj!=""?(strlen($cpfj) > 11?$cpfj!=""?formatarCNPJ(completaString(trim($cpfj),14)):"":formatarCPF(completaString(trim($cpfj),11))):"") . "</td>".
 										"<td>" . $classificacao . "</td>".
 										"<td>" . $moeda . "</td>".
 										"<td>" . $valor  . "</td>".										
@@ -127,11 +127,12 @@
 						$credor->contexto->cnpj 		= "#" . $idCredor;
 						$credor->contexto->cpf 			= "#" . $idCredor;
 					}else{
-						if (strlen($cpfj) > 11){
-							$credor->contexto->cnpj 		= formatarCNPJ(completaString($cpfj,14));
+						var_dump(strlen($cpfjSemFormatar));
+						if (strlen($cpfjSemFormatar) > 14){
+							$credor->contexto->cnpj 		= formatarCNPJ(completaString($cpfjSemFormatar,14));
 							$credor->contexto->tipo			= 1;
 						}else{
-							$credor->contexto->cpf			= formatarCPF(completaString($cpfj,11));
+							$credor->contexto->cpf			= formatarCPF(completaString($cpfjSemFormatar,11));
 							$credor->contexto->tipo			= 2;
 						}
 					}
@@ -192,6 +193,7 @@
 	$form->method 	= "POST";
 	$form->enctype 	= "multipart/form-data";
 	$form->target 	= "retorno";
+	$form->setOnSubmit('return true');
 	
 	$select_processo 			= tdClass::Criar("select");
 	$select_processo->class 	= "form-control";
