@@ -138,7 +138,7 @@ $(document).ready(function(){
                 case "31":
                     document.getElementById("tipo").value 		= "float";
                     document.getElementById("tamanho").value 	= 0;
-                break;							
+                break;
             }
         }
         habilitaCheckbox();

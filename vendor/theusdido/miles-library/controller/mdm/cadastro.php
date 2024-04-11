@@ -277,7 +277,14 @@
             $atributo       = tdc::a($id);
             $atributo_nome  = $atributo->nome;
 
-            $sqlExisteFisicamente         = "SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{$_entidade_nome}' AND  COLUMN_NAME = '{$nome}';";
+            $_table_schema  = Conexao::getDados()['base'];            
+            $sqlExisteFisicamente         = "
+                SELECT 1 
+                FROM INFORMATION_SCHEMA.COLUMNS 
+                WHERE TABLE_SCHEMA = '{$_table_schema}' 
+                AND TABLE_NAME = '{$_entidade_nome}' 
+                AND  COLUMN_NAME = '{$nome}';
+            ";
             $queryExisteFisicamente = $conn->query($sqlExisteFisicamente);           
             if ($queryExisteFisicamente->rowCount() > 0 && $id == 0){
                 // Exclui o campo caso ele exista

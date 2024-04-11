@@ -125,7 +125,8 @@ $('#btn-salvar-relacionamento').click(function(){
             entidade:_entidade,
             tipo:$('#tipo').val(),
             entidadefilho:$('#entidadefilho').val(),
-            descricao:$('#descricao').val()
+            descricao:$('#descricao').val(),
+            atributo:$('#atributo').val()
         },
         complete:function(_res){
             let _ret    = _res.responseJSON;
