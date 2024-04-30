@@ -215,4 +215,15 @@ class SqlCriterio extends SqlExpressao {
 		$filtro = tdClass::Criar("sqlfiltro",array($atributo,$operador,$valor));
 		$this->add($filtro,$operadorlogico);		
 	}
+	/*  
+		* Método order
+	    * Data de Criacao: 15/04/2024
+	    * Author @theusdido
+
+		Alias para order by
+	*/
+	public function order($atributo = 'id',$order = 'ASC')
+	{
+		$this->setPropriedade("order",$atributo . " " . $order);		
+	}
 }

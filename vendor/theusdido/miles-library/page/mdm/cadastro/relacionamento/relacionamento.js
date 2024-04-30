@@ -29,6 +29,7 @@ function load(){
             $("#tipo").val(_data.tipo);
             $("#descricao").val(_data.descricao);
             $("#entidadefilho").val(_data.filho);
+            $("#atributo").val(_data.atributo);
             disableAtributo();
             carregarAtributos();
             listarRelacionamento();
@@ -125,7 +126,8 @@ $('#btn-salvar-relacionamento').click(function(){
             entidade:_entidade,
             tipo:$('#tipo').val(),
             entidadefilho:$('#entidadefilho').val(),
-            descricao:$('#descricao').val()
+            descricao:$('#descricao').val(),
+            atributo:$('#atributo').val()
         },
         complete:function(_res){
             let _ret    = _res.responseJSON;

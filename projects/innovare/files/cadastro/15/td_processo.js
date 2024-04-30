@@ -1,6 +1,6 @@
 /*
  * JS Personalizado 
- * @Data de Criacao: 03/04/2024 01:03:58 
+ * @Data de Criacao: 11/04/2024 00:54:10 
  * @Criado por: Edilson Bitencourt, @id: 1 
  * @Página: 15 - Processo[ td_processo ] 
  */
@@ -21,6 +21,11 @@ function beforeSave(){
 function afterSave(){
 	 var fp = arguments[0];
 	 var btnsave = arguments[1];
+
+	 let tipo_processo = $('#select-generalizacao-unica').val() == 16 ? 'recuperandas' : 'falidas';
+	 $.ajax({
+		url:session.urlmiles + '?controller=gerarws&op=' + tipo_processo
+	 });
 }
 // Invocado ao clicar no botão Editar 
 function beforeEdit(){
