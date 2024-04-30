@@ -303,11 +303,11 @@ tdFormulario.prototype.getContextoListar = function(){
 
 tdFormulario.prototype.setaPrimeiraAba = function(){
 	// Remove a aba ativa
-	$(".nav-tabs li,.tab-content div"	,this.getContexto()).removeClass("active");
-	//Habilita a primeira aba
-	$(".nav-tabs li:first-child"		,this.getContexto()).addClass("active"); 
+	$(".nav-tabs li a,.tab-content div"	,this.getContexto()).removeClass("active");
 	// Habilita a primeira div
-	$(".tab-content div:first-child"	,this.getContexto()).addClass("active in"); 
+	$(".tab-content div:first-child"	,this.getContexto()).addClass("active show");
+	// Habilita a primeira aba
+	$(".nav-tabs li:first-child"		,this.getContexto()).first().find('a').addClass("active");
 }
 
 tdFormulario.prototype.setCkEditores = function(){

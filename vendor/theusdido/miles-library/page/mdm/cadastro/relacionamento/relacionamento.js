@@ -29,6 +29,7 @@ function load(){
             $("#tipo").val(_data.tipo);
             $("#descricao").val(_data.descricao);
             $("#entidadefilho").val(_data.filho);
+            $("#atributo").val(_data.atributo);
             disableAtributo();
             carregarAtributos();
             listarRelacionamento();

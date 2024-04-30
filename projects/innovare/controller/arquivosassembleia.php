@@ -581,14 +581,14 @@ $op = isset($_POST["op"])?$_POST["op"]: (isset($_GET["op"])?$_GET["op"]:'');
 				$parms = $processo->id.'-'.$processo->tipoprocesso.'-'.$linha->id;
 				$datapedidosetenca = $processo->tipoprocesso==16?"Pedido " . dateToMysqlFormat($linha->datapedido,true):"Setença " . dateToMysqlFormat($linha->datasentenca,true);
 				echo '
-					<div class="panel panel-primary">
-						<div class="panel-heading">
+					<div class="card">
+						<div class="card-header">
 							<span style="cursor:pointer;" class="cabecalho-farein" data-params="'.$parms.'">'.$linha->id . " - " . tdc::utf8($linha->{$descricao}).' - Data do <i>' . $datapedidosetenca . '</i></span>
 							<button class="btn btn-default btn-xs icone-pequeno-cabecalho-collapse cabecalho-farein-atualizar" data-params="'.$parms.'" aria-label="Atualizar Lista de Habilitação/Impugnação">
 								<span class="fas fa-right-left" aria-hidden="true"></span>
 							</button>
 						</div>
-						<div class="panel-body" style="display:none;" id="'.$processo->id.'-'.$processo->tipoprocesso.'-'.$linha->id.'"></div>
+						<div class="card-body" style="display:none;" id="'.$processo->id.'-'.$processo->tipoprocesso.'-'.$linha->id.'"></div>
 					</div>
 				';
 			}
@@ -674,15 +674,15 @@ $op = isset($_POST["op"])?$_POST["op"]: (isset($_GET["op"])?$_GET["op"]:'');
 		$divproc->id = "td-processo-" . $processo->id;
 		
 		$btnFarein = '<button type="button" class="btn btn-lg btn-link btn-sm" data-toggle="popover" title="Recuperandas,Falidas e Insolventes." data-placement="left" data-content="'.$todasFAREIN.'" style="float:right;margin-top:-5px;" onmouseover=$(this).popover({html:true})>'.$primeiroFAREIN.'</button>';
-		
-		// Panel
-		$panel = tdClass::Criar("panel");		
-		$panel->head($a);
-		$panel->head($btnFarein);
-		$panel->body($divproc);
-		$panel->body->id = "pb-".$processo->id;
-		$panel->body->style = "display:none;";
-		$processos->add($panel);
+
+		// Card
+		$card 				= tdClass::Criar("card");
+		$card->addHeader($a);
+		$card->addHeader($btnFarein);
+		$card->addBody($divproc);
+		$card->getBody()->id 	= "pb-".$processo->id;
+		$card->getBody()->style = "display:none;";
+		$processos->add($card);
 	}
 	
 	$js = tdClass::Criar("script");

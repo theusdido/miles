@@ -64,4 +64,11 @@ class Card Extends Elemento {
 
 		parent::mostrar();
 	}
+
+	public function getHeader(){
+		return $this->header;
+	}
+	public function getBody(){
+		return $this->body;
+	}
 }
