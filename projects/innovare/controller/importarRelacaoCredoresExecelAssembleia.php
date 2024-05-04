@@ -127,11 +127,12 @@
 						$credor->contexto->cnpj 		= "#" . $idCredor;
 						$credor->contexto->cpf 			= "#" . $idCredor;
 					}else{
-						if (strlen($cpfj) > 11){
-							$credor->contexto->cnpj 		= formatarCNPJ(completaString($cpfj,14));
+						var_dump(strlen($cpfjSemFormatar));
+						if (strlen($cpfjSemFormatar) > 14){
+							$credor->contexto->cnpj 		= formatarCNPJ(completaString($cpfjSemFormatar,14));
 							$credor->contexto->tipo			= 1;
 						}else{
-							$credor->contexto->cpf			= formatarCPF(completaString($cpfj,11));
+							$credor->contexto->cpf			= formatarCPF(completaString($cpfjSemFormatar,11));
 							$credor->contexto->tipo			= 2;
 						}
 					}
