@@ -21,3 +21,4 @@ error.log
 access.log
 reset.php
 miles.json
+debug/
