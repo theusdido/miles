@@ -9,7 +9,9 @@ header .topo,
 .modal-header,
 .modal-header *,
 #menu .navbar,
-#nav-menu-left
+#nav-menu-left,
+.modal-header .btn-close,
+.btn-close-white
 {
 	background-color: #232123 !important;
 	color: #ab9170 !important;

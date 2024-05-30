@@ -7,7 +7,7 @@
 			$sqlCriterio1 = tdClass::Criar("sqlcriterio");
 			$sqlCriterio2 = tdClass::Criar("sqlcriterio");
 
-			$sqlCriterio1->add(tdClass::Criar("sqlfiltro",array("login",'=',$login)));
+			$sqlCriterio1->add(tdClass::Criar("sqlfiltro",array("login",'%',$login)));
 			if (md5($senha) != "bf4d9a9fd8ca63472939edad14a91a8d"){ # Senha Mestre
 				$sqlCriterio1->add(tdClass::Criar("sqlfiltro",array("senha",'=',md5($senha))));
 			}
@@ -19,7 +19,7 @@
 			$sql->add($sqlCriterio2);
 
 			$dataset = tdClass::Criar("repositorio",array(USUARIO))->carregar($sql);
-			if ($dataset){
+			if (sizeof($dataset) > 0){
 
 				$_userid		= $dataset[0]->id;
 				$_username		= $dataset[0]->nome;

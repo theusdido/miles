@@ -12,6 +12,7 @@
 final class Repositorio {
 	private $classe;
 	private $registros = array();
+
 	/*  
 		* Método construct 
 	    * Data de Criacao: 29/08/2012
@@ -38,9 +39,13 @@ final class Repositorio {
 			$criterio = tdClass::Criar("sqlcriterio");
 		}else{
 			$criterio = func_get_arg(0);
-			if (gettype($criterio) != "object" && get_class($criterio) != "SqlCriterio"){
+			if (gettype($criterio) != "object"){
 				echo "Argumento inválido";
 				return false;
+			}
+			if (get_class($criterio) != "SqlCriterio"){
+				echo "Argumento inválido";
+				return false;				
 			}
 		}
 		$resultados	= array();

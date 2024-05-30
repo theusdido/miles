@@ -24,6 +24,10 @@
 			16 - País
 			17 - Endereço Exterior
 	*/
+
+	// Camada de Modelo ( MVC )
+	include_once PATH_CURRENT_MODEL . 'importarrelacaocredoresexcel.php';
+
 	set_time_limit(7200);
 	
 	if (isset($_POST['b-gerar'])){
@@ -32,8 +36,15 @@
 		if (!$is_file_uploaded){
 			exit;
 		}
+
+		$bootstrap 			= tdClass::Criar("link");
+		$bootstrap->href 	= URL_LIB . 'bootstrap/3.3.1/css/bootstrap.css';
+		$bootstrap->rel 	= 'stylesheet';
+		$bootstrap->mostrar();
+		
 		$processo 				= explode("^",$_POST["retorno_empresa"]);
 		$origemcredor 			= isset($_POST["credorescomunicacao"]) ? 10 : 1 ;
+		$relacaoinicial			= isset($_POST["relacaoinicial"]) ? true : false;
 		$credoresestrangeiro	= isset($_POST["credoresestrangeiro"]) ? true : false;
 		$isagruparcredor		= isset($_POST["isagruparcredor"]) ? true : false;
 		$numerorelacao			= isset($_POST["numerorelacao"]) ? ($_POST["numerorelacao"]==''?1:$_POST["numerorelacao"]) : 1;
@@ -45,14 +56,25 @@
 			if ($numerorelacao <= 0) $numerorelacao = 1;
 		}
 
-		$xml = simplexml_load_file($_FILES["arquivo"]["tmp_name"]);
-		$cLinha = 0;
-		if ($conn = Transacao::get()){
+		try{
+			$xml 		= simplexml_load_file($_FILES["arquivo"]["tmp_name"]);
+		}catch(Throwable $e){
+			setErrorImportacao('Erro na importação do arquivo de relação de credores.');
+			exit;
+		}
 
-			$bootstrap 			= tdClass::Criar("link");
-			$bootstrap->href 	= URL_LIB . 'bootstrap/3.3.1/css/bootstrap.css';
-			$bootstrap->rel 	= 'stylesheet';
-			$bootstrap->mostrar();
+		try{
+			verificaLayout($xml->Worksheet->Table->Row);
+		}catch(Throwable $e){
+			setErrorImportacao('Layout do arquivo inválido.');
+			if (IS_SHOW_ERROR_MESSAGE){
+				echo $e->getMessage();
+			}
+			exit;
+		}
+		
+		$cLinha	= 0;
+		if ($conn = Transacao::get()){
 			
 			echo '	<table class="table table-hover table-bordered">
 						<tr>
@@ -77,9 +99,9 @@
 							<th width="1%">Farein</th>
 						</tr>
 			';
-			$valores = array();
-			$linhaDadosCredor = "";
-			$error = 0;
+			$valores 			= array();
+			$linhaDadosCredor 	= "";
+			$error 				= 0;
 			foreach ($xml->Worksheet->Table->Row as $cell){
 				$cLinha++;
 				$codigo = $cell->Cell[0]->Data;
@@ -90,25 +112,31 @@
 				$classificacao 		= trocavazio((int)$cell->Cell[4]->Data);
 				$natureza 			= trocavazio($cell->Cell[5]->Data,0);
 				$moeda 				= trocavazio((int)$cell->Cell[6]->Data);
-				$vlr 				= $cell->Cell[7]->Data;
+				$vlr 				= validaColuna($cell->Cell,7);
 				$valor 				= number_format((double)$vlr, 2, ',', '.');
-				$email 				= trocavazio("{$cell->Cell[8]->Data}");
-				$cep 				= completaString(trocavazio("{$cell->Cell[9]->Data}"),8);
-				$logradouro 		= trocavazio("{$cell->Cell[10]->Data}");
-				$numero 			= trocavazio("{$cell->Cell[11]->Data}");
-				$complemento 		= trocavazio("{$cell->Cell[12]->Data}");
-				$bairro 			= trocavazio("{$cell->Cell[13]->Data}");
-				
-				$estado 			= trocavazio("{$cell->Cell[15]->Data}");
-				$cidade 			= getCidadeId(trocavazio(trim($cell->Cell[14]->Data)),$estado);
+				//$tipo_empresa		= trocavazio("{$cell->Cell[8]->Data}")
+				$email 				= trocavazio("{$cell->Cell[9]->Data}");
+				$cep_				= trocavazio("{$cell->Cell[10]->Data}");
+				$cep 				= $cep_ == '' ? '' : completaString($cep_,8);
+				$logradouro 		= trocavazio("{$cell->Cell[11]->Data}");
+				$numero 			= trocavazio("{$cell->Cell[12]->Data}");
+				$complemento 		= trocavazio("{$cell->Cell[13]->Data}");
+				$bairro 			= trocavazio("{$cell->Cell[14]->Data}");
 
-				$pais				= trocavazio("{$cell->Cell[16]->Data}"); # Implementar país
-				$enderecoexterior 	= validaColuna($cell->Cell,17);
+				$estado 			= trocavazio("{$cell->Cell[16]->Data}");
+				if ($estado != ''){
+					$cidade 			= getCidadeId(trocavazio(trim($cell->Cell[15]->Data)),$estado);
+				}else{
+					$cidade				= '';
+				}
+				
+
+				$pais				= trocavazio("{$cell->Cell[17]->Data}"); # Implementar país
+				$enderecoexterior 	= validaColuna($cell->Cell,18);
 				$linhaDadosCredor =		"<td>" . $codigo . "</td>".
 										"<td>" . $nome . "</td>".
 										"<td>" . $tipo . "</td>".
-										//"<td>" . ($cpfj!=""?(strlen($cpfj) > 11?$cpfj!=""?formatarCNPJ(completaString(trim($cpfj),14)):"":formatarCPF(completaString(trim($cpfj),11))):"") . "</td>".
-										"<td>".$cpfj."</td>".
+										"<td>" . $cpfj . "</td>".
 										"<td>" . $classificacao . "</td>".
 										"<td>" . $natureza . "</td>".
 										"<td>" . $moeda . "</td>".
@@ -183,7 +211,10 @@
 					break;
 				}
 
-				if (!$credoresestrangeiro) {
+				# Não validar endereço quando:
+				# - For uma relação com credores estrangeiros
+				# - For uma relação apenas para compor o edital inicial expedido pelo juiz
+				if (!$credoresestrangeiro && !$relacaoinicial) {
 					if ($email != ""){
 						if (!isemail($email)){
 							$error = 8;
@@ -191,7 +222,12 @@
 							break;
 						}
 					}
-					if (!isCEP($cep)){
+					
+					if ($cep == ''){
+						$error = 16;
+						msgErroValidacao('<b>CEP </b> não pode estar em branco.',$linhaDadosCredor);
+						break;
+					}else if (!isCEP($cep)){							
 						$error = 9;
 						msgErroValidacao('<b>CEP ['.$cep.']</b> não está num formato válido.',$linhaDadosCredor);
 						break;
@@ -205,17 +241,20 @@
 
 					if (!isUFSigla(strtoupper($estado))){
 						$error = 11;
-						msgErroValidacao('<b>Estado</b> não está num válido.',$linhaDadosCredor);
+						msgErroValidacao('<b>Estado (UF)</b> não está num formato válido.',$linhaDadosCredor);
 						break;
 					}else{
 						$estado = retornaEstado($estado);
 						if ($estado <= 0){
 							$error = 12;
-							msgErroValidacao('<b>Estado</b> não está cadastrado no sistema.',$linhaDadosCredor);
-							break;						
+							msgErroValidacao('<b>Estado (UF)</b> não está cadastrado no sistema.',$linhaDadosCredor);
+							break;
 						}
 					}
-				}	
+				}else{
+					$cidade = 0;
+					$estado = 0;					
+				}
 
 				$sqlExiste = "SELECT id FROM td_relacaocredores WHERE (replace(replace(replace(cnpj,'/',''),'-',''),'.','') = '$cpfj' or replace(replace(cpf,'-',''),'.','') = '$cpfj') AND (cpf <> '$cpfj' or cnpj <> '$cpfj') AND classificacao = {$classificacao} AND processo = {$processo[1]} AND farein = {$processo[0]} AND moeda = {$moeda}";
 				$queryExiste = $conn->query($sqlExiste);
@@ -355,240 +394,10 @@
 			}
 			Transacao::Commit();
 			echo '<div class="alert alert-success" role="alert"><b> Que Bom !</b> Os arquivos foram importados com sucesso</div>';
+			hideProgressBar();
 		}
 		exit;
 	}
-	$pagina = tdClass::Criar("div");
-	
-	// Bloco do formulario
-	$form_bloco = tdClass::Criar("bloco");
-	$form_bloco->class="col-md-12";	
-	
-	$form 			= tdClass::Criar("tdformulario");	
-	$form->onsubmit = '';
-	$form->legenda->add(utf8_decode("Importar Relação de Credores ( Excel )"));
 
-	$form->action 	= getURLProject("index.php?controller=importarRelacaoCredoresExecel");
-	$form->method 	= "POST";
-	$form->enctype 	= "multipart/form-data";
-	$form->target 	= "retorno-importacao";
-
-	// Botão Gerar	
-	$btn_gerar 			= tdClass::Criar("button");
-	$btn_gerar->value 	= "Importar";	
-	$btn_gerar->class 	= "btn btn-primary b-gerar";
-	$span_gerar 		= tdClass::Criar("span");
-	$span_gerar->class 	= "fas fa-file";
-	$btn_gerar->add($span_gerar," Importar");	
-	$btn_gerar->id 		= "b-gerar";
-	$btn_gerar->name	= "b-gerar";
-	$btn_gerar->type 	= "submit";
-
-	// Baixar Modelo de Importação do Execel
-	$btn_modelo 			= tdClass::Criar("button");
-	$btn_modelo->id 		= "btn-abrir-modelo";
-	$btn_modelo->value 		= "Modelo";
-	$btn_modelo->class 		= "btn btn-default";
-	$span_modelo 			= tdClass::Criar("span");
-	$span_modelo->class 	= "fas fa-file";
-	$btn_modelo->add($span_modelo, " Modelo ( Excel )");
-	$btn_modelo->style		=	"float:right;margin-right:10px;";
-
-	// Grupo de botões
-	$file 			= tdClass::Criar("input");
-	$file->type 	= "file";
-	$file->id 		= "arquivo";
-	$file->name 	= "arquivo";
-	$file->style	= 'display:none';
-	$file->onchange	= "tdChangeInputFile(this.value);";
-	
-	$grupo_botoes 			= tdClass::Criar("div");
-	$grupo_botoes->class 	= "form-grupo-botao";
-	$grupo_botoes->add($btn_gerar,$btn_modelo);
-
-	$linha 			= tdClass::Criar("div");
-	$linha->class 	= "row-fluid form_campos";
-
-	$label 			= tdClass::Criar("label");
-	$label->add("Selecione o arquivo");
-
-	# -- Input File Label -- #
-	$input_file_label_icon			= tdc::html('i');
-	$input_file_label_icon->class 	= 'fas fa-upload';
-
-	$input_file_label_text			= tdc::html('span');
-	$input_file_label_text->add('Carregar Arquivo');
-
-	$input_file_label				= tdClass::Criar("label");
-	$input_file_label->for			= "arquivo";
-	$input_file_label->class		= 'td-label-input-file';
-	$input_file_label->add($input_file_label_icon,$input_file_label_text);
-	# -- // -- #
-
-	$coluna 				= tdClass::Criar("div");
-	$coluna->class 			= "coluna";
-	$coluna->data_ncolunas 	= 1;
-	$coluna->add($label,$input_file_label,$file);	
-
-	$coluna_empresa 				= tdClass::Criar("div");
-	$coluna_empresa->class 			= "coluna";
-	$coluna_empresa->data_ncolunas 	= 1;
-	$coluna_empresa->add(Empresa::Filtro());
-
-	$label = tdClass::Criar("label");
-	$label->add("");
-
-	$checkboxEstrangeiro = '
-		<div id="opcoes-importacao">
-			<div class="checkbox">
-				<input type="checkbox" id="credoresestrangeiro" name="credoresestrangeiro">
-				<label for="credoresestrangeiro"> Lote de Credores Estrangeiro</label>
-			</div>
-			<div class="checkbox">
-				<input type="checkbox" id="credorescomunicacao" name="credorescomunicacao">
-				<label for="credorescomunicacao">Comunicação aos Credores</label>
-			</div>
-			<div class="checkbox">
-				<input type="checkbox" id="isagruparcredor" name="isagruparcredor">
-				<label for="isagruparcredor">Agrupar Credores por CPF/CNPJ</label>
-			</div>
-		</div>
-	';
-
-	$colunaLoteEstrangeiro 					= tdClass::Criar("div");
-	$colunaLoteEstrangeiro->class 			= "coluna";
-	$colunaLoteEstrangeiro->data_ncolunas 	= 1;
-	$colunaLoteEstrangeiro->add($label,$checkboxEstrangeiro);
-
-	$label = tdClass::Criar("label");
-	$label->add("Número Relação");
-	
-	$selectNumeroRelacao 		= tdClass::Criar("select");
-	$selectNumeroRelacao->class = "form-control";
-	$selectNumeroRelacao->id 	= "numerorelacao";
-	$selectNumeroRelacao->name 	= "numerorelacao";
-
-	$sql = tdClass::Criar("sqlcriterio");
-	$dataset = tdClass::Criar("repositorio",array("td_numerorelacaocredores"))->carregar($sql);
-	foreach ($dataset as $dado){
-		$op = tdClass::Criar("option");
-		$op->value = $dado->id;
-		$op->add($dado->descricao);
-		$selectNumeroRelacao->add($op);
-	}
-
-	$colunaNumeroRelacao 					= tdClass::Criar("div");
-	$colunaNumeroRelacao->class 			= "coluna";
-	$colunaNumeroRelacao->data_ncolunas 	= 1;
-	$colunaNumeroRelacao->add($label,$selectNumeroRelacao);
-
-	$linha->add($coluna_empresa,$coluna,$colunaNumeroRelacao,$colunaLoteEstrangeiro);
-
-	$iframe 				= tdClass::Criar("iframe");
-	$iframe->id 			= "retorno-importacao";
-	$iframe->name 			= "retorno-importacao";
-	$iframe->width 			= "100%";
-	$iframe->height 		= "200px;";
-	$iframe->border 		= "0";
-	$iframe->frameborder 	= "0";
-	$iframe->style 			= "border:0px;";
-	
-	// CSS
-	$css = tdClass::Criar("style");
-	$css->add('
-		#opcoes-importacao{
-			float: left;
-			margin-left: 20px;
-		}
-		.form_campos .coluna{
-			margin-top:30px;
-		}
-	');
-
-	// JS
-	$js = tdClass::Criar("script");
-	$js->add('
-		$("#btn-abrir-modelo").click(function(e){
-			e.stopPropagation();
-			e.preventDefault();
-			window.open("'.URL_CURRENT_ASSETS.'modelo-importacao/ModelodeImportacao-RelacaoodeCredores.xlsx","_blank");
-		});
-
-		function tdChangeInputFile(_filename)
-		{
-			$(".td-label-input-file").html(_filename);
-			$(".td-label-input-file").css("background-color","#006600");
-			$(".td-label-input-file").css("color","#FFF");
-		}
-	');
-
-	$aviso = tdClass::Criar("div");
-	$aviso->class = "alert alert-info";
-	$aviso->add('
-		<ul>
-			<li>Importação de credores com todos os dados.</li>
-			<li>Serve tanto para o edital como para comunicação aos correios.</li>
-		</ul>
-	');
-
-	$form->fieldset->add($aviso,$grupo_botoes,$linha);
-	$form_bloco->add($form,$iframe);
-	$pagina->add($form_bloco,$css,$js);
-	$pagina->mostrar();
-	
-	function retornaEstado($sigla){
-		$retorno = 0;
-		if ($conn = Transacao::Get()){
-			$sql 		= "SELECT id FROM td_estado WHERE sigla = '$sigla'";
-			$query 		= $conn->query($sql);
-			$linha 		= $query->fetch();
-			$retorno 	= $linha["id"];
-		}else{
-			$retorno = 0;
-		}
-		return $retorno;
-	}	
-	function trocavazio($str,$replace = ""){
-		return trim(str_replace("#",$replace,$str));
-	}
-	function msgErroValidacao($erroMSG,$td){
-		echo '<tr>' . $td . '<tr/>';
-		echo '<tr><td colspan="20"><div class="alert alert-danger" role="alert">'.$erroMSG.'</div></td></tr>';
-	}
-	function msgError($msg){
-		echo '<div class="alert alert-danger" role="alert">'.$msg.'</div>';
-	}
-	function validaColuna($celula,$indice){
-		if (isset($celula[$indice])){
-			if ($celula[$indice]->Data == '#'){
-				return '';
-			}else{
-				return $celula[$indice]->Data;
-			}
-		}else{
-			return '';
-		}
-	}
-
-	function getCidadeId($_cidade,$_estado)
-	{
-		global $conn;
-		$sql = "
-			SELECT a.id FROM td_cidade a 
-			INNER JOIN td_estado b ON b.id = a.estado
-			WHERE a.nome = '$_cidade' AND b.sigla = '$_estado';
-		";
-		$query = $conn->query($sql);
-		if ($query->rowCount() > 0){
-			$row = $query->fetch();
-			return $row['id'];
-		}else{
-			$prox_id 			= getProxId('td_cidade');
-			$cidade 			= tdc::p('td_cidade');
-			$cidade->id			= $prox_id;
-			$cidade->nome 		= $_cidade;
-			$cidade->estado 	= tdc::du('td_estado',tdc::f('sigla','=',$_estado))->id;
-
-			return $prox_id;
-		}
-	}
+	// Camada de Visualização ( MVC )
+	include_once PATH_CURRENT_VIEW . 'importarRelacaoCredoresExcel.php';

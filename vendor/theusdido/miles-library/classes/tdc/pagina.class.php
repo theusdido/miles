@@ -360,6 +360,8 @@ class Pagina Extends Html {
 			$jsMDM = null;
 		}
 
+		//$jsMDM = null;
+
 		// Adicionar JS na Página
 		$this->body->add(
 			$jsDecode,

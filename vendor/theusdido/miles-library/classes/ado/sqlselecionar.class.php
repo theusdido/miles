@@ -12,6 +12,7 @@ require_once PATH_ADO . 'sqlinstrucao.class.php';
 
 final class SqlSelecionar extends sqlInstrucao{
 	private $colunas = array();
+
 	/*  
 		* Método addColuna 
 	    * Data de Criacao: 03/07/2012

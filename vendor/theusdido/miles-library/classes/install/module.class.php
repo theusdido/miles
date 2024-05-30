@@ -12,6 +12,7 @@ class Module {
     private $name;
     private $components = array();
     private $package;
+	private $title; 
 	/*  
 		* Método __construct
 	    * Data de Criacao: 06/11/2021

@@ -571,12 +571,11 @@ tdFormulario.prototype.voltar = function(){
 }
 tdFormulario.prototype.salvar = function(){
 	addLog("","",0,this.entidade_id,0,8, "");
-
 	if (this.is_principal){
 		this.btn_salvar.attr("disabled",true);
 		this.btn_salvar.attr("readonly",true);
 	}
-
+	
 	let contextoMsg = '';
 	if ($("#select-generalizacao-unica").length > 0){
 		contextoMsg = " .msg-retorno-form-" + td_entidade[this.entidade_id].nomecompleto;
@@ -606,7 +605,7 @@ tdFormulario.prototype.salvar = function(){
 				let entidadesRel = "";
 				if ( td_relacionamento[RelEnt].tipo == "1" || td_relacionamento[RelEnt].tipo == "7"){
 					entidadesRel = td_relacionamento[RelEnt].filho;
-				}else if(td_relacionamento[RelEnt].tipo == "3"){
+				}else if(td_relacionamento[RelEnt].tipo == "3" || td_relacionamento[RelEnt].tipo == "8"){
 					if (td_relacionamento[RelEnt].filho == $("#select-generalizacao-unica").val()){
 						entidadesRel = $("#select-generalizacao-unica").val();
 						$('input[atributo=' + td_entidade[td_relacionamento[RelEnt].pai].atributogeneralizacao + ']').val(entidadesRel);
@@ -616,9 +615,10 @@ tdFormulario.prototype.salvar = function(){
 						entidadesRel = $(this).val();
 					});
 				}
-				if (entidadesRel != ""){			
+				if (entidadesRel != ""){
 					let hierarquiacontexto = getHierarquiaRel(RelEnt);
-					$("#crud-contexto-add-" + hierarquiacontexto).find(".b-salvar").first().click();
+					// ## Rever essa opção para enviar o formulário de forma oculta quando houver relacionamento
+					//$("#crud-contexto-add-" + hierarquiacontexto).find(".b-salvar").first().click();
 				}
 			}
 			
@@ -696,6 +696,7 @@ tdFormulario.prototype.salvar = function(){
 		return false;
 	}
 
+	// Verifica registros do tipo composição para entidade principal
 	if (this.is_principal){
 		let parar = false;
 		for (c in this.composicao){
@@ -923,6 +924,10 @@ tdFormulario.prototype.salvar = function(){
 					this.composicao[this.entidade_id] = true;
 				}
 				if (typeof afterSave === "function") afterSave(this.is_principal,this);
+			}else{
+				const msg = 'Cardinalidade não encontrada no relacionamento!';
+				console.warn(msg);
+				toastMessage(msg,'td-message-warning');
 			}
 		}
 	}
@@ -1435,7 +1440,6 @@ tdFormulario.prototype.setBuscaFiltro = function()
 					});
 
 					$(this).parent('.input-group').find('.botao-filtro').click(function(){
-						debugger;
 						let modalName 			= $(this).parents(".filtro-pesquisa").data("modalname");
 						let chaveestrangeira 	= $(this).data("fk");
 						let atributo 			= $(this).parents(".filtro-pesquisa").find(".termo-filtro").attr("id");
@@ -1937,7 +1941,7 @@ tdFormulario.prototype.alterGeneralizaoUnicaAbas = function(){
 tdFormulario.prototype.setGeneralizaoUnica = function(_entidade_filho){
 	//if ($("#select-generalizacao-unica")){
 		$("#select-generalizacao-unica").attr("readonly","true");
-		$("#select-generalizacao-unica").attr("disabled","true");		
+		$("#select-generalizacao-unica").attr("disabled","true");
 		$("#select-generalizacao-unica",this.getContexto()).val(_entidade_filho);
 		this.setGeneralizaoAba(_entidade_filho);
 		//this.setaLayoutGeneralizao();

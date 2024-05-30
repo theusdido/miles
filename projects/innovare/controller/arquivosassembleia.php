@@ -148,7 +148,7 @@ $op = isset($_POST["op"])?$_POST["op"]: (isset($_GET["op"])?$_GET["op"]:'');
 			$conn->commit();
 
 			move_uploaded_file($_FILES["add-input-arquivo-" . $_GET["habdiv"]]["tmp_name"],"../site/enviodocumentos_/arquivos_temp/" .  $proxID . ".pdf");
-			echo $proxID . "^" . utf8_encode($filename);
+			echo $proxID . "^" . tdc::utf8($filename);
 			exit;
 		}
 		
@@ -180,17 +180,17 @@ $op = isset($_POST["op"])?$_POST["op"]: (isset($_GET["op"])?$_GET["op"]:'');
 			$th_arquivos->width = "8%";
 			
 			$th_envio = tdClass::Criar("tabelahead");
-			$th_envio->add(utf8_decode("Envio"));
+			$th_envio->add(tdc::utf8("Envio"));
 			$th_envio->class = "text-center";
 			$th_envio->width = "8%";			
 
 			$th_analisado = tdClass::Criar("tabelahead");
-			$th_analisado->add(utf8_decode("Analisado"));
+			$th_analisado->add(tdc::utf8("Analisado"));
 			$th_analisado->class = "text-center";
 			$th_analisado->width = "10%";
 						
 			$th_excluir = tdClass::Criar("tabelahead");
-			$th_excluir->add(utf8_decode("Excluir"));
+			$th_excluir->add(tdc::utf8("Excluir"));
 			$th_excluir->class = "text-center";
 			$th_excluir->width = "8%";
 			
@@ -215,7 +215,7 @@ $op = isset($_POST["op"])?$_POST["op"]: (isset($_GET["op"])?$_GET["op"]:'');
 				$tr = tdClass::Criar("tabelalinha");
 				
 				$td_credor = tdClass::Criar("tabelacelula");
-				$td_credor->add("<b>".completaString($credor->contexto->id,5)."</b> - " . utf8charset($credor->contexto->nome) . " [ " .$credor->contexto->cpf . $credor->contexto->cnpj . " ] ");
+				$td_credor->add("<b>".completaString($credor->contexto->id,5)."</b> - " . tdc::utf8($credor->contexto->nome) . " [ " .$credor->contexto->cpf . $credor->contexto->cnpj . " ] ");
 				
 				$td_protocolo = tdClass::Criar("tabelacelula");
 				$td_protocolo->add($habdiv->numero);
@@ -461,7 +461,7 @@ $op = isset($_POST["op"])?$_POST["op"]: (isset($_GET["op"])?$_GET["op"]:'');
 				$analise_nao_input = tdClass::Criar("input");
 				$analise_nao_input->type = "radio";			
 				$analise_nao_input->autocomplete="off";
-				$analise_nao_label->add(utf8_decode("Não"),$analise_nao_input);
+				$analise_nao_label->add(tdc::utf8("Não"),$analise_nao_input);
 				
 				$analise_group->add($analise_sim_label,$analise_nao_label);
 				$td_analisado->add($analise_group);
@@ -541,7 +541,7 @@ $op = isset($_POST["op"])?$_POST["op"]: (isset($_GET["op"])?$_GET["op"]:'');
 				
 				$table->add($tr,$trArquivos,$jsArquivos);
 			}
-			$table->add(utf8_decode("<tr><td colspan='9' align='right'>Total: <b>".$query2->rowcount()."</b></td></tr>"));			
+			$table->add(tdc::utf8("<tr><td colspan='9' align='right'>Total: <b>".$query2->rowcount()."</b></td></tr>"));			
 			$table->mostrar();
 			exit;
 		}		
@@ -644,7 +644,7 @@ $op = isset($_POST["op"])?$_POST["op"]: (isset($_GET["op"])?$_GET["op"]:'');
 	
 	$titulo = tdClass::Criar("p");
 	$titulo->class = "titulo-pagina";
-	$titulo->add(utf8_decode("Arquivos para Assembleia"));
+	$titulo->add("Arquivos para Assembleia");
 	
 	$sql = tdClass::Criar("sqlcriterio");
 	$sql->setPropriedade("order","id DESC");

@@ -15,9 +15,9 @@
             $sql = "SELECT id,nome,descricao FROM ".ENTIDADE." $_where ORDER BY id DESC";
             $query = $conn->query($sql);
             foreach ($query->fetchAll() as $linha){
-                $id   = $linha["id"];
+                $id             = $linha["id"];
                 $nome           = $linha["nome"];
-                $descricao      = $linha["descricao"];
+                $descricao      = tdc::utf8($linha["descricao"]);
 
                 echo "	<tr id='linha-registro-entidade-{$id}'>
                             <td>{$id}</td>

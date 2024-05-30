@@ -60,12 +60,12 @@
                     break;                    
                 }
             
-                $descricao      = $linha['descricao'];
-                $entidade_nome  = $linha['entidade_nome'];
+                $descricao      = tdc::utf8($linha['descricao']);
+                $entidade_nome  = tdc::utf8($linha['entidade_nome']);
                 $id             = $linha['id'];
 
                 echo "<a class='list-group-item'>
-                        Relacionamento de <strong>{$tipo_nome}</strong> com <strong>{$entidade_nome}</strong>. <small class='text-info'>{$descricao}</small>.
+                        {$id} - Relacionamento de <strong>{$tipo_nome}</strong> com <strong>{$entidade_nome}</strong>. <small class='text-info'>{$descricao}</small>.
                         <button type='button' class='btn btn-default' onclick='excluirRelacionamento({$id})' style='float:right;margin-top:-4px'>
                             <span class='fas fa-trash-alt' aria-hidden='true'></span>
                         </button>
@@ -97,7 +97,6 @@
             }else{
                 $sql            = "UPDATE ".RELACIONAMENTO." SET pai = {$entidade} , tipo = {$tipo} , filho = {$entidadefilho} , atributo = {$atributo} , descricao = '{$descricao}' , cardinalidade = '{$cardinalidade}' WHERE id = {$id};";
             }
-
             $query = $conn->query($sql);
             if($query){
                 tdc::wj([ 'id' => $id , '_data' => Relationship::getJSON($id) ]);

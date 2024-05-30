@@ -50,7 +50,7 @@
 	$phpversion 	= (int)$_phpversion[0];
 	$phpbuild 		= (int)$_phpversion[1];
 	$phpcompilation	= isset($_phpversion[2])?(int)$_phpversion[2]:0;
-	
+
 	$_session_isactive = false;
 	if ($phpversion >= 5 && $phpbuild > 3){
 		if (session_status() === PHP_SESSION_ACTIVE) {

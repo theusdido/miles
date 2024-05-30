@@ -325,6 +325,7 @@ legend {
 .pesquisa-grade{
 	float:left;
 	width:100%;
+	padding:5px;
 }
 .tdform .coluna .form-group{
 	width:100%;
@@ -800,6 +801,11 @@ header #menu {
 	display: flex;
 	justify-content: center;
 }
+
+.paginacao-gradededados .pagination .page-item
+{
+	width:50px;
+}
 .gradededados .btn-editar-emmassa{
 	margin-right:10px;
 }
@@ -947,6 +953,15 @@ header #menu {
 	font-weight: bold;
 }
 
+.td-message-warning
+{
+	background-color: #ffca2c !important;
+	color:#000 !important;
+	background: linear-gradient(135deg, #ffca2c, #f8c21f);
+	text-align: center;
+	font-weight: bold;
+}
+
 table thead tr.td-info
 {
 	background-color: #158abd;
@@ -1023,5 +1038,11 @@ table thead tr.td-info
 .pesquisa-grade .btn-pesquisa-grade
 {
 	border:1px solid #CCC;
+}
+
+.btn-default
+{
+	background-color: #FFF;
+	border:1px solid #EEE;
 }
 -->

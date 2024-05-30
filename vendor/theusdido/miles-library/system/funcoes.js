@@ -927,6 +927,7 @@ function loadAllJSConcepts(){
 	$.ajax({
 		url:session.urlmiles,
 		dataType:'json',
+		crossDomain: true,
 		data:{
 			controller:'mdm/conceitojson'
 		},

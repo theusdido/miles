@@ -3,14 +3,14 @@
 	$conn 					= Transacao::Get();
 
 	$processo 				= tdClass::Criar("persistent",array("td_processo",tdClass::Read("processo")))->contexto;
-	$tipoprocessoorigem 	= tdClass::Read("tipoprocessoorigem");
+	$tipoprocessoorigem 	= tdClass::Read("tipoprocessoorigem") == '' ? $processo->tipoprocesso : tdc::r('tipoprocessoorigem');
 	$tipoprocessodestino 	= tdClass::Read("tipoprocessodestino");
 
 	// Atualiza o tipo de processo
 	$processo->tipoprocesso = $tipoprocessodestino;
 	$processo->armazenar();
-		
-	if ($tipoprocessoorigem == 16 and $tipoprocessodestino == 19){ // Recuperação para Falencia	
+
+	if ($tipoprocessoorigem == 16 and $tipoprocessodestino == 19){ // Recuperação para Falencia
 		$sql = tdClass::Criar("sqlcriterio");
 		$sql->addFiltro("processo","=",$processo->id);
 		$recuperandas = tdClass::Criar("repositorio",array("td_recuperanda"))->carregar($sql);		
@@ -40,6 +40,7 @@
 			$sqlfarein = "UPDATE td_relacaocredores SET farein = {$idfalida} WHERE farein = {$r->id};";
 			$conn->exec($sqlfarein);
 		}
+		echo 1;
 	}else{
 		echo 'Tipo de processo não encontrado.'; 
 		exit;

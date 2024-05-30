@@ -1,5 +1,5 @@
 <?php
-
+	
 	$_file_mdm_js_compile = Asset::path('FILE_MDM_JS_COMPILE');
 
 	if (!file_exists($_file_mdm_js_compile)){

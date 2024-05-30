@@ -1872,10 +1872,20 @@ function utf8charset($texto, $local = null, $decodificacao = null , $convert = n
 	}
 }
 function utf8decode($texto){
-	return utf8_decode($texto);
+	global $phpversion;
+	if ($phpversion >= 8){
+		return mb_convert_encoding($texto,'ISO-8859-1','UTF-8');
+	}else{
+		return utf8_decode($texto);
+	}
 }
-function utf8encode($texto){
-	return utf8_encode($texto);
+function utf8encode($texto){	
+	global $phpversion;
+	if ($phpversion >= 8){
+		return mb_convert_encoding($texto,'UTF-8','ISO-8859-1');
+	}else{
+		return utf8_encode($texto);
+	}
 }
 
 // Retorna o valor baseado no tipo

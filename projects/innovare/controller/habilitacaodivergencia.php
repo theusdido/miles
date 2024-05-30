@@ -494,37 +494,37 @@ error_reporting(E_ALL);
 					<div class="row linha-listarelacaocredores">
 						<div class="col-lg-4">
 							<div class="input-group">
-								<span class="input-group-addon">
+								<div class="input-group-text">
 									<input type="checkbox" aria-label="1ª RELAÇÃO" id="'.$parms.'-1" data-listarelacao="1" class="checkbox-numerorelacao">
-								</span>
+								</div>
 								<input type="text" class="form-control" aria-label="1ª RELAÇÃO" value="1ª RELAÇÃO" disabled readonly>
 							</div>
 						</div>
 						<div class="col-lg-4">
 							<div class="input-group">
-								<span class="input-group-addon">
+								<div class="input-group-text">
 									<input type="checkbox" aria-label="2ª RELAÇÃO" id="'.$parms.'-2" data-listarelacao="2" class="checkbox-numerorelacao">
-								</span>
+								</div>
 								<input type="text" class="form-control" aria-label="2ª RELAÇÃO" value="2ª RELAÇÃO" disabled readonly>
 							</div>
 						</div>
 						<div class="col-lg-4">
 							<div class="input-group">
-								<span class="input-group-addon">
+								<div class="input-group-text">
 									<input type="checkbox" aria-label="3ª RELAÇÃO" id="'.$parms.'-3" data-listarelacao="3" class="checkbox-numerorelacao">
-								</span>
+								</div>
 								<input type="text" class="form-control" aria-label="3ª RELAÇÃO" value="3ª RELAÇÃO" disabled readonly>
 							</div>
 						</div>
 					</div>
-					<div class="panel panel-primary">
-						<div class="panel-heading">
+					<div class="card">
+						<div class="card-header">
 							<span style="cursor:pointer;" class="cabecalho-farein" data-params="'.$parms.'">'.$linha->id . " - " . tdc::utf8($linha->{$descricao}).' - Data do <i>' . $datapedidosetenca . '</i></span>
-							<button class="btn btn-default btn-xs icone-pequeno-cabecalho-collapse cabecalho-farein-atualizar" data-params="'.$parms.'" aria-label="Atualizar Lista de Habilitação/Impugnação">
+							<button class="btn btn-default btn-sm icone-pequeno-cabecalho-collapse cabecalho-farein-atualizar" data-params="'.$parms.'" aria-label="Atualizar Lista de Habilitação/Impugnação">
 								<span class="fas fa-arrows-rotate" aria-hidden="true"></span>
 							</button>
 						</div>
-						<div class="panel-body" style="display:none;" id="'.$_GET["processo"].'-'.$_GET["tipo"].'-'.$linha->id.'"></div>
+						<div class="card-body" style="display:none;" id="'.$_GET["processo"].'-'.$_GET["tipo"].'-'.$linha->id.'"></div>
 					</div>
 				';
 			}
@@ -677,9 +677,9 @@ error_reporting(E_ALL);
 				$td_relacao->class = "text-center";
 				$td_relacao->add('
 					<div class="btn-group btn-group-xs" role="group" aria-label="...">
-					  <button type="button" class="btn btn-default alterar-relacao '.($credor->contexto->numerorelacao==1?'active':'').'">1</button>
-					  <button type="button" class="btn btn-default alterar-relacao '.($credor->contexto->numerorelacao==2?'active':'').'">2</button>
-					  <button type="button" class="btn btn-default alterar-relacao '.($credor->contexto->numerorelacao==3?'active':'').'">3</button>
+					  <button type="button" class="btn btn-light alterar-relacao '.($credor->contexto->numerorelacao==1?'active':'').'">1</button>
+					  <button type="button" class="btn btn-light alterar-relacao '.($credor->contexto->numerorelacao==2?'active':'').'">2</button>
+					  <button type="button" class="btn btn-light alterar-relacao '.($credor->contexto->numerorelacao==3?'active':'').'">3</button>
 					</div>
 				');
 
@@ -877,6 +877,7 @@ error_reporting(E_ALL);
 							$(".btn-reenvioarquivos[data-opc=sim]").removeClass("btn-success");
 							$(".btn-reenvioarquivos[data-opc=nao]").addClass("btn-default");
 						}
+						/*
 						$.ajax({
 							url:session.urlmiles,
 							data:{
@@ -885,6 +886,7 @@ error_reporting(E_ALL);
 								opc:$(this).data("opc"),
 								divergencia:$(ttable
 						});
+						*/
 					});
 				');
 
@@ -938,6 +940,7 @@ error_reporting(E_ALL);
 				$analise_sim_input = tdClass::Criar("input");
 				$analise_sim_input->type = "radio";
 				$analise_sim_input->autocomplete="off";
+				$analise_sim_input->class = "btn-check";
 				$analise_sim_label->add("Sim",$analise_sim_input);
 				
 				$analise_nao_label = tdClass::Criar("label");
@@ -946,6 +949,7 @@ error_reporting(E_ALL);
 				$analise_nao_input = tdClass::Criar("input");
 				$analise_nao_input->type = "radio";			
 				$analise_nao_input->autocomplete="off";
+				$analise_nao_input->class = "btn-check";
 				$analise_nao_label->add(tdc::utf8("Não"),$analise_nao_input);
 				
 				$analise_group->add($analise_sim_label,$analise_nao_label);
@@ -978,6 +982,7 @@ error_reporting(E_ALL);
 				$decisao_sim_input = tdClass::Criar("input");
 				$decisao_sim_input->type = "radio";
 				$decisao_sim_input->autocomplete="off";
+				$decisao_sim_input->class = "btn-check";
 				$decisao_sim_label->add("Sim",$decisao_sim_input);
 				
 				$decisao_nao_label = tdClass::Criar("label");
@@ -986,6 +991,7 @@ error_reporting(E_ALL);
 				$decisao_nao_input = tdClass::Criar("input");
 				$decisao_nao_input->type = "radio";			
 				$decisao_nao_input->autocomplete="off";
+				$decisao_nao_input->class = "btn-check";
 				$decisao_nao_label->add(tdc::utf8("Não"),$decisao_nao_input);
 				
 				$decisao_group->add($decisao_sim_label,$decisao_nao_label);
@@ -1338,7 +1344,7 @@ error_reporting(E_ALL);
 		$btnFarein = '<button type="button" class="btn btn-lg btn-link btn-sm" data-toggle="popover" title="Recuperandas,Falidas e Insolventes." data-placement="left" data-content="'.$todasFAREIN.'" onmouseover=$(this).popover({html:true})><b>TODAS</b></button>';
 
 		$btnTransferir = tdClass::Criar("button");
-		$btnTransferir->class = "btn btn-default btn-xs icone-pequeno-cabecalho-collapse";
+		$btnTransferir->class = "btn btn-default btn-sm icone-pequeno-cabecalho-collapse";
 		$btnTransferir->atia_label = "Atualizar Lista de Habilitação/Impugnação";
 		$btnTransferir->onclick = "abrirModalTransferencia({$processo->id});";
 			$btnTransferirSpan = tdClass::Criar("span");
@@ -1349,23 +1355,24 @@ error_reporting(E_ALL);
 		$divproc = tdClass::Criar("div");
 		$divproc->id = "td-processo-" . $processo->id;
 		
-		// Panel
-		$panel = tdClass::Criar("panel");		
-		$panel->head($a);
-		$panel->head($btnFarein);
-		$panel->head($btnTransferir);
-		$panel->body($divproc);
-		$panel->body->id = "pb-".$processo->id;
-		$panel->body->style = "display:none;";
-		$processos->add($panel);
+		// Card
+		$card = tdClass::Criar("card");		
+		$card->addHeader($a);
+		$card->addHeader($btnFarein);
+		$card->addHeader($btnTransferir);
+		$card->addHeader($divproc);
+		$card->getBody()->id 	= "pb-".$processo->id;
+		$card->getBody()->style = "display:none;";
+		$card->addBody('');
+		$processos->add($card);
 	}
-	
+
 	$js = tdClass::Criar("script");
 	$js->add('
 		$(".processo-accordion").click(function(e){
 			e.preventDefault();
 			e.stopPropagation();
-			
+
 			var processo 		= $(this).data("processo");
 			var tipoprocesso 	= $(this).data("tipoprocesso");
 			abrirFarein(processo,tipoprocesso);

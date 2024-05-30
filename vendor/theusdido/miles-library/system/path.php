@@ -124,6 +124,9 @@
 	// Caminho padrão para as views personalizadas
 	define("PATH_CURRENT_VIEW", PATH_PROJECT . "view" . DIRECTORY_SEPARATOR);
 
+	// Caminho padrão para os models personalizadas
+	define("PATH_CURRENT_MODEL", PATH_PROJECT . "model" . DIRECTORY_SEPARATOR);	
+
 	// Caminho padrão para as páginas personalizadas
 	define("PATH_CURRENT_PAGE", PATH_PROJECT . "page" . DIRECTORY_SEPARATOR);
 

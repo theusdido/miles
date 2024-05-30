@@ -8,7 +8,7 @@
 	);
 
 	$nome	= $entidade->addAttr(
-		array("nome" => "nome" , "descricao" => "Nome" , "tipohtml" => 3)
+		array("nome" => "nome" , "descricao" => "Nome" , "tipohtml" => 3, "is_display" => true, "is_exibirgradedados" => true)
 	);
 
 	$restricao     = $entidade->addAttr(
@@ -17,4 +17,4 @@
 
 	$categoria	= $entidade->addAttr(
 		array("nome" => "categoria" , "descricao" => "Categoria" , "tipohtml" => "numero_inteiro" , "chave_estrangeira" => installDependencia("qa_requisito_categoria",'package/qa/analise/requisito/categoria'))
-	);    
+	);
