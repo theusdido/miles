@@ -1,0 +1,23 @@
+{
+    "name":"theusdido/miles",
+    "description":"Miles Framework - Fast development for back end.",
+    "type":"project",
+    "license":"GPL-3.0-or-later",
+    "authors":[
+      {
+        "name":"Teia Miles Team",
+        "email":"miles@teia.tec.br",
+        "homepage":"https://teia.tec.br/miles",
+        "role":"Developers"
+      }
+	],
+    "autoload":{
+      "psr-4":{
+        "\\miles\\project\\":"core/"
+      }
+    },
+    "require": {
+		"theusdido/miles-library":"^1.0.1",
+		"vlucas/phpdotenv": "^5.5"
+    }
+}

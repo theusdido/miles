@@ -1,0 +1,1 @@
+07/06/2022 12:24:31: LoggerDATE->escrever: Erro ao criar o diretório do log [T:\wamp64\www\zoomsoft\miles/projects/1/log/].

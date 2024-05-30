@@ -1,0 +1,17 @@
+/* Folha de Estilo */
+.navbar-default{
+	background-color:#fafafa;
+	border:0px;
+}
+
+
+.btn-default{
+	border:0px;
+}
+.icone-entidade{
+	float:right;
+	margin-top:-5px;
+}
+.blockquote-reverse{
+	background-color:#FAFAFA;
+}

@@ -1,0 +1,51 @@
+#table-fluxo-balanco
+{
+    text-transform: uppercase;
+    display: none;
+}
+
+.titulo-pagina
+{
+    font-size: 3rem !important;
+}
+
+.cell-despesa
+{
+    background-color: #dc4c4c !important;
+    color:#FFF;
+}
+.cell-receita
+{
+    background-color: #116b3b !important;
+    color:#FFF;
+}
+
+#table-fluxo-caixa tfoot tr td {
+    border-top:5px solid #FFF;
+    margin-top:10px;
+    font-weight: bold;
+    font-size: 1.7rem;
+}
+
+.cell-saldo
+{
+    background-color: #0fa2d8 !important;
+    color:#FFF;
+}
+
+#form-pesquisa
+{
+    display: flex;
+    justify-content: right;
+    float:right !important;
+    width:50% !important;
+    margin-bottom:15px;
+}
+#form-pesquisa *{
+    margin-left:8px;
+}
+
+#form-pesquisa select {
+    width:150px;
+    color:#100f0f;
+}

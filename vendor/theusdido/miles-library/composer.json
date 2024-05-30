@@ -1,0 +1,62 @@
+{
+  "name":"theusdido/miles-library",
+  "description":"Miles Framework - Fast development for back end.",
+  "type":"library",
+  "license":"GPL-3.0-or-later",
+  "authors":[
+    {
+      "name":"Edilson Bitencourt - @theusdido",
+      "email":"edilson@teia.tec.br",
+      "homepage":"https://github.com/theusdido",
+      "role":"Fuonder"
+    },
+    {
+      "name":"Bianca Peruchi Cardoso - @biancaperuchi",
+      "email":"bianca_hotmail@hotmail.com",
+      "homepage":"https://github.com/biancaperuchi",
+      "role":"Manager"
+    },
+    {
+      "name":"Talles Machado Rodrigues - @TallesMR",
+      "email":"tallesmachadorodrigues@gmail.com",
+      "homepage":"https://github.com/TallesMR",
+      "role":"Developer"
+    },
+    {
+      "name":"Eliton dos Santos José - @elitonDSJ",
+      "email":"elitondsj@gmail.com",
+      "homepage":"https://github.com/elitonDSJ",
+      "role":"Developer"
+    },
+    {
+      "name":"Luan Zelinski Corrêa - @luanzelinskicorrea",
+      "email":"comercialluanzc@gmail.com",
+      "homepage":"https://github.com/luanzelinskicorrea",
+      "role":"Developer"
+    },
+    {
+      "name":"Emanuel Borges Albano - @Necobgs",
+      "email":"emanuelborgesdev@gmail.com",
+      "homepage":"https://github.com/necobgs",
+      "role":"Developer"
+    },
+    {
+      "name":"Daniela Sommacal- @dmsommacal",
+      "email":"dmsommacal@gmail.com",
+      "homepage":"https://github.com/dmsommacal",
+      "role":"Contributor"
+    },
+    {
+      "name":"Jair Felipe Peruchi Cardoso",
+      "role":"Contributor"
+    }
+  ],
+  "autoload":{
+    "psr-4":{
+      "\\theusdido\\miles-library\\":""
+    }
+  },
+  "require": {
+      "php":">=7.2"
+  }
+}

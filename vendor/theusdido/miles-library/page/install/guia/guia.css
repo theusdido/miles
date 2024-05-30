@@ -1,0 +1,31 @@
+.guia-disabled
+{
+    background-color: #DDD;
+    border-bottom:1px solid #FFF;
+}
+
+.guia-disabled:hover{
+    background-color: #DDD !important;
+}
+.guia-installed
+{
+    background-color: #e5ffe7 !important;
+}
+
+.guia-current
+{
+    border-bottom: 1px solid #000;
+    background-color: #ffffff;
+    font-weight: bold;
+}
+
+.guia-access
+{
+    border-bottom: 2px solid #014e18;
+    background-color:#dcffe7;
+    color:#000 !important;
+}
+
+.guia-access:hover{
+    background-color:#c5ffd7 !important;
+}

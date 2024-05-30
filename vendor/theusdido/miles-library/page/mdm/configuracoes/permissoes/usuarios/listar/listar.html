@@ -1,0 +1,28 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="btn-group" role="group" aria-label="" id="gp-btn-op">
+			<button id="permissao-btn-tela" type="button" class="btn btn-primary active">Cadastros</button>
+			<button id="permissao-btn-consulta" type="button" class="btn btn-primary">Consultas</button>
+			<button id="permissao-btn-relatorio" type="button" class="btn btn-primary">Relatórios</button>
+			<button id="permissao-btn-funcao" type="button" class="btn btn-primary">Funções</button>
+			<button id="permissao-btn-menu" type="button" class="btn btn-primary">Menu</button>
+		</div>	
+		<div id="dadosusuariopermissao">
+			<span>Usuário: <label class="nome_usuario"></label></span>
+			<button type="button" class="btn btn-warning" aria-label="Restaurar Permissões" id="btn-restaurar-permissoes">
+			  	<span class="fas fa-redo" aria-hidden="true"></span>
+			</button>
+			<button type="button" class="btn btn-primary" aria-label="Permissão Geral" id="btn-all-permissoes">
+			  	<span class="fas fa-asterisk" aria-hidden="true"></span>
+			</button>			
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-4">
+		<ul class="list-group" id="lista-grupo-usuario"></ul>
+	</div>
+	<div class="col-md-8">
+        <div class="panel-lista-permissoes-content"></div>
+	</div>
+</div>

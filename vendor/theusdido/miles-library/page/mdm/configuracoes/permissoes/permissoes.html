@@ -1,0 +1,42 @@
+<form>
+    <legend>Permissões</legend>
+</form>
+<br/><br/>
+<div class="accordion" id="accordionPermissoes">
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button id="btn-porusuario" class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#porUsuario" aria-expanded="true" aria-controls="porUsuario">
+            Por Usuário
+        </button>
+      </h2>
+      <div id="porUsuario" class="accordion-collapse collapse" data-bs-parent="#accordionPermissoes">
+        <div class="accordion-body">          
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button id="btn-porfuncoes" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#porFuncoes" aria-expanded="false" aria-controls="porFuncoes">
+            Por Funções
+        </button>
+      </h2>
+      <div id="porFuncoes" class="accordion-collapse collapse" data-bs-parent="#accordionPermissoes">
+        <div class="accordion-body">
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="modal fade" tabindex="-1" role="dialog" id="modal-permissoes-atributos-cadastro">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body">
+                <p>Aguarde ...</p>
+            </div>
+        </div>
+    </div>
+</div>

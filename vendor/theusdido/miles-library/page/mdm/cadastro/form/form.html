@@ -1,0 +1,136 @@
+<div class="btn-group-mdm">
+    <div class="btn-group-left">
+        <button class="btn btn-warning" onclick="goListarCadastro(event)">
+            <i class="fa fa-arrow-left"></i>
+            Voltar
+        </button>
+    </div>
+    <div class="btn-group-right">
+        <button type="button" class="btn btn-primary" id="btn-salvar-cadastro">Salvar</button>
+        <div class="loader-salvar"></div>
+    </div>
+</div>
+<form>
+    <fieldset>
+
+        <div class="form-group">
+            <label for="nome">ID</label>
+            <div class="input-group">
+                <input type="text" class="form-control" id="id" name="id" readonly />
+                <span class="input-group-btn">
+                    <button class="btn btn-info" type="button" id="btn-edit-id-entidade">
+                        <span class="fas fa-pencil-alt" aria-hidden="true"></span>
+                    </button>
+                </span>
+            </div>
+        </div>		
+
+        <div class="form-group">
+            <label for="nome">Nome</label>
+            <input type="text" name="nome" id="nome" class="form-control"> 
+        </div>
+        <div class="form-group">
+            <label for="descricao">Descrição</label>
+            <input type="text" name="descricao" id="descricao" class="form-control"> 
+        </div>
+        <div class="form-group">
+            <label for="ncolunas">Colunas</label>
+            <small>( N&uacute;mero de colunas na tela de cadastro do CRUD )</small>
+            <select id="ncolunas" name="ncolunas" class="form-control">
+                <option value="1" selected>1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>								
+        </div>
+        <div class="form-group">
+            <label for="campodescchave">Campo Descri&ccedil;&atilde;o</label>
+            <small>(Chave Estrangeira)</small>
+            <select id="campodescchave" name="campodescchave" class="form-control">
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="atributogeneralizacao">Campo Relacionamento Generalização</label>
+            <select id="atributogeneralizacao" name="atributogeneralizacao" class="form-control"></select>			
+        </div>							
+        <div class="checkbox">
+            <label for="exibirmenuadministracao">
+                <input type="checkbox" name="exibirmenuadministracao" id="exibirmenuadministracao"> Exibir no menu "Administração"
+            </label>
+        </div>
+        <div class="checkbox">
+            <label for="exibircabecalho">
+                <input type="checkbox" name="exibircabecalho" id="exibircabecalho">Exibir cabeçalho no CRUD controller
+            </label>
+        </div>
+        <div class="checkbox">
+            <label for="exibirlegenda">
+                <input type="checkbox" name="exibirlegenda" id="exibirlegenda" checked>Exibir legenda no CRUD controller
+            </label>
+        </div>
+        <!-- <?php
+            if ($id == ""){
+        ?> -->
+        <div class="checkbox">
+            <label for="criarprojeto">
+                <input type="checkbox" name="criarprojeto" id="criarprojeto" checked>Criar atributo <strong>PROJETO</strong>.
+            </label>
+        </div>							
+        <div class="checkbox">
+            <label for="criarempresa">
+                <input type="checkbox" name="criarempresa" id="criarempresa" checked>Criar atributo <strong>EMPRESA</strong>.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label for="criarauth">
+                <input type="checkbox" name="criarauth" id="criarauth">Criar atributo <strong>AUTH e AUTH0</strong>.
+            </label>
+        </div>
+        <!-- <?php
+            }
+        ?>	 -->
+        <div class="checkbox">
+            <label for="registrounico">
+                <input type="checkbox" name="registrounico" id="registrounico">Registro Único.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label for="carregarlibjavascript">
+                <input type="checkbox" name="carregarlibjavascript" id="carregarlibjavascript">Carregar Biblioteca JavaScript no CRUID
+            </label>
+        </div>
+        <div class="checkbox">
+            <label for="btnimportarcsv">
+                <input type="checkbox" name="btnimportarcsv" id="btnimportarcsv">Exibir botão para importar registro em CSV
+            </label>
+        </div>							
+        <div class="checkbox">
+            <label for="btnexportarcsv">
+                <input type="checkbox" name="btnexportarcsv" id="btnexportarcsv">Exibir botão para exportar registro em CSV
+            </label>
+        </div>
+        <div class="checkbox">
+            <label for="btnimprimirtodosregistroshtml">
+                <input type="checkbox" name="btnimprimirtodosregistroshtml" id="btnimprimirtodosregistroshtml">Exibir botão para imprimir todos os registro em HTML
+            </label>
+        </div>
+        <div class="checkbox">
+            <label for="btnimprimirtodosregistrospdf">
+                <input type="checkbox" name="btnimprimirtodosregistrospdf" id="btnimprimirtodosregistrospdf">Exibir botão para imprimir todos os registro em PDF
+            </label>
+        </div>
+        <div class="checkbox">
+            <label for="entidadeauxiliar">
+                <input type="checkbox" name="entidadeauxiliar" id="entidadeauxiliar">Entidade Auxiliar ( <small>Os dados da entidade são carregados na inicialização do sistema.</small> )
+            </label>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Tipo de Aba: </label>
+            <label class="radio-inline">
+                    <input type="radio" name="tipoaba" id="aba-tabs" value="tabs" checked> Tabs
+            </label>
+            <label class="radio-inline">
+                    <input type="radio" name="tipoaba" id="aba-pills" value="pills"> Pills
+            </label>
+        </div>        
+    </fieldset>
+</form>

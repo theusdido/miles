@@ -1,0 +1,61 @@
+<div class="panel-group" id="accordion_colunas" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingThree">
+        <h4 class="panel-title">
+            <a role="button" data-toggle="collapse" data-parent="#accordion_colunas" href="#collapseColunas" aria-expanded="false" aria-controls="collapseTrhee">
+            Colunas
+            </a>
+        </h4>
+        </div>
+        <div id="collapseColunas" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+            <div class="panel-body">
+                <button type="button" class="btn btn-default" aria-label="Novo Filtro" style="float:right;margin-top:-3px;" onclick="novoFiltroInicial();">
+                    <span class="fas fa-plus-circle" aria-hidden="true"></span>
+                </button>
+
+                <ul id="lista-colunas" class="list-group"></ul>
+                
+                <!-- CADASTRO DE FILTRO -->
+                <div class="modal fade" id="modalColunas" tabindex="-1" role="dialog" aria-labelledby="myModalColunas">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalColunas">Configurações</h4>
+                        </div>
+                        <div class="modal-body">
+
+                            <form>
+                                <fieldset>
+                                    <div class="form-group">
+                                        <label for="alinhamento">Alinhamento</label>
+                                        <select name="alinhamento" id="alinhamento" class="form-control">
+                                            <option value="left">Esquerda</option>
+                                            <option value="center">Center</option>
+                                            <option value="right">Direita</option>
+                                        </select>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="exibirid">
+                                            <input type="checkbox" name="exibirid" id="exibirid">Exibir <b>ID</b>
+                                            <small>( Campo de chave estrangeira )</small>
+                                        </label>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        
+                        </div>
+                        <div class="modal-footer">
+                            <div id="error"></div>
+                            <button 
+                                type="button" 
+                                class="btn btn-primary"
+                                onclick="salvarConfigColuna()"
+                            >Salvar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

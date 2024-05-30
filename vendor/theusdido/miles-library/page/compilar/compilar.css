@@ -1,0 +1,10 @@
+#conceitos .badge{
+    background-color:transparent;
+}
+
+#btn-compilar{
+    float:right;
+    width:125px;    
+    display:block;
+    margin:10px;
+}

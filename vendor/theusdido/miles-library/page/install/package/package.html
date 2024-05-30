@@ -1,0 +1,103 @@
+<form>
+    <fieldset>
+        <legend>Configuração dos Pacotes</legend>
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div id="btn-salvar-pacotes" class="form-grupo-botao">
+                    <img id="loader-pacotes" />
+                    <button type="button" class="btn btn-primary" id="btn-pacotes">
+                        Salvar
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div id="retorno" class="alert alert-dismissible fade show" role="alert">
+                    <button type="button" class="close btn-close" aria-label="Close" data-bs-dismiss="alert"></button>
+                    <span class="msg"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div id="pacotes-install">
+                    <div class="card panel-pacote">
+                        <div class="card-header">Website</div>
+                        <div class="card-body">
+                            <div class="list-group">
+                                <a href="#" class="list-group-item carregar-componentes" data-pacote="website" data-componente="geral">Geral</a>
+                                <a href="#" class="list-group-item carregar-componentes disabled" data-pacote="website" data-componente="institucional">Institucional</a>
+                                <a href="#" class="list-group-item carregar-componentes" data-pacote="website" data-componente="ecommerce">E-Commerce</a>
+                                <a href="#" class="list-group-item carregar-componentes" data-pacote="website" data-componente="blog">Blog</a>
+                                <a href="#" class="list-group-item carregar-componentes disabled" data-pacote="website" data-componente="landpage">LandPage</a>
+                                <a href="#" class="list-group-item carregar-componentes disabled" data-pacote="website" data-componente="redesocial">Rede Social</a>
+                            </div>
+                        </div>
+                    </div>
+                
+                
+                    <div class="card panel-pacote">
+                        <div class="card-header">Sistema</div>
+                        <div class="card-body">
+                            <div class="list-group">
+                                <a href="#" class="list-group-item carregar-componentes" data-pacote="sistema" data-componente="erp">ERP - Enterprise Resource Planning</a>
+                                <a href="#" class="list-group-item carregar-componentes disabled" data-pacote="sistema" data-componente="crm">CRM - Customer Relationship Management</a>
+                                <a href="#" class="list-group-item carregar-componentes disabled" data-pacote="sistema" data-componente="bi">BI - Business Intelligence</a>								  								  
+                            </div>
+                        </div>
+                    </div>
+                
+                
+                    <div class="card panel-pacote">
+                        <div class="card-header">Negócio</div>
+                        <div class="card-body">
+                            <div class="list-group">
+                                <a href="#" class="list-group-item carregar-componentes" data-pacote="negocio" data-componente="imobiliaria">Imobiliária</a>
+                                <a href="#" class="list-group-item carregar-componentes" data-pacote="negocio" data-componente="escola">Escola</a>
+                                <a href="#" class="list-group-item carregar-componentes" data-pacote="negocio" data-componente="associacao">Associação</a>
+                                <a href="#" class="list-group-item carregar-componentes" data-pacote="negocio" data-componente="livraria">Livraria</a>
+                            </div>
+                        </div>
+                    </div>
+                
+                
+                    <div class="card panel-pacote">
+                        <div class="card-header">Competição</div>
+                        <div class="card-body">
+                            <div class="list-group">
+                                <a href="#" class="list-group-item carregar-componentes" data-pacote="competicao" data-componente="cultural">Cultural</a>
+                            </div>
+                        </div>
+                    </div>
+                
+                
+                    <div class="card panel-pacote">
+                        <div class="card-header">QA ( Quality Assurance )</div>
+                        <div class="card-body">
+                            <div class="list-group">
+                                <a href="#" class="list-group-item carregar-componentes" data-pacote="qa" data-componente="analise">Análise de Requisitos</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>	  
+</form>	
+
+<!-- Modal Componentes -->
+<div class="modal fade" id="view-componente" tabindex="-1" aria-labelledby="#view-componente-aria-label">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="view-componente-aria-label"></h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p></p>
+            </div>
+        </div>
+    </div>
+</div>

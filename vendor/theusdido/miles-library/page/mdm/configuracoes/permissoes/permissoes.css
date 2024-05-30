@@ -1,0 +1,52 @@
+.list-group-item .glyphicon {		
+    margin-right:5px;
+}
+.list-group-item .lista-usuario{
+    margin-top:10px;
+}
+.cabecalho-lista-usuario{
+    cursor:pointer;
+}
+#dadosusuariopermissao{
+    float:right;
+    display:none;
+    height:30px;
+    margin:10px;
+}
+#dadosusuariopermissao > span{
+    float:left;
+    margin-top:5px;
+}
+.nome_usuario{
+    font-size:18px;
+}
+.descricao-funcao{
+    font-size:18px;
+}
+.lista_usuarios_funcoes{
+    margin-top:10px;
+}
+.descricao-usuario{
+    color:#999;
+}
+.filtro-pesquisa-usuario{
+    float:right;
+}
+.add-usuario-funcao{
+    float:right;
+    margin-right:4px;
+}
+.lista-usuario{
+    display:none;
+}
+#btn-restaurar-permissoes,#btn-all-permissoes{
+    margin-left:10px;
+}
+#gp-btn-op{
+    float:left;
+    margin:10px;
+}
+
+#gp-btn-op button {
+    width:100px;
+}

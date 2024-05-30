@@ -1,0 +1,130 @@
+/*
+	Classes do Editor
+*/
+.editor-bar{
+/*
+	width:100px;
+	position:absolute;
+	z-Index:1000;
+	right:5px;
+	top:5px;
+*/
+}
+.editor-bar .btn{
+	margin:5px;
+}
+.editor-btn-grid{
+	background-image:url(../../../system/images/icon/editor/grid.png);
+}
+.editor-bar .panel-heading{
+	cursor:move;
+}
+.grid-row{
+	border:1px dashed #CCC;
+}
+.grid-col, .no-visible{
+	border:1px dashed #AAA;
+	height:30px;
+}
+.no-visible:hover{
+	cursor:move;	
+}
+#layoutBar .panel-heading{
+	text-align:center;
+}
+.editor-body{
+	float:left;
+	width:100%;
+	height:auto;
+	min-height:100%;
+}
+html, body{
+	height:100% !important; /* aqui definimos que o html e o body terão altura de 100% */
+}
+#btn-salvar-editor{
+	position:absolute;
+	left:5px;
+	top:5px;
+}
+.leftbar-editor{
+	width:400px;
+	position:absolute;
+	z-Index:1000;
+	right:5px;
+	top:5px;
+}
+.leftbar-editor .panel{
+	margin-bottom:3px;
+}
+.propertiesBar table{
+	width:100%;	
+}
+.propertiesBar table tbody tr td label{
+	float:left;
+	height:25px;
+	line-height:25px;
+	font-size:12px;
+}
+.propertiesBar table tbody tr td input{
+	font-size:12px;
+	width:90%;
+	border:1px solid transparent;
+	margin:5px;	
+}
+.propertiesBar table tbody tr td input:hover{
+	border:1px solid #EEE;
+}
+.propertiesBar table tbody tr{
+	border-bottom:1px solid #EEE;
+}
+.propertiesBar table tbody tr:hover{
+	background-color:#FCFCFC;
+}
+.delete-attribute{
+	width:10px;
+	margin:5px;
+}
+.name-attribute , .value-attribute {
+	border: 1px solid #E0E0E0;
+	margin:3px;
+}
+
+.editor-bar-componentes-td .editor-element , .editor-bar-componentes-bootstrap .editor-element{
+	float:left;
+	width:60px;
+	margin:5px;
+}
+
+div.editor-element{
+	height:25px;
+}
+
+.editor-body header{
+	margin-top:0px;
+}
+.addbuttoncontainer{
+	position:absolute;
+	left:0;
+	bottom:-35px;
+	height:35px;
+	border:1px solid #FBFBFB;
+}
+.addbuttoncontainer:hover{
+	background-color:#FAFAFA !important;
+	border:1px solid #F0F0F0;
+}
+.element-container:hover{
+	boder:3px solid #000 !important;
+}
+.alcasredimensionamento{
+	position:absolute;
+	width:5px;
+	height:5px;
+	background-color:#000;
+	cursor:n-resize;
+}
+.linhahorizontalreferencia{
+	position:absolute;
+	border:1px solid #FF0000;
+	width:100%;
+}

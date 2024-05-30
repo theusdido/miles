@@ -1,0 +1,48 @@
+<div class="btn-group-mdm">
+    <div class="btn-group-right">
+        <button 
+            class="btn btn-primary"
+            onclick="criar()"
+        >
+        <i class="fa fa-plus"></i>
+        Criar
+        </button>
+    </div>
+</div>
+<table id="table-lista-entidade" width="100%" class="table table-hover" style="float:right">
+    <thead>
+        <tr>
+            <td colspan="9" style="padding:5px 0;text-align: right;">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="9" style="padding:5px 0">
+                <div class="input-group">
+                        <input type="text" id="entidade-termo" class="form-control" placeholder="Pesquisar ...">
+                        <span class="input-group-btn">
+                        <button 
+                            id="btn-pesquisar-cadastro"
+                            class="btn btn-primary" 
+                            type="button" 
+                            style="height: 34px"
+                        >
+                            <i class='fas fa-search' aria-hidden='true'></i>
+                        </button>
+                        </span>
+                </div>
+            </td>
+        </tr>
+        <tr class="active">
+            <td width="10%">Id</td>
+            <td width="40%">Descrição</td>
+            <td width="20%">Nome</td>
+            <td width="5%" align="center">Editar</td>
+            <td width="5%" align="center">Atributo</td>
+            <td width="5%" align="center">Aba</td>
+            <td width="5%" align="center">Rel.</td>
+            <td width="5%" align="center">Gerar</td>
+            <td width="5%" align="center">Excluir</td>
+        </tr>	
+    </thead>
+    <tbody></tbody>
+</table>

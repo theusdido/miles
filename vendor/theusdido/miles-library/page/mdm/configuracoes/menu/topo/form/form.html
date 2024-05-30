@@ -1,0 +1,73 @@
+<div class="btn-group-mdm">
+    <div class="btn-group-left">
+        <button class="btn btn-warning" onclick="voltarMenuTopoListar()">
+            <i class="fa fa-arrow-left"></i>
+            Voltar
+        </button>
+    </div>
+    <div class="btn-group-right">
+        <button type="button" class="btn btn-primary" name="salvar" id="btn-salvar">Salvar</button>        
+        <div class="loader-salvar"></div>
+    </div>
+</div>
+<div id="retorno" class="alert"></div>
+<form>
+    <fieldset>
+        <input type="hidden" id="id" name="id" />
+        <div class="form-group">
+            <label for="tipomenu">Tipo</label>
+            <select id="tipomenu" name="tipomenu" class="form-control">
+                <option value="raiz" data-tipo="raiz">Raiz</option>
+                <option value="cadastro" data-tipo="page">Cadastro</option>
+                <option value="consulta" data-tipo="consulta">Consulta</option>
+                <option value="relatorio" data-tipo="relatorio">Relatório</option>
+                <option value="movimentacao" data-tipo="movimentacao">Movimentação</option>
+                <option value="personalizado" data-tipo="personalizado">Personalizado</option>
+                <option value="conceito" data-tipo="conceito">Conceito</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="entidade">Conceito</label>
+            <select id="entidade" name="entidade" class="form-control"></select>
+        </div>
+        <div class="form-group">
+            <label for="descricao">Descri&ccedil;&atilde;o</label>
+            <input type="text" name="descricao" id="descricao" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="link">Link</label>
+            <input type="text" name="link" id="link" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="target">Target</label>
+            <input type="text" name="target" id="target" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="target">Ordem</label>
+            <input type="text" name="ordem" id="ordem" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="path">Path</label>
+            <input type="text" name="path" id="path" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="icon">Icon</label>
+            <input type="text" name="icon" id="icon" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="fixo">Fixo</label>
+            <input type="text" name="fixo" id="fixo" class="form-control">
+        </div>							
+        <div class="form-group">
+            <label for="coluna">Coluna</label>
+            <select id="coluna" name="coluna" class="form-control">
+                <option value="0">1ª Coluna</option>
+                <option value="1">2ª Coluna</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="pai">Pai</label>
+            <select id="pai" name="pai" class="form-control"></select>
+        </div>
+    </fieldset>    
+</form>

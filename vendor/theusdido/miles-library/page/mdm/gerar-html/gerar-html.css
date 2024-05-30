@@ -1,0 +1,23 @@
+#pagina-gerada{
+    border:3px solid #EEE;
+    float:left;
+    width:100%;
+    padding:15px;
+}
+#lista-arquivos-gerados
+{
+    display:none;
+    margin-top:30px;
+}
+
+#pagina-gerada.success{
+    background-color:#009900;
+    color:#FFF;
+}
+
+#lista-configuracoes-gerarhtml
+{
+    float: left;
+    width: 100%;
+    margin-top: 10px;
+}

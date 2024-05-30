@@ -1,0 +1,232 @@
+<div class="btn-group-mdm">
+  <div class="btn-group-left">
+      <button class="btn btn-warning" onclick="goListarMovimentacao()">
+          <i class="fa fa-arrow-left"></i>
+          Voltar
+      </button>
+  </div>
+  <div class="btn-group-right">
+      <button type="button" class="btn btn-primary" id="btn-salvar-movimentacao">Salvar</button>
+      <div class="loader-salvar"></div>
+  </div>
+</div>
+<div id="error"></div>
+<form>
+    <fieldset>
+        <div class="form-group">
+            <label for="nome">Descri&ccedil;&atilde;o</label>
+            <input type="text" name="descricao" id="descricao" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="entidade">Entidade</label>
+            <select id="entidade" name="entidade" class="form-control"></select>
+        </div>
+        <div class="form-group">
+            <label for="motivo">Motivo <small>( Entidade )</small></label>
+            <select id="motivo" name="motivo" class="form-control"></select>
+        </div>
+        <div class="form-group">
+          <label for="nome">Display <small>( Botão )</small></label>
+          <input type="text" name="displaybutton" id="displaybutton" class="form-control">
+        </div>        
+        <div class="checkbox">
+            <label for="exigirobrigatorio">
+                <input id="exigirobrigatorio" name="exigirobrigatorio" type="checkbox"> Obrigatório o preenchimento do campo "Observação"
+            </label>
+        </div>
+        <div class="checkbox">
+            <label for="exibirtitulo">
+                <input id="exibirtitulo" name="exibirtitulo" type="checkbox"> Exibir Título (Legenda) na página
+            </label>
+        </div>
+        <div class="checkbox">
+            <label for="exibirvaloresantigos">
+                <input id="exibirvaloresantigos" name="exibirvaloresantigos" type="checkbox"> Exibir Valores Antigos
+            </label>
+        </div>
+    </fieldset>
+</form>
+
+<!-- ALTERAR -->
+<div class="panel-group" id="accordion_alterar" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title">
+        <a role="button" data-toggle="collapse" data-parent="#accordion_alterar" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          Alterar							  
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+            <button type="button" class="btn btn-default" aria-label="Novo Alterar" style="float:right;margin-top:-3px;" onclick="novoAlterar();">
+              <span class="fas fa-plus-circle" aria-hidden="true"></span>
+            </button>
+
+            <!-- CADASTRO DE ALTERAR -->
+            <div class="modal fade" id="modalCadastroAlterar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Cadastro de Alterar</h4>
+                  </div>
+                  <div class="modal-body">
+
+                        <!-- FORMULARIO DE ALTERAR -->
+                        <form id="form-alterar">
+                            <fieldset>
+                                <input type="hidden" id="idalterar" name="idalterar" />
+                                <div class="form-group">
+                                    <label for="atributo">Atributo</label>
+                                    <select id="atributo" name="atributo" class="form-control"></select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="legenda">Legenda</label>
+                                    <input type="text" name="legenda" id="legenda" class="form-control">
+                                </div>
+                            </fieldset>
+                        </form>
+                  
+                  </div>
+                  <div class="modal-footer">
+                        <div id="error"></div>
+                        <button type="button" class="btn btn-primary" id="salvarAlterar">Salvar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- CADASTRO DE ALTERAR -->
+            <br/><br/>
+            <div id="lista-alterar" class="list-group">
+            </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STATUS -->
+<div class="panel-group" id="accordion_status" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingTwo">
+      <h4 class="panel-title">
+        <a role="button" data-toggle="collapse" data-parent="#accordion_status" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Status
+        </a>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div class="panel-body">
+            <button type="button" class="btn btn-default" aria-label="Novo Alterar" style="float:right;margin-top:-3px;" onclick="novoStatus();">
+              <span class="fas fa-plus-circle" aria-hidden="true"></span>
+            </button>
+            
+            <!-- CADASTRO DE STATUS -->
+            <div class="modal fade" id="modalCadastroStatus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Cadastro Status</h4>
+                  </div>
+                  <div class="modal-body">
+                  
+                        <form id="form-status">
+                            <fieldset>
+                                <input type="hidden" id="idstatus" name="idstatus" />
+                                <div class="form-group">
+                                    <label for="atributo">Atributo</label>
+                                    <select id="atributo" name="atributo" class="form-control"></select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="operador">Operador</label>
+                                    <select name="operador" id="operador" class="form-control">
+                                        <option value="=">Igual</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="valor">Valor</label>
+                                    <input type="text" name="" id="" class="form-control" data-tipoatributo="input">
+                                    <select name="" id="" class="form-control" data-tipoatributo="lista">
+                                    </select>														
+                                </div>
+                            </fieldset>
+                        </form>
+                  </div>
+                  <div class="modal-footer">
+                        <div id="error"></div>
+                        <button type="button" class="btn btn-primary" id="salvarStatus">Salvar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br/><br/>
+            <div id="lista-status" class="list-group">
+            </div>								
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HISTÓRICO -->
+<div class="panel-group" id="accordion_historico" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title">
+        <a role="button" data-toggle="collapse" data-parent="#accordion_historico" href="#collapseTrhee" aria-expanded="false" aria-controls="collapseOne">
+          Histórico							  
+        </a>
+      </h4>
+    </div>
+    <div id="collapseTrhee" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+            <button type="button" class="btn btn-default" aria-label="Novo Histórico" style="float:right;margin-top:-3px;" onclick="novoHistorico();">
+              <span class="fas fa-plus-circle" aria-hidden="true"></span>
+            </button>
+
+            <!-- CADASTRO DE HISTÓRICO -->
+            <div class="modal fade" id="modalCadastroHistorico" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Cadastro de Histórico</h4>
+                  </div>
+                  <div class="modal-body">
+
+                        <!-- FORMULARIO DE HISTÓRICO -->
+                        <form id="form-historico">
+                            <fieldset>
+                                <input type="hidden" id="idhistorico" name="idhistorico" />
+                                <div class="form-group">
+                                    <label for="entidade">Entidade</label>
+                                    <select id="entidade" name="entidade" class="form-control"></select>
+                                </div>													
+                                <div class="form-group">
+                                    <label for="atributo">Atributo</label>
+                                    <select id="atributo" name="atributo" class="form-control">
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="legenda">Legenda</label>
+                                    <input type="text" name="legenda" id="legenda" class="form-control">
+                                </div>
+                            </fieldset>
+                        </form>
+
+                  </div>
+                  <div class="modal-footer">
+                        <div id="error"></div>
+                        <button type="button" class="btn btn-primary" id="salvarHistorico">Salvar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- CADASTRO DE HISTÓRICO -->
+            <br/><br/>
+            <div id="lista-historico" class="list-group">
+            </div>
+      </div>
+    </div>
+  </div>
+</div>

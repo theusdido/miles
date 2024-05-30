@@ -1,0 +1,1 @@
+28/12/2021 16:46:12: LoggerDATE->escrever: Erro ao criar o diretório do log [T:\wamp64\www\granuemporio.com.br\miles/projects/1/log/].

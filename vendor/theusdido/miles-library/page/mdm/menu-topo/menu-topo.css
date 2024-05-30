@@ -1,0 +1,28 @@
+.navbar-default .navbar-nav > li > a {
+    color: #777 !important;
+}
+
+#menu .nav .open, 
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover, 
+.navbar-default .navbar-nav > .open > a:focus
+{
+    color: #FFF !important;
+}
+
+.navbar-brand label
+{
+    cursor:pointer;
+}
+
+#menu-topo .navbar-header,
+#menu-topo .navbar-brand
+{
+	padding: 0;
+    margin:0;
+}
+
+.navbar-brand img{	
+	margin-left:15px;
+	float:left;
+}

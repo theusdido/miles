@@ -1,0 +1,1 @@
+27/12/2021 16:09:03: LoggerDATE->escrever: Erro ao criar o diretório do log [/var/www/granuemporio.com.br/miles/projects/1/log/].

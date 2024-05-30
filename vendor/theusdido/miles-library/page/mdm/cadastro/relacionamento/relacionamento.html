@@ -1,0 +1,50 @@
+<div class="btn-group-mdm">
+    <div class="btn-group-left">
+        <button class="btn btn-warning" onclick="goListarCadastro(event)">
+            <i class="fa fa-arrow-left"></i>
+            Voltar
+        </button>
+    </div>
+    <div class="btn-group-right">
+        <div id="error" class="alert"></div>
+        <button type="button" class="btn btn-primary" id="btn-salvar-relacionamento">Salvar</button>
+        <div class="loader-salvar"></div>
+    </div>
+</div>
+<form>
+    <fieldset>
+        <div class="form-group">
+            <label for="nome">Descri&ccedil;&atilde;o</label>
+            <input type="text" name="descricao" id="descricao" class="form-control"> 
+        </div>
+        <div class="form-group">
+            <label for="nome">Tipo</label>
+            <small>( Padr&atilde;o da UML )</small>
+            <select name="tipo" id="tipo" class="form-control">
+                <option value="1">01 - Associa&ccedil;&atilde;o - Agrega&ccedil;&atilde;o (1:1)</option>
+                <option value="6">06 - Associa&ccedil;&atilde;o - Agrega&ccedil;&atilde;o (1:N)</option>
+                <option value="5">05 - Associa&ccedil;&atilde;o - Agrega&ccedil;&atilde;o (N:N)</option>
+                <option value="7">07 - Associa&ccedil;&atilde;o - Composi&ccedil;&atilde;o (1:1)</option>
+                <option value="2">02 - Associa&ccedil;&atilde;o - Composi&ccedil;&atilde;o (1:N)</option>
+                <option value="10">10 - Associa&ccedil;&atilde;o - Composi&ccedil;&atilde;o (N:N)</option>
+                <option value="3">03 - Generaliza&ccedil;&atilde;o/Especializa&ccedil;&atilde;o (1:1)</option>
+                <option value="8">08 - Generaliza&ccedil;&atilde;o/Especializa&ccedil;&atilde;o (1:N)</option>
+                <option value="9">09 - Generaliza&ccedil;&atilde;o/Especializa&ccedil;&atilde;o M&uacute;ltipla (1:1)</option>
+                <option value="4">04 - Depend&ecirc;ncia</option>
+                <option value="11">11 - Checklist Associa&ccedil;&atilde;o - Agrega&ccedil;&atilde;o (1:N)</option>
+                <option value="12">12 - Checklist Associa&ccedil;&atilde;o - Agrega&ccedil;&atilde;o (1:1)</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="filho">Entidade</label>
+            <select id="entidadefilho" name="entidadefilho" class="form-control"></select>								
+        </div>
+        <div class="form-group">
+            <label for="atributo">Atributo</label>
+            <small>( Atributo que implementa o relacionamento )</small>
+            <select id="atributo" name="atributo" class="form-control">
+            </select>							
+        </div>
+    </fieldset>	  
+</form>
+<div class="list-group" id="listar-relacionamentos"></div>
