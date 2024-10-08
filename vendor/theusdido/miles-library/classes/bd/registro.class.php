@@ -153,7 +153,13 @@ abstract class Registro {
 			if ($conn = Transacao::get()){
 				Transacao::log($sql->getInstrucao());
 				$resultado 			= $conn->query($sql->getInstrucao());
-				$status_operacao 	=  $resultado;
+				$status_operacao 	= $resultado;
+
+				//$conn_replicacao = Conexao::abrir('producao');
+				//$conn_replicacao->query($sql->getInstrucao());
+
+				$firebase = new Firebase();
+				$firebase->add($this->dados,$this->getEntidade() . '/' . $this->dados['id'] . '/');
 			}else{
 				echo "Não há transação ativa: Registro Armazenar <br/>\n";
 				$status_operacao =  false;
@@ -223,6 +229,10 @@ abstract class Registro {
 		if ($conn = Transacao::get()){
 			Transacao::log($sql->getInstrucao());
 			$resultado = $conn->exec($sql->getInstrucao());
+
+			//$conn_replicacao = Conexao::abrir('producao');
+			//$conn_replicacao->query($sql->getInstrucao());
+
 			return $resultado;
 		}else{
 			throw new Exception("Não há transação ativa: Registro Deletar");
@@ -240,7 +250,7 @@ abstract class Registro {
 	public function getUltimo(){				
 		if ($conn = Transacao::get()){
 			$sql = tdClass::Criar("sqlselecionar");
-			$sql->addColuna("MAX(id) as ID");
+			$sql->addColuna("MAX(id) ID");
 			$sql->setEntidade($this->getEntidade());
 			Transacao::log($sql->getInstrucao());
 			$resultado = $conn->query($sql->getInstrucao());

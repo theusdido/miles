@@ -77,3 +77,44 @@ window.addEventListener("storage", function (event) {
     }
 
 });
+
+
+var is_session_active = false;
+var timeout_session;
+let inactivityTime = function () {
+
+    // 5 minutos em milissegundos
+    const timeout = 10 * 60 * 1000;
+
+    // Função para redefinir o temporizador
+    const resetTimer = function() {
+        clearTimeout(timeout_session);
+        timeout_session = setTimeout(logout, timeout);
+    };
+
+    // Função a ser chamada após o tempo de inatividade
+    const logout = function() {
+        window.sessionStorage.setItem("is_session_active",false);
+
+        clearTimeout(timeout_session);
+        bootbox.alert('Sua sessão expirou!',() => {
+            location.href = session.urlmiles + '?controller=logout';
+        });
+    };
+
+    // Eventos de atividade do mouse e do teclado
+    window.onload           = resetTimer;
+    document.onmousemove    = resetTimer;
+    document.onkeypress     = resetTimer;
+    document.onclick        = resetTimer;
+    document.onscroll       = resetTimer;
+
+    // Adicionar eventos para toque em dispositivos móveis
+    document.ontouchstart = resetTimer;
+};
+
+console.log(JSON.parse(window.sessionStorage.getItem("is_session_active")));
+if (JSON.parse(window.sessionStorage.getItem("is_session_active"))){
+    console.log('iniciou a inatividade');
+    inactivityTime();
+}

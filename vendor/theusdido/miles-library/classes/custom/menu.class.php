@@ -78,4 +78,8 @@ class Menu {
 		$a->add($menu->descricao);
 		return $a;
 	}
+
+	public static function isPai($menu_id){
+		return tdc::c(MENU,tdc::f('pai','=',$menu_id)) > 0 ? true : false;
+	}
 }

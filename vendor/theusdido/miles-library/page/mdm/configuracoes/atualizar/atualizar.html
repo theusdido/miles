@@ -1,44 +1,57 @@
-<form>
-    <legend>Atualizar</legend>
-</form>
+<ul class="group-title-mdm">
+  <li class="titulo-pagina-mdm">Atualizar</li>
+  <li class="subtitulo-pagina-mdm"></li>
+</ul>
 
+<div class="card">
+  <div class="card-header">
+    <form class="form">
+      <div class="form-group">
+        <label for="ambiente" class="form-label">Ambiente</label>
+        <select class="form-select" id="ambiente"></select>
+      </div>
+      <br/>
+      <div class="form-group">
+        <ul class="list-group">
+          <li class="list-group-item">
+            <input class="form-check-input me-1" type="radio" name="direcao" value="enviar" id="enviar-atualizacao" checked>
+            <label class="form-check-label" for="enviar-atualizacao">Enviar Atualização</label>
+          </li>
+          <li class="list-group-item">
+            <input class="form-check-input me-1" type="radio" name="direcao" value="receber" id="receber-atualizacao">
+            <label class="form-check-label" for="receber-atualizacao">Receber Atualização</label>
+          </li>
+        </ul>
+      </div>
+    </form>
+  </div>
+  <div class="card-body">
 
-<div class="panel panel-default">
-    <div class="panel-heading">
-      <form class="form">
-        <div class="form-group">
-          <label for="ambiente" class="form-label">Ambiente</label>
-          <select class="form-control" id="ambiente"></select>
-        </div>
-      </form>
-    </div>
-    <div class="panel-body">
+      <form id="fDesenvolvimentoToProducao" class="form-inline">
+          <div class="checkbox">
+              <label>
+                  <b>Estrutura</b>
+                  <a id="selecionarEntidadeEstrutura" href="#"> [ Selecionar Entidades ]</a>
+              </label>
+          </div>
+          <div class="checkbox">
+              <label>
+                  <input type="checkbox" id="cbRegistro"> <b>Registro</b>
+                  <a id="selecionarEntidadeRegistro" href="#"> [ Selecionar Entidades ]</a>
+              </label>
+          </div>								
+          <div class="checkbox">
+              <label>
+                  <input type="checkbox" id="cbArquivo"> <b>Arquivo</b>
+                  <a id="selecionarEntidadeArquivo" href="#"> [ Selecionar Entidades ]</a>
+              </label>
+          </div>
+          <hr/>
+          <button type="button" class="btn btn-primary btn-atualizar" onclick="desenvolvimentoToProducao()">Atualizar</button>
+          <div id="retorno-ajax-desenvolvimentoToProducao"></div>
+      </form>						
 
-        <form id="fDesenvolvimentoToProducao" class="form-inline">
-            <div class="checkbox">
-                <label>
-                    <b>Estrutura</b>
-                    <a id="selecionarEntidadeEstrutura" href="#"> [ Selecionar Entidades ]</a>
-                </label>
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" id="cbRegistro"> <b>Registro</b>
-                    <a id="selecionarEntidadeRegistro" href="#"> [ Selecionar Entidades ]</a>
-                </label>
-            </div>								
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" id="cbArquivo"> <b>Arquivo</b>
-                    <a id="selecionarEntidadeArquivo" href="#"> [ Selecionar Entidades ]</a>
-                </label>
-            </div>
-            <hr/>
-            <button type="button" class="btn btn-primary btn-atualizar" onclick="desenvolvimentoToProducao()">Atualizar</button>
-            <div id="retorno-ajax-desenvolvimentoToProducao"></div>
-        </form>						
-
-    </div>
+  </div>
 </div>
 
 
@@ -57,7 +70,8 @@
                     </label>
                 </div>
                 <hr />
-                <div id='lista-estrutura'></div>
+                <ul id='lista-estrutura' class="list-group list-group-flush">
+                </ul>
             </form>
       </div>
     </div><!-- /.modal-content -->
@@ -73,9 +87,8 @@
         <button type="button" class="btn-close" data-dismiss="modal" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-            <form id='lista-registro'>
-
-            </form>
+        <ul id='lista-registro' class="list-group list-group-flush">
+        </ul>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
@@ -89,8 +102,8 @@
         <button type="button" class="btn-close" data-dismiss="modal" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-            <form id="lista-arquivo">
-            </form>
+        <ul id="lista-arquivo" class="list-group list-group-flush">
+        </ul>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->

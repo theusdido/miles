@@ -28,7 +28,7 @@
 
 	define('FILE_SYSTEM_FAVICON', URL_SYSTEM_THEME . FILE_FAVICON);
 
-	define('URL_NOIMAGE', URL_MILES . 'assets/img/noimage.png');
+	define('URL_NOIMAGE', URL_ASSETS . 'img/noimage.png');
 
 	define('FILE_BACKGROUND','background.jpg');
 
@@ -41,3 +41,11 @@
 	define('URL_LOGO', URL_SYSTEM_THEME . FILE_LOGO);
 
 	define('URL_BACKGROUND',URL_SYSTEM_THEME . FILE_BACKGROUND);
+
+	define('FILE_LAYOUT_STYLE_THEME',PATH_SYSTEM_THEME . 'layout.css');
+	define('FILE_COLOR_STYLE_THEME',PATH_SYSTEM_THEME . 'color.css');
+	define('FILE_COLOR_STYLE_MENULEFT',PATH_SYSTEM_THEME . 'menu-left.css');
+
+	define('URL_FILE_LAYOUT_STYLE_THEME',URL_SYSTEM_THEME . 'layout.css');
+	define('URL_FILE_COLOR_STYLE_THEME',URL_SYSTEM_THEME . 'color.css');
+	define('URL_FILE_COLOR_STYLE_MENULEFT',URL_SYSTEM_THEME . 'menu-left.css');

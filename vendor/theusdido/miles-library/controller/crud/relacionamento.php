@@ -9,7 +9,7 @@
 	3  - Generalização/Especialização (1:1)
 	8  - Generalização/Especialização (1:N)
 	9  - Generalização/Especialização Múltipla (1:1)
-	4  - Dependência (1:1)							
+	4  - Dependência (1:1)
 */
 
 $panel 						= ""; # Controla a Flag de Generalização/Especialização
@@ -105,7 +105,6 @@ if ($relacionamentos){
 					$fp_form 						= "";
 				break;
 				case 7:
-
 				break;
 				case 8:
 					$btnNovoType 	= "btn-default";

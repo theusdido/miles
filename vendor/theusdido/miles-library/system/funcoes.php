@@ -236,7 +236,7 @@ function is_money($str){
 	return false;
 }
 function moneyToFloat($str,$invertido=false){
-	if ($str == '' || $str == null) return false;
+	if ($str == '' || $str == null) $str = "0";
 	if (!$invertido){
 		$str = str_replace(".","",$str);
 		$str = str_replace(",",".",$str);
@@ -578,7 +578,7 @@ function getHTMLTipoFormato($htmltipo,$valor,$entidade=0,$atributo=0,$id=0){
 				$retorno = '';
 			}else{
 				$retorno = $valor;
-			}			
+			}
 		break;
 		default:
 			$retorno = $valor;
@@ -710,7 +710,7 @@ function criarEntidade(
 	$queryExisteFisicamente = $conn->query($sqlExisteFisicamente);
 	
 	if ($queryExisteFisicamente->rowCount() <= 0){
-		$sql 	= "CREATE TABLE IF NOT EXISTS {$nome}(id int not null primary key) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
+		$sql 	= "CREATE TABLE IF NOT EXISTS {$nome}(id int not null primary key) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;";
 		$query 	= $conn->query($sql);
 		if (!$query){
 			if (IS_SHOW_ERROR_MESSAGE){
@@ -1335,7 +1335,6 @@ function inserirRegistro($conn,$tabela,$id,$atributos,$valores,$criarnovoregistr
 		$valores_i	= implode(",",$valores);
 		$valores_ 	= tdc::utf8($valores_i);
 		$sqlInserir = "INSERT " . $tabela . " (id,".implode(",",$atributos).") VALUES (".$id.",".$valores_.");";
-		var_dump($sqlInserir);
 		$query 		= $conn->query($sqlInserir);
 		return $id;
 	}catch(Throwable $t){
@@ -1928,8 +1927,8 @@ function isutf8($str){
 
 function convertecharset($valor,$tipo = 1){	
 	if ($valor == '' || $valor == null || !is_string($valor)) return $valor;
-	$iso = "iso-8859-1";
-	$utf8 = "utf-8";
+	$iso 	= "iso-8859-1";
+	$utf8 	= "utf-8";
 	switch ($tipo){
 		case 1:
 			return iconv($iso,$utf8,$valor);
@@ -2053,7 +2052,12 @@ function addCampoFormatadoDB($dados,$entidade){
 				if ($campodescdefault->hasData()){
 					$valorfk 				= is_numeric_natural($value)?$value:0;
 					$registro 				= getRegistro(null,tdc::p(ENTIDADE,$atributoOBJ->chaveestrangeira)->nome,$campodescdefault->nome, "id={$valorfk}" , "LIMIT 1");
-					$dados[$key . "_desc"] 	= tdc::utf8($registro[$campodescdefault->nome]);
+					try{
+						$dados[$key . "_desc"] 	= tdc::utf8($registro[$campodescdefault->nome]);
+					}catch(Exception $e){
+						$dados["error_desc"] = '';
+					}
+					
 				}
 			}
 		}else if ($tipohtml == 19){
@@ -2665,3 +2669,13 @@ function trNenhumRegistro($colspan,$is_return = false){
 	}
 	echo $tr->mostrar();
 }
+
+function getListaRegFilhoArrayUnico($entidadepai,$entidadefilho,$regpai){
+	$filho = getListaRegFilhoArray($entidadepai,$entidadefilho,$regpai);
+	
+	return sizeof($filho) > 0 ? $filho[0] : [];
+}
+
+function utf8_str_func($str){
+	return  isutf8($str) ? (_MYSQL_CHARSET == 'utf8' ? $str : utf8charset($str,'D')) : utf8charset($str,'E');
+};

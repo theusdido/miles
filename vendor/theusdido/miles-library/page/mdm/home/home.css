@@ -14,7 +14,9 @@
 }
 .dados-config-projeto{
 	margin:0px;
-	padding:3px 15px;
+	padding:5px 15px;
+	width: 100%;
+    text-align: center;	
 }
 .subtitulo-legenda{
 	font-size:12px;
@@ -22,7 +24,6 @@
 	margin-top:12px;
 }
 #titulo-mdm{
-	float:left;
 }
 #label-id-atributo{
 	position:absolute;

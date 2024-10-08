@@ -75,12 +75,12 @@
 	}
 
 	if ($valor!=""){
-		$isnew = false;
-		$valorjson = json_decode($valor);
+		$isnew 		= false;
+		$valorjson 	= json_decode($valor);
 		if (is_object($valorjson)){
 			$nomeexibicaoarquivo = $valorjson->filename;
 			// Verifica se é um registro novo e está em modo de edição no formulário
-			if ($valorjson->tipo == "" && ($valorjson->filename == null || $valorjson->filename == "null")){
+			if ($valorjson->tipo == "" || ($valorjson->filename == null || $valorjson->filename == "null")){
 				$isnew = true;
 			}
 		}else{

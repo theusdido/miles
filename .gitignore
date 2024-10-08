@@ -22,3 +22,6 @@ access.log
 reset.php
 miles.json
 debug/
+.gitignore
+firebase.json
+projects/**

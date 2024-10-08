@@ -21,19 +21,20 @@
 	$_folder_project					= 'projects';
 	$_relative_root						= (AMBIENTE == 'SISTEMA' ? '' : '../');
 	$_path_relative_project				= $_relative_root . $_folder_project . DIRECTORY_SEPARATOR . $_project_name_identifify_params . DIRECTORY_SEPARATOR;
-	$_path_project_miles_json			= $_path_relative_project . $_env_params . '.'  . $_path_main_miles_json;
+	$_path_project_miles_json			= $_path_relative_project . $_path_main_miles_json;
 	$_url_relative_project				= $_folder_project . '/' . $_project_name_identifify_params . '/';
-	$_url_project_miles_json			= $_url_relative_project . $_env_params . '.miles.json';
+	$_url_project_miles_json			= $_url_relative_project . '.miles.json';
 	$_folder_miles_default				= 'miles/';
+	$_default_index_file				= 'index.php';
 
 	// Caso as variáveis venham por parametro
 	if (isset($_GET['project_name_identifify_params']) && isset($_GET['env'])){
 		$_project_name_identifify_params 	= $_GET['project_name_identifify_params'];
-		$_path_project_miles_json			= $_path_relative_project . $_GET['env'] . '.'  . $_path_main_miles_json;
+		$_path_project_miles_json			= $_path_relative_project . $_path_main_miles_json;
 	}
 
 	// Se o arquivo miles do projeto for encontrado, considerar o sistema instalado
-	$_is_installed				= file_exists($_path_project_miles_json);
+	$_is_installed				= file_exists($_path_project_miles_json);	
 
 	// Se o arquivo miles.json do projeto não for encontrado
 	$_miles_json_root_file 		= $_is_installed && sizeof(file($_path_project_miles_json)) > 0 ? $_path_project_miles_json : $_path_main_miles_json;
@@ -44,6 +45,9 @@
 	$_url_install_miles 		= $_http_host . $_SERVER['REQUEST_URI'];
 
 	$_is_miles_json_root_file 	= file_exists($_miles_json_root_file);
+
+	// URL do diretório da instalação do MILES
+	$_url_path_install_miles	= str_replace([$_folder_miles_default,$_default_index_file,'//'],'',$_url_install_miles);
 
 	// Config Miles ( miles.json ) na raiz
 	if (!$_is_miles_json_root_file){
@@ -56,7 +60,7 @@
         "id":"miles",
         "name":"Miles",
         "path":"'.$_folder_miles_default.'",
-        "url":"'.str_replace($_folder_miles_default,'',$_url_install_miles).'"
+        "url":"'.$_url_path_install_miles.'"
     },
     "currentproject": 1,
     "folder":"'.$_folder_miles_default.'",

@@ -76,3 +76,14 @@ function showMessage($msg,$tipo = 'error'){
 	$dom->appendChild($alert);		
 	echo preg_replace('/<\?xml.*?>/','',trim($dom->saveHTML()));
 }
+
+/*
+	* Função parseIniFile
+	* Data de Criacao: 04/06/2024
+	* Autor @theusdido
+
+	Retorna o parser de um arquivo .ini
+*/
+function parseIniFile($path,$process_section = true,$scanner_mode = INI_SCANNER_RAW){
+	return parse_ini_file($path,$process_section,$scanner_mode);
+}

@@ -239,9 +239,10 @@ tdFormulario.prototype.novo = function(){
 					$(".div-relacionamento-generalizacao-multipla").hide();
 				}
 				return false;
-			});			
+			});
+		}
 
-		}	
+		this.setComposicao11();
 	}
 	
 	$('.label-max-size').html( 'Tamanho Máximo.: ' +  config.upload_max_filesize );
@@ -614,11 +615,10 @@ tdFormulario.prototype.salvar = function(){
 					$("#select-generalizacao-multipla option[value="+td_relacionamento[RelEnt].filho+"]:selected").each(function(){
 						entidadesRel = $(this).val();
 					});
-				}
-				if (entidadesRel != ""){
+				}else if (entidadesRel != ""){
 					let hierarquiacontexto = getHierarquiaRel(RelEnt);
 					// ## Rever essa opção para enviar o formulário de forma oculta quando houver relacionamento
-					//$("#crud-contexto-add-" + hierarquiacontexto).find(".b-salvar").first().click();
+					$("#crud-contexto-add-" + hierarquiacontexto).find(".b-salvar").first().click();
 				}
 			}
 			
@@ -792,7 +792,7 @@ tdFormulario.prototype.salvar = function(){
 
 	// Adiciona dados para ser enviado
 	this.addDados(dados_obj,idRegistro,relacionamento,this.is_principal,relacionamentoTipo);
-	
+
 	// Salvar o formulário
 	if (this.is_principal){
 		let dadosenviar = [];
@@ -924,6 +924,8 @@ tdFormulario.prototype.salvar = function(){
 					this.composicao[this.entidade_id] = true;
 				}
 				if (typeof afterSave === "function") afterSave(this.is_principal,this);
+			}else if(currentrelacionamento.cardinalidade == "11"){
+				
 			}else{
 				const msg = 'Cardinalidade não encontrada no relacionamento!';
 				console.warn(msg);
@@ -1015,7 +1017,7 @@ tdFormulario.prototype.editar = function(){
 
 				//if (!r.fp){
 
-					// Verifica o tipo de relacionamento					
+					// Verifica o tipo de relacionamento
 					this.entidade.relacionamentos.forEach(function(relacionamento){
 						const tipo 		= relacionamento.tipo;
 						const atributo 	= relacionamento.atributo;
@@ -1257,12 +1259,19 @@ tdFormulario.prototype.buscarFiltro = function(termo,entidadeNome,nome,modalName
 }
 tdFormulario.prototype.habilitafiltro = function(atributo,contexto,habilita,entidadeContexto){
 	for (e in td_atributo){
-		if (td_atributo[e].atributodependencia != "" && td_atributo[e].atributodependencia != 0){
+		if (
+			td_atributo[e].atributodependencia != "" && 
+			td_atributo[e].atributodependencia != 0 &&
+			td_atributo[e].atributodependencia != undefined
+		){
 
 			var dep 				= td_atributo[td_atributo[e].atributodependencia];
 			var attr 				= td_atributo[e];
 			var entidade 			= td_entidade[attr.entidade];
 			var entidadeAtributo 	= td_entidade[td_atributo[e].entidade];
+
+			console.log(dep);
+			debugger;
 
 			if (dep.nome == atributo && entidadeAtributo.nomecompleto == entidadeContexto){
 				// Limpa o campo a cada alteração
@@ -1468,6 +1477,64 @@ tdFormulario.prototype.setBuscaFiltro = function()
 
 				});
 
+			}else if (atributo.tipohtml == 24){
+				$('.termo-filtro[atributo='+atributo.id+']',this.getContexto()).each(function(){
+
+					$(this).blur(function(){
+						return false;
+						let termo 				= this.value;
+						let entidadeNome 		= $(this).data("fk");
+						let nome 				= $(this).prop("id");	
+						let modalName 			= $(this).parents(".filtro-pesquisa").data("modalname");
+						let entidadeContexto 	= $(this).data("entidade");
+						instancia.buscarFiltro(termo,entidadeNome,nome,modalName,entidadeContexto);
+					});
+
+					$(this).parent('.input-group').find('.botao-filtro').click(function(){
+						let modalName 			= $(this).parents(".filtro-pesquisa").data("modalname");
+						$('#'+modalName+' .modal-footer').css('border','0px');
+						$('#'+modalName).modal({
+							backdrop:false
+						});
+						$('#'+modalName).modal('show');
+						$.ajax({
+							url:session.urlmiles,
+							data:{
+								controller:'page',
+								page:'endereco'
+							},
+							complete:function(res){
+								$('#'+modalName+' .modal-body p').html(res.responseText);
+							}
+						});						
+						return false;
+					
+						let chaveestrangeira 	= $(this).data("fk");
+						let atributo 			= $(this).parents(".filtro-pesquisa").find(".termo-filtro").attr("id");
+						let contextoGrade 		= '#' + modalName + instancia.cmodal;
+
+						// Atributo uma grade de dados
+						let gd_filtro 					= new GradeDeDados(chaveestrangeira);
+						gd_filtro.contexto 				= contextoGrade;
+						gd_filtro.index_form			= instancia.getIndexForm();
+						gd_filtro.pesquisar				= true;
+						gd_filtro.retornaFiltro 		= true;
+						gd_filtro.atributoRetorno 		= atributo;
+						gd_filtro.modalName 			= modalName;
+						gd_filtro.entidadeContexto 		= $(this).data("entidade");
+						gd_filtro.entidade_contexto_id 	= instancia.entidade_id;
+
+						gd_filtro.show();
+
+						$('#'+modalName+' .modal-footer').css('border','0px');
+						$('#'+modalName).modal({
+							backdrop:false
+						});
+						$('#'+modalName).modal('show');
+
+					});
+
+				});
 			}
 		}
 	);
@@ -2020,4 +2087,8 @@ tdFormulario.prototype.setSwitchInativoValue = function(inativo_value){
 }
 tdFormulario.prototype.getSwitchInativoValue = function(){
 	return $(this.switch_inativo_selector).prop('checked');
+}
+tdFormulario.prototype.setComposicao11 = function ()
+{
+	$('.div-composicao-relacionamento-11 .crud-contexto-listar').hide();
 }

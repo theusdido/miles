@@ -1,7 +1,7 @@
 <?php
 	// Setando variáveis
-	$entidadeNome = "erp_geral_foto";
-	$entidadeDescricao = "Foto";
+	$entidadeNome 		= "erp_geral_foto";
+	$entidadeDescricao 	= "Foto";
 
 	// Criando Entidade
 	$entidadeID = criarEntidade(
@@ -21,8 +21,8 @@
 	);
 
 	// Criando Atributos
-	$descricao = criarAtributo($conn,$entidadeID,"legenda","Legenda","varchar","200",1,3,1,0,0,"");
-	$foto = criarAtributo($conn,$entidadeID,"foto","Foto","text",0,0,19,0,0,0,'',1,0);
+	$descricao 	= criarAtributo($conn,$entidadeID,"legenda","Legenda","varchar","200",1,3,1,0,0,"");
+	$foto 		= criarAtributo($conn,$entidadeID,"foto","Foto","text",0,0,19,0,0,0,'',1,0);
 
 	// Criando Acesso
 	$menu_webiste 	= addMenu($conn,'Geral','#','',0,0,'geral');

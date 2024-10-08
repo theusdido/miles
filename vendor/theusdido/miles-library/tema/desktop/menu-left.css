@@ -1,0 +1,103 @@
+/*
+    * Framework MILES
+    * @license : TEIA Tecnologia WEB
+    * @link https://teia.tec.br
+
+    * Data de Criacao: 18/07/2024
+    * Author: @Theusdido
+
+    * Página de folha de estilo de cores do menu lateral esquerdo
+*/
+
+#container {
+    background-color: #fff;
+}
+
+#header {
+    background-color: #eee;
+}
+
+#footer {
+    background-color: #eee;
+}
+
+.menu,
+.menu a,
+.menu a:visited {
+    color:#FFF;
+}
+
+.menu {
+    background-color: #FF8200;
+}
+
+.menu .menu-dropdown li:hover
+{
+    background-color: #FF7800;
+}
+
+.menu a.logotype,
+.menu a.logotype:visited,
+.openNav .hamburger:before
+{
+    color:#444;
+}
+
+.menu a.logotype:hover,
+.hamburger:hover:before,
+.hamburger:before
+{
+    color: #000;
+}
+
+.screen-reader-text {
+    -webkit-box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+}
+
+.screen-reader-text:focus {
+    background-color: #f1f1f1;
+    color: #21759b;
+}
+
+body,
+button,
+input,
+select,
+optgroup,
+textarea {
+    color: #000;
+}
+
+abbr, acronym {
+    border-bottom: 1px dotted #666;
+}
+
+mark, ins {
+    background: #fff9c0;
+}
+
+.light {
+    color:#ddd;
+}
+
+blockquote cite,
+blockquote em,
+blockquote i {
+    font-style: italic;
+}
+
+abbr,
+acronym {
+    border-bottom: 1px dotted #666;
+}
+
+.overflow-container
+{
+    color:#FAFAFA;    
+}
+
+.menu-left-component .menu-dropdown
+{
+    border-top:2px solid #999;
+}

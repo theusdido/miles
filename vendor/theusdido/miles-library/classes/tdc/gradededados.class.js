@@ -808,12 +808,15 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
 						if (valor != ''){
 							let dadosarquivo = JSON.parse(valor);
 							if (dadosarquivo.tipo == "imagem"){
-								let srcfile 		= dadosarquivo.src;
-								let hyperlinkimagem = $("<a data-lightbox='img-gd-lightbox' data-title='' data-filename='"+srcfile+"' href='"+srcfile+"'>");
-								let img = $("<img src='"+srcfile+"' class='img-gradededadosicon img-rounded'>");
+								let srcfile 			= dadosarquivo.src;
+								let hyperlinkimagem 	= $("<a data-lightbox='img-gd-lightbox' data-title='' data-filename='"+srcfile+"' href='"+srcfile+"'>");
+								let img 				= $("<img src='"+srcfile+"' class='img-gradededadosicon img-rounded'>");
 								img.css("height","35px");
-								hyperlinkimagem.append(img);
-								valor = hyperlinkimagem;
+								hyperlinkimagem.append(img);								
+
+								let container = $('<span>');
+								container.append(hyperlinkimagem);
+								valor = container.html();
 							}
 						}else{
 							console.warn('Dados não encontrado ao carregar imagem!');

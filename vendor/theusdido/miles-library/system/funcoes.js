@@ -837,7 +837,7 @@ function carregarScriptCRUD(tipo,entidade,registro_id = 0,contexto = '',_extras 
 	}
 	switch(tipo){
 		case 'cadastro':
-			// Registro Únicogit
+			// Registro Único
 			if (formulario[indice_form].isRegistroUnico()){
 				formulario[indice_form].setRegistroUnico();
 			}else{
@@ -850,7 +850,8 @@ function carregarScriptCRUD(tipo,entidade,registro_id = 0,contexto = '',_extras 
 				if (formulario[indice_form_entidade_filho] == undefined){
 					formulario[indice_form_entidade_filho] = new tdFormulario(entidade_id,0,entidade);
 				}
-				formulario[indice_form_entidade_filho].loadGrade();
+				//formulario[indice_form_entidade_filho].loadGrade();
+				formulario[indice_form_entidade_filho].carregarListas();
 			});
 		break;
 		case 'editarformulario':

@@ -13,6 +13,5 @@
 	// Define o ambiente como sistema	
 	define('AMBIENTE','SISTEMA');
 
-	// Carrega a biblioteca MILES FRAMEWORK PHP
+	// Carrega a biblioteca MILES FRAMEWORK PH
 	require __DIR__ . '/vendor/theusdido/miles-library/autoload.php';
-	#

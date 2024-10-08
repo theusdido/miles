@@ -53,6 +53,7 @@
 
 	$jsLogon = tdc::o("script");
 	$jsLogon->add('
+		window.sessionStorage.setItem("is_session_active",false);
 		$("#f-autenticacao-usuario #senha").keyup(function(e){
 			if (e.which == 13){
 				autenticacao();
@@ -99,6 +100,8 @@
 									controller:"template"
 								},
 								complete:function(ret){
+									window.sessionStorage.setItem("is_session_active",true);
+									inactivityTime();
 									$("#miles-root").html(ret.responseText);
 									$("#logon").remove();
 									$.loadingBlockHide();
@@ -119,6 +122,10 @@
 					console.log("Ocorreu um erro !");
 				}
 			});
+		}
+
+		if (typeof timeout_session !== "undefined"){
+			clearTimeout(timeout_session);
 		}
 	');
 

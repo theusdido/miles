@@ -12,7 +12,7 @@ include_once PATH_SYSTEM . 'funcoes.php';
 */	
 
 final class SqlAtualizar extends sqlInstrucao{
-
+	private $colunaValor;
 	/*  
 		* Método setLinha 
 	    * Data de Criacao: 29/06/2012

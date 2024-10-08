@@ -26,7 +26,7 @@
 	$matricula 	= criarAtributo($conn,$entidadeID,"matricula","Matricula","varchar",15,1,3,1,0,0,"");
 	$email 		= criarAtributo($conn,$entidadeID,"email","E-Mail","varchar",120,0,12);
 	$turma    	= criarAtributo($conn,$entidadeID,"turma","Turma","int",0,1,22,1,installDependencia("erp_escola_turma","package/sistema"));
-	$turmagrupo	= criarAtributo($conn,$entidadeID,"turmagrupo","Grupo da Turma","int",0,1,4,1,installDependencia("erp_escola_turmagrupo","package/sistema"));
+	$turmagrupo	= criarAtributo($conn,$entidadeID,"turmagrupo","Grupo da Turma","int",0,1,4,0,installDependencia("erp_escola_turmagrupo","package/sistema"));
 
 	// Seta o campo descrição
 	Entity::setDescriptionField($conn,$entidadeID,$nome,true);

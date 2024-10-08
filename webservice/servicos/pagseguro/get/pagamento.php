@@ -74,7 +74,7 @@
 				$qtde++;
 				$valor += $item->valor;
 				$itens["itemId" . $i] = $item->id;
-				$itens["itemDescription" . $i] = utf8_decode($item->descricao);
+				$itens["itemDescription" . $i] = tdc::utf8($item->descricao);
 				$itens["itemAmount" . $i] = number_format($item->valor,2);
 				$itens["itemQuantity" . $i] = $item->qtde;
 				$i++;

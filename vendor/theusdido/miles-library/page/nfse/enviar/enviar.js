@@ -1,4 +1,6 @@
 var notas_enviar = [];
+var total_notas_encontradas = 0;
+var total_notas_enviadas = 0;
 
 $("#load-pesquisar").attr("src",session.urlloading2);
 $("#pesquisar").click( ()=> {    
@@ -72,6 +74,8 @@ function pesquisar(){
                 tr.append(td);
                 $("#tconsulta tbody").append(tr);
             }
+
+            total_notas_encontradas = notas_enviar.length;
             $("#load-pesquisar").hide();
             $('.after-search').show();
         }
@@ -88,12 +92,18 @@ function enviar(indice = 0){
             op:'enviar',
             nota:notas_enviar[indice]
         },
-        complete:function(ret){
-
+        complete:function(ret){        
+            total_notas_enviadas++;
+            if (total_notas_enviadas < total_notas_encontradas){
+                enviar(total_notas_enviadas);
+            }else{
+                alert('Envio Encerrado!');
+            }
         }
     });
 }
 
 $("#btn-enviar").click( () => {
-    enviar(0);
+    total_notas_enviadas = 0;
+    enviar(total_notas_enviadas);
 });

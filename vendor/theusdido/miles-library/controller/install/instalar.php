@@ -221,7 +221,7 @@
 				'nome'		=> isset($mjc->project->name) ? $mjc->project->name : '',
 				'diretorio'	=> $_project_name_identifify_params,
 				'prefixo'	=> 'td',
-				'dominio'	=> 'http://localhost' . DIRECTORY_SEPARATOR
+				'dominio'	=> $_url_path_install_miles
 			));
 		break;
     }

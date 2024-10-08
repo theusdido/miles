@@ -135,21 +135,40 @@ class Pagina Extends Html {
 		
 		if ($this->showCSSTheme){
 			$tema_project = NULL;
-			if (file_exists(PATH_CURRENT_PROJECT_THEME)){
-				$tema_project 			= tdClass::Criar("link");
-				$tema_project->href 	= URL_CURRENT_PROJECT_THEME . 'geral.css';
-				$tema_project->rel 		= 'stylesheet';				
+
+			if (file_exists(FILE_LAYOUT_STYLE_THEME) && file_exists(FILE_COLOR_STYLE_THEME))
+			{
+				$tema_layout_system 			= tdClass::Criar("link");
+				$tema_layout_system->href 		= URL_FILE_LAYOUT_STYLE_THEME;
+				$tema_layout_system->rel 		= 'stylesheet';
+
+				$tema_color_system 				= tdClass::Criar("link");
+				$tema_color_system->href 		= URL_FILE_COLOR_STYLE_THEME;
+				$tema_color_system->rel 		= 'stylesheet';
+			}else{
+				if (file_exists(PATH_CURRENT_PROJECT_THEME)){
+					$tema_project 			= tdClass::Criar("link");
+					$tema_project->href 	= URL_CURRENT_PROJECT_THEME . 'geral.css';
+					$tema_project->rel 		= 'stylesheet';
+				}
+			}
+
+			$tema_menuleft = null;
+			if (file_exists(FILE_COLOR_STYLE_MENULEFT)){
+				$tema_menuleft 			= tdClass::Criar("link");
+				$tema_menuleft->href 	= URL_FILE_COLOR_STYLE_MENULEFT;
+				$tema_menuleft->rel 	= 'stylesheet';
 			}
 
 			$tema 			= tdClass::Criar("link");
 			$tema->href 	= URL_SYSTEM_THEME . 'geral.css';
 			$tema->rel 		= 'stylesheet';
-	
+			
 			$gradededadosCSS 		= tdClass::Criar("link");
 			$gradededadosCSS->href 	= URL_SYSTEM_THEME . 'gradesdedados.css';
-			$gradededadosCSS->rel 	= 'stylesheet';
+			$gradededadosCSS->rel 	= 'stylesheet';						
 
-			$this->head->add($tema,$tema_project,$gradededadosCSS);
+			$this->head->add($tema,$tema_project,$tema_layout_system,$tema_color_system,$gradededadosCSS,$tema_menuleft);
 		}
 		
 		if ($this->showJSParticularidades){

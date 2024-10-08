@@ -150,3 +150,5 @@
 
 	// CLASSE TDC / JS
 	define('URL_CLASS_TDC_JS',URL_CLASS_TDC . 'js/');
+
+	

@@ -89,40 +89,44 @@ function instalarcomponentes(){
             $("#loader-pacotes").show();
         },
         complete:function(ret){
-            let retorno = JSON.parse(ret.responseText);
 
-            if (retorno._status == 'success'){
-                retorno._entidades.forEach((_entidade) => {
-                    setMonitorStorage('entidade',JSON.parse(_entidade));
-                });
-                instalarregistros();
-                indiceComponente++;								
-                if (componentes[indiceComponente] != undefined){									
-                    instalarcomponentes();
-                }else{
-                    $.ajax({
-               url:session.urlmiles,
-                        type:"POST",
-                        data:{
-                            controller:'install/modulos',
-                            op:"atualizar"
-                        },
-                         error:function(ret){
-                             msgRetorno('<b>Error !</b>'+ret.responseText,"alert-danger");
-                        }
+            try{
+                let retorno = JSON.parse(ret.responseText);
+                if (retorno._status == 'success'){
+                    retorno._entidades.forEach((_entidade) => {
+                        setMonitorStorage('entidade',JSON.parse(_entidade));
                     });
-                    package_selecionado = '';
-                    modulo_selecionado	= '';
-                    indiceComponente 	= 0;
-                    indiceRegistro 		= 0;
-                    componentes.splice(0,componentes.length);
-                    $(".checkbox-componente,.checkbox-registro").prop("checked",false);
-                    msgRetorno('<b>Parabéns !</b>. Pacotes configurados com sucesso.');
-                    //$("#guia-pacote").attr("src","<?=URL_SYSTEM_THEME?>check.gif");
-                    
+                    instalarregistros();
+                    indiceComponente++;								
+                    if (componentes[indiceComponente] != undefined){									
+                        instalarcomponentes();
+                    }else{
+                        $.ajax({
+                            url:session.urlmiles,
+                            type:"POST",
+                            data:{
+                                controller:'install/modulos',
+                                op:"atualizar"
+                            },
+                            error:function(ret){
+                                msgRetorno('<b>Error !</b>'+ret.responseText,"alert-danger");
+                            }
+                        });
+                        package_selecionado = '';
+                        modulo_selecionado	= '';
+                        indiceComponente 	= 0;
+                        indiceRegistro 		= 0;
+                        componentes.splice(0,componentes.length);
+                        $(".checkbox-componente,.checkbox-registro").prop("checked",false);
+                        msgRetorno('<b>Parabéns !</b>. Pacotes configurados com sucesso.');
+                        //$("#guia-pacote").attr("src","<?=URL_SYSTEM_THEME?>check.gif");
+                        
+                    }
+                }else{
+                    msgRetorno('<b>Error! '+componentes[indiceComponente]+' => </b> '+ret.responseText,"alert-danger");
                 }
-            }else{
-                msgRetorno('<b>Error! '+componentes[indiceComponente]+' => </b> '+ret.responseText,"alert-danger");
+            }catch(e){
+                msgRetorno('<b>Error !</b>'+e,"alert-danger");
             }
         },
         error:function(ret){

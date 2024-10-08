@@ -278,7 +278,7 @@ class Config {
 		return $script;
 	}
 
-	/*  
+	/*
 		* Método getJsConfig
 		* Data de Criacao: 24/01/2024
 		* Author @theusdido
@@ -287,8 +287,7 @@ class Config {
 	*/
 	public static function getJsConfig(){
 		$script 		= tdc::o('script');
-		//$script->src 	= URL_SYSTEM . 'config.js';
 		$script->add(getURL(URL_SYSTEM . 'config.js'));
 		return $script;
-	}	
+	}
 }

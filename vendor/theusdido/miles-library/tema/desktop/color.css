@@ -1,0 +1,338 @@
+/*
+    * Framework MILES
+    * @license : TEIA Tecnologia WEB
+    * @link https://teia.tec.br
+
+    * Data de Criacao: 03/07/2024
+    * Author: @Theusdido
+
+    * Página de folha de estilo de cores gerais do sistema
+*/
+
+body {
+	background-color:#FFF;
+}
+header, article{
+	background-color:#FFF;
+}
+#logon {
+	background-color:rgba(150,150,150,0.1);
+	border-color:#DEDEDE;
+}
+
+#logon form a{
+	color:#333;
+}
+
+#div-form-logon .tdform fieldset {
+	color:#333;
+}
+
+.navbar-default .navbar-nav > li > a {
+	color:#FFF;
+}
+
+.navbar-default .navbar-nav > li > a:hover{
+	color:#DDD;
+}
+#menu .nav .open , .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus{
+	background-color:#158abd;
+	color:#FFF;
+}
+
+.navbar-default .navbar-brand{
+	color:#BBB;
+}
+.navbar-default .navbar-brand:hover{
+	color:#999;
+}
+
+.has-error .form-control {
+	background-color:#ffe6e6;
+}
+.has-success .form-control {
+	background-color:#f1ffee;
+}
+
+.form-group .control-label {
+	color:#777;
+}
+
+.panel-body .form-group label{
+	color:#666;
+}
+
+#selecionar-empresa-info{
+	border:1px solid #EEE;
+	color:#999;
+}
+
+.titulo-pagina{
+  color: #333;
+  border-bottom: 1px solid #e5e5e5;
+}
+.crud-modal{
+	background-color:#FFF;
+}
+.irbloco-paginacao{
+	border: 1px solid #ddd;
+	color:#337ab7;
+}
+
+.calendar-picker-group .input-group-btn button {
+	border:1px solid #DDD;
+	color:#666;
+}
+
+.filtro-pesquisa .descricao-filtro{
+	background-color: #EEE;
+}
+
+.filtro-pesquisa .botao-filtro,
+.filtro-pesquisa .btn-add-emexecucao,
+.btn-add-emexecucao
+{
+	border:1px solid #EEE;
+}
+
+.textarea-modal{
+	border:1px solid #EEE;
+}
+
+.checkbox-s,.checkbox-n
+{
+	border:1px solid #EEE;
+}
+.checkbox-s.active
+{
+	background-color:#dbf8c8;
+	border:1px solid #EEE;
+	color:#000;	
+}
+.checkbox-n.active
+{
+	background-color:#ffdede;
+	border:1px solid #EEE;
+	color:#000;
+}
+.td-status-erro{
+	background-color:#f83e3e;
+	color:#FFF;
+}
+.td-status-erro:hover{
+	background-color:#e60000 !important;
+}
+.td-status-alerta{
+	background-color:#faf459;
+	color:#000;
+}
+.td-status-alerta:hover{
+	background-color:#fff600 !important;
+}
+.td-status-info{
+	background-color:#55baf5;
+	color:#000;
+}
+.td-status-info:hover{
+	background-color:#0091e5 !important;
+}
+.td-status-sucesso{
+	background-color:#78d23b;
+	color:#000;
+}
+.td-status-sucesso:hover{
+	background-color:#49b700 !important;
+}
+.td-status-ativo{
+	background-color:#d0d0d0;
+	color:#000;
+}
+.td-status-ativo:hover{
+	background-color:#a9a9a9 !important;
+}
+
+#lista-favoritos-home .list-group-item{
+	border-bottom:1px solid #DDD;
+}
+
+#lista-chamado-home .list-group-item{
+	border-bottom:1px solid #d9edf7;
+}
+.btn-chamado-home{
+	color:#31708f;
+}
+.btn-chamado-home:hover,.btn-chamado-home:active,.btn-chamado-home:focus{
+	background-color:#bce8f1;
+}
+#btn-home-menuprincipal{
+	color:#FFF;
+}
+
+.lista-item-menu-crud .list-group-item{
+	border-bottom:1px solid #DDD;
+}
+.asteriscoobrigatorio{
+	color:#FF0000;
+}
+
+.descricaoExibirEdicao{
+	color:#666;
+	border-bottom:2px solid #333;
+}
+.campodescricaoExibirEdicao{
+	color:#333;
+}
+.dados-config-projeto-desenv {
+	color:#31708f;
+	background-color:#ececec;
+}	
+.dados-config-projeto-producao {
+	color:#747504;
+	background-color:#fbfcc8;
+}
+.td-titulopagina-relacionamento{
+    border-bottom: 1px solid #F0F0F0;
+    color: #BBB;
+}
+
+.btn-importar-db-from-file{
+	background-color: #000;
+	color: #FFF;
+}
+.btn-importar-db-from-file:hover , .btn-importar-db-from-file:active {
+	color:#EEE;
+}
+
+.titulo-pagina .badge{
+    border: 1px solid #CCC;
+    color: #333;
+}
+.td-titulopagina-relacionamento .badge{
+	color:#BBB;
+}
+
+.td-aba .nav-pills li a {
+	background-color:transparent;
+    color: #333 !important;
+    border-bottom: 3px solid #666;
+}
+.td-aba .nav-pills li a:hover, 
+.td-aba .nav-pills li a.active,  
+.td-aba .nav-pills li a:focus
+{
+	background-color: #F0F0F0;
+}
+
+#info , #userinfo {
+	border-bottom:2px solid #FF8200;
+}
+
+#menuprincipal .dropdown-menu li {
+	border-top:1px dotted #DDD;	
+}
+
+#menuprincipal .nav-link
+{
+	color:#FFF;
+}
+
+.headersystem-col{
+	background-color: #253544;
+}
+
+.headersystem-col a, .headersystem-col .fas , #temposessao-home , #data-home{
+	color:#FFF !important;
+}
+
+.headersystem-col a:hover{
+	color:#CCC !important;
+}
+
+#menu .navbar
+{
+	background-color: #FF8200;
+}
+
+.modal-header {
+	background-color: #0098da;	
+}
+.modal-header * {
+	color:#FFF;
+}
+
+#miles-root > div > footer {
+    background-color: #b8b8b8 !important;
+	border-top:3px solid #FF8200;
+    color: #111 !important;
+}
+#miles-root > div > footer a {
+	color:#000;
+}
+
+#listanovosclienteshome .media
+{
+	border-bottom:1px solid #EEE;
+}
+
+#panel-vendas-mensais .panel-body
+{
+	border:0px solid #FFF !important;
+	border-bottom:0px solid #FFF !important;
+}
+
+.td-checklist .list-group-item .icon-excluir-listitem
+{
+	color:#FF0000;
+}
+
+.td-checklist-contexto li:hover:not(.td-nenhumregistro-list-item)
+{
+	background-color: #EEE;
+} 
+
+.td-message-success
+{
+	background-color: #49b700 !important;
+	color:#FFF !important;
+	background: linear-gradient(135deg, #3c8d05, #286301);
+}
+
+.td-message-warning
+{
+	background-color: #ffca2c !important;
+	color:#000 !important;
+	background: linear-gradient(135deg, #ffca2c, #f8c21f);
+}
+
+table thead tr.td-info
+{
+	background-color: #158abd;
+	color:#FFF;
+}
+
+.td-label-input-file
+{
+	border: 1px solid #CCC;
+	box-shadow:inset 0 1px 1px rgba(0, 0, 0, .075);
+}
+
+.ckeditor-group .input-group-btn
+{
+	border:1px solid #CCC;
+}
+
+.open-panel
+{
+	background-color: transparent;
+}
+
+.pesquisa-grade .btn-pesquisa-grade
+{
+	border:1px solid #CCC;
+}
+
+.btn-default
+{
+	background-color: #FFF;
+	border:1px solid #EEE;
+}

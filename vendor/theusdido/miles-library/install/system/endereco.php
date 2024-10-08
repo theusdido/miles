@@ -41,9 +41,10 @@
 		$criarauth = 0,
 		$registrounico = 0
 	);
-	$uf_nome	= criarAtributo($conn,$ufID,"nome","Nome","varchar","200",0,3,1,0,0,"");
-	$uf_sigla	= criarAtributo($conn,$ufID,"sigla","Sigla","char","2",0,3,1,0,0,"");
-	$uf_pais	= criarAtributo($conn,$ufID,"pais","País","int",0,1,4,1,$paisID,0,"");
+	$uf_nome		= criarAtributo($conn,$ufID,"nome","Nome","varchar","200",0,3,1,0,0,"");
+	$uf_sigla		= criarAtributo($conn,$ufID,"sigla","Sigla","char","2",0,3,1,0,0,"");
+	$uf_pais		= criarAtributo($conn,$ufID,"pais","País","int",0,1,4,1,$paisID,0,"");
+	$uf_denominacao	= criarAtributo($conn,$ufID,"denominacao","Denominação","varchar","200",0,3,1,0,0,"");
 	Entity::setDescriptionField($conn,$ufID,$uf_sigla,true);
 
 	// Adicionando Menu

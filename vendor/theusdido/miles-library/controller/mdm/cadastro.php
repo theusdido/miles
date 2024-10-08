@@ -98,97 +98,26 @@
             $tipoaba					= isset($_POST["tipoaba"])?$_POST["tipoaba"]:'';
             $entidadeauxiliar			= $_POST["entidadeauxiliar"];
 
-            if ($id == 0 || $id == 96){
+            $entidade_id = criarEntidade(
+                $conn,
+                $nome,
+                $descricao,
+                $ncolunas,
+                $exibirmenuadministracao,
+                $exibircabecalho,
+                $campodescchave,
+                $atributogeneralizacao,
+                $exibirlegenda,
+                $criarprojeto,
+                $criarempresa,
+                $criarauth,
+                $registrounico,
+                $carregarlibjavascript,
+                $criarinativo = true,
+                $tipoaba = 'tabs'
+            );
 
-                $nome = getSystemPREFIXO() . str_replace('td_','',$nome);
-                $atributos_iniciais = "";
-                if ($criarprojeto == 1){
-                    $atributos_iniciais .= ",projeto int not null";				
-                }
-                if ($criarempresa == 1){
-                    $atributos_iniciais .= ",empresa int not null";
-                }
-                if ($criarauth == 1){
-                    $atributos_iniciais .= ",auth varchar(45) not null,auth0 varchar(45)";
-                }
-                
-                $sql = "CREATE TABLE IF NOT EXISTS {$nome}(id int not null primary key{$atributos_iniciais}) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
-                $criar = $conn->query($sql);
-                if ($criar){
-
-                    // ID Última entidade
-                    $linha_ultimo 	= $conn->query("SELECT MAX(id)+1 id FROM ".ENTIDADE)->fetchAll();
-                    $id 			= $linha_ultimo[0]['id'];
-                    $sql 			= "
-                        INSERT INTO ".ENTIDADE." (
-                            id,
-                            nome,
-                            descricao,
-                            exibirmenuadministracao,
-                            exibircabecalho,
-                            ncolunas,
-                            atributogeneralizacao,
-                            exibirlegenda,
-                            registrounico,
-                            carregarlibjavascript,
-                            tipoaba,
-                            entidadeauxiliar
-                        ) VALUES (
-                            {$id},
-                            '{$nome}',
-                            '{$descricao}',
-                            {$exibirmenuadministracao},
-                            {$exibircabecalho},
-                            {$ncolunas},
-                            {$atributogeneralizacao},
-                            {$exibirlegenda},
-                            {$registrounico},
-                            {$carregarlibjavascript},
-                            '{$tipoaba}',
-                            {$entidadeauxiliar}
-                        );";
-                    $query 			= $conn->query($sql);
-
-                    if($query){
-
-                        // ID Última entidade
-                        $linha_ultimo_attr 	= $conn->query("SELECT MAX(id)+1 id FROM ".ATRIBUTO)->fetchAll();
-                        $prox_attr 			= $linha_ultimo_attr[0]['id'];
-
-                        if ($criarprojeto == 1){
-                            $sql_projeto = "INSERT INTO ".ATRIBUTO." (id,entidade,nome,descricao,tipo,tamanho,nulo,tipohtml,exibirgradededados,chaveestrangeira,dataretroativa,inicializacao) VALUES ({$prox_attr},{$prox},'projeto','Projeto','smallint','',0,'16',0,3,0,'session.projeto');";
-                            $conn->exec($sql_projeto);
-                            $prox_attr++;
-                        }
-
-                        if ($criarempresa == 1){
-                            $sql_empresa = "INSERT INTO ".ATRIBUTO." (id,entidade,nome,descricao,tipo,tamanho,nulo,tipohtml,exibirgradededados,chaveestrangeira,dataretroativa,inicializacao) VALUES ({$prox_attr},{$prox},'empresa','Empresa','smallint','',0,'16',0,4,0,'session.empresa');";
-                            $conn->exec($sql_empresa);
-                            $prox_attr++;
-                        }
-                        if ($criarauth == 1){
-                            $sql_auth = "INSERT INTO ".ATRIBUTO." (id,entidade,nome,descricao,tipo,tamanho,nulo,tipohtml,exibirgradededados,chaveestrangeira,dataretroativa) VALUES ({$prox_attr},{$prox},'auth','Auth','varchar','45',0,'16',0,null,0);";
-                            $conn->exec($sql_auth);
-                            $prox_attr++;
-                            
-                            $sql_auth0 = "INSERT INTO ".ATRIBUTO." (id,entidade,nome,descricao,tipo,tamanho,nulo,tipohtml,exibirgradededados,chaveestrangeira,dataretroativa) VALUES ({$prox_attr},{$prox},'auth0','Auth0','varchar','45',0,'16',0,null,0);";
-                            $conn->exec($sql_auth0);
-                            $prox_attr++;
-                        }					
-                    }
-                }
-            }else{
-                $sql_ent_nome 		= "SELECT nome FROM " . ENTIDADE ." WHERE id = " . $id;
-                $linha_ent_nome 	= $conn->query($sql_ent_nome)->fetchAll();
-                if ($linha_ent_nome[0]["nome"] != $nome){				
-                    $sql_update = "RENAME TABLE {$linha_ent_nome[0]["nome"]} TO {$nome};";
-                }				
-
-                $sql 	= "UPDATE ".ENTIDADE." SET nome = '{$nome}' , descricao = '{$descricao}' , ncolunas = {$ncolunas} , exibirmenuadministracao = {$exibirmenuadministracao} , exibircabecalho = {$exibircabecalho} , campodescchave = {$campodescchave} , atributogeneralizacao = {$atributogeneralizacao} , exibirlegenda = {$exibirlegenda} , registrounico = {$registrounico} , carregarlibjavascript = {$carregarlibjavascript}, tipoaba = '{$tipoaba}' , entidadeauxiliar = {$entidadeauxiliar} WHERE id = ".$id.";";
-                $query 	= $conn->query($sql);
-            }
-
-            tdc::wj(['id' => $id , '_data' => Entity::getJSON($id)]);
+            tdc::wj(['id' => $entidade_id , '_data' => Entity::getJSON($entidade_id)]);
         break;
 
         case 'listar-campos':
@@ -230,46 +159,55 @@
             $id         = tdc::r('atributo');
             $nome 		= $_POST["nome"];
             $descricao	= tdc::utf8($_POST["descricao"]);
-            $tipo 		= $_POST["tipo"];		
-            $tamanho 	= isset($_POST["tamanho"])?$_POST["tamanho"]:0;
-            if ($tipo == "char" || $tipo == "varchar"){
-                if ((int)$tamanho <= 0){
-                    $tamanho = "(200)";
-                }else{
-                    $tamanho = "({$_POST["tamanho"]})";
-                }
-            }else{
-                $tamanho = '';
-            }
+            $tipo 		= $_POST["tipo"];
+            $tamanho 	= $_POST["tamanho"];
+            // $tamanho 	= isset($_POST["tamanho"])?$_POST["tamanho"]:0;
+            // if ($tipo == "char" || $tipo == "varchar"){
+            //     if ((int)$tamanho <= 0){
+            //         $tamanho = "(200)";
+            //     }else{
+            //         $tamanho = "({$_POST["tamanho"]})";
+            //     }
+            // }else{
+            //     $tamanho = '';
+            // }
             $tamanhoSQL 			= (is_numeric($_POST["tamanho"])?$_POST["tamanho"]:0);
-            $nulo_                  = $_POST["nulo"];
-            $nulo 					= isset($nulo_)?'NULL':'NOT NULL';
+            // $nulo_                  = $_POST["nulo"];
+            // $nulo 					= isset($nulo_)?'NULL':'NOT NULL';
+            $nulo                   = $_POST["nulo"];
             $tipohtml 				= $_POST["tipohtml"];
             $exibirgradededados 	= $_POST["exibirgradededados"];
             $dataretroativa 		= $_POST["dataretroativa"];
-            $readonly 				= $_POST["readonly"];
-            if (isset($_POST["chaveestrangeira"])){
-                $chaveestrangeira = ($_POST["chaveestrangeira"]=="")?0:($_POST["chaveestrangeira"]);
-            }else{
-                $chaveestrangeira = 0;
-            }
-            $indice = $_POST["indice"];
-            $tipoinicializacao = $_POST["tipoinicializacao"];
-            if (isset($_POST["atributodependencia"])){
-                $atributodependencia = ($_POST["atributodependencia"]==""?0:$_POST["atributodependencia"]);
-            }else{
-                $atributodependencia = 0;
-            }
+            
+            $chaveestrangeira       = $_POST["chaveestrangeira"];
+            // if (isset($_POST["chaveestrangeira"])){
+            //     $chaveestrangeira = ($_POST["chaveestrangeira"]=="")?0:($_POST["chaveestrangeira"]);
+            // }else{
+            //     $chaveestrangeira = 0;
+            // }
+            $indice                 = $_POST["indice"];
+            
+            $atributodependencia    = $_POST["atributodependencia"];
+            // if (isset($_POST["atributodependencia"])){
+            //     $atributodependencia = ($_POST["atributodependencia"]==""?0:$_POST["atributodependencia"]);
+            // }else{
+            //     $atributodependencia = 0;
+            // }
             
             $labelzerocheckbox 			= $_POST["labelzerocheckbox"];
             $labelumcheckbox 			= $_POST["labelumcheckbox"];
-            $legenda 					= $_POST["legenda"];
+            
             
             $desabilitar 				= $_POST["desabilitar"];
             $criarsomatoriogradededados = $_POST["criarsomatoriogradededados"];
-            $naoexibircampo				= $_POST["naoexibircampo"];
+            
             $is_unique_key				= $_POST["is_unique_key"];
             $inicializacao              = str_replace("'","\'",$_POST["inicializacao"]);
+            $tipoinicializacao      = $_POST["tipoinicializacao"];
+            $readonly 				= $_POST["readonly"];
+            $legenda 					= $_POST["legenda"];
+            $naoexibircampo				= $_POST["naoexibircampo"];
+
 
             $entidade       = tdc::e($_entidade);
             $_entidade_nome = $entidade->nome;
@@ -291,6 +229,26 @@
                 $conn->exec("ALTER TABLE {$_entidade_nome} DROP COLUMN {$nome};");                
             }
 
+            $atributo_id = criarAtributo(
+                $conn,
+                $_entidade,
+                $nome,
+                $descricao,
+                $tipo,
+                $tamanho,
+                $nulo,
+                $tipohtml,
+                $exibirgradededados,
+                $chaveestrangeira,
+                $dataretroativa,
+                $inicializacao,
+                $tipoinicializacao,
+                $readonly,
+                $legenda,
+                $naoexibircampo = false
+            );
+            
+            /*
             if ($id == 0){
 
                 // Cria ou altera o campo no MySQL
@@ -357,7 +315,7 @@
                 $sql    = "ALTER TABLE {$_entidade_nome} CHANGE {$atributo_nome} {$nome} {$tipo}{$tamanho} {$nulo};";
                 $conn->query($sql);
 
-                $id_retorno = $id;                                
+                $id_retorno = $id;
                 $sql = ("UPDATE ".ATRIBUTO."
                     SET 
                     entidade='{$_entidade}',
@@ -395,6 +353,8 @@
             }else{
                 tdc::wj(['id' => $id , '_data' => Field::getJSON($id)]);
             }
+            */
+            tdc::wj(['id' => $atributo_id , '_data' => Field::getJSON($atributo_id)]);
         break;
         case 'load-atributo';
             tdc::w( Field::getJSON(tdc::r('_atributo')) );

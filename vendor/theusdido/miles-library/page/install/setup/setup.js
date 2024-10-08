@@ -4,10 +4,6 @@
         loadDefault();
         $('#loader-instalar').attr('src',session.urlloading2);
         $('#loading-atualizar-personalizado').attr('src',session.urlloading2);
-
-        $('#projectfolder').blur(function(){
-            $('#dominio').val('http://localhost/' + $(this).val() + '/');
-        });
     });
 
     var showpersonalizar    = false;
