@@ -676,7 +676,8 @@ function criarEntidade(
 	$criarinativo = true, #14
 	$tipoaba = 'tabs' #15
 ){
-	$nome 		= getSystemPREFIXO() . $nome;
+	$prefixo 	= getSystemPREFIXO();
+	$nome 		= $prefixo . str_replace($prefixo,'',$nome);
 	$descricao 	= tdc::utf8($descricao);
 	
 	$sqlExisteEntidade 		= "SELECT id,nome FROM " . ENTIDADE . " WHERE nome='{$nome}';";
@@ -692,10 +693,50 @@ function criarEntidade(
 
 	if ($queryExisteEntidade->rowCount() <= 0){
 		$entidade = getProxId("entidade",$conn);
-		$sql = "INSERT INTO ".ENTIDADE." (id,nome,descricao,exibirmenuadministracao,exibircabecalho,ncolunas,atributogeneralizacao,exibirlegenda,registrounico,carregarlibjavascript,tipoaba) VALUES (".$entidade.",'{$nome}','".$descricao."',{$exibirmenuadministracao},{$exibircabecalho},{$ncolunas},{$atributogeneralizacao},{$exibirlegenda},{$registrounico},{$carregarlibjavascript},'{$tipoaba}');";
+		$sql = "INSERT INTO ".ENTIDADE." 
+		(
+			id,
+			nome,
+			descricao,
+			exibirmenuadministracao,
+			exibircabecalho,
+			campodescchave
+			ncolunas,
+			atributogeneralizacao,
+			exibirlegenda,
+			registrounico,
+			carregarlibjavascript,
+			tipoaba
+		) VALUES (
+		 	".$entidade.",
+			'{$nome}',
+			'".$descricao."',
+			{$exibirmenuadministracao},
+			{$exibircabecalho},
+			{$campodescchave},
+			{$ncolunas},
+			{$atributogeneralizacao},
+			{$exibirlegenda},
+			{$registrounico},
+			{$carregarlibjavascript},
+			'{$tipoaba}'
+		);";
 	}else{
 		$entidade = $linhaExisteEntidade["id"];
-		$sql = "UPDATE ".ENTIDADE." SET nome = '{$nome}',descricao = '".$descricao."',exibirmenuadministracao = {$exibirmenuadministracao},exibircabecalho = {$exibircabecalho},ncolunas = {$ncolunas},atributogeneralizacao = {$atributogeneralizacao},exibirlegenda = {$exibirlegenda},registrounico = {$registrounico},carregarlibjavascript={$carregarlibjavascript}, tipoaba='{$tipoaba}' WHERE id = {$entidade}";
+		$sql = "UPDATE ".ENTIDADE." SET 
+				nome = '{$nome}',
+				descricao = '".$descricao."',
+				exibirmenuadministracao = {$exibirmenuadministracao},
+				exibircabecalho = {$exibircabecalho},
+				campodescchave = {$campodescchave},
+				ncolunas = {$ncolunas},
+				atributogeneralizacao = {$atributogeneralizacao},
+				exibirlegenda = {$exibirlegenda},
+				registrounico = {$registrounico},
+				carregarlibjavascript={$carregarlibjavascript},
+				tipoaba='{$tipoaba}'
+			WHERE id = {$entidade};
+		";
 	}
 	
 	$query = $conn->query($sql);

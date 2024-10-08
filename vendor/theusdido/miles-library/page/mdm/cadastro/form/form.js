@@ -90,6 +90,7 @@ $('#btn-salvar-cadastro').click(function(){
         entidade:_entidade,
         op:'salvar',
     }
+
     $.ajax({
         url:session.urlmiles,
         type:"POST",

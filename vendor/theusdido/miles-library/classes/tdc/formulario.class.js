@@ -953,7 +953,7 @@ tdFormulario.prototype.liberaBotaoSalvar = function(){
 
 tdFormulario.prototype.exibirDadosEdicao =  function(){
 	let campodescchave = this.entidade.campodescchave;
-	if (campodescchave != "" && campodescchave != 0){
+	if (campodescchave != "" && campodescchave != 0 && campodescchave != null && campodescchave != undefined){
 		let display_campochavedesc 	= $(".descricaoExibirEdicao");
 		let campo_descricao 		= display_campochavedesc.find('.campodescricaoExibirEdicao');
 		let campo_id 				= display_campochavedesc.find('.idExibirEdicao');
