@@ -18,7 +18,6 @@
     },
     "require": {
 		"theusdido/miles-library":"^1.0.1",
-		"vlucas/phpdotenv": "^5.5",
-        "kreait/firebase-php": "^7.0"
+		"vlucas/phpdotenv": "^5.5"
     }
 }

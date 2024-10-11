@@ -665,7 +665,7 @@ function criarEntidade(
 	$ncolunas=1, #3
 	$exibirmenuadministracao = 0, #4
 	$exibircabecalho = 1, #5
-	$campodescchave = "", #6
+	$campodescchave = 0, #6
 	$atributogeneralizacao = 0, #7
 	$exibirlegenda = 1, #8
 	$criarprojeto = 0, #9
@@ -676,10 +676,11 @@ function criarEntidade(
 	$criarinativo = true, #14
 	$tipoaba = 'tabs' #15
 ){
-	$prefixo 	= getSystemPREFIXO();
-	$nome 		= $prefixo . str_replace($prefixo,'',$nome);
-	$descricao 	= tdc::utf8($descricao);
-	
+	$prefixo 			= getSystemPREFIXO();
+	$nome 				= $prefixo . str_replace($prefixo,'',$nome);
+	$descricao 			= tdc::utf8($descricao);
+	$campodescchave 	= $campodescchave == '' ? 0 : $campodescchave;
+
 	$sqlExisteEntidade 		= "SELECT id,nome FROM " . ENTIDADE . " WHERE nome='{$nome}';";
 	$queryExisteEntidade 	= $conn->query($sqlExisteEntidade);
 	if (!$queryExisteEntidade){
@@ -700,7 +701,7 @@ function criarEntidade(
 			descricao,
 			exibirmenuadministracao,
 			exibircabecalho,
-			campodescchave
+			campodescchave,
 			ncolunas,
 			atributogeneralizacao,
 			exibirlegenda,
@@ -738,7 +739,7 @@ function criarEntidade(
 			WHERE id = {$entidade};
 		";
 	}
-	
+
 	$query = $conn->query($sql);
 	if (!$query){
 		if (IS_SHOW_ERROR_MESSAGE){
