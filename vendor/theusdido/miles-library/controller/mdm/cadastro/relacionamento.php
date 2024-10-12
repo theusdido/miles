@@ -93,7 +93,8 @@
             if ($id == 0){
                 $query_prox     = $conn->query("SELECT IFNULL(MAX(id),0)+1 FROM ".RELACIONAMENTO);
                 $prox           = $query_prox->fetch();
-                $sql            = "INSERT INTO ".RELACIONAMENTO." (id,pai,tipo,filho,atributo,descricao,cardinalidade) VALUES ({$prox[0]},{$entidade},'{$tipo}','{$entidadefilho}',{$atributo},'{$descricao}','{$cardinalidade}');";
+                $id             = $prox[0];
+                $sql            = "INSERT INTO ".RELACIONAMENTO." (id,pai,tipo,filho,atributo,descricao,cardinalidade) VALUES ({$id},{$entidade},'{$tipo}','{$entidadefilho}',{$atributo},'{$descricao}','{$cardinalidade}');";
             }else{
                 $sql            = "UPDATE ".RELACIONAMENTO." SET pai = {$entidade} , tipo = {$tipo} , filho = {$entidadefilho} , atributo = {$atributo} , descricao = '{$descricao}' , cardinalidade = '{$cardinalidade}' WHERE id = {$id};";
             }
