@@ -193,3 +193,6 @@
 
 	// Caminho padrão para os arquivos do serviço do WebService
 	define("PATH_CURRENT_WS_SERVICE",PATH_CURRENT_WEBSERVICE . "servicos" . DIRECTORY_SEPARATOR);
+
+	// Caminho padrão para os arquivos estáticos
+	define("PATH_CURRENT_ASSETS",PATH_PROJECT . "assets" . DIRECTORY_SEPARATOR);	

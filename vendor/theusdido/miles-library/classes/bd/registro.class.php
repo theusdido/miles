@@ -158,8 +158,8 @@ abstract class Registro {
 				//$conn_replicacao = Conexao::abrir('producao');
 				//$conn_replicacao->query($sql->getInstrucao());
 
-				$firebase = new Firebase();
-				$firebase->add($this->dados,$this->getEntidade() . '/' . $this->dados['id'] . '/');
+				//$firebase = new Firebase();
+				//$firebase->add($this->dados,$this->getEntidade() . '/' . $this->dados['id'] . '/');
 			}else{
 				echo "Não há transação ativa: Registro Armazenar <br/>\n";
 				$status_operacao =  false;

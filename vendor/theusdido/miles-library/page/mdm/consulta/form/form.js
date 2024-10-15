@@ -158,6 +158,7 @@ function novoStatus(){
     $("#form-status #atributo").val($("#form-status #atributo option:first").val());
     $("#form-status #status").val($("#form-status #status option:first").val());
 }
+
 function atualizarListaFiltro(consulta){
     $("#lista-filtro").load(session.urlmiles + "?controller=mdm/consulta&op=listarconsulta&consulta=" + _consulta);
 }

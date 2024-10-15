@@ -18,11 +18,11 @@ class tdLista {
        Adiciona um registro na tabela td_lista
 	*/
 	public static function add($entidade_pai,$entidade_filho,$registro_pai,$registro_filho){
-		$_lista 					= tdClass::Criar("persistent",array("td_lista"));
+		$_lista 					= tdc::p('td_lista');
 		$_lista->entidadepai 		= $entidade_pai;
 		$_lista->entidadefilho		= $entidade_filho;
-		$_lista->reg_pai			= $registro_pai;
-		$_lista->reg_filho			= $registro_filho;
+		$_lista->regpai				= $registro_pai;
+		$_lista->regfilho			= $registro_filho;
 		$_lista->armazenar();
 	}
 }

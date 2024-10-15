@@ -55,227 +55,213 @@
     </fieldset>
 </form>
 
-
 <!-- FILTROS -->
-<div class="panel-group" id="accordion_filtros" role="tablist" aria-multiselectable="true">
-    <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="headingOne">
-        <h4 class="panel-title">
-            <a role="button" data-toggle="collapse" data-parent="#accordion_filtros" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-            Filtros							  
-            </a>
-        </h4>
-        </div>
-        <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-        <div class="panel-body">
-                <button type="button" class="btn btn-default" aria-label="Novo Filtro" style="float:right;margin-top:-3px;" onclick="novoFiltro();">
-                <span class="fas fa-plus-circle" aria-hidden="true"></span>
+<div class="accordion" id="accordion_filtros">
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                Filtros
+            </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordion_filtros">
+            <div class="accordion-body">
+                <button type="button" class="btn btn-secondary" aria-label="Novo Filtro" style="float:right;margin-top:-3px;" onclick="novoFiltro();">
+                    <i class="fas fa-plus-circle" aria-hidden="true"></i>
                 </button>
 
                 <!-- CADASTRO DE FILTRO -->
-                <div class="modal fade" id="modalCadastroFiltro" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Cadastro de Filtro</h4>
+                <div class="modal fade" id="modalCadastroFiltro" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalLabel">Cadastro de Filtro</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <!-- FORMULARIO DE FILTRO -->
+                                <form id="form-filtro">
+                                    <fieldset>
+                                        <input type="hidden" id="idfiltro" name="idfiltro" />
+                                        <div class="mb-3">
+                                            <label for="atributo" class="form-label">Atributo</label>
+                                            <select id="atributo" name="atributo" class="form-select"></select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="operador" class="form-label">Operador</label>
+                                            <select name="operador" id="operador" class="form-select">
+                                                <option value="=">Igual</option>
+                                                <option value="!">Diferente</option>
+                                                <option value="..">Intervalo</option>
+                                                <option value="%">Parcial</option>
+                                                <option value=">">Maior</option>
+                                                <option value="<">Menor</option>
+                                                <option value=">=">Maior ou Igual</option>
+                                                <option value="<=">Menor ou Igual</option>
+                                                <option value="-">Nulo</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="legenda" class="form-label">Legenda</label>
+                                            <input type="text" name="legenda" id="legenda" class="form-control">
+                                        </div>
+                                    </fieldset>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <div id="error"></div>
+                                <button type="button" class="btn btn-primary" id="salvarFiltro">Salvar</button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="modal-body">
-
-                            <!-- FORMULARIO DE FILTRO -->
-                            <form id="form-filtro">
-                                <fieldset>
-                                    <input type="hidden" id="idfiltro" name="idfiltro" />
-                                    <div class="form-group">
-                                        <label for="atributo">Atributo</label>
-                                        <select id="atributo" name="atributo" class="form-control"></select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="operador">Operador</label>
-                                        <select name="operador" id="operador" class="form-control">
-                                            <option value="=">Igual</option>
-                                            <option value="!">Diferente</option>
-                                            <option value="..">Intervalo</option>
-                                            <option value="%">Parcial</option>
-                                            <option value=">">Maior</option>
-                                            <option value="<">Menor</option>
-                                            <option value=">=">Maior ou Igual </option>
-                                            <option value="<=">Menor ou Igual</option>
-                                            <option value="-">Nulo</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="legenda">Legenda</label>
-                                        <input type="text" name="legenda" id="legenda" class="form-control">
-                                    </div>
-                                </fieldset>
-                            </form>
-                    
-                    </div>
-                    <div class="modal-footer">
-                            <div id="error"></div>
-                            <button type="button" class="btn btn-primary" id="salvarFiltro">Salvar</button>
-                    </div>
-                    </div>
-                </div>
                 </div>
                 <!-- CADASTRO DE FILTRO -->
-                <br/><br/>
+                <br /><br />
                 <ul id="lista-filtro" class="list-group sortable"></ul>
-        </div>
+            </div>
         </div>
     </div>
 </div>
+
 
 
 <!-- STATUS -->
-<div class="panel-group" id="accordion_status" role="tablist" aria-multiselectable="true">
-<div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="headingTwo">
-    <h4 class="panel-title">
-        <a role="button" data-toggle="collapse" data-parent="#accordion_status" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-        Status							  
-        </a>
-    </h4>
-    </div>
-    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-    <div class="panel-body">
-            <button type="button" class="btn btn-default" aria-label="Novo Filtro" style="float:right;margin-top:-3px;" onclick="novoStatus();">
-            <span class="fas fa-plus-circle" aria-hidden="true"></span>
+<div class="accordion" id="accordion_status">
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Status
             </button>
-            
-            <!-- CADASTRO DE STATUS -->
-            <div class="modal fade" id="modalCadastroStatus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Cadastro Status</h4>
-                </div>
-                <div class="modal-body">
-                
-                        <form id="form-status">
-                            <fieldset>
-                                <input type="hidden" id="idstatus" name="idstatus" />
-                                <div class="form-group">
-                                    <label for="atributo">Atributo</label>
-                                    <select id="atributo" name="atributo" class="form-control"></select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="operador">Operador</label>
-                                    <select name="operador" id="operador" class="form-control">
-                                        <option value="=">Igual</option>
-                                        <option value="!">Diferente</option>
-                                        <option value="..">Intervalo</option>
-                                        <option value="%">Parcial</option>
-                                        <option value=">">Maior</option>
-                                        <option value="<">Menor</option>
-                                        <option value=">=">Maior ou Igual </option>
-                                        <option value="<=">Menor ou Igual</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="valor">Valor</label>
-                                    <input type="text" name="" id="" class="form-control" data-tipoatributo="input">
-                                    <select name="" id="" class="form-control" data-tipoatributo="lista">
-                                    </select>														
-                                </div>
-                                <div class="form-group">
-                                    <label for="status">Status</label>
-                                    <select id="status" name="status" class="form-control"></select>
-                                </div>
-                            </fieldset>
-                        </form>
-                </div>
-                <div class="modal-footer">
-                        <div id="error"></div>
-                        <button type="button" class="btn btn-primary" id="salvarStatus">Salvar</button>
-                </div>
-                </div>
-            </div>
-            </div>
-            <br/><br/>
-            <div id="lista-status" class="list-group">
-            </div>								
-    </div>
-    </div>
-</div>
-</div>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordion_status">
+            <div class="accordion-body">
+                <button type="button" class="btn btn-secondary" aria-label="Novo Filtro" style="float:right;margin-top:-3px;" onclick="novoStatus();">
+                    <i class="fas fa-plus-circle" aria-hidden="true"></i>
+                </button>
 
+                <!-- CADASTRO DE STATUS -->
+                <div class="modal fade" id="modalCadastroStatus" tabindex="-1" aria-labelledby="modalStatusLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalStatusLabel">Cadastro Status</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="form-status">
+                                    <fieldset>
+                                        <input type="hidden" id="idstatus" name="idstatus" />
+                                        <div class="mb-3">
+                                            <label for="atributo" class="form-label">Atributo</label>
+                                            <select id="atributo" name="atributo" class="form-select"></select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="operador" class="form-label">Operador</label>
+                                            <select name="operador" id="operador" class="form-select">
+                                                <option value="=">Igual</option>
+                                                <option value="!">Diferente</option>
+                                                <option value="..">Intervalo</option>
+                                                <option value="%">Parcial</option>
+                                                <option value=">">Maior</option>
+                                                <option value="<">Menor</option>
+                                                <option value=">=">Maior ou Igual</option>
+                                                <option value="<=">Menor ou Igual</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="valor" class="form-label">Valor</label>
+                                            <input type="text" name="" id="" class="form-control" data-tipoatributo="input">
+                                            <select name="" id="" class="form-select" data-tipoatributo="lista"></select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="status" class="form-label">Status</label>
+                                            <select id="status" name="status" class="form-select"></select>
+                                        </div>
+                                    </fieldset>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <div id="error"></div>
+                                <button type="button" class="btn btn-primary" id="salvarStatus">Salvar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <br/><br/>
+                <div id="lista-status" class="list-group"></div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- FILTROS INICIAIS -->
-<div class="panel-group" id="accordion_filtrosinicias" role="tablist" aria-multiselectable="true">
-<div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="headingThree">
-    <h4 class="panel-title">
-        <a role="button" data-toggle="collapse" data-parent="#accordion_filtrosiniciais" href="#collapseTrhee" aria-expanded="false" aria-controls="collapseTrhee">
-        Filtros Iniciais						  
-        </a>
-    </h4>
-    </div>
-    <div id="collapseTrhee" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-    <div class="panel-body">
-            <button type="button" class="btn btn-default" aria-label="Novo Filtro" style="float:right;margin-top:-3px;" onclick="novoFiltroInicial();">
-            <span class="fas fa-plus-circle" aria-hidden="true"></span>
+<div class="accordion" id="accordion_filtrosinicias">
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="headingThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                Filtros Iniciais
             </button>
+        </h2>
+        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordion_filtrosinicias">
+            <div class="accordion-body">
+                <button type="button" class="btn btn-secondary" aria-label="Novo Filtro" style="float:right;margin-top:-3px;" onclick="novoFiltroInicial();">
+                    <i class="fas fa-plus-circle" aria-hidden="true"></i>
+                </button>
 
-            <!-- CADASTRO DE FILTRO -->
-            <div class="modal fade" id="modalCadastroFiltroInicial" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Cadastro de Filtro Inicial</h4>
+                <!-- CADASTRO DE FILTRO -->
+                <div class="modal fade" id="modalCadastroFiltroInicial" tabindex="-1" aria-labelledby="modalFiltroInicialLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalFiltroInicialLabel">Cadastro de Filtro Inicial</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="form-filtro-inicial">
+                                    <fieldset>
+                                        <input type="hidden" id="idfiltro" name="idfiltro" />
+                                        <div class="mb-3">
+                                            <label for="atributo" class="form-label">Atributo</label>
+                                            <select id="atributo" name="atributo" class="form-select"></select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="operador" class="form-label">Operador</label>
+                                            <select name="operador" id="operador" class="form-select">
+                                                <option value="=">Igual</option>
+                                                <option value="!">Diferente</option>
+                                                <option value="..">Intervalo</option>
+                                                <option value="%">Parcial</option>
+                                                <option value=",">Contém</option>
+                                                <option value=">">Maior</option>
+                                                <option value="<">Menor</option>
+                                                <option value=">=">Maior ou Igual</option>
+                                                <option value="<=">Menor ou Igual</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="valor" class="form-label">Valor</label>
+                                            <input type="text" name="valor" id="valor" class="form-control">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="legenda" class="form-label">Legenda</label>
+                                            <input type="text" name="legenda" id="legenda" class="form-control">
+                                        </div>
+                                    </fieldset>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <div id="error"></div>
+                                <button type="button" class="btn btn-primary" id="salvarFiltroInicial">Salvar</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="modal-body">
 
-                        <!-- FORMULARIO DE FILTRO -->
-                        <form id="form-filtro-inicial">
-                            <fieldset>
-                                <input type="hidden" id="idfiltro" name="idfiltro" />
-                                <div class="form-group">
-                                    <label for="atributo">Atributo</label>
-                                    <select id="atributo" name="atributo" class="form-control"></select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="operador">Operador</label>
-                                    <select name="operador" id="operador" class="form-control">
-                                        <option value="=">Igual</option>
-                                        <option value="!">Diferente</option>
-                                        <option value="..">Intervalo</option>
-                                        <option value="%">Parcial</option>
-                                        <option value=",">Contém</option>
-                                        <option value=">">Maior</option>
-                                        <option value="<">Menor</option>
-                                        <option value=">=">Maior ou Igual </option>
-                                        <option value="<=">Menor ou Igual</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="valor">Valor</label>
-                                    <input type="text" name="valor" id="valor" class="form-control">
-                                </div>													
-                                <div class="form-group">
-                                    <label for="legenda">Legenda</label>
-                                    <input type="text" name="legenda" id="legenda" class="form-control">
-                                </div>
-                            </fieldset>
-                        </form>
-                
-                </div>
-                <div class="modal-footer">
-                        <div id="error"></div>
-                        <button type="button" class="btn btn-primary" id="salvarFiltroInicial">Salvar</button>
-                </div>
-                </div>
+                <br/><br/>
+                <div id="lista-filtroinicial" class="list-group"></div>
             </div>
-            </div>
-            <!-- CADASTRO DE FILTRO -->
-            <br/><br/>
-            <div id="lista-filtroinicial" class="list-group">
-            </div>
-    </div>
+        </div>
     </div>
 </div>
-</div>
+
 <div id="panel-colunas"></div>

@@ -6,7 +6,9 @@
         array('name' => 'aluno' , 'title' => 'Aluno'),        
         array('name' => 'turma' , 'title' => 'Turma'),
         array('name' => 'curso' , 'title' => 'Curso'),
-        array('name' => 'cursomodalidade' , 'title' => 'Modalidade do Curso')
+        array('name' => 'cursomodalidade' , 'title' => 'Modalidade do Curso'),
+        array('name' => 'areaconhecimento' , 'title' => 'Área de Conhecimento'),
+        array('name' => 'serie' , 'title' => 'Série')
       )
     ),
     array( "name" => "soe", "title" => "Serviço de Orientação Escolar", "components" =>
@@ -28,7 +30,8 @@
             array('name' => 'avaliacaofeedback' , 'title' => 'Feedback da Avaliação'),
             array('name' => 'avaliacaofeedbackcriterio' , 'title' => 'Feedback dos Critérios da Avaliação'),
             array('name' => 'metodologia' , 'title' => 'Metodologia'),
-            array('name' => 'assunto' , 'title' => 'Assunto')
+            array('name' => 'assunto' , 'title' => 'Assunto'),
+            array('name' => 'sequenciadidadica' , 'title' => 'Sequencia Didádica')
         )
     ),
     array( "name" => "itinerarioformativo", "title" => "Itinerario Formativo", "components" =>

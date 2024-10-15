@@ -21,8 +21,9 @@
 	);
 
 	// Criando Atributos
-	$nome 			= criarAtributo($conn,$entidadeID,"nome","Nome","varchar","200",0,3,1,0,0,"");
-	$modalidade		= criarAtributo($conn,$entidadeID,"modalidade","Modalidade","int",0,1,22,1,installDependencia("erp_escola_cursomodalidade","package/negocio/escola/secretaria/cursomodalidade")); 
+	$nome 				= criarAtributo($conn,$entidadeID,"nome","Nome","varchar","200",0,3,1,0,0,"");
+	$modalidade			= criarAtributo($conn,$entidadeID,"modalidade","Modalidade","int",0,1,22,1,installDependencia("erp_escola_cursomodalidade","package/negocio/escola/secretaria/cursomodalidade"));
+	$areaconhecimento	= criarAtributo($conn,$entidadeID,"areaconhecimento","Área de Conhecimento","int",0,1,4,0,installDependencia("erp_escola_cursomodalidade","package/negocio/escola/secretaria/areaconhecimento"));
 
 	// Seta o campo descrição
 	Entity::setDescriptionField($conn,$entidadeID,$nome,true);
