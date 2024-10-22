@@ -121,7 +121,7 @@
 		fwrite($fp,"\n");
 		fwrite($fp,"function afterEdit(){");
 		fwrite($fp,"\n\t var entidade = arguments[0];");
-		fwrite($fp,"\n\t var registro = arguments[1];");					
+		fwrite($fp,"\n\t var registro = arguments[1];");
 		fwrite($fp,"\n");
 		fwrite($fp,"}");
 		fwrite($fp,"\n");
@@ -148,6 +148,8 @@
 		fwrite($fp,"// Executa após a exclusão de um registro");
 		fwrite($fp,"\n");
 		fwrite($fp,"function afterDelete(){");
+		fwrite($fp,"\n\t var entidade = arguments[0];");
+		fwrite($fp,"\n\t var registro = arguments[1];");
 		fwrite($fp,"\n");
 		fwrite($fp,"}");
 		fwrite($fp,"\n");

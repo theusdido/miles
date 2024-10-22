@@ -1380,7 +1380,7 @@ tdFormulario.prototype.setConsulta = function(id_consulta){
 
 	// Monta os filtros
 	for (f in consulta.filtros){
-		var ft = td_consulta[id_consulta].filtros[f];
+		var ft = JSON.parse(td_consulta[id_consulta].filtros[f])._data;
 		$("#form-consulta .form-control[atributo="+ft.atributo+"]").attr("data-operador",ft.operador);
 		$("#form-consulta .form-control[atributo="+ft.atributo+"]").attr("data-tipo",td_atributo[ft.atributo].tipo);
 	}

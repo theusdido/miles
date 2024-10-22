@@ -1,7 +1,7 @@
 <?php
 
 	$_full_port 		= (PORT == '' ? '' : ':') . PORT;
-	$_root_folder		= (isset($_env->root) ? $_env->root : '');
+	$_root_folder		= (isset($_env->root) ? $_env->root : 'miles/');
 
 	if ($_is_installed){
 		$_is_fixed_domain	= isset($_env->system->is_fixed_domain) ? $_env->system->is_fixed_domain : false;
@@ -16,7 +16,7 @@
 		$_url_miles			= REQUEST_PROTOCOL . 'miles.' .$_domain . $_full_port . '/';
 		$_mainHost 			= REQUEST_PROTOCOL . $_domain . $_full_port . '/';
 	}else{
-		$_url_miles			= REQUEST_PROTOCOL .$_domain . $_full_port . '/miles/';
+		$_url_miles			= REQUEST_PROTOCOL .$_domain . $_full_port . '/' . $_root_folder;
 		if (isset($_SERVER['SERVER_NAME'])){
 			$_mainHost 	= REQUEST_PROTOCOL . $_SERVER['SERVER_NAME'] . '/';
 			$_mainHost	= str_replace('www.','', $_mainHost);
@@ -44,6 +44,9 @@
 	}else{
 		define('URL_ALIAS',URL_ROOT);
 	}
+
+	// URL LIB
+	$_url_lib = isset($_env->system->url->lib) ? $_env->system->url->lib : $mjc->system->url->lib;
 
 	// if (isset($mjc->folder)){
 	// 	$request_uri_dir 	= (isset($_env->root) ? $_env->root  : '/') . $mjc->folder;
@@ -109,7 +112,7 @@
 	define('URL_CURRENT_COMPONENT',URL_PROJECT . FOLDER_COMPONENT .'/');
 
 	// URL da Biblioteca
-	define('URL_LIB',$mjc->system->url->lib);
+	define('URL_LIB',$_url_lib);
 
 	define('URL_FILES',URL_PROJECT . 'files/');
 

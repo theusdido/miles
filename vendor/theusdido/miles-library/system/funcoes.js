@@ -918,10 +918,18 @@ function setTdCheckboxSN($_group, $_valor){
 }
 
 function setMonitorStorage(conceito,data){
+	
+	if(typeof data == 'object'){
+		const replacer = (chave, valor) => {
+			return String(valor).replace('\"','"');
+		};
+		data = JSON.stringify(data,replacer);
+	}
+
 	_session.set('_monitor_mdm',{
 		_conceito:conceito,
 		_data:data
-	});
+	});		
 }
 
 function loadAllJSConcepts(){
@@ -946,4 +954,19 @@ function loadAllJSConcepts(){
 
 		}
 	});	
+}
+
+function getURLParamsObject(url = location.href){
+	var arrayParams 	= [];
+	paramsURL 			= url.split("?");
+	if (paramsURL[1] != undefined){
+		var params 		= paramsURL[1].split("&");
+		params.forEach(function(param){
+			var p 		= param.split("=");
+			var key 	= p[0];
+			var value	= p[1];
+			arrayParams[key] = value;
+		});
+	}
+	return arrayParams;
 }

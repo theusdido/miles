@@ -555,7 +555,7 @@ GradeDeDados.prototype.excluir = function(){
 				}
 			}
 
-			if (typeof afterDelete === "function") afterDelete();
+			if (typeof afterDelete === "function") afterDelete(entidade,registro);
 
 			if (instancia.totalRegistros <= 0){
 				instancia.nenhumRegistro();
@@ -939,16 +939,20 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
 				formulario[indice_form].registro_id = id;
 				formulario[indice_form].editar();
 			break;
-			case 'consulta':				
-				let selector_editar = '#' + instancia.modal_editar_id + ' .modal-body';
-				//let selector_editar = '#' + instancia.modal_editar_id + ' .modal-body iframe';
-				if ($(this).parents(".crud-contexto-listar").first().hasClass("fp")){					
-					let _modal_editar = instancia.editarModal();
-					_modal_editar.on('shown.bs.modal', function (e) {						
+			case 'consulta':
+				const paginaedicao = td_consulta[instancia.consulta].paginaedicao;
+				if (paginaedicao != '')
+				{
+					const paginaedicao_params = paginaedicao + '&id=' + id;
+					carregar(paginaedicao_params,'#conteudoprincipal');
+				}else if ($(this).parents(".crud-contexto-listar").first().hasClass("fp")){
+					let selector_editar = '#' + instancia.modal_editar_id + ' .modal-body';
+					let _modal_editar 	= instancia.editarModal();
+					_modal_editar.on('shown.bs.modal', function (e) {
 						let url_crud = session.urlmiles + '?controller=crud&entidade=' + entidadeid + '&_id=' + id;
 						//$(selector_editar).attr('src',url_crud);
 						let url_page_html = session.folderprojectfiles + "files/cadastro/"+entidadeid+"/"+td_entidade[entidadeid].nomecompleto+".html";
-						carregar(url_page_html,selector_editar,function(){							
+						carregar(url_page_html,selector_editar,function(){
 							carregarScriptCRUD('editarformulario',entidadeid,id,selector_editar,{
 								is_registrounico:false,
 								is_init:true,

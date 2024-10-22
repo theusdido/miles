@@ -90,7 +90,8 @@
 			$id			 			= $_POST["id"];
 			$descricao				= $_POST["descricao"];
 			$entidade	 			= $_POST["entidade"];
-			$movimentacao	 		= isset($_POST["movimentacao"])?$_POST["movimentacao"]:0;			
+			$movimentacao	 		= isset($_POST["movimentacao"])?$_POST["movimentacao"]:0;
+			$paginaedicao	 		= $_POST["paginaedicao"];
 			$exibirbotaoeditar		= $_POST["exibirbotaoeditar"];
 			$exibirbotaoexcluir		= $_POST["exibirbotaoexcluir"];
 			$exibirbotaoemmassa		= $_POST["exibirbotaoemmassa"];
@@ -102,9 +103,44 @@
 				$prox = $query_prox->fetch();
 				$id = $prox[0];
 
-				$sql = "INSERT INTO ".CONSULTA." (id,descricao,entidade,movimentacao,exibirbotaoeditar,exibirbotaoexcluir,exibirbotaoemmassa,exibircolunaid,adicionaridfiltro) VALUES ({$id},'{$descricao}',{$entidade},{$movimentacao},{$exibirbotaoeditar},{$exibirbotaoexcluir},{$exibirbotaoemmassa},$exibircolunaid,$adicionaridfiltro);";
+				$sql = "INSERT INTO ".CONSULTA." 
+				(
+					id,
+					descricao,
+					entidade,
+					movimentacao,
+					paginaedicao,
+					exibirbotaoeditar,
+					exibirbotaoexcluir,
+					exibirbotaoemmassa,
+					exibircolunaid,
+					adicionaridfiltro
+				) VALUES (
+				 	{$id},
+					'{$descricao}',
+					{$entidade},
+					{$movimentacao},
+					'{$paginaedicao}',
+					{$exibirbotaoeditar},
+					{$exibirbotaoexcluir},
+					{$exibirbotaoemmassa},
+					$exibircolunaid,
+					$adicionaridfiltro
+				);";
 			}else{
-				$sql = "UPDATE ".CONSULTA." SET entidade = {$entidade} , descricao = '{$descricao}' , movimentacao = {$movimentacao} , exibirbotaoeditar = {$exibirbotaoeditar} , exibirbotaoexcluir = {$exibirbotaoexcluir} , exibirbotaoemmassa = {$exibirbotaoemmassa}, exibircolunaid = {$exibircolunaid}, adicionaridfiltro = {$adicionaridfiltro} WHERE id = {$id};";
+				$sql = "
+					UPDATE ".CONSULTA." SET 
+						entidade = {$entidade},
+						descricao = '{$descricao}',
+						movimentacao = {$movimentacao},
+						paginaedicao = '{$paginaedicao}',
+						exibirbotaoeditar = {$exibirbotaoeditar},
+						exibirbotaoexcluir = {$exibirbotaoexcluir},
+						exibirbotaoemmassa = {$exibirbotaoemmassa},
+						exibircolunaid = {$exibircolunaid},
+						adicionaridfiltro = {$adicionaridfiltro}
+					WHERE id = {$id}
+				;";
 			}
 			$query = $conn->query($sql);
 			if($query){

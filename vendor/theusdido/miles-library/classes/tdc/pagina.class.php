@@ -134,23 +134,36 @@ class Pagina Extends Html {
 		}
 		
 		if ($this->showCSSTheme){
-			$tema_project = NULL;
+			$tema_project 			= NULL;
+			$tema_layout_system 	= NULL;
+			$tema_color_system 		= NULL;
 
-			if (file_exists(FILE_LAYOUT_STYLE_THEME) && file_exists(FILE_COLOR_STYLE_THEME))
+			if (file_exists(FILE_CURRENT_LAYOUT_STYLE_THEME))
+			{
+				$tema_layout_system 			= tdClass::Criar("link");
+				$tema_layout_system->href 		= URL_CURRENT_FILE_LAYOUT_STYLE_THEME;
+				$tema_layout_system->rel 		= 'stylesheet';				
+			}else if (file_exists(FILE_LAYOUT_STYLE_THEME))
 			{
 				$tema_layout_system 			= tdClass::Criar("link");
 				$tema_layout_system->href 		= URL_FILE_LAYOUT_STYLE_THEME;
 				$tema_layout_system->rel 		= 'stylesheet';
+			}
 
+			if (file_exists(FILE_CURRENT_COLOR_STYLE_THEME)){
+				$tema_color_system 				= tdClass::Criar("link");
+				$tema_color_system->href 		= URL_CURRENT_FILE_COLOR_STYLE_THEME;
+				$tema_color_system->rel 		= 'stylesheet';								
+			}else if(file_exists(FILE_COLOR_STYLE_THEME)){
 				$tema_color_system 				= tdClass::Criar("link");
 				$tema_color_system->href 		= URL_FILE_COLOR_STYLE_THEME;
-				$tema_color_system->rel 		= 'stylesheet';
-			}else{
-				if (file_exists(PATH_CURRENT_PROJECT_THEME)){
-					$tema_project 			= tdClass::Criar("link");
-					$tema_project->href 	= URL_CURRENT_PROJECT_THEME . 'geral.css';
-					$tema_project->rel 		= 'stylesheet';
-				}
+				$tema_color_system->rel 		= 'stylesheet';								
+			}
+			
+			if (file_exists(PATH_CURRENT_PROJECT_THEME) && $tema_layout_system != NULL && $tema_color_system != NULL){
+				$tema_project 			= tdClass::Criar("link");
+				$tema_project->href 	= URL_CURRENT_PROJECT_THEME . 'geral.css';
+				$tema_project->rel 		= 'stylesheet';
 			}
 
 			$tema_menuleft = null;

@@ -7,7 +7,8 @@
 	$_project_path 		= 
 	$_project_folder	= 
 	$_env 				= '';
-	$_environment		= isset($_GET['env']) ? $_GET['env'] : (isset($_POST['env']) ? $_POST['env'] : (isset($_environment) ? $_environment : $_current_environment));
+	#$_environment		= isset($_GET['env']) ? $_GET['env'] : (isset($_POST['env']) ? $_POST['env'] : (isset($_environment) ? $_environment : $_current_environment));
+	$_environment = $_env_params;
 
 	// Deveria criar esse arquivo apenas na instalação ?
 	if (!file_exists($_miles_json_root_file)){

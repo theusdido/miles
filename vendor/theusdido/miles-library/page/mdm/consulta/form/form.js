@@ -2,6 +2,7 @@ $("#accordion_filtros,#accordion_status,#accordion_filtrosinicias,#panel-colunas
 $('#exibirbotaoeditar,#exibirbotaoexcluir,#exibirbotaoemmassa,#exibircolunaid,#adicionaridfiltro').attr('checked',false);
 
 $(document).ready(function(){
+    
     $('#entidade').load(session.urlmiles + '?controller=mdm/consulta&op=listar-entidade-option');
     $('#movimentacao').load(session.urlmiles + '?controller=mdm/consulta&op=listar-movimentacao-option');        
     if (_consulta != 0){
@@ -26,16 +27,17 @@ $('#btn-salvar-consulta').click(function(){
 
             // Campos Inputs
 			id              :_consulta,
-			descricao       :$('#descricao').val(),
-			entidade        :$('#entidade').val(),
-			movimentacao    :$('#movimentacao').val(),
+			descricao       :$('#descricao')    .val(),
+			entidade        :$('#entidade')     .val(),
+			movimentacao    :$('#movimentacao') .val(),
+            paginaedicao    :$('#paginaedicao') .val(),
 
             // Campos Checkbox
-			exibirbotaoeditar		:$('#exibirbotaoeditar').prop('checked'),
-			exibirbotaoexcluir		:$('#exibirbotaoexcluir').prop('checked'),
-			exibirbotaoemmassa		:$('#exibirbotaoemmassa').prop('checked'),
-			exibircolunaid			:$('#exibircolunaid').prop('checked'),
-			adicionaridfiltro		:$('#adicionaridfiltro').prop('checked')
+			exibirbotaoeditar		:$('#exibirbotaoeditar')    .prop('checked'),
+			exibirbotaoexcluir		:$('#exibirbotaoexcluir')   .prop('checked'),
+			exibirbotaoemmassa		:$('#exibirbotaoemmassa')   .prop('checked'),
+			exibircolunaid			:$('#exibircolunaid')       .prop('checked'),
+			adicionaridfiltro		:$('#adicionaridfiltro')    .prop('checked')
         },
         complete:function(_res){
             let _ret    = _res.responseJSON;
@@ -72,16 +74,17 @@ function load(){
             setMonitorStorage('consulta',_data);
 
             // Campos Inputs
-            $('#descricao').val(_data.descricao);
-            $('#entidade').val(_data.entidade);
-            $('#movimentacao').val(_data.movimentacao);
+            $('#descricao')     .val(_data.descricao);
+            $('#entidade')      .val(_data.entidade);
+            $('#movimentacao')  .val(_data.movimentacao);
+            $('#paginaedicao')  .val(_data.paginaedicao);
 
             // Campos Checkbox
-            $('#exibirbotaoeditar').attr('checked',_data.exibirbotaoeditar == 0 ? false : true);
-            $('#exibirbotaoexcluir').attr('checked',_data.exibirbotaoexcluir == 0 ? false : true);
-            $('#exibirbotaoemmassa').attr('checked',_data.exibirbotaoemmassa == 0 ? false : true);
-            $('#exibircolunaid').attr('checked',_data.exibircolunaid == 0 ? false : true);
-            $('#adicionaridfiltro').attr('checked',_data.adicionaridfiltro == 0 ? false : true);
+            $('#exibirbotaoeditar')     .attr('checked',_data.exibirbotaoeditar == 0 ? false : true);
+            $('#exibirbotaoexcluir')    .attr('checked',_data.exibirbotaoexcluir == 0 ? false : true);
+            $('#exibirbotaoemmassa')    .attr('checked',_data.exibirbotaoemmassa == 0 ? false : true);
+            $('#exibircolunaid')        .attr('checked',_data.exibircolunaid == 0 ? false : true);
+            $('#adicionaridfiltro')     .attr('checked',_data.adicionaridfiltro == 0 ? false : true);
 
             $("#valor").val("");
             atualizarListaFiltro(_consulta);

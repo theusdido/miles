@@ -58,6 +58,7 @@ class Query {
             'empresa'                   => $_consulta->empresa,
             'entidade'                  => $_consulta->entidade,
             'movimentacao'              => $_consulta->movimentacao,
+            'paginaedicao'              => $_consulta->paginaedicao,
             'descricao'                 => $_consulta->descricao,
             'exibireditar'              => json_encode($_consulta->exibirbotaoeditar),
             'exibirexcluir'             => json_encode($_consulta->exibirbotaoexcluir),

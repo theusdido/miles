@@ -31,7 +31,7 @@
             array('name' => 'avaliacaofeedbackcriterio' , 'title' => 'Feedback dos Critérios da Avaliação'),
             array('name' => 'metodologia' , 'title' => 'Metodologia'),
             array('name' => 'assunto' , 'title' => 'Assunto'),
-            array('name' => 'sequenciadidadica' , 'title' => 'Sequencia Didádica')
+            array('name' => 'sequenciadidadica' , 'title' => 'Sequencia Didática')
         )
     ),
     array( "name" => "itinerarioformativo", "title" => "Itinerario Formativo", "components" =>
