@@ -1,6 +1,6 @@
 <?php
 	// Setando variáveis
-	$entidadeNome 		= "erp_escola_sequenciadidadica";
+	$entidadeNome 		= "erp_escola_sequenciadidatica";
 	$entidadeDescricao 	= "Sequencia Didática";
 
 	// Criando Entidade
@@ -42,7 +42,7 @@
     $data_inicial                   = criarAtributo($conn,$entidadeID,"datainicial","Data Inicial","date",0,0,11,1);
     $data_final                     = criarAtributo($conn,$entidadeID,"datafinal","Data Final","date",0,1,11,1);
     $area_conhecimento              = criarAtributo($conn,$entidadeID,"areaconhecimento","Área do Conhecimento","int",0,1,4,0,$entidade_id_areaconhecimento);
-	$unidade_curricular             = criarAtributo($conn,$entidadeID,"unidadecurricular","Unidade Curricular","int",0,1,22,0,$entidade_id_unidadecurricular);
+	$unidade_curricular             = criarAtributo($conn,$entidadeID,"unidadecurricular","Unidade Curricular","int",0,0,22,1,$entidade_id_unidadecurricular);
     $curso                          = criarAtributo($conn,$entidadeID,"curso","Curso","int",0,0,22,0,$entidade_id_curso);
 	$quantidadeaula                 = criarAtributo($conn,$entidadeID,"quantidadeaula","Quantidade Aula","int",0,0,25,1);
 

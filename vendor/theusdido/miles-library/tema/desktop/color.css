@@ -336,3 +336,9 @@ table thead tr.td-info
 	background-color: #FFF;
 	border:1px solid #EEE;
 }
+
+
+.btn.btn-info
+{
+	color:#FFF !important;
+}

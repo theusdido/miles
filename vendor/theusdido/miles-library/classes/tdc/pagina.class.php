@@ -319,6 +319,8 @@ class Pagina Extends Html {
 				this._environment				= "'._ENVIRONMENT.'";
 				this.url_files					= "'.URL_FILES.'";
 				this.url_files_cadastro			= "'.URL_FILES_CADASTRO.'";
+				this.url_files_consulta			= "'.URL_FILES_CONSULTA.'";
+
 			}
 			var session = new SystemSession();
 			

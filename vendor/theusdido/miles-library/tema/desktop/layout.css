@@ -833,3 +833,10 @@ header #menu {
 {
 	background-color: transparent;
 }
+
+.bootbox-close-button
+{
+	float: right;
+    border: none;
+    margin: 0 !important;
+}

@@ -26,6 +26,7 @@
 	$_url_project_miles_json			= $_url_relative_project . '.miles.json';
 	$_folder_miles_default				= 'miles/';
 	$_default_index_file				= 'index.php';
+	$_response							= [];
 
 	// Caso as variáveis venham por parametro
 	if (isset($_GET['project_name_identifify_params']) && isset($_GET['env'])){
@@ -194,3 +195,6 @@
 		// Fecha a transação com o banco de dados
 		Transacao::Commit();
 	}
+
+	// Resposta genérica para as requisições
+	if (!empty($_response)) tdc::wj($_response);

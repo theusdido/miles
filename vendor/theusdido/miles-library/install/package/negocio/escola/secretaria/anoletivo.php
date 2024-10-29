@@ -1,8 +1,7 @@
 <?php
-	
 	// Setando variáveis
-	$entidadeNome       = "erp_escola_instrumentoavaliacao";
-	$entidadeDescricao  = "Instrumento de Avaliação";
+	$entidadeNome 		= "erp_escola_anoletivo";
+	$entidadeDescricao 	= "Ano Letivo";
 
 	// Criando Entidade
 	$entidadeID = criarEntidade(
@@ -22,13 +21,13 @@
 	);
 
 	// Criando Atributos
-	$descricao			= criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar",500,0,14,1);
+	$ano 				= criarAtributo($conn,$entidadeID,"ano","Ano","smallint",0,0,25,1);
 
 	// Seta o campo descrição
-	Entity::setDescriptionField($conn,$entidadeID,$descricao,true);
-	
+	Entity::setDescriptionField($conn,$entidadeID,$ano,true);
+
 	// Criando Acesso
-	$menu = addMenu($conn,'Pedagógico','#','',0,0,'escola-pedagogico-avaliacao');
+	$menu = addMenu($conn,'Secretaria','#','',0,0,'escola-secretaria');
 
 	// Adicionando Menu
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu,1,'escola-' . $entidadeNome,$entidadeID,'cadastro');

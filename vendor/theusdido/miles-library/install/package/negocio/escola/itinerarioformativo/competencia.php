@@ -9,7 +9,7 @@
 		$conn,
 		$entidadeNome,
 		$entidadeDescricao,
-		$ncolunas=3,
+		$ncolunas=1,
 		$exibirmenuadministracao = 0,
 		$exibircabecalho = 1,
 		$campodescchave = 0,
@@ -22,7 +22,7 @@
 	);
 
 	// Criando Atributos
-	$descricao			= criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar",500,0,3,1,0,0,"");
+	$descricao			= criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar",500,0,14,1,0,0,"");
 	$unidadecurricular 	= criarAtributo($conn,$entidadeID,"unidadecurricular","Unidade Curricular","int",0,0,22,1,installDependencia("erp_escola_unidadecurricular","package/sistema"));
 
 	// Seta o campo descrição
