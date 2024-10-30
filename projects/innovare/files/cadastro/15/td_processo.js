@@ -1,10 +1,6 @@
 /*
  * JS Personalizado 
-<<<<<<< HEAD
- * @Data de Criacao: 30/03/2024 16:57:08 
-=======
- * @Data de Criacao: 03/04/2024 01:03:58 
->>>>>>> 1273d453b229ab39fdfc63305f7f969f3ed1d054
+ * @Data de Criacao: 17/05/2024 02:07:47 
  * @Criado por: Edilson Bitencourt, @id: 1 
  * @Página: 15 - Processo[ td_processo ] 
  */
@@ -25,6 +21,22 @@ function beforeSave(){
 function afterSave(){
 	 var fp = arguments[0];
 	 var btnsave = arguments[1];
+
+	 // $.ajax({
+		// url:session.urlmiles,
+		// data:{
+			// controller:'gerarws',
+			// op:'recuperandas'
+		// }
+	// });
+	
+	// $.ajax({
+		// url:session.urlmiles,
+		// data:{
+			// controller:'gerarws',
+			// op:'falidas'
+		// }
+	// });	 
 }
 // Invocado ao clicar no botão Editar 
 function beforeEdit(){

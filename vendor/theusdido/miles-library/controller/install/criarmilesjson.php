@@ -1,7 +1,7 @@
 <?php
     if (tdc::r('op') == 'instalar'){
-        // Na instalação o path do arquivo miles deve sero do projeto
-        $_path_project_miles_json	        = $_path_project_install . 'dev.miles.json';
+        // Na instalação o path do arquivo miles deve ser o do projeto
+        $_path_project_miles_json	        = $_path_project_install . 'miles.json';
         // Seta o id com o nome do diretório na instação
         $_project_name_identifify_params    = $_project_folder;
     }else{

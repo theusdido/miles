@@ -1,6 +1,6 @@
 <?php
-$ent_filho = tdClass::Criar("persistent",array(ENTIDADE,$rel->filho));	# Entidade filho do relacionamento
-$descricaoRel = $rel->descricao==""?$ent_filho->contexto->descricao:$rel->descricao; # Label do Relacionamento
+$ent_filho		= tdClass::Criar("persistent",array(ENTIDADE,$rel->filho));	# Entidade filho do relacionamento
+$descricaoRel 	= $rel->descricao==""?$ent_filho->contexto->descricao:$rel->descricao; # Label do Relacionamento
 
 // Div para adicionar o form do relacionamento
 $div_rel = tdClass::Criar("div");

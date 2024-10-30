@@ -14,6 +14,7 @@
 abstract class SqlInstrucao {
 	protected $sql;
 	protected $criterio;
+	protected $entidade;
 
 	/*  
 		* Método setEntidade 
@@ -35,7 +36,7 @@ abstract class SqlInstrucao {
 		Retorna a tabela(entidade) do banco de dados		
 	*/			
 	public function getEntidade(){
-		return $this-entidade;
+		return $this->entidade;
 	}
 	
 	/*  

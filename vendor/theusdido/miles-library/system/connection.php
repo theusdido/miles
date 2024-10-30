@@ -1,8 +1,8 @@
 <?php
-
+	
     // Abre a transação atual do banco de dados do projeto
 	Transacao::abrir("current");
-
+	
 	$_is_installed = tdInstall::isInstalled();
 	if (
 		($_controller == '' || $_controller == 'install') && 

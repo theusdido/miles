@@ -7,6 +7,7 @@
 		'tdc/debug.class.php',
 		'tdc/session.class.php',
 		'tdc/tdfile.class.php',
+		'tdc/tdlista.class.php',
 		'install/install.class.php',
 		'interface/cookie.class.php',
 		'system/entity.class.php',

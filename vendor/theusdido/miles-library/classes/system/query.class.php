@@ -27,19 +27,21 @@ class Query {
 		@return: string
 	*/
 	public static function getJSON($_id){
+
 		$_consulta 		= tdc::ru(CONSULTA,$_id);
+        
 	    $_filtros       = $_status = $_filtros_iniciais = $_colunas = array();
 
         $filters         = tdc::d(FILTROCONSULTA,tdc::f('consulta','=',$_consulta->id));
         foreach($filters as $filter){
             array_push($_filtros, FilterQuery::getJSON($filter->id));
         }
-
+        
         $status         = tdc::d(STATUSCONSULTA,tdc::f('consulta','=',$_consulta->id));
         foreach($status as $s){
             array_push($_status, StatusQuery::getJSON($s->id));
         }
-
+        
         $filters         = tdc::d(FILTROINICIALCONSULTA,tdc::f('consulta','=',$_consulta->id));
         foreach($filters as $f){
             array_push($_filtros_iniciais, InitialFilterQuery::getJSON($f->id));
@@ -49,7 +51,7 @@ class Query {
         foreach($colunas as $c){
             array_push($_colunas, ColumnQuery::getJSON($c->id));
         }
-
+        
 		return json_encode(array(
             'id'                        => $_consulta->id,
             'projeto'                   => $_consulta->projeto,

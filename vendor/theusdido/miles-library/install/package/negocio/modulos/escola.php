@@ -6,7 +6,8 @@
         array('name' => 'aluno' , 'title' => 'Aluno'),        
         array('name' => 'turma' , 'title' => 'Turma'),
         array('name' => 'curso' , 'title' => 'Curso'),
-        array('name' => 'cursomodalidade' , 'title' => 'Modalidade do Curso')
+        array('name' => 'cursomodalidade' , 'title' => 'Modalidade do Curso'),
+        array('name' => 'unidadecurricular' , 'title' => 'Unidade Curricular')
       )
     ),
     array( "name" => "soe", "title" => "Serviço de Orientação Escolar", "components" =>
@@ -36,8 +37,7 @@
             array('name' => 'competencia' , 'title' => 'Competência'),
             array('name' => 'conteudo' , 'title' => 'Conteúdo'),            
             array('name' => 'habilidade' , 'title' => 'Habilidade'),
-            array('name' => 'objetivoespecifico' , 'title' => 'Objetivos Específicos'),
-            array('name' => 'unidadecurricular' , 'title' => 'Unidade Curricular'),
+            array('name' => 'objetivoespecifico' , 'title' => 'Objetivos Específicos'),            
             array('name' => 'trilha' , 'title' => 'Trilha'),
             array('name' => 'eixo' , 'title' => 'Eixo')
         )

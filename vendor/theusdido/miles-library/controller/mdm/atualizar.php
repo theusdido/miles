@@ -4,18 +4,16 @@
 	switch($op){
 		case 'update':
 
-			$environment = tdc::r('environment');
-			switch($environment){
-				case 'producaotodesenvolvimento':
-					$_conn_origem	= Conexao::abrir("producao");
-					$_conn_destino	= Conexao::abrir("current");
-				break;
-				case 'desenvolvimentotoproducao':				
-				default:
-					$_conn_origem	= Conexao::abrir("current");
-					$_conn_destino	= Conexao::abrir("producao");
-			}
+			$environment 	= tdc::r('environment');
+			$direcao 		= tdc::r('direcao');
 
+			if ($direcao == 'enviar'){
+				$_conn_origem	= Conexao::abrir("current");
+				$_conn_destino	= Conexao::abrir($environment);
+			}else{
+				$_conn_origem	= Conexao::abrir($environment);
+				$_conn_destino	= Conexao::abrir("current");
+			}
 
 			$entidadesestrutura = tdc::r("entidadesestrutura");
 			$entidadesregistro 	= tdc::r("entidadesregistro");
@@ -25,7 +23,7 @@
 
 				if (isset($_GET["entidade"])){
 					$where 				= " WHERE id = " . $_GET["entidade"];
-				}else if (isset($_GET["entidadesestrutura"])){					
+				}else if (isset($_GET["entidadesestrutura"])){	
 					$where = " WHERE id in (" . $_GET["entidadesestrutura"] . ")";
 				}else{
 					$where = "";
@@ -226,12 +224,13 @@
 			$sql 	= "SELECT descricao,id FROM td_entidade";
 			$query 	= $conn->query($sql);
 			while ($linha = $query->fetch()){
+				$chk_entidade_id 	= 'chk_estrutura_' . $linha["id"];
+				$chk_descricao 		= tdc::utf8($linha["descricao"]);				
 				echo '
-					<div class="checkbox">
-						<label>
-							<input type="checkbox" class="entidadeestrutura" data-entidade="'.$linha["id"].'">'.tdc::utf8($linha["descricao"]).'
-						</label>
-					</div>
+					<li class="list-group-item checkbox">
+						<input class="form-check-input me-1 entidadeestrutura" type="checkbox" id="'.$chk_entidade_id.'" data-entidade="'.$linha["id"].'">
+						<label class="form-check-label stretched-link" for="'.$chk_entidade_id.'">'.$chk_descricao.'</label>
+					</li>
 				';
 			}
 		break;
@@ -239,12 +238,13 @@
                 $sql = "SELECT descricao,id FROM td_entidade";
                 $query = $conn->query($sql);
                 while ($linha = $query->fetch()){
+					$chk_entidade_id 	= 'chk_registro_' . $linha["id"];
+					$chk_descricao 		= tdc::utf8($linha["descricao"]);
                     echo '
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" class="entidaderegistro" data-entidade="'.$linha["id"].'">'.tdc::utf8($linha["descricao"]).'
-                            </label>
-                        </div>
+						<li class="list-group-item checkbox">
+							<input class="form-check-input me-1 entidaderegistro" type="checkbox" id="'.$chk_entidade_id.'" data-entidade="'.$linha["id"].'">
+							<label class="form-check-label stretched-link" for="'.$chk_entidade_id.'">'.$chk_descricao.'</label>
+						</li>
                     ';
                 }
 		break;
@@ -252,12 +252,13 @@
 			$sql = "SELECT descricao,id FROM td_entidade";
 			$query = $conn->query($sql);
 			while ($linha = $query->fetch()){
+				$chk_entidade_id 	= 'chk_arquivo_' . $linha["id"];
+				$chk_descricao 		= tdc::utf8($linha["descricao"]);				
 				echo '
-					<div class="checkbox">
-						<label>
-							<input type="checkbox" class="entidadearquivo" data-entidade="'.$linha["id"].'">'.tdc::utf8($linha["descricao"]).'
-						</label>
-					</div>
+					<li class="list-group-item checkbox">
+						<input class="form-check-input me-1 entidadearquivo" type="checkbox" id="'.$chk_entidade_id.'" data-entidade="'.$linha["id"].'">
+						<label class="form-check-label stretched-link" for="'.$chk_entidade_id.'">'.$chk_descricao.'</label>
+					</li>
 				';
 			}
 		break;

@@ -117,9 +117,9 @@ class Config {
 				if ($valor == ""){
 					$retorno = $valor;
 				}else{
-					$val 				= json_decode(tdc::utf8($valor),true);
+					$val 				= json_decode($valor,true);
 					$op             	= isset($val["op"])?$val["op"]:'';
-					$filename 			= isset($val["filename"])?$val["filename"]: (isset($val[1])?$val[1]:'');
+					$filename 			= utf8decode(isset($val["filename"])?$val["filename"]: (isset($val[1])?$val[1]:''));
 					$tipo 				= isset($val["tipo"])?$val["tipo"]:'';
 					$src 				= isset($val["src"])?$val["src"]:'';
 					$legenda			= isset($val["legenda"])?$val["legenda"]:'';					
@@ -278,7 +278,7 @@ class Config {
 		return $script;
 	}
 
-	/*  
+	/*
 		* Método getJsConfig
 		* Data de Criacao: 24/01/2024
 		* Author @theusdido
@@ -287,8 +287,7 @@ class Config {
 	*/
 	public static function getJsConfig(){
 		$script 		= tdc::o('script');
-		//$script->src 	= URL_SYSTEM . 'config.js';
 		$script->add(getURL(URL_SYSTEM . 'config.js'));
 		return $script;
-	}	
+	}
 }

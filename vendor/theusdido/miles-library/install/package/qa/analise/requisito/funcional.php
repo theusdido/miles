@@ -4,7 +4,7 @@
 
 	// Atributos
 	$nome	= $entidade->addAttr(
-		array("nome" => "nome" , "descricao" => "Nome" , "tipohtml" => 3 , "is_display" => true)
+		array("nome" => "nome" , "descricao" => "Nome" , "tipohtml" => 3 , "is_display" => true, "is_exibirgradedados" => true)
 	);
 
 	$descricao	  = $entidade->addAttr(

@@ -4,8 +4,8 @@
 	
 	// Salva os dados
 	foreach (tdClass::read("dados") as $linha){
-		
-		$id				= (int)$linha['id'];		
+
+		$id				= (int)$linha['id'];
 		$entidade_nome	= $linha['entidade'];
 		$entidade 		= tdc::p($entidade_nome,$id);
 

@@ -32,7 +32,7 @@
 	$favorecido = criarAtributo($conn,$entidadeID,"favorecido","Nome do Favorecido","varchar",200,1,3);
 
 	// Campo descrição
-	Entity::setDescriptionField($conn,$entidadeID,$descricao,true);
+	Entity::setDescriptionField($conn,$entidadeID,$numero,true);
 
 	// Criando Acesso
 	$menu_webiste = addMenu($conn,'Financeiro','#','',0,0,'financeiro');

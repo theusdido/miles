@@ -1,0 +1,77 @@
+<div class="modal-pesquisa-endereco-busca">
+<!-- <div class="col-md-12">
+	<div class="coluns"	data-ncolunas="1"> -->
+        <form>
+            <div class="form-group">
+                <label class="control-label" for="endereco">Endere&ccedil;o</label>
+                <div class="input-group">
+                <input class="form-control" type="text" id="input-endereco-busca" placeholder="Ex.: Jo&atilde;o Pessoa 270, Centro, Crici&uacute;ma">
+                <span class="input-group-btn">
+                    <button id="btn-buscar-endereco" class="btn btn-default" type="button"><span class="fas fa-search" aria-hidden="true"></span> Buscar</button>
+                </span>
+                </div>
+                <!--<p class="text-info" style="float:right;margin:5px;font-size:11px;">Use a Latitude e Longitude se preferir. Ex.: -28.682757,-49.371979</p>-->
+            </div>
+    </form>
+	<!-- </div>
+</div> -->
+
+<ul class="nav nav-tabs">
+	<li role="presentation" class="nav-item">
+		<a class="nav-link active" href="#busca-endereco" data-bs-toggle="tab" data-toggle="tab" role="tab" aria-controls="busca-endereco" data-bs-target="#busca-endereco" aria-expanded="true">Busca</a>
+	</li>
+	<li role="presentation"	class="nav-item">
+		<a class="nav-link" href="#adicionar-endereco" data-bs-toggle="tab" data-toggle="tab" role="tab" aria-controls="adicionar-endereco" data-bs-target="#adicionar-endereco" aria-expanded="true">Adicionar</a>
+	</li>
+</ul>
+<div class="tab-content">
+	<div id="busca-endereco" role="tabpanel" class="tab-pane fade active in show" aria-labelledby="busca-endereco">
+		<table id="tabela-resultado-busca-endereco" class="table table-hover">
+			<thead>
+				<tr>
+					<th class="col-endereco">Endere&ccedil;o</th>
+					<th class="col-retorno">&nbsp;</th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>	
+		</table>
+	</div>	
+	<div id="adicionar-endereco" role="tabpanel" class="tab-pane fade in" aria-labelledby="adicionar-endereco">
+		<div class="col-md-12">
+			<div class="form-group">
+				<input type="button" class="btn btn-success b-salvar"  value="Salvar" id="btn-salvar-endereco" />
+				<div id="msg-erro-endereco" class="alert alert-danger" role="alert"></div>
+			</div>			
+			<form>
+				<fieldset>
+					<div class="form-group">
+						<label class="control-label" for="cep">CEP</label>
+						<input class="form-control" type="text" id="cep" name="cep">
+					</div>
+					<div class="form-group">
+						<label class="control-label" for="estado">Estado</label>
+						<select id="estado" name="estado" class="form-select">
+						</select>
+					</div>
+					<div class="form-group">
+						<label class="control-label" for="cidade">Cidade</label>
+						<select id="cidade" name="cidade" class="form-select">
+						</select>
+					</div>
+					<div class="form-group">
+						<label class="control-label" for="bairro">Bairro</label>
+						<input class="form-control" type="text" id="bairro-manual" name="bairro-manual" style="display:none;">
+						<select id="bairro" name="bairro" class="form-select">
+						</select>
+					</div>
+					<div class="form-group">
+						<label class="control-label" for="logradouro">Logradouro</label>
+						<input class="form-control" type="text" id="logradouro" name="logradouro">
+					</div>				
+				</fieldset>
+			</form>
+		</div>
+	</div>
+</div>
+</div>

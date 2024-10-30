@@ -50,7 +50,7 @@
 	$phpversion 	= (int)$_phpversion[0];
 	$phpbuild 		= (int)$_phpversion[1];
 	$phpcompilation	= isset($_phpversion[2])?(int)$_phpversion[2]:0;
-	
+
 	$_session_isactive = false;
 	if ($phpversion >= 5 && $phpbuild > 3){
 		if (session_status() === PHP_SESSION_ACTIVE) {
@@ -83,8 +83,8 @@
 	}
 
 	$_config_db = $_path_config_project . $mjc->database_current.'_mysql.ini';
-	if (file_exists($_config_db)){		
-		$_db 		= parse_ini_file($_config_db);
+	if (file_exists($_config_db)){
+		$_db 		= parseIniFile($_config_db);
 		$_db_name 	= $_db['base'];
 	}else if (isset($_SESSION["db_base"])){
 		$_db_name 	= $_SESSION["db_base"];

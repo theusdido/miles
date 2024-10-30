@@ -3,22 +3,22 @@
     "project":{
         "name":"Innovare Administradora Judicial",
         "path":"innovare/",
-        "url":""
+        "url":"innovareteia1.websiteseguro.com"
     },
     "currentproject": 1,
     "folder":"miles/",
     "system": {
         "url": {
-            "lib": "https://ws.teia.tec.br/miles/repository/lib/"
+            "lib": "https://teia.tec.br/miles/repository/lib/"
         },
         "request_protocol": "https",
         "packages": []
     },
     "theme": "desktop",
     "prefix": "td",
-    "is_show_error_message": false,
-    "is_show_warn_message": false,
-    "is_transaction_log": false,   
+    "is_show_error_message": true,
+    "is_show_warn_message": true,
+    "is_transaction_log": true,   
     "database_current": "producao",
     "port": "hidden",
     "environment":"prod",
@@ -48,11 +48,11 @@
                 "request_protocol": "http",
                 "force_https":false
             }
-		},        
+		},
         "prod":{
             "root":"/",
             "url":{
-                "domain":"ws.teia.tec.br/innovareadministradora.com.br"
+                "domain":"innovareteia1.websiteseguro.com"
             },
             "system":{
                 "request_protocol": "https",

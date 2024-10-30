@@ -27,6 +27,7 @@ class Entity {
 	private $atributos					= array();
 	public $modulo_nome					= '';
 	public $modulo_descricao			= '';
+	public $tipomenu					= 'cadastro';
 
 	/* 
 		* Método __construct
@@ -242,8 +243,32 @@ class Entity {
 		// Criando Acesso
 		$menu = addMenu($this->conn,$this->modulo_descricao,'#','',0,0,$this->modulo_nome);
 
+		$param_menu[0] = $this->conn;
+		$param_menu[1] = $this->descricao;
+		$param_menu[2] = "files/".$this->tipomenu."/".$this->id."/".getSystemPREFIXO().$this->nome.".html";
+		$param_menu[3] = '';
+		$param_menu[4] = $menu;
+		$param_menu[5] = 0;
+		$param_menu[6] = $this->modulo_nome . '-' . $this->nome;
+		$param_menu[7] = $this->id;
+		$param_menu[8] = $this->tipomenu;
+		$param_menu[9] = $this->id;
+		$param_menu[10] = 0;
+
 		// Adicionando Menu
-		addMenu($this->conn,$this->descricao,"files/cadastro/".$this->id."/".getSystemPREFIXO().$this->nome.".html",'',$menu,0,$this->modulo_nome . '-' . $this->nome);
+		addMenu(
+			$param_menu[0],
+			$param_menu[1],
+			$param_menu[2],
+			$param_menu[3],
+			$param_menu[4],
+			$param_menu[5],
+			$param_menu[6],
+			$param_menu[7],
+			$param_menu[8],
+			$param_menu[9],
+			$param_menu[10]
+		);
 
 	}
 
@@ -370,30 +395,30 @@ class Entity {
 		@return: string
 	*/
 	public static function getJSON($_entidade_id){
-		$_entidade 		= tdc::e($_entidade_id);
+		$_entidade 		= tdc::pa(ENTIDADE,$_entidade_id);
 
 		$filtro_atributo = tdc::f();
-		$filtro_atributo->addFiltro('entidade','=',(int)$_entidade->id);
+		$filtro_atributo->addFiltro('entidade','=',(int)$_entidade['id']);
 		$filtro_atributo->setPropriedade('order','ordem ASC');
 
 		$filtro_relacionamento	= tdc::f();
-		$filtro_relacionamento->addFiltro("pai","=",$_entidade->id);
-		$_entidadeauxiliar = $_entidade->entidadeauxiliar == 1 ? 'true' : 'false';
+		$filtro_relacionamento->addFiltro("pai","=",$_entidade['id']);
+		$_entidadeauxiliar = $_entidade['entidadeauxiliar'] == 1 ? 'true' : 'false';
 		
 		return json_encode(array(
-			'id' 								=> $_entidade->id,
-			'nome' 								=> $_entidade->nome,
-			'descricao' 						=> $_entidade->descricao,
-			'exibirmenuadministracao' 			=> $_entidade->exibirmenuadministracao,
-			'exibircabecalho' 					=> $_entidade->exibircabecalho,
-			'pai' 								=> $_entidade->pai,
-			'ncolunas' 							=> $_entidade->ncolunas,
-			'campodescchave' 					=> $_entidade->campodescchave,
-			'atributogeneralizacao' 			=> $_entidade->atributogeneralizacao,
-			'exibirlegenda' 					=> $_entidade->exibirlegenda,
-			'registrounico' 					=> $_entidade->registrounico,
-			'pacote' 							=> $_entidade->pacote,
-			'nomecompleto' 						=> (($_entidade->pacote==""?"":$_entidade->pacote.".")).$_entidade->nome,
+			'id' 								=> $_entidade['id'],
+			'nome' 								=> $_entidade['nome'],
+			'descricao' 						=> $_entidade['descricao'],
+			'exibirmenuadministracao' 			=> $_entidade['exibirmenuadministracao'],
+			'exibircabecalho' 					=> $_entidade['exibircabecalho'],
+			'pai' 								=> $_entidade['pai'],
+			'ncolunas' 							=> $_entidade['ncolunas'],
+			'campodescchave' 					=> $_entidade['campodescchave'],
+			'atributogeneralizacao' 			=> $_entidade['atributogeneralizacao'],
+			'exibirlegenda' 					=> $_entidade['exibirlegenda'],
+			'registrounico' 					=> $_entidade['registrounico'],
+			'pacote' 							=> $_entidade['pacote'],
+			'nomecompleto' 						=> (($_entidade['pacote']==""?"":$_entidade['pacote'].".")).$_entidade['nome'],
 			'atributos' 						=> tdc::da(ATRIBUTO,$filtro_atributo),
 			'relacionamentos' 					=> tdc::da(RELACIONAMENTO,$filtro_relacionamento),
 			'entidadeauxiliar' 					=> $_entidadeauxiliar

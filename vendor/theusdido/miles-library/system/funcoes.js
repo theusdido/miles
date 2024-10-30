@@ -238,7 +238,7 @@ function statusFormControl(campo,tipo){
 			if (!$(campo).parent().hasClass("calendar-picker-group")){
 				$(campo).parent().addClass('has-success has-feedback');
 				$(campo).parent().removeClass('has-error');
-				$(campo).parent().append(
+				$(campo).parent().prepend(
 					'<span class=\"fas fa-check form-control-feedback status-'+$(campo).attr("id")+'\" aria-hidden=\"true\"></span>' +
 					'<span class=\"sr-only status-'+$(campo).attr("id")+'\">(success)</span>'
 				);							
@@ -251,7 +251,7 @@ function statusFormControl(campo,tipo){
 			if (!$(campo).parent().hasClass("calendar-picker-group")){
 				$(campo).parent().addClass('has-error has-feedback');
 				$(campo).parent().removeClass('has-success');
-				$(campo).parent().append(
+				$(campo).parent().prepend(
 					'<span class=\"fas fa-times form-control-feedback status-'+$(campo).attr("id")+'\" aria-hidden=\"true\"></span>' +
 					'<span class=\"sr-only status-'+$(campo).attr("id")+'\">(error)</span>'
 				);
@@ -837,7 +837,7 @@ function carregarScriptCRUD(tipo,entidade,registro_id = 0,contexto = '',_extras 
 	}
 	switch(tipo){
 		case 'cadastro':
-			// Registro Únicogit
+			// Registro Único
 			if (formulario[indice_form].isRegistroUnico()){
 				formulario[indice_form].setRegistroUnico();
 			}else{
@@ -850,7 +850,8 @@ function carregarScriptCRUD(tipo,entidade,registro_id = 0,contexto = '',_extras 
 				if (formulario[indice_form_entidade_filho] == undefined){
 					formulario[indice_form_entidade_filho] = new tdFormulario(entidade_id,0,entidade);
 				}
-				formulario[indice_form_entidade_filho].loadGrade();
+				//formulario[indice_form_entidade_filho].loadGrade();
+				formulario[indice_form_entidade_filho].carregarListas();
 			});
 		break;
 		case 'editarformulario':
@@ -927,6 +928,7 @@ function loadAllJSConcepts(){
 	$.ajax({
 		url:session.urlmiles,
 		dataType:'json',
+		crossDomain: true,
 		data:{
 			controller:'mdm/conceitojson'
 		},

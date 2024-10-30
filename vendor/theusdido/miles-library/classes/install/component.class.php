@@ -10,6 +10,7 @@
 */
 class Component {
     private $name;
+	private $title;
 	/*  
 		* Método __construct
 	    * Data de Criacao: 06/11/2021

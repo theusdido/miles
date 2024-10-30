@@ -50,7 +50,7 @@
 
                 $nfseID = $nfse->id;
 
-                $item = tdc::p("td_erp_nfse_item");
+                $item                   = tdc::p("td_erp_nfse_item");
                 $item->nfse             = $nfseID;
                 $item->itemseq  		= conteudo_tag($linha,"ItemSeq");
                 $item->itemcod  		= conteudo_tag($linha,"ItemCod");									

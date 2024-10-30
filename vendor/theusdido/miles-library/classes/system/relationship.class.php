@@ -29,17 +29,17 @@ class Relationship {
 		@return: string
 	*/
 	public static function getJSON($_id){
-		$_relacionamento 		= tdc::p(RELACIONAMENTO,$_id);
-		
+		$_relacionamento 		= tdc::pa(RELACIONAMENTO,$_id);
+
 		return json_encode(array(
-			'id' 					=> $_relacionamento->id,
-			'pai' 					=> $_relacionamento->pai,
-			'tipo' 					=> $_relacionamento->tipo,
-			'filho' 			    => $_relacionamento->filho,
-			'atributo' 				=> $_relacionamento->atributo,
-			'descricao' 			=> $_relacionamento->descricao,
-			'controller' 			=> $_relacionamento->controller,
-			'cardinalidade' 		=> $_relacionamento->cardinalidade
+			'id' 					=> $_relacionamento['id'],
+			'pai' 					=> $_relacionamento['pai'],
+			'tipo' 					=> $_relacionamento['tipo'],
+			'filho' 			    => $_relacionamento['filho'],
+			'atributo' 				=> $_relacionamento['atributo'],
+			'descricao' 			=> $_relacionamento['descricao'],
+			'controller' 			=> $_relacionamento['controller'],
+			'cardinalidade' 		=> $_relacionamento['cardinalidade']
 		));
 	}	
 }

@@ -64,6 +64,15 @@
 	// Define o ambiente do sistema
 	define('_ENVIRONMENT',$_environment);
 
+	// Replicar dados no banco Google Firebase Realtime
+	define("_IS_REPLICATION_FIREBASE", isset($_env->integration->firebase) ? $_env->integration->firebase : false);
+
+	// Charset do banco de dados ( MySQL )
+	define("_MYSQL_CHARSET", isset($_env->dbms->mysql->charset) ? $_env->dbms->mysql->charset : 'utf8');
+
+	// Collection do banco de dados ( MySQL )
+	define("_MYSQL_COLLECTION", isset($_env->dbms->mysql->collection) ? $_env->dbms->mysql->collection : 'utf8_general_ci');
+
 	if (!isset($mjc->system->request_protocol)){
 		showMessage('Parametro <b>system:"request_protocol"</b> em miles.json não especificado.');
 		exit;

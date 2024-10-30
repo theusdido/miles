@@ -56,7 +56,14 @@
 					else echo tdc::utf8($parms);
 				}else{
 					if ($retorno) return $parms;
-					else echo utf8_encode($parms);
+					else {
+						global $phpversion;
+						if ($phpversion >= 8){
+							echo tdc::utf8($parms);
+						}else{
+							echo utf8_encode($parms);
+						}
+					}
 					// Não testado:
 					// return iconv($cur_encoding, "ISO 8859-1", $in_str);
 					//throw new Exception('Codificação não suportada.');

@@ -4,5 +4,5 @@
 
 	// Atributos
 	$descricao	  = $entidade->addAttr(
-		array("nome" => "descricao" , "descricao" => "Descrição")
+		array("nome" => "descricao" , "descricao" => "Descrição", "is_display" => true, "is_exibirgradedados" => true)
 	);

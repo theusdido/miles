@@ -24,7 +24,7 @@
 	// Criando Atributos
 	$professor  					= criarAtributo($conn,$entidadeID,"professor","Professor","int",0,0,22,1,installDependencia("erp_escola_professor",'package/negocio/escola/rh/professor'));
     $turma  			            = criarAtributo($conn,$entidadeID,"turma","Turma","int",0,0,22,1,installDependencia("erp_escola_turma",'package/negocio/escola/secretaria/turma'));
-	$unidadecurricular 				= criarAtributo($conn,$entidadeID,"unidadecurricular","Unidade Curricular","int",0,0,22,1,installDependencia("erp_escola_unidadecurricular","package/sistema"));
+	$unidadecurricular 				= criarAtributo($conn,$entidadeID,"unidadecurricular","Unidade Curricular","int",0,0,22,1,installDependencia("erp_escola_unidadecurricular",'package/negocio/escola/secretaria/unidadecurricular'));
 	$ambiente 						= criarAtributo($conn,$entidadeID,"ambiente","Ambiente","int",0,0,22,1,installDependencia("erp_escola_ambiente","package/sistema"));
 	$data                           = criarAtributo($conn,$entidadeID,"data","Data","date",0,0,11,1);
     $horainicial                    = criarAtributo($conn,$entidadeID,"horainicial","Hora Inicial","time",0,0,28,1);

@@ -66,6 +66,7 @@
 		if (file_exists($systemrequisicoes)) include $systemrequisicoes;
 		exit;
 	}
+
 	switch(AMBIENTE){
 		case 'SISTEMA':
 			if ($controller == '' && $_page == '' && $_component == ''){

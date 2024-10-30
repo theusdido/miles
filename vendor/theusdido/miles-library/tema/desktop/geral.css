@@ -325,6 +325,7 @@ legend {
 .pesquisa-grade{
 	float:left;
 	width:100%;
+	padding:5px;
 }
 .tdform .coluna .form-group{
 	width:100%;
@@ -694,7 +695,7 @@ header #menu {
 #info , #userinfo {
 	padding:10px;
 	height: 90px;
-	border-bottom:2px solid #0098da;
+	border-bottom:2px solid #FF8200;
 }
 #info .nome-projeto{	
 	margin:0px;
@@ -712,16 +713,12 @@ header #menu {
 #menuprincipal .dropdown-menu li {
 	border-top:1px dotted #DDD;	
 }
-#menuprincipal .dropdown-menu li:hover,
-#menuprincipal .dropdown-menu li a:hover
+
+#menuprincipal .nav-link
 {
-	/* background-color: #158ABD;
-	color:#FFF; */
+	color:#FFF;
 }
-#menuprincipal .dropdown-menu li a
-{
-	/* color:#158ABD; */
-}
+
 .headersystem-col{
 	background-color: #253544;
 	height: 30px;
@@ -744,10 +741,11 @@ header #menu {
 	text-align: right;
 }
 
-#menu .navbar {
+#menu .navbar
+{
 	margin-bottom:0px !important;
 	border-radius: 0px;
-	background-color: #4393dd;
+	background-color: #FF8200;
 }
 
 .panel {
@@ -774,7 +772,7 @@ header #menu {
 	background-color: #0098da;	
 }
 .modal-header * {
-	color:#333;
+	color:#FFF;
 }
 
 /* *****************************************************************
@@ -799,6 +797,11 @@ header #menu {
 	float:left;
 	display: flex;
 	justify-content: center;
+}
+
+.paginacao-gradededados .pagination .page-item
+{
+	width:50px;
 }
 .gradededados .btn-editar-emmassa{
 	margin-right:10px;
@@ -835,16 +838,17 @@ header #menu {
 	position: fixed;
     bottom: 0;
 	z-index:1000;
-    background-color: #253544 !important;
-    color: #FFF !important;
+    background-color: #b8b8b8 !important;
+	border-top:3px solid #FF8200;
+    color: #111 !important;
     text-align: center;
-    font-size: 12px;
-	height: 15px;
+    font-size: 14px;
+	height: 30px;
     margin-bottom: 0px !important;
-    padding: 15px !important;
+    padding: 10px !important;
 }
 #miles-root > div > footer a {
-	color:#66deff;
+	color:#000;
 }
 
 .tdform .checkbox-n.active,
@@ -947,6 +951,15 @@ header #menu {
 	font-weight: bold;
 }
 
+.td-message-warning
+{
+	background-color: #ffca2c !important;
+	color:#000 !important;
+	background: linear-gradient(135deg, #ffca2c, #f8c21f);
+	text-align: center;
+	font-weight: bold;
+}
+
 table thead tr.td-info
 {
 	background-color: #158abd;
@@ -1023,5 +1036,11 @@ table thead tr.td-info
 .pesquisa-grade .btn-pesquisa-grade
 {
 	border:1px solid #CCC;
+}
+
+.btn-default
+{
+	background-color: #FFF;
+	border:1px solid #EEE;
 }
 -->

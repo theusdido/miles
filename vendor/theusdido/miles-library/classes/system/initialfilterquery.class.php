@@ -27,12 +27,11 @@ class InitialFilterQuery {
 		@return: string
 	*/
 	public static function getJSON($_id){
-		$_filter 		= tdc::d(FILTROINICIALCONSULTA,$_id);
-		
+		$_filter 		= tdc::pa(FILTROINICIALCONSULTA,$_id);
 		return json_encode(array(
-            'atributo'  => tdc::a($_filter["atributo"])->nome,
-            'operador'  => $_filter["operador"],
-            'valor'     => $_filter["valor"]
-        ));
+			'atributo'  => tdc::a($_filter["atributo"])->nome,
+			'operador'  => $_filter["operador"],
+			'valor'     => $_filter["valor"]
+		));
 	}
 }

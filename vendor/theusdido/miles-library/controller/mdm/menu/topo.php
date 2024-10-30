@@ -6,7 +6,7 @@
             $pai    = tdc::r('pai');
             $sql = "
                 SELECT a.id,a.descricao,
-                    (SELECT b.descricao FROM ".MENU." b WHERE b.id = a.pai) pai,
+                    (SELECT b.descricao FROM ".MENU." b WHERE b.id = a.pai) pai_desc,
                 a.pai,
                 a.inativo
                 FROM ".MENU." a 
@@ -16,7 +16,7 @@
             $query = $conn->query($sql);
             While ($linha = $query->fetch()){
                 $descricao = tdc::utf8($linha["descricao"]);
-                echo imprimeLinhaMenu($indice,$linha["id"],$descricao,tdc::utf8($linha["pai"]),$self,$linha["pai"],$linha["inativo"]);
+                echo imprimeLinhaMenu($indice,$linha["id"],$descricao,tdc::utf8($linha["pai_desc"]),$self,$linha["pai"],$linha["inativo"]);
                 $indice++;
             } 
         break;
@@ -120,8 +120,9 @@
                 if ($query){
                     if ($id == ""){
                         try{
+                            $proximo_id = getProxId('td_menupermissoes',$conn);
                             // Seta permissão para o usuário que criou o menu
-                            $sqlP = "INSERT INTO td_menupermissoes (id,projeto,menu,usuario,permissao) VALUES (DEFAULT,1,{$idNew},1,1);";
+                            $sqlP = "INSERT INTO td_menupermissoes (id,projeto,menu,usuario,permissao) VALUES ({$proximo_id},1,{$idNew},1,1);";
                             $conn->exec($sqlP);
                         }catch(Exception $e){
                             $conn->rollBack();
@@ -232,7 +233,7 @@
 		$is_inativo		= $inativar == 1 ? 'false' : 'true';
 
 		$btn_inativo	= $inativar == 1 ? 'danger' : 'primary';
-		if ($pai == ""){
+		if (Menu::isPai($id)){
 			$mais = "
 						<button type='button' class='btn btn-default' aria-label='Ver sub menu' onclick=versubmenu(".$id.",'".str_replace(" ","^",$descricao)."')>
 						  <span class='fas fa-th-list' id='span-menuraiz-".$id."' aria-hidden='true'></span>

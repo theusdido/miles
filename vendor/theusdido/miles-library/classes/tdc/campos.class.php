@@ -238,7 +238,7 @@
 			$campo->add($label,$input_group,$modal);
 			return $campo;
 		}
-		public static function filtroEnderecoFiltro($nome,$descricao,$chaveestrangeira,$obrigatorio,$entidadeCOL,$fp,$gd,$entidade,$modalName){
+		public static function filtroEnderecoFiltro($nome,$descricao,$chaveestrangeira,$obrigatorio,$entidadeCOL,$fp,$gd,$atributo_id,$modalName){
 
 			$entidadePK = tdClass::Criar("persistent",array(ENTIDADE,$chaveestrangeira));
 
@@ -257,13 +257,14 @@
 			$input_group_btn = tdClass::Criar("span");
 			$input_group_btn->class = "input-group-btn";
 
-			$button = tdClass::Criar("button");
-			$button->class = "btn btn-default botao-filtro";
-			$button->id = "pesquisa-" . $nome;
-			$button->data_fk = $chaveestrangeira;
-			$button->data_entidade = $entidadeCOL;
-			$span_icon_procura = tdClass::Criar("span");
-			$span_icon_procura->class = "fas fa-search";
+			$button 					= tdClass::Criar("button");
+			$button->class 				= "btn btn-default botao-filtro";
+			$button->id 				= "pesquisa-" . $nome;
+			$button->type				= 'button';
+			$button->data_fk 			= $chaveestrangeira;
+			$button->data_entidade 		= $entidadeCOL;
+				$span_icon_procura 			= tdClass::Criar("span");
+				$span_icon_procura->class 	= "fas fa-search";
 
 			$button->add($span_icon_procura);		
 
@@ -276,8 +277,9 @@
 				$termo->required = "true";
 				$label->add($obrigatorio);
 			}
-			$termo->data_entidade = $entidadeCOL;
-			$termo->data_fk = $entidadePK->contexto->nome;
+			$termo->data_entidade 	= $entidadeCOL;
+			$termo->data_fk 		= $entidadePK->contexto->nome;
+			$termo->atributo 		= $atributo_id;
 
 			$descricao_resultado = tdClass::Criar("input");
 			$descricao_resultado->type = "text";

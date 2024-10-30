@@ -4,10 +4,6 @@
         loadDefault();
         $('#loader-instalar').attr('src',session.urlloading2);
         $('#loading-atualizar-personalizado').attr('src',session.urlloading2);
-
-        $('#projectfolder').blur(function(){
-            $('#dominio').val('http://localhost/' + $(this).val() + '/');
-        });
     });
 
     var showpersonalizar    = false;
@@ -15,43 +11,44 @@
     let componentes         = [];
 
     // System
-    componentes['system.entidade'] 				= 'system/entidade.php';
-    componentes['system.atributo'] 				= 'system/atributo.php';
-    componentes['system.menu'] 					= 'system/menu.php';
-    componentes['system.grupousuario'] 			= 'system/grupousuario.php';
-    componentes['system.usuario'] 				= 'system/usuario.php';
-    componentes['system.relacionamento']		= 'system/relacionamento.php';
-    componentes['system.abas'] 					= 'system/abas.php';
-    componentes['system.lista'] 				= 'system/lista.php';
-    componentes['system.pagina'] 				= 'system/pagina.php';
-    componentes['system.tagsattributes'] 		= 'system/tagsattributes.php';
-    componentes['system.tags'] 					= 'system/tags.php';
-    componentes['system.tipoaviso'] 			= 'system/tipoaviso.php';
-    componentes['system.aviso'] 				= 'system/aviso.php';
-    componentes['system.config'] 				= 'system/config.php';
-    componentes['system.entidadepermissoes']	= 'system/entidadepermissoes.php';
-    componentes['system.atributopermissoes'] 	= 'system/atributopermissoes.php';
-    componentes['system.funcao'] 				= 'system/funcao.php';
-    componentes['system.funcaopermissoes']		= 'system/funcaopermissoes.php';
-    componentes['system.menupermissoes'] 		= 'system/menupermissoes.php';
-    componentes['system.atributofiltro'] 		= 'system/atributofiltro.php';
-    componentes['system.status'] 				= 'system/status.php';
-    componentes['system.consulta'] 				= 'system/consulta.php';
-    componentes['system.relatorio'] 			= 'system/relatorio.php';
-    componentes['system.movimentacao'] 			= 'system/movimentacao.php';
-    componentes['system.log'] 					= 'system/log.php';
-    componentes['system.menucrud'] 				= 'system/menucrud.php';
-    componentes['system.typeconnectiondatabase']= 'system/typeconnectiondatabase.php';
-    componentes['system.database'] 				= 'system/database.php';
-    componentes['system.connectiondatabase'] 	= 'system/connectiondatabase.php';
-    componentes['system.connectionftp'] 		= 'system/connectionftp.php';
-    componentes['system.charset'] 				= 'system/charset.php';
-    componentes['system.projeto'] 				= 'system/projeto.php';
-    componentes['system.endereco'] 				= 'system/endereco.php';
-    componentes['system.empresa'] 				= 'system/empresa.php';
-    componentes['system.historicoatividade']	= 'system/historicoatividade.php';
-    componentes['system.comunicado']			= 'system/comunicado.php';
-    componentes['system.email']					= 'system/email.php';
+    componentes['system.entidade'] 				    = 'system/entidade.php';
+    componentes['system.atributo'] 				    = 'system/atributo.php';
+    componentes['system.menu'] 					    = 'system/menu.php';
+    componentes['system.grupousuario'] 			    = 'system/grupousuario.php';
+    componentes['system.usuario'] 				    = 'system/usuario.php';
+    componentes['system.relacionamento']		    = 'system/relacionamento.php';
+    componentes['system.abas'] 					    = 'system/abas.php';
+    componentes['system.lista'] 				    = 'system/lista.php';
+    componentes['system.pagina'] 				    = 'system/pagina.php';
+    componentes['system.tagsattributes'] 		    = 'system/tagsattributes.php';
+    componentes['system.tags'] 					    = 'system/tags.php';
+    componentes['system.tipoaviso'] 			    = 'system/tipoaviso.php';
+    componentes['system.aviso'] 				    = 'system/aviso.php';
+    componentes['system.config'] 				    = 'system/config.php';
+    componentes['system.entidadepermissoes']	    = 'system/entidadepermissoes.php';
+    componentes['system.atributopermissoes'] 	    = 'system/atributopermissoes.php';
+    componentes['system.funcao'] 				    = 'system/funcao.php';
+    componentes['system.funcaopermissoes']		    = 'system/funcaopermissoes.php';
+    componentes['system.menupermissoes'] 		    = 'system/menupermissoes.php';
+    componentes['system.atributofiltro'] 		    = 'system/atributofiltro.php';
+    componentes['system.status'] 				    = 'system/status.php';
+    componentes['system.consulta'] 				    = 'system/consulta.php';
+    componentes['system.relatorio'] 			    = 'system/relatorio.php';
+    componentes['system.movimentacao'] 			    = 'system/movimentacao.php';
+    componentes['system.log'] 					    = 'system/log.php';
+    componentes['system.menucrud'] 				    = 'system/menucrud.php';
+    componentes['system.typeconnectiondatabase']    = 'system/typeconnectiondatabase.php';
+    componentes['system.database'] 				    = 'system/database.php';
+    componentes['system.connectiondatabase'] 	    = 'system/connectiondatabase.php';
+    componentes['system.connectionftp'] 		    = 'system/connectionftp.php';
+    componentes['system.charset'] 				    = 'system/charset.php';
+    componentes['system.projeto'] 				    = 'system/projeto.php';
+    componentes['system.endereco'] 				    = 'system/endereco.php';
+    componentes['system.empresa'] 				    = 'system/empresa.php';
+    componentes['system.historicoatividade']	    = 'system/historicoatividade.php';
+    componentes['system.comunicado']			    = 'system/comunicado.php';
+    componentes['system.email']					    = 'system/email.php';
+    componentes['system.usuariorecuperarsenha']     = 'system/usuariorecuperarsenha.php';
 
     // Helpdesk
     componentes['helpdesk.status'] 				= 'helpdesk/status.php';

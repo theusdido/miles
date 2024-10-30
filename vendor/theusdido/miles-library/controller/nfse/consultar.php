@@ -4,7 +4,7 @@
     $status     = tdc::r('status');
     $filtro     = tdc::f();
 
-    $filtro->setPropriedade('limit',10);
+    #$filtro->setPropriedade('limit',10);
     if ($rps != ''){
         $filtro->addFiltro("rpsnumero","=",$rps);
     }

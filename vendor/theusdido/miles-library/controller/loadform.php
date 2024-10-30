@@ -79,7 +79,6 @@
 					if ($IDs == "") continue;
 					$sql = "SELECT * FROM {$entidadeNome} WHERE id in ({$IDs})";				
 				}
-
 				try{
 					$query = $conn->query($sql);	
 				}catch(Exception $e){
@@ -98,10 +97,12 @@
 						$inativo_value 	= isset($linha['inativo']) ? ($linha['inativo'] ? true : false) : false;
 						while ($linhaAttr = $queryAttr->fetch()){
 							$valor			= $linha[$linhaAttr["nome"]];
+							$varlor_formatado = getHTMLTipoFormato($linhaAttr["tipohtml"],$valor,$entidadeID,$linhaAttr["id"],tdClass::Read("registroprincipal"));
+							$valor_formatado_utf8 = isutf8($varlor_formatado) ? $varlor_formatado : tdc::utf8($varlor_formatado);
 							$dados_array = array(
 								"atributo" 		=> $linhaAttr["nome"],
-								"valor" 		=> tdc::utf8(getHTMLTipoFormato($linhaAttr["tipohtml"],$valor,$entidadeID,$linhaAttr["id"],tdClass::Read("registroprincipal"))),
-								"valorreal" 	=> tdc::utf8($valor),
+								"valor" 		=> $valor_formatado_utf8 ? $valor_formatado_utf8 : tdc::utf8($valor),
+								"valorreal" 	=> isutf8($valor) ? $valor : tdc::utf8($valor),
 								"idatributo" 	=> $linhaAttr["id"]
 							);
 							array_push($dados_retorno,$dados_array);
@@ -123,5 +124,6 @@
 				}
 			}
 		}
-		echo json_encode($dados);
+		#echo json_encode($dados);
+		tdc::wj($dados);
 	}

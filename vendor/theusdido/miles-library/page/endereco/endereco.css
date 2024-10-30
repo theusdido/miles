@@ -1,0 +1,31 @@
+.col-descricao{
+    width:90%;
+}
+.col-retorno{
+    width:10%;
+    text-align:right;
+}
+#tabela-resultado-busca-endereco .col-descricao{
+    height:30px;
+    line-height:30px;
+}
+#btn-salvar-endereco{
+    margin-top:10px;
+    /*
+    float:right;
+    
+    width:150px;
+    */
+}
+#msg-erro-endereco{
+    float:left;
+    clear:both;
+    width:100%;
+    display:none;
+}
+
+.modal-pesquisa-endereco-busca
+{
+    display: flex;
+    flex-direction: column;
+}

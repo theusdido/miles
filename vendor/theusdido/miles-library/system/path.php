@@ -101,7 +101,7 @@
 	define('PATH_CURRENT_PROJECT_THEME', PATH_PROJECT . PATH_THEME . DIRECTORY_SEPARATOR);
 
 	// Tema do Sistema
-	define('PATH_SYSTEM_THEME', PATH_THEME_SYSTEM . DIRECTORY_SEPARATOR);
+	define('PATH_SYSTEM_THEME', PATH_THEME_SYSTEM);
 
 	// Caminho atual para configuração
 	define('PATH_CURRENT_CONFIG_PROJECT',PATH_PROJECT . "config" . DIRECTORY_SEPARATOR);
@@ -123,6 +123,9 @@
 	
 	// Caminho padrão para as views personalizadas
 	define("PATH_CURRENT_VIEW", PATH_PROJECT . "view" . DIRECTORY_SEPARATOR);
+
+	// Caminho padrão para os models personalizadas
+	define("PATH_CURRENT_MODEL", PATH_PROJECT . "model" . DIRECTORY_SEPARATOR);	
 
 	// Caminho padrão para as páginas personalizadas
 	define("PATH_CURRENT_PAGE", PATH_PROJECT . "page" . DIRECTORY_SEPARATOR);

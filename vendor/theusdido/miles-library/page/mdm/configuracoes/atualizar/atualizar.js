@@ -1,14 +1,41 @@
 {
-const environments = [
-    {origem:'dev' , destino:'prod' , op:'desenvolvimentotoproducao' , descricao:'Desenvolvimento > Produção'},
-    {origem:'prod' , destino:'dev' , op:'producaotodesenvolvimento' , descricao:'Produção > Desenvolvimento'}
-];
+// const environments = [
+//     {origem:'dev' , destino:'prod' , op:'desenvolvimentotoproducao' , descricao:'Desenvolvimento > Produção'},
+//     {origem:'prod' , destino:'dev' , op:'producaotodesenvolvimento' , descricao:'Produção > Desenvolvimento'}
+// ];
 
-$(document).ready( () => {
+const environments = [];
+$(document).ready( () => {    
 
+    $.ajax({
+        url:session.urlmiles,
+        dataType:'JSON',
+        data:{
+            controller:"environment",
+            op:'atualizar-list'
+        },
+        beforeSend:function(){
+
+        },
+        complete:function(res){
+            let ret = res.responseJSON;
+            ret.target.forEach((value)=>{
+                environments.push({
+                    origem:ret.current.database,
+                    destino:value.database,
+                    descricao:value.label
+                });
+            });
+            init();
+        }
+    });
+
+});
+
+function init(){
     environments.forEach(
         (e) => {
-            let option = $('<option value="'+e.op+'">'+e.descricao+'</option>');
+            let option = $('<option value="'+e.destino+'">'+e.descricao+'</option>');
             $('#ambiente').append(option);
         }
     );
@@ -23,7 +50,7 @@ $(document).ready( () => {
     $('#lista-estrutura')   .load(session.urlmiles + '?controller=mdm/atualizar&op=lista-estrutura');
     $('#lista-registro')    .load(session.urlmiles + '?controller=mdm/atualizar&op=lista-registro');
     $('#lista-arquivo')     .load(session.urlmiles + '?controller=mdm/atualizar&op=lista-arquivo');
-});
+}
 
 function desenvolvimentoToProducao(){
     var entidadeestrutura 	= "";
@@ -51,6 +78,7 @@ function desenvolvimentoToProducao(){
             controller:"mdm/atualizar",
             op:'update',
             environment:$('#ambiente').val(),
+            direcao:$('input[name="direcao"][type=radio]:checked').val(),
             entidadesestrutura:entidadeestrutura,
             entidadesregistro:entidaderegistro,
             entidadesarquivo:entidadearquivo

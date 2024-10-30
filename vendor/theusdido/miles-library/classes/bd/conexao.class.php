@@ -30,7 +30,7 @@ final class Conexao{
 	*/
 	public static function abrir($banco){
 		$bd = self::getDados($banco);
-		if ($bd != false){
+		if ($bd != false && $bd != NULL){
 			$usuario 	= $bd["usuario"];
 			$senha 		= $bd["senha"];
 			$base 		= $bd["base"];
@@ -88,9 +88,13 @@ final class Conexao{
 		if ($type == "mysql"){
 			try{
 				$conn = new PDO(
-					"$type:host=$host;port=$port;dbname=$base;",$user,$password
+					"$type:host=$host;port=$port;dbname=$base;",$user,$password,
+					[PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES ' . _MYSQL_CHARSET]
 				);
-				$conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+				$conn->setAttribute(
+					PDO::ATTR_ERRMODE,
+					PDO::ERRMODE_EXCEPTION					
+				);
 				return $conn;
 			}catch(PDOException $e){
 				if (IS_SHOW_ERROR_MESSAGE){
@@ -118,13 +122,13 @@ final class Conexao{
 			}
 		}else{
 			try{
-				if (!$bd = parse_ini_file($arq_config)){
+				if (!$bd = parseIniFile($arq_config)){
 					throw new Exception("Arquivo <b>{$database}</b> de configuração com o banco de dados não existe.");
 				}
 				return $bd;
 			}catch(Exception $e){
 				if (IS_SHOW_ERROR_MESSAGE){
-					echo utf8_encode($e->getMessage());
+					echo tdc::utf8($e->getMessage());
 				}
 				return false;
 			}
@@ -150,4 +154,6 @@ final class Conexao{
 		);
 		return $conn_temp;
 	}
+
+	
 }
