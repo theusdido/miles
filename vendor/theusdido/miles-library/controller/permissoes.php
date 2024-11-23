@@ -18,7 +18,7 @@
                 array_push($permissoes,$menu);
             }
             $fp = fopen(PATH_CURRENT_BUILD . 'permissoes.json','w');
-            fwrite($fp,utf8_encode(json_encode($permissoes)));
+            fwrite($fp,tdc::utf8(json_encode($permissoes)));
             fclose($fp);
         break;
 		case 'load':

@@ -238,7 +238,7 @@ function statusFormControl(campo,tipo){
 			if (!$(campo).parent().hasClass("calendar-picker-group")){
 				$(campo).parent().addClass('has-success has-feedback');
 				$(campo).parent().removeClass('has-error');
-				$(campo).parent().append(
+				$(campo).parent().prepend(
 					'<span class=\"fas fa-check form-control-feedback status-'+$(campo).attr("id")+'\" aria-hidden=\"true\"></span>' +
 					'<span class=\"sr-only status-'+$(campo).attr("id")+'\">(success)</span>'
 				);							
@@ -251,7 +251,7 @@ function statusFormControl(campo,tipo){
 			if (!$(campo).parent().hasClass("calendar-picker-group")){
 				$(campo).parent().addClass('has-error has-feedback');
 				$(campo).parent().removeClass('has-success');
-				$(campo).parent().append(
+				$(campo).parent().prepend(
 					'<span class=\"fas fa-times form-control-feedback status-'+$(campo).attr("id")+'\" aria-hidden=\"true\"></span>' +
 					'<span class=\"sr-only status-'+$(campo).attr("id")+'\">(error)</span>'
 				);

@@ -81,7 +81,7 @@
 
 	$entidade 		= tdClass::Criar("persistent",array(ENTIDADE,$entidade_id));
 	$max_registros 	= tdc::r("qtdademaximaregistro",10);
-	$bloco 			= tdClass::Read("bloco");
+	$bloco 			= tdc::r('bloco');
 	$ini_reg 		= (($max_registros * $bloco) - $max_registros);
 
 	// Campos do Cabeçalho

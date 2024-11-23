@@ -4,10 +4,10 @@
             $environment_list_target = array();
             $environment_current = NULL;
             foreach($mjc->environments as $key => $env)
-            {
+            {                
                 $env_obj = array(
-                    'label'     => $env->label,
-                    'database'  => $env->database
+                    'label'     => isset($env->label) ? $env->label : $key,
+                    'database'  => isset($env->database) ? $env->database : $key
                 );
 
                 if ($mjc->environment == $key){

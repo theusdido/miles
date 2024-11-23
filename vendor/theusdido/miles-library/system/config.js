@@ -113,7 +113,6 @@ let inactivityTime = function () {
     document.ontouchstart = resetTimer;
 };
 
-console.log(JSON.parse(window.sessionStorage.getItem("is_session_active")));
 if (JSON.parse(window.sessionStorage.getItem("is_session_active"))){
     console.log('iniciou a inatividade');
     inactivityTime();

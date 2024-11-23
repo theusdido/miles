@@ -1,7 +1,7 @@
 <?php
     switch(tdc::r('op')){
         case 'load':
-            tdc::wj( tdc::da( tdc::r('entidade') ) );
+            echo Entity::dataJSON(tdc::r('entidade'));
         break;
         case 'excluir':
             $_entidade_pai      = tdc::r('entidadepai');
@@ -16,5 +16,10 @@
             $criterio->addFiltro('regfilho','=',$_reg_filho);
 
             tdc::de(LISTA,$criterio);
+
+			// Atualiza entidade pai no Firebase
+			$_entidade_pai_obj 	= tdc::e($_entidade_pai);
+			$_pai 				= tdc::p($_entidade_pai_obj->nome,$_reg_pai);
+			$_pai->armazenar();
         break;
     }

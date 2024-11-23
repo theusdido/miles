@@ -69,12 +69,14 @@
 			$entidade->setInativar(tdc::r('inativo'));
 		}
 
+		// Armazena os registros do banco de dados principal
+		$entidade->armazenar();
+
 		// Grava os registros em JSON para as entidades auxiliares ( Lista )
 		$_entidade = tdc::e($entidade->getID());
 		if ($_entidade->entidadeauxiliar){
 			Entity::saveJSON($_entidade->id);
 		}
-		$entidade->armazenar();
 	}
 
 	// Seta os relacionamentos
@@ -115,10 +117,10 @@
 			$regFilho 			= $checklist['valor'];
 			
 			$sql	= tdc::f();
-			$sql->addFiltro('entidadepai','=', $entidadePai);
-			$sql->addFiltro('entidadefilho','=', $entidadeFilho);
-			$sql->addFiltro('regpai','=',$regPai);
-			$sql->addFiltro('regfilho','=',$regFilho);
+			$sql->addFiltro('entidadepai'		,'=', $entidadePai);
+			$sql->addFiltro('entidadefilho'		,'=', $entidadeFilho);
+			$sql->addFiltro('regpai'			,'=', $regPai);
+			$sql->addFiltro('regfilho'			,'=', $regFilho);
 			
 			// Exclui todos os registros da Lista
 			tdc::de(LISTA,$sql);
@@ -130,8 +132,13 @@
 			$_lista->regpai			= $regPai;
 			$_lista->regfilho 		= $regFilho;
 			$_lista->armazenar();
+
+			// Atualiza entidade pai no Firebase
+			$_entidade_pai_obj 	= tdc::e($entidadePai);
+			$_pai 				= tdc::p($_entidade_pai_obj->nome,$regPai);
+			$_pai->armazenar();
 		}
 	}
-	
+
 	// Retorno
 	echo json_encode(array("status" => 1 , "id" => $retorno_id , "entidade" => (int)$entidadeRetorno , "entidadesID" => $entidadesIDRetorno));

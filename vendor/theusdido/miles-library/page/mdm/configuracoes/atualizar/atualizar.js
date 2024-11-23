@@ -19,13 +19,15 @@ $(document).ready( () => {
         },
         complete:function(res){
             let ret = res.responseJSON;
-            ret.target.forEach((value)=>{
-                environments.push({
-                    origem:ret.current.database,
-                    destino:value.database,
-                    descricao:value.label
+            if (ret != undefined){
+                ret.target.forEach((value)=>{
+                    environments.push({
+                        origem:ret.current.database,
+                        destino:value.database,
+                        descricao:value.label
+                    });
                 });
-            });
+            }
             init();
         }
     });

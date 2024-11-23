@@ -120,8 +120,9 @@
                 if ($query){
                     if ($id == ""){
                         try{
+                            $proximo_id = getProxId('td_menupermissoes',$conn);
                             // Seta permissão para o usuário que criou o menu
-                            $sqlP = "INSERT INTO td_menupermissoes (id,projeto,menu,usuario,permissao) VALUES (DEFAULT,1,{$idNew},1,1);";
+                            $sqlP = "INSERT INTO td_menupermissoes (id,projeto,menu,usuario,permissao) VALUES ({$proximo_id},1,{$idNew},1,1);";
                             $conn->exec($sqlP);
                         }catch(Exception $e){
                             $conn->rollBack();

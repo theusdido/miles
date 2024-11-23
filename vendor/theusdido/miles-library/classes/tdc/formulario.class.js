@@ -767,6 +767,7 @@ tdFormulario.prototype.salvar = function(){
 		}
 
 
+		this._dados_checklist = [];
 		this.checklists.forEach(
 			(_checklist) => {	
 				_checklist.getSelectedData().forEach(
@@ -958,9 +959,15 @@ tdFormulario.prototype.exibirDadosEdicao =  function(){
 		let campo_descricao 		= display_campochavedesc.find('.campodescricaoExibirEdicao');
 		let campo_id 				= display_campochavedesc.find('.idExibirEdicao');
 
-		campo_descricao.html($("#" + td_atributo[campodescchave].nome,this.getContexto()).val());
-		campo_id.html("<small>ID: </small>" + this.registro_id + ' <br/> ');
-		display_campochavedesc.show();
+		try{
+			campo_descricao.html($("#" + td_atributo[campodescchave].nome,this.getContexto()).val());
+			campo_id.html("<small>ID: </small>" + this.registro_id + ' <br/> ');
+			display_campochavedesc.show();
+		}catch(e){
+			console.log(this.entidade);
+			console.log(campodescchave);
+			console.log(td_atributo[campodescchave]);
+		}
 	}
 }
 
@@ -1269,9 +1276,6 @@ tdFormulario.prototype.habilitafiltro = function(atributo,contexto,habilita,enti
 			var attr 				= td_atributo[e];
 			var entidade 			= td_entidade[attr.entidade];
 			var entidadeAtributo 	= td_entidade[td_atributo[e].entidade];
-
-			console.log(dep);
-			debugger;
 
 			if (dep.nome == atributo && entidadeAtributo.nomecompleto == entidadeContexto){
 				// Limpa o campo a cada alteração

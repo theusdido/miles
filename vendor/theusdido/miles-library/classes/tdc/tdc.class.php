@@ -432,10 +432,23 @@ class tdc Extends tdClass{
 		}
 	}
 
-	public static function utf8($str){
-		return isutf8($str) ? $str : utf8charset($str,'E');
+	public static function utf8($value){
+		if (gettype($value) == 'array'){
+			return array_map(function($element){
+				if (gettype($element) == 'string'){
+					$str = json_encode($element, JSON_UNESCAPED_UNICODE);
+					return str_replace(["\'",'\"',"\''",'\""',"'",'"'],'',$str);
+				}else{
+					return $element;
+				}
+			},$value);
+		}else{
+			$str = utf8_str_func($value);
+			return $str;
+			#return str_replace(["\'",'\"',"\''",'\""',"'E","O'"],'',$str == null ? '' : $str);
+		}
 	}
-	
+
 	/*  
 		* Método gj
 		* Data de Criacao: 22/12/2022

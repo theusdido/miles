@@ -125,7 +125,7 @@ abstract class Registro {
 		Armazena os objetos na base de dados e retorna a quantidade de linhas afetas pelo SQL ( zero e um )
 	*/	
 	public function armazenar(){
-		if ($this->isnew){			
+		if ($this->isnew){
 			if ($this->isAutoIncrement){
 				$this->id = $this->getUltimo() + 1;
 			}else{
@@ -158,8 +158,13 @@ abstract class Registro {
 				//$conn_replicacao = Conexao::abrir('producao');
 				//$conn_replicacao->query($sql->getInstrucao());
 
-				//$firebase = new Firebase();
-				//$firebase->add($this->dados,$this->getEntidade() . '/' . $this->dados['id'] . '/');
+				if (_IS_REPLICATION_FIREBASE){
+					$firebase = new Firebase();
+					$_dados = tdc::da($this->getEntidade(),tdc::f('id','=',$this->dados['id']));
+					foreach($_dados as $d){
+						$firebase->add(tdc::utf8($d),$this->getEntidade() . '/' . $this->dados['id'] . '/');
+					}
+				}
 			}else{
 				echo "Não há transação ativa: Registro Armazenar <br/>\n";
 				$status_operacao =  false;
@@ -233,6 +238,10 @@ abstract class Registro {
 			//$conn_replicacao = Conexao::abrir('producao');
 			//$conn_replicacao->query($sql->getInstrucao());
 
+			if (_IS_REPLICATION_FIREBASE){
+				$firebase = new Firebase();
+				$firebase->del($this->getEntidade() . '/' . $this->dados['id'] . '/');
+			}
 			return $resultado;
 		}else{
 			throw new Exception("Não há transação ativa: Registro Deletar");

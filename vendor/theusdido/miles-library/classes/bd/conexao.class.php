@@ -88,9 +88,13 @@ final class Conexao{
 		if ($type == "mysql"){
 			try{
 				$conn = new PDO(
-					"$type:host=$host;port=$port;dbname=$base;",$user,$password
+					"$type:host=$host;port=$port;dbname=$base;",$user,$password,
+					[PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES ' . _MYSQL_CHARSET]
 				);
-				$conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+				$conn->setAttribute(
+					PDO::ATTR_ERRMODE,
+					PDO::ERRMODE_EXCEPTION					
+				);
 				return $conn;
 			}catch(PDOException $e){
 				if (IS_SHOW_ERROR_MESSAGE){

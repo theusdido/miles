@@ -13,6 +13,7 @@
     $path_current_log           = $_path_project_install.'log'                  . DIRECTORY_SEPARATOR;
     $path_current_page          = $_path_project_install.'page'                 . DIRECTORY_SEPARATOR;
     $path_current_webservice    = $_path_project_install.'webservice'           . DIRECTORY_SEPARATOR;
+    $path_current_data          = $_path_project_install.'data'                 . DIRECTORY_SEPARATOR;
 
     $path_current_arquivos_temp         = $path_current_arquivos   .'temp'              . DIRECTORY_SEPARATOR;
     $path_current_build_js              = $path_current_build      .'js'                . DIRECTORY_SEPARATOR;
@@ -38,6 +39,7 @@
     tdFile::mkdir($path_current_log);
     tdFile::mkdir($path_current_page);
     tdFile::mkdir($path_current_webservice);
+    tdFile::mkdir($path_current_data);
 
     tdFile::mkdir($path_current_arquivos_temp);
     tdFile::mkdir($path_current_build_js);

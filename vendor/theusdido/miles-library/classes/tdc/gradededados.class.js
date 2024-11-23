@@ -185,8 +185,7 @@ GradeDeDados.prototype.load = function(){
 
 			// Seta os atributos do cabeçalho
 			instancia.setCabecalhoAtributos();
-
-			if (instancia.dadosCorpo.length > 0){		
+			if (instancia.dadosCorpo.length > 0){
 				instancia.totalRegistros = 0;
 				instancia.dadosCorpo.splice(0,instancia.dadosCorpo.length);
 				instancia.dadosReaisCorpo.splice(0,instancia.dadosReaisCorpo.length);
@@ -200,12 +199,12 @@ GradeDeDados.prototype.load = function(){
 					instancia.dadosReaisCorpo.push(dadosLoad.dadosreais);
 					instancia.totalRegistros = dadosLoad.total;
 				}else{
-					instancia.totalRegistroRetorno = 0;
-					instancia.totalRegistros = 0;
+					instancia.totalRegistroRetorno 	= 0;
+					instancia.totalRegistros 		= 0;
 				}
 			}else{
-				instancia.totalRegistroRetorno = 0;
-				instancia.totalRegistros = 0;		
+				instancia.totalRegistroRetorno 	= 0;
+				instancia.totalRegistros 		= 0;
 			}
 			instancia.nomeEntidade = td_entidade[instancia.entidade].nomecompleto;
 			if (typeof composicao !== "undefined"){
@@ -215,8 +214,9 @@ GradeDeDados.prototype.load = function(){
 							composicao[c] = false;
 						}
 					}
-				}				
+				}
 			}
+
 			instancia.pesquisa();
 			instancia.cabecalho();
 			instancia.corpo();
@@ -269,8 +269,9 @@ GradeDeDados.prototype.cabecalho = function(){
 		}
 		thead.append(tr);
 		this.table.append(thead);
+		$(this.contexto).append(this.table);
 	}
-	$(this.contexto).append(this.table);
+
 	if (this.retornaFiltro){
 		if ($(".editar-coluna-gradededados").length > 0){
 			$(".editar-coluna-gradededados").remove();
@@ -288,6 +289,7 @@ GradeDeDados.prototype.corpo = function(){
 	}
 	this.addTBody();
 	if (this.dadosCorpo.length > 0 && this.dadosCorpo[0] != undefined && this.totalRegistroRetorno > 0){
+		this.totalRegistroRetorno = 0;
 		for (ln in this.dadosCorpo){
 			var linhas = this.dadosCorpo[ln];
 			var linhasreais = this.dadosReaisCorpo[ln];
@@ -408,6 +410,9 @@ GradeDeDados.prototype.paginacao = function(){
 			$("ul.pagination li a.ultimo").parent().removeClass("disabled");
 		}
 		$(".pagina[data-bloco=" +this.blocoatual+"]").first().parent().addClass("active");
+	}else{
+		this.irbloco(1);
+		$('.paginacao-gradededados',this.contexto).remove();
 	}
 }
 GradeDeDados.prototype.irbloco = function(bloco){
@@ -446,7 +451,7 @@ GradeDeDados.prototype.pesquisa = function(){
 				instancia.filtroPesquisa = '';
 			}
 			addLog("", "", 0, instancia.entidade,0, 6, "Pesquisado =>" +spanSalvar.attr("data-atributopesquisa") + "=" + input.val());
-			instancia.show();			
+			instancia.reload();
 		});
 		input.keypress(function(e){
 			if ( e.which == 13 ){			
@@ -571,12 +576,13 @@ GradeDeDados.prototype.excluir = function(){
 	});	
 }
 GradeDeDados.prototype.selecionarTodos = function(botaoSelAll){
+	const instancia = this;
 	$(botaoSelAll).each(function(){
 		if ($(this).attr("data-sel")=="false"){
-			$(".gradededados input[type='checkbox']").prop("checked",true);
+			$(".gradededados input[type='checkbox']",instancia.contexto).prop("checked",true);
 			$(this).attr("data-sel","true");
 		}else{
-			$(".gradededados input[type='checkbox']").prop("checked",false);
+			$(".gradededados input[type='checkbox']",instancia.contexto).prop("checked",false);
 			$(this).attr("data-sel","false");
 		}
 		return false; // Não sei por que mas foi preciso para não abrir outra pagina para as telas dentro de div
@@ -762,7 +768,7 @@ GradeDeDados.prototype.loadDadosEdicao = function(id){
 		}
 	});
 }
-GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){	
+GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
 	let tr;
 	let tr_is_exists;
 	let tr_indice = id == 0 ? this.indice_linha : id;
@@ -913,7 +919,7 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
 			if (_obj != ''){
 				_id = _obj.id + ' - ';
 			}
-		}
+		}		
 		spanGradeInfo.append((valor==undefined?"":_id + valor));
 		td.append(spanGradeInfo);
 		tr.append(td);
@@ -1025,7 +1031,8 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
 		if ($(".excluir-coluna-gradededados").length > 0){
 			$(".excluir-coluna-gradededados").remove();
 		}
-	}	
+	}
+	this.totalRegistroRetorno++;
 }
 GradeDeDados.prototype.nenhumRegistro = function(){
 	for(atr in td_atributo){
@@ -1070,8 +1077,9 @@ GradeDeDados.prototype.excluirRegistro = function (entidade,registro,linha){
 			if (retorno == 1){
 				linha.remove();
 				instancia.totalRegistros--;
-				let total_tr = instancia.table.find("tbody tr").length;	
-				if (instancia.totalRegistros <= 0 || total_tr <= 0){
+				instancia.totalRegistroRetorno--;
+				let total_tr = instancia.table.find("tbody tr").length;
+				if ((instancia.totalRegistros <= 0 && instancia.totalRegistroRetorno <= 0) || total_tr <= 0){
 					instancia.nenhumRegistro();
 				}
 			}else{

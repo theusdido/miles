@@ -8,7 +8,7 @@
 	$_project_folder	= 
 	$_env 				= '';
 	#$_environment		= isset($_GET['env']) ? $_GET['env'] : (isset($_POST['env']) ? $_POST['env'] : (isset($_environment) ? $_environment : $_current_environment));
-	$_environment = $_env_params;
+	$_environment 		= $_env_params;
 
 	// Deveria criar esse arquivo apenas na instalação ?
 	if (!file_exists($_miles_json_root_file)){
@@ -58,12 +58,21 @@
 		}else{
 			$_project_path 		= $_folder_miles_ . $_folder_project . DIRECTORY_SEPARATOR . $_project_folder . $_project_name_identifify_params . DIRECTORY_SEPARATOR;
 		}
-	}	
+	}
 
 	define('PROJECT_NAME',$_project_name);
 
 	// Define o ambiente do sistema
 	define('_ENVIRONMENT',$_environment);
+
+	// Replicar dados no banco Google Firebase Realtime
+	define("_IS_REPLICATION_FIREBASE", isset($_env->integration->firebase) ? $_env->integration->firebase : false);
+
+	// Charset do banco de dados ( MySQL )
+	define("_MYSQL_CHARSET", isset($_env->dbms->mysql->charset) ? $_env->dbms->mysql->charset : 'utf8');
+
+	// Collection do banco de dados ( MySQL )
+	define("_MYSQL_COLLECTION", isset($_env->dbms->mysql->collection) ? $_env->dbms->mysql->collection : 'utf8_general_ci');
 
 	if (!isset($mjc->system->request_protocol)){
 		showMessage('Parametro <b>system:"request_protocol"</b> em miles.json não especificado.');

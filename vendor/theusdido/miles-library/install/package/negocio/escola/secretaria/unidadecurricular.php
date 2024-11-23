@@ -25,6 +25,7 @@
 	$nome			= criarAtributo($conn,$entidadeID,"nome","Nome","varchar",200,0,3,1,0,0,"");
 	$curso    		= criarAtributo($conn,$entidadeID,"curso","Curso","int",0,1,22,1,installDependencia("erp_escola_curso","package/sistema"));
 	$objetivogeral	= criarAtributo($conn,$entidadeID,"objetivogeral","Objetivo Geral","text",0,1,21);
+	$nome_horario	= criarAtributo($conn,$entidadeID,"nome_horario","Nome no Horário","varchar",200,1,3,1,0,0,"");
 
 	// Seta o campo descrição
 	Entity::setDescriptionField($conn,$entidadeID,$nome,true);

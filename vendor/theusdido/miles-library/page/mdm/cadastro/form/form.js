@@ -90,7 +90,6 @@ $('#btn-salvar-cadastro').click(function(){
         entidade:_entidade,
         op:'salvar',
     }
-
     $.ajax({
         url:session.urlmiles,
         type:"POST",
@@ -140,13 +139,26 @@ function load(){
             $('#ncolunas')                      .val(_data.ncolunas);
             $('#campodescchave')                .val(_data.campodescchave == null ? 0 : _data.campodescchave);
             $('#atributogeneralizacao')         .val(_data.atributogeneralizacao == null ? 0 : _data.atributogeneralizacao);
-
-            $('#exibirmenuadministracao')       .attr('checked',_data.exibirmenuadministracao == 0 ? false : true);
-            $('#exibirlegenda')                 .attr('checked',_data.exibirlegenda == 0 ? false : true);
-            $('#registrounico')                 .attr('checked',_data.registrounico == 0 ? false : true);
-            $('#carregarlibjavascript')         .attr('checked',_data.carregarlibjavascript == 0 ? false : true);
-            $('#exibircabecalho')               .attr('checked',_data.exibircabecalho == 0 ? false : true);
-            $('#entidadeauxiliar')              .attr('checked',_data.entidadeauxiliar == 0 ? false : true);
+            $('#exibirmenuadministracao')       .attr('checked',getBoolCheckedValue(_data.exibirmenuadministracao));
+            $('#exibirlegenda')                 .attr('checked',getBoolCheckedValue(_data.exibirlegenda));
+            $('#registrounico')                 .attr('checked',getBoolCheckedValue(_data.registrounico));
+            $('#carregarlibjavascript')         .attr('checked',getBoolCheckedValue(_data.carregarlibjavascript));
+            $('#exibircabecalho')               .attr('checked',getBoolCheckedValue(_data.exibircabecalho));
+            $('#entidadeauxiliar')              .attr('checked',getBoolCheckedValue(_data.entidadeauxiliar));            
         }
     });
+}
+
+function getBoolCheckedValue(_value)
+{
+    switch(_value){
+        case null:
+        case undefined:
+        case '':
+        case 0:
+        case 'false':
+            return false;
+        default:
+            return true;
+    }
 }

@@ -308,8 +308,8 @@ class Entity {
 				$where = "id = {$entidade}";
 		}
 		global $conn;
-		$sqlExisteEntidade = "SELECT id,nome FROM " . getSystemPREFIXO() . "entidade WHERE {$where}";
-		$queryExisteEntidade = $conn->query($sqlExisteEntidade);
+		$sqlExisteEntidade 		= "SELECT id,nome FROM " . getSystemPREFIXO() . "entidade WHERE {$where}";
+		$queryExisteEntidade 	= $conn->query($sqlExisteEntidade);
 		if (!$queryExisteEntidade){
 			if (IS_SHOW_ERROR_MESSAGE){
 				echo $sqlExisteEntidade;
@@ -423,5 +423,26 @@ class Entity {
 			'relacionamentos' 					=> tdc::da(RELACIONAMENTO,$filtro_relacionamento),
 			'entidadeauxiliar' 					=> $_entidadeauxiliar
 		));
-	}	
+	}
+
+	/*
+		* Método getJSON
+	    * Data de Criacao: 12/11/2024
+	    * Autor @theusdido
+
+		Retorna os registros da entidade no formato JSON
+		@params: Nome da Entidade
+		@return: json
+	*/
+	public static function  dataJSON($entidade){
+
+		// Lê o arquivo .json e retorna em forma de texto
+		$json_text = file_get_contents(PATH_CURRENT_DATA . $entidade . '.json');
+
+		// Decodifica e retorna os dados em JSON
+		$json_decode = json_decode($json_text);
+
+		// Código o JSON para retorno
+		return json_encode($json_decode);
+	}
 }

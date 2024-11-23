@@ -25,10 +25,14 @@
         */
         public function __construct(){
 
+            $config         = $this->getJSONConfig();
+            $project_id     = $config['project_id'];
+            $project_url    = 'https://'.$project_id.'-default-rtdb.firebaseio.com/';            
+
             // Cria uma instância do Firebase
-            $firebase = (new Factory) 
-            ->withServiceAccount('firebase.json')
-            ->withDatabaseUri('https://innovareadministradora-default-rtdb.firebaseio.com/');
+            $firebase = (new Factory)
+            ->withServiceAccount(PATH_CURRENT_FIREBASE_JSON_CONFIG)
+            ->withDatabaseUri($project_url);
 
             // Obtém uma referência ao banco de dados
             $this->database = $firebase->createDatabase();
@@ -39,6 +43,54 @@
         }
 
         public function add($data, $collection = '/'){
-            return $this->database->getReference($collection)->set($data);
+            $ref_ = $this->database->getReference($collection);
+            $ref_->set($data);
+            $this->addRelacionamento($collection,$ref_);
+            return $ref_;
+        }
+
+        public function del($collection = '/'){
+            return $this->database->getReference($collection)->remove();
+        }
+
+        public function update($data, $collection = '/'){
+            return $this->database->getReference($collection)->update($data);
+        }
+
+        public function getJSONConfig(){
+            return json_decode(file_get_contents(PATH_CURRENT_FIREBASE_JSON_CONFIG),true);
+        }
+
+        private function addRelacionamento($entidade,$ref){
+
+            // Dados da Entidade
+            $ent            = explode('/',$entidade);
+            $entidade_id    = getEntidadeId($ent[0]);
+            $id_            = $ent[1];
+
+            // Entidades de Relacionamento
+            $criterio = tdc::f();
+            $criterio->addFiltro('pai','=',$entidade_id);
+            $criterio->addFiltro('tipo','in',[2, 6, 8, 11]);
+
+            // Mapea os relacionamentos
+            $relacionamentos        = tdc::da(RELACIONAMENTO, $criterio);
+            $relacionamentos_id     = array();
+            foreach($relacionamentos as $rel){
+                array_push($relacionamentos_id, $rel['filho']);
+            }
+            
+            // Percorre os relacionamentos
+            foreach($relacionamentos_id as $r_){
+
+                // Percorre a entidade td_lista
+                $dados_ = getListaRegFilhoArray(
+                    $entidade_id,
+                    $r_,
+                    $id_
+                );
+                $_ref_lista = str_replace(getSystemPREFIXO(),'',tdc::e($r_)->nome).'_lista';
+                $this->database->getReference($entidade . $_ref_lista)->set($dados_);
+            }
         }
     }

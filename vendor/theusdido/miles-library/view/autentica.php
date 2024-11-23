@@ -10,6 +10,7 @@
 	$form->class 				= 'form-signin';
 	$form->target 				= "retorno";
 
+	
 	$email 						= tdClass::Criar("labeledit");
 	$email->label->add("Login");
 	$email->label->for 			= "email";
@@ -28,9 +29,10 @@
 	$senha->input->placeholder	= "Digite sua senha";
 
 	$minhasenha 				= tdClass::Criar("hyperlink");
-	$minhasenha->href 			= "?controller=recuperarsenha";
+	$minhasenha->href 			= "#";
 	$minhasenha->add("Esqueci Minha Senha");
 	$minhasenha->id 			= "esqueci-minhasenha-home";
+	$minhasenha->onclick		= "rotateDiv()";
 
 	$div_minhasenha 			= tdClass::Criar("div");
 	$div_minhasenha->class 		= "form-group";
@@ -45,7 +47,55 @@
 	$botao->class 				= "btn btn-block btn-primary";
 	$botao_formgroup->add($botao);
 
-	$form->fieldset->add($email,$senha,$botao_formgroup,$div_minhasenha);
+	$esqueciminhasenha_botao_formgroup 			= tdClass::Criar("div");
+	$esqueciminhasenha_botao_formgroup->class 	= "form-group";
+	$esqueciminhasenha_botao 					= tdClass::Criar("input");
+	$esqueciminhasenha_botao->id 				= "btn-enviar-recuperacao-senha";
+	$esqueciminhasenha_botao->type 				= "button";
+	$esqueciminhasenha_botao->value 			= "Enviar";
+	$esqueciminhasenha_botao->class 			= "btn btn-block btn-primary";
+	$esqueciminhasenha_botao_formgroup->add($esqueciminhasenha_botao);
+
+	$esqueciminhasenha_email 						= tdClass::Criar("labeledit");
+	$esqueciminhasenha_email->label->add("E-Mail");
+	$esqueciminhasenha_email->label->for 			= "email-recuperacao";
+	$esqueciminhasenha_email->input->id 			= "email-recuperacao";
+	$esqueciminhasenha_email->input->name 			= "email-recuperacao";
+	$esqueciminhasenha_email->input->class 			= "form-control";
+	$esqueciminhasenha_email->input->placeholder	= "Digite seu e-mail";	
+
+	$minhasenha_voltar 				= tdClass::Criar("hyperlink");
+	$minhasenha_voltar->href 		= "#";
+	$minhasenha_voltar->add("Voltar");
+	$minhasenha_voltar->id 			= "voltar-logon";
+	$minhasenha_voltar->onclick		= "rotateDiv()";
+
+	$div_minhasenha_voltar 			= tdClass::Criar("div");
+	$div_minhasenha_voltar->class 	= "form-group";
+	$div_minhasenha_voltar->add($minhasenha_voltar);	
+
+	// ** Rotação de Logon para Esqueci Minha Senha
+	$rotating_container 			= tdc::html('div');
+	$rotating_container->class 		= 'rotating-container';
+
+	$rotating_div 					= tdc::html('div');
+	$rotating_div->class 			= 'rotating-div';
+	$rotating_div->id 				= 'myDiv';
+	
+	$front_face 					= tdc::html('div');	
+	$front_face->class 				= 'front-face';
+
+	$back_face 						= tdc::html('div');
+	$back_face->class 				= 'back-face';
+
+	$back_face->add($esqueciminhasenha_email, $esqueciminhasenha_botao_formgroup, $div_minhasenha_voltar);
+	$front_face->add($email,$senha,$botao_formgroup,$div_minhasenha);
+
+	$rotating_div->add($front_face,$back_face);
+	$rotating_container->add($rotating_div);
+
+	$form->fieldset->add($rotating_container);
+	#$form->fieldset->add($email,$senha,$botao_formgroup,$div_minhasenha);
 
 	$div_logo 			= tdClass::Criar("div");
 	$div_logo->class 	= "autentica-div-logo col-sm-6 col-lg-6";
@@ -107,14 +157,12 @@
 									$.loadingBlockHide();
 								}
 							});
-						}else{						
-							$("#retorno").html("[ " + retorno.error_code + " ] - " + retorno.error_msg);
-							$("#retorno").show();
+						}else{
+							showRetorno("[ " + retorno.error_code + " ] - " + retorno.error_msg);
 							$.loadingBlockHide();
 						}
 					}catch(e){
-						$("#retorno").html("Erro interno, por favor tenta mais tarde");
-						$("#retorno").show();
+						showRetorno("Erro interno, por favor tenta mais tarde");
 						$.loadingBlockHide();
 					}
 				},
@@ -126,6 +174,73 @@
 
 		if (typeof timeout_session !== "undefined"){
 			clearTimeout(timeout_session);
+		}
+
+		let rotation = 0;
+
+		function rotateDiv() {
+			hideRetorno();
+
+			rotation += 180; // Gira 180 graus
+			const myDiv = document.getElementById("myDiv");
+			
+			// Aplicar a rotação no eixo Y
+			myDiv.style.transform = `rotateY(${rotation}deg)`;
+		}
+		
+		function enviarLinkRecuperacaoSenha()
+		{
+			$.ajax({
+				url:session.urlmiles,
+				dataType:"JSON",
+				data:{
+					controller:"recuperacaosenha",
+					op:"enviarlink",
+					email:$("#email-recuperacao").val()
+				},
+				complete:function(ret){
+					let res = ret.responseJSON;
+					let msg_retorno = "";
+					let tipo_retorno = "danger";
+					switch(res.status){
+						case 1:
+							msg_retorno = "Link enviado com sucesso!";
+							tipo_retorno = "success";
+						break;
+						case 2:
+							msg_retorno = "Erro ao enviar e-mail de recuperação.";
+						break;
+						case 3:
+							msg_retorno = "Não existe nenhum usuário com este e-mail.";
+						break;
+					}
+					showRetorno(msg_retorno,tipo_retorno);
+					$.loadingBlockHide();
+				},
+				beforeSend:function(){
+					$.loadingBlockShow({
+						imgPath:getSRCLoader(),
+						text:"Aguarde"
+					});
+				},					
+			});
+		}
+
+		$("#btn-enviar-recuperacao-senha").click(function(){
+			enviarLinkRecuperacaoSenha();
+		});
+
+		function hideRetorno(){
+			$("#retorno").html("");
+			$("#retorno").hide("50");
+		}
+
+		function showRetorno(msg_retorno = "",tipo = "danger"){
+		const retorno_elemento = $("#retorno");
+			retorno_elemento.removeClass("alert-danger alert-success");
+			retorno_elemento.addClass("alert-" + tipo);
+			retorno_elemento.html(msg_retorno);
+			retorno_elemento.show("50");
 		}
 	');
 
@@ -174,11 +289,63 @@
 			display:none;
 			float: left;
 			width: 100%;
-			text-align: center;			
+			text-align: center;
 		}
 		
 		body{
 			background: url('.$urlBackground.') no-repeat center top fixed;
+		}
+
+        .rotating-container {
+            perspective: 1000px; /* Perspectiva 3D */
+        }
+
+        .rotating-div {
+            width: 300px;
+            height: 200px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s ease;
+        }
+
+        .front-face, .back-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden; /* Oculta o lado traseiro quando rotacionado */
+            display: flex;
+			flex-direction:column;
+        }
+
+        .front-face {
+
+        }
+
+        .back-face {
+            transform: rotateY(180deg); /* Rotaciona o verso */
+			padding-top:40px;
+        }
+		
+		#esqueci-minhasenha-home,
+		#voltar-logon
+		{
+			margin-top:-40px;
+			font-size:14px;
+		}
+		
+		#retorno
+		{
+			border:none;
+			border-radius:0;			
+		}
+		
+		#retorno.alert-danger
+		{
+			border-bottom:3px solid #FF0000;
+		}
+		#retorno.alert-success
+		{
+			border-bottom:3px solid #00AA00;
 		}
 	');
 	$pagina->head->add($style);

@@ -98,4 +98,10 @@
                 }
             }        
         break;
+
+        case 'criar-estrutura-pastas':
+            if (!file_exists(PATH_CURRENT_DATA)){
+                tdFile::mkdir(PATH_CURRENT_DATA,0777);
+            }
+        break;
     }

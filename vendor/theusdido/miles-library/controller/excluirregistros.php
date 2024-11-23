@@ -47,7 +47,7 @@
 				}
 			}
 
-			//Excluindo arquivos 
+			//Excluindo arquivos
 			$ft_excluir		= tdc::f();
 			$ft_excluir->addFiltro('entidade','=',$entidade->contexto->id);
 			$ft_excluir->addFiltro('tipohtml','=',19);
@@ -63,6 +63,10 @@
 			// Excluir o registro principal
 			tdc::p($entidade->contexto->nome,$registrosID)->deletar();
 
+			// Recria o arquivo JSON
+			if ($entidade->contexto->entidadeauxiliar){
+				Entity::saveJSON($entidade->contexto->id);
+			}
 			echo 1;
 		}else exit;
 	}else exit;

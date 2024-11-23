@@ -1,13 +1,13 @@
 <?php
-
+	set_time_limit(7200);
 	if (!file_exists(PATH_CURRENT_FILE_TEMP)){
 		tdFile::mkdir(PATH_CURRENT_FILE_TEMP);
 		exit;
 	}
 
-	$atributo = tdClass::Criar("persistent",array(ATRIBUTO,retornar("atributo")));
+	$atributo = tdClass::Criar("persistent",array(ATRIBUTO,tdc::r("atributo")));
 	$entidade = tdClass::Criar("persistent",array(ENTIDADE,$atributo->contexto->entidade));
-
+	
 	$identicador	= $atributo->contexto->nome;
 	
 	$id 			= isset($_GET["id"])?$_GET["id"]:0;
@@ -16,10 +16,12 @@
 	$id_registro	= "registro_" 	. $identicador;
 	$id_display		= "display_" 	. $identicador;
 
+	$is_json_return = tdc::r('retorno') == 'json' ? true : false;
+
 	$bootstrap 			= tdClass::Criar("link");
 	$bootstrap->href 	= URL_LIB . 'bootstrap/3.3.1/css/bootstrap.css';
 	$bootstrap->rel 	= 'stylesheet';
-	$bootstrap->mostrar();
+	
 	
 	$fontAwesome 				= tdClass::Criar("script");
 	$fontAwesome->src 			= "https://kit.fontawesome.com/ea948eea7a.js";
@@ -29,7 +31,7 @@
 	$tema_default 			= tdClass::Criar("link");
 	$tema_default->href 	= URL_SYSTEM_THEME.'geral.css';
 	$tema_default->rel 		= 'stylesheet';
-	$tema_default->mostrar();
+	
 
 	$style = tdClass::Criar("style");
 	$style->type = "text/css";
@@ -39,12 +41,19 @@
 			overflow-x:hidden;
 		}	
 	');
-	$style->mostrar();
+	
 	
 	$jquery = tdClass::Criar("script");
 	$jquery->src = URL_LIB . "jquery/jquery.js";
-	$jquery->mostrar();
+	
 
+	if (!$is_json_return){
+		$bootstrap->mostrar();
+		$fontAwesome->mostrar();
+		$tema_default->mostrar();
+		$style->mostrar();
+		$jquery->mostrar();
+	}
 	if (isset($_GET["excluir"])){
 		$fileDelete = PATH_CURRENT_FILE_TEMP . $_GET["excluir"];
 		if (file_exists($fileDelete)){
@@ -60,10 +69,16 @@
 		$extensao 			= getExtensao($_FILES[$id_input]["name"]);
 		$nomeentidade		= tdClass::Criar("persistent",array(ENTIDADE,$atributo->contexto->entidade))->contexto->nome;
 		$retorno		 	= tdFile::uploadTDForm($_FILES,tdc::a($atributo->contexto->id));
+		$retorno_json		= json_encode($retorno);
+
+		if ($is_json_return){
+			echo $retorno_json;
+			exit;
+		}
 
 		$script = tdClass::Criar("script");
 		$script->add('
-			parent.$("#'.$atributo->contexto->nome.'[data-entidade='.$nomeentidade.']").val(\''.json_encode($retorno).'\');
+			parent.$("#'.$atributo->contexto->nome.'[data-entidade='.$nomeentidade.']").val(\''.$retorno_json.'\');
 		');
 		$script->mostrar();
 	}else{

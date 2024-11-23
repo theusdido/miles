@@ -48,10 +48,10 @@ class Checklist {
             return;
         }
         this.data = _data;
-        this.data.forEach(item => {
+        this.data.forEach((item,_index) => {
             let checkbox    = $('<input type="checkbox" value="'+item.id+'">');
             let label       = $('<label>'+item.descricao+'</label>');
-            let li          = $('<li class="list-group-item" data-id="'+item.id+'">');
+            let li          = $('<li class="list-group-item" data-id="'+item.id+'" data-index="'+_index+'">');
 
             let _instancia  = this;
             checkbox.click(function(){
@@ -80,7 +80,7 @@ class Checklist {
     }
 
     removeItem(_index_item,_item_id){
-        this.selecionados.splice(_index_item,1);
+        this.selecionados.splice(parseInt(_index_item) - 1,1);
         $('#item-li-' + _item_id).remove();
     }
 
@@ -105,7 +105,7 @@ class Checklist {
                 this.selecionados.push(_item);
                 this.inativarSelecionado(_item_id);
                 $(this.getListContextId() + ' .td-nenhumregistro-list-item').remove();
-                let li              = $('<li class="list-group-item" id="item-li-'+_item.id+'">');
+                let li              = $('<li class="list-group-item" id="item-li-'+_item.id+'" data-index="'+_index+'">');
                 let span_text       = $('<span>'+_item.descricao+'</span>');
                 let icon_excluir    = $('<i class="fas fa-trash icon-excluir-listitem">');
 

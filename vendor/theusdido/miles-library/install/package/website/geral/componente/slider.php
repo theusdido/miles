@@ -20,9 +20,12 @@
 	);
 	
 	// 2º PASSO	
-	criarAtributo($conn,$entidadeID,"imagem","Imagem"	,"text","",1,19	,0,0,0,"");
-	criarAtributo($conn,$entidadeID,"html"	,"HTML"		,"text","",1,21	,0,0,0,"");
-	criarAtributo($conn,$entidadeID,"exibir","Exibir"	,"tinyint","",1,7);
+	$titulo = criarAtributo($conn,$entidadeID,"titulo","Título"	,"varchar",200,1,3,1);
+	$imagem = criarAtributo($conn,$entidadeID,"imagem","Imagem"	,"text","",1,19	,1,0,0,"");
+	$html 	= criarAtributo($conn,$entidadeID,"html"	,"HTML"	,"text","",1,21	,0,0,0,"");
+	$exibir = criarAtributo($conn,$entidadeID,"exibir","Exibir"	,"tinyint","",1,7,1);
+
+	Entity::setDescriptionField($conn,$entidadeID,$titulo,true);
 	
 	// 3º PASSO
 	$menu_webiste = addMenu($conn,'WebSite','#','',0,0,'website');

@@ -114,7 +114,8 @@
                 $registrounico,
                 $carregarlibjavascript,
                 $criarinativo = true,
-                $tipoaba = 'tabs'
+                $tipoaba = 'tabs',
+                $entidadeauxiliar
             );
 
             tdc::wj(['id' => $entidade_id , '_data' => Entity::getJSON($entidade_id)]);
@@ -155,59 +156,41 @@
             }
         break;
         case 'salvar-campo':
-            $_entidade  = tdc::r('entidade');
-            $id         = tdc::r('atributo');
-            $nome 		= $_POST["nome"];
-            $descricao	= tdc::utf8($_POST["descricao"]);
-            $tipo 		= $_POST["tipo"];
-            $tamanho 	= $_POST["tamanho"];
-            // $tamanho 	= isset($_POST["tamanho"])?$_POST["tamanho"]:0;
-            // if ($tipo == "char" || $tipo == "varchar"){
-            //     if ((int)$tamanho <= 0){
-            //         $tamanho = "(200)";
-            //     }else{
-            //         $tamanho = "({$_POST["tamanho"]})";
-            //     }
-            // }else{
-            //     $tamanho = '';
-            // }
-            $tamanhoSQL 			= (is_numeric($_POST["tamanho"])?$_POST["tamanho"]:0);
-            // $nulo_                  = $_POST["nulo"];
-            // $nulo 					= isset($nulo_)?'NULL':'NOT NULL';
-            $nulo                   = $_POST["nulo"];
+            $_entidade              = tdc::r('entidade');
+            $id                     = tdc::r('atributo');
+            $nome 		            = $_POST["nome"];
+            $descricao	            = tdc::utf8($_POST["descricao"]);
+            $tipo 		            = $_POST["tipo"];		
+            $tamanho 	            = isset($_POST["tamanho"])?$_POST["tamanho"]:0;
+            $nulo_                  = $_POST["nulo"];
+            $nulo 					= isset($nulo_)?'NULL':'NOT NULL';
             $tipohtml 				= $_POST["tipohtml"];
             $exibirgradededados 	= $_POST["exibirgradededados"];
             $dataretroativa 		= $_POST["dataretroativa"];
+            $readonly 				= $_POST["readonly"];
             
-            $chaveestrangeira       = $_POST["chaveestrangeira"];
-            // if (isset($_POST["chaveestrangeira"])){
-            //     $chaveestrangeira = ($_POST["chaveestrangeira"]=="")?0:($_POST["chaveestrangeira"]);
-            // }else{
-            //     $chaveestrangeira = 0;
-            // }
-            $indice                 = $_POST["indice"];
-            
-            $atributodependencia    = $_POST["atributodependencia"];
-            // if (isset($_POST["atributodependencia"])){
-            //     $atributodependencia = ($_POST["atributodependencia"]==""?0:$_POST["atributodependencia"]);
-            // }else{
-            //     $atributodependencia = 0;
-            // }
+            if (isset($_POST["chaveestrangeira"])){
+                $chaveestrangeira = ($_POST["chaveestrangeira"]=="")?0:($_POST["chaveestrangeira"]);
+            }else{
+                $chaveestrangeira = 0;
+            }
+            $indice = $_POST["indice"];
+            $tipoinicializacao = $_POST["tipoinicializacao"];
+            if (isset($_POST["atributodependencia"])){
+                $atributodependencia = ($_POST["atributodependencia"]==""?0:$_POST["atributodependencia"]);
+            }else{
+                $atributodependencia = 0;
+            }
             
             $labelzerocheckbox 			= $_POST["labelzerocheckbox"];
             $labelumcheckbox 			= $_POST["labelumcheckbox"];
-            
+            $legenda 					= $_POST["legenda"];
             
             $desabilitar 				= $_POST["desabilitar"];
             $criarsomatoriogradededados = $_POST["criarsomatoriogradededados"];
-            
+            $naoexibircampo				= $_POST["naoexibircampo"];
             $is_unique_key				= $_POST["is_unique_key"];
             $inicializacao              = str_replace("'","\'",$_POST["inicializacao"]);
-            $tipoinicializacao      = $_POST["tipoinicializacao"];
-            $readonly 				= $_POST["readonly"];
-            $legenda 					= $_POST["legenda"];
-            $naoexibircampo				= $_POST["naoexibircampo"];
-
 
             $entidade       = tdc::e($_entidade);
             $_entidade_nome = $entidade->nome;
@@ -236,7 +219,7 @@
                 $descricao,
                 $tipo,
                 $tamanho,
-                $nulo,
+                $nulo_,
                 $tipohtml,
                 $exibirgradededados,
                 $chaveestrangeira,
@@ -248,112 +231,6 @@
                 $naoexibircampo = false
             );
             
-            /*
-            if ($id == 0){
-
-                // Cria ou altera o campo no MySQL
-                $sql    = "ALTER TABLE {$_entidade_nome} ADD COLUMN {$nome} {$tipo}{$tamanho} {$nulo};";                
-                $conn->query($sql);
-
-                // ID Último atributo
-                $query_ultimo   = $conn->query("SELECT IFNULL(MAX(id),0)+1 id FROM ".ATRIBUTO);
-                $linha_ultimo   = $query_ultimo->fetchAll();
-                $id_retorno     = $linha_ultimo[0]["id"];
-                
-                $sql = "INSERT INTO ".ATRIBUTO." (
-                    id,
-                    entidade,
-                    nome,
-                    descricao,
-                    tipo,
-                    tamanho,
-                    nulo,
-                    tipohtml,
-                    exibirgradededados,
-                    chaveestrangeira,
-                    dataretroativa,
-                    inicializacao,
-                    readonly,
-                    indice,
-                    tipoinicializacao,
-                    atributodependencia,
-                    labelzerocheckbox,
-                    labelumcheckbox,
-                    legenda,
-                    desabilitar,
-                    criarsomatoriogradededados,
-                    naoexibircampo,
-                    is_unique_key
-                    ) VALUES (
-                    {$id_retorno},
-                    '{$_entidade}',
-                    '{$nome}',
-                    '{$descricao}',
-                    '{$tipo}',
-                    ".$tamanhoSQL.",
-                    ".$nulo_.",
-                    '{$tipohtml}',
-                    {$exibirgradededados},
-                    {$chaveestrangeira},
-                    {$dataretroativa},
-                    '{$inicializacao}',
-                    {$readonly},
-                    '{$indice}',
-                    {$tipoinicializacao},
-                    {$atributodependencia},
-                    '{$labelzerocheckbox}',
-                    '{$labelumcheckbox}',
-                    '{$legenda}',
-                    {$desabilitar},
-                    {$criarsomatoriogradededados},
-                    {$naoexibircampo},
-                    {$is_unique_key}
-                );";
-                $query = $conn->query($sql);
-            }else{
-
-                $sql    = "ALTER TABLE {$_entidade_nome} CHANGE {$atributo_nome} {$nome} {$tipo}{$tamanho} {$nulo};";
-                $conn->query($sql);
-
-                $id_retorno = $id;
-                $sql = ("UPDATE ".ATRIBUTO."
-                    SET 
-                    entidade='{$_entidade}',
-                    nome='{$nome}',
-                    descricao='{$descricao}',
-                    tipo='{$tipo}',
-                    tamanho={$tamanhoSQL},
-                    nulo=".$nulo_.",
-                    tipohtml = '{$tipohtml}',
-                    exibirgradededados = {$exibirgradededados},
-                    chaveestrangeira = {$chaveestrangeira},
-                    dataretroativa = {$dataretroativa},
-                    inicializacao = '{$inicializacao}',
-                    readonly = {$readonly},
-                    indice = '{$indice}',
-                    tipoinicializacao = {$tipoinicializacao},
-                    atributodependencia = {$atributodependencia},
-                    labelzerocheckbox = '{$labelzerocheckbox}',
-                    labelumcheckbox = '{$labelumcheckbox}',
-                    legenda = '{$legenda}',
-                    desabilitar = $desabilitar,
-                    criarsomatoriogradededados = $criarsomatoriogradededados,
-                    naoexibircampo = {$naoexibircampo},
-                    is_unique_key = {$is_unique_key}
-                    WHERE id = {$id};
-                ");
-                $query = $conn->query($sql);
-            }
-            
-            $error = $conn->errorInfo();
-            if ($error[0] != "00000"){
-                if (IS_SHOW_ERROR_MESSAGE){
-                    var_dump($error);
-                }
-            }else{
-                tdc::wj(['id' => $id , '_data' => Field::getJSON($id)]);
-            }
-            */
             tdc::wj(['id' => $atributo_id , '_data' => Field::getJSON($atributo_id)]);
         break;
         case 'load-atributo';

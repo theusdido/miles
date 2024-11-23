@@ -674,12 +674,14 @@ function criarEntidade(
 	$registrounico = 0, #12
 	$carregarlibjavascript = 1, #13
 	$criarinativo = true, #14
-	$tipoaba = 'tabs' #15
+	$tipoaba = 'tabs', #15
+	$entidadeauxiliar = false #16
 ){
 	$prefixo 			= getSystemPREFIXO();
 	$nome 				= $prefixo . str_replace($prefixo,'',$nome);
 	$descricao 			= tdc::utf8($descricao);
 	$campodescchave 	= $campodescchave == '' ? 0 : $campodescchave;
+	$entidadeauxiliar	= $entidadeauxiliar ? 'true' : 'false';
 
 	$sqlExisteEntidade 		= "SELECT id,nome FROM " . ENTIDADE . " WHERE nome='{$nome}';";
 	$queryExisteEntidade 	= $conn->query($sqlExisteEntidade);
@@ -707,7 +709,8 @@ function criarEntidade(
 			exibirlegenda,
 			registrounico,
 			carregarlibjavascript,
-			tipoaba
+			tipoaba,
+			entidadeauxiliar
 		) VALUES (
 		 	".$entidade.",
 			'{$nome}',
@@ -720,7 +723,8 @@ function criarEntidade(
 			{$exibirlegenda},
 			{$registrounico},
 			{$carregarlibjavascript},
-			'{$tipoaba}'
+			'{$tipoaba}',
+			{$entidadeauxiliar}
 		);";
 	}else{
 		$entidade = $linhaExisteEntidade["id"];
@@ -735,7 +739,8 @@ function criarEntidade(
 				exibirlegenda = {$exibirlegenda},
 				registrounico = {$registrounico},
 				carregarlibjavascript={$carregarlibjavascript},
-				tipoaba='{$tipoaba}'
+				tipoaba='{$tipoaba}',
+				entidadeauxiliar={$entidadeauxiliar}
 			WHERE id = {$entidade};
 		";
 	}
@@ -916,6 +921,7 @@ function criarAtributo(
 				'{$legenda}',
 				{$naoexibircampo}
 			);";
+		
 		$query = $conn->query($sql);
 		if ($query){
 			try{
