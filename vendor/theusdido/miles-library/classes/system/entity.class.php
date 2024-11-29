@@ -434,7 +434,7 @@ class Entity {
 		@params: Nome da Entidade
 		@return: json
 	*/
-	public static function  dataJSON($entidade){
+	public static function dataJSON($entidade){
 
 		// Lê o arquivo .json e retorna em forma de texto
 		$json_text = file_get_contents(PATH_CURRENT_DATA . $entidade . '.json');
@@ -444,5 +444,26 @@ class Entity {
 
 		// Código o JSON para retorno
 		return json_encode($json_decode);
+	}
+
+	/*
+		* Método saveRegisterJSON
+	    * Data de Criacao: 23/11/2024
+	    * Autor @theusdido
+
+		Salva um registro em formato JSON
+		@params: Nome da Entidade,
+		@params: ID do Registro
+		@return: void
+	*/
+	public static function saveRegisterJSON($entidade,$id){
+		$registro		= tdc::pa($entidade,$id);
+		$path_entidade 	= PATH_CURRENT_DATA . $entidade;
+		$file_name 		= $id . '.json';
+		$file_path		= $path_entidade . '/' . $file_name;
+		$data 			= json_encode($registro);
+
+		tdFile::mkdir($path_entidade);
+		tdFile::add($file_path, $data);
 	}
 }

@@ -79,8 +79,12 @@ class Checklist {
         }
     }
 
-    removeItem(_index_item,_item_id){
-        this.selecionados.splice(parseInt(_index_item) - 1,1);
+    removeItem(_item_id){
+        this.selecionados.forEach((_item,_index) => {
+            if (_item.id == _item_id){
+                this.selecionados.splice(parseInt(_index),1);
+            }        
+        });
         $('#item-li-' + _item_id).remove();
     }
 
@@ -122,7 +126,7 @@ class Checklist {
                         },
                         context:this,
                         complete:function(){
-                            this.removeItem(_index,_item.id);
+                            this.removeItem(_item.id);
                             this.ativarSelecionado(_item.id);
                         }
                     });

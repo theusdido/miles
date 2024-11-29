@@ -12,7 +12,8 @@ abstract class Registro {
 	protected $dados;
 	private $dadosarray;
 	public $isAutoIncrement = true;
-	private $isnew = true;
+	private $isnew 			= true;
+	public $is_save_json 	= false;
 
 	/*
 		* Método construct
@@ -158,9 +159,14 @@ abstract class Registro {
 				//$conn_replicacao = Conexao::abrir('producao');
 				//$conn_replicacao->query($sql->getInstrucao());
 
+				$_d = array();
+				if($this->is_save_json){
+					$_d = Entity::saveRegisterJSON($this->getEntidade(), $this->id);
+				}
+
 				if (_IS_REPLICATION_FIREBASE){
 					$firebase = new Firebase();
-					$_dados = tdc::da($this->getEntidade(),tdc::f('id','=',$this->dados['id']));
+					$_dados = tdc::da($this->getEntidade(),tdc::f('id','=',$this->id));
 					foreach($_dados as $d){
 						$firebase->add(tdc::utf8($d),$this->getEntidade() . '/' . $this->dados['id'] . '/');
 					}

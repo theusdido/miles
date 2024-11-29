@@ -936,14 +936,21 @@ tdFormulario.prototype.salvar = function(){
 	}
 }
 
-tdFormulario.prototype.addDados = function(dados_obj,id,relacionamento,fp,tiporelacionamento,entidade = ''){
+tdFormulario.prototype.addDados = function(dados_obj,id,relacionamento,fp,tiporelacionamento,entidade_nome = ''){
+	let entidade_auxiliar = 0;
+	if (entidade_nome == ''){
+		const _entidade 		= this.entidade;
+		entidade_nome 			= _entidade.nomecompleto
+		entidade_auxiliar 		= JSON.parse(_entidade.entidadeauxiliar) ? _entidade.id : 0;
+	}
 	this.dados.push({
-		entidade:entidade == '' ? this.entidade.nomecompleto : entidade,
+		entidade:entidade_nome,
 		dados:dados_obj,
 		id:id,
 		relacionamento:relacionamento,
 		fp:fp,
-		tiporel:tiporelacionamento
+		tiporel:tiporelacionamento,
+		entidadeauxiliar:entidade_auxiliar
 	});
 }
 

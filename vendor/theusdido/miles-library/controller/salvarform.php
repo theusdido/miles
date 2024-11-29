@@ -69,13 +69,21 @@
 			$entidade->setInativar(tdc::r('inativo'));
 		}
 
+		$entidade_auxiliar 		= isset($linha['entidadeauxiliar']) ? (int)$linha['entidadeauxiliar'] : 0;
+		$entidade->is_save_json	= $entidade_auxiliar == 0 ? false : true;
+
 		// Armazena os registros do banco de dados principal
 		$entidade->armazenar();
 
 		// Grava os registros em JSON para as entidades auxiliares ( Lista )
-		$_entidade = tdc::e($entidade->getID());
-		if ($_entidade->entidadeauxiliar){
-			Entity::saveJSON($_entidade->id);
+		#$_entidade = tdc::e($entidade->getID());
+		#if ($_entidade->entidadeauxiliar){
+		#	Entity::saveJSON($_entidade->id);
+		#}
+
+		#$entidade_auxiliar = isset($linha['entidadeauxiliar']) ? (int)$linha['entidadeauxiliar'] : 0;
+		if ($entidade_auxiliar != 0){
+			#Entity::saveRegisterJSON($entidade_nome, $id);
 		}
 	}
 
