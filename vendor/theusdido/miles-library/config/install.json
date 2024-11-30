@@ -36,7 +36,8 @@
         "empresa",
         "historicoatividade",
         "comunicado",
-        "email"
+        "email",
+        "monitor"
     ],
     "helpdesk":[
         "status",

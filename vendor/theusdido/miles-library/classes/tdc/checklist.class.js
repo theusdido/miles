@@ -10,20 +10,27 @@ class Checklist {
         this.entidade_filho = _relacionamento.filho;
         this.reg_pai        = 0;
         this.contexto       = '';
+        this.paginacao_index_inicial = 0;
+        this.modal;
+        this.loader;
 
         // Método Construtor
         this.createList();
     }
 
-    createList() {        
-        this.list = $('<ul class="list-group td-checklist" id="'+getHierarquiaRel(this.relacionamento)+'">');
+    createList() {      
+        this.list   = $('<ul class="list-group td-checklist" id="'+getHierarquiaRel(this.relacionamento)+'">');
+        this.loader = $('<div class="loader-checklist">');
         this.nenhumRegistro();
     }
     show() {
         this.load();
-        let modal_body = $('#crud-contexto-checklist-'+this.contexto+' '+this.getModalName()+' .modal-body');
-        modal_body.html('');
-        modal_body.append(this.list);
+        
+        this.modal = $('#crud-contexto-checklist-'+this.contexto+' '+this.getModalName()+' .modal-body');
+        this.modal.html('');
+        this.modal.append(this.list);
+        this.modal.append(this.loader);
+        this.addLoader();
     }
     load(){
         $.ajax({
@@ -32,11 +39,20 @@ class Checklist {
             data:{
                 controller:'checklist',
                 op:'load',
-                entidade:td_entidade[this.entidade_filho].nome
+                entidade:td_entidade[this.entidade_filho].nome,
+                inicial:this.paginacao_index_inicial
             },
             context:this,
             complete:function(_res){
-                this.setItens(_res.responseJSON);
+                const ret = _res.responseJSON;
+                if (ret.length > 0){
+                    this.setItens(ret);
+                    this.paginacao_index_inicial += 5;
+                    this.load();
+                }else{
+                    this.unLoader();
+                }
+                
             }
         });
     }
@@ -180,5 +196,27 @@ class Checklist {
 
     getModalName(){
         return '#modal-checklist-' + this.getNomeEntidadeFilho();
+    }
+
+    addLoader(){
+        this.loader.append(this.spinnerGrow());
+    }
+
+    unLoader(){
+        this.modal.find('.loader-checklist').remove();
+    }
+
+    getContextoLoader(){
+        return this.contexto + ' .loader-checklist';
+    }
+
+    spinnerGrow(){
+        const button            = $('<button class="btn btn-light" type="button" disabled>');
+        const spinner_grow      = $('<span class="spinner-grow spinner-grow-sm" aria-hidden="true">');
+        const status            = $('<span role="status"> Carregando ...</span>');
+        
+        button.append(spinner_grow);
+        button.append(status);
+        return button;
     }
 }

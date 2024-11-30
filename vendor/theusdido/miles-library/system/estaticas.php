@@ -18,7 +18,8 @@
 		'system/query.class.php',
 		'system/reporty.class.php',
 		'system/status.class.php',
-		'system/movimentation.class.php'
+		'system/movimentation.class.php',
+		'system/monitory.class.php'
 	);
 
 	foreach($classes_static as $c){

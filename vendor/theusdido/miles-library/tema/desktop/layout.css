@@ -840,3 +840,17 @@ header #menu {
     border: none;
     margin: 0 !important;
 }
+
+.loader-checklist
+{
+    display: flex;
+    justify-content: center;
+	text-align: center;
+    padding: 1.5rem;
+}
+
+.loader-checklist button
+{
+	background-color: transparent !important;
+	border: none !important;
+}

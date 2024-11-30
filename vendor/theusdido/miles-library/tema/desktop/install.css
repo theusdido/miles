@@ -66,8 +66,9 @@
 }
 #formulario-personalizado .form-group{
 	border-bottom:1px solid #DDD;
-	width:20%;
-	margin:2%;
+	width:30%;
+	margin:1%;
+	display: flex;
 }
 #loading-atualizar-personalizado{
 	display:none;

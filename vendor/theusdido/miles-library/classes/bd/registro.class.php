@@ -159,6 +159,13 @@ abstract class Registro {
 				//$conn_replicacao = Conexao::abrir('producao');
 				//$conn_replicacao->query($sql->getInstrucao());
 
+				Monitory::add(
+					$this->isnew ? "I" : "U",
+					$this->getID(),
+					0,
+					$this->id
+				);
+				
 				$_d = array();
 				if($this->is_save_json){
 					$_d = Entity::saveRegisterJSON($this->getEntidade(), $this->id);

@@ -849,6 +849,9 @@ function criarAtributo(
 		}else{
 			$tamanhoSQL = "({$tamanho})";
 		}
+	}else if($tipo == 'enum' && gettype($tamanho) === 'array'){
+		$tamanhoSQL = "(".implode(",",array_map(fn($value): string => "'$value'",$tamanho)).")";
+		$tamanho	= 0;
 	}else{
 		$tamanhoSQL = '';
 	}

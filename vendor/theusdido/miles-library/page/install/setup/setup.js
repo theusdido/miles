@@ -49,6 +49,7 @@
     componentes['system.comunicado']			    = 'system/comunicado.php';
     componentes['system.email']					    = 'system/email.php';
     componentes['system.usuariorecuperarsenha']     = 'system/usuariorecuperarsenha.php';
+    componentes['system.monitor']                   = 'system/monitor.php';
 
     // Helpdesk
     componentes['helpdesk.status'] 				= 'helpdesk/status.php';

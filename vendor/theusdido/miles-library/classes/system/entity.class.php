@@ -465,5 +465,5 @@ class Entity {
 
 		tdFile::mkdir($path_entidade);
 		tdFile::add($file_path, $data);
-	}
+	}	
 }

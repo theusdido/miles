@@ -1,7 +1,11 @@
 <?php
     switch(tdc::r('op')){
         case 'load':
-            echo Entity::dataJSON(tdc::r('entidade'));
+            $criterio = tdc::f();
+            $criterio->limit(10,tdc::r('inicial'));
+            $criterio->desc('id');
+
+            tdc::wj( tdc::da(tdc::r('entidade'), $criterio) );
         break;
         case 'excluir':
             $_entidade_pai      = tdc::r('entidadepai');

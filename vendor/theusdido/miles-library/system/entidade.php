@@ -45,6 +45,7 @@
 	define('TICKETTIPO',			$prefixo_format . 'tickettipo');
 	define('TICKETSTATUS',			$prefixo_format . 'ticketstatus');
 	define('TICKETPRIORIDADE',		$prefixo_format . 'ticketprioridade');
+	define('MONITOR',				$prefixo_format . 'monitor');	
 
 	// Formato do prefixo para pacotes
 	$prefixo_package = $prefixo_format . '_';
