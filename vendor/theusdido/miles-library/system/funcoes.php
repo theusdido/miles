@@ -766,16 +766,24 @@ function criarEntidade(
 			}
 		}		
 	}else{
-		if (strtoupper($linhaExisteEntidade["nome"]) != strtoupper($nome) && $linhaExisteEntidade["nome"] != "" && $nome != ""){
-			$sql = "RENAME TABLE {$linhaExisteEntidade["nome"]} TO {$nome}";
-			echo $sql;
-			$query = $conn->query($sql);
-			if (!$query){
-				if (IS_SHOW_ERROR_MESSAGE){
-					echo $sql;
-					var_dump($conn->errorInfo());
+		if (isset($linhaExisteEntidade["nome"]))
+		{
+			if (strtoupper($linhaExisteEntidade["nome"]) != strtoupper($nome) && $linhaExisteEntidade["nome"] != "" && $nome != ""){
+				$sql = "RENAME TABLE {$linhaExisteEntidade["nome"]} TO {$nome}";
+				echo $sql;
+				$query = $conn->query($sql);
+				if (!$query){
+					if (IS_SHOW_ERROR_MESSAGE){
+						echo $sql;
+						var_dump($conn->errorInfo());
+					}
 				}
 			}
+		}else{
+			if (IS_SHOW_ERROR_MESSAGE){
+				echo $sql;
+				var_dump($conn->errorInfo());
+			}			
 		}	
 	}
 	
