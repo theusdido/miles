@@ -1,0 +1,27 @@
+
+{
+    "version": 2.0,
+    "project":{
+        "id":"miles",
+        "name":"Miles",
+        "path":"miles/",
+        "url":"ateft1.websiteseguro.com/"
+    },
+    "currentproject": 1,
+    "folder":"miles/",
+    "system": {
+        "url": {
+            "lib": "https://teia.tec.br/miles/repository/lib/"
+        },
+        "request_protocol": "https",
+        "packages": []
+    },
+    "theme": "desktop",
+    "prefix": "td",
+    "is_show_error_message": false,
+    "is_show_warn_message": false,
+    "is_transaction_log": false,
+    "database_current": "producao",
+    "port": "hidden",
+    "environment":"prod"
+}

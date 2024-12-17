@@ -452,7 +452,7 @@ class Entity {
 	    * Autor @theusdido
 
 		Salva um registro em formato JSON
-		@params: Nome da Entidade,
+		@params: Nome da Entidade
 		@params: ID do Registro
 		@return: void
 	*/
@@ -466,4 +466,27 @@ class Entity {
 		tdFile::mkdir($path_entidade);
 		tdFile::add($file_path, $data);
 	}	
+
+	/*
+		* Método getRegisterJSON
+	    * Data de Criacao: 16/12/2024
+	    * Autor @theusdido
+
+		Retorna um registro em formato JSON
+		@params: Nome da Entidade
+		@params: ID do Registro
+		@return: JSON OBJECT | FALSE
+	*/
+	public static function getRegisterJSON($entidade,$id){
+		$path_entidade 	= PATH_CURRENT_DATA . $entidade;
+		$file_name 		= $id . '.json';
+		$file_path		= $path_entidade . '/' . $file_name;
+		if (file_exists($file_path)){
+			$data 			= file_get_contents($file_path);			
+		}else{
+			$data = '[]';
+		}
+		return json_decode($data,true);
+
+	}
 }

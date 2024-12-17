@@ -169,14 +169,18 @@ abstract class Registro {
 				$_d = array();
 				if($this->is_save_json){
 					$_d = Entity::saveRegisterJSON($this->getEntidade(), $this->id);
-				}
 
-				if (_IS_REPLICATION_FIREBASE){
-					$firebase = new Firebase();
-					$_dados = tdc::da($this->getEntidade(),tdc::f('id','=',$this->id));
-					foreach($_dados as $d){
-						$firebase->add(tdc::utf8($d),$this->getEntidade() . '/' . $this->dados['id'] . '/');
-					}
+					if (_IS_REPLICATION_FIREBASE){
+						$firebase 		= new Firebase();
+						$registro_json 	= Entity::getRegisterJSON($this->getEntidade(), $this->id);
+						if (!empty($registro_json)){
+							$firebase->add(tdc::utf8($registro_json),$this->getEntidade() . '/' . $this->dados['id'] . '/');
+						}
+						// $_dados = tdc::da($this->getEntidade(),tdc::f('id','=',$this->id));
+						// foreach($_dados as $d){
+						// 	$firebase->add(tdc::utf8($d),$this->getEntidade() . '/' . $this->dados['id'] . '/');
+						// }
+					}					
 				}
 			}else{
 				echo "Não há transação ativa: Registro Armazenar <br/>\n";

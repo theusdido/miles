@@ -2414,6 +2414,19 @@ function getBoolean($boolean,$returntype){
     }
     return $retorno;
 }
+
+function bool_r($value){
+	$return_bool = false;
+	switch(gettype($value)){
+		case 'string':
+			if ($value == 'true' || $value == '1') $return_bool = true;
+			if ($value == 'false' || $value == '0') $return_bool = false;
+		break;
+		default:
+			$return_bool = $value;
+	}
+	return $return_bool;
+}
 function getURLProject($parametro = null){
 	$urlproject 		= URL_MILES . "index.php";
 	$parmsProject 		= array(

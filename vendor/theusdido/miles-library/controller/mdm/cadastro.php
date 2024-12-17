@@ -96,7 +96,7 @@
             $registrounico				= $_POST["registrounico"];
             $carregarlibjavascript		= $_POST["carregarlibjavascript"];
             $tipoaba					= isset($_POST["tipoaba"])?$_POST["tipoaba"]:'';
-            $entidadeauxiliar			= $_POST["entidadeauxiliar"];
+            $entidadeauxiliar			= bool_r($_POST["entidadeauxiliar"]);
 
             $entidade_id = criarEntidade(
                 $conn,

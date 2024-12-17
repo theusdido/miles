@@ -4,7 +4,7 @@ class Checklist {
 
         this.list;
         this.selecionados   = [];
-        this.data;
+        this.data           = [];
         this.relacionamento = _relacionamento;
         this.entidade_pai   = _relacionamento.pai;
         this.entidade_filho = _relacionamento.filho;
@@ -63,8 +63,8 @@ class Checklist {
             this.nenhumRegistro();
             return;
         }
-        this.data = _data;
-        this.data.forEach((item,_index) => {
+        _data.forEach((item,_index) => {
+            this.addData(item.id, item.descricao);
             let checkbox    = $('<input type="checkbox" value="'+item.id+'">');
             let label       = $('<label>'+item.descricao+'</label>');
             let li          = $('<li class="list-group-item" data-id="'+item.id+'" data-index="'+_index+'">');
@@ -218,5 +218,29 @@ class Checklist {
         button.append(spinner_grow);
         button.append(status);
         return button;
+    }
+
+    incItemData(_id, _data){
+        let _descricao = '';
+        _data.forEach((item) => {
+            if (item.atributo == 'descricao'){
+                _descricao = item.valor;
+            }
+        });
+        this.addData(_id, _descricao);
+    }
+
+    addData(_id, _descricao){
+        let is_exists = false;
+        this.data.forEach((item) => {
+            if (item.id == _id){
+                is_exists = true;    
+            }
+        });
+        if (is_exists) return;
+        this.data.push({
+            id:_id,
+            descricao:_descricao
+        });
     }
 }

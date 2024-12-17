@@ -1083,6 +1083,7 @@ tdFormulario.prototype.editar = function(){
 					setTimeout(()=>{
 						this.checklists.forEach( ( _checklist_list )=> {
 							if (r.entidade == _checklist_list.entidade_filho ){
+								_checklist_list.incItemData(r.id ,r.dados);
 								_checklist_list.addSelectedItem(r.id);
 							}
 						});
