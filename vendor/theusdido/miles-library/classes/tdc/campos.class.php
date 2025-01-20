@@ -242,9 +242,9 @@
 
 			$entidadePK = tdClass::Criar("persistent",array(ENTIDADE,$chaveestrangeira));
 
-			$campo = tdClass::Criar("div");
-			$campo->class = "filtro-pesquisa form-group filtro-endereco";
-			$campo->data_modalname = $modalName;
+			$campo 					= tdClass::Criar("div");
+			$campo->class 			= "filtro-pesquisa form-group filtro-endereco";
+			$campo->data_modalname 	= $modalName;
 
 			$label = tdClass::Criar("label");
 			$label->add(tdc::utf8($descricao));

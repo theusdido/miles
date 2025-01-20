@@ -60,3 +60,33 @@
 
 	// Operador OU
 	define('OU','OR ');
+
+	#***************************************
+	# NOME DE ATRIBUTOS ADICIONAIS 
+	#***************************************
+
+	// Atributo formatado como Data
+	define("ATTR_DATEFORMATTED",'_dateformatted');
+
+	// Atributo formatado como Data e Hora
+	define("ATTR_DATETIMEFORMATTED",'_datetimeformatted');
+
+	// Atributo formatado como Moeda
+	define("ATTR_MONEYFORMATTED",'_moneyformatted');
+
+	// Atributo Objeto
+	define("ATTR_OBJ",'_obj');
+
+	// Atributo Descrição
+	define("ATTR_DESC",'_desc');
+
+	// Atributo SRC
+	define("ATTR_SRC",'_src');
+
+	// Atributo Traduções
+	define("ATTR_TRADUCOES",'_traducoes');
+
+	// Tipos de dados para campos adicionais
+	define("ADDITIONAL_FIELD_TYPES",[ATTR_DESC,ATTR_SRC,ATTR_DATEFORMATTED,ATTR_DATETIMEFORMATTED,ATTR_MONEYFORMATTED,ATTR_OBJ]);
+
+

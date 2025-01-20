@@ -39,7 +39,7 @@ abstract class Registro {
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 		
 		Clona um objeto		
-	*/	
+	*/
 	public function __clone(){
 		unset($this->id); # Unset não está funcionando
 		$this->id = $this->proximoID(); # Ao ser clonado adiciona o próximo ID
@@ -136,7 +136,8 @@ abstract class Registro {
 			$sql = tdClass::Criar("sqlinserir");
 			$sql->setEntidade($this->getEntidade());
 			foreach($this->dados as $key => $valor){
-				$sql->setLinha($key,$valor);
+				$field_value = FieldAdditionalType::getValue($this->dados,$key,$valor,$this->getEntidade());
+				$sql->setLinha($key,$field_value);
 			}
 		}else{
 			$sql = tdClass::Criar("sqlatualizar");
@@ -146,7 +147,8 @@ abstract class Registro {
 			$sql->setCriterio($criterio);
 
 			foreach($this->dados as $key => $valor){
-				if($key != "id") $sql->setLinha($key,$valor);
+				$field_value = FieldAdditionalType::getValue($this->dados,$key,$valor,$this->getEntidade());
+				if($key != "id") $sql->setLinha($key,$field_value);
 			}
 		}
 		
@@ -158,14 +160,14 @@ abstract class Registro {
 
 				//$conn_replicacao = Conexao::abrir('producao');
 				//$conn_replicacao->query($sql->getInstrucao());
-
+				
 				Monitory::add(
 					$this->isnew ? "I" : "U",
 					$this->getID(),
 					0,
 					$this->id
 				);
-				
+
 				$_d = array();
 				if($this->is_save_json){
 					$_d = Entity::saveRegisterJSON($this->getEntidade(), $this->id);
@@ -188,8 +190,6 @@ abstract class Registro {
 			}
 		}catch(Throwable $t){
 			if (IS_SHOW_ERROR_MESSAGE){
-				echo $sql->getInstrucao() . "<br/>";
-				echo $t->getMessage();
 				Debug::console(array(
 					$t->getMessage(),
 					$sql->getInstrucao()
@@ -290,25 +290,39 @@ abstract class Registro {
 		* Método getID() 
 	    * Data de Criacao: 20/01/2016
 	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
-		
-		@parms $entidade [ Nome da Entidade ]
+
 		Retorna ID da Entidade
 	*/
 	public function getID(){
 		if ($conn = Transacao::get()){
-			$sql = tdClass::Criar("sqlselecionar");
-			$sql->addColuna("id");
-			$sql->setEntidade(ENTIDADE);
-			$criterio = tdClass::Criar("sqlcriterio");
-			$criterio->addFiltro("nome","=",$this->getEntidade());
-			$sql->setCriterio($criterio);
-			Transacao::log($sql->getInstrucao());
-			$resultado = $conn->query($sql->getInstrucao());
-			$linha = $resultado->fetch();
-			return $linha[0];
+			$_id = 0;
+			try{
+
+				$sql 	= tdClass::Criar("sqlselecionar");
+				$sql->addColuna("id");
+				$sql->setEntidade(ENTIDADE);
+				$criterio = tdClass::Criar("sqlcriterio");
+				$criterio->addFiltro("nome","=",$this->getEntidade());
+				$sql->setCriterio($criterio);
+				Transacao::log($sql->getInstrucao());
+				$resultado = $conn->query($sql->getInstrucao());
+				if ($resultado->rowCount() > 0){
+					$linha 	= $resultado->fetch();
+					$_id 	= $linha[0];
+				}
+			}catch(Throwable $t){
+				if (IS_SHOW_ERROR_MESSAGE){
+					Debug::console(array(
+						$t->getMessage(),
+						$sql->getInstrucao()
+					),'Classe Registro - Método getID');
+				}
+			}finally{
+				return $_id;
+			}
 		}else{
 			throw new Exception("Não há transação ativa: Registro getID");
-		}		
+		}
 	}
 	/*  
 		* Método getOBJ() 

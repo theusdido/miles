@@ -19,7 +19,10 @@
 	);
 
 	// 2 PASSO
-	criarAtributo($conn,$entidadeID,"texto"	,"Texto"	,"text","",1,21	,0,0,0,"");
+	$saudacao 	= criarAtributo($conn,$entidadeID,"saudacao","Saudação","varchar",50,1,3);
+	$texto 		= criarAtributo($conn,$entidadeID,"texto","Texto","text","",1,21,0,0,0,"");
+	$titulo 	= criarAtributo($conn,$entidadeID,"titulo","Título","varchar",50,1,3);
+	$slogan 	= criarAtributo($conn,$entidadeID,"slogan","Slogan","varchar",120,1,3);
 
 	// 3 PASSO
 	$menu_webiste = addMenu($conn,'WebSite','#','',0,0,'website');

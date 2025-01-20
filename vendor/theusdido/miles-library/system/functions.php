@@ -87,3 +87,14 @@ function showMessage($msg,$tipo = 'error'){
 function parseIniFile($path,$process_section = true,$scanner_mode = INI_SCANNER_RAW){
 	return parse_ini_file($path,$process_section,$scanner_mode);
 }
+
+/*
+	* Função getPathSOFormat
+	* Data de Criacao: 27/12/2024
+	* Autor @theusdido
+
+	Retorna o path formatando as barras de acordo com o Sistema Operacional do Servidor.
+*/
+function getPathSOFormat($path){
+	return PHP_OS == 'WINNT' ? str_replace('/','\\',$path) : $path;
+}

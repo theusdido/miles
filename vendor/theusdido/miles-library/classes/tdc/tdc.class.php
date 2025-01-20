@@ -421,7 +421,7 @@ class tdc Extends tdClass{
 		* Data de Criacao: 18/09/2022
 		* @author Edilson Valentim dos Santos Bitencourt (Theusdido)
 
-		Exibe uma mensagem formata em JSON
+		Exibe uma mensagem formato em JSON
 	*/
 	public static function wj($message)
 	{

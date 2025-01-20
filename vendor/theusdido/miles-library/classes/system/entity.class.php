@@ -460,7 +460,7 @@ class Entity {
 		$registro		= tdc::pa($entidade,$id);
 		$path_entidade 	= PATH_CURRENT_DATA . $entidade;
 		$file_name 		= $id . '.json';
-		$file_path		= $path_entidade . '/' . $file_name;
+		$file_path		= $path_entidade . DIRECTORY_SEPARATOR . $file_name;
 		$data 			= json_encode($registro);
 
 		tdFile::mkdir($path_entidade);
@@ -480,13 +480,12 @@ class Entity {
 	public static function getRegisterJSON($entidade,$id){
 		$path_entidade 	= PATH_CURRENT_DATA . $entidade;
 		$file_name 		= $id . '.json';
-		$file_path		= $path_entidade . '/' . $file_name;
+		$file_path		= $path_entidade . DIRECTORY_SEPARATOR . $file_name;
 		if (file_exists($file_path)){
-			$data 			= file_get_contents($file_path);			
+			$data 			= file_get_contents($file_path);
 		}else{
 			$data = '[]';
 		}
 		return json_decode($data,true);
-
 	}
 }

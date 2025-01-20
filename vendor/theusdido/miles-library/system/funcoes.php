@@ -745,9 +745,10 @@ function criarEntidade(
 		";
 	}
 
-	$query = $conn->query($sql);
+	$query 		= $conn->query($sql);	
 	if (!$query){
-		if (IS_SHOW_ERROR_MESSAGE){
+		$error_info = $conn->errorInfo();
+		if (IS_SHOW_ERROR_MESSAGE && $error_info[0] != '00000'){
 			echo $sql;
 			var_dump($conn->errorInfo());
 		}
@@ -832,19 +833,18 @@ function criarAtributo(
 	$naoexibircampo = false #15
 ){
 
-	$naoexibircampo = is_bool($naoexibircampo) ? ($naoexibircampo?1:0) : 1;
+	$labelzerocheckbox 	= "";
+	$labelumcheckbox 	= "";	
+	$naoexibircampo 	= is_bool($naoexibircampo) ? ($naoexibircampo?1:0) : 1;
 	if ($tipohtml == 7){
-		if (getType($descricao) == "array"){			
+		if (getType($descricao) == "array"){
 			$labelzerocheckbox 	= $descricao[1];
 			$labelumcheckbox 	= $descricao[2];
 			$descricao 			= $descricao[0]; #Não inverter essa ordem
 		}else{
-			$labelzerocheckbox = tdc::utf8("Não");
-			$labelumcheckbox = "Sim";
+			$labelzerocheckbox 	= tdc::utf8("Não");
+			$labelumcheckbox 	= "Sim";
 		}
-	}else{
-		$labelzerocheckbox = "";
-		$labelumcheckbox = "";	
 	}
 
 	$descricao 			= tdc::utf8($descricao);
@@ -936,8 +936,9 @@ function criarAtributo(
 		$query = $conn->query($sql);
 		if ($query){
 			try{
-				$sql = "ALTER TABLE {$linha[0]["nome"]} ADD COLUMN {$nome} {$tipo}{$tamanhoSQL} {$nuloSQL};";
-				$criar = $conn->query($sql);
+				$sql 	= "ALTER TABLE {$linha[0]["nome"]} ADD COLUMN {$nome} {$tipo}{$tamanhoSQL} {$nuloSQL};";
+				$criar 	= $conn->query($sql);
+				
 			}catch(Throwable $t){
 
 			}
@@ -1039,9 +1040,81 @@ function criarAtributo(
 			}
 		}
 	}
+
+	// Adicionar colunas auxiliares para cada tipo de atributo
+	$new_field_adicional_name 	= $new_field_adicional_desc = '';
+	$new_field_adicional_name_obj 	= $new_field_adicional_desc_obj = '';
+
+	$original_field_name 		= FieldAdditionalType::originalFieldAdditionalName($nome);
+	switch($tipohtml){
+		case 4:
+		case 22:
+			$new_field_adicional_name 	= $nome . ATTR_DESC;
+			$new_field_adicional_desc 	= $descricao . ' ( Descrição )';
+
+			$new_field_adicional_name_obj 	= $nome . ATTR_OBJ;
+			$new_field_adicional_desc_obj 	= $descricao . ' ( Objeto )';
+		break;
+		case 11:
+			$new_field_adicional_name = $nome . ATTR_DATEFORMATTED;
+			$new_field_adicional_desc 	= $descricao . ' ( Formatado )';
+		break;			
+		case 13:
+			$new_field_adicional_name = $nome . ATTR_MONEYFORMATTED;
+			$new_field_adicional_desc 	= $descricao . ' ( Formatado )';
+		break;
+		case 23:
+			$new_field_adicional_name = $nome . ATTR_DATETIMEFORMATTED;
+			$new_field_adicional_desc 	= $descricao . ' ( Formatado )';
+		break;
+		case 19:
+			$new_field_adicional_name = $nome . ATTR_SRC;
+			$new_field_adicional_desc 	= $descricao . ' ( Caminho )';
+		break;
+	}
+
+	if ($new_field_adicional_name != '' && $new_field_adicional_name != $original_field_name){ 
+		$new_field = criarAtributo(
+			$conn,
+			$entidade,
+			$new_field_adicional_name,
+			$new_field_adicional_desc,
+			'varchar',
+			200,
+			1,
+			3,
+			0,
+			0,
+			$dataretroativa,
+			$inicializacao,
+			$tipoinicializacao,
+			$readonly,
+			$legenda,
+			true
+		);
+		if ($tipohtml == 4 || $tipohtml == 22){
+			$new_field_obj = criarAtributo(
+				$conn,
+				$entidade,
+				$new_field_adicional_name_obj,
+				$new_field_adicional_desc_obj,
+				'json',
+				0,
+				1,
+				3,
+				0,
+				0,
+				$dataretroativa,
+				$inicializacao,
+				$tipoinicializacao,
+				$readonly,
+				$legenda,
+				true
+			);			
+		}
+	}
 	
 	ordenarAtributo($id);
-
 	return $id;
 }
 function getProxId($entidade,$conn = null){
@@ -1424,16 +1497,17 @@ function atualizarRegistro($conn,$tabela,$id = "",$atributos = [],$valores = [],
         return false;
 	}
 }
-function clonarAtributo($atributo,$conn){
+function clonarAtributo($atributo,$conn = null){
 
+	if ($conn == null) global $conn;
 	$sql = "SELECT * FROM ".ATRIBUTO." WHERE id = {$atributo}";
 	$query = $conn->query($sql);
 	if ($query->rowCount() >0){
 		$linha = (object)$query->fetch();
 		
 		$newAtributo = getProxId("atributo",$conn);
-		$sql = "INSERT INTO ".PREFIXO."atributo (id,".PREFIXO."entidade,nome,descricao,tipo,tamanho,nulo,tipohtml,exibirgradededados,chaveestrangeira,dataretroativa,inicializacao,tipoinicializacao,labelzerocheckbox,labelumcheckbox,readonly) 
-		VALUES (".$newAtributo.",{$linha->entidade},'{$linha->nome}','".($linha->descricao)."','{$linha->tipo}','{$linha->tamanho}',{$linha->nulo},'{$linha->tipohtml}',{$linha->exibirgradededados},{$linha->chaveestrangeira},{$linha->dataretroativa},'{$linha->inicializacao}',{$linha->tipoinicializacao},'','',0);";
+		$sql = "INSERT INTO ".ATRIBUTO." (id,entidade,nome,descricao,tipo,tamanho,nulo,tipohtml,exibirgradededados,chaveestrangeira,dataretroativa,inicializacao,tipoinicializacao,labelzerocheckbox,labelumcheckbox,readonly,legenda) 
+		VALUES (".$newAtributo.",{$linha->entidade},'{$linha->nome}','".($linha->descricao)."','{$linha->tipo}','{$linha->tamanho}',{$linha->nulo},'{$linha->tipohtml}',{$linha->exibirgradededados},{$linha->chaveestrangeira},{$linha->dataretroativa},'{$linha->inicializacao}',{$linha->tipoinicializacao},'','',0,'{$linha->legenda}');";
 		$query = $conn->query($sql);
 		
 	}else{
@@ -2092,47 +2166,35 @@ function addCampoFormatadoDB($dados,$entidade){
 		$tipohtml 		= getTipoHTML($key,$entidade);
 		$linha 			= array( $key => $value );
 
-		// Converte os acentos, afeta o método tdc::dj(), tdc::da e tdc::pa	
+		// Converte os acentos, afeta o método tdc::dj(), tdc::da e tdc::pa
 		$dados[$key] = isutf8($value) ? $value  : tdc::utf8($value);
 
+		// Nomes de atributos adicionais
+		$_attr_dateformatted 		= $key . ATTR_DATEFORMATTED;
+		$_attr_datetimeformatted 	= $key . ATTR_DATETIMEFORMATTED;
+		$_attr_moneyformatted 		= $key . ATTR_MONEYFORMATTED;
+		$_attr_obj 					= $key . ATTR_OBJ;
+		$_attr_desc 				= $key . ATTR_DESC;
+		$_attr_src 					= $key . ATTR_SRC;
+
 		if ($tipohtml == 11){
-			$dados[$key . '_formated']	= dateToMysqlFormat($value,true);
+			$dados[$_attr_dateformatted] = FieldAdditionalType::Formatted($value,'date');
 		}else if ($tipohtml == 13 ){
-			$valorformatado = getHTMLTipoFormato( $tipohtml , $value );
-			$dados["formated_" . $key] = $valorformatado; # Padrão errado, retirar.			
-			$dados[$key . "_formated"] = $valorformatado;
+			$valorformatado = FieldAdditionalType::Formatted($value,'money');
+			$dados[$_attr_moneyformatted] = $valorformatado;
 		}else if ($tipohtml == 4 || $tipohtml == 22){
-			if (is_numeric_natural($value)){
-				$atributoOBJ 			= tdc::p(ATRIBUTO,getAtributoId($entidade,$key));		
-				$campodescdefault 		= tdc::p(ATRIBUTO,getCampoDescricaoDefault($atributoOBJ->chaveestrangeira));
-				if ($key != 'entidade' && $atributoOBJ->chaveestrangeira != 0){
-					$dados[$key . "_obj"]	= tdc::pj(tdc::e($atributoOBJ->chaveestrangeira)->nome,$value);
-				}
-				if ($campodescdefault->hasData()){
-					$valorfk 				= is_numeric_natural($value)?$value:0;
-					$registro 				= getRegistro(null,tdc::p(ENTIDADE,$atributoOBJ->chaveestrangeira)->nome,$campodescdefault->nome, "id={$valorfk}" , "LIMIT 1");
-					try{
-						$dados[$key . "_desc"] 	= tdc::utf8($registro[$campodescdefault->nome]);
-					}catch(Exception $e){
-						$dados["error_desc"] = '';
-					}
-					
-				}
-			}
+			$dados[$_attr_desc] = FieldAdditionalType::ForeignKey($value,$key,$entidade,$dados);
 		}else if ($tipohtml == 19){
-			$file						= $key . '-' . getEntidadeId($entidade) . '-' . $dados['id'] . '.' . getExtensao($value);
-			$url_file 					= URL_CURRENT_FILE . $file;
-			$path_file					= PATH_CURRENT_FILE . $file;
-			$dados[$key . '_src'] 		= file_exists($path_file) ? $url_file : URL_ASSETS . 'img/noimage.png';
+			$dados[$_attr_src] = FieldAdditionalType::SRC($value,$key,$entidade,$dados);
 		}else if ($tipohtml == 23){
-			$dados[$key . '_formated']	= datetimeToMysqlFormat($value,true);
+			$dados[$_attr_datetimeformatted] = FieldAdditionalType::Formatted($value,'datetime');
 		}
 		$_lingua_selecionada_sessao 	= getLanguageSelectedSession();
 
 		if ($entidade != 'td_website_idioma_traducao'){
-			$dados['_traducoes'] 			= Idioma::Traduzir($entidade,$key,$dados['id'],$_lingua_selecionada_sessao);
+			$dados[ATTR_TRADUCOES] 			= Idioma::Traduzir($entidade,$key,$dados['id'],$_lingua_selecionada_sessao);
 			if ($_lingua_selecionada_sessao > 0){
-				$lingua_filtrada = array_filter($dados['_traducoes'],'fLinguaSelecionada');				
+				$lingua_filtrada = array_filter($dados[ATTR_TRADUCOES],'fLinguaSelecionada');				
 				if (sizeof($lingua_filtrada) > 0){
 					$dados[$key] = $lingua_filtrada[0]['texto'];
 				}
@@ -2251,7 +2313,7 @@ function setConfigSessionDefault(){
 	Session::append("currentprojectname","Miles");
 }
 function isvalidnamedir($dirname){
-	$partes = explode("/",$dirname);
+	$partes = explode(DIRECTORY_SEPARATOR,$dirname);
 	$valido = true;
 	foreach($partes as $p){
 		if (preg_match('/[\/\\\:*?<>\|"]/i',$p)){
@@ -2750,4 +2812,4 @@ function getListaRegFilhoArrayUnico($entidadepai,$entidadefilho,$regpai){
 
 function utf8_str_func($str){
 	return  isutf8($str) ? (_MYSQL_CHARSET == 'utf8' ? $str : utf8charset($str,'D')) : utf8charset($str,'E');
-};
+}

@@ -27,7 +27,8 @@
 	$tipoimovel 				= criarAtributo($conn,$entidadeID,"tipoimovel","Tipo","int",0,1,4,0,installDependencia('imobiliaria_tipoimovel','package/negocio/imobiliaria/tipo/tipoimovel'),0,"",1,0);	
 	$tipopiso 					= criarAtributo($conn,$entidadeID,"tipopiso","Tipo de Piso","int",0,1,4,0,installDependencia('imobiliaria_tipopiso','package/negocio/imobiliaria/tipo/tipopiso'),0,"",1,0);	
 	$mobiliado 					= criarAtributo($conn,$entidadeID,"mobiliado","Mobiliado ?","int",0,1,4,0,installDependencia('imobiliaria_mobiliado','package/negocio/imobiliaria/geral/mobiliado'),0,"",1,0);
-	$valor 						= criarAtributo($conn,$entidadeID,"valoraluguel","Valor","float",0,1,13);
+	$valoraluguel				= criarAtributo($conn,$entidadeID,"valoraluguel","Valor do Aluguel","double",0,1,13);
+	$valorvenda					= criarAtributo($conn,$entidadeID,"valorvenda","Valor de Venda","double",0,1,13);
 	$descricao 					= criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar",200,1,3,1);	
 	$fotocapa 					= criarAtributo($conn,$entidadeID,"fotocapa","Foto ( Capa )","text",0,1,19,1,0,0,'',1,0);
 	$restricoesproprietario 	= criarAtributo($conn,$entidadeID,"restricoesproprietario","Restrição Proprietario","varchar",200,1,3);
@@ -37,7 +38,7 @@
 	$ofertasemana 				= criarAtributo($conn,$entidadeID,"ofertasemana","Oferta da Semana ?","tinyint",0,1,7);
 
 	// Capa
-	$abaCapa 					= criarAba($conn,$entidadeID,"Capa",array($filial,$empreendimento,$administradoracondominio,$tipoimovel,$tipopiso,$mobiliado,$valor,$descricao,$fotocapa,$restricoesproprietario,$latituelongitute,$finalidade,$lancamento,$ofertasemana));
+	$abaCapa 					= criarAba($conn,$entidadeID,"Capa",array($filial,$empreendimento,$administradoracondominio,$tipoimovel,$tipopiso,$mobiliado,$valoraluguel,$valorvenda,$descricao,$fotocapa,$restricoesproprietario,$latituelongitute,$finalidade,$lancamento,$ofertasemana));
 
 	// Licenças
 	$habitese 					= criarAtributo($conn,$entidadeID,"habitese","Habite-se","varchar",30,1,3);

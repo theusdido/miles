@@ -58,6 +58,8 @@
 		}else{
 			$_project_path 		= $_folder_miles_ . $_folder_project . DIRECTORY_SEPARATOR . $_project_folder . $_project_name_identifify_params . DIRECTORY_SEPARATOR;
 		}
+
+		//$_project_path .= getPathSOFormat($_project_path);
 	}
 
 	define('PROJECT_NAME',$_project_name);

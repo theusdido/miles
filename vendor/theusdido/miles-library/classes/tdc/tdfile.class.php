@@ -61,7 +61,7 @@ class tdFile {
 	*/
 	public static function add($pathfile,$conteudo = '',$permissao = 0777){
 		try{
-			if (isvalidnamedir($pathfile)){
+			if (isvalidnamedir(getPathSOFormat($pathfile))){
 				$fp = fopen($pathfile,"w");
 				fwrite($fp,$conteudo);
 				fclose($fp);
@@ -69,7 +69,7 @@ class tdFile {
 				return true;
 			}else{
 				return false;
-			}	
+			}
 		}catch(Exception $e){
 			return false;
 		}

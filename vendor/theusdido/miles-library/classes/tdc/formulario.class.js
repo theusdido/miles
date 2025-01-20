@@ -601,24 +601,24 @@ tdFormulario.prototype.salvar = function(){
 	let tiporelacionamentopai 	= this.is_principal ? 0 : currentrelacionamento.tipo;
 
 	if (isPaiEntidade(this.entidade_id)){
-		for(RelEnt in td_relacionamento){
+		for(RelEnt in td_relacionamento){			
 			if (td_relacionamento[RelEnt].pai == this.entidade_id){
 				let entidadesRel = "";
-				if ( td_relacionamento[RelEnt].tipo == "1" || td_relacionamento[RelEnt].tipo == "7"){
+				let tipo_relacionamento = td_relacionamento[RelEnt].tipo;
+				if ( tipo_relacionamento == "1" || tipo_relacionamento == "7"){
 					entidadesRel = td_relacionamento[RelEnt].filho;
-				}else if(td_relacionamento[RelEnt].tipo == "3" || td_relacionamento[RelEnt].tipo == "8"){
+					this.forcaClickSalvarEntidadeRelacionamento(RelEnt);
+				}else if(tipo_relacionamento == "3" || tipo_relacionamento == "8"){
 					if (td_relacionamento[RelEnt].filho == $("#select-generalizacao-unica").val()){
 						entidadesRel = $("#select-generalizacao-unica").val();
 						$('input[atributo=' + td_entidade[td_relacionamento[RelEnt].pai].atributogeneralizacao + ']').val(entidadesRel);
 					}
-				}else if(td_relacionamento[RelEnt].tipo == "9"){
+				}else if(tipo_relacionamento == "9"){
 					$("#select-generalizacao-multipla option[value="+td_relacionamento[RelEnt].filho+"]:selected").each(function(){
 						entidadesRel = $(this).val();
 					});
 				}else if (entidadesRel != ""){
-					let hierarquiacontexto = getHierarquiaRel(RelEnt);
-					// ## Rever essa opção para enviar o formulário de forma oculta quando houver relacionamento
-					$("#crud-contexto-add-" + hierarquiacontexto).find(".b-salvar").first().click();
+					this.forcaClickSalvarEntidadeRelacionamento(RelEnt);
 				}
 			}
 			
@@ -731,6 +731,7 @@ tdFormulario.prototype.salvar = function(){
 	if (this.is_principal){
 		relacionamento 		=  {entidade:this.entidade.nomecompleto,atributo:'id'};
 		relacionamentoTipo 	= 0;
+
 		for(rSalvar in td_relacionamento){
 
 			let $_relacionamento		= td_relacionamento[rSalvar];
@@ -926,7 +927,7 @@ tdFormulario.prototype.salvar = function(){
 				}
 				if (typeof afterSave === "function") afterSave(this.is_principal,this);
 			}else if(currentrelacionamento.cardinalidade == "11"){
-				
+
 			}else{
 				const msg = 'Cardinalidade não encontrada no relacionamento!';
 				console.warn(msg);
@@ -1491,9 +1492,7 @@ tdFormulario.prototype.setBuscaFiltro = function()
 
 			}else if (atributo.tipohtml == 24){
 				$('.termo-filtro[atributo='+atributo.id+']',this.getContexto()).each(function(){
-
 					$(this).blur(function(){
-						return false;
 						let termo 				= this.value;
 						let entidadeNome 		= $(this).data("fk");
 						let nome 				= $(this).prop("id");	
@@ -2103,4 +2102,12 @@ tdFormulario.prototype.getSwitchInativoValue = function(){
 tdFormulario.prototype.setComposicao11 = function ()
 {
 	$('.div-composicao-relacionamento-11 .crud-contexto-listar').hide();
+}
+
+
+tdFormulario.prototype.forcaClickSalvarEntidadeRelacionamento = function (entidade_id)
+{
+	let hierarquiacontexto = getHierarquiaRel(entidade_id);
+	// ## Rever essa opção para enviar o formulário de forma oculta quando houver relacionamento
+	$("#crud-contexto-add-" + hierarquiacontexto).find(".b-salvar").first().click();
 }

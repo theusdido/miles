@@ -72,7 +72,6 @@ class Config {
 		*	@return any: Valor formatado para salvamento
 	*/
 	public static function integridade($entidade,$atributo,$valor,$id){
-
 		$sql = tdClass::Criar("sqlcriterio");
 		$sql->addFiltro("nome","=",$atributo);
 		$sql->addFiltro("entidade","=",$entidade);

@@ -20,10 +20,11 @@
         */
         public static function add($operacao,$entidade,$atributo,$valorid,$consumidor = 0){
             global $conn;
-
+            
             $sql    = "SELECT id FROM " . MONITOR . " WHERE operacao = '{$operacao}' AND entidade = {$entidade} AND atributo = {$atributo} AND valorid = {$valorid} AND consumidor = {$consumidor}";
             $query  = $conn->query($sql);
 
+            
             if ($query->rowCount() > 0){
                 #$linha  = $query->fetch();
                 #$id     = $linha["id"];
@@ -53,7 +54,16 @@
                         NOW()
                     );
                 ";
-                $query  = $conn->exec($sql);    
+                try{
+                    $query  = $conn->exec($sql);
+                }catch(Throwable $t){
+                    if (IS_SHOW_ERROR_MESSAGE){
+                        Debug::console(array(
+                            $t->getMessage(),
+                            $sql->getInstrucao()
+                        ),'Classe Monitor - Método add');
+                    }
+                }
             }
         }
     }
