@@ -1,6 +1,6 @@
 <?php
 
-	$_full_port 		= (PORT == '' ? '' : ':') . PORT;
+	$_full_port 		= (PORT == '' ? '' : ':') . PORT;	
 	$_root_folder		= (isset($_env->root) ? $_env->root : 'miles/');
 
 	if ($_is_installed){
