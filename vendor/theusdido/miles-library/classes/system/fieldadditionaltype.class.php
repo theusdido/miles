@@ -57,22 +57,11 @@ class FieldAdditionalType {
         $addition_field_type 	= self::getAdditionalFieldType($key);
         $original_field_name 	= self::originalFieldAdditionalName($key);
 
-        if ($key == 'fotocapa_src'){
-            #var_dump($addition_field_type);
-            #var_dump($original_field_name);
-            #var_dump($dados);
-        }
-
         if (isset($dados[$original_field_name])){
             $original_field_value	= $dados[$original_field_name];
         }else{
-            #var_dump($original_field_name);
-            #var_dump($entidade);
-            #var_dump($dados);
             return self::getDefaultValue($key);
         }
-        
-        #var_dump($key);
 
         switch($addition_field_type){
             case ATTR_DATEFORMATTED:
@@ -186,16 +175,13 @@ class FieldAdditionalType {
         if (is_numeric_natural($value)){
             $atributoOBJ 			= tdc::p(ATRIBUTO,getAtributoId($entidade,$key));
             $campodescdefault 		= tdc::p(ATRIBUTO,getCampoDescricaoDefault($atributoOBJ->chaveestrangeira));
-            if ($key != 'entidade' && $atributoOBJ->chaveestrangeira != 0){
-                //$dados[$_attr_obj]	= tdc::pj(tdc::e($atributoOBJ->chaveestrangeira)->nome,$value);
-            }
             if ($campodescdefault->hasData()){
                 $valorfk 				= is_numeric_natural($value)?$value:0;
                 $registro 				= getRegistro(null,tdc::p(ENTIDADE,$atributoOBJ->chaveestrangeira)->nome,$campodescdefault->nome, "id={$valorfk}" , "LIMIT 1");
                 try{
                     $value = tdc::utf8($registro[$campodescdefault->nome]);
                 }catch(Exception $e){
-                    //$dados["error" . ATTR_DESC] = '';
+
                 }
             }
         }
@@ -206,10 +192,6 @@ class FieldAdditionalType {
         $file						= $key . '-' . getEntidadeId($entidade) . '-' . $dados['id'] . '.' . getExtensao($value);
         $url_file 					= URL_CURRENT_FILE . $file;
         $path_file					= PATH_CURRENT_FILE . $file;
-
-        #var_dump($file);
-        #var_dump($url_file);
-        #var_dump($path_file);
 
         return file_exists($path_file) ? $url_file : URL_ASSETS . 'img/noimage.png';        
     }

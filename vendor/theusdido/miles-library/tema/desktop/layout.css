@@ -853,3 +853,8 @@ header #menu {
 	background-color: transparent !important;
 	border: none !important;
 }
+
+.bootbox .modal-header
+{
+	display: block !important;
+}

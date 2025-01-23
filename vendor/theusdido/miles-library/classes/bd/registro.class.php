@@ -178,10 +178,6 @@ abstract class Registro {
 						if (!empty($registro_json)){
 							$firebase->add(tdc::utf8($registro_json),$this->getEntidade() . '/' . $this->dados['id'] . '/');
 						}
-						// $_dados = tdc::da($this->getEntidade(),tdc::f('id','=',$this->id));
-						// foreach($_dados as $d){
-						// 	$firebase->add(tdc::utf8($d),$this->getEntidade() . '/' . $this->dados['id'] . '/');
-						// }
 					}					
 				}
 			}else{

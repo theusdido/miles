@@ -10,7 +10,6 @@
 			// Se a entidade relacionamento do tipo composição [ PAI ]
 			$sql = tdClass::Criar("sqlcriterio");
 			$sql->add(tdClass::Criar("sqlfiltro",array("pai","=",$entidadeID)));	
-			#$sql->add(tdClass::Criar("sqlfiltro",array("tipo","=",2))); # 2 é composição
 			$relacionamento_composicao 		= tdClass::Criar("repositorio",array(RELACIONAMENTO));
 			$dadosComposicao 				= $relacionamento_composicao->carregar($sql);
 			foreach($relacionamento_composicao->carregar($sql) as $dadosComposicao){
@@ -19,12 +18,15 @@
 				// Excluir Lista
 				foreach(getListaRegFilhoObject($entidade->contexto->id,$entidade_rel,$registrosID) as $reg_filho){
 					$ft_lista = tdc::f();
-					$ft_lista->addFiltro('entidadepai','=',$entidade->contexto->id);
-					$ft_lista->addFiltro('entidadefilho','=',$entidade_rel);
-					$ft_lista->addFiltro('regpai','=',$registrosID);
-					$ft_lista->addFiltro('regfilho','=',$reg_filho->id);
+					$ft_lista->addFiltro('entidadepai'		,'=',	$entidade->contexto->id);
+					$ft_lista->addFiltro('entidadefilho'	,'=',	$entidade_rel);
+					$ft_lista->addFiltro('regpai'			,'=',	$registrosID);
+					$ft_lista->addFiltro('regfilho'			,'=',	$reg_filho->id);
 					$lista = tdc::d(LISTA,$ft_lista);
 					$lista[0]->deletar();
+
+					// Exclui o registro na tabela filho
+					$registro_filho = tdc::p( tdc::e($entidade_rel)->nome, $reg_filho->id)->deletar();
 				}
 
 				if ($dadosComposicao->atributo > 0){

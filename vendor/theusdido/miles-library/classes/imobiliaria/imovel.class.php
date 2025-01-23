@@ -16,14 +16,12 @@
 
         public static function Home(){
             global $conn;
-            $campos = self::getFieldsView();
             $sql = self::getFieldsView() . "
                 WHERE lancamento <> 1
                 OR ofertasemana <> 1
                 ORDER BY imovel DESC
                 LIMIT 4;
             ";
-
             $rs = $conn->query($sql);
             return self::EnderecoRow($rs);
         }
@@ -60,8 +58,8 @@
                 WHERE imovel = {$imovel_id};
             ";
 
-            $rs = $conn->query($sql);
-            $_res = self::EnderecoRow($rs); 
+            $rs     = $conn->query($sql);
+            $_res   = self::EnderecoRow($rs); 
             return $_res[0];
         }
 

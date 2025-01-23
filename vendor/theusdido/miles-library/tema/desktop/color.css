@@ -248,14 +248,12 @@ header, article{
 	color:#CCC !important;
 }
 
-#menu .navbar
+#menu .navbar,
+.modal-header
 {
 	background-color: #FF8200;
 }
 
-.modal-header {
-	background-color: #0098da;	
-}
 .modal-header * {
 	color:#FFF;
 }
@@ -341,4 +339,9 @@ table thead tr.td-info
 .btn.btn-info
 {
 	color:#FFF !important;
+}
+
+.bootbox .bootbox-close-button
+{
+	background-color: transparent;
 }

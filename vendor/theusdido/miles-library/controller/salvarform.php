@@ -50,14 +50,7 @@
 
 		foreach ($linha["dados"] as $dado) {
 			$_atributo 		= $dado["atributo"];
-			
-			if ($_atributo == 'fotocapa_src') {
-		
-				#var_dump($is_value);
-				#var_dump($is_attr_add_type_field);
-			}
-			
-			
+
 			if (isset($dado["valor"])) {
 				$_valor 		= $dado["valor"];
 				if (
@@ -72,29 +65,10 @@
 				} else {
 					$entidade->{$_atributo} = Config::Integridade($entidade->getID(), $_atributo, $_valor, $id);
 				}
-			}else if 
-				(
-					FieldAdditionalType::isField($_atributo)
-				){
-					if ('td_imobiliaria_imovelendereco' == $linha["entidade"] && $_atributo == 'tipoendereco_obj'){
-						#var_dump(FieldAdditionalType::originalFieldAdditionalName($_atributo));
-						#var_dump(isset($entidade->{FieldAdditionalType::originalFieldAdditionalName($_atributo)}));	
-					}
-
-					if ('td_imobiliaria_imovel' == $linha["entidade"] && $_atributo == 'fotocapa_src'){
-						#var_dump(FieldAdditionalType::originalFieldAdditionalName($_atributo));
-						#var_dump(isset($entidade->{FieldAdditionalType::originalFieldAdditionalName($_atributo)}));							
-						#var_dump(isset($entidade->fotocapa));
-					}
-					#!isset($entidade->{FieldAdditionalType::originalFieldAdditionalName($_atributo)})
-					#if (isset($entidade->{FieldAdditionalType::originalFieldAdditionalName($_atributo)})){
-						#$entidade->{$_atributo} = FieldAdditionalType::getDefaultValue($_atributo);
-						$entidade->{$_atributo} = NULL;
-					#}
-					
+			}else if (FieldAdditionalType::isField($_atributo)){
+				$entidade->{$_atributo} = NULL;
 			}
 		}
-		
 
 		if ($linha['fp'] == 'true'){
 			// Seta Inativo
@@ -106,17 +80,6 @@
 
 		// Armazena os registros do banco de dados principal
 		$entidade->armazenar();
-
-		// Grava os registros em JSON para as entidades auxiliares ( Lista )
-		#$_entidade = tdc::e($entidade->getID());
-		#if ($_entidade->entidadeauxiliar){
-		#	Entity::saveJSON($_entidade->id);
-		#}
-
-		#$entidade_auxiliar = isset($linha['entidadeauxiliar']) ? (int)$linha['entidadeauxiliar'] : 0;
-		if ($entidade_auxiliar != 0){
-			#Entity::saveRegisterJSON($entidade_nome, $id);
-		}
 	}
 
 	// Seta os relacionamentos
