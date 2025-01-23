@@ -48,21 +48,53 @@
 			array_push($relacionamentos,$objRel);
 		}
 
-		foreach ($linha["dados"] as $dado){
-			if (isset($dado["valor"])){
+		foreach ($linha["dados"] as $dado) {
+			$_atributo 		= $dado["atributo"];
+			
+			if ($_atributo == 'fotocapa_src') {
+		
+				#var_dump($is_value);
+				#var_dump($is_attr_add_type_field);
+			}
+			
+			
+			if (isset($dado["valor"])) {
+				$_valor 		= $dado["valor"];
 				if (
-						(
-							strtolower($dado["atributo"]) == strtolower(PROJETO) || strtolower($dado["atributo"]) == strtolower(EMPRESA) || TdFormulario::isNumberDataType(getAtributoId($linha["entidade"],$dado["atributo"]))
-						)
-					&&
-						($dado["valor"] == '' || $dado["valor"] == null || empty($dado["valor"]))
-				){
-					$entidade->{$dado["atributo"]} = 0;
-				}else{
-					$entidade->{$dado["atributo"]} = Config::Integridade($entidade->getID(),$dado["atributo"],$dado["valor"],$id);
+					(
+						strtolower($_atributo) == strtolower(PROJETO) ||
+						strtolower($_atributo) == strtolower(EMPRESA) ||
+						TdFormulario::isNumberDataType(getAtributoId($linha["entidade"], $_atributo))
+					) &&
+					($_valor == '' || $_valor == null || empty($_valor))
+				) {
+					$entidade->{$_atributo} = 0;				
+				} else {
+					$entidade->{$_atributo} = Config::Integridade($entidade->getID(), $_atributo, $_valor, $id);
 				}
+			}else if 
+				(
+					FieldAdditionalType::isField($_atributo)
+				){
+					if ('td_imobiliaria_imovelendereco' == $linha["entidade"] && $_atributo == 'tipoendereco_obj'){
+						#var_dump(FieldAdditionalType::originalFieldAdditionalName($_atributo));
+						#var_dump(isset($entidade->{FieldAdditionalType::originalFieldAdditionalName($_atributo)}));	
+					}
+
+					if ('td_imobiliaria_imovel' == $linha["entidade"] && $_atributo == 'fotocapa_src'){
+						#var_dump(FieldAdditionalType::originalFieldAdditionalName($_atributo));
+						#var_dump(isset($entidade->{FieldAdditionalType::originalFieldAdditionalName($_atributo)}));							
+						#var_dump(isset($entidade->fotocapa));
+					}
+					#!isset($entidade->{FieldAdditionalType::originalFieldAdditionalName($_atributo)})
+					#if (isset($entidade->{FieldAdditionalType::originalFieldAdditionalName($_atributo)})){
+						#$entidade->{$_atributo} = FieldAdditionalType::getDefaultValue($_atributo);
+						$entidade->{$_atributo} = NULL;
+					#}
+					
 			}
 		}
+		
 
 		if ($linha['fp'] == 'true'){
 			// Seta Inativo

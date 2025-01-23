@@ -56,7 +56,24 @@ class FieldAdditionalType {
     public static function getValue($dados, $key, $value, $entidade){
         $addition_field_type 	= self::getAdditionalFieldType($key);
         $original_field_name 	= self::originalFieldAdditionalName($key);
-        $original_field_value	= $dados[$original_field_name];
+
+        if ($key == 'fotocapa_src'){
+            #var_dump($addition_field_type);
+            #var_dump($original_field_name);
+            #var_dump($dados);
+        }
+
+        if (isset($dados[$original_field_name])){
+            $original_field_value	= $dados[$original_field_name];
+        }else{
+            #var_dump($original_field_name);
+            #var_dump($entidade);
+            #var_dump($dados);
+            return self::getDefaultValue($key);
+        }
+        
+        #var_dump($key);
+
         switch($addition_field_type){
             case ATTR_DATEFORMATTED:
                 $field_value 	= self::Formatted($original_field_value,'date');
@@ -154,14 +171,13 @@ class FieldAdditionalType {
     }    
 
     public static function OBJ($value,$key,$entidade,$dados){
+        $value = self::EmptyFieldOBJ();
         if (is_numeric_natural($value)){
             $atributoOBJ 			= tdc::p(ATRIBUTO,getAtributoId($entidade,$key));
             $campodescdefault 		= tdc::p(ATRIBUTO,getCampoDescricaoDefault($atributoOBJ->chaveestrangeira));
             if ($key != 'entidade' && $atributoOBJ->chaveestrangeira != 0){
                 $value = tdc::pj(tdc::e($atributoOBJ->chaveestrangeira)->nome,$value);
             }
-        }else{
-            $value = '{}';
         }
         return json_encode($value);
     }
@@ -189,8 +205,28 @@ class FieldAdditionalType {
     public static function SRC($value,$key,$entidade,$dados){
         $file						= $key . '-' . getEntidadeId($entidade) . '-' . $dados['id'] . '.' . getExtensao($value);
         $url_file 					= URL_CURRENT_FILE . $file;
-        $path_file					= PATH_CURRENT_FILE . $file;        
-        
+        $path_file					= PATH_CURRENT_FILE . $file;
+
+        #var_dump($file);
+        #var_dump($url_file);
+        #var_dump($path_file);
+
         return file_exists($path_file) ? $url_file : URL_ASSETS . 'img/noimage.png';        
+    }
+
+    public static function getDefaultValue($field)
+    {
+        switch(self::getAdditionalFieldType($field)){
+            case ATTR_OBJ:
+                $field_value 	= self::EmptyFieldOBJ();
+            break;
+            default:
+                $field_value	= NULL;
+        }
+        return $field_value;
+    }
+
+    public static function EmptyFieldOBJ(){
+        return '{}';
     }
 }
