@@ -98,14 +98,7 @@
 		$regPai 			= $objMain->id;
 		$regFilho 			= $rel->id;
 
-		if (!exists_lista($entidadePai,$entidadeFilho,$regPai,$regFilho)){
-			$lista 					= tdc::p(LISTA);
-			$lista->entidadepai 	= $entidadePai;
-			$lista->entidadefilho	= $entidadeFilho;
-			$lista->regpai 			= $regPai;
-			$lista->regfilho 		= $regFilho;
-			$lista->armazenar();
-		}
+		tdLista::save($entidadePai,$entidadeFilho,$regPai,$regFilho,$rel->tipo_rel);
 	}
 
 	// Checklist

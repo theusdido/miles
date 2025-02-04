@@ -61,5 +61,23 @@ class tdLista {
 			self::del($entidade_pai,$entidade_filho,$registro_pai,$registro_filho);
 		}
 		self::add($entidade_pai,$entidade_filho,$registro_pai,$registro_filho);	
-	}	
+	}
+
+    /* 
+		* Método save
+		* Data de Criacao: 03/02/2025
+		* Author: @theusdido
+
+       Salva um registro na tabela td_lista
+	*/
+	public static function save($entidade_pai,$entidade_filho,$registro_pai,$registro_filho = 0,$tipo_relacionamento = 0){
+		if($tipo_relacionamento == 12){
+			$reg_filho = getListaRegFilhoArrayUnico($entidade_pai,$entidade_filho,$registro_pai);
+			if (sizeof($reg_filho) > 0){
+				return;
+			}
+		}
+
+		self::add($entidade_pai,$entidade_filho,$registro_pai,$registro_filho);
+	}
 }	

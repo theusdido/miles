@@ -566,7 +566,11 @@ tdFormulario.prototype.loadGrade = function(){
 	this.getGrade().show();
 }
 tdFormulario.prototype.voltar = function(){
-	this.getGrade().show();
+
+	if (this.is_principal){
+		this.getGrade().show();
+	}
+
 	$(this.getContexto()).hide();
 	$(this.getContextoListar()).show();
 }
@@ -848,10 +852,10 @@ tdFormulario.prototype.salvar = function(){
 								$('#id[data-entidade="'+entidades_retorno.entidade+'"]').val(entidades_retorno.id);
 							break;
 							default:
-							// Recarrega as grades de dados
-							formulario[index_form_retorno].gradesdados.clear();
-							formulario[index_form_retorno].gradesdados.addFiltroNN(retorno.entidade, retorno.id, getEntidadeId(entidades_retorno.entidade));
-							formulario[index_form_retorno].gradesdados.reload();							
+								// Recarrega as grades de dados
+								formulario[index_form_retorno].gradesdados.clear();
+								formulario[index_form_retorno].gradesdados.addFiltroNN(retorno.entidade, retorno.id, getEntidadeId(entidades_retorno.entidade));
+								formulario[index_form_retorno].gradesdados.reload();							
 						}
 						formulario[index_form_retorno].dados = [];
 					});
@@ -1054,7 +1058,7 @@ tdFormulario.prototype.editar = function(){
 									}
 								}
 							}
-						}						
+						}
 
 						// Seleciona a lista da generalização multipla
 						if (tipo == 9 && pai == entidade){
@@ -1067,17 +1071,23 @@ tdFormulario.prototype.editar = function(){
 				if (tipoRelacionamento == "" || tipoRelacionamento == 1 || tipoRelacionamento == 7 || tipoRelacionamento == 3 || tipoRelacionamento == 9){
 					if (r.fp){
 						this.setaPrimeiraAba();
-						this.setSwitchInativoValue(r.inativo);
+						this.setSwitchInativoValue(r.inativo);						
 					}
 					
 					this.setDados(r);
+
+					if (r.fp){
+						this.exibirDadosEdicao();
+						this.liberaBotaoSalvar();
+					}
+
 					$(this.getContextoListar()).hide();
 					$(this.getContexto()).show();
 
 				// Seta a grade de dados para as entidades de relacionamento
 				}else if (tipoRelacionamento == 2 || tipoRelacionamento == 6 || tipoRelacionamento == 5 || tipoRelacionamento == 8 || tipoRelacionamento == 10){
 					let index_form_rel = 'cadastro_' + r.entidade;
-					this.setGradeRelacionamento(index_form_rel,r.id,r.dados);
+					this.setGradeRelacionamento(index_form_rel,r.id,r.dados);					
 					$(formulario[index_form_rel].getContexto(),this.getContexto()).hide();
 					$(formulario[index_form_rel].getContextoListar(),this.getContexto()).show();
 				}else if(tipoRelacionamento == 11){
@@ -1098,10 +1108,6 @@ tdFormulario.prototype.editar = function(){
 					}
 				}
 
-				if (this.is_principal){
-					this.exibirDadosEdicao();
-					this.liberaBotaoSalvar();
-				}
 			},this.instancia);
 
 			// Permissão dos atributos

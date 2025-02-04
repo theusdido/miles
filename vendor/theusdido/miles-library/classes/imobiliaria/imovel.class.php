@@ -35,11 +35,13 @@
                     $cidade         = tdc::pa('td_imobiliaria_cidade',$bairro['cidade']);
                     $estado         = tdc::pa('td_imobiliaria_estado',$cidade['estado']);
 
+                    $row['bairro_desc']         = $bairro['nome'];
                     $row['cidade_desc']         = $cidade['nome'];
                     $row['estado_desc']         = $estado['nome'];
                     $row['estado_sigla']        = $estado['sigla'];
                     $row['localizacao_curta']   = $bairro['nome'] . ' / ' . $row['cidade_desc'];
                 }else{
+                    $row['bairro_desc']         = '';
                     $row['cidade_desc']         = '';
                     $row['estado_desc']         = '';
                     $row['estado_sigla']        = '';
@@ -81,6 +83,7 @@
                     # Imovel
                     imovel,
                     empreendimento,
+                    empreendimento_desc,
                     administradoracondominio_desc,
                     tipoimovel,
                     tipoimovel_desc,
