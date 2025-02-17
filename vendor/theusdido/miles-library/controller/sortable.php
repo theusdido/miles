@@ -5,11 +5,13 @@
 	if ($op == "ordenar"){
 		$entidade 	= tdc::r("entidade");
 		$atributo	= tdc::r("atributo");
+
 		foreach(tdc::r("ordem") as $o){
 			$ordem 		= $o["order"];
 			$registro	= $o["id"];
 
 			$_entidade 					= tdc::p($entidade,$registro);
+			$_entidade->is_save_json	= true;
 			$_entidade->{$atributo} 	= $ordem;
 			$_entidade->armazenar();
 		}
@@ -38,78 +40,99 @@
 		float:right;
 		line-height:50px;
 	}
+	.btn-ordenar
+	{
+		float:right;
+		margin:10px;
+	}
 </style>
-<ul id="sortable" class="sortable">
-	<?php
-		
-		$_entidade 	= tdc::e(tdc::r('entidade'));
-		$_atributo 	= tdc::a(tdc::r('atributo'));
-		$direcao	= tdc::r('order') == '' ? 'ASC' : tdc::r('order');
-		$campos 	= array('id',$_atributo->nome);
-		$filtros	= tdc::r('filtro') == '' ? array() : json_decode(tdc::r('filtro'),true);
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<button type="button" class="btn btn-dark btn-ordenar" onclick="ordenar();">
+				<i class="fa fa-sort" aria-hidden="true"></i>
+				Ordenar
+			</button>
+			<div id="loader-sortable"></div>
+		</div>
+	</div>
 
-		if (tdc::r('display') == ''){
-			$campo_display = $_atributo->nome;
-		}else{
-			$campo_display = tdc::a(tdc::r('display'))->nome;
-			array_push($campos,$campo_display);
-		}
+	<div class="row">
+		<div class="col-md-12">
+			<ul id="sortable" class="sortable">
+				<?php
+					
+					$_entidade 	= tdc::e(tdc::r('entidade'));
+					$_atributo 	= tdc::a(tdc::r('atributo'));
+					$direcao	= tdc::r('order') == '' ? 'ASC' : tdc::r('order');
+					$campos 	= array('id',$_atributo->nome);
+					$filtros	= tdc::r('filtro') == '' ? array() : json_decode(tdc::r('filtro'),true);
 
-		if (tdc::r('image') != ''){
-			$campo_image 		= tdc::a(tdc::r('image'));
-			$campo_image_id		= $campo_image->id;
-			$campo_image_nome 	= $campo_image->nome;
+					if (tdc::r('display') == ''){
+						$campo_display = $_atributo->nome;
+					}else{
+						$campo_display = tdc::a(tdc::r('display'))->nome;
+						array_push($campos,$campo_display);
+					}
 
-			array_push($campos,$campo_image_nome);
-		}else{
-			$campo_image_id		= 0;
-			$campo_image_nome 	= '';
-		}
+					if (tdc::r('image') != ''){
+						$campo_image 		= tdc::a(tdc::r('image'));
+						$campo_image_id		= $campo_image->id;
+						$campo_image_nome 	= $campo_image->nome;
 
-		$criterio = array(' WHERE 1=1 ');
-		if ($filtros != ''){
-			foreach($filtros as $key => $value){
-				array_push($criterio," AND $key = '$value' ");
-			}
-		}		
+						array_push($campos,$campo_image_nome);
+					}else{
+						$campo_image_id		= 0;
+						$campo_image_nome 	= '';
+					}
 
-		$where = '';
-		if (sizeof($criterio) > 0){
-			$where = implode(' ',$criterio);
-		}
+					$criterio = array(' WHERE 1=1 ');
+					if ($filtros != ''){
+						foreach($filtros as $key => $value){
+							array_push($criterio," AND $key = '$value' ");
+						}
+					}		
 
-		$entidade	= $_entidade->nome;
-		$atributo 	= $_atributo->nome;
-		$indice		= 1;
+					$where = '';
+					if (sizeof($criterio) > 0){
+						$where = implode(' ',$criterio);
+					}
 
-		$sql 		= "SELECT ".implode(',',$campos)." FROM {$entidade} $where ORDER BY {$atributo} {$direcao}";
-		$query		= $conn->query($sql);
-		while ($linha = $query->fetch()){
-			$filename			= $linha[$campo_image_nome];
-			$descricao 			= $linha[$campo_display];
-			$id					= $linha["id"];
-			$filenamefixed		= $campo_image_nome . "-".$_entidade->id."-".$id.".".getExtensao($filename);
-			$pathfile       	= PATH_CURRENT_FILE . $filenamefixed;
+					$entidade	= $_entidade->nome;
+					$atributo 	= $_atributo->nome;
+					$indice		= 1;
 
-			if (!file_exists($pathfile)){
-				$pathfile = URL_ASSETS . 'img/noimage.png';
-			}
+					$sql 		= "SELECT ".implode(',',$campos)." FROM {$entidade} $where ORDER BY {$atributo} {$direcao}";
+					$query		= $conn->query($sql);
+					while ($linha = $query->fetch()){
+						$filename			= $linha[$campo_image_nome];
+						$descricao 			= $linha[$campo_display];
+						$id					= $linha["id"];
+						$filenamefixed		= $campo_image_nome . "-".$_entidade->id."-".$id.".".getExtensao($filename);
+						$pathfile       	= PATH_CURRENT_FILE . $filenamefixed;
 
-			echo '
-				<li data-order="'.$indice.'" data-id="'.$id.'">
-					<img style="max-width:100%;" src="'.$pathfile.'" />
-					'.$descricao.'
-					<span class="fas fa-ellipsis-v pontinhos" aria-hidden="true"></span>
-				</li>
-			';
-			$indice++;
-		}
-	?>
-</ul>
+						if (!file_exists($pathfile)){
+							$pathfile = URL_ASSETS . 'img/noimage.png';
+						}
+						
+						echo '
+							<li data-order="'.$indice.'" data-id="'.$id.'">
+								<img style="max-width:100%;" src="'.$pathfile.'" />
+								'.$descricao.'
+								<span class="fas fa-ellipsis-v pontinhos" aria-hidden="true"></span>
+							</li>
+						';
+						$indice++;
+					}
+				?>
+			</ul>
+		</div>
+	</div>
+</div>
 <script>
-	$("#sortable").sortable({
-		update: function( event, ui ) {
-			var ordenacao = [];
+	function ordenar(){
+		loader('#loader-sortable');
+		var ordenacao = [];
 			$("#sortable li").each(
 				(e,elemento) => {
 					var id = $(elemento).data("id");
@@ -121,7 +144,6 @@
 					}					
 				}
 			);
-			console.log(ordenacao);
 			$.ajax({
 				url:session.urlmiles,
 				data:{
@@ -130,8 +152,12 @@
 					entidade:"<?=$entidade?>",
 					atributo:"<?=$atributo?>",
 					ordem:ordenacao
+				},
+				complete:function(){
+					unloader();
+					mdmToastMessage("Salvo com Sucesso");
 				}
 			});
-		}
-	});
+	}
+	$("#sortable").sortable();
 </script>
