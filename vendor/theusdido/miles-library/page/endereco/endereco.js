@@ -1,9 +1,10 @@
 $(document).ready(function(){
 	$("#cep").mask("99999999");
 	optionsBairro("#bairro","");
+    optionsCidade("#cidade","");
 	var cidadepadrao = escape(retirarAcentos("CRICIÚMA"));
 	$("#estado").load("index.php?op=retorna_lista_uf&controller=enderecofiltro&selecionado=SC",function(){
-
+        //optionsCidade("#cidade",$(this).html());
 		$("#cidade").prop("disabled",true);
 		$("#cidade").html("<option value=''>Carregando os Dados ...");
 		$("#bairro").prop("disabled",true);
@@ -136,6 +137,11 @@ function optionsBairro(campo,valores){
 	$(campo).append(valores);
 }
 
+function optionsCidade(campo,valores){   
+	$(campo).html('<option value="-1">Escolha uma cidade ...</option><option value="0">Adicionar Manualmente ...</option>');
+	$(campo).append(valores);
+}
+
 $("#bairro-manual").keypress(function(e){
     if (e.which == 13){
         //addBairro($("#estado").val(),$("#cidade").val(),$(this).val());
@@ -150,6 +156,17 @@ $("#bairro-manual").blur(function(){
         $("#bairro").show();
     }
 });
+
+$("#cidade-manual").blur(function(){
+    if ($(this).val() != ""){
+        addCidade($("#estado").val(),$(this).val());
+    }else{
+        $("#cidade-manual").hide();
+        $("#cidade-manual").val("");			
+        $("#cidade").show();
+    }
+});
+
 function addBairro(uf,cidade,bairro){
     if (uf == "" || cidade == "" || bairro == "") return false;
     $("#bairro").prop("disabled",true);
@@ -193,6 +210,48 @@ function addBairro(uf,cidade,bairro){
     });	
 }
 
+function addCidade(uf,cidade){
+    debugger
+    if (uf == "" || cidade == "") return false;
+    $("#cidade").prop("disabled",true);
+    $("#cidade").html("<option value=''>Carregando os Dados ...");
+    $.ajax({
+        type:"GET",
+        url:"index.php",
+        async:false,
+        contentType: "application/x-www-form-urlencoded;charset=UTF-8",
+        data:{
+            op:"add_cidade",
+            controller:"enderecofiltro",
+            retorno:"W",
+            descricao:cidade.trim(),
+            uf:uf.trim()
+        },
+        complete:function(ret){
+            var retorno = ret.responseText;
+            $.ajax({
+                type:"GET",
+                url:"index.php",
+                contentType: "application/x-www-form-urlencoded;charset=UTF-8",
+                data:{
+                    op:"retorna_lista_localidade",
+                    controller:"enderecofiltro",
+                    uf:uf.trim(),
+                    selecionado:retorno
+                },
+                complete:function(ret){
+                    var listaCidade = ret.responseText;
+                    $("#cidade").prop("disabled",false);
+                    optionsCidade("#cidade",listaCidade);
+                    $("#cidade").val(cidade.trim());
+                }
+            });
+            $("#cidade-manual").hide();
+            $("#cidade").show();
+        }
+    });	
+}
+
 $("#bairro").change(function(){
     if ($(this).val() == "0"){
         $(this).hide();
@@ -200,12 +259,21 @@ $("#bairro").change(function(){
         $("#bairro-manual").focus();
     }
 });
+$("#cidade").change(function(){
+    if ($(this).val() == "0"){
+        $(this).hide();
+        $("#cidade-manual").show();
+        $("#cidade-manual").focus();
+    }
+});
+
 $("#estado").change(function(){
     $("#cidade").prop("disabled",true);
     $("#cidade").html("<option value=''>Carregando os Dados ...");
     $("#bairro").prop("disabled",true);
     $("#bairro").html("<option value=''>Carregando os Dados ...");
     var estado = $(this).val();
+    optionsCidade("#cidade",estado);
     $("#cidade").load("index.php?op=retorna_lista_localidade&controller=enderecofiltro&uf="+this.value+"&selecionado=",
         function(){
             $("#cidade").prop("disabled",false);

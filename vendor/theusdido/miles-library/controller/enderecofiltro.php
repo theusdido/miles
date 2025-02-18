@@ -53,11 +53,17 @@
 	}
 	else if ($op == "retorna_lista_localidade")
 	{
+		echo '<option value="-1">Escolha uma cidade ...</option><option value="0">Adicionar Manualmente ...</option>';
 		$sql = "select a.id,TRIM(a.nome) nome,a.uf from $_entidade_endereco_base_cidade a,$_entidade_endereco_base_estado b WHERE a.uf = b.id AND b.sigla = '" . $_GET["uf"] . "'";
 		$query = $connCorreios->query($sql);
 		while ($linha = $query->fetch()){
 			echo "<option value='" . tdc::utf8($linha["nome"]) . "' " . (strtoupper(retirarAcentos($selecionado))==strtoupper(retirarAcentos(tdc::utf8($linha["nome"])))?"selected":"")  . ">" . tdc::utf8($linha["nome"]) . "</option>";
 		}
+		$sql = "SELECT id,nome FROM $_entidade_endereco_projeto_cidade WHERE estado = " . getIdEstado($_GET["uf"]); 
+		$query = $conn->query($sql);
+		while ($linha = $query->fetch()){
+			echo "<option value='" .tdc::utf8($linha["nome"]) . "' ". ($selecionado == $linha["id"]?"selected":"") .">".tdc::utf8($linha["nome"])."</option>";
+		}		
 		exit;
 	}
 	elseif ($op == "retorna_lista_bairro")
@@ -72,7 +78,7 @@
 		$query = $conn->query($sql);
 		while ($linha = $query->fetch()){
 			echo "<option value='" .tdc::utf8($linha["nome"]) . "' ". ($selecionado == $linha["id"]?"selected":"") .">".tdc::utf8($linha["nome"])."</option>";
-		}		
+		}	
 		exit;
 	}
 	elseif ($op == "add_bairro")
@@ -120,6 +126,32 @@
 		 	W rs.id
 			*/
 			echo $queryBairro->fetch()[0];
+		}
+	}
+	elseif ($op == "add_cidade")
+	{
+		$descricao 		= ($_GET["descricao"]);
+		$uf_id 			= getIdEstado($_GET["uf"]);
+
+		$sqlCidade 		= "SELECT id FROM $_entidade_endereco_projeto_cidade WHERE nome = '".tdc::utf8($descricao)."' AND estado = " . $uf_id;
+		$queryCidade 	= $conn->query($sqlCidade);
+		if ($queryCidade->rowCount() <= 0){
+			$cidade 			= tdClass::Criar("persistent",array($_entidade_endereco_projeto_cidade))->contexto;
+			$id 				= $cidade->proximoID();
+			$cidade->id 		= $id;
+			$cidade->projeto 	= 1;
+			$cidade->empresa 	= 1;
+			$cidade->nome 		= $descricao;
+			$cidade->estado		= $uf_id;
+			$salvar 			= $cidade->armazenar();
+			Transacao::Commit();
+			if ($salvar){
+				echo $id;
+			}else{
+				echo 0;
+			}
+		}else{
+			echo $queryCidade->fetch()[0];
 		}
 	}
 	elseif ($op == "salva_endereco")
@@ -238,7 +270,11 @@
 		$ufID 	= getIdUF($uf);
 		$sql 	= "SELECT id FROM $_entidade_endereco_base_cidade WHERE nome LIKE '%{$cidade}%' AND uf = '{$ufID}';";
 		$query 	= $connCorreios->query($sql);
-		return $query->fetch()[0];
+		if ($query->rowCount() > 0){
+			return $query->fetch()[0];
+		}else{
+			return 0;
+		}
 	}
 	function getIdUF($uf){
 		global $connCorreios;

@@ -162,7 +162,7 @@
             $descricao	            = tdc::utf8($_POST["descricao"]);
             $tipo 		            = $_POST["tipo"];		
             $tamanho 	            = isset($_POST["tamanho"])?$_POST["tamanho"]:0;
-            $nulo_                  = $_POST["nulo"];
+            $nulo_                  = bool_r($_POST["nulo"]);
             $nulo 					= isset($nulo_)?'NULL':'NOT NULL';
             $tipohtml 				= $_POST["tipohtml"];
             $exibirgradededados 	= $_POST["exibirgradededados"];
