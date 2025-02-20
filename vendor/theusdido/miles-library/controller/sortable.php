@@ -117,8 +117,8 @@
 						
 						echo '
 							<li data-order="'.$indice.'" data-id="'.$id.'">
-								<img style="max-width:100%;" src="'.$pathfile.'" />
-								'.$descricao.'
+								<img style="max-width:100%;min-width:100px;" src="'.$pathfile.'" />
+								[ '.$id.' ] - '.$descricao.'
 								<span class="fas fa-ellipsis-v pontinhos" aria-hidden="true"></span>
 							</li>
 						';
