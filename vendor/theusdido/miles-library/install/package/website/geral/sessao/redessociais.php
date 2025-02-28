@@ -20,7 +20,7 @@
 
 	// 2 PASSO
 	$redesocial = criarAtributo($conn,$entidadeID,"redesocial"	,"Rede Social"	,"int",0,0,4,1,installDependencia('website_geral_redesocial','package/website/geral/sessao/redesocial'),0,"");
-    $link 		= criarAtributo($conn,$entidadeID,"link"	,"Link"	,"varchar",500,0,3,0,0,0,"");
+    $link 		= criarAtributo($conn,$entidadeID,"link"	,"Link"	,"varchar",500,0,3,1,0,0,"");
 
 	Entity::setDescriptionField($conn,$entidadeID,$link);
 

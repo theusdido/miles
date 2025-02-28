@@ -11,6 +11,7 @@
     
     $_criterio  = tdc::f();
     $_criterio->onlyActive();
+    $_criterio->order('ordem');
 
     $retorno['data'] = tdc::da($_entidade,$_criterio);
     

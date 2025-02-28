@@ -15,7 +15,11 @@
 		$criarprojeto = 0,
 		$criarempresa = 0,
 		$criarauth = 0,
-		$registrounico = 0
+		$registrounico = 0,
+		$carregarlibjavascript = 1,
+		$criarinativo = true,
+		$tipoaba = 'tabs', 
+		$entidadeauxiliar = true
 	);
 
 	$descricao 	= criarAtributo($conn,$entidadeID,"descricao"	,"Descrição"	,"varchar",50,0,3,1,0,0,"");
