@@ -162,12 +162,12 @@
             $descricao	            = tdc::utf8($_POST["descricao"]);
             $tipo 		            = $_POST["tipo"];		
             $tamanho 	            = isset($_POST["tamanho"])?$_POST["tamanho"]:0;
-            $nulo_                  = bool_r($_POST["nulo"]);
-            $nulo 					= isset($nulo_)?'NULL':'NOT NULL';
+            $nulo_                  = getBoolean($_POST["nulo"],'numeric');
+            $nulo 					= $nulo_?'NULL':'NOT NULL';
             $tipohtml 				= $_POST["tipohtml"];
-            $exibirgradededados 	= $_POST["exibirgradededados"];
-            $dataretroativa 		= $_POST["dataretroativa"];
-            $readonly 				= $_POST["readonly"];
+            $exibirgradededados 	= getBoolean($_POST["exibirgradededados"],'numeric');
+            $dataretroativa 		= getBoolean($_POST["dataretroativa"],'numeric');
+            $readonly 				= getBoolean($_POST["readonly"],'numeric');
             
             if (isset($_POST["chaveestrangeira"])){
                 $chaveestrangeira = ($_POST["chaveestrangeira"]=="")?0:($_POST["chaveestrangeira"]);
@@ -186,10 +186,10 @@
             $labelumcheckbox 			= $_POST["labelumcheckbox"];
             $legenda 					= $_POST["legenda"];
             
-            $desabilitar 				= $_POST["desabilitar"];
-            $criarsomatoriogradededados = $_POST["criarsomatoriogradededados"];
-            $naoexibircampo				= $_POST["naoexibircampo"];
-            $is_unique_key				= $_POST["is_unique_key"];
+            $desabilitar 				= getBoolean($_POST["desabilitar"],'numeric');
+            $criarsomatoriogradededados = getBoolean($_POST["criarsomatoriogradededados"],'numeric');
+            $naoexibircampo				= getBoolean($_POST["naoexibircampo"],'numeric');
+            $is_unique_key				= getBoolean($_POST["is_unique_key"],'numeric');
             $inicializacao              = str_replace("'","\'",$_POST["inicializacao"]);
 
             $entidade       = tdc::e($_entidade);
@@ -228,9 +228,9 @@
                 $tipoinicializacao,
                 $readonly,
                 $legenda,
-                $naoexibircampo = false
+                $naoexibircampo
             );
-            
+
             tdc::wj(['id' => $atributo_id , '_data' => Field::getJSON($atributo_id)]);
         break;
         case 'load-atributo';

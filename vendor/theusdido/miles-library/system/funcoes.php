@@ -830,12 +830,11 @@ function criarAtributo(
 	$tipoinicializacao = 1, #12
 	$readonly = 0, #13
 	$legenda = '', #14
-	$naoexibircampo = false #15
+	$naoexibircampo = 0 #15
 ){
 
 	$labelzerocheckbox 	= "";
-	$labelumcheckbox 	= "";	
-	$naoexibircampo 	= is_bool($naoexibircampo) ? ($naoexibircampo?1:0) : 1;
+	$labelumcheckbox 	= "";
 	if ($tipohtml == 7){
 		if (getType($descricao) == "array"){
 			$labelzerocheckbox 	= $descricao[1];
@@ -932,7 +931,6 @@ function criarAtributo(
 				'{$legenda}',
 				{$naoexibircampo}
 			);";
-		
 		$query = $conn->query($sql);
 		if ($query){
 			try{
@@ -984,6 +982,7 @@ function criarAtributo(
 				naoexibircampo={$naoexibircampo}
 			WHERE id={$id};
 		";
+
 		$query = $conn->query($sql);
 		if ($query){
 			$sqlFisicamante = "SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{$linha[0]["nome"]}' AND  COLUMN_NAME = '{$nome}';";
@@ -2463,15 +2462,16 @@ function isProducao($returntype = "boolean"){
 }
 function getBoolean($boolean,$returntype){
     $retorno = $boolean;
+	$_bool = bool_r($boolean);
     switch($returntype){
         case "string":
-            $retorno = $boolean?'true':'false';
+            $retorno = $_bool?'true':'false';
             break;
         case "numeric":
-            $retorno = $boolean?1:0;
+            $retorno = $_bool?1:0;
             break;
         case "boolean":
-            $retorno = $boolean?true:false;
+            $retorno = $_bool?true:false;
         break;
     }
     return $retorno;
