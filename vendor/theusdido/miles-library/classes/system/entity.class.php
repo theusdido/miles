@@ -202,6 +202,16 @@ class Entity {
 								$tipohtml	= 23;
 								$tipo 		= 'datetime';
 								$tamanho  	= 0;
+							break;
+							case 'hora':
+								$tipohtml	= 28;
+								$tipo 		= 'time';
+								$tamanho  	= 0;
+							break;
+							case 'senha':
+								$tipohtml	= 6;
+								$tipo 		= 'varchar';
+								$tamanho  	= 64;
 							break;							
 						}
 					}
