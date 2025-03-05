@@ -78,15 +78,15 @@
 	$itenspedido_descricao 		= criarAtributo($conn,$itenspedidoID,"descricao","Descrição","varchar",200,1,16,0,0,0,"");
 	$itenspedido_qtde 			= criarAtributo($conn,$itenspedidoID,"qtde","Quantidade","tinyint",0,0,26,1,0,0,"");
 	$itenspedido_valor 			= criarAtributo($conn,$itenspedidoID,"valor","Valor","float",0,0,13,1,0,0,"");
-	$itenspedido_valortotal 	= criarAtributo($conn,$itenspedidoID,"valortotal","Valor Total","float",0,1,13,1,0,0,"",1,0,'',false);
-	$itenspedido_qtdetotal		= criarAtributo($conn,$itenspedidoID,"qtdetotaldeitens","Quantidade Total","tinyint",0,1,16,0,0,0,"",1,0,'',false);
-	$itenspedido_produtonome	= criarAtributo($conn,$itenspedidoID,"produtonome","Produto","varchar",200,1,16,0,0,0,"",1,0,'',false);
-	$itenspedido_referencia		= criarAtributo($conn,$itenspedidoID,"referencia","Referência","varchar",200,1,16,0,0,0,"",1,0,'',false);
-	$itenspedido_tamanho_desc 	= criarAtributo($conn,$itenspedidoID,"tamanho_desc","Tamanho","varchar",200,1,16,0,0,0,"",1,0,'',false);
+	$itenspedido_valortotal 	= criarAtributo($conn,$itenspedidoID,"valortotal","Valor Total","float",0,1,13,1,0,0,"",1,0,'',0);
+	$itenspedido_qtdetotal		= criarAtributo($conn,$itenspedidoID,"qtdetotaldeitens","Quantidade Total","tinyint",0,1,16,0,0,0,"",1,0,'',0);
+	$itenspedido_produtonome	= criarAtributo($conn,$itenspedidoID,"produtonome","Produto","varchar",200,1,16,0,0,0,"",1,0,'',0);
+	$itenspedido_referencia		= criarAtributo($conn,$itenspedidoID,"referencia","Referência","varchar",200,1,16,0,0,0,"",1,0,'',0);
+	$itenspedido_tamanho_desc 	= criarAtributo($conn,$itenspedidoID,"tamanho_desc","Tamanho","varchar",200,1,16,0,0,0,"",1,0,'',0);
 	$itenspedido_produtotamanho	= criarAtributo($conn,$itenspedidoID,"tamanho","Tamanho","int",0,1,4,0,getEntidadeId("ecommerce_produtotamanho",$conn),0,"");		
-	$itenspedido_cor_desc 		= criarAtributo($conn,$itenspedidoID,"cor_desc","Cor","varchar",200,1,16,0,0,0,"",0,0,'',false);
+	$itenspedido_cor_desc 		= criarAtributo($conn,$itenspedidoID,"cor_desc","Cor","varchar",200,1,16,0,0,0,"",0,0,'',0);
 	$itenspedido_produtocor		= criarAtributo($conn,$itenspedidoID,"cor","Cor","int",0,1,4,0,getEntidadeId("ecommerce_produtocor",$conn),0,"");
-	$itenspedido_variacao 		= criarAtributo($conn,$itenspedidoID,"variacao","Variação","varchar",200,1,16,0,0,0,"",1,0,'',false);
+	$itenspedido_variacao 		= criarAtributo($conn,$itenspedidoID,"variacao","Variação","varchar",200,1,16,0,0,0,"",1,0,'',0);
 
 	// Cria Relacionamento
 	criarRelacionamento($conn,2,$entidadeID,$itenspedidoID,"Itens",$itenspedido_pedido);
