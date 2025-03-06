@@ -7,7 +7,7 @@
 
             $conn_temp  = Conexao::getDados('temp');
             $_install   = tdInstall::getInstallDB();
-
+            
             // Se tiver um arquivo temporário a ainda não tiver uma instação
             if (!$_is_installed && $conn_temp != NULL){
                 $response['case']                       = 1;

@@ -237,6 +237,15 @@
                                 op:"javascriptfile"
                             }
                         });
+                        // Excluir Arquivos do Temporário do Banco de Dados
+                        $.ajax({
+                            type:"POST",
+                            url:session.urlmiles,
+                            data:{
+                                controller:'install/instalar',
+                                op:"excluirdbtemp"
+                            }
+                        });                        
                     }
                 }else{
                     $("#retorno").html('<div class="alert alert-danger" role="alert">Erro ao instalar o sistema. Motivo: ' +retorno+ '</div>');
