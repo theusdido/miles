@@ -104,9 +104,11 @@
 		$dataretroativa = 0,
 		$inicializacao = ""
 	);
+
+	$colunista 			= criarAtributo($conn,$entidadeID,"colunista","Colunista","int",0,1,22,1,installDependencia("website_blog_colunista","website/blog/editorial/colunista"));
 	
 	// 3º PASSO
 	$menu_blog = addMenu($conn,'Blog','#','',0,0,'blog');
 	
 	// 4º PASSO
-	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',".$menu_blog.",2,'website-'.$entidadeNome,$entidadeID, 'cadastro');
+	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu_blog,2,'blog-'.$entidadeNome,$entidadeID, 'cadastro');

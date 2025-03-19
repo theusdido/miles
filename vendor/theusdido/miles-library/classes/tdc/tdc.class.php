@@ -510,6 +510,6 @@ class tdc Extends tdClass{
 	*/
 	public static function dua($entidade,$sql = null){
 		$dataset = self::da($entidade,$sql);
-		return sizeof($dataset) > 0 ? $dataset[0] : self::da($entidade);
+		return sizeof($dataset) > 0 ? $dataset[0] : self::rua($entidade);
 	}
 }

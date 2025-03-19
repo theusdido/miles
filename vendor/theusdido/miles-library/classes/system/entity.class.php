@@ -212,7 +212,17 @@ class Entity {
 								$tipohtml	= 6;
 								$tipo 		= 'varchar';
 								$tamanho  	= 64;
-							break;							
+							break;
+							case 'lista_unica':
+								$tipohtml	= 4;
+								$tipo 		= 'smallint';
+								$tamanho  	= 0;
+							break;
+							case 'areatext0':
+								$tipohtml	= 14;
+								$tipo 		= 'text';
+								$tamanho  	= 0;
+							break;
 						}
 					}
 					$is_obrigatorio 		= isset($attr['is_obrigatorio']) ? $attr['is_obrigatorio'] : 1;

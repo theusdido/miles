@@ -160,13 +160,16 @@ class FieldAdditionalType {
     }    
 
     public static function OBJ($value,$key,$entidade,$dados){
-        $value = self::EmptyFieldOBJ();
         if (is_numeric_natural($value)){
             $atributoOBJ 			= tdc::p(ATRIBUTO,getAtributoId($entidade,$key));
-            $campodescdefault 		= tdc::p(ATRIBUTO,getCampoDescricaoDefault($atributoOBJ->chaveestrangeira));
+            
             if ($key != 'entidade' && $atributoOBJ->chaveestrangeira != 0){
-                $value = tdc::pj(tdc::e($atributoOBJ->chaveestrangeira)->nome,$value);
+                $value = Entity::getRegisterJSON(tdc::e($atributoOBJ->chaveestrangeira)->nome, $value);
+            }else{
+                $value = self::EmptyFieldOBJ();
             }
+        }else{
+            $value = self::EmptyFieldOBJ();
         }
         return json_encode($value);
     }

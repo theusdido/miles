@@ -171,7 +171,11 @@ class Pagina Extends Html {
 			}
 
 			$tema_menuleft = null;
-			if (file_exists(FILE_COLOR_STYLE_MENULEFT)){
+			if (file_exists(FILE_CURRENT_COLOR_STYLE_MENULEFT)){
+				$tema_menuleft 			= tdClass::Criar("link");
+				$tema_menuleft->href 	= URL_CURRENT_FILE_COLOR_STYLE_MENULEFT;
+				$tema_menuleft->rel 	= 'stylesheet';
+			}else if (file_exists(FILE_COLOR_STYLE_MENULEFT)){
 				$tema_menuleft 			= tdClass::Criar("link");
 				$tema_menuleft->href 	= URL_FILE_COLOR_STYLE_MENULEFT;
 				$tema_menuleft->rel 	= 'stylesheet';

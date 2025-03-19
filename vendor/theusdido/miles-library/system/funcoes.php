@@ -2183,6 +2183,7 @@ function addCampoFormatadoDB($dados,$entidade){
 			$dados[$_attr_moneyformatted] = $valorformatado;
 		}else if ($tipohtml == 4 || $tipohtml == 22){
 			$dados[$_attr_desc] = FieldAdditionalType::ForeignKey($value,$key,$entidade,$dados);
+			$dados[$_attr_obj] 	= FieldAdditionalType::OBJ($value,$key,$entidade,$dados);			
 		}else if ($tipohtml == 19){
 			$dados[$_attr_src] = FieldAdditionalType::SRC($value,$key,$entidade,$dados);
 		}else if ($tipohtml == 23){
