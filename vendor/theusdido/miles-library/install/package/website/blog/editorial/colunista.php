@@ -12,5 +12,5 @@
 	);
 
     $coluna = $entidade->addAttr(
-		array("nome" => "coluna" , "descricao" => "Coluna" , "tipohtml" => "lista_unica" , "chave_estrangeira" => installDependencia('website_blog_coluna','website/blog/editorial/coluna'))
+		array("nome" => "coluna" , "descricao" => "Coluna" , "tipohtml" => "lista_unica" , "chave_estrangeira" => installDependencia('website_blog_coluna','website/blog/editorial/coluna'), 'is_exibirgradedados' => 1)
 	);
