@@ -3,3 +3,34 @@
     float:right;
     margin-left:5px;
 }
+
+#view-componente .modal-header
+{
+    background-color: #FF8200 !important;
+    height: 50px;
+}
+
+#accordion-install-components .accordion-header .accordion-button
+{
+    background-color: #EEE;
+    color:#000;
+}
+
+.panel-menu-accordion-component
+{
+    border:none;
+}
+
+.accordion-button:focus {
+    z-index: 3;
+    outline: 0;
+    box-shadow: none;
+    background-color: #CCC !important;
+}
+
+#accordion-install-components .accordion-item
+{
+    border:none;
+    border-bottom: 3px solid #FFF;    
+    color:#000 !important;
+}

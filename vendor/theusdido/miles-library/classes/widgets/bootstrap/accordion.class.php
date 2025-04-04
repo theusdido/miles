@@ -28,47 +28,6 @@ class Accordion Extends Elemento {
 
 	/*  
 		* Método addItem
-	    * Data de Criacao: 06/11/2021
-	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
-		
-		Adiciona um item no accordion
-		@item: Litetal
-        @conteudo: Object/Literal
-	*/
-    // public function addItem($title = '',$item = null){
-    //     $control            = $this->indice++;
-    //     $headingControl     = 'heading' . $control;
-    //     $collapseControl    = 'collapse' . $control;
-
-    //     $panel              = tdc::o('panel');
-    //     $panel->head->role  = 'tab';
-    //     $panel->head->id    = $headingControl;
-
-	// 	$a 				    = tdc::html('a');
-	// 	$a->role 		    = 'button';
-    //     $a->data_toggle	    = 'collapse';
-	// 	$a->data_parent	    = '#' .  $this->_id;
-	// 	$a->href 		    = '#' . $collapseControl;
-	// 	$a->aria_expanded	= 'false';
-	// 	$a->aria_controls	= $control;
-	// 	$a->add($title);
-
-    //     $panel->title($a);
-        
-
-    //     $accordion                  = tdc::html('div');
-    //     $accordion->id              = $collapseControl;
-    //     $accordion->class           = 'panel-collapse collapse';
-    //     $accordion->aria_labelledby = $headingControl;
-    //     $accordion->role            = 'tabpanel';
-    //     $accordion->add($item);
-    //     $panel->body($accordion);
-
-    //     $this->add($panel);
-    // }
-
-	/*  
-		* Método addItem
 	    * Data de Criacao: 29/02/2024
 	    * Autor: @theusdido
 
@@ -76,8 +35,12 @@ class Accordion Extends Elemento {
 		@item: Litetal
         @conteudo: Object/Literal
 	*/
-    public function addItem($title = '',$content = null){
-        $control            = $this->indice++;
+    public function addItem($title = '',$content = null, $extra = [])
+    {
+        // Extras
+        $_is_show = isset($extra['is_show']) ? $extra['is_show'] ? 'show' : '' : '';
+
+        $control        = $this->indice++;
         $item           = tdc::html('div');
         $item->class    =  'accordion-item';
 
@@ -97,7 +60,7 @@ class Accordion Extends Elemento {
 
         $collapse                   = tdc::html('div');
         $collapse->id               = 'collapse-' . $control;
-        $collapse->class            = 'accordion-collapse collapse show';
+        $collapse->class            = 'accordion-collapse collapse ' . $_is_show;
         $collapse->data_bs_parent   = '#accordion';
 
         $body                       = tdc::html('div');
