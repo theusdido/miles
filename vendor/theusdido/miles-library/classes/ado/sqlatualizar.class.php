@@ -24,7 +24,7 @@ final class SqlAtualizar extends sqlInstrucao{
 		$this->sql = "UPDATE {$this->entidade} ";
 		
 		if ($this->colunaValor){
-			foreach ($this->colunaValor as $coluna=>$valor){
+			foreach ($this->colunaValor as $coluna => $valor){
 				$set[] = "{$coluna} = {$valor}";
 			}
 		}

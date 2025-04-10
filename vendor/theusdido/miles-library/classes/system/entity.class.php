@@ -485,6 +485,10 @@ class Entity {
 		$file_path		= $path_entidade . DIRECTORY_SEPARATOR . $file_name;
 		$data 			= json_encode($registro);
 
+		if (file_exists($file_path)){
+			unlink($file_path);
+		}
+		
 		tdFile::mkdir($path_entidade);
 		tdFile::add($file_path, $data);
 	}	

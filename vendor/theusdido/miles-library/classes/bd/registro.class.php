@@ -155,31 +155,12 @@ abstract class Registro {
 		try{
 			if ($conn = Transacao::get()){
 				Transacao::log($sql->getInstrucao());
-				$resultado 			= $conn->query($sql->getInstrucao());
+				$resultado 			= $conn->exec($sql->getInstrucao());
 				$status_operacao 	= $resultado;
 
 				//$conn_replicacao = Conexao::abrir('producao');
 				//$conn_replicacao->query($sql->getInstrucao());
 				
-				Monitory::add(
-					$this->isnew ? "I" : "U",
-					$this->getID(),
-					0,
-					$this->id
-				);
-
-				$_d = array();
-				if($this->is_save_json){
-					$_d = Entity::saveRegisterJSON($this->getEntidade(), $this->id);
-
-					if (_IS_REPLICATION_FIREBASE){
-						$firebase 		= new Firebase();
-						$registro_json 	= Entity::getRegisterJSON($this->getEntidade(), $this->id);
-						if (!empty($registro_json)){
-							$firebase->add(tdc::utf8($registro_json),$this->getEntidade() . '/' . $this->dados['id'] . '/');
-						}
-					}					
-				}
 			}else{
 				echo "Não há transação ativa: Registro Armazenar <br/>\n";
 				$status_operacao =  false;
@@ -192,7 +173,27 @@ abstract class Registro {
 				),'Classe Registro - Método Armazenar');
 			}
 			$status_operacao =  false;
-		}finally{
+		}finally{			
+
+			Monitory::add(
+				$this->isnew ? "I" : "U",
+				$this->getID(),
+				0,
+				$this->id
+			);
+			
+			$_d = array();
+			if($this->is_save_json){
+				$_d = Entity::saveRegisterJSON($this->getEntidade(), $this->id);
+
+				if (_IS_REPLICATION_FIREBASE){
+					$firebase 		= new Firebase();
+					$registro_json 	= Entity::getRegisterJSON($this->getEntidade(), $this->id);
+					if (!empty($registro_json)){
+						$firebase->add(tdc::utf8($registro_json),$this->getEntidade() . '/' . $this->dados['id'] . '/');
+					}
+				}
+			}		
 			return $status_operacao;
 		}
 	}
