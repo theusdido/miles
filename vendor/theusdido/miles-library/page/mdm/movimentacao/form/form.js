@@ -67,9 +67,9 @@ function load(){
             $("#motivo").val(_data.motivo);
 
             // Campos Checkbox
-            $('#exigirobrigatorio').attr('checked',_data.exigirobrigatorio == 0 ? false : true);
-            $('#exibirtitulo').attr('checked',_data.exibirtitulo == 0 ? false : true);
-            $('#exibirvaloresantigos').attr('checked',_data.exibirvaloresantigos == 0 ? false : true);
+            $('#exigirobrigatorio').attr('checked',getBoolCheckedValue(_data.exigirobrigatorio));
+            $('#exibirtitulo').attr('checked',getBoolCheckedValue(_data.exibirtitulo));
+            $('#exibirvaloresantigos').attr('checked',getBoolCheckedValue(_data.exibirvaloresantigos));
 
             $("#accordion_alterar,#accordion_status,#accordion_historico,#panel-colunas").show();
             $('select[id="atributo"]').load(session.urlmiles + '?controller=mdm/movimentacao&_entidade=' + _data.entidade + '&op=listar-atributos');

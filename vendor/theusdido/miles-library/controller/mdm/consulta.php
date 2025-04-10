@@ -44,16 +44,15 @@
                             <td>{$descricao}</td>
                             <td>{$entidade_descricao}</td>
                             <td align='center'>
+                                <button type='button' class='btn btn-primary' onclick='editarConsulta({$id})'>
+                                    <span class='fas fa-pencil-alt' aria-hidden='true'></span>
+                                </button>
+                            </td>							
+                            <td align='center'>
                                 <button type='button' class='btn btn-info' onclick='gerarConsulta({$id},$entidade_id);'>
                                     <span class='fas fa-code' aria-hidden='true'></span>
                                 </button>
                             </td>
-                            <td align='center'>
-                                <button type='button' class='btn btn-primary' onclick='editarConsulta({$id})'>
-                                    <span class='fas fa-pencil-alt' aria-hidden='true'></span>
-                                </button>
-                            </td>
-    
                             <td align='center' >
                                 <button type='button' class='btn btn-primary' onclick='excluirConsulta({$id})'>
                                     <span class='fas fa-trash-alt' aria-hidden='true'></span>

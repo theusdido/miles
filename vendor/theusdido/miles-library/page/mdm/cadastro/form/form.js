@@ -7,6 +7,7 @@ $('#criarempresa').attr('checked',false);
 $('#criarprojeto').attr('checked',false);
 $('#criarauth').attr('checked',false);
 $('#entidadeauxiliar').attr('checked',false);
+$('#controlarregistrousuario').attr('checked',false);
 
 var _registro_entidade = {};
 
@@ -81,6 +82,7 @@ $('#btn-salvar-cadastro').click(function(){
         criarprojeto                    :$('#criarprojeto').prop('checked'),
         criarempresa                    :$('#criarempresa').prop('checked'),
         criarauth                       :$('#criarauth').prop('checked'),
+        controlarregistrousuario        :$('#controlarregistrousuario').prop('checked'),
         tipoaba                         :$('input[type=radio][name=tipoaba]:checked').val()
     }
 
@@ -145,20 +147,7 @@ function load(){
             $('#carregarlibjavascript')         .attr('checked',getBoolCheckedValue(_data.carregarlibjavascript));
             $('#exibircabecalho')               .attr('checked',getBoolCheckedValue(_data.exibircabecalho));
             $('#entidadeauxiliar')              .attr('checked',getBoolCheckedValue(_data.entidadeauxiliar));            
+            $('#controlarregistrousuario')      .attr('checked',getBoolCheckedValue(_data.controlarregistrousuario));
         }
     });
-}
-
-function getBoolCheckedValue(_value)
-{
-    switch(_value){
-        case null:
-        case undefined:
-        case '':
-        case 0:
-        case 'false':
-            return false;
-        default:
-            return true;
-    }
 }

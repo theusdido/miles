@@ -675,13 +675,15 @@ function criarEntidade(
 	$carregarlibjavascript = 1, #13
 	$criarinativo = true, #14
 	$tipoaba = 'tabs', #15
-	$entidadeauxiliar = false #16
+	$entidadeauxiliar = false, #16
+	$controlarregistrousuario = false #17
 ){
 	$prefixo 			= getSystemPREFIXO();
 	$nome 				= $prefixo . str_replace($prefixo,'',$nome);
 	$descricao 			= tdc::utf8($descricao);
 	$campodescchave 	= $campodescchave == '' ? 0 : $campodescchave;
 	$entidadeauxiliar	= $entidadeauxiliar ? 'true' : 'false';
+	$controlarregistrousuario = $controlarregistrousuario ? 'true' : 'false';
 
 	$sqlExisteEntidade 		= "SELECT id,nome FROM " . ENTIDADE . " WHERE nome='{$nome}';";
 	$queryExisteEntidade 	= $conn->query($sqlExisteEntidade);
@@ -710,7 +712,8 @@ function criarEntidade(
 			registrounico,
 			carregarlibjavascript,
 			tipoaba,
-			entidadeauxiliar
+			entidadeauxiliar,
+			controlarregistrousuario
 		) VALUES (
 		 	".$entidade.",
 			'{$nome}',
@@ -724,7 +727,8 @@ function criarEntidade(
 			{$registrounico},
 			{$carregarlibjavascript},
 			'{$tipoaba}',
-			{$entidadeauxiliar}
+			{$entidadeauxiliar},
+			{$controlarregistrousuario}
 		);";
 	}else{
 		$entidade = $linhaExisteEntidade["id"];
@@ -740,7 +744,8 @@ function criarEntidade(
 				registrounico = {$registrounico},
 				carregarlibjavascript={$carregarlibjavascript},
 				tipoaba='{$tipoaba}',
-				entidadeauxiliar={$entidadeauxiliar}
+				entidadeauxiliar={$entidadeauxiliar},
+				controlarregistrousuario={$controlarregistrousuario}
 			WHERE id = {$entidade};
 		";
 	}

@@ -30,9 +30,15 @@ class Movimentation {
 		$_movimentacao 		= tdc::ru(MOVIMENTACAO,$_id);
 		
 		return json_encode(array(
-            'id'            => $_movimentacao->id,
-            'descricao'     => $_movimentacao->descricao,
-            'classe'        => $_movimentacao->classe
+            'id'            			=> $_movimentacao->id,
+            'descricao'     			=> $_movimentacao->descricao,
+            'classe'        			=> $_movimentacao->classe,
+			'entidade'      			=> $_movimentacao->entidade,
+			'motivo'        			=> $_movimentacao->motivo,
+			'displaybutton' 			=> $_movimentacao->displaybutton,
+			'exibirobrigatorio' 		=> $_movimentacao->exigirobrigatorio,
+			'exibirtitulo' 				=> $_movimentacao->exibirtitulo,
+			'exibirvaloresantigos' 		=> $_movimentacao->exibirvaloresantigos
         ));
 	}
 }

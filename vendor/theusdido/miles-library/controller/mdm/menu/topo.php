@@ -217,7 +217,7 @@
         break;
         case 'carregamovimentacao':
             echo '<option value="0">-- Selecione --</option>';
-            $sql = "SELECT b.id,a.nome,b.descricao,a.pacote FROM ".PREFIXO."entidade a,".PREFIXO."movimentacao b WHERE a.id = b.entidade ORDER BY a.id DESC;";
+            $sql = "SELECT b.id,a.nome,b.descricao,a.pacote FROM ".ENTIDADE." a,".MOVIMENTACAO." b WHERE a.id = b.entidade ORDER BY a.id DESC;";
             $query = $conn->query($sql);
             While($linha = $query->fetch()){
                 $descricao = tdc::utf8($linha["descricao"]);

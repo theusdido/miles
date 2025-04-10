@@ -50,7 +50,6 @@ class Modal Extends Elemento {
 			$btn_fechar->data_dismiss 		= "modal";
 			$btn_fechar->data_bs_dismiss 	= "modal";
 			$btn_fechar->aria_hidden 		= "true";
-			$btn_fechar->add("&times;");
 			$this->header->add($btn_fechar);
 		}
 

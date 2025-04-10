@@ -70,6 +70,7 @@ function load(){
         complete:function(_res){
             let _ret    = _res.responseJSON;
             let _data   = JSON.parse(_ret._data);
+            console.log(_data);
             
             setMonitorStorage('consulta',_data);
 
@@ -80,11 +81,11 @@ function load(){
             $('#paginaedicao')  .val(_data.paginaedicao);
 
             // Campos Checkbox
-            $('#exibirbotaoeditar')     .attr('checked',_data.exibirbotaoeditar == 0 ? false : true);
-            $('#exibirbotaoexcluir')    .attr('checked',_data.exibirbotaoexcluir == 0 ? false : true);
-            $('#exibirbotaoemmassa')    .attr('checked',_data.exibirbotaoemmassa == 0 ? false : true);
-            $('#exibircolunaid')        .attr('checked',_data.exibircolunaid == 0 ? false : true);
-            $('#adicionaridfiltro')     .attr('checked',_data.adicionaridfiltro == 0 ? false : true);
+            $('#exibirbotaoeditar')     .attr('checked',getBoolCheckedValue(_data.exibirbotaoeditar));
+            $('#exibirbotaoexcluir')    .attr('checked',getBoolCheckedValue(_data.exibirbotaoexcluir));
+            $('#exibirbotaoemmassa')    .attr('checked',getBoolCheckedValue(_data.exibirbotaoemmassa));
+            $('#exibircolunaid')        .attr('checked',getBoolCheckedValue(_data.exibircolunaid));
+            $('#adicionaridfiltro')     .attr('checked',getBoolCheckedValue(_data.adicionaridfiltro));
 
             $("#valor").val("");
             atualizarListaFiltro(_consulta);
@@ -146,7 +147,7 @@ function novoFiltroInicial(){
     $("#modalCadastroFiltroInicial").modal({
         backdrop:false
     });
-    $("#modalCadastroFiltro").modal('show');
+    $("#modalCadastroFiltroInicial").modal('show');
     $("#form-filtro #consulta,#form-filtro #idfiltro,#form-filtro #legenda").val("");
     $("#form-filtro #operador").val("=");
     $("#form-filtro #atributo").val($("#form-filtro #atributo option:first").val());

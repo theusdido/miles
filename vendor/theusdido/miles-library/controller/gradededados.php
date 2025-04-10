@@ -130,21 +130,30 @@
 			$f 				= explode("^",$ft);
 			$campo_a 		= explode(" ",$f[0]);
 			$camponome 		= $campo_a[0];
+			$valor_			= $f[2];
+
+			if (isset($f[3])){
+				switch($f[3]){
+					case 'int':
+						$valor_ = (int)$f[2];
+					break;
+				}
+			}
 			
 			if ($f[1] == "%" && $f[3] == "varchar"){
-				$sql->addFiltro($camponome,"like",'%' . tdc::utf8($f[2],2) . '%');
-				$sqlTotal->addFiltro($camponome,"like",'%' . tdc::utf8($f[2],2) . '%');
+				$sql->addFiltro($camponome,"like",'%' . tdc::utf8($valor_,2) . '%');
+				$sqlTotal->addFiltro($camponome,"like",'%' . tdc::utf8($valor_,2) . '%');
 			}else if ($f[3] == "datetime"){
-				$dt = explode(" ",$f[2]);
-				$sql->addFiltro($camponome,$f[1],$f[2]);
-				$sqlTotal->addFiltro($camponome,$f[1],$f[2]);
+				$dt = explode(" ",$valor_);
+				$sql->addFiltro($camponome,$f[1],$valor_);
+				$sqlTotal->addFiltro($camponome,$f[1],$valor_);
 			}else if ($f[1] == ","){
-				$sql->addFiltro($camponome,"in",explode(",",$f[2]));
-				$sqlTotal->addFiltro($camponome,"in",explode(",",$f[2]));
+				$sql->addFiltro($camponome,"in",explode(",",$valor_));
+				$sqlTotal->addFiltro($camponome,"in",explode(",",$valor_));
 			}else if ($f[1] == "-"){
 
-				$filtroNulo1 = tdc::ft($camponome,"is" . ($f[2]==1?" not ":""),null);
-				$filtroNulo2 = tdc::ft($camponome,($f[2]==1?" <> ":" = "),'');
+				$filtroNulo1 = tdc::ft($camponome,"is" . ($valor_==1?" not ":""),null);
+				$filtroNulo2 = tdc::ft($camponome,($valor_==1?" <> ":" = "),'');
 
 				$sqlFiltrosNulo = tdClass::Criar("sqlcriterio");
 				$sqlFiltrosNulo->add($filtroNulo1);
@@ -153,11 +162,18 @@
 				$sql->add($sqlFiltrosNulo);
 				$sqlTotal->add($sqlFiltrosNulo);
 			}else if ($f[1] == "!"){
-				$sql->addFiltro($camponome,'<>',$f[2]);
-				$sqlTotal->addFiltro($camponome,'<>',$f[2]);				
+				$filtroNulo = tdc::ft($camponome,"IS",NULL);
+				$filtroValor = tdc::ft($camponome,'<>',$valor_);
+
+				$sqlFiltrosNulo = tdClass::Criar("sqlcriterio");
+				$sqlFiltrosNulo->add($filtroNulo);
+				$sqlFiltrosNulo->add($filtroValor,OU);
+
+				$sql->add($sqlFiltrosNulo);
+				$sqlTotal->add($sqlFiltrosNulo);
 			}else{
-				$sql->addFiltro($camponome,$f[1],$f[2]);
-				$sqlTotal->addFiltro($camponome,$f[1],$f[2]);
+				$sql->addFiltro($camponome,$f[1],$valor_);
+				$sqlTotal->addFiltro($camponome,$f[1],$valor_);
 			}		
 		}
 	}
@@ -192,6 +208,18 @@
 			array_push($ids,$l->regfilho);
 		}
 		$sql->addFiltro("id","in",$ids);
+	}
+
+	$user_id 	= Session::get()->userid;
+	$user_group = Session::get()->usergroup;
+	if (
+		$entidade->contexto->controlarregistrousuario &&
+		(
+			$user_group != 1 && $user_group != 2
+		)
+	)
+	{
+		$sql->addFiltro("usuario","=",$user_id);
 	}
 
 	$dataset 		= tdClass::Criar("repositorio",array($entidade->contexto->nome))->carregar($sql);

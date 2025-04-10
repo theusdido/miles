@@ -97,6 +97,7 @@
             $carregarlibjavascript		= $_POST["carregarlibjavascript"];
             $tipoaba					= isset($_POST["tipoaba"])?$_POST["tipoaba"]:'';
             $entidadeauxiliar			= bool_r($_POST["entidadeauxiliar"]);
+            $controlarregistrousuario   = bool_r($_POST["controlarregistrousuario"]);
 
             $entidade_id = criarEntidade(
                 $conn,
@@ -115,7 +116,8 @@
                 $carregarlibjavascript,
                 $criarinativo = true,
                 $tipoaba = 'tabs',
-                $entidadeauxiliar
+                $entidadeauxiliar,
+                $controlarregistrousuario
             );
 
             tdc::wj(['id' => $entidade_id , '_data' => Entity::getJSON($entidade_id)]);

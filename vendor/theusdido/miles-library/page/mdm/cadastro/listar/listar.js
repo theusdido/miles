@@ -55,7 +55,6 @@ function listarEntidades(){
         },
         complete:function(res){
             $('#table-lista-entidade tbody').html(res.responseText);
-            $('#entidade-termo').val(termo_buscar_cadastro);
         }
     });
 

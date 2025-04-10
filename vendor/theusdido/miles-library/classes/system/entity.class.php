@@ -424,6 +424,7 @@ class Entity {
 		$filtro_relacionamento	= tdc::f();
 		$filtro_relacionamento->addFiltro("pai","=",$_entidade['id']);
 		$_entidadeauxiliar = $_entidade['entidadeauxiliar'] == 1 ? 'true' : 'false';
+		$_controlarregistrousuario = $_entidade['controlarregistrousuario'] == 1 ? 'true' : 'false';
 		
 		return json_encode(array(
 			'id' 								=> $_entidade['id'],
@@ -441,7 +442,8 @@ class Entity {
 			'nomecompleto' 						=> (($_entidade['pacote']==""?"":$_entidade['pacote'].".")).$_entidade['nome'],
 			'atributos' 						=> tdc::da(ATRIBUTO,$filtro_atributo),
 			'relacionamentos' 					=> tdc::da(RELACIONAMENTO,$filtro_relacionamento),
-			'entidadeauxiliar' 					=> $_entidadeauxiliar
+			'entidadeauxiliar' 					=> $_entidadeauxiliar,
+			'controlarregistrousuario'			=> $_controlarregistrousuario
 		));
 	}
 

@@ -129,7 +129,7 @@ function carregarEntidade(valor){
             $("#entidade").load(session.urlmiles + "?controller=mdm/menu/topo&op=carregarelatorio");
         break;
         case 'movimentacao':
-            $("#entidade").load(session.urlmiles + "?controller=mdm/menu/topo&op=carregarelatorio");
+            $("#entidade").load(session.urlmiles + "?controller=mdm/menu/topo&op=carregamovimentacao");
         break;
         case 'personalizado':
             configuracaoPersonalizado();

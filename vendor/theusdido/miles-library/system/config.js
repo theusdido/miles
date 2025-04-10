@@ -83,8 +83,8 @@ var is_session_active = false;
 var timeout_session;
 let inactivityTime = function () {
 
-    // 5 minutos em milissegundos
-    const timeout = 10 * 60 * 1000;
+    // 30 minutos em milissegundos
+    const timeout = 30 * 60 * 1000;
 
     // Função para redefinir o temporizador
     const resetTimer = function() {

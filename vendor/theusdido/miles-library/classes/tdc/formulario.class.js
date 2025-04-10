@@ -1389,7 +1389,7 @@ tdFormulario.prototype.setRegistroUnico = function(){
 	}
 }
 
-tdFormulario.prototype.setConsulta = function(id_consulta){
+tdFormulario.prototype.setConsulta = async function(id_consulta){
 
 	this.carregarListas();
 	this.flatCampos();
@@ -1404,13 +1404,14 @@ tdFormulario.prototype.setConsulta = function(id_consulta){
 		$("#form-consulta .form-control[atributo="+ft.atributo+"]").attr("data-tipo",td_atributo[ft.atributo].tipo);
 	}
 
-	_gradedados_mov_current = this.getGrade();
-
+	var _gradedados_mov_current = this.getGrade();
+	
 	// Filtros Iniciais
 	const filtros_iniciais_consulta = () => {
 		consulta.filtros_iniciais.forEach(function(ft){
+			if (typeof ft === 'string') ft = JSON.parse(ft);
 			this.addFiltro(ft.atributo,ft.operador,ft.valor);
-		},_gradedados_mov_current);
+		},_gradedados_mov_current);	
 	}
 	
 	$("#pesquisa-consulta").click(function(){
@@ -1430,7 +1431,7 @@ tdFormulario.prototype.setConsulta = function(id_consulta){
 		_gradedados_mov_current.reload();
 	});
 
-	filtros_iniciais_consulta();
+	filtros_iniciais_consulta();	
 
 	_gradedados_mov_current.consulta 		= id_consulta;
 	_gradedados_mov_current.funcionalidade	= 'consulta';

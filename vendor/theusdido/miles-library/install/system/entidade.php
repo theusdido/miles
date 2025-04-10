@@ -30,3 +30,4 @@
 	criarCampoDicionario($conn,$entidade,"tipoaba","varchar",5,1,7);
 	criarCampoDicionario($conn,$entidade,"tipoaba","varchar",5,1,7);
 	criarCampoDicionario($conn,$entidade,"entidadeauxiliar","boolean",false,1,7);
+	criarCampoDicionario($conn,$entidade,"controlarregistrousuario","boolean",false,1,7);

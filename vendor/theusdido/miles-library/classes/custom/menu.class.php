@@ -58,7 +58,8 @@ class Menu {
 				"filhos" 		=> $load_filhos ? Menu::filhos( $id ) : [],
 				"path"			=> isset($linha["path"]) ? $linha["path"] : '',
 				"icon"			=> isset($linha["icon"]) ? $linha["icon"] : '',
-				"coluna" 		=> isset($linha["coluna"]) ? $linha["coluna"] : 0
+				"coluna" 		=> isset($linha["coluna"]) ? $linha["coluna"] : 0,
+				"conceito"		=> $linha["conceito"]
 			);
 		}
 		return $retorno;

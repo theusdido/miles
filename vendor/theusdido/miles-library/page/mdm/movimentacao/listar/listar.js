@@ -1,4 +1,3 @@
-var _movimentacao = 0;
 $(document).ready(function(){
     listarMovimentacao();
 });
