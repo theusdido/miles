@@ -46,19 +46,19 @@ class Aba Extends Elemento {
 		$id 			= $indiceAba . "-" . $this->contexto . "-conteudo-aba" . $this->indice;
 		$li 			= tdClass::Criar("li");
 		$li->role 		= "presentation";
-		$li->class 		= 'nav-item';
 
-		if ($classABA != ''){
-			$li->class = $classABA;
-		}
-
+		$class_active = '';
+		$class_show = '';
 		if ($this->indice == 0){
-			$li->class 			= " active";
-			$li->aria_current	= "page";
+			$class_active 			= " active ";
+			$class_show 			= " show ";	
+			$li->aria_current		= "page";
 		}
+
+		$li->class 				= "nav-item $classABA $class_active";
 
 		$a 						= tdClass::Criar("hyperlink");
-		$a->class				= 'nav-link';
+		$a->class				= 'nav-link' . $class_active;
 		$a->add($item);
 		$a->href				= '#' . $id;
 		$a->data_toggle			= "tab";
@@ -73,7 +73,7 @@ class Aba Extends Elemento {
 		$div 					= tdClass::Criar("div");
 		$div->id 				= $id;
 		$div->role 				= "tabpanel";
-		$div->class 			= "tab-pane fade in ";
+		$div->class 			= "tab-pane fade in $class_active $class_show";
 		$div->aria_labelledby	= $id;
 		$div->add($conteudo);
 

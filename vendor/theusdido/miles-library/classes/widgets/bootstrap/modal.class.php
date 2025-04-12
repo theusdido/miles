@@ -17,6 +17,7 @@ class Modal Extends Elemento {
 	private $footer = "";
 	public $tamanho = "";
 	public $nome 	= "";
+	public $is_btn_close_white = false;
 	/*  
 		* Método construct 
 	    * Data de Criacao: 16/03/2015
@@ -29,7 +30,7 @@ class Modal Extends Elemento {
 		$this->class 				= "modal fade";
 		$this->tabindex 			= "-1";
 		$this->role 				= "dialog";
-		$this->aria_labelledby 		= "myModalLabel";
+		$this->aria_labelledby 		= "tdMyModalLabel";
 		$this->aria_hidden 			= "true";
 	}	
 	public function addHeader($titulo="",$bloco=null){
@@ -37,16 +38,17 @@ class Modal Extends Elemento {
 		$this->header->class 	= "modal-header";
 
 		if ($titulo != ""){
-			$h = tdClass::Criar("h",array(4));
-			$h->class = "modal-title";
-			$h->id = "myModalLabel";
+			$h 			= tdClass::Criar("h",array(5));
+			$h->class 	= "modal-title";
+			$h->id 		= "tdMyModalLabel";
 			$h->add($titulo);
 			$this->header->add($h);
 		}		
 		
-		if ($this->exibirbotaofechar){
+		if ($this->exibirbotaofechar){			
 			$btn_fechar 					= tdClass::Criar("button");
-			$btn_fechar->class 				= "close btn-close";
+			$btn_fechar_color 				= $this->is_btn_close_white?"btn-close-white":'';
+			$btn_fechar->class 				= "close btn-close " . $btn_fechar_color;
 			$btn_fechar->data_dismiss 		= "modal";
 			$btn_fechar->data_bs_dismiss 	= "modal";
 			$btn_fechar->aria_hidden 		= "true";

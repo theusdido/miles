@@ -54,17 +54,7 @@ function anexar(arquivo,elemento_retorno){
 		}
 	});
 }
-function loader(elemento_retorno){
-	$(elemento_retorno).html("");
-	$(elemento_retorno).html(
-		'<div style="width:100%;margin:75px auto">' +
-			'<center>' +
-				'<img width="32" align="middle" src="'+session.urlloading+'">' +
-				'<p class="text-muted">Aguarde</p>' +
-			'</center>' +	
-		'</div>'
-	);
-}
+
 function isNumeric(str){
   var er = /^[0-9]+$/;
   return (er.test(str));
