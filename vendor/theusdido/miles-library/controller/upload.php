@@ -22,11 +22,12 @@
 	$bootstrap->href 	= URL_LIB . 'bootstrap/3.3.1/css/bootstrap.css';
 	$bootstrap->rel 	= 'stylesheet';
 	
-	
-	$fontAwesome 				= tdClass::Criar("script");
-	$fontAwesome->src 			= "https://kit.fontawesome.com/ea948eea7a.js";
-	$fontAwesome->crossorigin 	= "anonymous";
-	$fontAwesome->mostrar();
+	if (!$is_json_return){
+		$fontAwesome 				= tdClass::Criar("script");
+		$fontAwesome->src 			= "https://kit.fontawesome.com/ea948eea7a.js";
+		$fontAwesome->crossorigin 	= "anonymous";
+		$fontAwesome->mostrar();
+	}
 	
 	$tema_default 			= tdClass::Criar("link");
 	$tema_default->href 	= URL_SYSTEM_THEME.'geral.css';

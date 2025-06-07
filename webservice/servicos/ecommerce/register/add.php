@@ -12,7 +12,11 @@
 	$numero 			= $_data['numero'];
 	$uf 				= $_data['estado'];
 	$senha 				= md5($_data['senha']);
-    $csenha             = md5($_data['csenha']);
+
+    if (isset($_data['csenha'])){
+        $csenha             = md5($_data['csenha']);
+    }
+    
 
     // Cidade
     $cidade 	    = $_data['cidade'];
@@ -98,13 +102,35 @@
         return false;
     }
 
-    if ($senha != $csenha){
-        echo 'Senhas não coincidem';
-        return false;
+    if (isset($_data['csenha'])){
+        if ($senha != $csenha){
+            echo 'Senhas não coincidem';
+            return false;
+        }
     }
 
     $idcliente  = getProxId("ecommerce_cliente",$conn);
-    $sql        = "INSERT INTO td_ecommerce_cliente (id,nome,cpf,email,telefone,senha,inativo) VALUES (".$idcliente.",'".$nome."','".$cpf."','".$email."','".$telefone."','{$senha}',0);";
+    $sql        = "
+        INSERT INTO td_ecommerce_cliente 
+        (
+            id,
+            tipopessoa,
+            nome,
+            cpf,
+            email,
+            telefone,
+            senha,
+            inativo
+        ) VALUES (
+            ".$idcliente.",
+            ".$tipo.",
+            '".$nome."',
+            '".$cpf."',
+            '".$email."',
+            '".$telefone."',
+            '{$senha}',
+            0
+        );";
     $query = $conn->query($sql);
     if ($query){
 

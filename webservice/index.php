@@ -127,7 +127,8 @@
 
 		// Retorna a requisição em formatado de Array
 		#echo json_encode( [$retorno] );
-		$retorno['status'] 	= 'success';
+		if (!isset($retorno['status']))
+			$retorno['status'] 	= 'success';
 
 	}catch(Exeception $e){
 		$retorno['status'] 	= 'error';

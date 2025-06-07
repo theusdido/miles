@@ -13,5 +13,8 @@
     $_criterio->onlyActive();
     $_criterio->order('ordem');
 
-    $retorno['data'] = tdc::da($_entidade,$_criterio);
-    
+    try{
+        $retorno['data'] = tdc::da($_entidade,$_criterio);
+    }catch(Exception $e){
+        $retorno['data'] = [];
+    }

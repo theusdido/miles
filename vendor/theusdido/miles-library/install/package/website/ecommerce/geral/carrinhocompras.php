@@ -32,7 +32,7 @@
 	$carrinho_qtdetotaldeitens 		= criarAtributo($conn,$entidadeID,"qtdetotalitens","Qtde Total de Itens","int",0,1,25,0,0,0,"");
 	$carrinho_valorfrete 			= criarAtributo($conn,$entidadeID,"valorfrete","Valor Frete","float",0,1,13,1,0,0,"");
 	$carrinho_transportadora 		= criarAtributo($conn,$entidadeID,"transportadora","Transportadora","int",0,1,22,0,installDependencia("ecommerce_transportadora","package/website/ecommerce/envio/transportadora"));
-	$carrinho_cep					= criarAtributo($conn,$entidadeID,"cep","CEP","varchar","10",0,9,1,0,0,"");
+	$carrinho_cep					= criarAtributo($conn,$entidadeID,"cep","CEP","varchar",10,1,9,0,0,0,"");
 	$carrinho_is_retirar_loja 		= criarAtributo($conn,$entidadeID,"is_retirar_loja","Retirar na loja ?","tinyint",0,1,7,0,0,0,'',1,0);
 
 	// Criando Acesso

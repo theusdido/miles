@@ -564,7 +564,7 @@ class Pagina Extends Html {
 		}
 		if ($this->showJSBootBox){
 			$bootbox_js 			= tdClass::Criar("script");
-			$bootbox_js->src 		= URL_LIB . "jquery/jquery-bootbox.js";
+			$bootbox_js->src 		= URL_LIB . "jquery/jquery-bootbox-6.js";
 			$bootbox_js->language 	= "JavaScript";
 			$this->body->add($bootbox_js);
 		}	

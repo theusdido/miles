@@ -218,7 +218,7 @@ class Entity {
 								$tipo 		= 'smallint';
 								$tamanho  	= 0;
 							break;
-							case 'areatext0':
+							case 'areatexto':
 								$tipohtml	= 14;
 								$tipo 		= 'text';
 								$tamanho  	= 0;

@@ -33,7 +33,7 @@
             $_SESSION["autenticado"] 	= 1;
             $_SESSION['token_access']   = md5(date('YmdHis') . $customer_id);
 
-            $endereco                   = new tdEcommerceEndereco();
+            $endereco                   = new Endereco();
             $endereco->setCliente($customer_id);
             $retorno['status']          = 'success';
             $retorno['msg']             = 'Autenticação realizada com sucesso';

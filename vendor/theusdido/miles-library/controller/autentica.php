@@ -23,7 +23,9 @@
 
 				$_userid		= $dataset[0]->id;
 				$_username		= $dataset[0]->nome;
+				$_usergroup		= $dataset[0]->grupousuario;
 				$access_token	= md5( $login . $senha . date('YmdHmi') );
+				$_is_embedded	= false;				
 
 				Session::append('autenticado'				,true);
 				Session::append('userid'					,$_userid);
@@ -31,7 +33,12 @@
 				Session::append('empresa'					,1);
 				Session::append('permitirexclusao'			,$dataset[0]->permitirexclusao==""?0:$dataset[0]->permitirexclusao);
 				Session::append('permitirtrocarempresa'		,$dataset[0]->permitirtrocarempresa==""?0:$dataset[0]->permitirtrocarempresa);
-				Session::append('usergroup'					,$dataset[0]->grupousuario);
+				Session::append('usergroup'					,$_usergroup);
+
+				if ($_usergroup != 1 && $_usergroup != 2){
+					$_is_embedded = true;					
+				}
+				Session::append('is_embedded',$_is_embedded);
 				
 				header('x-acesso-token: ' . $access_token);
 				$retorno = array(

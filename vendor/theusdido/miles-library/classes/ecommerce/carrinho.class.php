@@ -8,10 +8,11 @@
 
 		public function __construct(){
 			if ($this->exists()){
-				$this->dados = tdc::d('td_ecommerce_carrinhocompras',$this->criterio)[0];
+			 	$this->dados = tdc::d('td_ecommerce_carrinhocompras',$this->criterio)[0];
 			}else{
-				$this->dados = tdc::p('td_ecommerce_carrinhocompras');
-				$this->setCreateAt();
+			 	$this->dados 				= tdc::p('td_ecommerce_carrinhocompras');
+			 	$this->dados->sessionid 	= $this->getSessionId();
+			 	$this->setCreateAt();
 			}
 
 			$this->save();

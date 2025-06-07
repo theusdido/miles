@@ -940,6 +940,7 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
 		let id 				= $(this).attr("reg");
 		let funcionalidade 	= $(this).data("funcionalidade");
 		let indice_form		= funcionalidade + '_' + entidadeid;
+		debugger;
 		switch(funcionalidade){			
 			case 'cadastro':
 				formulario[indice_form].registro_id = id;
@@ -979,6 +980,14 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
 					carregarScriptCRUD('editarformulario',entidadeid,id);
 				}
 			break;
+			default:
+				carregar(session.folderprojectfiles + "files/cadastro/"+entidadeid+"/"+td_entidade[entidadeid].nomecompleto+".html",'#conteudoprincipal',function(){
+					carregarScriptCRUD('editarformulario',entidadeid,id,'#conteudoprincipal',{
+						is_registrounico:false,
+						is_init:true,
+						funcionalidade:'consulta'
+					});
+				});
 		}
 	});
 

@@ -227,7 +227,8 @@ header, article{
 	background-color: #F0F0F0;
 }
 
-#info , #userinfo {
+#info , #userinfo, #dashboard_header
+{
 	border-bottom:2px solid #FF8200;
 }
 

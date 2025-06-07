@@ -51,6 +51,7 @@
             'items' => tdc::da('td_ecommerce_carrinhoitem',tdc::f('carrinho','=',$_id_card))
         )
     );
+
     $retorno['status']  = 'success';
     $retorno['msg']     = $_msg_retorno;
     $retorno['data']    = $_data;

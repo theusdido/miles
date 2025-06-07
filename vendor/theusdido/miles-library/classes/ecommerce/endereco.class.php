@@ -10,7 +10,22 @@
 */	
 class Endereco {
 	
-	private $entidade = "td_ecommerce_endereco";
+	private $entidade 			= "td_ecommerce_endereco";
+	private $cliente 			= 0;
+	private $entidadecliente	= 0;
+	private $entidadeendereco 	= 0;
+
+	public function __construct(){
+		global $_entidade_cliente_id;
+		global $_entidade_endereco_id;
+
+		$ent_cliente_id = isset($_entidade_cliente_id) ? $_entidade_cliente_id : getEntidadeId("td_ecommerce_cliente");
+		$this->setEntidadeCliente($ent_cliente_id);
+		
+		$ent_endereco_id = isset($_entidade_endereco_id) ? $_entidade_endereco_id : getEntidadeId("td_ecommerce_endereco");
+		$this->setEntidadeEndereco($ent_endereco_id);
+	}
+
 	/* 
 		* Método addCidade 
 	    * Data de Criacao: 03/04/2021
@@ -98,8 +113,8 @@ class Endereco {
 		global $conn;
 		$sql = "
 			SELECT 1 FROM td_lista
-			WHERE entidadepai = ".$this->entidadecliente."
-			AND entidadefilho = ".$this->entidadeendereco."
+			WHERE entidadepai = ".$this->getEntidadeCliente()."
+			AND entidadefilho = ".$this->getEntidadeEndereco()."
 			AND regpai = ".$this->cliente."
 		;";
 		$query = $conn->query($sql);
@@ -158,11 +173,11 @@ class Endereco {
 			global $conn;
 			$sql = "
 				SELECT regfilho FROM td_lista
-				WHERE entidadepai = ".$this->entidadecliente."
-				AND entidadefilho = ".$this->entidadeendereco."
-				AND regpai = ".$this->cliente."
-				LIMIT 1
-			;";
+				WHERE entidadepai = ".$this->getEntidadeCliente()."
+				AND entidadefilho = ".$this->getEntidadeEndereco()."
+				AND regpai = ".$this->getCliente()."
+				LIMIT 1;
+			";
 			$query = $conn->query($sql);
 			if ($query->rowCount() > 0){
 				$linha = $query->fetch();
@@ -220,5 +235,29 @@ class Endereco {
 			$linha_endereco	= $logradouro . ', ' . $numero . '. '.$complemento . '. ' . $cidade . ' / '.$uf . ' | Cep.: ' . $cep;
 		}
 		return $linha_endereco;
+	}
+
+	public function setCliente($cliente){
+		$this->cliente = $cliente;
+	}
+
+	public function getCliente(){
+		return $this->cliente;
+	}
+
+	public function setEntidadeCliente($entidadecliente){
+		$this->entidadecliente = $entidadecliente;
+	}
+
+	public function getEntidadeCliente(){
+		return $this->entidadecliente;
+	}
+
+	public function setEntidadeEndereco($entidadeendereco){
+		$this->entidadeendereco = $entidadeendereco;
+	}
+
+	public function getEntidadeEndereco(){
+		return $this->entidadeendereco;
 	}
 }

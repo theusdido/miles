@@ -125,7 +125,12 @@
 
         case 'listar-campos':
             $entidade   = tdc::r('entidade');
-            $sql        = "SELECT id,nome,descricao,ordem FROM ".ATRIBUTO." WHERE entidade = {$entidade} ORDER BY ordem ASC";
+            $sql        = "
+                SELECT id,nome,descricao,ordem 
+                FROM ".ATRIBUTO." 
+                WHERE entidade = {$entidade} 
+                AND (additionfield IS NULL OR additionfield = 0)
+                ORDER BY ordem ASC;";
             $query      = $conn->query($sql);
             foreach ($query->fetchAll() as $linha){
                 $id         = $linha["id"];

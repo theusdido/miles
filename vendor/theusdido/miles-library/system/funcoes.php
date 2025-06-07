@@ -1046,7 +1046,7 @@ function criarAtributo(
 	}
 
 	// Adicionar colunas auxiliares para cada tipo de atributo
-	$new_field_adicional_name 	= $new_field_adicional_desc = '';
+	$new_field_adicional_name 		= $new_field_adicional_desc = '';
 	$new_field_adicional_name_obj 	= $new_field_adicional_desc_obj = '';
 
 	$original_field_name 		= FieldAdditionalType::originalFieldAdditionalName($nome);
@@ -1096,6 +1096,16 @@ function criarAtributo(
 			$legenda,
 			true
 		);
+
+		if ($nome == 'produto'){
+			var_dump($new_field, $id);
+		}		
+
+		// Adicionar o campo de referencial para o campo adicional
+		$_new_field_addtional_obj = tdc::a($new_field);
+		$_new_field_addtional_obj->additionfield = $id;
+		$_new_field_addtional_obj->armazenar();
+
 		if ($tipohtml == 4 || $tipohtml == 22){
 			$new_field_obj = criarAtributo(
 				$conn,
@@ -1114,7 +1124,12 @@ function criarAtributo(
 				$readonly,
 				$legenda,
 				true
-			);			
+			);
+
+			// Adicionar o campo de referencial para o campo adicional
+			$_new_field_addtional_obj = tdc::a($new_field_obj);
+			$_new_field_addtional_obj->additionfield = $id;
+			$_new_field_addtional_obj->armazenar();
 		}
 	}
 	
@@ -2170,6 +2185,9 @@ function addCampoFormatadoDB($dados,$entidade){
 		$tipohtml 		= getTipoHTML($key,$entidade);
 		$linha 			= array( $key => $value );
 
+		// Não processa campos adicionais
+		if (FieldAdditionalType::isField($key)) continue;
+
 		// Converte os acentos, afeta o método tdc::dj(), tdc::da e tdc::pa
 		$dados[$key] = isutf8($value) ? $value  : tdc::utf8($value);
 
@@ -2188,7 +2206,7 @@ function addCampoFormatadoDB($dados,$entidade){
 			$dados[$_attr_moneyformatted] = $valorformatado;
 		}else if ($tipohtml == 4 || $tipohtml == 22){
 			$dados[$_attr_desc] = FieldAdditionalType::ForeignKey($value,$key,$entidade,$dados);
-			$dados[$_attr_obj] 	= FieldAdditionalType::OBJ($value,$key,$entidade,$dados);			
+			$dados[$_attr_obj] 	= json_decode(FieldAdditionalType::OBJ($value,$key,$entidade,$dados));
 		}else if ($tipohtml == 19){
 			$dados[$_attr_src] = FieldAdditionalType::SRC($value,$key,$entidade,$dados);
 		}else if ($tipohtml == 23){

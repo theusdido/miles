@@ -62,7 +62,6 @@ class FieldAdditionalType {
         }else{
             return self::getDefaultValue($key);
         }
-
         switch($addition_field_type){
             case ATTR_DATEFORMATTED:
                 $field_value 	= self::Formatted($original_field_value,'date');
@@ -162,7 +161,6 @@ class FieldAdditionalType {
     public static function OBJ($value,$key,$entidade,$dados){
         if (is_numeric_natural($value)){
             $atributoOBJ 			= tdc::p(ATRIBUTO,getAtributoId($entidade,$key));
-            
             if ($key != 'entidade' && $atributoOBJ->chaveestrangeira != 0){
                 $value = Entity::getRegisterJSON(tdc::e($atributoOBJ->chaveestrangeira)->nome, $value);
             }else{
@@ -212,6 +210,6 @@ class FieldAdditionalType {
     }
 
     public static function EmptyFieldOBJ(){
-        return '{}';
+        return NULL;
     }
 }

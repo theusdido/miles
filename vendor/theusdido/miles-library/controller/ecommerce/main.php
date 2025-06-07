@@ -23,17 +23,16 @@
     $ecommerce_configuracoes        = new EcommerceConfiguracoes();	
 
     // Carrinho de Compras
-    $ecommerce_carrinho                 = new CarrinhoCompras();        
-    $carrinho_id                        = $ecommerce_carrinho->getId();
+    //$ecommerce_carrinho                 = new CarrinhoCompras();
+    //$carrinho_id                        = $ecommerce_carrinho->getId();
 
     // Cliente
-    $cliente_id                         = $ecommerce_carrinho->getClient();
-
+    //$cliente_id                         = $ecommerce_carrinho->getClient();
+    $cliente_id                             = 0;
     // Endereço do Cliente
     $endereco_cliente                       = new Endereco();
-	$endereco_cliente->cliente				= $cliente_id;
-	$endereco_cliente->entidadecliente 	    = $_entidade_cliente_id;
-	$endereco_cliente->entidadeendereco 	= $_entidade_endereco_id;
+	$endereco_cliente->setCliente($cliente_id);
+
 
 	$controller 		= tdc::r('controller');
 	$paginacontroller 	= tdc::r('pagina');

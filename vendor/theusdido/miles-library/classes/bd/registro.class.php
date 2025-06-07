@@ -126,6 +126,7 @@ abstract class Registro {
 		Armazena os objetos na base de dados e retorna a quantidade de linhas afetas pelo SQL ( zero e um )
 	*/	
 	public function armazenar(){
+		$this->setAdditionalField();
 		if ($this->isnew){
 			if ($this->isAutoIncrement){
 				$this->id = $this->getUltimo() + 1;
@@ -544,7 +545,7 @@ abstract class Registro {
 		}
 	}
 
-	/*  
+	/*
 		* Método setInativar
 	    * Data de Criacao: 24/02/2024
 	    * Author @theusdido
@@ -560,6 +561,27 @@ abstract class Registro {
 			return true;
 		}catch(Throwable $t){
 			return false;
+		}
+	}
+
+	/*
+		* Método setAdditionalField
+	    * Data de Criacao: 12/05/2025
+	    * Author @theusdido
+
+		Adiciona os campos adicionais na lista no atributo $dados		
+	*/
+	private function setAdditionalField(){
+		if ($conn = Transacao::get()){
+			$sql = "
+				SELECT nome FROM ".ATRIBUTO.
+				" WHERE entidade = ". $this->getID().
+				" AND additionfield IS NOT NULL AND additionfield <> 0;
+			";
+			$query = $conn->query($sql);
+			while($row = $query->fetch()){
+				$this->dados[$row['nome']] = null;
+			}
 		}
 	}
 }
