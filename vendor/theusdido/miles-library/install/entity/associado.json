@@ -1,0 +1,45 @@
+{
+  "entidade": {
+    "nome": "associado",
+    "descricao": "Associado",
+    "ncolunas": 3,
+    "exibirmenuadministracao": 0,
+    "exibircabecalho": 0,
+    "campodescchave": 0,
+    "atributogeneralizacao": 0,
+    "exibirlegenda": 0,
+    "criarprojeto": 0,
+    "criarempresa": 0,
+    "criarauth": 0,
+    "registrounico": 0,
+    "fields": [
+      {
+        "nome": "pessoa",
+        "descricao": "Pessoa",
+        "tipo": "int",
+        "chaveestrangeira": true,
+        "obrigatorio": true,
+        "tamanho": 16,
+        "entidade_relacionada": "erp_geral_pessoa"
+      },
+      {
+        "nome": "planomensalidade",
+        "descricao": "Plano de Mensalidade",
+        "tipo": "int",
+        "chaveestrangeira": true,
+        "obrigatorio": false,
+        "tamanho": 4,
+        "entidade_relacionada": "erp_associacao_planomensalidade"
+      }
+    ]
+  },
+  "relacionamentos": [
+    {
+      "tipo": 9,
+      "entidade_origem": "erp_geral_pessoa",
+      "entidade_destino": "associado",
+      "descricao": "Associado",
+      "atributo": "pessoa"
+    }
+  ]
+}

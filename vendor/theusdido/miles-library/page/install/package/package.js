@@ -5,6 +5,7 @@ var registros 			= [];
 var package_selecionado	= '';
 var modulo_selecionado	= '';
 var modulo_name_selecionado = '';
+var componente_selecionado_nome = '';
 
 
 $(".carregar-componentes").click(function(){
@@ -15,6 +16,8 @@ $(".carregar-componentes").click(function(){
     $("#view-componente .modal-title").html(modulo_name_selecionado + " <small>( Componentes )</small>");
     package_selecionado	= $(this).data("pacote");
     modulo_selecionado	= $(this).data("componente");
+    componente_selecionado_nome = $(this).html();
+
     $("#view-componente .modal-body p").html("");
     $.ajax({
         url:session.urlmiles,
@@ -36,7 +39,6 @@ $(".carregar-componentes").click(function(){
         }
 
     });
-    console.log($("#view-componente"));
     $("#view-componente").modal({
         backdrop:false
     });
@@ -83,7 +85,10 @@ function instalarcomponentes(){
             op:"instalarcomponente",
             componente:path,
             modulonome:modulo_nome,
-            modulodescricao:modulo_descricao
+            modulodescricao:modulo_descricao,
+            pacote:package_selecionado,
+            componente:modulo_selecionado,
+            componentedescricao:componente_selecionado_nome
         },
         beforeSend:function(){
             $("#loader-pacotes").show();

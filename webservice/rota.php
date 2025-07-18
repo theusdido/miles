@@ -1,5 +1,5 @@
 <?php	
-	try {
+	try {		
 		$service_router 		= $service == '' ? $_service : $service;
 		$servico 				= str_replace(['.','-'],"/",$service_router);
 		$path_service			= "servicos/{$servico}.php";

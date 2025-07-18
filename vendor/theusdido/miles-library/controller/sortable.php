@@ -3,21 +3,38 @@
 	$op 	= tdc::r("op");
 
 	if ($op == "ordenar"){
+		set_time_limit(7200);
 		$entidade 	= tdc::r("entidade");
 		$atributo	= tdc::r("atributo");
+		$updates	= [];
 
 		foreach(tdc::r("ordem") as $o){
 			$ordem 		= $o["order"];
 			$registro	= $o["id"];
 
 			$_entidade 					= tdc::p($entidade,$registro);
-			$_entidade->is_save_json	= true;
+			$_entidade->is_save_json	= false;
 			$_entidade->{$atributo} 	= $ordem;
 			$_entidade->armazenar();
+
+			if (_IS_REPLICATION_FIREBASE){
+				// Rota para registros no Firebase
+				$rota = $entidade . '/' . $registro . '/' . $atributo;
+				$updates[$rota] = (int)$ordem;
+			}
 		}
 		Transacao::Commit();
+
+		if (_IS_REPLICATION_FIREBASE){
+			$firebase 		= new Firebase();
+			$firebase->update($updates);
+		}
 		exit;
 	}
+
+	$entidade_ 	= tdc::e(tdc::r('entidade'));
+	$titulo 	= tdc::o('titulo',[$entidade_->descricao]);
+	$titulo->mostrar();
 ?>
 <style type="text/css">
 	.sortable{
@@ -57,7 +74,7 @@
 		</div>
 	</div>
 
-	<div class="row">
+	<div class="row" id="sortable-container">
 		<div class="col-md-12">
 			<ul id="sortable" class="sortable">
 				<?php
@@ -131,33 +148,39 @@
 </div>
 <script>
 	function ordenar(){
+		$('#sortable-container').hide();
 		loader('#loader-sortable');
 		var ordenacao = [];
-			$("#sortable li").each(
-				(e,elemento) => {
-					var id = $(elemento).data("id");
-					if (id != undefined){
-						ordenacao.push({
-							id:id,
-							order:e+1
-						});
-					}					
-				}
-			);
-			$.ajax({
-				url:session.urlmiles,
-				data:{
-					op:"ordenar",
-					controller:"sortable",
-					entidade:"<?=$entidade?>",
-					atributo:"<?=$atributo?>",
-					ordem:ordenacao
-				},
-				complete:function(){
-					unloader();
-					mdmToastMessage("Salvo com Sucesso");
-				}
-			});
+		$("#sortable li").each(
+			(e,elemento) => {
+				var id = $(elemento).data("id");
+				if (id != undefined){
+					ordenacao.push({
+						id:id,
+						order:e+1
+					});
+				}					
+			}
+		);
+		$.ajax({
+			url:session.urlmiles,
+			data:{
+				op:"ordenar",
+				controller:"sortable",
+				entidade:"<?=$entidade?>",
+				atributo:"<?=$atributo?>",
+				ordem:ordenacao
+			},
+			complete:function(){
+				$("#sortable").sortable();
+				$('#sortable-container').show('100');
+				unloader();
+				toastMessage("Ordenado com Sucesso.");
+			}
+		});
 	}
-	$("#sortable").sortable();
+
+	$(document).ready(function(){
+		$("#sortable").sortable();
+	});
 </script>

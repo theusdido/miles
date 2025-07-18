@@ -28,6 +28,7 @@ class Entity {
 	public $modulo_nome					= '';
 	public $modulo_descricao			= '';
 	public $tipomenu					= 'cadastro';
+	public $componente_descricao		= '';
 
 	/* 
 		* Método __construct
@@ -42,6 +43,7 @@ class Entity {
 		$this->conn 				=  $conn;
 		$this->modulo_nome			= tdc::r('modulonome');
 		$this->modulo_descricao 	= tdc::r('modulodescricao');
+		$this->componente_descricao = tdc::r('componentedescricao');
 
 		return $this->create();
 	}
@@ -260,7 +262,8 @@ class Entity {
 	*/
 	private function addMenu(){
 
-		// Criando Acesso
+		// Criando Acesso - Nível 0
+		#componente_descricao
 		$menu = addMenu($this->conn,$this->modulo_descricao,'#','',0,0,$this->modulo_nome);
 
 		$param_menu[0] = $this->conn;
@@ -275,7 +278,7 @@ class Entity {
 		$param_menu[9] = $this->id;
 		$param_menu[10] = 0;
 
-		// Adicionando Menu
+		// Adicionando Menu - Nível 1
 		addMenu(
 			$param_menu[0],
 			$param_menu[1],

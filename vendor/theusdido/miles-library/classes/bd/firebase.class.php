@@ -36,6 +36,8 @@
 
             // Obtém uma referência ao banco de dados
             $this->database = $firebase->createDatabase();
+
+            return $this->database;
         }
 
         public function insert($data, $collection = '/'){

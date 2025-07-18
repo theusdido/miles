@@ -11,7 +11,6 @@
 
 	// Permite que qualquer site acesse (destinada a apis públicas)
 	header("Access-Control-Allow-Origin: *");
-
 	
 	ini_set('display_errors',1);
 	ini_set('display_startup_erros',1);
@@ -63,14 +62,14 @@
 		exit;
 	}
 
-	//Filtrosgit 
+	// Filtros
 	$criterio = null;
 	$filtro = retornar("filtros");
 	if ($filtro!=""){
 		include 'filtro.php';
 	}
 
-	//Propriedades
+	// Propriedades
 	$propriedade = retornar("propriedades");
 	$propriedadeORDER = $propriedadeLIMIT = $propriedadeOFFSET = $propriedadeGROUP = "";
 	if ($propriedade != ""){

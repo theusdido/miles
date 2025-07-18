@@ -1,0 +1,32 @@
+<?php
+	// Setando variáveis
+	$entidadeNome 			= "turma";
+	$entidadeDescricao 		= "Turma";
+
+	// Criando Entidade
+	$entidadeID = criarEntidade(
+		$conn,
+		$entidadeNome,
+		$entidadeDescricao,
+		$ncolunas=1,
+		$exibirmenuadministracao = 0,
+		$exibircabecalho = 1,
+		$campodescchave = 0,
+		$atributogeneralizacao = 0,
+		$exibirlegenda = 1,
+		$criarprojeto = 0,
+		$criarempresa = 0,
+		$criarauth = 0,
+		$registrounico = 0
+	);
+
+	// Criando Atributos
+	$descricao 	= criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar","200",0,3,1,0,0,"");
+	$anoletivo 	= criarAtributo($conn,$entidadeID,"anoletivo","Ano Letivo","char",4,1,3,0);
+	$curso 		= criarAtributo($conn,$entidadeID,"curso","Curso","int",0,1,22,1,installDependencia("erp_escola_curso","package/sistema"));
+
+	// Seta o campo descrição
+	Entity::setDescriptionField($conn,$entidadeID,$descricao,true);
+
+	// Unidades Curriculares da Turma
+	$unidades_curriculares = installDependencia("erp_escola_turmaunidadecurricular","package/sistema");
