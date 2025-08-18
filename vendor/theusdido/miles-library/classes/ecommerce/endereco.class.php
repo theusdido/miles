@@ -14,6 +14,15 @@ class Endereco {
 	private $cliente 			= 0;
 	private $entidadecliente	= 0;
 	private $entidadeendereco 	= 0;
+	
+	private $pais				= 0;
+	private $uf 				= 0;
+	private $cidade 			= 0;
+	private $bairro				= 0;
+	private $logradouro			= '';
+	private $numero				= '';
+	private $complemento		= '';
+	private $cep				= '';	
 
 	public function __construct(){
 		global $_entidade_cliente_id;
@@ -146,7 +155,8 @@ class Endereco {
 			WHERE a.id = ".$this->getRegFilhoLista()."
 			ORDER BY a.id DESC
 			LIMIT 1;
-		";
+		";		
+		#var_dump($sql);
 		$query = $conn->query($sql);
 		if ($query->rowCount() > 0){
 			if ($linha = $query->fetch()){
@@ -178,6 +188,7 @@ class Endereco {
 				AND regpai = ".$this->getCliente()."
 				LIMIT 1;
 			";
+			#var_dump($sql);
 			$query = $conn->query($sql);
 			if ($query->rowCount() > 0){
 				$linha = $query->fetch();
@@ -260,4 +271,84 @@ class Endereco {
 	public function getEntidadeEndereco(){
 		return $this->entidadeendereco;
 	}
+
+	public function setPais($pais){
+		$this->pais = $pais;
+	}
+	public function setUf($uf){
+		$this->uf = $uf;
+	}
+	public function setCidade($cidade){
+		$this->cidade = $this->addCidade($cidade, $this->getUf());
+	}
+	public function setBairro($bairro){
+		$this->bairro = $this->addBairro($bairro, $this->getCidade());
+	}
+	public function setNumero($numero){
+		$this->numero = $numero;
+	}
+	public function setComplemento($complemento){
+		$this->complemento = $complemento;
+	}
+	public function setLogradouro($logradouro){
+		$this->logradouro = $logradouro;
+	}
+	public function setCEP($cep){
+		$this->cep = $cep;
+	}
+
+	public function getPais(){
+		return $this->pais;
+	}
+	public function getUf(){
+		return $this->uf;
+	}
+	public function getCidade(){
+		return $this->cidade;
+	}
+	public function getBairro(){
+		return $this->bairro;
+	}
+	public function getNumero(){
+		return $this->numero;
+	}
+	public function getComplemento(){
+		return $this->complemento;
+	}
+	public function getLogradouro(){
+		return $this->logradouro;
+	}
+	public function getCEP(){
+		return $this->cep;
+	}
+
+	public function salvar(){
+		$endereco 					= tdc::p('td_ecommerce_endereco');
+		$endereco->pais             = $this->getPais();
+		$endereco->uf 				= $this->getUf();
+		$endereco->cidade           = $this->getCidade();
+		#$endereco->cidade_desc      = $cidade;
+		$endereco->bairro           = $this->getBairro();
+		#$endereco->bairro_desc      = $bairro;
+		$endereco->logradouro		= $this->getLogradouro();
+		$endereco->cep 				= $this->getCEP();
+		$endereco->complemento 		= $this->getComplemento();
+		$endereco->numero 			= $this->getNumero();
+
+		if ($endereco->armazenar()){
+
+			// Add Lista
+			$lista = tdc::p(LISTA);
+			$lista->entidadepai 	= $this->getEntidadeCliente();
+			$lista->entidadefilho 	= $this->getEntidadeEndereco();
+			$lista->regpai 			= $this->getCliente();
+			$lista->regfilho 		= $endereco->id;
+			$lista->armazenar();
+
+			return true;
+		}else{
+			return false;
+		}	
+	}
+	
 }

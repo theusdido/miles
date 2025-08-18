@@ -12,6 +12,7 @@ include_once PATH_SYSTEM . 'funcoes.php';
 */	
 
 final class SqlAtualizar extends sqlInstrucao{
+	public $colunaValor;
 	/*  
 		* Método getInstrucao 
 	    * Data de Criacao: 29/06/2012

@@ -1,4 +1,5 @@
 <?php
+
 	class CarrinhoCompras {		
 		private $dados;
 		private $id = 0;
@@ -15,7 +16,7 @@
 			 	$this->setCreateAt();
 			}
 
-			$this->save();
+			#$this->save();
 			$this->setDados();
 			return $this->dados;
 		}
@@ -77,6 +78,14 @@
 		// Retorna o id da sessão do carrinho de compras
 		public function getSessionId()
 		{
+
+			global $_data;			
+			if (isset($_data->sessionid)){
+				if ($_data->sessionid != ''){
+					return $_data->sessionid;
+				}
+			}
+
 			if (TdCookie::exists("carrinhocamprassessionid")){
 				$session_id_carrinho = TdCookie::get("carrinhocamprassessionid");
 			}else{
@@ -187,8 +196,18 @@
 		}
 
 		public function save()
-		{
-			$this->dados->datahoraultimoacesso = $this->getUpdateAt();
+		{			
+			$this->dados->datahoraultimoacesso = $this->getUpdateAt();			
 			$this->dados->armazenar();
+		}
+
+		public function setClient($cliente_id)
+		{			
+			if (is_numeric($cliente_id) && $cliente_id > 0){
+				$this->dados->cliente = $cliente_id;
+				$sql = "UPDATE td_ecommerce_carrinhocompras SET cliente = {$cliente_id} WHERE id = " . $this->getId();
+				Transacao::get()->exec($sql);
+				Transacao::Commit();
+			}
 		}
 	}

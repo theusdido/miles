@@ -52,7 +52,7 @@
 
 				try{
 					// removendo todas as sessões
-					@session_start();
+					@session_start();					
 					session_destroy();
 					unset( $_SESSION );
 				}catch(Throwable $t){

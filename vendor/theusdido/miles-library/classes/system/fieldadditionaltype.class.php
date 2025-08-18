@@ -62,6 +62,7 @@ class FieldAdditionalType {
         }else{
             return self::getDefaultValue($key);
         }
+
         switch($addition_field_type){
             case ATTR_DATEFORMATTED:
                 $field_value 	= self::Formatted($original_field_value,'date');
@@ -210,6 +211,6 @@ class FieldAdditionalType {
     }
 
     public static function EmptyFieldOBJ(){
-        return NULL;
+        return json_encode( new stdClass() );
     }
 }

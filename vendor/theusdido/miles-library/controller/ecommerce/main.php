@@ -20,15 +20,16 @@
     // Website Configurações
     $website_geral_configuracoes    = tdc::pj('td_website_geral_configuracoes',1);
     // Ecommerce - Configurações
-    $ecommerce_configuracoes        = new EcommerceConfiguracoes();	
+    $ecommerce_configuracoes        = new EcommerceConfiguracoes();	    
 
     // Carrinho de Compras
-    //$ecommerce_carrinho                 = new CarrinhoCompras();
+    $ecommerce_carrinho                 = new CarrinhoCompras();
     //$carrinho_id                        = $ecommerce_carrinho->getId();
 
     // Cliente
     //$cliente_id                         = $ecommerce_carrinho->getClient();
     $cliente_id                             = 0;
+    
     // Endereço do Cliente
     $endereco_cliente                       = new Endereco();
 	$endereco_cliente->setCliente($cliente_id);

@@ -2955,3 +2955,13 @@ function addRestricaoRelatorio($relatorio_id,$atributo,$valor,$operador = '=',$l
 		return 0;
 	}	
 }
+
+function getListaRegPai($entidadepai,$entidadefilho,$regfilho){	
+	$sql = tdClass::Criar("sqlcriterio");
+	$sql->addFiltro("entidadepai","=",$entidadepai);
+	$sql->addFiltro("entidadefilho","=",$entidadefilho);
+	$sql->addFiltro("regfilho","=",$regfilho);
+	
+	$lista = tdClass::Criar("repositorio",array("td_lista"))->carregar($sql);
+	return $lista;
+}

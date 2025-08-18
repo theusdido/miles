@@ -43,12 +43,12 @@
 	$error = curl_errno($curl);
 	$errorMessage = curl_error($curl);	
 	curl_close($curl);
+
 	if ($resp == "Unauthorized"){
 		echo '<div class="alert alert-danger text-center" role="alert"><b>Ops! </b>Conexão com o <b>PAGSEGURO</b> não autorizada.</div>';
 		exit;
 	}
-	#var_dump($resp);
-	#echo json_encode($resp);
+
 	$respXML = new SimpleXMLElement($resp);
 	#var_dump($respXML);
 	$sessionID = $respXML[0]->id;

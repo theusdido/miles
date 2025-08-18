@@ -27,7 +27,7 @@
 	$_folder_miles_default				= 'miles/';
 	$_default_index_file				= 'index.php';
 	$_response							= [];
-
+	
 	// Caso as variáveis venham por parametro
 	if (isset($_GET['project_name_identifify_params']) && isset($_GET['env'])){
 		$_project_name_identifify_params 	= $_GET['project_name_identifify_params'];
@@ -139,7 +139,7 @@
 
 	// Define o diretório da biblioteca para include e require
 	define('PATH_LIBRARY_SYSTEM', $_path_library_system);
-
+	
 	// Tratamento de Erros
 	$_path_exception = PATH_LIBRARY_SYSTEM . 'exception.php';
 
@@ -198,3 +198,6 @@
 
 	// Resposta genérica para as requisições
 	if (!empty($_response)) tdc::wj($_response);
+
+	// Libera a sessão
+	session_write_close();

@@ -131,7 +131,7 @@
                 $tomador->tomaendereco 			= conteudo_tag($linha,"TomaEndereco");	
                 $tomador->tomanumero  			= conteudo_tag($linha,"TomaNumero");	
                 $tomador->tomacomplemento  		= conteudo_tag($linha,"TomaComplemento");	
-                $tomador->tombairro  			= conteudo_tag($linha,"TomBairro");	
+                $tomador->tombairro  			= conteudo_tag($linha,"TomaBairro");	
                 $tomador->tomacmun  			= conteudo_tag($linha,"TomacMun");	
                 $tomador->tomaxmun  			= conteudo_tag($linha,"TomaxMun");	
                 $tomador->tomauf  				= conteudo_tag($linha,"TomaUF");	

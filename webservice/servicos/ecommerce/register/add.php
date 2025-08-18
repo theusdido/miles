@@ -6,83 +6,83 @@
 	$cpf                = isset($_data['cpf']) ? $_data['cpf'] : '';
     $cnpj               = isset($_data['cnpj']) ? $_data['cnpj'] : '';
     $inscricaoestadual 	= isset($_data['inscricaoestadual']) ? $_data['inscricaoestadual'] : '';
-	$endereco			= $_data['endereco'];
-	$cep 				= $_data['cep'];
-	$complemento 		= $_data['complemento'];
-	$numero 			= $_data['numero'];
-	$uf 				= $_data['estado'];
+	// $endereco			= $_data['endereco'];
+	// $cep 				= $_data['cep'];
+	// $complemento 		= $_data['complemento'];
+	// $numero 			= $_data['numero'];
+	// $uf 				= $_data['estado'];
 	$senha 				= md5($_data['senha']);
 
-    if (isset($_data['csenha'])){
-        $csenha             = md5($_data['csenha']);
-    }
+    // if (isset($_data['csenha'])){
+    //     $csenha             = md5($_data['csenha']);
+    // }
     
 
     // Cidade
-    $cidade 	    = $_data['cidade'];
-    $cidadedesc     = $_data['cidade'];
-    $sqlCidade 	    = "SELECT id FROM td_ecommerce_cidade WHERE nome = '{$cidade}' and uf = {$uf};";
-    $queryCidade    = $conn->query($sqlCidade);
-    if ($queryCidade->rowCount() > 0){
-        $linhaCidade    = $queryCidade->fetch();
-        $cidade         = $linhaCidade["id"];
-    }else{
-        $idcidade       = getProxId("ecommerce_cidade",$conn);
-        $sqlCidadeI     = "INSERT INTO td_ecommerce_cidade (id,nome,uf) VALUES (".$idcidade.",'{$cidade}',{$uf});";
-        $queryCidadeI   = $conn->query($sqlCidadeI);
-        if ($queryCidadeI){
-            $cidade = $idcidade; 
-        }else{
-            $cidade = 0;
-        }
-    }
+    // $cidade 	    = $_data['cidade'];
+    // $cidadedesc     = $_data['cidade'];
+    // $sqlCidade 	    = "SELECT id FROM td_ecommerce_cidade WHERE nome = '{$cidade}' and uf = {$uf};";
+    // $queryCidade    = $conn->query($sqlCidade);
+    // if ($queryCidade->rowCount() > 0){
+    //     $linhaCidade    = $queryCidade->fetch();
+    //     $cidade         = $linhaCidade["id"];
+    // }else{
+    //     $idcidade       = getProxId("ecommerce_cidade",$conn);
+    //     $sqlCidadeI     = "INSERT INTO td_ecommerce_cidade (id,nome,uf) VALUES (".$idcidade.",'{$cidade}',{$uf});";
+    //     $queryCidadeI   = $conn->query($sqlCidadeI);
+    //     if ($queryCidadeI){
+    //         $cidade = $idcidade; 
+    //     }else{
+    //         $cidade = 0;
+    //     }
+    // }
     
-    // Bairro
-    $bairro         = $_data['bairro'];
-    $bairrodesc     = $_data['bairro'];
-    $sqlBairro      = "SELECT id FROM td_ecommerce_bairro WHERE nome = '{$bairro}' and cidade = {$cidade};";
-    $queryBairro    = $conn->query($sqlBairro);
-    if ($queryBairro->rowCount() > 0){
-        $linhaBairro    = $queryBairro->fetch();
-        $bairro         = $linhaBairro["id"];
-    }else{
-        $idbairro       = getProxId("ecommerce_bairro",$conn);
-        $sqlBairroI     = "INSERT INTO td_ecommerce_bairro (id,nome,cidade) VALUES (".$idbairro.",'{$bairro}',{$cidade});";
-        $queryBairroI   = $conn->query($sqlBairroI);
-        if ($queryBairroI){
-            $bairro = $idbairro;
-        }else{
-            $bairro = 0;
-        }
-    }
+    // // Bairro
+    // $bairro         = $_data['bairro'];
+    // $bairrodesc     = $_data['bairro'];
+    // $sqlBairro      = "SELECT id FROM td_ecommerce_bairro WHERE nome = '{$bairro}' and cidade = {$cidade};";
+    // $queryBairro    = $conn->query($sqlBairro);
+    // if ($queryBairro->rowCount() > 0){
+    //     $linhaBairro    = $queryBairro->fetch();
+    //     $bairro         = $linhaBairro["id"];
+    // }else{
+    //     $idbairro       = getProxId("ecommerce_bairro",$conn);
+    //     $sqlBairroI     = "INSERT INTO td_ecommerce_bairro (id,nome,cidade) VALUES (".$idbairro.",'{$bairro}',{$cidade});";
+    //     $queryBairroI   = $conn->query($sqlBairroI);
+    //     if ($queryBairroI){
+    //         $bairro = $idbairro;
+    //     }else{
+    //         $bairro = 0;
+    //     }
+    // }
 
-    // Endereço
-    $idendereco 		= getProxId("ecommerce_endereco",$conn);
-    $sqlEndereco 		= "INSERT INTO td_ecommerce_endereco 
-        (
-            id,
-            bairro,
-            logradouro,
-            numero,
-            complemento,
-            cep,
-            cidade,
-            uf,
-            bairro_nome,
-            cidade_nome
-        ) VALUES (
-            ".$idendereco.",
-            {$bairro},
-            '{$endereco}',
-            '{$numero}',
-            '{$complemento}',
-            '{$cep}',
-            {$cidade},
-            {$uf},
-            '{$bairrodesc}',
-            '{$cidadedesc}'
-        );";
-    $queryEndereco = $conn->exec($sqlEndereco);
+    // // Endereço
+    // $idendereco 		= getProxId("ecommerce_endereco",$conn);
+    // $sqlEndereco 		= "INSERT INTO td_ecommerce_endereco 
+    //     (
+    //         id,
+    //         bairro,
+    //         logradouro,
+    //         numero,
+    //         complemento,
+    //         cep,
+    //         cidade,
+    //         uf,
+    //         bairro_nome,
+    //         cidade_nome
+    //     ) VALUES (
+    //         ".$idendereco.",
+    //         {$bairro},
+    //         '{$endereco}',
+    //         '{$numero}',
+    //         '{$complemento}',
+    //         '{$cep}',
+    //         {$cidade},
+    //         {$uf},
+    //         '{$bairrodesc}',
+    //         '{$cidadedesc}'
+    //     );";
+    // $queryEndereco = $conn->exec($sqlEndereco);
 
     $email 		= $_data['email'];
     $telefone 	= $_data['telefone'];
@@ -102,12 +102,12 @@
         return false;
     }
 
-    if (isset($_data['csenha'])){
-        if ($senha != $csenha){
-            echo 'Senhas não coincidem';
-            return false;
-        }
-    }
+    // if (isset($_data['csenha'])){
+    //     if ($senha != $csenha){
+    //         echo 'Senhas não coincidem';
+    //         return false;
+    //     }
+    // }
 
     $idcliente  = getProxId("ecommerce_cliente",$conn);
     $sql        = "
@@ -148,12 +148,21 @@
         $usuario->inativo 				= 1;
         $usuario->armazenar();
 
-        //Lista ( Endereço )
+
         $entidadecliente    = getEntidadeId("ecommerce_cliente",$conn);
-        $entidadeendereco   = getEntidadeId("ecommerce_endereco",$conn);
+        $entidadeusuario    = getEntidadeId("usuario",$conn);
+        #$entidadeendereco   = getEntidadeId("ecommerce_endereco",$conn);
+
+        // Cliente x Usuário
         $idlista            = getProxId("lista",$conn);
-        $sqlLista           = "INSERT INTO td_lista (id,entidadepai,entidadefilho,regpai,regfilho) VALUES ({$idlista},{$entidadecliente},{$entidadeendereco},{$idcliente},{$idendereco});";
-        $queryLista = $conn->query($sqlLista);
+        $sqlLista           = "INSERT INTO td_lista (id,entidadepai,entidadefilho,regpai,regfilho) VALUES ({$idlista},{$entidadecliente},{$entidadeusuario},{$idcliente},{$entidadeusuario});";
+        $queryLista         = $conn->exec($sqlLista);
+
+        // Cliente x Endereço
+        #$idlista            = getProxId("lista",$conn);
+        #$sqlLista           = "INSERT INTO td_lista (id,entidadepai,entidadefilho,regpai,regfilho) VALUES ({$idlista},{$entidadecliente},{$entidadeendereco},{$idcliente},{$idendereco});";
+        #$queryLista         = $conn->exec($sqlLista);
+
         $conn->commit();
 
         // include("../miles/lib/phpmailer/PHPMailerAutoload.php");

@@ -2,8 +2,9 @@
 
     try{
         $product            = tdc::p('td_ecommerce_produto',tdc::r('_product'));
-        $quantity           = (int)tdc::r('_quantity',1);
-        $price              = (double)tdc::r('_price',1);
+        $_price             = tdc::r('_price');        
+        $quantity           = (int)tdc::r('_quantity',1);        
+        $price              = $_price == '' ? $product->preco : (double)tdc::r('_price',1);
         $session_id         = tdc::r('_session_id',session_id());
 
         $idProduto 		    = $product->id;
