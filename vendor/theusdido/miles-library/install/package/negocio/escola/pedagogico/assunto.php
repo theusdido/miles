@@ -1,0 +1,43 @@
+<?php
+	
+	// Setando variáveis
+	$entidadeNome       = "erp_escola_assunto";
+	$entidadeDescricao  = "Assunto";
+
+	// Criando Entidade
+	$entidadeID = criarEntidade(
+		$conn,
+		$entidadeNome,
+		$entidadeDescricao,
+		$ncolunas=1,
+		$exibirmenuadministracao = 0,
+		$exibircabecalho = 1,
+		$campodescchave = 0,
+		$atributogeneralizacao = 0,
+		$exibirlegenda = 1,
+		$criarprojeto = 0,
+		$criarempresa = 0,
+		$criarauth = 0,
+		$registrounico = 0
+	);
+
+    $aula_entidade_id   				= installDependencia("erp_escola_aula",'package/negocio/escola/pedagogico/aula');
+	$objetivoespecifico_entidade_id   	= installDependencia("erp_escola_objetivoespecifico",'package/negocio/escola/itinerarioinformativo/objetivoespecifico');
+	$unidadecurricular_entidade_id   	= installDependencia("erp_escola_unidadecurricular",'package/negocio/escola/itinerarioinformativo/unidadecurricular');
+
+	// Criando Atributos
+	$titulo					= criarAtributo($conn,$entidadeID,"titulo","Título","varchar",200,0,3,1,0,0,"");
+	$descricao				= criarAtributo($conn,$entidadeID,"descricao","Descrição","varchar",1000,1,14,0,0,0,"");
+	$aula 	            	= criarAtributo($conn,$entidadeID,"aula","Aula","int",0,1,16,0,$aula_entidade_id);
+	$objetivoespecifico 	= criarAtributo($conn,$entidadeID,"objetivoespecifico","Objetivo Específico","int",0,1,22,1,$objetivoespecifico_entidade_id);
+    $unidadecurricular 		= criarAtributo($conn,$entidadeID,"unidadecurricular","Unidade Curricular","int",0,1,22,1,$unidadecurricular_entidade_id);
+	
+
+	// Seta o campo descrição
+	Entity::setDescriptionField($conn,$entidadeID,$titulo,true);
+
+	// Criando Acesso
+	$menu = addMenu($conn,'Pedagógico','#','',0,0,'escola-pedagogico');
+
+	// Adicionando Menu
+	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu,1,'escola-' . $entidadeNome,$entidadeID,'cadastro');

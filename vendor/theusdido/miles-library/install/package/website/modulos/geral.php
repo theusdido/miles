@@ -1,0 +1,77 @@
+<?php
+  // Geral
+  $modules = array(
+    array(
+      "name" => "default", "title" => "Default", "components" => 
+      array(
+        array(
+          'name' => 'configuracoes'           ,'title' => 'Configurações'
+        )
+      )
+    ),
+    array(
+      "name" => "menu", "title" => "Menu", "components" => 
+      array(
+        array(
+          'name' => 'menutopo',
+          'title' => 'Menu Topo'
+        ),
+        array(
+          'name' => 'menuprincipal',
+          'title' => 'Menu Principal'
+        ),
+        array(
+          'name' => 'menurodape',
+          'title' => 'Menu Rodapé'
+        )
+      )
+    ),
+    array( "name" => "pagina", "title" => "Página", "components" => 
+      array(
+        array('name' => 'quemsomos'               ,'title' => 'Quem Somos'),
+        array('name' => 'politicaprivacidade'     ,'title' => 'Política de Privacidade'),
+		    array('name' => 'politicacookies'         ,'title' => 'Política de Cookies'),
+        array('name' => 'termocondicaouso'        ,'title' => 'Termo e Condições de Uso'),
+        array('name' => 'home'                    ,'title' => 'Home'),
+        array('name' => 'blog'                    ,'title' => 'Blog'),
+        array('name' => 'perfil'                  ,'title' => 'Perfil'),
+        array('name' => 'comofunciona'            ,'title' => 'Como Funciona?'),
+        array('name' => 'perguntasfrequentes'     ,'title' => 'Perguntas Frequentes?'),
+        array('name' => 'trabalheconosco'         ,'title' => 'Trabalhe Conosco'),
+        array('name' => 'portifolio'              ,'title' => 'Portifólio'),
+        array('name' => 'faleconosco'             ,'title' => 'Fale Conosco')
+      )
+  ),
+  array( "name" => "componente", "title" => "Componente", "components" => 
+      array(
+        array('name' => 'slider'                  ,'title' => 'Slider'),
+        array('name' => 'googlemaps'              ,'title' => 'Google Maps')
+      )
+  ),
+  array(
+    "name" => "sessao", "title" => "Sessão ( Section )", "components" => 
+      array(
+        array('name' => 'newsletter'              ,'title' => 'Newsletter'),
+        array('name' => 'rodape'                  ,'title' => 'Rodapé'),
+        array('name' => 'redesocial'              ,'title' => 'Rede Social'),
+		    array('name' => 'redessociais'              ,'title' => 'Redes Sociais'),
+        array('name' => 'whatsapp'              ,'title' => 'Whatsapp')	
+      )
+  ),
+  array(
+    "name" => "institucional", "title" => "Institucional", "components" =>
+      array(
+        array('name' => 'cargo'              ,'title' => 'Cargo'),
+        array('name' => 'equipe'             ,'title' => 'Equipe'),
+        array('name' => 'sobrenos'            ,'title' => 'Sobre Nós')
+      )
+      ),
+  array(
+        "name" => "idioma", "title" => "Idioma", "components" => 
+        array(
+            array('name' => 'lingua' , 'title' => 'Língua'),
+            array('name' => 'traducao' , 'title' => 'Tradução'),
+            array('name' => 'configuracao' , 'title' => 'Configurações')
+        )
+    )      
+  );

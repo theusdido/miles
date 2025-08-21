@@ -1,4 +1,5 @@
 <?php
+
 	// Variável global do projeto atual
 	$currentProject = Config::currentProject();
 	$_phpversion 	= explode('.',phpversion());

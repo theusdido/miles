@@ -2,9 +2,6 @@ var notas_enviar = [];
 var total_notas_encontradas = 0;
 var total_notas_enviadas = 0;
 
-const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
-
 $("#load-pesquisar").attr("src",session.urlloading2);
 $("#pesquisar").click( ()=> {    
     pesquisar();
@@ -32,49 +29,30 @@ function pesquisar(){
                 for (r in notas_enviar ){
 
                     var nota        = notas_enviar[r];
-                    var tr          = $("<tr data-id='"+nota.id+"'>");
+                    var tr          = $("<tr>");
                     var tdNumero    = $('<td class="text-center">'+nota.rpsnumero+'</td>');
                     var tdSerie     = $('<td class="text-center">'+nota.rpsserie+'</td>');
                     var tdTipo      = $('<td class="text-center">'+nota.rpstipo+'</td>');
                     var tdTomador   = $('<td>'+nota.tomador+'</td>');
                     var tdStatus    = $('<td class="text-center">'+nota.status+'</td>');
-                    var tdRetorno   = $('<td class="msg-retorno"></td>');
                     let td_excluir  = $('<td align="center">');
 
-                    let btn_excluir = $('<button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>');
+                    let btn_excluir = $('<button class="btn btn-danger"><i class="fa fa-trash"></i></button>');
                     btn_excluir.click(function(){
                         bootbox.confirm({
                             message: 'Tem certeza que deseja excluir?',
                             buttons: {
                                 confirm: {
-                                    label: 'Yes',
-                                    className: 'btn-success'
+                                label: 'Yes',
+                                className: 'btn-success'
                                 },
                                 cancel: {
-                                    label: 'No',
-                                    className: 'btn-danger'
+                                label: 'No',
+                                className: 'btn-danger'
                                 }
                             },
                             callback: function (result) {
-                                if (result) {
-                                    $.ajax({
-                                        url: session.urlmiles,
-                                        data: {
-                                            controller: 'nfse/excluir',
-                                            nota: nota.id
-                                        },
-                                        complete: function (ret) {
-                                            const response = JSON.parse(ret.responseText);
-                                            if (response.status == 'success') {
-                                                notas_enviar.splice(notas_enviar.indexOf(nota), 1);
-                                                $("#tconsulta tbody tr[data-id='" + nota.id + "']").remove();
-                                            }else{
-                                                alert('Erro ao excluir a nota: ' + response.message);
-                                            }
-                                            tr.find('.msg-retorno').html(response.message || 'Nota excluída com sucesso!');
-                                        }
-                                    });
-                                }
+                                console.log('This was logged in the callback: ' + result);
                             }
                         });
                     });
@@ -85,7 +63,6 @@ function pesquisar(){
                     tr.append(tdTipo);
                     tr.append(tdTomador);
                     tr.append(tdStatus);
-                    tr.append(tdRetorno);
                     tr.append(td_excluir);
                     
                     $("#tconsulta tbody").append(tr);                
@@ -115,32 +92,13 @@ function enviar(indice = 0){
             op:'enviar',
             nota:notas_enviar[indice]
         },
-        complete:function(ret){
+        complete:function(ret){        
             total_notas_enviadas++;
-            const response = JSON.parse(ret.responseText);
-            let badge_status = '';
-            let badge_text = '';
-            if (response.status === 'success'){
-                badge_status = 'success';
-                badge_text = 'Enviado com Sucesso!';
-            }else{
-                badge_status = 'danger';
-                badge_text = 'Erro: ' + response.message.substr(0, 15) + ' ...';
-            }
-
-            let badge = $(`<span class="badge text-bg-${badge_status}" data-bs-toggle="tooltip" data-bs-title="${response.message}">${badge_text}</span>`);
-            const tr = $("#tconsulta tbody tr[data-id='" + notas_enviar[indice].id + "']");
-            tr.find('.msg-retorno').append(badge);
             if (total_notas_enviadas < total_notas_encontradas){
                 enviar(total_notas_enviadas);
             }else{
                 alert('Envio Encerrado!');
             }
-
-            // Habilita o Tooltip do Bootstrap 5
-            const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-            const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
-
         }
     });
 }

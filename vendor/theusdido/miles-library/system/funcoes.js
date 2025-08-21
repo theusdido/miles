@@ -8,7 +8,6 @@ function carregar(arquivo,elemento_retorno = "",callback_function = null){
 		type:"GET",
 		url:getURLProject(url),
 		crossDomain: true,
-		timeout: 10000, // Tempo limite de 10 segundos
 		beforeSend:function(){
 			if (elemento_retorno == ""){
 				addLoaderGeral();
@@ -23,12 +22,7 @@ function carregar(arquivo,elemento_retorno = "",callback_function = null){
 			if (typeof callback_function == "function") callback_function(res);
 			if (elemento_retorno == "") unLoaderGeral();
 		},
-		error:function(ret,textStatus, errorThrown){
-		if (textStatus === 'timeout') {
-			console.error('Requisição cancelada por timeout');
-			} else {
-			console.error('Erro na requisição:', textStatus, errorThrown);
-			}			
+		error:function(ret){
 			if (tentar_recarregar_pagina){
 				tentar_recarregar_pagina = false;
 				setTimeout(function(){

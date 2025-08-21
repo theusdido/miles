@@ -97,17 +97,7 @@ class Layout extends Div {
 	*/			
 	public function addBloco(){
 		if ($this->exibir_blocos){
-			$blocos = array(
-				"logo",
-				"info",
-				"logon",
-				"menu",
-				"headersystem",
-				"dadosconfigprojeto",
-				"rodape",
-				"JSinicial",
-				"dashboardheader"
-			);
+			$blocos = array("logo","info","logon","menu","headersystem","dadosconfigprojeto","rodape","JSinicial");
 			foreach($blocos as $b){
 				if (file_exists(PATH_MVC_CONTROLLER . $b . '.php')){
 					include (PATH_MVC_CONTROLLER . $b . '.php');	
@@ -115,21 +105,13 @@ class Layout extends Div {
 					include (PATH_SYSTEM . PATH_MVC_CONTROLLER . $b . '.php');	
 				}
 			}
-
-			if (Session::get()->is_embedded){
-				$this->addCabecalho($dashboard_header,$logon);
-				$this->fluido = false;
-				$this->addCabecalho($menu);
-				$this->addCabecalho(@$headersystem);
-			}else{
-				$this->addCabecalho($logo,$info,$logon);
-				$this->fluido = false;
-				$this->addCabecalho($menu);
-				$this->addCabecalho(@$headersystem);
-				$this->fluido = true;
-				$this->addCabecalho($dadosconfigprojeto);			
-				$this->addRodape($rodape);
-			}
+			$this->addCabecalho($logo,$info,$logon);
+			$this->fluido = false;
+			$this->addCabecalho($menu);
+			$this->addCabecalho(@$headersystem);
+			$this->fluido = true;
+			$this->addCabecalho($dadosconfigprojeto);			
+			$this->addRodape($rodape);
 		}
 	}
 }

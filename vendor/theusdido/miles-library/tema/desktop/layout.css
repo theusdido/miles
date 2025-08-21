@@ -833,6 +833,13 @@ header #menu {
 	background-color: transparent;
 }
 
+.bootbox-close-button
+{
+	float: right;
+    border: none;
+    margin: 0 !important;
+}
+
 .loader-checklist
 {
     display: flex;
@@ -845,4 +852,9 @@ header #menu {
 {
 	background-color: transparent !important;
 	border: none !important;
+}
+
+.bootbox .modal-header
+{
+	display: block !important;
 }

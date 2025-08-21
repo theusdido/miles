@@ -36,8 +36,6 @@
 
             // Obtém uma referência ao banco de dados
             $this->database = $firebase->createDatabase();
-
-            return $this->database;
         }
 
         public function insert($data, $collection = '/'){
@@ -92,7 +90,8 @@
                     $id_
                 );
                 $_ref_lista = str_replace(getSystemPREFIXO(),'',tdc::e($r_)->nome).'_lista';
-                $this->database->getReference($entidade . $_ref_lista)->set($dados_);
+                $full_ref_lista = $entidade . '/' . $_ref_lista;
+                $this->database->getReference($full_ref_lista)->set($dados_);
             }
         }
     }

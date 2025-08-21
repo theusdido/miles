@@ -14,10 +14,10 @@
 
 	// Define a porta para requisições via API
 	define('PORT', $_port);
-	
+
 	// Classe de Configuração do sistema
 	require $_path_class . 'system/config.class.php';
-	
+
 	// Seta se o requisição está com HTTPs
 	define('_IS_HTTP',isset($_SERVER['HTTPS']) ? true : false);
 	
@@ -66,14 +66,9 @@
 	$sessionName = "miles_" . AMBIENTE . "_" . $currentProject;
 
 	// Verificar se a sessão não já está aberta.
-	try{
-		if (!$_session_isactive) {			
-			session_name($sessionName);
-			session_start();	
-		}
-	} catch (Throwable $e) {
-		echo 'Erro ao iniciar a sessão: ',  $e->getMessage(), "\n";
-		exit;
+	if (!$_session_isactive) {
+		session_name($sessionName);
+		@session_start();
 	}
 
 	if (isset($_GET['controller']) && isset($_GET['op'])){
@@ -163,7 +158,7 @@
 	
 	// Arquivos que fazem parte da estrutura do sistema
 	$strutuct = json_decode(file_get_contents($_path_config . 'estrutura.json'));
-	
+
 	// Carrega Composer
 	$path_composer = 'vendor/autoload.php';
 	if (file_exists($path_composer)){
@@ -247,12 +242,3 @@
 
 	$controller 		= tdc::r("_controller") == '' ? tdc::r("controller") : tdc::r("_controller");
 	$_controller		= tdc::r("_controller",$controller); # Novo padrão com _ na frente
-
-	// Variável para valor padrão para verificação
-	$_value = tdc::r('_value');
-
-	// Variável padrão para o recebimento de dados
-	$_data = tdc::r('_data') != '' ? json_decode(tdc::r('_data')) : new stdClass;
-
-	// Sessão de seleção de língua para idioma
-	Session::append('selected_language', tdc::r('_language') != '' ? tdc::r('_language') : 0);

@@ -162,6 +162,7 @@ class FieldAdditionalType {
     public static function OBJ($value,$key,$entidade,$dados){
         if (is_numeric_natural($value)){
             $atributoOBJ 			= tdc::p(ATRIBUTO,getAtributoId($entidade,$key));
+            
             if ($key != 'entidade' && $atributoOBJ->chaveestrangeira != 0){
                 $value = Entity::getRegisterJSON(tdc::e($atributoOBJ->chaveestrangeira)->nome, $value);
             }else{
@@ -211,6 +212,6 @@ class FieldAdditionalType {
     }
 
     public static function EmptyFieldOBJ(){
-        return json_encode( new stdClass() );
+        return '{}';
     }
 }
