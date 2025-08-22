@@ -1,1 +1,0 @@
-ENTIDADES_RESERVADAS= entidade , atributo , menu , usuario , empresa , projeto , abas , relacionamento 
