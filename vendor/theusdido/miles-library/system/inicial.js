@@ -105,11 +105,13 @@ if (config.currenttheme == 'desktop')
 }
 
 var firebaseConfig = {};
-$(document).ready(async function() {
-    try {
-        const response = await fetch(session.folderprojectfiles + 'config/firebase_config.json'); // Substitua pela sua rota
-        firebaseConfig = await response.json();
-    } catch (error) {
-        console.error("Erro ao obter a configuração do Firebase:", error);
-    }
-});
+if (config.is_replication_firebase){
+    $(document).ready(async function() {
+        try {
+            const response = await fetch(session.folderprojectfiles + 'config/firebase_config.json'); // Substitua pela sua rota
+            firebaseConfig = await response.json();
+        } catch (error) {
+            console.error("Erro ao obter a configuração do Firebase:", error);
+        }
+    });
+}

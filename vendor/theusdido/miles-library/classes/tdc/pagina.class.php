@@ -82,11 +82,14 @@ class Pagina Extends Html {
 		$tdlib_js->src 					= URL_LIB . "tdlib/js/tdlib.js";
 		$tdlib_js->language 			= "JavaScript";
 
-		$firebase_js = tdc::o('script');
-		$firebase_js->src = 'https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js';
+		$firebase_js = $firebase_database_js = null;		
+		if (_IS_REPLICATION_FIREBASE){
+			$firebase_js 		= tdc::o('script');
+			$firebase_js->src 	= 'https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js';
 
-		$firebase_database_js = tdc::o('script');
-		$firebase_database_js->src = 'https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js';
+			$firebase_database_js 		= tdc::o('script');
+			$firebase_database_js->src 	= 'https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js';
+		}
 
 		$meta_charset = tdClass::Criar("meta");		
 		if ($this->ishtml5){
@@ -294,7 +297,7 @@ class Pagina Extends Html {
 				this.project_name				= "'.PROJECT_NAME.'";
 				this._environment				= "'._ENVIRONMENT.'";
 				this.url_files					= "'.URL_FILES.'";
-				this.url_files_cadastro			= "'.URL_FILES_CADASTRO.'";
+				this.url_files_cadastro			= "'.URL_FILES_CADASTRO.'";				
 			}
 			var session = new SystemSession();
 			
@@ -317,6 +320,7 @@ class Pagina Extends Html {
 				this.casasdecimais					= "'.($this->config->casasdecimais==''?2:$this->config->casasdecimais).'";
 				this.currenttheme					= "'.CURRENT_THEME.'";				
 				this.upload_max_filesize			= "'.ini_get('upload_max_filesize').'";
+				this.is_replication_firebase		= '.(_IS_REPLICATION_FIREBASE == 1 ? 'true' : 'false').';
 			}
 			var config = new SystemConfig();
 		');
@@ -469,8 +473,11 @@ class Pagina Extends Html {
 	public function addJSLbiSystem(){
 		if ($this->showJSLibSystem){
 
-			$_firebase_realtime_database_class			= tdClass::Criar("script");
-			$_firebase_realtime_database_class->src 	= URL_CLASS_TDC_JS . "realtimedatabase.class.js";
+			$_firebase_realtime_database_class = null;
+			if (_IS_REPLICATION_FIREBASE){
+				$_firebase_realtime_database_class			= tdClass::Criar("script");
+				$_firebase_realtime_database_class->src 	= URL_CLASS_TDC_JS . "realtimedatabase.class.js";
+			}
 
 
 			// Classe de Interface para o SessionStorage

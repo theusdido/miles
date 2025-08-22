@@ -24,16 +24,14 @@ class Checklist {
         this.nenhumRegistro();
     }
     async show() {        
-        //this.load();
-        
         this.addLoader();
-        const query = new tdFirebaseRealtime(td_entidade[this.entidade_filho].nome);
-        const data = await query.readAll();
-
-        this.setItens(data);
-        //this.paginacao_index_inicial += 5;        
-
-        console.log(data);
+        if (config.is_replication_firebase){
+            const query = new tdFirebaseRealtime(td_entidade[this.entidade_filho].nome);
+            const data = await query.readAll();
+            this.setItens(data);
+        }else{
+            this.load();
+        }
 
         this.modal = $('#crud-contexto-checklist-'+this.contexto+' '+this.getModalName()+' .modal-body');
         this.modal.html('');
@@ -42,7 +40,6 @@ class Checklist {
         this.unLoader();
     }
     load(){     
-
         $.ajax({
             url:session.urlmiles,
             dataType:'json',
@@ -59,7 +56,7 @@ class Checklist {
                     this.setItens(ret);
                     this.paginacao_index_inicial += 5;
                     // Recarrega a lista enquanto houver dados
-                    //this.load();
+                    this.load();
                 }else{
                     this.unLoader();
                 }

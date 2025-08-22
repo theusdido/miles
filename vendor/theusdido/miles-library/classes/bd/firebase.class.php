@@ -38,28 +38,37 @@
             $this->database = $firebase->createDatabase();
         }
 
-        public function insert($data, $collection = '/'){
-            return $this->database->getReference($collection)->push($data);
+        public function ref($collection){
+            return $this->database->getReference($collection);
         }
 
-        public function add($data, $collection = '/'){
-            $ref_ = $this->database->getReference($collection);
-            $ref_->set($data);
+        public function insert($data, $collection = '/'){
+            return $this->ref($collection)->push($data);
+        }
+
+        public function add($data, $collection = '/'){            
+            $ref_ = $this->set($data, $collection);
             $this->addRelacionamento($collection,$ref_);
             return $ref_;
         }
 
         public function del($collection = '/'){
-            return $this->database->getReference($collection)->remove();
+            return $this->ref($collection)->remove();
         }
 
         public function update($data, $collection = '/'){
-            return $this->database->getReference($collection)->update($data);
+            return $this->ref($collection)->update($data);
         }
 
         public function getJSONConfig(){
             return json_decode(file_get_contents(PATH_CURRENT_FIREBASE_JSON_CONFIG),true);
         }
+
+        public function set($data, $collection = '/'){
+            $ref_ = $this->ref($collection);
+            $ref_->set($data);
+            return $ref_;
+        }        
 
         private function addRelacionamento($entidade,$ref){
 
@@ -74,7 +83,7 @@
             $criterio->addFiltro('tipo','in',[2, 6, 8, 11]);
 
             // Mapea os relacionamentos
-            $relacionamentos        = tdc::da(RELACIONAMENTO, $criterio);
+            $relacionamentos        = tdc::da(RELACIONAMENTO, $criterio);            
             $relacionamentos_id     = array();
             foreach($relacionamentos as $rel){
                 array_push($relacionamentos_id, $rel['filho']);
@@ -89,8 +98,14 @@
                     $r_,
                     $id_
                 );
+
+                // Atualiza a td_lista
+                #$ref_lista = LISTA . '/' . $dados_['id'];
+                #$this->database->getReference($ref_lista)->set($dados_);
+
+                // Atualiza o relacionamento lista dentro da coleção
                 $_ref_lista = str_replace(getSystemPREFIXO(),'',tdc::e($r_)->nome).'_lista';
-                $full_ref_lista = $entidade . '/' . $_ref_lista;
+                $full_ref_lista = str_replace('\/\/','',$entidade . '/' . $_ref_lista);
                 $this->database->getReference($full_ref_lista)->set($dados_);
             }
         }
