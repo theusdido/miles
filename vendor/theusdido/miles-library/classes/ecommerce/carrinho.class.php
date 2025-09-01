@@ -188,6 +188,14 @@
 		public function save()
 		{
 			$this->dados->datahoraultimoacesso = $this->getUpdateAt();
-			$this->dados->armazenar();
+			//$this->dados->armazenar();
+		}
+
+		public function setCupomDesconto($cupom_id){
+			if (is_numeric($cupom_id)){
+				if ($cupom_id > 0){
+					$this->dados->cupomdesconto = $cupom_id;
+				}
+			}
 		}
 	}

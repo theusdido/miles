@@ -1,5 +1,5 @@
 #btn-enviar{
-    margin-bottom:10px;
+    margin:10px 0;
 }
 
 .after-search{
@@ -11,4 +11,11 @@
 
 .icon-enviar{
     cursor:pointer;
+}
+
+.td-btn-group
+{
+    display: flex;
+    justify-content: flex-end;
+    width:100%;
 }

@@ -31,9 +31,9 @@
 
     // Endereço do Cliente
     $endereco_cliente                       = new Endereco();
-	$endereco_cliente->cliente				= $cliente_id;
-	$endereco_cliente->entidadecliente 	    = $_entidade_cliente_id;
-	$endereco_cliente->entidadeendereco 	= $_entidade_endereco_id;
+	#$endereco_cliente->cliente				= $cliente_id;
+	#$endereco_cliente->entidadecliente 	    = $_entidade_cliente_id;
+	#$endereco_cliente->entidadeendereco 	= $_entidade_endereco_id;
 
 	$controller 		= tdc::r('controller');
 	$paginacontroller 	= tdc::r('pagina');

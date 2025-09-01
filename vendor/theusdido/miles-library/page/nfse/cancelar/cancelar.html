@@ -1,0 +1,56 @@
+<p class="titulo-pagina ">Cancelar de Nota Fiscal</p>
+<form onsubmit="return false;">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="td-btn-group">
+                    <button type="button" class="btn btn-primary" id="pesquisar">
+                        <i class="fas fa-search"></i> Pesquisar
+                    </button>
+                    <img id="load-pesquisar" class="loading2" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-4">
+                <div class="form-group">
+                    <label class="control-label" for="notainicial">Nota Inicial</label>
+                    <input type="text" id="notainicial" class="form-control" />
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <div class="form-group">
+                    <label class="control-label" for="notafinal">Nota Final</label>
+                    <input type="text" id="notafinal" class="form-control" />
+                </div>
+            </div>
+        </div>
+        <hr />
+        <span class="after-search">   
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12"> 
+                    <div id="progress-send" class="progress progress-striped active">
+                        <div class="bar" style="width: 0%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12"> 
+                    <table id="tconsulta" class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th width="10%">Número</th>
+                                <th width="5%" class="text-center">Série</th>
+                                <th width="5%" class="text-center">Tipo </th>
+                                <th width="70%">Tomador</th>
+                                <th width="10%" class="text-center">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </span>
+    </div>
+</form>

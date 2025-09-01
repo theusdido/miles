@@ -16,8 +16,7 @@
 
     $cliente_id = $cliente[0]->id;
     $endereco_class = new Endereco();
-    $endereco_class->setCliente($cliente_id);
-    
+    #$endereco_class->setCliente($cliente_id);    
 
     switch($_op){
         case 'get':

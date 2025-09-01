@@ -11,6 +11,9 @@
 class Endereco {
 	
 	private $entidade = "td_ecommerce_endereco";
+	private $entidadecliente = 0;
+	private $entidadeendereco = 0;
+	private $cliente = 0;
 	/* 
 		* Método addCidade 
 	    * Data de Criacao: 03/04/2021

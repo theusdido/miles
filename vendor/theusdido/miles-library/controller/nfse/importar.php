@@ -30,10 +30,15 @@
             $rps            = substr($linha,4,5);
 
             if ($rps != ""){
+
+                $rpsnumero = conteudo_tag($linha,"RPSNumero");
+
+                $sql_inativar = "UPDATE td_erp_nfse_nota SET inativo = 1 WHERE rpsnumero = {$rpsnumero};";
+                $conn->exec($sql_inativar);
                 
                 // Grava as Notas na base de dados	
                 $nfse                       = tdc::p('td_erp_nfse_nota');
-                $nfse->rpsnumero  			= conteudo_tag($linha,"RPSNumero");						
+                $nfse->rpsnumero  			= $rpsnumero;						
                 $nfse->rpsserie 			= conteudo_tag($linha,"RPSSerie");
                 $nfse->rpstipo				= conteudo_tag($linha,"RPSTipo");
                 $nfse->demis				= conteudo_tag($linha,"dEmis");
@@ -46,6 +51,7 @@
                 $nfse->inccult				= conteudo_tag($linha,"IncCult");
                 $nfse->status				= 'P';
                 $nfse->nfsoutrasinformacoes	= conteudo_tag($linha,"NFSOutrasinformacoes");
+                $nfse->inativo              = 0;
                 $nfse->armazenar();
 
                 $nfseID = $nfse->id;
@@ -131,7 +137,7 @@
                 $tomador->tomaendereco 			= conteudo_tag($linha,"TomaEndereco");	
                 $tomador->tomanumero  			= conteudo_tag($linha,"TomaNumero");	
                 $tomador->tomacomplemento  		= conteudo_tag($linha,"TomaComplemento");	
-                $tomador->tombairro  			= conteudo_tag($linha,"TomBairro");	
+                $tomador->tomabairro  			= conteudo_tag($linha,"TomaBairro");	
                 $tomador->tomacmun  			= conteudo_tag($linha,"TomacMun");	
                 $tomador->tomaxmun  			= conteudo_tag($linha,"TomaxMun");	
                 $tomador->tomauf  				= conteudo_tag($linha,"TomaUF");	

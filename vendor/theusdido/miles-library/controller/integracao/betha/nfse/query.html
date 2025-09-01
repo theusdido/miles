@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultar NFSE</title>
+</head>
+<body>
+
+    <table border="1" width="100%">
+        <thead>
+            <tr>
+                <th width="10%">Índice</th>
+                <th width="20%">Número RPS</th>
+                <th width="20%">Resultado</th>
+                <th width="50%">Log</th>
+            </tr>
+        </thead>
+        <tbody id="resultTable">
+            <!-- Os resultados serão inseridos aqui -->
+        </tbody>
+    </table>
+    <script>
+        // Define os números inicial e final para as requisições
+        const inicio = 105175;
+        const fim = 105964;
+        var i = 1;
+
+        // const inicio = 105696;
+        // const fim = 105696;
+        
+        // Loop para iterar de 'inicio' até 'fim'
+        // O loop decrementa o número a cada iteração porque o valor 'fim' é menor que o 'inicio'
+        for (let rpsnumero = inicio; rpsnumero <= fim; rpsnumero++) {
+            // Constrói a URL com o número atual
+            const url = `http://localhost/nfse/consulta.php?rpsnumero=${rpsnumero}`;
+
+            // Usa a função 'fetch' para fazer a requisição GET
+            const result = fetch(url)
+            .then(response => {
+                // Verifica se a resposta foi bem-sucedida
+                if (!response.ok) {
+                    throw new Error(`Erro na requisição para o número ${rpsnumero}: ${response.statusText}`);
+                }
+                // Se a resposta for OK, você pode processar o que foi retornado aqui
+                //console.log(`Requisição para o número ${rpsnumero} enviada com sucesso!`);
+                
+                return response.text(); // ou response.json() se a resposta for um JSON
+            })
+            .catch(error => {
+                // Captura e exibe qualquer erro que ocorra
+                console.error(error);
+            });
+
+            result.then(data => {
+                const _res = JSON.parse(data);
+
+                const link_enviar = `http://localhost/nfse/enviar.php?rpsnumero=${rpsnumero}`;
+                const reenviar_link = `<a href="${link_enviar}" target="_blank">Reenviar</a>`;
+
+                // Cria uma nova linha na tabela para exibir o resultado
+                const table = document.getElementById('resultTable');
+                const row = table.insertRow();
+                const cell1 = row.insertCell(0);
+                const cell2 = row.insertCell(1);
+                const cell3 = row.insertCell(2);
+                const cell4 = row.insertCell(3);
+                
+                cell1.innerHTML = i++;
+                cell2.textContent = rpsnumero;
+                cell3.innerHTML = _res.is_exist_nfse ? 'OK!' : reenviar_link;
+                cell4.textContent = _res.message_error;
+                // Aqui você pode processar a resposta recebida
+                //console.log(`Resposta para o número ${rpsnumero}:`, data);
+            });
+
+        }
+
+        // Mensagem de finalização após o loop
+        console.log('Todos os envios foram finalizados.');        
+    </script>    
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enviar NFSE</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.7/css/bootstrap.min.css" integrity="sha512-fw7f+TcMjTb7bpbLJZlP8g2Y4XcCyFZW8uy8HsRZsH/SwbMw0plKHFHr99DN3l04VsYNwvzicUX/6qurvIxbxw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="container mt-4">
+        <form>
+            <legend>Enviar NFSe</legend>
+            <div class="mb-3">
+                <label for="rpsinicial" class="form-label">Número Inicial</label>
+                <input type="text" class="form-control" id="rpsinicial" aria-describedby="Número Inicial" />
+            </div>
+            <div class="mb-3">
+                <label for="rspfinal" class="form-label">Número Final</label>
+                <input type="text" class="form-control" id="rspfinal" aria-describedby="Número Final" />
+            </div>
+            <button type="button" class="btn btn-primary" id="btn-enviar">Enviar</button>
+        </form>        
+        <table class="table mt-4" width="100%">
+            <thead>
+                <tr>
+                    <th width="10%">Índice</th>
+                    <th width="40%">Número Nota</th>
+                    <th width="50%">Log</th>
+                </tr>
+            </thead>
+            <tbody id="resultTable">
+                <!-- Os resultados serão inseridos aqui -->
+            </tbody>
+        </table>        
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.7/js/bootstrap.min.js" integrity="sha512-zKeerWHHuP3ar7kX2WKBSENzb+GJytFSBL6HrR2nPSR1kOX1qjm+oHooQtbDpDBSITgyl7QXZApvDfDWvKjkUw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    
+    <script>
+
+        var inicio = 0;
+        var fim = 0;
+        var i = 1;
+        var c = 1;
+
+        $(document).ready(function() {
+            $('#btn-enviar').click(function() {
+                inicio = parseInt($('#rpsinicial').val());
+                fim = parseInt($('#rspfinal').val() == '' ? $('#rpsinicial').val() : $('#rspfinal').val());
+                c = inicio;                
+                enviarNotas();
+            });
+        });
+
+        async function enviarNotas(){
+            if (c <= fim) {
+                // Chama a função recursivamente para o próximo número
+                await enviarRequisicao(c++);
+            } else {
+                $('.td-finalizacao').html('Todos os cancelamentos foram finalizados.');
+            }    
+        }
+
+        function enviarRequisicao(rpsnumero){
+            
+            // Constrói a URL com o número atual
+            const url = `http://localhost/nfse/enviar.php?rpsnumero=${rpsnumero}`;
+
+            // Usa a função 'fetch' para fazer a requisição GET
+            const result = fetch(url)
+            .then(response => {
+                // Verifica se a resposta foi bem-sucedida
+                if (!response.ok) {
+                    throw new Error(`Erro na requisição para o número ${rpsnumero}: ${response.statusText}`);
+                }
+                return response.text(); // ou response.json() se a resposta for um JSON
+            })
+            .catch(error => {
+                // Captura e exibe qualquer erro que ocorra
+                console.error(error);
+            });
+
+            result.then(data => {
+                const _res = JSON.parse(data);
+
+                // Cria uma nova linha na tabela para exibir o resultado
+                const table = document.getElementById('resultTable');
+                const row = table.insertRow();
+                const cell1 = row.insertCell(0);
+                const cell2 = row.insertCell(1);
+                const cell3 = row.insertCell(2);                
+                
+                cell1.innerHTML = i++;
+                cell2.textContent = rpsnumero;
+                cell3.textContent = _res.message;
+
+                enviarNotas();
+            });                
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+#btn-enviar{
+    margin:10px 0;
+}
+
+.after-search{
+    display:none;
+}
+#progress-send{
+    display:none;
+}
+
+.icon-enviar{
+    cursor:pointer;
+}
+
+.td-btn-group
+{
+    display: flex;
+    justify-content: flex-end;
+    width:100%;
+}
+
+#load-pesquisar
+{
+    width: 32px;
+    height: 32px;
+    margin: 2px 5px;
+}

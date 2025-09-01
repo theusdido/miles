@@ -1,0 +1,56 @@
+<?php
+
+	$rps = '
+		<Rps>
+			<InfRps Id="rps'.$rps_id.'">
+				<IdentificacaoRps>
+					<Numero>'.$rps_numero.'</Numero>
+					<Serie>'.$rps_serie.'</Serie>
+					<Tipo>'.$rps_tipo.'</Tipo>
+				</IdentificacaoRps>
+				<DataEmissao>'.$data_emissao.'T00:00:00.000</DataEmissao>
+				<NaturezaOperacao>'.$natureza_operacao.'</NaturezaOperacao>
+				<OptanteSimplesNacional>1</OptanteSimplesNacional>
+				<IncentivadorCultural>1</IncentivadorCultural>
+				<Status>1</Status>
+				<Servico>
+					<Valores>
+						<ValorServicos>'.$valor_servico.'</ValorServicos>
+						<IssRetido>'.$iss_retido.'</IssRetido>
+						<ValorIss>'.$valor_iss.'</ValorIss>
+						<BaseCalculo>'.$valor_base_calculo.'</BaseCalculo>
+						<Aliquota>'.$valor_aliquota.'</Aliquota>						
+					</Valores>
+					<ItemListaServico>'.$item_servico.'</ItemListaServico>					
+					<Discriminacao>HONORARIO DE CONTRATO REF A ALUGUEL DE IMOVEL</Discriminacao>
+					<CodigoMunicipio>'.$codigo_municipio.'</CodigoMunicipio>
+				</Servico>
+				<Prestador>					
+					<Cnpj>83248021000158</Cnpj>
+					<InscricaoMunicipal>1169</InscricaoMunicipal>
+				</Prestador>
+				<Tomador>
+					<IdentificacaoTomador>
+						<CpfCnpj>
+							'.$documento_tomador.'
+						</CpfCnpj>
+					</IdentificacaoTomador>
+					<RazaoSocial>'.$razao_social_tomador.'</RazaoSocial>
+					<Endereco>
+						<Endereco>'.$endereco_tomador.'</Endereco>
+						<Numero>'.$numero_tomador.'</Numero>
+						<Complemento>'.$complemento_tomador.'</Complemento>
+						<Bairro>'.$bairro_tomador.'</Bairro>
+						<CodigoMunicipio>'.$codigo_municipio_tomador.'</CodigoMunicipio>
+						<Uf>'.$uf_tomador.'</Uf>
+						<Cep>'.$cep_tomador.'</Cep>
+					</Endereco>
+					<Contato>
+						<Email>'.$email_tomador.'</Email>
+					</Contato>
+				</Tomador>
+				<OutrasInformacoes></OutrasInformacoes>
+			</InfRps>
+			'.$this->assinatura().'
+		</Rps>
+	';

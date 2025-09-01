@@ -37,8 +37,8 @@
 	$tomacomplemento	= $entidade->addAttr(
 		array("nome" => "tomacomplemento" , "descricao" => "tomacomplemento" , "tipo" => "varchar" , "tamanho" => 200)
 	);
-	$tombairro	= $entidade->addAttr(
-		array("nome" => "tombairro" , "descricao" => "tombairro" , "tipo" => "varchar" , "tamanho" => 50)
+	$tomabairro	= $entidade->addAttr(
+		array("nome" => "tomabairro" , "descricao" => "tomabairro" , "tipo" => "varchar" , "tamanho" => 50)
 	);
 	$tomacmun	= $entidade->addAttr(
 		array("nome" => "tomacmun" , "descricao" => "tomacmun" , "tipo" => "varchar" , "tamanho" => 50)

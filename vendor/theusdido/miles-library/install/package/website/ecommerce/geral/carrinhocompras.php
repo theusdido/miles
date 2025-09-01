@@ -34,6 +34,7 @@
 	$carrinho_transportadora 		= criarAtributo($conn,$entidadeID,"transportadora","Transportadora","int",0,1,22,0,installDependencia("ecommerce_transportadora","package/website/ecommerce/envio/transportadora"));
 	$carrinho_cep					= criarAtributo($conn,$entidadeID,"cep","CEP","varchar","10",0,9,1,0,0,"");
 	$carrinho_is_retirar_loja 		= criarAtributo($conn,$entidadeID,"is_retirar_loja","Retirar na loja ?","tinyint",0,1,7,0,0,0,'',1,0);
+	$carrinho_cupom_desconto		= criarAtributo($conn,$entidadeID,"cupomdesconto","Cupom de Desconto","int",0,1,22,1,installDependencia("ecommerce_cliente","package/website/ecommerce/geral/cupomdesconto"),0,'',1,0);
 
 	// Criando Acesso
 	$menu_webiste = addMenu($conn,'E-Commerce','#','',0,0,'ecommerce');
