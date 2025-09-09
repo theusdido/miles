@@ -2,9 +2,12 @@
 
     require PATH_CLASS . 'nfse/nfse.class.php';
 
+    $nfsenumero = tdc::r('nfsenumero');
+    $codigocancelamento = tdc::r('codigocancelamento');
+    
     $nfse = new NFSE();
-    $nfse->clientCert = __DIR__ . '/chave_privada.pem';    
-    $res = $nfse->cancelar(tdc::r('rpsnumero'));
+    $nfse->clientCert = __DIR__ . '/chave_privada.pem';
+    $res = $nfse->cancelar($nfsenumero,$codigocancelamento);
     tdc::wj($res);
 
     exit;

@@ -24,7 +24,7 @@
 	$usuario 	= criarAtributo($conn,$entidadeID,"usuario","Usuário","int",0,0,4,0,getEntidadeId("usuario",$conn),0,'',1,0);
 	$projeto 	= criarAtributo($conn,$entidadeID,"projeto","Projeto","int",0,0,4,0,getEntidadeId("projeto",$conn),0,"");
 	$entidade 	= criarAtributo($conn,$entidadeID,"entidade","Entidade","int",0,0,3,0,0,0,"");
-	$atributo 	= criarAtributo($conn,$entidadeID,"atributo","Atributo","int",0,0,3,1,getEntidadeId("atributo",$conn),0,'',1,0);
+	$atributo 	= criarAtributo($conn,$entidadeID,"atributo","Atributo","int",0,1,3,1,getEntidadeId("atributo",$conn),0,'',1,0);
 	$valorid 	= criarAtributo($conn,$entidadeID,"valorid","Valor ID","varchar",200,0,3,0,0,0,'',1,0);
 	$valornew 	= criarAtributo($conn,$entidadeID,"valornew","Valor New","varchar",200,1,3,0,0,0,'',1,0);
 	$datahora 	= criarAtributo($conn,$entidadeID,"datahora","Data e Hora","datetime",0,0,3,0,0,0,'',1,0);

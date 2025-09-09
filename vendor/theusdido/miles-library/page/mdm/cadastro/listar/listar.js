@@ -1,4 +1,5 @@
 var is_edit_id          = false;
+var is_edit_nome        = false;
 
 $(document).ready(function(){
     listarEntidades();

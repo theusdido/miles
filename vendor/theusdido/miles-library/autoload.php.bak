@@ -198,6 +198,3 @@
 
 	// Resposta genérica para as requisições
 	if (!empty($_response)) tdc::wj($_response);
-
-	// Libera a sessão
-	session_write_close();

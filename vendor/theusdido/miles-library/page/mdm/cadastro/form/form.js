@@ -10,6 +10,7 @@ $('#entidadeauxiliar').attr('checked',false);
 $('#controlarregistrousuario').attr('checked',false);
 
 var _registro_entidade = {};
+var nome_old = '';
 
 $(document).ready(function(){
     $('#campodescchave,#atributogeneralizacao').load(session.urlmiles + '?controller=mdm/cadastro&_entidade=' + _entidade + '&op=listar-atributos');
@@ -34,6 +35,7 @@ function setTipoAba(_tipoaba){
             $("#aba-pills").attr('checked',false);
     }
 }
+
 $('#btn-edit-id-entidade').click(function(){
     if (is_edit_id){
         alterarIdEntidade();
@@ -46,6 +48,20 @@ $('#btn-edit-id-entidade').click(function(){
         is_edit_id = true;
     }
 });
+
+$('#btn-edit-nome-entidade').click(function(){
+    if (is_edit_nome){
+        alterarNomeEntidade();
+    }else{
+        $('#nome').removeAttr('disabled');
+        $('#nome').removeAttr('readonly');
+        $('#nome').focus();
+        $(this).find('.fas').removeClass('fa-pencil-alt');
+        $(this).find('.fas').addClass('fa-save');
+        is_edit_nome = true;
+    }
+});
+
 
 function alterarIdEntidade()
 {
@@ -62,6 +78,24 @@ function alterarIdEntidade()
         }
     });
 }
+
+function alterarNomeEntidade()
+{
+    $.ajax({
+        url:session.urlmiles,
+        data:{
+            controller:'mdm/cadastro',
+            op:'alterar_nome',
+            _entidade:nome_old,
+            _entidade_new:$('#nome').val(),
+        },
+        success:function(){
+            //_entidade = $('#id').val();
+        }
+    });
+}
+
+
 
 $('#btn-salvar-cadastro').click(function(){    
     _registro_entidade = {
@@ -148,6 +182,8 @@ function load(){
             $('#exibircabecalho')               .attr('checked',getBoolCheckedValue(_data.exibircabecalho));
             $('#entidadeauxiliar')              .attr('checked',getBoolCheckedValue(_data.entidadeauxiliar));            
             $('#controlarregistrousuario')      .attr('checked',getBoolCheckedValue(_data.controlarregistrousuario));
+
+            nome_old = _data.nome;
         }
     });
 }

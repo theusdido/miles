@@ -656,7 +656,78 @@
         }        
 
         public function cancelar($nfsenumero,$codigocancelamento){
-            $this->cancelSigned($nfsenumero,$codigocancelamento);
+
+            $response   = array();
+            $msgs       = '';
+            $status     = '';
+            $nfse       = array(
+                "nfsenumero"    => '-',
+                "rpsnumero"     => $nfsenumero,
+                "rpsserie"      => '-',
+                "rpstipo"       => '-',
+                "situacao"      => 'N',
+                "tomador"       => ''
+            );
+
+            try {
+
+                $resp = $this->cancelSigned($nfsenumero,$codigocancelamento);
+                if (!empty($resp['bodyNodes'])) {
+                    foreach ($resp['bodyNodes'] as $k => $v) {
+                        $respXML = new SimpleXMLElement($v);
+                        //var_dump($respXML);
+                        
+
+                        $is_exist_nfse = isset($respXML->CompNfse);
+                        
+                        $message_error = '';
+                        $status = 'success';
+
+                        if (!$is_exist_nfse){
+                            $respNFSE = $respXML->return->CancelarNfseReposta->ListaMensagemRetorno;
+                                                        
+                            $message_retorno    = $respNFSE->MensagemRetorno;
+                            $codigo_error       = $message_retorno->Codigo;
+                            $descricao_error    = $message_retorno->Mensagem;
+                            $message_error      = "Erro: $codigo_error - $descricao_error";
+                            $status             = 'error';
+
+                            $nfse = array(
+                                "nfsenumero"    => '-',
+                                "rpsnumero"     => $rpsnumero,
+                                "rpsserie"      => '-',
+                                "rpstipo"       => '-',
+                                "situacao"      => 'N',
+                                "tomador"       => ''
+                            );
+                        }else{
+                            $nfse = array(
+                                "nfsenumero"    => (string)$respXML->CompNfse->Nfse->InfNfse->Numero,
+                                "rpsnumero"     => (string)$respXML->CompNfse->Nfse->InfNfse->IdentificacaoRps->Numero,
+                                "rpsserie"      => (string)$respXML->CompNfse->Nfse->InfNfse->IdentificacaoRps->Serie,
+                                "rpstipo"       => (string)$respXML->CompNfse->Nfse->InfNfse->IdentificacaoRps->Tipo,
+                                "situacao"      => 'G',
+                                "tomador"       => (string)$respXML->CompNfse->Nfse->InfNfse->TomadorServico->RazaoSocial
+                            );
+                        }
+
+                        $msgs .= $message_error;
+                    }
+                } else {
+                    $msgs .= $resp['raw'];
+                    $status = 'error';
+                }
+            } catch (Exception $e) {
+                $msgs .= "ERRO: " . $e->getMessage() . PHP_EOL;
+                $status = 'error';
+            }finally{
+                $response['message']    = $msgs;
+                $response['status']     = $status;
+                $response['data']       = $nfse;
+            }
+            return $response;
+
+            
         }
 
         private function cancelSigned(
@@ -676,6 +747,8 @@
                             <IdentificacaoNfse>
                                 <Numero>'.$nfsenumero.'</Numero>
                                 <Cnpj>83248021000158</Cnpj>
+                                <InscricaoMunicipal>1169</InscricaoMunicipal>
+                                <CodigoMunicipio>4204608</CodigoMunicipio>
                             </IdentificacaoNfse>
                             <CodigoCancelamento>'.$codigocancelamento.'</CodigoCancelamento>
                         </InfPedidoCancelamento>
@@ -785,6 +858,7 @@
                 }
             }
 
+            //var_dump($responseXml);
             // Retorna raw response e tenta parsear XML body
             $result = ['raw' => $responseXml];
 

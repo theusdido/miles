@@ -4,8 +4,8 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="td-btn-group">
-                    <button type="button" class="btn btn-primary" id="pesquisar">
-                        <i class="fas fa-search"></i> Pesquisar
+                    <button type="button" class="btn btn-warning" id="btn-cancelar">
+                        <i class="fas fa-cancel"></i> Cancelar
                     </button>
                     <img id="load-pesquisar" class="loading2" />
                 </div>
@@ -23,6 +23,16 @@
                     <label class="control-label" for="notafinal">Nota Final</label>
                     <input type="text" id="notafinal" class="form-control" />
                 </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <div class="form-group">
+                    <label class="control-label" for="motivocancelamento">Motivo do Cancelamento</label>
+                    <select id="motivocancelamento" name="motivocancelamento" class="form-select">
+                        <option value="1">Erro na emissão</option>
+                        <option value="2">Serviço não prestado</option>                        
+                        <option value="4">Duplicidade da nota</option>                        
+                    </select>
+                </div>            
             </div>
         </div>
         <hr />

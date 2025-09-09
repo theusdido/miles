@@ -3,9 +3,9 @@ $(function(){
     var nota_atual = 0;
 
     $("#load-pesquisar").attr("src",session.urlloading2);
-    $("#pesquisar").click( ()=> {
-        nota_atual = parseInt($('#rpsinicial').val());
-        nota_final = parseInt($('#rpsfinal').val());
+    $("#btn-cancelar").click( ()=> {
+        nota_atual = parseInt($('#notainicial').val());
+        nota_final = parseInt($('#notafinal').val());
         iniciarPesquisa();
         cancelar();
     });
@@ -17,7 +17,7 @@ $(function(){
                 controller:'nfse/cancelar',
                 op:"betha",
                 nfsenumero: nota_atual,
-                codigocancelamento:1
+                codigocancelamento:$('#motivocancelamento').val()
             },
             beforeSend:function(){
 

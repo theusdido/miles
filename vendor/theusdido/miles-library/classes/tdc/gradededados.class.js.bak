@@ -979,14 +979,6 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
 					carregarScriptCRUD('editarformulario',entidadeid,id);
 				}
 			break;
-			default:
-				carregar(session.folderprojectfiles + "files/cadastro/"+entidadeid+"/"+td_entidade[entidadeid].nomecompleto+".html",'#conteudoprincipal',function(){
-					carregarScriptCRUD('editarformulario',entidadeid,id,'#conteudoprincipal',{
-						is_registrounico:false,
-						is_init:true,
-						funcionalidade:'consulta'
-					});
-				});
 		}
 	});
 

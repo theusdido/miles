@@ -212,6 +212,6 @@ class FieldAdditionalType {
     }
 
     public static function EmptyFieldOBJ(){
-        return json_encode( new stdClass() );
+        return '{}';
     }
 }

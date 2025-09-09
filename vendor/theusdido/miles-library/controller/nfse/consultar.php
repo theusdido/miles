@@ -21,7 +21,15 @@
             }
 
             if ($situacao != ''){
-                $filtro->addFiltro("situacao","=",$situacao);
+                
+                if ($situacao == 'N'){
+                    $ft = tdc::f();
+                    $ft->addFiltro("situacao","IS", NULL);
+                    $ft->addFiltro("situacao","=",$situacao,OU);
+                    $filtro->add($ft);                    
+                }else{
+                    $filtro->addFiltro("situacao","=",$situacao);
+                }
             }
 
             $filtro->onlyActive();
@@ -33,8 +41,9 @@
                     "rpsnumero"     => $d->rpsnumero,
                     "rpsserie"      => $d->rpsserie,
                     "rpstipo"       => $d->rpstipo,
-                    "situacao"      => $d->situacao,
-                    "tomador"       => tdc::d("td_erp_nfse_tomador",tdc::f("nfse","=",$d->id))[0]->tomarazaosocial
+                    "situacao"      => $d->situacao == 'E' ? 'Enviada' : 'Não Enviada',
+                    "tomador"       => tdc::d("td_erp_nfse_tomador",tdc::f("nfse","=",$d->id))[0]->tomarazaosocial,
+                    'dataemissao'   => dateToMysqlFormat($d->demis,true)
                 ));
             }
 

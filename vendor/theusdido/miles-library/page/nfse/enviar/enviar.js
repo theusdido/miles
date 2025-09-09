@@ -34,9 +34,8 @@ $(function(){
 
                         var nota        = notas_enviar[r];
                         var tr          = $("<tr data-id='"+nota.id+"'>");
-                        var tdNumero    = $('<td>'+nota.rpsnumero+'</td>');
-                        var tdSerie     = $('<td class="text-center">'+nota.rpsserie+'</td>');
-                        var tdTipo      = $('<td class="text-center">'+nota.rpstipo+'</td>');
+                        var tdNumero    = $(`<td>${nota.rpsnumero} / ${nota.rpsserie} / ${nota.rpstipo}</td>`);
+                        var tdDtEmissao = $('<td class="text-center">'+nota.dataemissao+'</td>');
                         var tdTomador   = $('<td>'+nota.tomador+'</td>');
                         var tdStatus    = $('<td class="text-center">'+nota.situacao+'</td>');
                         var tdRetorno   = $('<td class="msg-retorno"></td>');
@@ -91,12 +90,11 @@ $(function(){
                         td_excluir.append(btn_excluir);
 
                         tr.append(tdNumero);
-                        tr.append(tdSerie);
-                        tr.append(tdTipo);
+                        tr.append(tdDtEmissao);
                         tr.append(tdTomador);
                         tr.append(tdStatus);
                         tr.append(tdRetorno);
-                        tr.append(td_enviar);
+                        //tr.append(td_enviar);
                         tr.append(td_excluir);
                         
                         $("#tconsulta tbody").append(tr);                

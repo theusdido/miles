@@ -106,6 +106,7 @@ function setaPermissao(obj,_item){
         $.ajax({
             type:"POST",
             url:session.urlmiles,
+            timeout: 10000,
             data:{
                 controller:'mdm/configuracoes/permissoes',
                 op:'setar-permissao',
@@ -120,11 +121,29 @@ function setaPermissao(obj,_item){
             complete:function(){
                 $.ajax({
                     url:session.urlmiles,
+                    timeout: 10000,
                     data:{
                         controller:'permissoes',
                         op:'menu'
-                    }
+                    },
+                    complete:function(){
+                        console.log('Permissão Menu Finalizada!');
+                    },
+                    error:function(ret,textStatus, errorThrown){
+                    if (textStatus === 'timeout') {
+                            console.error('Requisição cancelada por timeout');
+                        } else {
+                            console.error('Erro na requisição:', textStatus, errorThrown);
+                        }
+                    }                    
                 });
+            },
+            error:function(ret,textStatus, errorThrown){
+            if (textStatus === 'timeout') {
+                    console.error('Requisição cancelada por timeout');
+                } else {
+                    console.error('Erro na requisição:', textStatus, errorThrown);
+                }
             }
         });
     }else{

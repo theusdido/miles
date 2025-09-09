@@ -76,14 +76,6 @@
 		// Retorna o id da sessão do carrinho de compras
 		public function getSessionId()
 		{
-
-			global $_data;			
-			if (isset($_data->sessionid)){
-				if ($_data->sessionid != ''){
-					return $_data->sessionid;
-				}
-			}
-
 			if (TdCookie::exists("carrinhocamprassessionid")){
 				$session_id_carrinho = TdCookie::get("carrinhocamprassessionid");
 			}else{
@@ -199,16 +191,6 @@
 			//$this->dados->armazenar();
 		}
 
-		public function setClient($cliente_id)
-		{			
-			if (is_numeric($cliente_id) && $cliente_id > 0){
-				$this->dados->cliente = $cliente_id;
-				$sql = "UPDATE td_ecommerce_carrinhocompras SET cliente = {$cliente_id} WHERE id = " . $this->getId();
-				Transacao::get()->exec($sql);
-				Transacao::Commit();
-			}
-		}
-	
 		public function setCupomDesconto($cupom_id){
 			if (is_numeric($cupom_id)){
 				if ($cupom_id > 0){
