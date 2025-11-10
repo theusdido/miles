@@ -60,6 +60,9 @@ abstract class Registro {
 		if (method_exists($this,'set_'.$propriedade)){
 			call_user_func(array($this,'set_'.$propriedade),$valor);
 		}else{
+			if (!is_array($this->dados)) {
+				$this->dados = []; // Initialize as an empty array
+			}			
 			$this->dados[$propriedade] = $valor;
 		}
 	}
@@ -241,6 +244,8 @@ abstract class Registro {
 	public function deletar($id = null){
 
 		$id = $id ? $id : $this->id;
+		if (!is_numeric($id)) return false;
+		
 		$sql = tdClass::Criar("sqldeletar");
 		$sql->setEntidade($this->getEntidade());
 		$criterio = tdClass::Criar("sqlcriterio");
@@ -255,7 +260,7 @@ abstract class Registro {
 
 			if (_IS_REPLICATION_FIREBASE){
 				$firebase = new Firebase();
-				$firebase->del($this->getEntidade() . '/' . $this->dados['id'] . '/');
+				$firebase->del($this->getEntidade() . '/' . $id . '/');
 			}
 			return $resultado;
 		}else{
@@ -576,7 +581,7 @@ abstract class Registro {
 			$sql = "
 				SELECT nome FROM ".ATRIBUTO.
 				" WHERE entidade = ". $this->getID().
-				" AND additionfield IS NOT NULL AND additionfield <> 0;
+				" AND additionalfield IS NOT NULL AND additionalfield <> 0;
 			";
 			$query = $conn->query($sql);
 			while($row = $query->fetch()){

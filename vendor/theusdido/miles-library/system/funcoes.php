@@ -1097,7 +1097,7 @@ function criarAtributo(
 
 		// Adicionar o campo de referencial para o campo adicional
 		$_new_field_addtional_obj = tdc::a($new_field);
-		$_new_field_addtional_obj->additionfield = $id;
+		$_new_field_addtional_obj->additionalfield = $id;
 		$_new_field_addtional_obj->armazenar();
 
 		if ($tipohtml == 4 || $tipohtml == 22){
@@ -1122,7 +1122,7 @@ function criarAtributo(
 
 			// Adicionar o campo de referencial para o campo adicional
 			$_new_field_addtional_obj = tdc::a($new_field_obj);
-			$_new_field_addtional_obj->additionfield = $id;
+			$_new_field_addtional_obj->additionalfield = $id;
 			$_new_field_addtional_obj->armazenar();
 		}
 	}
@@ -2510,7 +2510,6 @@ function bool_r($value){
 function getURLProject($parametro = null){
 	$urlproject 		= URL_MILES . "index.php";
 	$parmsProject 		= array(
-		#"currentproject" 					=> CURRENT_PROJECT_ID,
 		'project_name_identifify_params' 	=> PROJECT_NAME_IDENTIFY_PARAMS,
 		'env'								=> _ENVIRONMENT
 	);

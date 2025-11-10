@@ -18,7 +18,7 @@ class tdFirebaseRealtime {
 
         // Obtém a referência para o banco de dados e a coleção (nó)
         this.database = firebase.database();
-        this.collectionRef = this.database.ref(collectionName);
+        this.collectionRef = this.database.ref('prod/' + collectionName);
     }
 
     /**

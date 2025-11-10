@@ -1,32 +1,28 @@
 <?php
     $entidade = tdc::r('entidade');
-    $firebase = new Firebase();
-    
+    $redis = new Redis();
+    $redis->connect('127.0.0.1', 6379);
+
     switch($entidade){
         case 'td_lista':
-            $firebase->del($entidade);
+            $redis->del($entidade);
             foreach(tdc::da($entidade) as $d){
-                $firebase->add(array(
+                $redis->hSet($entidade, $d['id'], json_encode(array(
                     'id'            => $d['id'],
                     'entidadepai'   => $d['entidadepai'],
                     'entidadefilho' => $d['entidadefilho'],
                     'regpai'        => $d['regpai'],
                     'regfilho'      => $d['regfilho'],
                     'regfilho_obj'  => tdc::dua(tdc::e($d['entidadefilho'])->nome,$d['regfilho'])
-                ),$entidade . '/' . $d['id']);
+                )));
             }
         break;
         case 'delete-all':
             
         break;
         default:
-            try{                
-                $firebase->del($entidade);                
-                foreach(tdc::da($entidade) as $d){
-                    $id_    = $d['id'];
-                    $ref_   = $entidade . '/' . $id_;
-                    $firebase->add($d,$ref_);
-                }
+            try{
+                $_redis->setAll($entidade);
             }catch(Exception $e){
                 echo $e->getMessage();
             }

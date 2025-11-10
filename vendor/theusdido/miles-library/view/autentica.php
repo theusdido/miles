@@ -301,8 +301,6 @@
         }
 
         .rotating-div {
-            width: 300px;
-            height: 200px;
             position: relative;
             transform-style: preserve-3d;
             transition: transform 0.6s ease;
@@ -313,12 +311,6 @@
             width: 100%;
             height: 100%;
             backface-visibility: hidden; /* Oculta o lado traseiro quando rotacionado */
-            display: flex;
-			flex-direction:column;
-        }
-
-        .front-face {
-
         }
 
         .back-face {

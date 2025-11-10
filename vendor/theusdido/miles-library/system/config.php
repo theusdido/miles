@@ -89,6 +89,7 @@
 
 	$_db_config_file 	= isset($_env->database->config_file) ? $_env->database->config_file : $mjc->database_current;
 	$_config_db 		= $_path_config_project . $_db_config_file .'_mysql.ini';
+
 	if (file_exists($_config_db)){
 		$_db 		= parseIniFile($_config_db);
 		$_db_name 	= $_db['base'];
@@ -256,3 +257,6 @@
 
 	// Sessão de seleção de língua para idioma
 	Session::append('selected_language', tdc::r('_language') != '' ? tdc::r('_language') : 0);
+
+	// Conexão com o Redis
+	$_redis = IS_REDIS ? new tdRedis($mjc->project->id) : NULL;

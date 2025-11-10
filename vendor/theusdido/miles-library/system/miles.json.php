@@ -68,7 +68,10 @@
 	define('_ENVIRONMENT',$_environment);
 
 	// Replicar dados no banco Google Firebase Realtime
-	define("_IS_REPLICATION_FIREBASE", isset($_env->integration->firebase->is_replication) ? $_env->integration->firebase->is_replication : false);
+	define("_IS_REPLICATION_FIREBASE", isset($_env->integration->firebase) ? $_env->integration->firebase : false);
+
+	// Redis
+	define('IS_REDIS', false);
 
 	// Charset do banco de dados ( MySQL )
 	define("_MYSQL_CHARSET", isset($_env->dbms->mysql->charset) ? $_env->dbms->mysql->charset : 'utf8');

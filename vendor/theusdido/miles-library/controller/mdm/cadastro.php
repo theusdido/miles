@@ -129,7 +129,7 @@
                 SELECT id,nome,descricao,ordem 
                 FROM ".ATRIBUTO." 
                 WHERE entidade = {$entidade} 
-                AND (additionfield IS NULL OR additionfield = 0)
+                
                 ORDER BY ordem ASC;";
             $query      = $conn->query($sql);
             foreach ($query->fetchAll() as $linha){

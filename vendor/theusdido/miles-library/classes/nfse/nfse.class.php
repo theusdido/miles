@@ -675,9 +675,6 @@
                 if (!empty($resp['bodyNodes'])) {
                     foreach ($resp['bodyNodes'] as $k => $v) {
                         $respXML = new SimpleXMLElement($v);
-                        //var_dump($respXML);
-                        
-
                         $is_exist_nfse = isset($respXML->CompNfse);
                         
                         $message_error = '';

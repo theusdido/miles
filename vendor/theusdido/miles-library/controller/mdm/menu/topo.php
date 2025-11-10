@@ -56,8 +56,8 @@
         break;
         case 'salvar':
             $id					= $_POST["id"];
-            $entidadeRequest	= isset($_POST["entidade"])?$_POST["entidade"]:"";
-            $entidade			= $entidadeRequest==""?"0":"'" .$entidadeRequest. "'";
+            $entidade_request	= isset($_POST["entidade"])?$_POST["entidade"]:"";
+            $entidade			= $entidade_request==""?"0":"'" .$entidade_request. "'";
             $descricao			= $_POST["descricao"]==""?"null":"'" .tdc::utf8($_POST["descricao"]). "'";
             $link 				= $_POST["link"]==""?"'#'":"'" .$_POST["link"]. "'";
             $target				= $_POST["target"]==""?"null":"'" .$_POST["target"]. "'";		
@@ -79,8 +79,12 @@
             $conceito = $entidade;                
             
             // O campo entidade assumime o valor do conceito quando não for um cadastro
-            if ($tp_menu != 'cadastro' && $tp_menu != 'raiz' && $tp_menu != 'personalizado' && $tp_menu != 'conceito'){
-            	$sqlTpMenu 	    = 'SELECT entidade FROM td_'.$tp_menu.' WHERE id = ' . $entidadeRequest;
+            if (
+                ($tp_menu != 'cadastro' && $tp_menu != 'raiz' && $tp_menu != 'personalizado' && $tp_menu != 'conceito')
+                && 
+                ($entidade_request != "" && $entidade_request != "0")
+            ){
+            	$sqlTpMenu 	    = 'SELECT entidade FROM td_'.$tp_menu.' WHERE id = ' . $entidade_request;
             	$query 			= $conn->query($sqlTpMenu);
             	$linhaTpMenu	= $query->fetch();
             	$entidade		= $linhaTpMenu['entidade'];

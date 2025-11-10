@@ -27,7 +27,7 @@
 
             $config         = $this->getJSONConfig();
             $project_id     = $config['project_id'];
-            $project_url    = 'https://'.$project_id.'-default-rtdb.firebaseio.com/';            
+            $project_url    = 'https://'.$project_id.'-default-rtdb.firebaseio.com/' . _ENVIRONMENT;
 
             // Cria uma instância do Firebase
             $firebase = (new Factory)
@@ -46,9 +46,9 @@
             return $this->ref($collection)->push($data);
         }
 
-        public function add($data, $collection = '/'){            
+        public function add($data, $collection = '/'){
             $ref_ = $this->set($data, $collection);
-            $this->addRelacionamento($collection,$ref_);
+            //$this->addRelacionamento($collection, $ref_);
             return $ref_;
         }
 
@@ -70,7 +70,7 @@
             return $ref_;
         }        
 
-        private function addRelacionamento($entidade,$ref){
+        public function addRelacionamento($entidade, $ref = ''){
 
             // Dados da Entidade
             $ent            = explode('/',$entidade);
@@ -88,7 +88,7 @@
             foreach($relacionamentos as $rel){
                 array_push($relacionamentos_id, $rel['filho']);
             }
-            
+                        
             // Percorre os relacionamentos
             foreach($relacionamentos_id as $r_){
 
@@ -109,4 +109,51 @@
                 $this->database->getReference($full_ref_lista)->set($dados_);
             }
         }
+
+        public function getAll($collection){
+            $ref = $this->ref($collection);
+            $data = $ref->getValue();
+
+            if (!is_array($data)) return [];
+
+            // Remove valores nulos e reindexa o array
+            $data = array_values(array_filter($data, fn($item) => !is_null($item)));
+            return $data;
+        }
+
+        public function getPage($collection, $limit = 10, $startKey = null){
+            $ref = $this->ref($collection);
+            $query = $ref->orderByKey(); // Ordena pela chave (necessário para startAt)
+
+            // 1. Aplica o limite (tamanho da página)
+            $query = $query->limitToFirst($limit); 
+
+            // 2. Se for fornecida uma chave inicial, a consulta começará APÓS esta chave.
+            // Isso é crucial para buscar a "próxima" página.
+            if ($startKey !== null) {
+                // startAt() inclui o ponto de partida, então para buscar a próxima página,
+                // é comum usar o último item da página anterior como ponto de partida.
+                $query = $query->startAt($startKey);
+                
+                // Se você usar startAt($startKey), e a chave for do último item da pág. anterior,
+                // você precisa buscar $limit + 1 itens e descartar o primeiro (a chave de início)
+                // para obter a próxima página de $limit itens. 
+                // Alternativamente, se for a primeira página, não passe startKey.
+            }
+
+            $data = $query->getValue(); 
+
+            if (!is_array($data)) return [];
+
+            // 3. (OPCIONAL) Se você usou startAt, remova o primeiro registro, pois ele
+            // é o último registro da página anterior (o seu ponto de partida).
+            if ($startKey !== null) {
+                array_shift($data); // Remove o primeiro elemento (a chave $startKey)
+            }
+            
+            // Remove valores nulos e reindexa o array
+            $data = array_values(array_filter($data, fn($item) => !is_null($item)));
+            
+            return $data;
+        }        
     }

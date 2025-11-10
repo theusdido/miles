@@ -78,6 +78,23 @@
 		echo 'Entidade de chave estrangeira não configurada';
 		exit;
 	}
+	
+	// Retorna dados do Firebase para entidade auxiliar
+	$entidade_auxiliar = json_decode(tdc::r('entidadeauxiliar'));
+	if ($entidade_auxiliar){
+		$firebase = new Firebase();
+		#$dados = $firebase->getPage(tdc::r('entidade_nome'),$max_registros,$ini_reg);		
+		#$dados = $firebase->getPage(tdc::r('entidade_nome'));
+		$dados = $firebase->getAll(tdc::r('entidade_nome'));
+
+		$retorno["entidade"] 		= $entidade_id;
+		$retorno["dados"] 			= $dados;
+		$retorno["dadosreais"] 		= $dados;
+		$retorno["total"] 			= count($dados);
+
+		echo json_encode($retorno);
+		exit;
+	}	
 
 	$entidade 		= tdClass::Criar("persistent",array(ENTIDADE,$entidade_id));
 	$max_registros 	= tdc::r("qtdademaximaregistro",10);

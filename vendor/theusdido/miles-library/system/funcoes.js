@@ -26,9 +26,9 @@ function carregar(arquivo,elemento_retorno = "",callback_function = null){
 		},
 		error:function(ret,textStatus, errorThrown){
 		if (textStatus === 'timeout') {
-			console.error('Requisição cancelada por timeout');
+				console.error('Requisição cancelada por timeout');
 			} else {
-			console.error('Erro na requisição:', textStatus, errorThrown);
+				console.error('Erro na requisição:', textStatus, errorThrown);
 			}			
 			if (tentar_recarregar_pagina){
 				tentar_recarregar_pagina = false;
@@ -641,17 +641,19 @@ function formatarCNPJ(cnpj){
 }
 
 function getExtensao(filename) {
-  return filename.slice((filename.lastIndexOf(".") - 1 >>> 0) + 2);
+	if (filename == undefined || filename == null) return '';
+  	return filename.slice((filename.lastIndexOf(".") - 1 >>> 0) + 2);
 }
 function getTipoExtensao(arquivo){
 	var extensao = getExtensao(arquivo).toLowerCase();
-	var tipo = '';
+	var tipo = '';	
 	switch(extensao){
 		case 'jpg': tipo = 'imagem';
 		case 'jpeg': tipo = 'imagem';
 		case 'png': tipo = 'imagem';
 		case 'gif': tipo = 'imagem';
-		case 'bmp': tipo = 'imagem'; break;
+		case 'bmp': tipo = 'imagem'; 
+		case 'webp': tipo = 'imagem'; break;
 		default: tipo = extensao;
 	}
 	return tipo;
@@ -981,4 +983,71 @@ function getBoolCheckedValue(_value)
         default:
             return true;
     }
+}
+
+function getAtributoRelacionamento(entidade_pai,entidade_filho){
+	const relacionamento = getRelacionamento(entidade_pai,entidade_filho);
+	if (relacionamento != null){
+		if (
+			relacionamento.atributo != null && 
+			relacionamento.atributo > 0 && 
+			relacionamento.atributo != undefined && 
+			relacionamento.atributo != '' && 
+			parseInt(relacionamento.atributo)
+		){
+			return td_atributo[relacionamento.atributo].nome;
+		}
+	}
+	return '';
+}
+
+function testarSrcImagem(url) {
+    return new Promise((resolve) => {
+        // 1. Cria um novo elemento Image na memória (sem anexar ao DOM).
+        const img = new Image();
+
+        // 2. Define o manipulador para o evento 'load' (sucesso no carregamento).
+        img.onload = function() {
+            // A imagem foi carregada corretamente.
+            // Opcional: Você pode verificar naturalWidth/naturalHeight para garantir que não é um erro de imagem "quebrada"
+            // que ainda dispara 'onload' em alguns casos.
+            if (img.complete && img.naturalWidth !== 0) {
+                //console.log(`Sucesso: Imagem carregada corretamente de: ${url}`);
+                resolve(true);
+            } else {
+                // Caso em que 'onload' é disparado, mas a imagem tem dimensões zero (algo pode estar errado).
+                console.log(`Falha: Imagem carregou, mas tem dimensões zero (URL: ${url})`);
+                resolve(false);
+            }
+        };
+
+        // 3. Define o manipulador para o evento 'error' (falha no carregamento).
+        img.onerror = function() {
+            // Houve um erro de carregamento (URL inválido, imagem não existe, erro de servidor, etc.).
+            console.error(`Falha: Erro ao carregar imagem de: ${url}`);
+            resolve(false);
+        };
+
+        // 4. Define o src para iniciar o carregamento.
+        // É crucial definir os manipuladores 'onload'/'onerror' antes de definir o 'src'.
+        img.src = url;
+
+        // Caso a imagem já esteja em cache e o evento 'load' não seja disparado,
+        // o atributo 'complete' pode ajudar (mas o onload/onerror são os mais confiáveis).
+        if (img.complete && img.naturalWidth !== 0) {
+            // Imagem já em cache e carregada corretamente
+            // Neste cenário, o 'onload' pode não disparar, então resolvemos imediatamente.
+            //console.log(`Sucesso (Cache): Imagem carregada de cache: ${url}`);
+            resolve(true);
+        }
+    });
+}
+
+async function getSRCImage(url)
+{
+    // Testa URL Correta
+    const resultado = await testarSrcImagem(url);
+
+    // Para exibir a imagem (opcional)
+    return resultado ? url : config.url_no_image;
 }

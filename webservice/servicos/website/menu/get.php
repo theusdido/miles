@@ -2,7 +2,6 @@
     switch($_op){
         case 'rodape':
             $_entidade = 'td_website_geral_menurodape';
-            
         break;
         case 'principal':
         default:
@@ -14,7 +13,13 @@
     $_criterio->order('ordem');
 
     try{
-        $retorno['data'] = tdc::da($_entidade,$_criterio);
+        //$retorno['data'] = tdc::da($_entidade,$_criterio);
+
+        #$redis = new Redis();
+        #$redis->connect('127.0.0.1', 6379);        
+        #var_dump($redis->hGet($_entidade));
+        #$retorno['data'] = json_decode($redis->get($_entidade . ":all"));
+        $retorno['data'] = $_redis->getAll($_entidade);
     }catch(Exception $e){
         $retorno['data'] = [];
     }

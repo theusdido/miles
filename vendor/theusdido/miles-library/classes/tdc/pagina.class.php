@@ -343,7 +343,8 @@ class Pagina Extends Html {
 				this.url_files					= "'.URL_FILES.'";
 				this.url_files_cadastro			= "'.URL_FILES_CADASTRO.'";
 				this.url_files_consulta			= "'.URL_FILES_CONSULTA.'";
-
+				this.url_upload_files	        = "'.URL_CURRENT_FILE.'";
+				this.url_upload_files_temp      = "'.URL_CURRENT_FILE_TEMP.'";
 			}
 			var session = new SystemSession();
 			
@@ -367,6 +368,7 @@ class Pagina Extends Html {
 				this.currenttheme					= "'.CURRENT_THEME.'";				
 				this.upload_max_filesize			= "'.ini_get('upload_max_filesize').'";
 				this.is_replication_firebase		= '.(_IS_REPLICATION_FIREBASE == 1 ? 'true' : 'false').';
+				this.url_no_image					= "'.URL_NOIMAGE.'";
 			}
 			var config = new SystemConfig();
 		');

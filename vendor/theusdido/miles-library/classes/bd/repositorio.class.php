@@ -155,7 +155,7 @@ final class Repositorio {
 				}
 			}
 			return $resultados;
-		}else{			
+		}else{
 			throw new Exception("Não há transação ativa");
 		}
 	}	

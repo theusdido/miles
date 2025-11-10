@@ -15,6 +15,7 @@
 		}else{
 			$id 			= $entidade->getUltimo()+1;
 			$entidade->id 	= $id;
+			$entidade->setIsNew();
 		}
 		
 		$tipo_relacionamento = $linha["fp"] == "true" ? 0 : (int)$linha['tiporel'];
@@ -145,6 +146,8 @@
 					'regpai'		=> $regPai,
 					'regfilho' 		=> $regFilho
 				]);
+				
+				$firebase->addRelacionamento($_entidade_pai_obj->nome . '/' . $regPai);
 			}
 		}
 	}

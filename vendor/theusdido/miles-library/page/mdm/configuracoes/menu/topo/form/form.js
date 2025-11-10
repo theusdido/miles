@@ -137,6 +137,9 @@ function carregarEntidade(valor){
         case 'raiz':
             configuracaoInicial();
         break;
+        case 'pagina':
+            configuracaoPagina();
+        break;
     }				
 }
 function configuracaoPersonalizado(){
@@ -164,4 +167,14 @@ function configuracaoInicial(){
     $("#descricao,#link").removeAttr("readonly");
     $('#entidade').load(session.urlmiles + '?controller=mdm/menu/topo&op=option-entidade');
     $("#link").val("#");
+}
+
+function configuracaoPagina(){
+    $("#entidade").val(0);
+    $("#entidade").attr("readonly",true);
+    $("#entidade").attr("disabled",true);
+    $("#descricao,#link,#target,id,entidade,ordem,pai").val("");
+    $("#descricao,#link,#pai,#coluna").removeAttr("readonly");
+    $("#descricao,#link,#pai,#coluna").removeAttr("disabled");
+    $("#link").val("index.php?controller=page&page=?");
 }

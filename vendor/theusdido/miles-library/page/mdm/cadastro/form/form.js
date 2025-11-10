@@ -9,6 +9,10 @@ $('#criarauth').attr('checked',false);
 $('#entidadeauxiliar').attr('checked',false);
 $('#controlarregistrousuario').attr('checked',false);
 
+$('#nome').removeAttr('disabled');
+$('#nome').removeAttr('readonly');
+$('.input-group-btn-nome').hide();
+
 var _registro_entidade = {};
 var nome_old = '';
 
@@ -90,7 +94,7 @@ function alterarNomeEntidade()
             _entidade_new:$('#nome').val(),
         },
         success:function(){
-            //_entidade = $('#id').val();
+            $('#nome').attr('readonly',true);
         }
     });
 }
@@ -184,6 +188,9 @@ function load(){
             $('#controlarregistrousuario')      .attr('checked',getBoolCheckedValue(_data.controlarregistrousuario));
 
             nome_old = _data.nome;
+
+            $('#nome').attr('readonly',true);
+            $('.input-group-btn-nome').show();
         }
     });
 }

@@ -110,8 +110,12 @@ if (config.is_replication_firebase){
         try {
             const response = await fetch(session.folderprojectfiles + 'config/firebase_config.json'); // Substitua pela sua rota
             firebaseConfig = await response.json();
+            console.log(firebaseConfig);
         } catch (error) {
             console.error("Erro ao obter a configuração do Firebase:", error);
         }
     });
 }
+
+// Inicia a função de teste quando o DOM estiver pronto
+//document.addEventListener('DOMContentLoaded', testarImagens);

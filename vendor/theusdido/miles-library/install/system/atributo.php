@@ -36,3 +36,4 @@
 	criarCampoDicionario($conn,$entidade,"criarsomatoriogradededados","boolean",0,1);
 	criarCampoDicionario($conn,$entidade,"naoexibircampo","boolean",0,1);
 	criarCampoDicionario($conn,$entidade,"is_unique_key","boolean",0,1);
+	criarCampoDicionario($conn,$entidade,"additionalfield","int",0,1);

@@ -152,7 +152,9 @@ GradeDeDados.prototype.load = function(){
 			camposfk:camposFK,
 			camposid:camposID,
 			qtdademaximaregistro:this.qtdeMaxRegistro,
-			order:this.getOrder()
+			order:this.getOrder(),
+			entidadeauxiliar:td_entidade[this.entidade].entidadeauxiliar,
+			entidade_nome:td_entidade[this.entidade].nomecompleto
 		},
 		error:function(ret){
 			console.log("ERRO ao carregar a grade de dados => " + ret.responseText);
@@ -294,7 +296,7 @@ GradeDeDados.prototype.corpo = function(){
 			var linhas = this.dadosCorpo[ln];
 			var linhasreais = this.dadosReaisCorpo[ln];
 			var i = 0;
-			for(l in linhas){
+			for(l in linhas){				
 				var dadosLinha = [];
 				var dadosReaisLinha = [];
 				var idRegistroLinha = linhas[l].id;
@@ -304,11 +306,17 @@ GradeDeDados.prototype.corpo = function(){
 					if (linhas[l][_campo + '_obj'] != 'undefined'){
 						dadosLinha[_campo + '_obj']	= linhas[l][_campo + '_obj'];
 					}
+					if (linhas[l][_campo + '_desc'] != 'undefined'){
+						dadosLinha[_campo + '_desc']	= linhas[l][_campo + '_desc'];
+					}
 					if (linhasreais != undefined){
 						dadosReaisLinha[_campo] = linhasreais[l][_campo];
 						if (linhasreais[l][_campo + '_obj'] != 'undefined'){
 							dadosReaisLinha[_campo + '_obj']	= linhasreais[l][_campo + '_obj'];
-						}						
+						}
+						if (linhasreais[l][_campo + '_desc'] != 'undefined'){
+							dadosReaisLinha[_campo + '_desc']	= linhasreais[l][_campo + '_desc'];
+						}
 					}
 				}
 				this.addLinha(idRegistroLinha,dadosLinha,dadosReaisLinha);
@@ -332,6 +340,12 @@ GradeDeDados.prototype.addCorpo = function(id,dadosColuna){
 	this.rodape();
 }
 GradeDeDados.prototype.paginacao = function(){
+	// Retira a paginnação quando for uma entidade auxiliar
+	if( td_entidade[this.entidade].entidadeauxiliar){
+		$('.paginacao-gradededados',this.contexto).remove();
+		return;
+	}
+
 	if (this.totalRegistros > this.qtdeMaxRegistro){
 		let instancia 		= this;
 		this.totalblocos 	= Math.ceil(this.totalRegistros / this.qtdeMaxRegistro);
@@ -768,7 +782,7 @@ GradeDeDados.prototype.loadDadosEdicao = function(id){
 		}
 	});
 }
-GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
+GradeDeDados.prototype.addLinha = async function(id,linha,linhareal=""){
 	let tr;
 	let tr_is_exists;
 	let tr_indice = id == 0 ? this.indice_linha : id;
@@ -793,6 +807,7 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
 		let valorreal 		= linhareal[_campo];
 		let idAtributo 		= getIdAtributo(_campo,this.nomeEntidade);
 		let _atributo		= td_atributo[idAtributo];
+		
 		if (idAtributo != 0 && idAtributo != "" && idAtributo != undefined){
 			if (_atributo != undefined){
 				switch(parseInt(_atributo.tipohtml)){
@@ -804,17 +819,24 @@ GradeDeDados.prototype.addLinha = function(id,linha,linhareal=""){
 						}
 					break;
 					case 4:
-						if (_atributo.chaveestrangeira!= ''){
-							// console.log(td_entidade[_atributo.chaveestrangeira].nome);
-							// console.log(linha);
-							// console.log(linhareal);
+						if (_atributo.chaveestrangeira != ''){
+							valor = linha[_campo + '_desc'] != undefined ? linha[_campo + '_desc'] : valor;
 						}
 					break;
 					case 19:
 						if (valor != ''){
-							let dadosarquivo = JSON.parse(valor);
+							let dadosarquivo = {};
+							const extensao_arquivo = getExtensao(valor);
+							try{
+								dadosarquivo = JSON.parse(valor);
+							}catch(e){
+								dadosarquivo = {
+									tipo: getTipoExtensao(valor),
+									src: session.url_upload_files + _campo + '-' + _atributo.entidade + '-' + id + '.' + extensao_arquivo
+								};
+							}						
 							if (dadosarquivo.tipo == "imagem"){
-								let srcfile 			= dadosarquivo.src;
+								let srcfile 			= await getSRCImage(dadosarquivo.src);
 								let hyperlinkimagem 	= $("<a data-lightbox='img-gd-lightbox' data-title='' data-filename='"+srcfile+"' href='"+srcfile+"'>");
 								let img 				= $("<img src='"+srcfile+"' class='img-gradededadosicon img-rounded'>");
 								img.css("height","35px");
