@@ -1,0 +1,73 @@
+<p class="titulo-pagina ">Envio de Demonstrativo de Proprietário</p>
+<form onsubmit="return false;">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="td-btn-group">
+                    <button type="button" class="btn btn-primary" id="pesquisar">
+                        <i class="fas fa-search"></i> Pesquisar
+                    </button>
+                    <img id="load-pesquisar" class="loading2" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-4">
+                <div class="form-group">
+                    <label class="control-label" for="proprietario">Proprietário</label>
+                    <input type="text" id="proprietario" class="form-control" placeholder="Código ou Nome do Propŕietário" />
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <div class="form-group">
+                    <label class="control-label" for="data">Data</label>
+                    <input type="text" id="data" class="form-control" placeholder="Data de Emissão" />
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <div class="form-group">
+                    <label class="control-label" for="data">Situação</label>
+                    <select id="situacao" name="situacao" class="form-select">
+                        <option value="">Todos</option>
+                        <option value="1">Enviada</option>
+                        <option value="0">Não Enviada</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <span class="after-search">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <button id="btn-enviar" class="btn btn-warning"><i class="fas fa-file-import"></i> Enviar Todos</button>
+                </div>            
+            </div>        
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12"> 
+                    <div id="progress-send" class="progress progress-striped active">
+                        <div class="bar" style="width: 0%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12"> 
+                    <table id="tconsulta" class="table table-hover table-sm">
+                        <thead>
+                            <tr>
+                                <th width="10%" class="text-center">Data Emissão</th>
+                                <th width="45%">Locador</th>
+                                <th width="10%">Situação</th>
+                                <th width="25%">Log</th>
+                                <th width="5%" class="text-center">Visualizar</th>
+                                <th width="5%" class="text-center">Enviar</th>
+                                <th width="5%" class="text-center">Excluir</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>        
+        </span>
+    </div>
+</form>

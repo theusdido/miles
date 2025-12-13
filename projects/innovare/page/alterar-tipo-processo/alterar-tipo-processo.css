@@ -1,0 +1,11 @@
+.sumo_processo
+{
+    display:block !important;
+    width: 100% !important;
+}
+
+.sumo_processo .SelectBox,
+.sumo_processo .SelectBox:hover{
+    border-color:#DEE2E6 !important;
+    border-radius: 0.375rem !important;
+}

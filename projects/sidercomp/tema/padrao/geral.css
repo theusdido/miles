@@ -1,0 +1,624 @@
+<!--
+/*
+    * Framework MILES
+    * @license : tEIA
+    * @link http://www.teia.online
+		
+    * Página de folha de estilo
+    * Data de Criacao: 14/01/2015
+    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
+    
+    * Folha de estilo geral do tema 
+*/
+
+body {
+	margin:0px;
+	padding:0px;
+	background-color:#FFF;
+	background-repeat:no-repeat;
+	background-attachment: fixed;	
+	overflow-y:scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;	
+}
+header {
+	margin-top:30px;
+	border-radius: 15px 15px 0 0;
+}
+article{
+	border-radius:0 0 15px 15px;
+}
+footer{
+	margin-bottom:150px;
+	padding-top:15px;
+}
+header, article{
+	background-color:#FFF;
+}
+#logon {
+	position: absolute;
+	background-color: transparent;
+    margin: auto;
+    max-width: 650px;
+	width: 650px;
+	height: 250px;
+    bottom: 0;    
+    left: 0;   
+    right: 0;
+    top: 0;
+}
+#logon form input[type=submit]{
+	margin:5px auto;
+}
+#logon form a{
+	float:right;
+	color:#666;
+}
+#logon .autentica-div-logo{
+	float:left;
+	border-right:1px solid #DDD;
+	height:250px;
+}
+#logon .autentica-div-logo img {
+	float:left;
+	padding-top:25%;
+	width:250px;
+}
+#logon form{
+	float:left;
+	margin-top:15px;
+}
+.botao {
+	cursor:pointer;
+}
+.navbar-default {
+	border:0px;
+}
+.navbar-default .navbar-nav > li > a{
+	color:#999;
+}
+.navbar-default .navbar-nav > li > a:hover{
+	color:#333;
+}
+.navbar-default .navbar-brand{
+	color:#BBB;
+}
+.navbar-default .navbar-brand:hover{
+	color:#999;
+}
+.b-novo,.b-salvar,.b-cancelar,.b-pesquisar,.b-executar,.b-gerar,.b-imprimir {
+	float:right;
+	margin: 0px 10px 10px 0px;
+	width:120px;
+}
+legend {
+	padding-left:10px;	
+}
+.form-grupo-botao{
+	float:left;
+	clear:left;
+	width:100%;
+}
+.form-controle label {
+	margin-left:5px;
+}
+.form-grupo-botao .b-voltar{
+	float:left;
+	margin-right:20px;
+}
+.has-error .form-control {
+	background-color:#ffe6e6;
+}
+.has-success .form-control {
+	background-color:#f1ffee;
+}
+.has-feedback > .glyphicon{
+	margin-right:0;
+}
+#userinfo img,#userinfo>h4{
+	float:right;
+	text-align:right;
+	margin-right:5px;
+}
+#userinfo {
+	margin:7px auto auto auto;
+	
+}
+#logo {
+	margin:10px auto auto auto;
+}
+#logo img {
+	height:50px;
+}
+#info{
+	text-align:center;
+}
+#info small {
+	font-size:10px;
+}
+#userinfo a{
+	font-size:12px;
+}
+.form_campos {
+	float:left;
+	clear:left;
+	width:100%;
+	padding:10px;
+}
+.coluna{
+	float:left;
+	padding-left:10px;
+}
+.coluna[data-ncolunas="1"]{
+	width:53%;
+}	
+.coluna[data-ncolunas="2"]{
+	width:43%;
+}	
+.coluna[data-ncolunas="3"]{
+	width:33%;
+}	
+
+.form-group .control-label {
+	float:left;
+	color:#777;
+	padding-left:3px;
+}
+
+.gd-sel-todos{
+	padding:0;
+}
+.texto-curto{
+	width:30%;
+	float:left;
+	clear:left;
+}
+.texto-medio{
+	width:70%;
+	float:left;
+	clear:left;
+}
+.texto-longo{
+	width:100%;
+	float:left;
+	clear:left;
+}
+.panel-body .form-group label{
+	font-weight:normal;
+	color:#666;
+	float:left;
+}
+.panel-body .form-group input{
+	border:0px;
+	font-weight:bold;
+	float:left;
+	clear:left;
+}
+.panel-body .form-group {
+	float:left;
+	width:auto;
+	margin:15px;
+}
+.tr-retorna-registro{
+	cursor:pointer;
+}
+.retorno {
+	float:left;
+	clear:left;
+	width:100%;
+	margin:10px 0;
+}
+.form-group .btn-group {
+	float:left;
+	clear:left;
+}
+.div-relacionamento{
+	margin-top:10px;
+}
+.panel-flag-generalizacao{
+	float:left;
+	width:50%;
+}
+.div-relacionamento-generalizacao{
+	margin-top:20px;
+}
+.tab-content .bloco{
+	padding:15px 0;
+}
+#selecionar-empresa-info{
+	width:100%;
+	border:1px solid #EEE;
+	color:#999;
+	font-size:12px;
+	padding:2px;
+	margin:3px;
+}
+#menu .btn .caret,.pesquisa-grade .btn .caret{
+	margin-left:7px;
+}
+.coluna > .form-group > .input-group .input-group-btn .add_list{
+    height: 30px;
+}
+.titulo-pagina{
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin-bottom: 20px;
+  font-size: 21px;
+  line-height: inherit;
+  color: #333;
+  border: 0;
+  border-bottom: 1px solid #e5e5e5;
+  font-weight:normal;
+}
+.crud-modal{
+	background-color:#FFF;
+	float:left;
+	width:100%;
+	padding:20px;
+}
+.irbloco-paginacao{
+border: 1px solid #ddd;
+    float: left;
+    font-weight: bold;
+	height: 33px;
+    text-align: center;
+    width: 50px;
+	color:#337ab7;
+}
+.coluna[data-ncolunas="1"] > .form-group > select{
+	width:91%;
+}
+.coluna[data-ncolunas="2"] > .form-group > select{
+	width:92%;
+}
+.coluna[data-ncolunas="3"] > .form-group > select{
+	width:86%;
+}
+.coluna .form-group iframe{
+	float:left;
+	clear:left;
+	width:100%;
+	height:30px;
+	border:0px;
+}
+.file-upload-icon{
+	padding-left: 6px;
+}
+.calendar-picker-group .input-group-btn button {
+	height:29px;
+	border:1px solid #DDD;
+	color:#666;
+}
+.calendar-picker-group{
+	float:left;
+	clear:left;
+}
+.filtro-pesquisa .termo-filtro{	
+	width:25%;
+	text-align:center;
+	height:30px;
+}
+.filtro-pesquisa .descricao-filtro{
+	width:75%;
+	height:30px;
+}
+.filtro-pesquisa .botao-filtro{
+	height:30px;
+}
+
+.tdform{
+	float:left;
+	width:100%;
+}
+.tdform fieldset{
+	float:left;
+	width:100%;
+}
+.pesquisa-grade{
+	float:left;
+	width:100%;
+}
+.coluna .form-group{
+	height:50px;
+	width:100%;
+}
+
+.coluna .form-group .input-group{
+	width:100%;
+	float:left;
+	clear:left;	
+}
+.loader-salvar{
+	float:right;
+}
+.loadergeral,.loader-pagina{
+	width:100%;
+	margin:75px auto;
+	display:none;
+}
+.loadergeral center img,.loader-pagina center img{
+	width:32px;
+}
+.ckeditor-formgroup{
+	height:100% !important;
+}
+html, body { margin:0; height: 100%;} /* Para funcionar altura dos elementos automáticos */
+.modal-body {
+    position: relative;
+    overflow-y: auto;
+    max-height: 100%;
+    padding: 15px;
+}
+.cadastromodal{
+	position:absolute;
+	width:90%;
+	height:50%;	
+}
+.botao-multilinha,.botao-ckeditor{
+	height:30px;
+}
+.textarea-modal{
+	border:1px solid #EEE;
+	width:100%;
+	height:100px;	
+}
+.panel-flag-generalizacao .SumoSelect{
+	width:100%;
+}
+.checkbox-s,.checkbox-n{
+	height:30px;
+}
+.input-td-uploadfile,.button-td-uploadfile,.deletar-td-upload,.visualizar-td-upload{
+	height:30px;
+}
+.td-status-erro{
+	background-color:#f83e3e;
+	color:#FFF;
+}
+.td-status-erro:hover{
+	background-color:#e60000 !important;
+}
+.td-status-alerta{
+	background-color:#faf459;
+	color:#000;
+}
+.td-status-alerta:hover{
+	background-color:#fff600 !important;
+}
+.td-status-info{
+	background-color:#55baf5;
+	color:#000;
+}
+.td-status-info:hover{
+	background-color:#0091e5 !important;
+}
+.td-status-sucesso{
+	background-color:#78d23b;
+	color:#000;
+}
+.td-status-sucesso:hover{
+	background-color:#49b700 !important;
+}
+.td-status-ativo{
+	background-color:#d0d0d0;
+	color:#000;
+}
+.td-status-ativo:hover{
+	background-color:#a9a9a9 !important;
+}
+
+#lista-favoritos-home .list-group-item{
+	border-top: 0px !important;
+	border-left: 0px !important;
+	border-right: 0px !important;
+	border-bottom:1px solid #DDD;
+	margin-top:5px;
+}
+#lista-favoritos-home .list-group-item .glyphicon{
+	margin:auto 10px auto 10px;
+}
+#lista-favoritos-home .list-group-item .qtde-menu-favorito , #lista-chamado-home .list-group-item .nome-usuario-abertura-chamado-home{
+	float:right;
+}
+.icone-favorito-home,.icone-chamado-home{
+	float:right;
+}
+
+#lista-chamado-home .list-group-item{
+	border-top: 0px !important;
+	border-left: 0px !important;
+	border-right: 0px !important;
+	border-bottom:1px solid #d9edf7;
+	margin-top:5px;
+}
+.btn-chamado-home{
+	float:right;
+	background-color:transparent;
+	border:0px;
+	margin-top:-4px;
+	color:#31708f;
+}
+.btn-chamado-home:hover,.btn-chamado-home:active,.btn-chamado-home:focus{
+	background-color:#bce8f1;
+}
+#btn-home-menuprincipal{
+	background-color:transparent;
+	margin:10px;
+	border:0px;
+}
+
+.panel-menucrud{
+	border:0px;
+}
+.lista-item-menu-crud .list-group-item{
+	border-top: 0px !important;
+	border-left: 0px !important;
+	border-right: 0px !important;
+	border-bottom:1px solid #DDD;
+	margin-top:5px;
+}
+.perfilusuariohome{
+	height:50px;
+	cursor:pointer;
+}
+.asteriscoobrigatorio{
+	color:#FF0000;
+	font-weight:bold;
+}
+
+.descricaoExibirEdicao{
+	padding:15px;
+	margin:5px 0 20px 0;
+	float:left;width:100%;
+	color:#3c4692;
+}
+.idExibirEdicao{
+	float:right;
+	font-weight:bold;
+}
+.campodescricaoExibirEdicao{
+	float:left;
+	font-weight:bold;
+	color:#3c4692;
+}
+#dados-config-projeto{
+	padding:3px;	
+	text-align:right;
+}
+.dados-config-projeto-desenv {
+	color:#31708f;
+	background-color:#b8ecf7;
+}	
+.dados-config-projeto-producao {
+	color:#747504;
+	background-color:#fbfcc8;
+}
+#inputgroup-pesquisa-projeto-headersystem{
+	margin-bottom:10px;
+}
+#ocutarDadosConfigProjeto{
+	float:left;
+	font-size:12px;
+	margin:2px 10px;
+}
+.formgroup-buttons-tdform{
+	width:120px;
+	float: right;
+    margin: 0px 10px 10px 0px;	
+}
+.crud-contexto-add , .crud-contexto-listar {
+	display:none;
+}
+.td-titulopagina-relacionamento{
+	text-align: right;
+    font-size: 14px;
+    border-bottom: 1px solid #F0F0F0;
+    color: #BBB;
+}
+
+#div-form-logon .tdform fieldset {
+	margin:15px;
+}
+/* Para o firefox em relação a tabela responsiva */
+@-moz-document url-prefix() {
+  fieldset { display: table-cell; }
+}
+@media(max-width:767px){
+	body{
+		/*background-image:none;*/
+	}
+	
+	#logo {
+		text-align:center;
+	}
+	.titulo-pagina {
+		border-bottom:0px;
+	}
+
+	#logon .autentica-div-logo{
+		float:none;
+		border-right:0px;
+		margin-right:0px;
+		width:auto;
+	}
+	#logon form {
+		float: none;
+		width: auto;
+		margin-top:0px;
+	}
+	
+	#logon{
+		position:static;
+		width: auto;
+		height: auto;
+	}
+	#div-form-logon{
+		margin:20px;
+	}
+	#logon .autentica-div-logo img {
+		margin-left: 10%;
+	}
+	.form_campos .coluna {
+		width:100%;
+		padding-left: 0px;
+		padding:10px;
+	}
+	.form-horizontal .form_campos .form-group {
+		margin:0px;
+	}
+	#div-form-logon .tdform fieldset {
+		margin:0px;
+	}
+}
+
+.btn-importar-db-from-file{
+	float: right;
+	margin: 0px 10px 10px 0px;
+	width: 120px;
+	background-color: #000;
+	color: #FFF;
+}
+.btn-importar-db-from-file:hover , .btn-importar-db-from-file:active {
+	color:#EEE;
+}
+#campo-atualizar-emmassa .coluna[data-ncolunas="1"] {
+	width:100%;
+}
+
+#campo-atualizar-emmassa .form_campos , #campo-atualizar-emmassa .form_campos .coluna{
+	padding:0px;
+}
+
+#campo-atualizar-emmassa .form-horizontal .form-group {
+	margin:0px;
+}
+.btn-editar-emmassa{
+	float:right;
+	width:150px;
+}
+.gradededados .btn-editar-emmassa{
+	margin-right:10px;
+}
+.loading2{
+	display:none;
+}
+#logoinstalacao{
+	margin:10px;
+	max-height:45px;
+}
+.titulo-pagina .badge{
+	float: right;
+    padding: 5px;
+    border: 1px solid #CCC;
+    color: #333;
+    background: none;
+}
+.td-titulopagina-relacionamento .badge{
+	float: left;
+	border:none;
+	font-weight:bold;
+	color:#BBB;
+}

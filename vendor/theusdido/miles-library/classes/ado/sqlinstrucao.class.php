@@ -15,7 +15,7 @@ abstract class SqlInstrucao {
 	protected $sql;
 	protected $criterio;
 	protected $entidade;
-	protected $colunaValor;
+	protected $colunaValor = [];
 
 	/*  
 		* Método setLinha 
@@ -32,6 +32,8 @@ abstract class SqlInstrucao {
 			return false;
 		}
 
+		if (is_object($valor)) return false;
+
 		if (is_string($valor)){
 			if (is_date($valor)){
 				$this->colunaValor[$coluna] = "'".dateToMysqlFormat($valor)."'";	
@@ -47,7 +49,7 @@ abstract class SqlInstrucao {
 			}	
 		}else if (is_bool($valor)){
 			$this->colunaValor[$coluna] = $valor ? 'TRUE' : 'FALSE';
-		}else if (is_date($valor)){
+		}else if (is_date($valor)){		
 			$this->colunaValor[$coluna] = addslashes(date('Y-m-d'));
 		}else if (isset($valor)){
 			$this->colunaValor[$coluna] = $valor;

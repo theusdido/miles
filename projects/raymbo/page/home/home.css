@@ -1,0 +1,91 @@
+.estatistica-home i
+{
+    font-size:3rem;
+}
+
+.estatistica-home .coluna-icone
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+}
+
+.estatistica-home .card-text
+{
+    font-size:3rem;
+    margin:0;
+}
+
+.estatistica-home .card-title
+{
+    margin:0;
+}
+
+/* .estatistica-home .card
+{
+    margin:10px 0;
+}
+
+.estatistica-home .card:first-child
+{
+    margin-right:5px;
+}
+
+.estatistica-home .card:last-child
+{
+    margin-left:5px;
+} */
+
+.estatistica-home .card-anuncios
+{
+    margin:auto 5px;    
+}
+
+.estatistica-home .card-cursos i,
+.estatistica-home .card-cursos .card-text
+{
+    color:#081d79;
+}
+
+.estatistica-home .card-anuncios i,
+.estatistica-home .card-anuncios .card-text
+{
+    color:#087908;
+}
+
+.estatistica-home .card-compras i,
+.estatistica-home .card-compras .card-text
+{
+    color:#e24313;
+}
+
+
+article
+{
+    background-color: #efefef;
+}
+
+.card-recent-activity ul li small
+{
+    color:#777;
+    font-size:0.8rem;
+}
+
+.card
+{
+    border-color:none;
+    --bs-card-border-color:none;
+}
+
+#ultimas-postagens-colunista .imagem-post
+{
+    height: 50px !important;
+    border-radius:10px;
+    object-fit: cover;;
+}
+
+#ultimas-postagens-colunista tr td,
+#ultimas-postagens-colunista tr th
+{
+    vertical-align: middle !important;
+}

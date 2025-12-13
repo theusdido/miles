@@ -6,7 +6,6 @@ index.dev.php
 frameworks/
 node_modules/
 ./vendor/
-projects/
 project/
 lib/
 .vscode/
@@ -24,4 +23,3 @@ miles.json
 debug/
 .gitignore
 firebase.json
-projects/**

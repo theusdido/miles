@@ -130,6 +130,7 @@ abstract class Registro {
 	*/	
 	public function armazenar(){
 		$this->setAdditionalField();
+		
 		if ($this->isnew){
 			if ($this->isAutoIncrement){
 				$this->id = $this->getUltimo() + 1;
@@ -139,6 +140,7 @@ abstract class Registro {
 
 			$sql = tdClass::Criar("sqlinserir");
 			$sql->setEntidade($this->getEntidade());
+			
 			foreach($this->dados as $key => $valor){
 				$field_value = FieldAdditionalType::getValue($this->dados,$key,$valor,$this->getEntidade());
 				$sql->setLinha($key,$field_value);
@@ -155,28 +157,30 @@ abstract class Registro {
 				if($key != "id") $sql->setLinha($key,$field_value);
 			}
 		}
-		
+
+
+		$status_operacao = true;
 		try{
-			if ($conn = Transacao::get()){
+			if ($conn = Transacao::get()){								
 				Transacao::log($sql->getInstrucao());
 				$resultado 			= $conn->exec($sql->getInstrucao());
 				$status_operacao 	= $resultado;
 
 				//$conn_replicacao = Conexao::abrir('producao');
-				//$conn_replicacao->query($sql->getInstrucao());
+				//$conn_replicacao->query($sql->getInstrucao());				
 				
 			}else{
 				echo "Não há transação ativa: Registro Armazenar <br/>\n";
 				$status_operacao =  false;
 			}
 		}catch(Throwable $t){
+			$status_operacao = false;		
 			if (IS_SHOW_ERROR_MESSAGE){
 				Debug::console(array(
 					$t->getMessage(),
 					$sql->getInstrucao()
 				),'Classe Registro - Método Armazenar');
-			}
-			$status_operacao =  false;
+			}						
 		}finally{			
 
 			Monitory::add(
@@ -566,6 +570,19 @@ abstract class Registro {
 			return true;
 		}catch(Throwable $t){
 			return false;
+		}
+	}
+
+	/*  
+		* Método removeIndex
+	    * Data de Criacao: 25/11/2025
+	    * @author Gemini (AI)
+
+		Remove um indice do atributo $dados
+	*/	
+	public function removeAttr(string $index){
+		if (isset($this->dados[$index])){
+			unset($this->dados[$index]);
 		}
 	}
 

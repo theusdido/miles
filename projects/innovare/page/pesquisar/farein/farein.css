@@ -1,0 +1,9 @@
+#resultado-empresa tbody tr
+{
+    cursor:pointer !important;
+}
+
+.coluna-pesquisa-empresa
+{
+    margin-left:10px;
+}

@@ -1,0 +1,9 @@
+PROJETO_DESC=Innovare Administradora Judicial
+PROJETO_FOLDER=innovareadministradora.com.br/miles
+DATABASE_PADRAO=desenv
+RAIZ=
+PREFIXO=td
+CURRENT_PROJECT=2
+CODIGOCLIENTE=0
+THEME=padrao
+CURRENT_DATABASE=desenv

@@ -1,0 +1,80 @@
+
+{
+    "version": 2.0,
+    "project":{
+        "id":"ateft",
+        "name":"ATEFT - Associação de Tranportadores Escolar, Fretamento e Turismo",
+        "path":"ateft/",
+        "url":"localhost"
+    },
+    "currentproject": 1,
+    "folder":"miles/",
+    "system": {
+        "url": {
+            "lib": "https://ateft.com.br/miles/repository/lib/"
+        },
+        "request_protocol": "http",
+        "packages": []
+    },
+    "theme": "desktop",
+    "prefix": "td",
+    "is_show_error_message": true,
+    "is_show_warn_message": true,
+    "is_transaction_log": true,
+    "database_current": "desenv",
+    "port": "hidden",
+    "environment":"dev",
+    "environments":{
+        "dev":{
+            "label":"Desenvolvimento",
+            "database":"desenv",
+            "root":"miles/",
+            "url":{
+                "domain":"teiasrv"
+            },
+            "frameworks":{
+                "angular":{
+                    "port":4200
+                }
+            },
+            "system":{
+                "request_protocol": "http",
+                "force_https":false,
+                "is_fixed_domain":false
+            },
+            "integration":{
+                "firebase":true
+            }
+        },
+        "homolog":{
+            "root":"/",
+            "url":{
+                "domain":"localhost"
+            },
+            "system":{
+                "request_protocol": "https",
+                "force_https":false,
+                "is_fixed_domain":true
+            }
+        },                        
+        "prod":{
+            "label":"Produção",
+            "database":"prod",
+            "root":"miles/",
+            "url":{
+                "domain":"ateft.com.br"
+            },
+            "system":{
+                "request_protocol": "https",
+                "force_https":true,
+                "is_fixed_domain":false
+            },
+            "integration":{
+                "firebase":true
+            },
+            "database":{
+                "config_file":"producao"
+            }
+        }
+    }
+}

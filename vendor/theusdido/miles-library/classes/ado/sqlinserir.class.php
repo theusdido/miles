@@ -34,9 +34,10 @@ final class SqlInserir extends sqlInstrucao{
 	*/			
 	public function getInstrucao(){
 		$valores = $colunas = "";
-		$this->sql = "INSERT INTO {$this->entidade} (";
+		$this->sql = "INSERT INTO {$this->entidade} (";		
 		$colunas .= implode(",",array_keys($this->colunaValor));
 		$valores .= implode(",",array_values($this->colunaValor));
+		
 		$this->sql .= $colunas . ")";
 		$this->sql .= " VALUES ({$valores})";
 		

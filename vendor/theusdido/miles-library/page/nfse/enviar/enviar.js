@@ -117,43 +117,47 @@ $(function(){
     $("#data").mask("99/99/9999");
 
     function enviar(indice = 0){
-        $.ajax({
-            url:session.urlmiles,
-            data:{
-                controller:'nfse/enviar',
-                op:'enviar',
-                nota:notas_enviar[indice]
-            },
-            complete:function(ret){        
+        setTimeout(function(){
+            $.ajax({
+                url:session.urlmiles,
+                data:{
+                    controller:'nfse/enviar',
+                    op:'enviar',
+                    nota:notas_enviar[indice]
+                },
+                complete:function(ret){        
 
-                total_notas_enviadas++;
-                const response = JSON.parse(ret.responseText);
-                let badge_status = '';
-                let badge_text = '';
-                if (response.status === 'success'){
-                    badge_status = 'success';
-                    badge_text = 'Enviado com Sucesso!';
-                }else{
-                    badge_status = 'danger';
-                    badge_text = 'Erro: ' + response.message.substr(0, 15) + ' ...';
+                    total_notas_enviadas++;
+                    const response = JSON.parse(ret.responseText);
+                    let badge_status = '';
+                    let badge_text = '';
+                    let mesagem = '';
+                    if (response.status === 'success'){
+                        badge_status = 'success';
+                        badge_text = 'Enviado com Sucesso!';
+                    }else{
+                        badge_status = 'danger';
+                        badge_text = 'Erro: ' + response.message.substr(0, 15) + ' ...';
+                        mensagem = response.message.replace('\"',"'");
+                    }
+
+                    let badge = $(`<span class="badge text-bg-${badge_status}" data-bs-toggle="tooltip" data-bs-title="${mensagem}">${badge_text}</span>`);
+                    const tr = $("#tconsulta tbody tr[data-id='" + notas_enviar[indice].id + "']");
+                    tr.find('.msg-retorno').html('');
+                    tr.find('.msg-retorno').append(badge);
+                    if (total_notas_enviadas < total_notas_encontradas){
+                        enviar(total_notas_enviadas);
+                    }else{
+                        alert('Envio Encerrado!');
+                    }
+
+                    // Habilita o Tooltip do Bootstrap 5
+                    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+                    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
                 }
-
-                let badge = $(`<span class="badge text-bg-${badge_status}" data-bs-toggle="tooltip" data-bs-title="${response.message}">${badge_text}</span>`);
-                const tr = $("#tconsulta tbody tr[data-id='" + notas_enviar[indice].id + "']");
-                tr.find('.msg-retorno').html('');
-                tr.find('.msg-retorno').append(badge);
-                if (total_notas_enviadas < total_notas_encontradas){
-                    enviar(total_notas_enviadas);
-                }else{
-                    alert('Envio Encerrado!');
-                }
-
-                // Habilita o Tooltip do Bootstrap 5
-                const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-                const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
-
-            }
-        });
+            });
+        },1000);
     }
 
     $("#btn-enviar").click( () => {

@@ -1,0 +1,71 @@
+<input id="entidadeprincipalid" name="entidadeprincipalid" type="hidden" value="131" /><input id="funcionalidadetd" name="funcionalidadetd" type="hidden" value="movimentacao" /><script type="text/javascript" src="https://raymbo.com/miles/projects/raymbo/files/movimentacao/1/td_website_blog_post.js"></script><script type="text/javascript">
+			var gd_filtro_mov 					= new GradeDeDados(131);
+			gd_filtro_mov.contexto 				= ".gradededados-movimentacao";
+			gd_filtro_mov.exibirpesquisa		= false;
+			gd_filtro_mov.exibireditar			= false;
+			gd_filtro_mov.exibirexcluir			= false;
+			gd_filtro_mov.exibiremmassa			= false;
+			gd_filtro_mov.exibirmovimentacao	= false;
+			gd_filtro_mov.addFiltro("id","=",getCookie("idmovdados"));
+			gd_filtro_mov.show();
+		</script><div class="row"><div class="col-md-12" id="crud-contexto-add-td_website_blog_post"><div class="form-grupo-botao"><div class="loader-salvar"></div><button class="btn btn-success b-salvar b-movimentacao" id=""><span class="fas fa-check"></span> Autorizar</button><div class="retorno msg-retorno-form-td_website_blog_post" style="display:none"><div role="alert" class="alert alert-dismissible alert-success" style="text-align:right;font-weight:bold"><strong></strong><button class="btn-close close" data-dismiss="alert" data-bs-dismiss="alert" aria-label="Close" onclick="fecharAlerta();"></button></div></div></div><span class="gradededados-movimentacao"></span><form class="form-horizontal tdform 3" id="form-movimentacao" onsubmit="return false"><fieldset><div class="row-fluid form_campos tdform 2"></div></fieldset></form></div></div><script type="text/javascript">
+	
+		$(".b-salvar.b-movimentacao").click(function(){		
+			salvarStatus();
+		});
+		if ($("#form-movimentacao fieldset").length <= 0){
+			var fieldset = $("<fieldset>");
+			$("#form-movimentacao").append(fieldset);
+		}
+
+		var motivo = $("");
+		$("#form-movimentacao fieldset").append(motivo);
+		var observacao = $("<label for='observacao' class='control-label'>Observação</label><textarea class='form-control input-sm' required='true' id='observacao' name='observacao' data-entidade=''></textarea>");
+		$("#form-movimentacao fieldset").append(observacao);
+		$("#form-movimentacao fieldset").css("margin-bottom","15px");
+		
+		unLoaderGeral();
+
+		function carregarListaMotivo(){
+			$.ajax({
+				url:config.urlrequisicoes,
+				data:{
+					op:"carregar_options",
+					entidade:""
+				},
+				complete:function(ret){
+					$("#motivo").html(ret.responseText);
+				}
+			});
+		}
+
+		function salvarStatus(){
+			if (1 <= 0) return false;
+			$.ajax({
+				url:"index.php?controller=gerarmovimentacao",
+				data:{
+					op:"salvarstatus",
+					movimentacao:getCookie("movimentacaoselecionada"),
+					id:getCookie("idmovdados"),
+					entidademotivo:"0",
+					motivo:$("#motivo").val(),
+					observacao:$("#observacao").val(),
+				},
+				complete:function(ret){
+					if (parseInt(ret.responseText) == 1){
+						abrirAlerta("Salvo com Sucesso","alert-success",".msg-retorno-form-td_website_blog_post");
+						// Aguarda para fechar a mensagem de sucesso
+						setTimeout(function(){
+							_gradedados_mov_current.reload();
+							$("#modal-movimentacao").modal("hide");
+						},3000);
+					}else{
+						abrirAlerta("Erro ao salvar. Entrar em contato com o administrador do sistema.","alert-danger",".msg-retorno-form-td_website_blog_post");
+						console.log("Erro ao Salvar Status");
+						console.log(ret.responseText);
+					}
+				}
+			});
+		}
+		$("#modal-movimentacao .modal-header .modal-title").html("Autorizar Postagem");
+	</script>

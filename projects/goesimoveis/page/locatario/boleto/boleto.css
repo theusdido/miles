@@ -1,0 +1,110 @@
+#barra-progresso,
+#retorno
+{
+    display: none;
+}
+
+
+.td-form-group
+{
+    margin-bottom: 15px;
+    border-bottom: 1px solid #EEE;
+    padding-bottom: 10px;
+    display: flex;
+    flex-flow: column wrap;
+}
+.td-form-group label
+{
+    font-size:12px;
+    color:#666;
+}
+.td-button-group
+{
+    display: flex;
+    justify-content: flex-end;
+}
+.td-button-group input[type=button]
+{
+    width:15rem;
+    margin:3px;
+}
+
+/* 
+    TABELA DE LISTAGEM DE DADOS, RETORNO DE REQUISIÇÕES 
+*/
+#tresultado .tr-enviar
+{
+	background-color: #c6c6c6;
+	color: #000;
+	border-bottom:5px solid #000;
+}
+#tresultado .tooltip-link {
+	background-color: transparent;
+	color: #004085;
+	border-radius: 4px;
+	font-size: 13px;
+	width:60%;
+	display:none;
+	padding-right:15px;
+}
+#tresultado .tooltip-link .input-group.tooltip-display{
+	display: flex;
+    width:100%;
+}
+#tresultado .tooltip-link .input-group-prepend
+{
+    background-color:#FFF;
+    height: 33px;
+    width: 33px;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+}
+#tresultado .badge-copiado{
+	top: 45px;
+	position: absolute;
+	right: -0px;
+	padding: 10px 20px;
+	display:none;
+}
+#tresultado .icone-copiar-link {
+	cursor:pointer;
+    padding: 12px;
+}
+
+#tresultado .tr-registro td {
+    padding: 8px !important;
+    height: 40px !important;
+    line-height: 40px !important;
+    margin: 0px;
+}
+
+#tresultado tfoot .col-rodape{
+	width: 33%;
+	float: left;
+}
+
+#tresultado .bg-success-enviar {
+	background-color: #3F7A1C;
+	color:#FFF;
+}
+
+#tresultado .bg-danger-enviar {
+	color:#FFF;
+	background-color: #C53600;
+}
+#tresultado .bg-info {
+	background-color: #e5e5e5 !important;
+	color: #000;
+}
+
+#tresultado .alterar-email-link {
+	background-color:transparent;
+	border: 0px;
+    width: 50%;	
+}
+
+#tresultado .alterar-email-link:focus {
+	background-color: #FFF;
+	border: 0px !important;
+}

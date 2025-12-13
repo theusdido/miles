@@ -1,0 +1,19 @@
+<p class="titulo-pagina ">Importação de Arquivo de <b>Demonstrativo de Proprietário</b></p>
+<form id="formulario" name="formulario" method="post" enctype="multipart/form-data" class="dropzone">
+    <input type="hidden" name="op" value="upload" />
+    <div class="fallback">
+        <input id="arquivo" name="arquivo" type="file" />
+    </div>
+</form>
+<table class="table" id="debug">
+    <tr>
+        <td width="40%" valign="bottom">Carregando Arquivo ...</td>
+        <td width="50%" class="td-importar-error" id="error-carregar"></td>
+        <td width="10%" id="status1"></td>
+    </tr>
+    <tr>
+        <td>Salvando registros no banco de dados ...</td>
+        <td class="td-importar-error" id="error-salvar"></td>
+        <td id="status2"></td>
+    </tr>
+</table>

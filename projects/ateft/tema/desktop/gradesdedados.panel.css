@@ -1,0 +1,69 @@
+/*
+    * Framework MILES
+    * @license : Teia Online.
+    * @link http://www.teia.online
+		
+    * Página de folha de estilo
+    * Data de Criacao: 31/03/2020
+    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
+    
+    * Folha de estilo da Grade de Dados do tipo Painel
+*/
+
+.gradededados {
+	float:left;
+	width:100%;
+	margin:15px auto;
+}
+
+
+.checkexcluir-coluna-gradededados{
+	float:left;
+	margin-top:8px;
+}
+
+.editar-coluna-gradededados{
+	float:right;
+	margin:2px;
+}
+.excluir-coluna-gradededados{
+	float:right;
+	margin:2px;
+}
+
+.duplicar-coluna-gradededados{
+	float:right;
+	margin:2px;
+}
+
+.imprimir-coluna-gradededados{
+	float:right;
+	margin:2px;
+}
+
+.painel-registro .panel-heading{
+	height:55px;
+}
+
+.grade-info .gi-label {
+	float:left;
+	width:25%;
+	font-weight:bold;
+	text-align:right;	
+}
+.grade-info .gi-dado {
+	float:left;
+	width:75%;
+	padding-left:5px;
+}
+
+.painel-registro{
+	float:left;
+	margin:1%;
+}
+
+.gradededados #footer{
+	float:left;
+	clear:left;
+	width:100%;
+}

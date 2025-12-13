@@ -98,7 +98,7 @@ function arrayToString($array,$separador=","){
 	return $retorno;
 }
 function is_date( $str = ''){
-	if ($str == '') return false;
+	if (!is_string($str) || $str == '') return false;
 	if (strpos($str, "/") > 0){
 		// Com barras
 		$dt = explode("/",$str);

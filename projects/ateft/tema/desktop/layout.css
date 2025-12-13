@@ -1,0 +1,835 @@
+/*
+    * Framework MILES
+    * @license : TEIA Tecnologia WEB
+    * @link https://teia.tec.br
+
+    * Data de Criacao: 03/07/2024
+    * Author: @Theusdido
+
+    * Página de folha de estilo de layout geral do sistema
+*/
+
+body {
+	margin:0px;
+	padding:0px;
+	background-repeat:no-repeat;
+	background-attachment: fixed;	
+	overflow-y:scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;	
+}
+footer{
+	margin-bottom:150px;
+	padding-top:15px;
+}
+
+#logon {
+	position: absolute;	
+    margin: auto;
+    max-width: 650px;
+	width: 650px;
+	height: 275px;
+    bottom: 0;    
+    left: 0;   
+    right: 0;
+    top: 0;
+	border-radius:5px 5px 5px 5px;
+	padding: 25px 15px;
+	border-width:1px;
+	border-style: dotted solid double dashed;
+}
+#logon form input[type=submit]{
+	margin:5px auto;
+}
+#logon form a{
+	float:right;
+}
+#logon .autentica-div-logo{
+	display: flex;	
+}
+#logon .autentica-div-logo img {
+    width: 100%;
+	object-fit: scale-down;	
+}
+
+#logon form .form-group
+{
+	margin:10px auto;
+}
+#div-form-logon
+{
+	display:flex;
+	align-content: center;
+}
+
+.botao {
+	cursor:pointer;
+}
+
+.b-novo,.b-salvar,.b-cancelar,.b-pesquisar,.b-executar,.b-gerar,.b-imprimir {
+	float:right;
+	margin: 0px 10px 10px 0px;
+	width:120px;
+}
+legend {
+	padding-left:10px;	
+}
+.form-grupo-botao{
+	float:left;
+	clear:left;
+	width:100%;
+}
+.form-controle label {
+	margin-left:5px;
+}
+.form-grupo-botao .b-voltar{
+	float:left;
+	margin-right:20px;
+}
+
+.form-grupo-botao .alert
+{
+	float:left;
+	width:100%;	
+}
+
+.has-feedback > .glyphicon{
+	margin-right:0;
+}
+#userinfo img , #userinfo > h4 {
+	float:right;
+	text-align:right;
+	margin-right:5px;
+}
+#logo img {
+	height:100px;
+	object-fit: contain;
+	max-width:100%;	
+}
+#info small {
+	font-size:10px;
+}
+#userinfo a{
+	font-size:12px;
+}
+.form_campos {
+	float:left;
+	clear:left;
+	width:100%;
+	padding-top:10px;
+}
+.tdform .coluna {
+	float:left;
+	padding-left:10px;
+}
+.tdform .coluna[data-ncolunas="1"] {
+	width:53%;
+}	
+.tdform .coluna[data-ncolunas="2"] {
+	width:43%;
+}	
+.tdform .coluna[data-ncolunas="3"] {
+	width:33%;
+}	
+
+.form-group .control-label {
+	float:left;
+	padding-left:3px;
+}
+
+.gd-sel-todos{
+	padding:0;
+}
+.texto-curto{
+	width:30%;
+	float:left;
+	clear:left;
+}
+.texto-medio{
+	width:70%;
+	float:left;
+	clear:left;
+}
+.texto-longo{
+	width:100%;
+	float:left;
+	clear:left;
+}
+.panel-body .form-group label{
+	font-weight:normal;
+	float:left;
+}
+.panel-body .form-group input{
+	border:0px;
+	font-weight:bold;
+	float:left;
+	clear:left;
+}
+.panel-body .form-group {
+	float:left;
+	width:auto;
+	margin:15px;
+}
+.tr-retorna-registro{
+	cursor:pointer;
+}
+.retorno {
+	float:left;
+	clear:left;
+	width:100%;
+	margin:10px 0;
+}
+.form-group .btn-group {
+	float:left;
+	clear:left;
+}
+.div-relacionamento{
+	margin-top:10px;
+}
+.panel-flag-generalizacao{
+	width:50%;
+}
+.div-relacionamento-generalizacao{
+	margin-top:20px;
+}
+.tab-content .bloco{
+	padding:15px 0;
+}
+#selecionar-empresa-info{
+	width:100%;
+	font-size:12px;
+	padding:2px;
+	margin:3px;
+}
+
+.tdform .coluna > .form-group > .input-group .input-group-btn .add_list{
+    height: 30px;
+}
+.titulo-pagina{
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin-bottom: 20px;
+  font-size: 21px;
+  line-height: inherit;
+  border: 0;
+  font-weight:normal;
+}
+.crud-modal{
+	float:left;
+	width:100%;
+	padding:20px;
+}
+.irbloco-paginacao{
+    float: left;
+    font-weight: bold;
+    text-align: center;
+    width: 50px;
+}
+.tdform .coluna[data-ncolunas="1"] > .form-group > select{
+	width:91%;
+}
+.tdform .coluna[data-ncolunas="2"] > .form-group > select{
+	width:92%;
+}
+.tdform .coluna[data-ncolunas="3"] > .form-group > select{
+	width:86%;
+}
+.tdform .coluna .form-group iframe{
+	float:left;
+	clear:left;
+	width:100%;
+	height:30px;
+	border:0px;
+}
+.file-upload-icon{
+	padding-left: 6px;
+}
+.calendar-picker-group{
+	float:left;
+	clear:left;
+}
+.filtro-pesquisa .termo-filtro{
+	text-align:center;
+	max-width: 20%;
+}
+
+.tdform{
+	float:left;
+	width:100%;
+}
+.tdform fieldset{
+	float:left;
+	width:100%;
+}
+.pesquisa-grade{
+	float:left;
+	width:100%;
+	padding:5px;
+}
+.tdform .coluna .form-group{
+	width:100%;
+}
+
+.tdform .coluna .form-group .input-group{
+	width:100%;
+	float:left;
+	clear:left;	
+}
+.loader-salvar{
+	float:right;
+}
+.loadergeral,.loader-pagina{
+	width:100%;
+	margin:75px auto;
+	display:none;
+}
+.loadergeral center img,.loader-pagina center img{
+	width:32px;
+}
+.ckeditor-formgroup{
+	height:100% !important;
+}
+html, body { margin:0; height: 100%; } /* Para funcionar altura dos elementos automáticos */
+.modal-body {
+    position: relative;
+    overflow-y: auto;
+    max-height: 100%;
+    padding: 15px;
+}
+.cadastromodal{
+	position:absolute;
+	width:90%;
+	height:50%;	
+}
+.botao-multilinha,.botao-ckeditor{
+	height:30px;
+}
+.textarea-modal{
+	width:100%;
+	height:100px;	
+}
+.panel-flag-generalizacao .SumoSelect{
+	width:100%;
+}
+.checkbox-s,.checkbox-n
+{
+	text-align: center;
+}
+.checkbox-s input[type="radio"],
+.checkbox-n input[type="radio"]
+{
+	/* visibility: hidden;
+	position: absolute; */
+}
+
+.input-td-uploadfile,.button-td-uploadfile,.deletar-td-upload,.visualizar-td-upload{
+	height:30px;
+}
+
+#lista-favoritos-home .list-group-item{
+	border-top: 0px !important;
+	border-left: 0px !important;
+	border-right: 0px !important;
+	margin-top:5px;
+}
+#lista-favoritos-home .list-group-item .glyphicon{
+	margin:auto 10px auto 10px;
+}
+#lista-favoritos-home .list-group-item .qtde-menu-favorito , #lista-chamado-home .list-group-item .nome-usuario-abertura-chamado-home{
+	float:right;
+}
+.icone-favorito-home,.icone-chamado-home{
+	float:right;
+}
+
+#lista-chamado-home .list-group-item{
+	border-top: 0px !important;
+	border-left: 0px !important;
+	border-right: 0px !important;
+	margin-top:5px;
+}
+.btn-chamado-home{
+	float:right;
+	background-color:transparent;
+	border:0px;
+	margin-top:-4px;
+}
+
+#btn-home-menuprincipal{
+	background-color:transparent;
+	margin:10px;
+	border:0px;
+}
+
+.panel-menucrud{
+	border:0px;
+}
+.lista-item-menu-crud .list-group-item{
+	border-top: 0px !important;
+	border-left: 0px !important;
+	border-right: 0px !important;
+	margin-top:5px;
+}
+.perfilusuariohome{
+	height:50px;
+	cursor:pointer;
+}
+.asteriscoobrigatorio{
+	font-weight:bold;
+}
+
+.descricaoExibirEdicao{
+	padding:5px;
+	margin:5px 0 20px 0;
+	float:left;
+	width:100%;
+	background-color: transparent;
+	border:none;
+	border-radius: 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.idExibirEdicao{
+
+	font-weight:bold;
+}
+.campodescricaoExibirEdicao{
+
+	font-weight:bold;
+}
+#dados-config-projeto{
+	padding:3px;	
+	text-align:right;
+}
+.dados-config-projeto-desenv {
+	height:30px;
+}	
+
+#inputgroup-pesquisa-projeto-headersystem{
+	margin-bottom:10px;
+}
+#ocutarDadosConfigProjeto{
+	float:left;
+	font-size:12px;
+	margin:2px 10px;
+}
+.crud-contexto-add , .crud-contexto-listar {
+	display:none;
+}
+.td-titulopagina-relacionamento{
+	text-align: right;
+    font-size: 14px;
+}
+
+/* Para o firefox em relação a tabela responsiva */
+@-moz-document url-prefix() {
+  fieldset { display: table-cell; }
+}
+@media(max-width:767px){
+	body{
+		/*background-image:none;*/
+	}
+	
+	#logo {
+		text-align:center;
+	}
+	.titulo-pagina {
+		border-bottom:0px;
+	}
+
+	#logon .autentica-div-logo{
+		float:none;
+		border-right:0px;
+		margin-right:0px;
+		width:auto;
+	}
+	#logon form {
+		float: none;
+		width: auto;
+		margin-top:0px;
+	}
+	
+	#logon{
+		position:static;
+		width: auto;
+		height: auto;
+	}
+	#div-form-logon{
+		margin:20px;
+	}
+	#logon .autentica-div-logo img {
+		margin-left: 10%;
+	}
+	.form_campos .coluna {
+		width:100%;
+		padding-left: 0px;
+		padding:10px;
+	}
+	.form-horizontal .form_campos .form-group {
+		margin:0px;
+	}
+	#div-form-logon .tdform fieldset {
+		margin:0px;
+	}
+}
+
+.btn-importar-db-from-file{
+	float: right;
+	margin: 0px 10px 10px 0px;
+	width: 120px;
+}
+
+#campo-atualizar-emmassa .coluna[data-ncolunas="1"] {
+	width:100%;
+}
+
+#campo-atualizar-emmassa .form_campos , #campo-atualizar-emmassa .form_campos .coluna{
+	padding:0px;
+}
+
+#campo-atualizar-emmassa .form-horizontal .form-group {
+	margin:0px;
+}
+.btn-editar-emmassa{
+	float:right;
+	width:150px;
+}
+
+.loading2{
+	display:none;
+}
+#logoinstalacao{
+	margin:10px;
+	max-height:45px;
+}
+.titulo-pagina .badge{
+	float: right;
+    padding: 5px;
+    background: none;
+}
+.td-titulopagina-relacionamento .badge{
+	float: left;
+	border:none;
+	font-weight:bold;
+}
+.titulo-pagina .nome-entidade {
+	margin-left: 10px;
+    margin-top: 5px;
+    font-size: 12px;
+    position: absolute;
+	display:none;
+}
+.td-aba{
+	float:left;
+	width:100%;
+}
+.td-aba .nav-pills li {
+	float:left;
+	width:100%;
+}
+.td-aba .nav-pills li a {
+	background-color:transparent;
+    font-weight: bold;
+}
+
+.btn-group-atualizar-personalizado{
+	display: block;
+	text-align: right;
+	margin:5px auto;
+}
+
+.td-titulopagina-relacionamento .nome-entidade {
+	display: inline;
+    position: relative;
+    float: left;
+	margin: 0px auto auto 10px;
+}
+header .row {
+	padding:0px;
+}
+header #menu {
+	padding:0px;	
+}
+#info , #userinfo {
+	padding:10px;
+	height: 90px;
+}
+#info .nome-projeto{	
+	margin:0px;
+	font-weight: bold;
+}
+#info-box-logon{
+	float:right;
+	padding:5px 10px;
+	text-align: right;
+}
+#info-box-username{
+	font-size:16px;
+}
+
+.headersystem-col{
+	height: 30px;
+	line-height: 30px;
+}
+
+.headersystem-col .fas {
+	margin-right:5px;
+}
+.headersystem-col a {
+	text-decoration: none;
+}
+
+#temposessao-home , #data-home {
+	text-align: right;
+}
+
+#menu .navbar
+{
+	margin-bottom:0px !important;
+	border-radius: 0px;
+}
+
+.panel {
+	border:0px !important;
+}
+
+.panel .panel-heading {
+	border-bottom-width:3px;
+}
+
+.list-group-item {
+	border-top-width:0px;
+	border-left-width:0px;
+	border-right-width:0px;
+	border-bottom-width:3px !important;
+}
+
+#lista-favoritos-home .fa-arrow-right {
+	margin:0 5px;
+}
+
+/* *****************************************************************
+* TDFORM
+***************************************************************** */
+.tdform .td-btn-group {
+	padding:5px !important;
+	display: block !important;
+	height: 50px;
+}
+.tdform .td-btn-group .button, .tdform .td-btn-group input[type=button]{
+	float:right;
+	margin: 5px;
+	width:120px;
+}
+
+/* *****************************************************************
+* GRADE DE DADOS
+***************************************************************** */
+.paginacao-gradededados{
+	width: 100%;
+	float:left;
+	display: flex;
+	justify-content: center;
+}
+
+.paginacao-gradededados .pagination .page-item
+{
+	width:50px;
+}
+.gradededados .btn-editar-emmassa{
+	margin-right:10px;
+}
+
+#miles-root > div > footer {
+	margin-bottom:0px;
+	height: 15px;
+}
+
+#miles-root > div > footer p {
+	margin:-7px;
+	padding:0;
+}
+
+#miles-root > div {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+#miles-root > div > header,
+#miles-root > div > article,
+#miles-root > div > footer
+{
+	width:100%;
+}
+
+#miles-root > div > article
+{
+	margin-bottom:30px;
+}
+#miles-root > div > footer {
+	position: fixed;
+    bottom: 0;
+	z-index:1000;
+    text-align: center;
+    font-size: 14px;
+	height: 30px;
+    margin-bottom: 0px !important;
+    padding: 10px !important;
+}
+
+.tdform .checkbox-n.active,
+.tdform .checkbox-s.active {
+	z-index:0 !important;
+}
+
+.breadcrumb {
+	margin:0;
+}
+
+#conteudoprincipal
+{
+	padding:10px 5px;
+}
+
+#menulateralesquerdoprincipal{
+	z-index: 999;
+	margin: 0 -12px;	
+}
+
+#pedido-aberto-home table tbody tr .label-status
+{
+	width: 50%;
+    display: block;
+}
+.panel-info .panel-body
+{
+	padding:0;
+}
+
+#listanovosclienteshome .media
+{
+	padding:10px 5px !important;
+	margin:0 !important;
+	border-radius:0 !important;
+}
+
+.panel
+{
+	-webkit-box-shadow:none;
+}
+
+.label-max-size{
+	float: right !important;
+	font-size: 10px;
+}
+
+.form-control-feedback
+{
+	top:25px !important;
+}
+
+.td-checklist
+{
+	width: 100%;
+    float: right;
+}
+.td-checklist .list-group-item input[type=checkbox],
+.td-checklist .list-group-item .icon-excluir-listitem
+{
+	float:right;	
+}
+
+.td-checklist .list-group-item .icon-excluir-listitem
+{
+	cursor:pointer;
+}
+.td-checklist-contexto
+{
+	margin-top:15px;
+}
+
+.td-checklist-contexto li:hover:not(.td-nenhumregistro-list-item)
+{
+	background-color: #EEE;
+} 
+
+.td-message-success
+{
+	text-align: center;
+	font-weight: bold;
+}
+
+.td-message-warning
+{
+	text-align: center;
+	font-weight: bold;
+}
+
+.td-label-input-file
+{
+	width: 100%;
+	height:34px;
+	padding: 5px;
+	border-radius: 5px;
+	text-align: center;
+	display:block;
+	cursor:pointer;
+}
+
+.td-label-input-file i
+{
+	margin:auto 10px;
+}
+
+.td-label-input-file span
+{
+	font-weight:normal;
+}
+
+.div-traduzir-campo
+{
+	width: 100%;
+	height: 25px;
+	text-align: right;
+	line-height: 25px;
+}
+
+.div-traduzir-campo .btn-traduzir-campo
+{
+	border:none;
+	padding: 1px 5px;
+	
+}
+
+.div-traduzir-campo .btn-traduzir-campo i {
+	font-size:12px;
+}
+
+.td-switch-inativo
+{
+	float:right;
+}
+
+#menuprincipal .dropdown-menu
+{
+	z-index:1001;
+	padding:0;
+	border:none;
+	border-radius: 0;
+}
+
+.ckeditor-group .input-group-btn
+{
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+.open-panel
+{
+	background-color: transparent;
+}

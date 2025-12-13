@@ -631,7 +631,7 @@ class XMLSecurityDSig
         $id_name = 'Id';
         $overwrite_id  = true;
         $force_uri = false;
-
+        
         if (is_array($options)) {
             $prefix = empty($options['prefix']) ? null : $options['prefix'];
             $prefix_ns = empty($options['prefix_ns']) ? null : $options['prefix_ns'];
@@ -639,7 +639,7 @@ class XMLSecurityDSig
             $overwrite_id = !isset($options['overwrite']) ? true : (bool) $options['overwrite'];
             $force_uri = !isset($options['force_uri']) ? false : (bool) $options['force_uri'];
         }
-
+        
         $attname = $id_name;
         if (! empty($prefix)) {
             $attname = $prefix.':'.$attname;
@@ -650,12 +650,14 @@ class XMLSecurityDSig
 
         if (! $node instanceof DOMDocument) {
             $uri = null;
+
             if (! $overwrite_id) {
                 $uri = $prefix_ns ? $node->getAttributeNS($prefix_ns, $id_name) : $node->getAttribute($id_name);
+                
             }
             if (empty($uri)) {
                 $uri = self::generateGUID();
-                #$node->setAttributeNS($prefix_ns, $attname, $uri);
+                #$node->setAttributeNS($prefix_ns, $attname, $uri);                
             }
             $refNode->setAttribute("URI", '#'.$uri);
         } elseif ($force_uri) {

@@ -856,5 +856,11 @@ header #menu {
 
 .bootbox .modal-header
 {
-	display: block !important;
+	display: flex !important;
+	justify-content: space-between;
+	height: 50px;
+}
+
+.bootbox .modal-header .modal-title {
+	font-size:18px;
 }
