@@ -5,6 +5,7 @@
 		case 'update':
 
 			$environment 	= tdc::r('environment');
+			if ($environment == 'prod') $environment = 'producao';
 			$direcao 		= tdc::r('direcao');
 
 			if ($direcao == 'enviar'){

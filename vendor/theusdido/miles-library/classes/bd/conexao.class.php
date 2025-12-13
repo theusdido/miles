@@ -89,7 +89,7 @@ final class Conexao{
 			try{
 				$conn = new PDO(
 					"$type:host=$host;port=$port;dbname=$base;",$user,$password,
-					[PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES ' . _MYSQL_CHARSET]
+					[PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES ' . _MYSQL_CHARSET . ', SESSION wait_timeout = 28800']
 				);
 				$conn->setAttribute(
 					PDO::ATTR_ERRMODE,
