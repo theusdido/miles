@@ -18,7 +18,7 @@
     class snNFSE {
 
         public string $signedXmlPath    = 'lote_dps.xml';
-        public string $endpoint         = 'https://sefin.nfse.gov.br/sefinnacional/nfse';
+        public string $endpoint         = 'https://sefin.producaorestrita.nfse.gov.br/API/SefinNacional/nfse';
         public ?string $wsdl            = null;
         
         // CORREÇÃO: Apontar para os arquivos PEM separados
@@ -51,7 +51,7 @@
             }
 
             // 2. Remove o cabeçalho apenas para o ENVIO (Payload JSON)
-            $xmlAssinado = preg_replace('/<\?xml.*?\?>\s*/i', '', $xmlContentRaw);                        
+            $xmlAssinado = preg_replace('/<\?xml.*?\?>\s*/iu', '', $xmlContentRaw);                        
             $dados = [
                 "dpsXmlGZipB64" => $this->prepararXmlNfse($xmlAssinado) 
             ];
@@ -71,7 +71,7 @@
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
             curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
-            curl_setopt($ch, CURLOPT_CAINFO, '/etc/ssl/certs/ca-certificates.crt');
+            curl_setopt($ch, CURLOPT_CAINFO, $this->cafile);
 
             // Configuração do Certificado de Cliente para Autenticação Mútua (mTLS)
             if ($this->publicCertPath && file_exists($this->publicCertPath)) {
@@ -79,7 +79,6 @@
                 curl_setopt($ch, CURLOPT_SSLCERTTYPE, 'PEM');
                 curl_setopt($ch, CURLOPT_SSLCERT, $this->publicCertPath);
                 
-                // Se a chave privada estiver separada
                 if ($this->privateKeyPath && file_exists($this->privateKeyPath)) {
                     curl_setopt($ch, CURLOPT_SSLKEY, $this->privateKeyPath);
                 }
@@ -140,10 +139,10 @@
             $infDPSXML .= '</DPS></listaDps></LoteDPS>';
             
             // Assina e Salva
-            $assinaturaXML = $this->assinatura($dps_id, $this->inline($infDPSXML));
+            $assinaturaDOM = $this->assinatura($dps_id, $this->inline($infDPSXML));
 
-            if ($assinaturaXML) {
-                file_put_contents($this->signedXmlPath, $assinaturaXML);
+            if ($assinaturaDOM) {
+                $assinaturaDOM->save($this->signedXmlPath);
             } else {
                 throw new Exception("Falha ao gerar assinatura do XML.");
             }            
@@ -206,7 +205,7 @@
 
             $objDSig->appendSignature($dps);
 
-            return $xml->saveXML(); 
+            return $xml; 
         }
 
         public function send(){
@@ -375,7 +374,7 @@
             }
 
             // Remove acentos
-            $string = iconv('UTF-8', 'ASCII//TRANSLIT//IGNORE', $string);
+            #$string = iconv('UTF-8', 'ASCII//TRANSLIT//IGNORE', $string);
             
             // Remove controles
             $string = preg_replace('/[\r\n\t]/', ' ', $string);

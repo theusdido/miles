@@ -26,4 +26,4 @@
     #$nfse->send();
     $res = $nfse->send();
     #$res = $nfse->sendGPT();
-    tdc::wj($res);    
+    tdc::wj($res);
