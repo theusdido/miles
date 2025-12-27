@@ -27,17 +27,21 @@
 
     //Enderecos que devem ser enviadas as mensagens
     #$mail->AddAddress("edilson@teia.tec.br","Teia Tecnologia");
-    $mail->AddAddress("edilsonbitencourt@hotmail.com","Teia Tecnologia");
+    #$mail->AddAddress("edilsonbitencourt@hotmail.com","Teia Tecnologia");
     #$mail->AddAddress("theusdido@gmail.com","Teia Tecnologia");
 
     #var_dump($demonstrativo_configuracoes->email_teste);
     if ($demonstrativo_configuracoes->email_teste != ''){
-        #$mail->AddAddress($demonstrativo_configuracoes->email_teste, 'Locador Teste');        
-    }
+        $mail->AddAddress($demonstrativo_configuracoes->email_teste, 'Locador Teste');
+        var_dump($demonstrativo_configuracoes->email_teste);
+    }    
 
     if ($demonstrativo_configuracoes->is_producao == 1){
-        //$mail->AddAddress($demonstrativo['email'],$demonstrativo['locador']);
+        var_dump('Não era ....');
+        $mail->AddAddress($demonstrativo['email'],$demonstrativo['locador']);
     }
+
+    die;
 
     $mail->WordWrap = 50;
     $mail->IsHTML(true);

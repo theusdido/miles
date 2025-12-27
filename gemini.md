@@ -39,3 +39,5 @@ O ponto de entrada principal para o aplicativo é `index.php`. O webservice é a
     *   Os arquivos de serviço estão localizados no diretório `webservice/servicos/`, organizados por categoria.
     *   Os serviços parecem ser implementados como arquivos PHP que incluem e usam arquivos de classe (por exemplo, `imovel.class.php`).
 *   **Estilo de Codificação:** O código parece seguir um estilo de codificação personalizado. Recomenda-se explorar o código existente para entender as convenções de nomenclatura, formatação e estruturação do código.
+
+Sempre responda em Português do Brasil.

@@ -6,6 +6,7 @@
 
 			$environment 	= tdc::r('environment');
 			if ($environment == 'prod') $environment = 'producao';
+			if ($environment == 'homolog') $environment = 'homologacao';
 			$direcao 		= tdc::r('direcao');
 
 			if ($direcao == 'enviar'){
@@ -14,6 +15,16 @@
 			}else{
 				$_conn_origem	= Conexao::abrir($environment);
 				$_conn_destino	= Conexao::abrir("current");
+			}
+
+			if (!$_conn_origem) {
+				echo "Erro: Não foi possível conectar ao banco de dados de origem. Verifique o arquivo de configuração.";
+				exit;
+			}
+
+			if (!$_conn_destino) {
+				echo "Erro: Não foi possível conectar ao banco de dados de destino. Verifique o arquivo de configuração para o ambiente '{$environment}'.";
+				exit;
 			}
 
 			$entidadesestrutura = tdc::r("entidadesestrutura");

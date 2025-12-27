@@ -57,7 +57,7 @@ class XMLSecurityDSig
     const SHA512 = 'http://www.w3.org/2001/04/xmlenc#sha512';
     const RIPEMD160 = 'http://www.w3.org/2001/04/xmlenc#ripemd160';
 
-    const C14N = 'http://www.w3.org/TR/2001/REC-xml-c14n-20010315';
+    const C14N = 'http://www.w3.org/TR/2001/REC-xml-c14n-20010315';    
     const C14N_COMMENTS = 'http://www.w3.org/TR/2001/REC-xml-c14n-20010315#WithComments';
     const EXC_C14N = 'http://www.w3.org/2001/10/xml-exc-c14n#';
     const EXC_C14N_COMMENTS = 'http://www.w3.org/2001/10/xml-exc-c14n#WithComments';

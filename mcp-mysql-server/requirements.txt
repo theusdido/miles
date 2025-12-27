@@ -1,0 +1,6 @@
+fastapi
+uvicorn[standard]
+aiomysql
+pydantic-settings
+python-dotenv
+google-generativeai
