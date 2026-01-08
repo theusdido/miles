@@ -1,0 +1,6 @@
+requests
+lxml
+signxml
+mysql-connector-python
+python-dotenv
+certifi

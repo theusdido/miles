@@ -17,8 +17,9 @@
     */
     class snNFSE {
 
-        public string $signedXmlPath    = 'lote_dps.xml';
-        public string $endpoint         = 'https://sefin.producaorestrita.nfse.gov.br/API/SefinNacional/nfse';
+        #public string $endpoint         = 'https://sefin.nfse.gov.br/sefinnacional/nfse';
+        public string $endpoint         = 'https://sefin.nfse.gov.br/sefinnacional/nfse';        
+        #public string $endpoint          = 'https://adn.nfse.gov.br/nfse';
         public ?string $wsdl            = null;
         
         // CORREÇÃO: Apontar para os arquivos PEM separados
@@ -35,23 +36,19 @@
         private string $xmlns           = 'http://www.sped.fazenda.gov.br/nfse';
         private string $soapAction      = '';
         public string $cafile           = '/var/www/miles/vendor/theusdido/miles-library/controller/integracao/sn_nfse/ca-certificates.crt';
+        private bool $is_remove_cabecalho = false;
 
-        public function sendSignedLoteRps() : array {
+        private string $serie_dps       = '00001';
 
-            // leitura do XML assinado
-            if (!file_exists($this->signedXmlPath)) {
-                throw new RuntimeException("Arquivo XML assinado não encontrado: $this->signedXmlPath");
-            }
+        public function sendSignedLoteRps(string $xmlContentRaw) : array {
 
-            // 1. Lê o conteúdo do arquivo
-            $xmlContentRaw = file_get_contents($this->signedXmlPath);
-            
             if (!$xmlContentRaw) {
-                throw new RuntimeException("Arquivo XML vazio.");
+                throw new RuntimeException("Conteúdo do XML assinado não pode ser vazio.");
             }
 
-            // 2. Remove o cabeçalho apenas para o ENVIO (Payload JSON)
-            $xmlAssinado = preg_replace('/<\?xml.*?\?>\s*/iu', '', $xmlContentRaw);                        
+            // 2. Remove o cabeçalho apenas para o ENVIO (Payload JSON)            
+            $xmlAssinado = $this->is_remove_cabecalho ? preg_replace('/<\?xml.*?\?>\s*/iu', '', $xmlContentRaw) : $xmlContentRaw;
+            #var_dump($xmlAssinado);
             $dados = [
                 "dpsXmlGZipB64" => $this->prepararXmlNfse($xmlAssinado) 
             ];
@@ -122,46 +119,85 @@
 
             $this->rps_lote_id = getProxId('td_erp_nfse_lote',$conn);
             $rps_numero = $resultset[0]['rpsnumero'];
+            $rps_numero = 1;
             
-            // Corrige o ID (Exemplo fixo, ajustar conforme lógica real de zeros)
-            $dps_id = "DPS" . "4204608" . "2" . "83248021000158" . str_pad("00001", 5, "0", STR_PAD_LEFT) . str_pad($rps_numero, 15, "0", STR_PAD_LEFT);
+            $tipo_inscricao_federal = '2'; // 1 - CNPJ, 2 - CPF
+            // CORREÇÃO: ID da DPS deve conter o tipo de inscrição (2 para CNPJ)
+            $dps_id = "DPS" . "4204608" . $tipo_inscricao_federal . "83248021000158" . str_pad((string)$this->serie_dps, 5, "0", STR_PAD_LEFT) . str_pad((string)$rps_numero, 15, "0", STR_PAD_LEFT);
+            #$dps_id = 'DPS420460818324802100015800900000000000000008';
             
             $sql = "INSERT INTO td_erp_nfse_lote (id,data_envio) VALUES ($this->rps_lote_id,NOW());";
             $dataset = $conn->exec($sql);
 
-            $infDPSXML = '<LoteDPS Id="Lote1" xmlns="http://www.sped.fazenda.gov.br/nfse"><idLote>1</idLote><qtdDps>1</qtdDps><listaDps><DPS versao="1.00">';
-            $infDPSXML .= '<infDPS Id="'.$dps_id.'">';
+            // --- DADOS DO PRESTADOR PARA O LOTE ---
+            // (Estes valores devem vir de um arquivo de configuração ou do cadastro da empresa)
+            $cnpj_prestador = '83248021000158';
+            $im_prestador = '1169'; // Placeholder, use o valor correto
+
+            // CORREÇÃO: Remover wrappers <GerarNfseEnvio> e <LoteDps>. O root agora é <DPS>.
+            // A capitalização de <DPS> e <infDPS> está correta.
+            $xmlString = '<DPS versao="1.00" xmlns="http://www.sped.fazenda.gov.br/nfse">';
+            $xmlString .= '<infDPS Id="'.$dps_id.'">'; // Casing is correct here.
             
             foreach($resultset as $key => $value){
-                $infDPSXML .= $this->layoutRPSXML($value);
+                $xmlString .= $this->layoutRPSXML($value);
             }
-            $infDPSXML .= '</infDPS>';
-            $infDPSXML .= '</DPS></listaDps></LoteDPS>';
             
-            // Assina e Salva
-            $assinaturaDOM = $this->assinatura($dps_id, $this->inline($infDPSXML));
+            $xmlString .= '</infDPS>';
+            $xmlString .= '</DPS>';
+            
+            // Adiciona o cabeçalho XML aqui, antes da assinatura
+            $finalXmlString = '<?xml version="1.0" encoding="UTF-8"?>' . $xmlString;
 
-            if ($assinaturaDOM) {
-                $assinaturaDOM->save($this->signedXmlPath);
-            } else {
+            // Assina e retorna o XML como string
+            $signedXmlString = $this->assinatura($dps_id, $this->inline($finalXmlString));
+
+            // Salva o XML final para depuração
+            file_put_contents('debug_nfse.xml', $signedXmlString);
+
+            if (!$signedXmlString) {
                 throw new Exception("Falha ao gerar assinatura do XML.");
-            }            
+            }
+            
+            return $signedXmlString;
         }
 
         private function assinatura($id, $xmlContent){
             // 1. Instancia forçando UTF-8
             $xml = new DOMDocument('1.0', 'UTF-8');
-            $xml->preserveWhiteSpace = false; 
+            
+            // CORREÇÃO PROFUNDA: A normalização de espaços deve ser feita APENAS pelo
+            // algoritmo de canonização (C14N). Alterar o XML antes disso invalida a assinatura.
+            // preserveWhiteSpace=true (padrão) mantém os nós de espaço.
+            // formatOutput=false evita que o saveXML adicione indentação.
+            $xml->preserveWhiteSpace = true;
             $xml->formatOutput = false;
             
-            $xml->loadXML($xmlContent, LIBXML_NOBLANKS);
+            // Assegura que o conteúdo XML está em UTF-8 válido e limpo.
+            // Esta é uma salvaguarda final para o caso de a limpeza anterior não ter sido suficiente.
+            $encoding = mb_detect_encoding($xmlContent, 'UTF-8, ISO-8859-1', true);
+            if ($encoding) {
+                $xmlContent = mb_convert_encoding($xmlContent, 'UTF-8', $encoding);
+            } else {
+                // Se a detecção falhar, assume UTF-8 e tenta limpar.
+                $xmlContent = mb_convert_encoding($xmlContent, 'UTF-8', 'UTF-8');
+            }
+            // Remove quaisquer caracteres que não são válidos em XML 1.0 ou que são inválidos UTF-8
+            // (por exemplo, caracteres de controle, sequências de bytes inválidas).
+            $xmlContent = preg_replace('/[^\x{0009}\x{000A}\x{000D}\x{0020}-\x{D7FF}\x{E000}-\x{FFFD}\x{10000}-\x{10FFFF}]/u', '', $xmlContent);
+            
+            $xml->loadXML($xmlContent);
 
             $dps = $xml->getElementsByTagName('DPS')->item(0);
             $info_dps = $xml->getElementsByTagName('infDPS')->item(0);
 
             $info_dps->setIdAttribute('Id', true); 
 
-            $objDSig = new XMLSecurityDSig();
+            // CORREÇÃO: Instanciar XMLSecurityDSig com prefixo vazio ('')
+            // para que os elementos da assinatura (<Signature>, <SignedInfo>, etc.)
+            // não usem o prefixo "ds:" e herdem o namespace padrão do documento.
+            // Isso é necessário para cumprir a exigência do Emissor Nacional (Erro E6155).
+            $objDSig = new XMLSecurityDSig('');
             $objDSig->setCanonicalMethod(XMLSecurityDSig::C14N);            
             $objDSig->addReference(
                 $info_dps,
@@ -188,24 +224,29 @@
                 throw new Exception("Certificado público não encontrado: " . $this->publicCertPath);
             }
 
+            // Carrega o conteúdo completo do certificado público PEM.
+            // A biblioteca xmlseclibs espera o conteúdo do arquivo PEM, incluindo os cabeçalhos.
             $certContent = file_get_contents($this->publicCertPath);
-            
-            // Limpeza: Pega apenas o conteúdo entre BEGIN e END CERTIFICATE
-            // Isso evita erro com "Bag Attributes" que aparecem no seu arquivo
-            #if (preg_match('/-----BEGIN CERTIFICATE-----(.*?)-----END CERTIFICATE-----/ws', $certContent, $matches)) {
-            #    $certContent = $matches[1];
-            #} else {
-                // Se não achar o padrão, tenta limpar manualmente
-                $certContent = str_replace(array("-----BEGIN CERTIFICATE-----", "-----END CERTIFICATE-----", "\n", "\r"), '', $certContent);
-            #}
-            // Remove espaços e quebras que restaram
-            $certContent = str_replace(array("\n", "\r", " "), '', $certContent);
+
+            if (empty($certContent)) {
+                throw new Exception("Conteúdo do certificado público está vazio: " . $this->publicCertPath);
+            }
 
             $objDSig->add509Cert($certContent, true, false, ['subjectName' => false]);
 
             $objDSig->appendSignature($dps);
 
-            return $xml; 
+            // CORREÇÃO: Adiciona manualmente o namespace default ao elemento <Signature>.
+            // O emissor nacional rejeita prefixos (E6155), mas o schema exige que a assinatura
+            // esteja no namespace 'xmldsig'. A solução é declarar um namespace default no
+            // próprio elemento <Signature>, o que o remove do namespace da NFS-e e o coloca
+            // no namespace correto, sem usar prefixos, resolvendo a falha de schema (RNG6110).
+            $sigNode = $xml->getElementsByTagName('Signature')->item(0);
+            if ($sigNode) {
+                $sigNode->setAttribute('xmlns', 'http://www.w3.org/2000/09/xmldsig#');
+            }
+
+            return $xml->saveXML(); 
         }
 
         public function send(){
@@ -213,8 +254,8 @@
             $msgs       = '';
             $status     = '';            
             try {    
-                $this->createLote();
-                $resp = $this->sendSignedLoteRps();                
+                $signedXml = $this->createLote();
+                $resp = $this->sendSignedLoteRps($signedXml);
                 $resp_json = json_decode($resp['response'], true); 
                 
                 switch($resp['http_code']){
@@ -287,68 +328,131 @@
         
         // Criei esse auxiliar só para organizar seu código gigante do layout
         private function generateInternalXml($value) {
-            // Cole aqui todo o código de montagem das variáveis ($valor_servico, etc)
-            // e o retorno da string XML crua (sem chamar limparStringXml ainda)
-            // ...
-             $rps_numero = $value['rpsnumero'];
-             $rps_serie = "00001";
-             // ... suas variáveis ...
-             
-             // Retorne a string crua
+            
+            // --- DADOS DA NOTA (Banco de Dados) ---
+            $rps_numero = $value['rpsnumero'];
+            $rps_numero = 1;
+            #$rps_numero = str_pad(1, 15, "0", STR_PAD_LEFT);
+            $rps_serie = $this->serie_dps;
+            
+            #$data_emissao_obj = new DateTime($value['demis']);
+            #$data_emissao_obj = new DateTime('2025-12-02');
+            #$data_emissao_formatada = $data_emissao_obj->format(DateTime::ATOM);
+            $data_emissao_formatada = '2025-12-02T08:00:00-03:00';
+
+            #$data_competencia = $value['dcompetencia'];
+            $data_competencia = '2025-12-02';
+
+            $valor_servico = $value['valservicos'];
+            $valor_iss = $value['valiss'];
+            // Formata alíquota para 2 casas decimais, conforme schema
+            $valor_aliquota = number_format($value['valaliqiss'], 2, '.', '');
+
+            $discriminacao = htmlspecialchars(str_replace('<<ENTER>>','',$value['discriminacao']), ENT_QUOTES, 'UTF-8');
+
+            // --- DADOS DO TOMADOR (Banco de Dados) ---
+            $cpf_tomador = $value['tomacpf'];
+            $cnpj_tomador = $value['tomacnpj'];
+
+            if ($cpf_tomador == ''){
+                $documento_tomador = '<CNPJ>'.$cnpj_tomador.'</CNPJ>';
+            } else {
+                $documento_tomador = '<CPF>'.$cpf_tomador.'</CPF>';
+            }
+
+            $razao_social_tomador  = htmlspecialchars($value['tomarazaosocial'], ENT_QUOTES, 'UTF-8');
+            $endereco_tomador = htmlspecialchars($value['tomaendereco'], ENT_QUOTES, 'UTF-8');
+            $numero_tomador = htmlspecialchars($value['tomanumero'] ?: 'S/N', ENT_QUOTES, 'UTF-8');
+            $complemento_tomador = $value['tomacomplemento'] ? '<xCpl>'.htmlspecialchars($value['tomacomplemento'], ENT_QUOTES, 'UTF-8').'</xCpl>' : '';
+            $bairro_tomador = htmlspecialchars($value['tomabairro'], ENT_QUOTES, 'UTF-8');
+            $codigo_municipio_tomador = $value['tomacmun'];
+            $cep_tomador = $value['tomacep'];
+            $email_tomador = htmlspecialchars($value['tomaemail'], ENT_QUOTES, 'UTF-8');
+
+            $endereco_tomador_xml = '
+                <end>
+                    <endNac>
+                        <cMun>'.$codigo_municipio_tomador.'</cMun>
+                        <CEP>'.$cep_tomador.'</CEP>
+                    </endNac>
+                    <xLgr>'.$endereco_tomador.'</xLgr>
+                    <nro>'.$numero_tomador.'</nro>
+                    '.$complemento_tomador.'
+                    <xBairro>'.$bairro_tomador.'</xBairro>
+                </end>';
+
+            // --- DADOS ESTÁTICOS / CONFIGURÁVEIS DO PRESTADOR ---
+            $cnpj_prestador = '83248021000158';
+            $codigo_municipio_prestador = '4204608';
+            $prestador_im = '0'; // Placeholder
+            $prestador_email = 'email@example.com'; // Placeholder
+
+            // Regimes e Códigos
+            $regime_apuracao_simples_nacional = 1;
+            $regime_especial_tributacao = $value['regesptrib'];
+            $regime_especial_tributacao = 0;
+            $situacao_perante_simples_nacional = 3;
+            $codigo_tributacao_nacional = '100501';
+            $codigo_tributacao_municipal = '1601'; // Placeholder
+            $nbs = '110012200';
+            $tributacao_issqn = 1; // 1 = Operação Tributável
+            $retencao = $value['issretido'] == 1 ? 2 : 1;
+            
+            $total_tributos_federais = '0.00';
+            $total_tributos_estaduais = '0.00';
+            $total_tributos_municipais = '0.00';
+
+            $tipo_ambiente = 1; // 1 - Produção, 2 - Homologação
+            $versao_aplicativo = '1.0.0';
+            $emissor_dps = 1; // 1 = Prestador
+            
+             // Retorna a string XML com a capitalização correta das tags (camelCase)
              return '
-                <tpAmb>1</tpAmb>
-                <dhEmi>2025-12-18T00:00:00</dhEmi>
-                <verAplic>1.0.0</verAplic>
-                <serie>00001</serie>
+                <tpAmb>'.$tipo_ambiente.'</tpAmb>
+                <dhEmi>'.$data_emissao_formatada.'</dhEmi>
+                <verAplic>'.$versao_aplicativo.'</verAplic>
+                <serie>'.$rps_serie.'</serie>
                 <nDPS>'.$rps_numero.'</nDPS>
-                <dCompet>2025-12</dCompet>
-                <tpEmit>1</tpEmit>
-                <cLocEmi>4204608</cLocEmi>
+                <dCompet>'.$data_competencia.'</dCompet>
+                <tpEmit>'.$emissor_dps.'</tpEmit>
+                <cLocEmi>'.$codigo_municipio_prestador.'</cLocEmi>
                 <prest>
-                    <CNPJ>83248021000158</CNPJ>
+                    <CNPJ>'.$cnpj_prestador.'</CNPJ>
                     <regTrib>
-                        <opSimpNac>3</opSimpNac>
-                        <regApTribSN>1</regApTribSN>
-                        <regEspTrib>0</regEspTrib>
+                        <opSimpNac>'.$situacao_perante_simples_nacional.'</opSimpNac>
+                        <regApTribSN>'.$regime_apuracao_simples_nacional.'</regApTribSN>
+                        <regEspTrib>'.$regime_especial_tributacao.'</regEspTrib>
                     </regTrib>
                 </prest>
                 <toma>
-                    <CPF>99933063987</CPF>
-                    <xNome>VIVIANE GRUNDLER VEFAGO</xNome>
-                    <end>
-                        <xLgr>RUA EXEMPLO</xLgr>
-                        <nro>100</nro>
-                        <xBairro>CENTRO</xBairro>
-                        <cMun>4204608</cMun>
-                        <CEP>88900000</CEP>
-                    </end>                    
+                    '.$documento_tomador.'
+                    <xNome>'.$razao_social_tomador.'</xNome>
+                    '.$endereco_tomador_xml.'
                 </toma>
                 <serv>
                     <locPrest>
-                        <cLocPrestacao>4204608</cLocPrestacao>
+                        <cLocPrestacao>'.$codigo_municipio_prestador.'</cLocPrestacao>
                     </locPrest>
                     <cServ>
-                        <cTribNac>100501</cTribNac>
-                        <cNBS>110012200</cNBS>                          
-                        <xDescServ>PRESTACAO DE SERVICOS</xDescServ>
-                    </cServ>                    
+                        <cTribNac>'.$codigo_tributacao_nacional.'</cTribNac>
+                        <xDescServ>'.$discriminacao.'</xDescServ>
+                        <cNBS>'.$nbs.'</cNBS>
+                    </cServ>
                 </serv>
                 <valores>
                     <vServPrest>
-                        <vServ>185.61</vServ>
+                        <vServ>'.$valor_servico.'</vServ>
                     </vServPrest>
                     <trib>
                         <tribMun>
-                            <tribISSQN>1</tribISSQN>
-                            <tpRetISSQN>1</tpRetISSQN>
-                            <vAliqISSQN>2.00</vAliqISSQN>
-                            <vISSQN>3.71</vISSQN>
+                            <tribISSQN>'.$tributacao_issqn.'</tribISSQN>
+                            <tpRetISSQN>'.$retencao.'</tpRetISSQN>                            
                         </tribMun>
                         <totTrib>
                             <vTotTrib>
-                                <vTotTribFed>0.00</vTotTribFed>
-                                <vTotTribEst>0.00</vTotTribEst>
-                                <vTotTribMun>0.00</vTotTribMun>
+                                <vTotTribFed>'.$total_tributos_federais.'</vTotTribFed>
+                                <vTotTribEst>'.$total_tributos_estaduais.'</vTotTribEst>
+                                <vTotTribMun>'.$total_tributos_municipais.'</vTotTribMun>
                             </vTotTrib>
                         </totTrib>
                     </trib>
@@ -368,16 +472,22 @@
         function limparStringXml($string) {
             if (empty($string)) return '';
 
-            // Garante UTF-8
-            if (!mb_check_encoding($string, 'UTF-8')) {
-                $string = mb_convert_encoding($string, 'UTF-8', 'ISO-8859-1');
+            // CORREÇÃO: Garante a conversão para UTF-8 de forma mais robusta,
+            // detectando a codificação original antes de converter.
+            $encoding = mb_detect_encoding($string, 'UTF-8, ISO-8859-1', true);
+            if ($encoding) {
+                $string = mb_convert_encoding($string, 'UTF-8', $encoding);
+            } else {
+                // Se a detecção falhar, assume UTF-8 e tenta limpar a string.
+                $string = mb_convert_encoding($string, 'UTF-8', 'UTF-8');
             }
-
-            // Remove acentos
-            #$string = iconv('UTF-8', 'ASCII//TRANSLIT//IGNORE', $string);
             
-            // Remove controles
+            // A LINHA ABAIXO FOI REMOVIDA POIS CORROMPIA OS DADOS E CAUSAVA FALHA DE SCHEMA
+            // $string = iconv('UTF-8', 'ASCII//TRANSLIT//IGNORE', $string);
+            
+            // Remove quebras de linha e tabs, substituindo por espaços
             $string = preg_replace('/[\r\n\t]/', ' ', $string);
+            // Reduz múltiplos espaços a um único espaço
             $string = preg_replace('/\s+/', ' ', $string);
             
             return trim($string);
