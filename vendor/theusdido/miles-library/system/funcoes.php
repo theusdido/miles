@@ -1244,11 +1244,11 @@ function addMenu(
 
 function addMenuPermissao(
 	int $menu,
-	int $usuario = null,
+	int $usuario = 0,
 	$permissao = 1
 ){
 	global $conn;	
-	if ($usuario == null) $usuario = isset($_SESSION["userid"])?$_SESSION["userid"]:1;
+	if ($usuario == 0) $usuario = isset($_SESSION["userid"])?$_SESSION["userid"]:1;
 	$idMP 	= installDependencia("menupermissoes","system/menupermissoes");
 	$sqlv 	= "SELECT id FROM td_menupermissoes WHERE menu = {$menu} AND usuario = {$usuario};";
 	$queryv = $conn->query($sqlv);

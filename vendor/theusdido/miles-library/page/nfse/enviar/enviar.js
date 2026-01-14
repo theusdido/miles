@@ -3,8 +3,7 @@ $(function(){
     var total_notas_encontradas = 0;
     var total_notas_enviadas = 0;
 
-    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    setToolTip();
 
     $("#load-pesquisar").attr("src",session.urlloading2);
     $("#pesquisar").click( ()=> {    
@@ -131,7 +130,7 @@ $(function(){
                     const response = JSON.parse(ret.responseText);
                     let badge_status = '';
                     let badge_text = '';
-                    let mesagem = '';
+                    let mensagem = '';
                     if (response.status === 'success'){
                         badge_status = 'success';
                         badge_text = 'Enviado com Sucesso!';
@@ -148,13 +147,15 @@ $(function(){
                     if (total_notas_enviadas < total_notas_encontradas){
                         enviar(total_notas_enviadas);
                     }else{
+                        setToolTip();
                         alert('Envio Encerrado!');
                     }
 
-                    // Habilita o Tooltip do Bootstrap 5
-                    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-                    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+                    setToolTip();
 
+                    badge.click(function(){
+                        bootbox.alert($(this).data('bs-title'));
+                    });
                 }
             });
         },1000);
@@ -164,4 +165,10 @@ $(function(){
         total_notas_enviadas = 0;
         enviar(total_notas_enviadas);
     });
+
+    function setToolTip(){
+        // Habilita o Tooltip do Bootstrap 5
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    }
 });

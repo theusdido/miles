@@ -86,7 +86,6 @@
 			exit;
 		}
 	}
-
 	$_db_config_file 	= isset($_env->database->config_file) ? $_env->database->config_file : $mjc->database_current;
 	$_config_db 		= $_path_config_project . $_db_config_file .'_mysql.ini';
 

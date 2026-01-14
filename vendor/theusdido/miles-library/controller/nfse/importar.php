@@ -38,7 +38,7 @@
                 
                 // Grava as Notas na base de dados	
                 $nfse                       = tdc::p('td_erp_nfse_nota');
-                $nfse->rpsnumero  			= $rpsnumero;						
+                $nfse->rpsnumero  			= $rpsnumero;
                 $nfse->rpsserie 			= conteudo_tag($linha,"RPSSerie");
                 $nfse->rpstipo				= conteudo_tag($linha,"RPSTipo");
                 $nfse->demis				= conteudo_tag($linha,"dEmis");
