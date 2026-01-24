@@ -23,3 +23,10 @@ miles.json
 debug/
 .gitignore
 firebase.json
+projects/
+agents/
+gemini.md
+php_error.logprojects/
+agents/
+gemini.md
+php_error.log
