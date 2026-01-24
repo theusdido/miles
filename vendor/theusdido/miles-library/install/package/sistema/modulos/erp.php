@@ -84,6 +84,7 @@
     // NFSe
     array( "name" => "nfse", "title" => "NFSe", "components" => 
       array(
+        array('name' => 'configuracoes',    'title' => 'Configurações'),
         array('name' => 'nfse',             'title' => 'NFSe'),
         array('name' => 'tomador',          'title' => 'Tomador'),
         array('name' => 'servico',          'title' => 'Serviço'),

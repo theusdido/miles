@@ -213,6 +213,11 @@ class Entity {
 								$tipo 		= 'varchar';
 								$tamanho  	= 64;
 							break;
+							case 'senha_sem_criptografia':
+								$tipohtml	= 32;
+								$tipo 		= 'varchar';
+								$tamanho  	= 255;
+							break;
 							case 'lista_unica':
 								$tipohtml	= 4;
 								$tipo 		= 'smallint';

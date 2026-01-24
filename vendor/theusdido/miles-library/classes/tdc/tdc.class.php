@@ -425,7 +425,7 @@ class tdc Extends tdClass{
 	*/
 	public static function wj($message)
 	{
-		echo json_encode($message,JSON_PARTIAL_OUTPUT_ON_ERROR);
+		echo json_encode($message,JSON_PARTIAL_OUTPUT_ON_ERROR | JSON_PRETTY_PRINT);
 		if (IS_SHOW_ERROR_MESSAGE && json_last_error() != JSON_ERROR_NONE){
 			$_message = is_array($message) ? print_r($message) : $message;
 			Debug::Console(JSON_ERROR_NONE. "\n\n" . $_message ,'TCC::WJ');

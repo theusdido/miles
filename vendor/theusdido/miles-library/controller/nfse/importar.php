@@ -50,6 +50,7 @@
                 $nfse->optsn				= conteudo_tag($linha,"OptSN");
                 $nfse->inccult				= conteudo_tag($linha,"IncCult");
                 $nfse->status				= 'P';
+                $nfse->situacao				= 'N';
                 $nfse->nfsoutrasinformacoes	= conteudo_tag($linha,"NFSOutrasinformacoes");
                 $nfse->inativo              = 0;
                 $nfse->armazenar();
@@ -126,10 +127,45 @@
                 $servico->tributacaoiss  	    = conteudo_tag($linha,"TributacaoISS");
                 $servico->armazenar();
 
-                $tomador                        = tdc::p("td_erp_nfse_tomador");
-                $tomador->nfse                  = $nfseID;
-                $tomador->tomacpf				= conteudo_tag($linha,"TomaCPF");
-                $tomador->tomacnpj              = conteudo_tag($linha,"TomaCNPJ");
+                $referencia = tdc::r('referencia');
+                $tomacpf = conteudo_tag($linha, "TomaCPF");
+                $tomacnpj = conteudo_tag($linha, "TomaCNPJ");                
+
+                $tomador_para_atualizar_id = null;
+                if ((!empty($tomacpf) || !empty($tomacnpj)) && !empty($referencia)) {
+                    $crit = tdc::f();
+                    $filtro_doc = tdc::f();
+                    if (!empty($tomacpf)) {
+                        $filtro_doc->add(tdc::ft('tomacpf', '=', $tomacpf), OU);
+                    }
+                    if (!empty($tomacnpj)) {
+                        $filtro_doc->add(tdc::ft('tomacnpj', '=', $tomacnpj), OU);
+                    }
+                    $crit->add($filtro_doc);
+                    
+                    $tomadores_existentes = tdc::da('td_erp_nfse_tomador', $crit);
+
+                    foreach ($tomadores_existentes as $t) {                        
+                        $nota_associada = tdc::pa('td_erp_nfse_nota', $t['nfse']);
+                        if ($nota_associada && isset($nota_associada['mesano']) && $nota_associada['situacao'] == 'N') {                            
+                            $dcompetencia_formatada = $nota_associada['mesano'];
+                            if ($dcompetencia_formatada == $referencia) {
+                                $tomador_para_atualizar_id = $t['id'];
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                if ($tomador_para_atualizar_id) {
+                    $tomador = tdc::p("td_erp_nfse_tomador", $tomador_para_atualizar_id);
+                } else {
+                    $tomador = tdc::p("td_erp_nfse_tomador");
+                    $tomador->nfse                  = $nfseID;
+                }
+                
+                $tomador->tomacpf				= $tomacpf;
+                $tomador->tomacnpj              = $tomacnpj;
                 $tomador->tomarazaosocial    	= conteudo_tag($linha,"TomaRazaoSocial");
                 $tomador->tomaim	            = conteudo_tag($linha,"TomaIM");
                 $tomador->tomasite  			= conteudo_tag($linha,"TomaSite");

@@ -16,15 +16,14 @@
     require 'vendor/robrichards/xmlseclibs/xmlseclibs.php';
 
     class snNFSE {
-        private string $endpoint         = 'https://sefin.nfse.gov.br/sefinnacional/nfse';        
-        public int $ambiente            = 1; // 1 - Produção, 2 - Homologação
+        protected string $endpoint;
+        private int $ambiente            = 2; // 1 - Produção, 2 - Homologação
         public ?string $wsdl            = null;
         public ?string $privateKeyPath  = '/var/www/miles/vendor/theusdido/miles-library/controller/integracao/sn_nfse/chave_privada.pem';
         public string $publicCertPath   = '/var/www/miles/vendor/theusdido/miles-library/controller/integracao/sn_nfse/certificado_publico.pem';
         
         // A senha geralmente não é necessária para o PEM se ele já foi extraído sem senha
-        // Se a chave privada PEM tiver senha, mantenha aqui.
-        public ?string $clientCertPass  = 'goes1234'; 
+        private ?string $clientCertPass = ''; 
 
         private array $lote_rps         = [];
         private int $rps_lote_id        = 0;
@@ -32,6 +31,18 @@
         private string $soapAction      = '';
         public string $cafile           = '/var/www/miles/vendor/theusdido/miles-library/controller/integracao/sn_nfse/ca-certificates.crt';
         private bool $is_remove_cabecalho = false;
+
+        public function __construct() {
+            $this->loadConfig();
+        }
+
+        private function loadConfig() {
+            $config = tdc::ru('erp_nfse_configuracoes');
+            if ($config->hasData()) {
+                $this->ambiente = (int)$config->is_ambiente_producao == 1 ? 1 : 2;
+                $this->clientCertPass = $config->senha_certificado;
+            }
+        }
 
         public function sendSignedLoteRps(string $xmlContentRaw) : array {
 
@@ -144,9 +155,6 @@
 
             // Assina e retorna o XML como string
             $signedXmlString = $this->assinatura($dps_id, $this->inline($finalXmlString));
-
-            // Salva o XML final para depuração
-            file_put_contents('debug_nfse.xml', $signedXmlString);
 
             if (!$signedXmlString) {
                 throw new Exception("Falha ao gerar assinatura do XML.");
@@ -335,6 +343,7 @@
             $codigo_municipio_tomador = $value['tomacmun'];
             $cep_tomador = $value['tomacep'];
             $email_tomador = htmlspecialchars($value['tomaemail'], ENT_QUOTES, 'UTF-8');
+            $is_cadastro_cnc = $value['is_cadastro_cnc'] == 1 ? true : false;
 
             $endereco_tomador_xml = '
                 <end>
@@ -371,7 +380,11 @@
             $emissor_dps = 1; // 1 = Prestador
 
             $inscricao_municipal = '';
-            if ($emissor_dps == 1 && !$this->isTomadorPessoaFisica($cpf_tomador)){
+            if (
+                $emissor_dps == 1 && 
+                !$this->isTomadorPessoaFisica($cpf_tomador) &&
+                !$is_cadastro_cnc
+            ){
                 $inscricao_municipal = '<IM>1169</IM>';
             }
             
@@ -430,7 +443,7 @@
             ');            
         }
 
-        private function prepararXmlNfse($xmlContent) {
+        protected function prepararXmlNfse($xmlContent) {
             $xmlContent = trim($xmlContent);
             $xmlGzip = gzencode($xmlContent, 9);
             if ($xmlGzip === false) {
@@ -465,7 +478,7 @@
             return strlen($cpf) == 11;
         }
 
-        private function getEndPoint(){
+        protected function getEndPoint(){
             $env_ = $this->ambiente == 1 ? '' : '.producaorestrita';
             return 'https://sefin'.$env_.'.nfse.gov.br/sefinnacional/nfse';
         }

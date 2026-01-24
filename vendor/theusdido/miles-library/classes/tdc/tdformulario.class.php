@@ -250,21 +250,47 @@ class TdFormulario Extends Elemento {
 				break;
 				// Campo Senha
 				case "6":
-					$campo->label->add(tdc::utf8($coluna->descricao));
-					$campo->label->for 		= $coluna->nome;
-					$campo->label->class 	= "control-label";
-					$campo->label->add($asteriscoobrigatorio);
-					$campo->input->id 		= $coluna->nome;
-					$campo->input->name 	= $coluna->nome;
-					$campo->input->type 	= "password";
-					$campo->input->class 	= "form-control input-sm " . ($this->fp != ""?$this->fp:"");
-					if ($coluna->exibirgradededados ==1) $campo->input->class = $this->gd;
-					if ($coluna->readonly) $campo->input->readonly = "true";
-					if ($coluna->desabilitar) $campo->input->disabled = "true";
-					if ($coluna->nulo==0) $campo->input->required = "true";
-					$campo->input->data_entidade 	= $entidadeCOL;
-					$campo->input->atributo 		= $coluna->id;
-					$campo->input->value 			= $initialValue;
+					$campo = tdClass::Criar("div");
+					$campo->class = "form-group";
+
+					$label = tdClass::Criar("label");
+					$label->add(tdc::utf8($coluna->descricao));
+					$label->for 		= $coluna->nome;
+					$label->class 	= "control-label";
+					$label->add($asteriscoobrigatorio);
+
+					$input_group = tdClass::Criar("div");
+					$input_group->class = "input-group password-group";
+
+					$input = tdClass::Criar("input");
+					$input->id 		= $coluna->nome;
+					$input->name 	= $coluna->nome;
+					$input->type 	= "password";
+					$input->class 	= "form-control input-sm " . ($this->fp != ""?$this->fp:"");
+					if ($coluna->exibirgradededados ==1) $input->class = $this->gd;
+					if ($coluna->readonly) $input->readonly = "true";
+					if ($coluna->desabilitar) $input->disabled = "true";
+					if ($coluna->nulo==0) $input->required = "true";
+					$input->data_entidade 	= $entidadeCOL;
+					$input->atributo 		= $coluna->id;
+					$input->value 			= $initialValue;
+
+					$input_group_btn = tdClass::Criar("span");
+					$input_group_btn->class = "input-group-btn";
+					
+					$btn_input = tdClass::Criar("button");
+					$btn_input->class = "btn btn-default btn-reveal-password";
+					$btn_input->type = "button";
+					$btn_input->onclick = "var input = $(this).parents('.input-group').find('input'); if (input.attr('type') == 'password') { input.attr('type', 'text'); $(this).find('span').removeClass('fa-eye').addClass('fa-eye-slash'); } else { input.attr('type', 'password'); $(this).find('span').removeClass('fa-eye-slash').addClass('fa-eye'); }";
+					
+					$icon_eye = tdClass::Criar("span");
+					$icon_eye->class = "fas fa-eye password-icon";
+					$icon_eye->aria_hidden = "true";
+					$btn_input->add($icon_eye);
+					
+					$input_group_btn->add($btn_input);
+					$input_group->add($input,$input_group_btn);
+					$campo->add($label,$input_group);
 				break;
 				// Checkbox
 				case "7":
@@ -808,7 +834,51 @@ class TdFormulario Extends Elemento {
 						
 					$grupo_btn->add($sim,$nao);
 					$campo->add($br,$grupo_btn);
-				break;				
+				break;
+				// Campo Senha ( Sem Criptografia )
+				case "32":
+					$campo = tdClass::Criar("div");
+					$campo->class = "form-group";
+
+					$label = tdClass::Criar("label");
+					$label->add(tdc::utf8($coluna->descricao));
+					$label->for 		= $coluna->nome;
+					$label->class 	= "control-label";
+					$label->add($asteriscoobrigatorio);
+
+					$input_group = tdClass::Criar("div");
+					$input_group->class = "input-group password-group";
+
+					$input = tdClass::Criar("input");
+					$input->id 		= $coluna->nome;
+					$input->name 	= $coluna->nome;
+					$input->type 	= "password";
+					$input->class 	= "form-control input-sm " . ($this->fp != ""?$this->fp:"");
+					if ($coluna->exibirgradededados ==1) $input->class = $this->gd;
+					if ($coluna->readonly) $input->readonly = "true";
+					if ($coluna->desabilitar) $input->disabled = "true";
+					if ($coluna->nulo==0) $input->required = "true";
+					$input->data_entidade 	= $entidadeCOL;
+					$input->atributo 		= $coluna->id;
+					$input->value 			= $initialValue;
+
+					$input_group_btn = tdClass::Criar("span");
+					$input_group_btn->class = "input-group-btn";
+					
+					$btn_input = tdClass::Criar("button");
+					$btn_input->class = "btn btn-default btn-reveal-password";
+					$btn_input->type = "button";
+					$btn_input->onclick = "var input = $(this).parents('.input-group').find('input'); if (input.attr('type') == 'password') { input.attr('type', 'text'); $(this).find('span').removeClass('fa-eye').addClass('fa-eye-slash'); } else { input.attr('type', 'password'); $(this).find('span').removeClass('fa-eye-slash').addClass('fa-eye'); }";
+					
+					$icon_eye = tdClass::Criar("span");
+					$icon_eye->class = "fas fa-eye password-icon";
+					$icon_eye->aria_hidden = "true";
+					$btn_input->add($icon_eye);
+					
+					$input_group_btn->add($btn_input);
+					$input_group->add($input,$input_group_btn);
+					$campo->add($label,$input_group);
+				break;
 				default:
 					$campo->label->add(tdc::utf8($coluna->descricao));
 					$campo->label->for = $coluna->nome;
