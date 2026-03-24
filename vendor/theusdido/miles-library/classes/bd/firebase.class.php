@@ -27,7 +27,7 @@
 
             $config         = $this->getJSONConfig();
             $project_id     = $config['project_id'];
-            $project_url    = 'https://'.$project_id.'-default-rtdb.firebaseio.com/' . _ENVIRONMENT;
+            $project_url    = 'https://'.$project_id.'-default-rtdb.firebaseio.com/';
 
             // Cria uma instância do Firebase
             $firebase = (new Factory)
@@ -39,7 +39,9 @@
         }
 
         public function ref($collection){
-            return $this->database->getReference($collection);
+            $path_full_collection = _ENVIRONMENT . '/' . $collection;
+            #var_dump($path_full_collection);
+            return $this->database->getReference($path_full_collection);
         }
 
         public function insert($data, $collection = '/'){
@@ -48,7 +50,7 @@
 
         public function add($data, $collection = '/'){
             $ref_ = $this->set($data, $collection);
-            //$this->addRelacionamento($collection, $ref_);
+            $this->addRelacionamento($collection, $ref_);
             return $ref_;
         }
 
@@ -106,7 +108,8 @@
                 // Atualiza o relacionamento lista dentro da coleção
                 $_ref_lista = str_replace(getSystemPREFIXO(),'',tdc::e($r_)->nome).'_lista';
                 $full_ref_lista = str_replace('\/\/','',$entidade . '/' . $_ref_lista);
-                $this->database->getReference($full_ref_lista)->set($dados_);
+                #$this->database->getReference($full_ref_lista)->set($dados_);
+                $this->ref($full_ref_lista)->set($dados_);
             }
         }
 
@@ -156,4 +159,5 @@
             
             return $data;
         }        
+        
     }

@@ -13,13 +13,15 @@
     $_criterio->order('ordem');
 
     try{
-        //$retorno['data'] = tdc::da($_entidade,$_criterio);
-
-        #$redis = new Redis();
-        #$redis->connect('127.0.0.1', 6379);        
-        #var_dump($redis->hGet($_entidade));
-        #$retorno['data'] = json_decode($redis->get($_entidade . ":all"));
-        $retorno['data'] = $_redis->getAll($_entidade);
+        if (IS_REDIS){
+            #$redis = new Redis();
+            #$redis->connect('127.0.0.1', 6379);        
+            #var_dump($redis->hGet($_entidade));
+            #$retorno['data'] = json_decode($redis->get($_entidade . ":all"));
+            $retorno['data'] = $_redis->getAll($_entidade);
+        }else{
+            $retorno['data'] = tdc::da($_entidade,$_criterio);
+        }
     }catch(Exception $e){
         $retorno['data'] = [];
     }

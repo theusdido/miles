@@ -101,3 +101,12 @@ table tr td
 {
 	vertical-align: middle !important;
 }
+
+.mdm-table-container thead 
+{
+  position: sticky;
+  top: 0;           /* Stick to the top of the container */
+  background-color: #fff; /* Required: otherwise rows scroll "under" transparent text */
+  z-index: 10;      /* Ensure it stays above the body rows */
+  box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4); /* Optional: adds a nice separation */
+}

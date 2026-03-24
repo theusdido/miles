@@ -1,5 +1,5 @@
 $(function(){
-    const URL_IMPORTAR = '?controller=nfse/importar';
+    const URL_IMPORTAR = '?controller=nfse/tomador-cep';
     var quantidade_notas = 0;
 
     // Popula o campo de referência
@@ -52,25 +52,20 @@ $(function(){
             text: 'Selecione...'
         }));
 
-        var start_date = new Date(2025, 10, 1);
-        var current = new Date();
+        var start_date = new Date(2025, 10, 1); 
+        var current_date = new Date(2026, 0, 14);
+        var current = new Date(start_date);
 
-        // Ajustamos para o dia 1 para evitar problemas em meses com 31 dias ao subtrair meses
-        current.setDate(1);
-
-        while (current >= start_date) {
+        while (current <= current_date) {
             var month = current.getMonth() + 1;
             var year = current.getFullYear();
             var text = year + "/" + (month < 10 ? '0' : '') + month;
             var value = (month < 10 ? '0' : '') + month + "/" + year;
-
             select.append($('<option>', {
                 value: value,
                 text: text
             }));
-
-            // A diferença crucial: agora SUBTRAÍMOS um mês a cada iteração
-            current.setMonth(current.getMonth() - 1);
+            current.setMonth(current.getMonth() + 1);
         }
     }
 
@@ -92,18 +87,18 @@ $(function(){
             data: {
                 op:"salvar",
                 indice: quantidade_notas,
-                referencia: $("#referencia").val() // Enviando a referência também na operação de salvar
+                referencia: $("#referencia").val()
             },
             complete: function(ret){
-                if (parseInt(ret.responseText) == 1){
+                let res = JSON.parse(ret.responseText);
+                if (res.status == 'success'){
                     quantidade_notas--;
                     if (quantidade_notas >= 1){
-                        salvar();
+                        setTimeout(()=>{
+                            salvar();
+                        },500);
                     }else{
                         $("#status2").html('<img src="'+session.urlcurrenttheme+'check.gif" />');
-                        //parent.$("#enviar").button('reset');
-                        //parent.$("#enviar").attr("class","btn btn-success");
-                        //parent.$("#enviar").html("Enviado");ss
                     }
                 }else{
                     $("#status2").html('<img src="'+session.urlcurrenttheme+'erro.gif" width="25" />');                              

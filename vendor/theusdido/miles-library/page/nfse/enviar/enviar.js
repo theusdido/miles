@@ -18,7 +18,10 @@ $(function(){
                 op:"rps",
                 rps: $("#rps").val(),
                 data: $("#data").val(),
-                situacao:$("#situacao").val()
+                situacao:$("#situacao").val(),
+                tomador: $("#tomador").val(),
+                documento: $("#documento").val(),
+                referencia: $("#referencia").val()
             },
             beforeSend:function(){
                 $("#tconsulta tbody").html('');
@@ -114,6 +117,7 @@ $(function(){
     }
 
     $("#data").mask("99/99/9999");
+    $('#referencia').mask("99/9999");
 
     function enviar(indice = 0){
         setTimeout(function(){
@@ -148,10 +152,10 @@ $(function(){
                         enviar(total_notas_enviadas);
                     }else{
                         setToolTip();
-                        alert('Envio Encerrado!');
+                        bootbox.alert('Envio Encerrado!');
                     }
 
-                    setToolTip();
+                    //setToolTip();
 
                     badge.click(function(){
                         bootbox.alert($(this).data('bs-title'));

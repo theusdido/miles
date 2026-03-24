@@ -23,7 +23,6 @@
             
             $sql    = "SELECT id FROM " . MONITOR . " WHERE operacao = '{$operacao}' AND entidade = {$entidade} AND atributo = {$atributo} AND valorid = {$valorid} AND consumidor = {$consumidor}";
             $query  = $conn->query($sql);
-
             
             if ($query->rowCount() > 0){
                 #$linha  = $query->fetch();

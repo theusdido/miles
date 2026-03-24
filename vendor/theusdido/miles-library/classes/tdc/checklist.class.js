@@ -25,7 +25,6 @@ class Checklist {
     }
     async show() {      
         this.addLoader();
-        debugger;
         if (config.is_replication_firebase){
             const query = new tdFirebaseRealtime(td_entidade[this.entidade_filho].nome);
             const data = await query.readAll();

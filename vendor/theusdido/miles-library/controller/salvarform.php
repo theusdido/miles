@@ -133,10 +133,11 @@
 			// Atualiza entidade pai
 			$_entidade_pai_obj 	= tdc::e($entidadePai);
 			$_pai 				= tdc::p($_entidade_pai_obj->nome,$regPai);
-			$_pai->armazenar();
+			$_pai->armazenar();			
 
 			// Atualiza lista no Firebase
 			if (_IS_REPLICATION_FIREBASE){
+				
 				$firebase 		= new Firebase();
 				$ref_lista 		= LISTA . '/' . $_lista->id;
 				$firebase->ref($ref_lista)->set([

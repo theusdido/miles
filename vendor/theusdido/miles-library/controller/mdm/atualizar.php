@@ -6,7 +6,7 @@
 
 			$environment 	= tdc::r('environment');
 			if ($environment == 'prod') $environment = 'producao';
-			if ($environment == 'homolog') $environment = 'homologacao';
+			#if ($environment == 'homolog') $environment = 'homologacao';
 			$direcao 		= tdc::r('direcao');
 
 			if ($direcao == 'enviar'){
@@ -50,17 +50,21 @@
 						$_conn_destino, #0
 						str_replace(getSystemPREFIXO(),"",$linhaAtual["nome"]), #1
 						tdc::utf8($linhaAtual["descricao"]), #2
-						$linhaAtual["ncolunas"], #3
-						$linhaAtual["exibirmenuadministracao"], #4
-						$linhaAtual["exibircabecalho"], #5
-						$linhaAtual["campodescchave"], #6
-						$linhaAtual["atributogeneralizacao"], #7
-						$linhaAtual["exibirlegenda"], #8
+						(int)$linhaAtual["ncolunas"], #3
+						(int)$linhaAtual["exibirmenuadministracao"], #4
+						(int)$linhaAtual["exibircabecalho"], #5
+						(int)$linhaAtual["campodescchave"], #6
+						(int)$linhaAtual["atributogeneralizacao"], #7
+						(int)$linhaAtual["exibirlegenda"], #8
 						0, #9
 						0, #10
 						0, #11
-						$linhaAtual["registrounico"], #12
-						$linhaAtual["carregarlibjavascript"] #13
+						(int)$linhaAtual["registrounico"], #12
+						(int)$linhaAtual["carregarlibjavascript"], #13
+						true, #14
+						$linhaAtual["tipoaba"], #15
+						(int)$linhaAtual["entidadeauxiliar"], #16
+						(int)$linhaAtual["controlarregistrousuario"] #17
 					);
 
 					// Atributos
@@ -82,15 +86,17 @@
 							$nomeatributo, #2
 							tdc::utf8($linhaAtualAtributo["descricao"]), #3
 							$linhaAtualAtributo["tipo"], #4
-							$linhaAtualAtributo["tamanho"], #5
-							$linhaAtualAtributo["nulo"], #6
-							$linhaAtualAtributo["tipohtml"], #7
-							$linhaAtualAtributo["exibirgradededados"], #8
-							$_entidade_fk_destino, #9
-							$linhaAtualAtributo["dataretroativa"], #10
+							(int)$linhaAtualAtributo["tamanho"], #5
+							(int)$linhaAtualAtributo["nulo"], #6
+							(int)$linhaAtualAtributo["tipohtml"], #7
+							(int)$linhaAtualAtributo["exibirgradededados"], #8
+							(int)$_entidade_fk_destino, #9
+							(int)$linhaAtualAtributo["dataretroativa"], #10
 							$linhaAtualAtributo["inicializacao"], #11
-							$linhaAtualAtributo["tipoinicializacao"], #12
-							$linhaAtualAtributo["readonly"] #13
+							(int)$linhaAtualAtributo["tipoinicializacao"], #12
+							(int)$linhaAtualAtributo["readonly"], #13
+							$linhaAtualAtributo["legenda"], #14
+							(int)$linhaAtualAtributo["naoexibircampo"] #15
 						);
 					}
 
@@ -113,15 +119,19 @@
 
 				foreach($entidades as $e){
 
-					$_entidade 		= tdc::e($e);
-
 					// Entidade
-					$sqlEntidade 	= "SELECT id,nome FROM td_entidade WHERE nome = '{$_entidade->nome}' LIMIT 1;";
+					$entidade_origem_id = 0;
+					$sqlEntidade 	= "SELECT id,nome FROM td_entidade WHERE id = '{$e}' OR nome = '{$e}' LIMIT 1;";
 					$queryEntidade 	= $_conn_origem->query($sqlEntidade);
 					if ($linhaEntidade = $queryEntidade->fetch()){
 						$entidade_origem_nome 	= $linhaEntidade["nome"];
 						$entidade_origem_id		= $linhaEntidade["id"];
 					 	$entidade_nome 			= $linhaEntidade["nome"];
+					}
+
+					if ($entidade_origem_id == 0) {
+						echo "Erro: Não foi possível obter os dados da entidade '{$e}' no banco de origem.";
+						continue;
 					}
 
 					// Atributos

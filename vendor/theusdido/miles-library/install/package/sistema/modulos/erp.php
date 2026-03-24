@@ -94,7 +94,8 @@
         array('name' => 'intermediario',    'title' => 'Intermediário'),
         array('name' => 'construcaocivil',  'title' => 'Construção Civil'),
         array('name' => 'prestador',        'title' => 'Prestador'),
-        array('name' => 'transportadora',   'title' => 'Transportadora')
+        array('name' => 'transportadora',   'title' => 'Transportadora'),
+        array('name' => 'envio',            'title' => 'Envio da NFSe (Log)')
       )
       ),
 

@@ -38,7 +38,6 @@
     "is_show_error_message": false,
     "is_show_warn_message": false,
     "is_transaction_log": false,
-    "database_current": "desenv",
     "port": "hidden",
     "environment":"dev",
     "environments":{
@@ -56,6 +55,9 @@
                 "request_protocol": "http",
                 "force_https":false,
                 "is_fixed_domain":false
+            },
+            "database":{
+                "config_file":"desenv"
             }
         },
         "homolog":{
@@ -67,6 +69,9 @@
                 "request_protocol": "https",
                 "force_https":false,
                 "is_fixed_domain":true
+            },
+            "database":{
+                "config_file":"homolog"
             }
         },                        
         "prod":{
@@ -78,6 +83,9 @@
                 "request_protocol": "https",
                 "force_https":true,
                 "is_fixed_domain":true
+            },
+            "database":{
+                "config_file":"producao"
             }
         }
     }

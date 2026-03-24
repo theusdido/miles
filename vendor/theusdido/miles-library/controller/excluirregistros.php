@@ -23,7 +23,9 @@
 					$ft_lista->addFiltro('regpai'			,'=',	$registrosID);
 					$ft_lista->addFiltro('regfilho'			,'=',	$reg_filho->id);
 					$lista = tdc::d(LISTA,$ft_lista);
-					$lista[0]->deletar();
+					if (isset($lista[0])){
+						$lista[0]->deletar();
+					}
 
 					// Exclui o registro na tabela filho
 					$registro_filho = tdc::p( tdc::e($entidade_rel)->nome, $reg_filho->id)->deletar();

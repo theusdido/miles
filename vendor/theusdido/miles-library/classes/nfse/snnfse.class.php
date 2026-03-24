@@ -19,8 +19,8 @@
         protected string $endpoint;
         private int $ambiente            = 2; // 1 - Produção, 2 - Homologação
         public ?string $wsdl            = null;
-        public ?string $privateKeyPath  = '/var/www/miles/vendor/theusdido/miles-library/controller/integracao/sn_nfse/chave_privada.pem';
-        public string $publicCertPath   = '/var/www/miles/vendor/theusdido/miles-library/controller/integracao/sn_nfse/certificado_publico.pem';
+        public ?string $privateKeyPath  = PATH_CURRENT_FILE . 'nfse/chave_privada.pem';
+        public string $publicCertPath   = PATH_CURRENT_FILE . 'nfse/certificado_publico.pem';
         
         // A senha geralmente não é necessária para o PEM se ele já foi extraído sem senha
         private ?string $clientCertPass = ''; 
@@ -29,7 +29,7 @@
         private int $rps_lote_id        = 0;
         private string $xmlns           = 'http://www.sped.fazenda.gov.br/nfse';
         private string $soapAction      = '';
-        public string $cafile           = '/var/www/miles/vendor/theusdido/miles-library/controller/integracao/sn_nfse/ca-certificates.crt';
+        public string $cafile           = PATH_CURRENT_FILE . 'nfse/ca-certificates.crt';
         private bool $is_remove_cabecalho = false;
 
         public function __construct() {
@@ -481,5 +481,12 @@
         protected function getEndPoint(){
             $env_ = $this->ambiente == 1 ? '' : '.producaorestrita';
             return 'https://sefin'.$env_.'.nfse.gov.br/sefinnacional/nfse';
+        }
+
+        public static function setNotaEnviada($nota_id){
+            $nota = tdc::p('td_erp_nfse_nota',$nota_id);
+            $nota->status = 'E';
+            $nota->situacao = 'E';
+            $nota->armazenar();
         }
     }

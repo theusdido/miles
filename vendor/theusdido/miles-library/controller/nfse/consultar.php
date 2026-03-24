@@ -6,44 +6,83 @@
             require PATH_MVC_CONTROLLER . 'integracao/betha/nfse/consulta.php';
         break;
         default:
-            $rps        = tdc::r('rps');
-            $data       = tdc::r('data');
-            $situacao   = tdc::r('situacao');
-            $filtro     = tdc::f();
+            $rps            = tdc::r('rps');
+            $data           = tdc::r('data');
+            $situacao       = tdc::r('situacao');
+            $tomador        = tdc::r('tomador');
+            $documento      = tdc::r('documento');
+            $referencia     = tdc::r('referencia');
 
-            #$filtro->setPropriedade('limit',10);
+            $where          = "1=1";
+            $filtro         = tdc::f();
+            $filtro_tomador = tdc::f();
+            
+            $filtro->setPropriedade('order',"rpsnumero ASC");
             if ($rps != ''){
-                $filtro->addFiltro("rpsnumero","=",$rps);
+                $where .= " AND a.rpsnumero = '$rps'";
             }
 
             if ($data != ''){
-                $filtro->addFiltro("demis","=",$data);
+                $where .= " AND a.demis = DATE_FORMAT(STR_TO_DATE('$data', '%d/%m/%Y'), '%Y-%m-%d')";
             }
 
             if ($situacao != ''){
                 
                 if ($situacao == 'N'){
-                    $ft = tdc::f();
-                    $ft->addFiltro("situacao","IS", NULL);
-                    $ft->addFiltro("situacao","=",$situacao,OU);
-                    $filtro->add($ft);                    
+                    $where .= " AND (a.situacao = '$situacao' OR a.situacao IS NULL)";
                 }else{
-                    $filtro->addFiltro("situacao","=",$situacao);
+                    $where .= " AND a.situacao = '$situacao'";
+                }
+
+            }
+
+            if ($tomador != ''){
+                $where .= " AND b.tomarazaosocial LIKE '%$tomador%'";
+            }
+
+            if ($documento != ''){
+                if (strlen($documento) > 11){
+                    $where .= " AND b.tomacnpj = '$documento'";
+                }else{
+                    $where .= " AND b.tomacpf = '$documento'";
                 }
             }
 
-            $filtro->onlyActive();
+            if ($referencia != ''){
+                $where .= " AND a.mesano = '".str_replace("/","",$referencia)."'";
+            }
 
-            $retorno = array();  
-            foreach (tdc::d('td_erp_nfse_nota',$filtro) as $d){
+            #$where .= " AND a.demis > DATE_FORMAT(DATE_SUB(CURDATE(), INTERVAL 30 DAY), '%Y-%m-%d')";
+            $where .= " AND (a.inativo <> 1 OR a.inativo IS NULL)";
+
+            $sql = "
+                SELECT 
+                    a.id,
+                    a.rpsnumero,
+                    a.rpsserie,
+                    a.rpstipo,
+                    a.situacao,
+                    DATE_FORMAT(a.demis,'%d/%m/%Y') dataemissao,
+                    b.tomarazaosocial
+                FROM td_erp_nfse_nota a
+                LEFT JOIN td_erp_nfse_tomador b ON b.nfse = a.id
+                WHERE $where
+                ORDER BY a.rpsnumero ASC;    
+            ";
+
+            $query = $conn->query($sql);
+            $rows = $query->fetchAll(PDO::FETCH_OBJ);
+            $retorno = array();
+
+            foreach ($rows as $d){              
                 array_push($retorno,array(
                     "id"            => $d->id,
                     "rpsnumero"     => $d->rpsnumero,
                     "rpsserie"      => $d->rpsserie,
                     "rpstipo"       => $d->rpstipo,
                     "situacao"      => $d->situacao == 'E' ? 'Enviada' : 'Não Enviada',
-                    "tomador"       => tdc::d("td_erp_nfse_tomador",tdc::f("nfse","=",$d->id))[0]->tomarazaosocial,
-                    'dataemissao'   => dateToMysqlFormat($d->demis,true)
+                    "tomador"       => $d->tomarazaosocial,
+                    'dataemissao'   => $d->dataemissao
                 ));
             }
 

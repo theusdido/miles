@@ -31,6 +31,7 @@
 
             if ($rps != ""){
 
+                $referencia = tdc::r('referencia');
                 $rpsnumero = conteudo_tag($linha,"RPSNumero");
 
                 $sql_inativar = "UPDATE td_erp_nfse_nota SET inativo = 1 WHERE rpsnumero = {$rpsnumero};";
@@ -51,7 +52,8 @@
                 $nfse->inccult				= conteudo_tag($linha,"IncCult");
                 $nfse->status				= 'P';
                 $nfse->situacao				= 'N';
-                $nfse->nfsoutrasinformacoes	= conteudo_tag($linha,"NFSOutrasinformacoes");
+                $nfse->nfsoutrasinformacoes	= conteudo_tag($linha,"NFSOutrasinformacoes");                
+                $nfse->mesano               = str_replace("/",'',$referencia);
                 $nfse->inativo              = 0;
                 $nfse->armazenar();
 
@@ -126,8 +128,7 @@
                 $servico->obrigomunic  		    = conteudo_tag($linha,"ObrigoMunic");	
                 $servico->tributacaoiss  	    = conteudo_tag($linha,"TributacaoISS");
                 $servico->armazenar();
-
-                $referencia = tdc::r('referencia');
+                
                 $tomacpf = conteudo_tag($linha, "TomaCPF");
                 $tomacnpj = conteudo_tag($linha, "TomaCNPJ");                
 

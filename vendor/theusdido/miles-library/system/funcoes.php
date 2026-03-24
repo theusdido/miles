@@ -852,7 +852,7 @@ function criarAtributo(
 	$descricao 			= tdc::utf8($descricao);
 	$nuloSQL			= ((int)$nulo==0)?'NOT NULL':'NULL';
 	$chaveestrangeira 	= ($chaveestrangeira=="")?0:($chaveestrangeira);		
-	$inicializacao 		= str_replace("'","\'",$inicializacao);
+	$inicializacao 		= str_replace("'","\'",$inicializacao ?? '');
 	if ($tipo == "varchar" || $tipo == "char" ){
 		if ($tamanho == '' || (int)$tamanho == 0){
 			$tamanhoSQL = "(0)";
@@ -2465,6 +2465,9 @@ function isTipoNumerico($tipo){
 function getValorDefaultAtributo($valor,$tipohtml,$tipo){
     if (isTipoHTMLNumero($tipohtml) || isTipoNumerico($tipo)){
         return $valor == "" ? 0 : $valor;
+    }else if ($tipo == 'json'){
+        if ($valor == '' || $valor == null) return "'{}'";
+        return "'{$valor}'";
     }else{
         return "'{$valor}'";
     }

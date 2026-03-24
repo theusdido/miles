@@ -81,7 +81,7 @@
 	
 	// Retorna dados do Firebase para entidade auxiliar
 	$entidade_auxiliar = json_decode(tdc::r('entidadeauxiliar'));
-	if ($entidade_auxiliar){
+	if ($entidade_auxiliar && _IS_REPLICATION_FIREBASE){
 		$firebase = new Firebase();
 		#$dados = $firebase->getPage(tdc::r('entidade_nome'),$max_registros,$ini_reg);		
 		#$dados = $firebase->getPage(tdc::r('entidade_nome'));

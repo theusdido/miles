@@ -187,7 +187,7 @@ abstract class Registro {
 				$this->isnew ? "I" : "U",
 				$this->getID(),
 				0,
-				$this->id
+				empty($this->id) ? 0 : $this->id
 			);
 			
 			$_d = array();

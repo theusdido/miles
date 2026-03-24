@@ -14,8 +14,8 @@
         <div class="row">
             <div class="col-md-4 col-sm-4">
                 <div class="form-group">
-                    <label class="control-label" for="rps">RPS</label>
-                    <input type="text" id="rps" class="form-control" placeholder="Número do RPS" />
+                    <label class="control-label" for="rps">DPS</label>
+                    <input type="text" id="rps" class="form-control" placeholder="Número do DPS" />
                 </div>
             </div>
             <div class="col-md-4 col-sm-4">
@@ -30,7 +30,7 @@
                     <select id="situacao" name="situacao" class="form-select">
                         <option value="">Todos</option>
                         <option value="E">Enviada</option>
-                        <option value="N">Não Enviada</option>
+                        <option value="N" selected>Não Enviada</option>
                         <!-- <option value="P" selected>Pendente</option>
                         <option value="E">Efetivado</option>
                         <option value="C">Cancelado</option>
@@ -39,6 +39,24 @@
                     </select>
                 </div>
             </div>
+            <div class="col-md-4 col-sm-4">
+                <div class="form-group">
+                    <label class="control-label" for="tomador">Tomador</label>
+                    <input type="text" id="tomador" class="form-control" placeholder="Nome do Tomador" />
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <div class="form-group">
+                    <label class="control-label" for="documento">Documento</label>
+                    <input type="text" id="documento" class="form-control" placeholder="Número do CPF/CNPJ" />
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <div class="form-group">
+                    <label class="control-label" for="referencia">Referência</label>
+                    <input type="text" id="referencia" class="form-control" placeholder="Referência mes/ano" />
+                </div>
+            </div>            
         </div>
         <hr />
         <span class="after-search">

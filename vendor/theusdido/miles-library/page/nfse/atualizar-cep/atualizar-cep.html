@@ -1,0 +1,32 @@
+<p class="titulo-pagina ">Atualizar CEP do Tomador</p>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="referencia">Referência</label>
+                <select id="referencia" name="referencia" class="form-select"></select>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <form id="formulario" name="formulario" method="post" enctype="multipart/form-data" class="dropzone">
+                <input type="hidden" name="op" value="upload" />
+                <div class="fallback">
+                    <input id="arquivo" name="arquivo" type="file" />
+                </div>
+            </form>
+            <table class="table" id="debug">
+                <caption style="text-align:left;">
+                    <b>Relatório de Envio: </b>
+                </caption>
+                <tr>
+                    <td width="90%" valign="bottom">Carregando Arquivo das NFSe</td>
+                    <td width="10%" id="status1"></td>
+                </tr>
+                <tr>
+                    <td>Salvando NFSe no banco de dados</td>
+                    <td id="status2"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

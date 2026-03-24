@@ -86,8 +86,13 @@
 			exit;
 		}
 	}
-	$_db_config_file 	= isset($_env->database->config_file) ? $_env->database->config_file : $mjc->database_current;
-	$_config_db 		= $_path_config_project . $_db_config_file .'_mysql.ini';
+
+	if (!isset($_env->database->config_file)){
+		echo 'Erro: Nome do arquivo de configuração do banco de dados não encontrado em miles.json.';
+		exit;
+	}
+
+	$_config_db 		= $_path_config_project . $_env->database->config_file .'_mysql.ini';
 
 	if (file_exists($_config_db)){
 		$_db 		= parseIniFile($_config_db);
@@ -223,7 +228,7 @@
 	define('BROWSER', getNavegador());
 
 	// Database Connection do Projeto
-	if (!defined("DATABASECONNECTION")) define("DATABASECONNECTION",$_db_config_file);
+	if (!defined("DATABASECONNECTION")) define("DATABASECONNECTION", $_env->database->config_file);
 
 	// Aumenta o tamanho máximo para upload em 200MB
 	ini_set('upload_max_filesize', '200M');
