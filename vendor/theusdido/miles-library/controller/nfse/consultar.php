@@ -14,10 +14,7 @@
             $referencia     = tdc::r('referencia');
 
             $where          = "1=1";
-            $filtro         = tdc::f();
-            $filtro_tomador = tdc::f();
-            
-            $filtro->setPropriedade('order',"rpsnumero ASC");
+
             if ($rps != ''){
                 $where .= " AND a.rpsnumero = '$rps'";
             }
@@ -52,7 +49,7 @@
                 $where .= " AND a.mesano = '".str_replace("/","",$referencia)."'";
             }
 
-            #$where .= " AND a.demis > DATE_FORMAT(DATE_SUB(CURDATE(), INTERVAL 30 DAY), '%Y-%m-%d')";
+            $where .= " AND a.demis > DATE_FORMAT(DATE_SUB(CURDATE(), INTERVAL 30 DAY), '%Y-%m-%d')";
             $where .= " AND (a.inativo <> 1 OR a.inativo IS NULL)";
 
             $sql = "
@@ -63,7 +60,8 @@
                     a.rpstipo,
                     a.situacao,
                     DATE_FORMAT(a.demis,'%d/%m/%Y') dataemissao,
-                    b.tomarazaosocial
+                    b.tomarazaosocial,
+                    a.mesano referencia
                 FROM td_erp_nfse_nota a
                 LEFT JOIN td_erp_nfse_tomador b ON b.nfse = a.id
                 WHERE $where
@@ -82,7 +80,8 @@
                     "rpstipo"       => $d->rpstipo,
                     "situacao"      => $d->situacao == 'E' ? 'Enviada' : 'Não Enviada',
                     "tomador"       => $d->tomarazaosocial,
-                    'dataemissao'   => $d->dataemissao
+                    'dataemissao'   => $d->dataemissao,
+                    'referencia'    => $d->referencia
                 ));
             }
 

@@ -32,12 +32,12 @@ class Reporty {
 
         $filters         = tdc::da(FILTRORELATORIO,tdc::f('relatorio','=',$_relatorio['id']));
         foreach($filters as $filter){
-            array_push($_filtros, FilterReporty::getJSON($filer->id));
+            array_push($_filtros, FilterReporty::getJSON($filter['id']));
         }
 
         $status         = tdc::da(STATUSRELATORIO,tdc::f('relatorio','=',$_relatorio['id']));
         foreach($status as $s){
-            array_push($_status, StatusReporty::getJSON($s->id));
+            array_push($_status, StatusReporty::getJSON($s['id']));
         }		
 		
 		return json_encode(array(

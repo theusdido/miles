@@ -58,7 +58,7 @@
             },
             "database":{
                 "config_file":"desenv"
-            }
+            }               
         },
         "homolog":{
             "root":"/",

@@ -158,7 +158,6 @@ abstract class Registro {
 			}
 		}
 
-
 		$status_operacao = true;
 		try{
 			if ($conn = Transacao::get()){								

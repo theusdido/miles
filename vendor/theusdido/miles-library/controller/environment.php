@@ -6,8 +6,8 @@
             foreach($mjc->environments as $key => $env)
             {                
                 $env_obj = array(
-                    'label'     => isset($env->label) ? $env->label : $key,
-                    'database'  => isset($env->database) ? $env->database : $key
+                    'label'     => isset($env->database->label) ? $env->database->label : $key,
+                    'database'  => isset($env->database->config_file) ? $env->database->config_file : $key
                 );
 
                 if ($mjc->environment == $key){

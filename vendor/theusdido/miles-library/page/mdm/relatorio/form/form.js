@@ -109,10 +109,11 @@ function novoFiltroInicial(){
     $("#modalCadastroFiltroInicial").modal({
         backdrop:false
     });
-    $("#modalCadastroFiltro").modal('show');
-    $("#form-filtro #relatorio,#form-filtro #idfiltro,#form-filtro #legenda").val("");
-    $("#form-filtro #operador").val("=");
-    $("#form-filtro #atributo").val($("#form-filtro #atributo option:first").val());
+
+    $("#form-filtro-inicial #relatorio,#form-filtro-inicial #idfiltro,#form-filtro-inicial #legenda").val("");
+    $("#form-filtro-inicial #operador").val("=");
+    $("#form-filtro-inicial #atributo").val($("#form-filtro-inicial #atributo option:first").val());
+    $("#modalCadastroFiltroInicial").modal('show');
 }
 function excluirFiltroInicial(id){
     $.ajax({

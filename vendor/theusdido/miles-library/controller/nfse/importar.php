@@ -164,7 +164,13 @@
                     $tomador = tdc::p("td_erp_nfse_tomador");
                     $tomador->nfse                  = $nfseID;
                 }
-                
+
+                // Atualizar campo CNC
+                $cnc = tdc::du('td_erp_nfse_tomador_cnc', tdc::f('documento', '=', $tomacnpj));
+                if (!empty($cnc)) {
+                    $tomador->is_cadastro_cnc = 1;
+                }
+
                 $tomador->tomacpf				= $tomacpf;
                 $tomador->tomacnpj              = $tomacnpj;
                 $tomador->tomarazaosocial    	= conteudo_tag($linha,"TomaRazaoSocial");

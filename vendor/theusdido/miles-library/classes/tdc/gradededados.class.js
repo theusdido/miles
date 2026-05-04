@@ -341,12 +341,13 @@ GradeDeDados.prototype.addCorpo = function(id,dadosColuna){
 }
 GradeDeDados.prototype.paginacao = function(){
 	// Retira a paginnação quando for uma entidade auxiliar
-	if( td_entidade[this.entidade].entidadeauxiliar){
+	if(JSON.parse(td_entidade[this.entidade].entidadeauxiliar)){
 		$('.paginacao-gradededados',this.contexto).remove();
 		return;
 	}
-
+	
 	if (this.totalRegistros > this.qtdeMaxRegistro){
+		
 		let instancia 		= this;
 		this.totalblocos 	= Math.ceil(this.totalRegistros / this.qtdeMaxRegistro);
 		$("center",this.contexto).remove();
@@ -406,7 +407,7 @@ GradeDeDados.prototype.paginacao = function(){
 		center.append(ul);
 		let paginacaoGradededados = $("<div class='paginacao-gradededados'>").append(center);
 		$(this.contexto).append(paginacaoGradededados);
-
+		
 		if (this.blocoatual<=1){
 			$("ul.pagination li a.anterior").parent().addClass("disabled");		
 			$("ul.pagination li a.proximo").parent().removeClass("disabled");

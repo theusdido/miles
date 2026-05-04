@@ -1586,6 +1586,7 @@ tdFormulario.prototype.setRelatorio = function(id_relatorio){
 	let entidadeID 	= _relatorio.entidade;
 	let campos 		= "";
 	
+	this.novo();
 	this.carregarListas();
 	this.flatCampos();
 	this.setCkEditores();
@@ -1636,11 +1637,14 @@ tdFormulario.prototype.setRelatorio = function(id_relatorio){
 	});
 	let i = 1;
 	for (f in _relatorio.filtros){
-		let ft = _relatorio.filtros[f];			
+		let ft = _relatorio.filtros[f];
+		if (typeof ft === 'string') ft = JSON.parse(ft)._data;
+
 		$("#form-relatorio .form-control[atributo="+ft.atributo+"]").attr("data-operador",ft.operador);
 		$("#form-relatorio .form-control[atributo="+ft.atributo+"]").attr("data-tipo",td_atributo[ft.atributo].tipo);
 		i++;
 	}
+
 	for (c in td_atributo){
 		if (td_atributo[c].entidade == entidadeID && td_atributo[c].exibirgradededados == 1){
 			let fk = '';

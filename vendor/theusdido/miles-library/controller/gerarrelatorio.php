@@ -101,7 +101,7 @@
 		$obj->descricao 			= $atributo->descricao;
 		$obj->tipo 					= $atributo->tipo;
 		$obj->tamanho 				= $atributo->tamanho;
-		$obj->nulo 					= $atributo->nulo;
+		$obj->nulo 					= 1;
 		$obj->omissao 				= $atributo->omissao;
 		$obj->collection 			= $atributo->collection;
 		$obj->atributos 			= $atributo->atributos;

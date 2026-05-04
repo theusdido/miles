@@ -51,6 +51,9 @@
             $coluna->atributo       = tdc::r('atributo');
             $coluna->alinhamento    = 'left';
             $coluna->exibirid       = false;
+            $coluna->ordem          = 0;
+            $coluna->descricao      = '';
+            $coluna->is_somatorio   = false;
             $coluna->armazenar();
         break;
         case 'del_coluna':

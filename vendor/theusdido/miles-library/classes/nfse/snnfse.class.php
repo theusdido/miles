@@ -19,17 +19,19 @@
         protected string $endpoint;
         private int $ambiente            = 2; // 1 - Produção, 2 - Homologação
         public ?string $wsdl            = null;
-        public ?string $privateKeyPath  = PATH_CURRENT_FILE . 'nfse/chave_privada.pem';
-        public string $publicCertPath   = PATH_CURRENT_FILE . 'nfse/certificado_publico.pem';
-        
+
+        private ?string $path_nfse      = PATH_CURRENT_FILE . 'nfse/';
+        private ?string $privateKeyPath  = 'chave_privada.pem';
+        private string $publicCertPath   = 'certificado_publico.pem';
+        private string $cafile           = 'ca-certificates.crt';
+
         // A senha geralmente não é necessária para o PEM se ele já foi extraído sem senha
         private ?string $clientCertPass = ''; 
 
         private array $lote_rps         = [];
         private int $rps_lote_id        = 0;
         private string $xmlns           = 'http://www.sped.fazenda.gov.br/nfse';
-        private string $soapAction      = '';
-        public string $cafile           = PATH_CURRENT_FILE . 'nfse/ca-certificates.crt';
+        private string $soapAction      = '';        
         private bool $is_remove_cabecalho = false;
 
         public function __construct() {
@@ -72,16 +74,22 @@
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
             curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
-            curl_setopt($ch, CURLOPT_CAINFO, $this->cafile);
+
+            if (file_exists($this->getCafile())) {
+                curl_setopt($ch, CURLOPT_CAINFO, $this->getCafile());
+            }
+
+            $public_key_path = $this->getPublicFile();
 
             // Configuração do Certificado de Cliente para Autenticação Mútua (mTLS)
-            if ($this->publicCertPath && file_exists($this->publicCertPath)) {
+            if ($public_key_path && file_exists($public_key_path)) {
                 // Usa PEM pois temos os arquivos separados
                 curl_setopt($ch, CURLOPT_SSLCERTTYPE, 'PEM');
-                curl_setopt($ch, CURLOPT_SSLCERT, $this->publicCertPath);
+                curl_setopt($ch, CURLOPT_SSLCERT, $public_key_path);
                 
-                if ($this->privateKeyPath && file_exists($this->privateKeyPath)) {
-                    curl_setopt($ch, CURLOPT_SSLKEY, $this->privateKeyPath);
+                $private_key_path = $this->getPrivateFile();
+                if ($private_key_path && file_exists($private_key_path)) {
+                    curl_setopt($ch, CURLOPT_SSLKEY, $private_key_path);
                 }
                 
                 if ($this->clientCertPass) {
@@ -210,28 +218,30 @@
             );
 
             $objKey = new XMLSecurityKey(XMLSecurityKey::RSA_SHA256, ['type' => 'private']);
+            $private_key_path = $this->getPrivateFile();
+            $public_key_path = $this->getPublicFile();
 
             // --- USANDO ARQUIVO PEM ---
-            if (!file_exists($this->privateKeyPath)) {
-                throw new Exception("Chave privada não encontrada: " . $this->privateKeyPath);
+            if (!file_exists($private_key_path)) {
+                throw new Exception("Chave privada não encontrada: " . $private_key_path);
             }
             
             // Tenta carregar a chave privada do arquivo PEM
             // Se sua chave PEM tiver senha, passe $this->clientCertPass no quarto parâmetro
-            $objKey->loadKey($this->privateKeyPath, true, false);             
+            $objKey->loadKey($private_key_path, true, false);             
             $objDSig->sign($objKey);
 
             // --- CARREGANDO CERTIFICADO PÚBLICO PEM ---
-            if (!file_exists($this->publicCertPath)) {
-                throw new Exception("Certificado público não encontrado: " . $this->publicCertPath);
+            if (!file_exists($public_key_path)) {
+                throw new Exception("Certificado público não encontrado: " . $public_key_path);
             }
 
             // Carrega o conteúdo completo do certificado público PEM.
             // A biblioteca xmlseclibs espera o conteúdo do arquivo PEM, incluindo os cabeçalhos.
-            $certContent = file_get_contents($this->publicCertPath);
+            $certContent = file_get_contents($public_key_path);
 
             if (empty($certContent)) {
-                throw new Exception("Conteúdo do certificado público está vazio: " . $this->publicCertPath);
+                throw new Exception("Conteúdo do certificado público está vazio: " . $public_key_path);
             }
 
             $objDSig->add509Cert($certContent, true, false, ['subjectName' => false]);
@@ -489,4 +499,71 @@
             $nota->situacao = 'E';
             $nota->armazenar();
         }
+
+        public function createPEMFiles($arquivo_tmp, $senha_pfx){
+
+            // 1. Lê o conteúdo do arquivo .pfx enviado
+            $pfx_content = file_get_contents($arquivo_tmp);
+
+            $certificados = [];
+
+            // 2. Tenta ler e descriptografar o .pfx
+            if (openssl_pkcs12_read($pfx_content, $certificados, $senha_pfx)) {
+                
+                // Sucesso! O PHP extraiu os dados para o array $certificados.
+                // $certificados['cert'] -> Contém o Certificado Público
+                // $certificados['pkey'] -> Contém a Chave Privada (já descriptografada)
+
+                $caminho_destino = PATH_CURRENT_FILE . '/nfse/'; // Ajuste para o caminho da sua aplicação
+                if (!file_exists($caminho_destino)) {
+                    mkdir($caminho_destino, 0755, true);
+                }
+
+                // 3. Salva o Certificado Público
+                if (file_put_contents($caminho_destino . 'certificado_publico.pem', $certificados['cert']) === false) {
+                    return ['status' => 'error', 'message' => "Erro ao salvar o certificado público."];
+                }
+
+                // 4. Salva a Chave Privada
+                if (file_put_contents($caminho_destino . 'chave_privada.pem', $certificados['pkey']) === false) {
+                    return ['status' => 'error', 'message' => "Erro ao salvar a chave privada."];
+                }
+                
+                // 5. Atualiza a senha do certificado no banco de dados
+                $config = tdc::ru('erp_nfse_configuracoes');
+                if ($config->hasData()) {
+                    $config->senha_certificado = $senha_pfx;
+                    $config->armazenar();
+                }
+
+                return ['status' => 'success', 'message' => '<div class="alert alert-success">Certificado Digital atualizado com sucesso.</div>'];
+            } else {
+                // Falha na leitura (geralmente senha incorreta ou arquivo corrompido)
+                $openssl_error_string = openssl_error_string();
+                
+                // Habilitar o modo legacy do OpenSSL para tentar ler certificados antigos (se aplicável)
+                if (preg_match('/\b0308010C\b/i', $openssl_error_string)) {
+                    $error_msm = '<div class="alert alert-danger"><b>ERRO:</b> O arquivo do <b>Certificado Digital</b> está desatualizado.</div>';
+                    $error_msm .= '<p><small>O problema é que muitos certificados <code>.pfx</code> exportados do <b>Windows</b> ainda usam esses algoritmos antigos no seu envelope de criptografia.</small></p>';
+                    return ['status' => 'error', 'message' => $error_msm];
+                }
+
+                // Você pode pegar o erro exato do OpenSSL se precisar debugar:
+                // while ($msg = openssl_error_string()) { echo $msg . "<br />\n"; }
+                return ['status' => 'error', 'message' => "Erro ao ler o certificado. Verifique se a senha está correta e se o arquivo é um .pfx válido."];
+            }
+            
+        }
+
+        public function getPrivateFile(){
+            return $this->path_nfse . $this->privateKeyPath;
+        }
+
+        public function getPublicFile(){
+            return $this->path_nfse . $this->publicCertPath;
+        }
+
+        public function getCertificateFile(){
+            return $this->path_nfse . $this->cafile;
+        }    
     }

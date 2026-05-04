@@ -4,6 +4,7 @@
 
     $rpsnumero = tdc::r('nota')['rpsnumero'];
     $nota_id = tdc::r('nota')['id'];
+    $nota_referencia = tdc::r('nota')['referencia'];
 
     $nfse = new snNFSE();
     $nfse->addLoteRPS([$rpsnumero]);
@@ -28,7 +29,10 @@
     $envio->datahora = date('Y-m-d H:i:s');
     $envio->nfse = $nota_id;
     $envio->enviada = $is_enviada;
+    $envio->nfse_dps = $rpsnumero;
+    $envio->referencia = substr($nota_referencia, 0, 2) . '/' . substr($nota_referencia, 2, 4);
 
+    var_dump($res);
     if ($res['status'] == 'error' && !empty($res['message'])){
         $error = explode('|', $res['message']);
         $error_code = str_replace('ERRO: ','',trim($error[0]));
@@ -40,6 +44,15 @@
         // Erro de nota já enviada
         if ($error_code == 'E0014'){
             snNFSE::setNotaEnviada($nota_id);
+            $envio->enviada = true;
+
+            // Atualiza log de envio para nota já enviada pelo DPS
+            $ds_envio = tdc::d('td_erp_nfse_envio_log', tdc::f('nfse_dps',"=",$rpsnumero));
+            foreach($ds_envio as $d){
+                $d->enviada = true;   
+                $d->armazenar();
+            }
+            
         }
     }
 

@@ -27,13 +27,17 @@ class FilterReporty {
 		@return: string
 	*/
 	public static function getJSON($_id){
-		$_filter 		= tdc::d(FILTRORELATORIO,$_id);
+		$_filter 		= tdc::rua(FILTRORELATORIO,$_id);
 		
+		$_data = array(
+			$_filter['id'] 	=> $_filter['id'],
+			'atributo' 		=> $_filter["atributo"],
+			'operador' 		=> $_filter["operador"]
+		);
+
 		return json_encode(array(
-            $_filter->id => array(
-                'atributo' => $_filter["atributo"],
-                'operador' => $_filter["operador"]
-            )
+            $_filter['id'] 		=> $_data,
+            '_data'				=> $_data			
         ));
 	}
 }

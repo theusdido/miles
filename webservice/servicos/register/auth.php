@@ -31,21 +31,24 @@
             $_user_response['senha']    = '******';
 
             header('x-acesso-token: ' . $access_token);
+            $retorno['status'] = 'success';
             $_retorno = array(
                 "error_code"    => 0,
                 "error_msg"     => '',
                 "user"          => $_user_response
             );
         }else{
+            $retorno['status'] = 'error';
             $_retorno = array(
-                "error_code" => 1,
-                "error_msg" => "Usu&aacute;rio ou Senha n&atilde;o conferem."
+                "error_code"    => 1,
+                "error_msg"     => "Usu&aacute;rio ou Senha n&atilde;o conferem."
             );
         }
     }else{
+        $retorno['status'] = 'error';
         $_retorno = array(
-            "error_code" => 2,
-            "error_msg" => "Campos Login e/ou Senha n&atilde;o podem estar em branco"
+            "error_code"    => 2,
+            "error_msg"     => "Campos Login e/ou Senha n&atilde;o podem estar em branco"
         );
     }
 

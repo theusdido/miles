@@ -1,0 +1,31 @@
+<p class="titulo-pagina ">Upload de Certificado Digital</p>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="senha">Senha do Certificado</label>
+                <div class="input-group">
+                    <input type="password" id="senha" name="senha" class="form-control" placeholder="Senha do certificado">
+                    <button class="btn btn-outline-secondary" type="button" id="btn-show-password">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <form id="formulario" name="formulario" method="post" enctype="multipart/form-data" class="dropzone">
+                <input type="hidden" name="op" value="upload" />
+                <input type="hidden" name="senha_dz" id="senha_dz" />
+                <div class="fallback">
+                    <input id="arquivo" name="arquivo" type="file" accept=".pfx" />
+                </div>
+            </form>
+            <table class="table" id="debug">
+                <tr>
+                    <td width="90%" valign="bottom">Carregando Arquivo do Certificado (.pfx)</td>
+                    <td width="10%" id="status"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

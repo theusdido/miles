@@ -10,10 +10,13 @@
 				float:left;
 				width:100%;
 			}
-			#cabecalho #empresa,#rodape #datahora{
+			#cabecalho #empresa,
+			{
 				float:right;
 			}
-			#cabecalho #descricaorelatorio,#rodape #usuario{
+			#cabecalho #descricaorelatorio,
+			#rodape #total-registros		
+			{
 				float:left;
 			}
 			.separadorcabecalho{
@@ -51,6 +54,13 @@
 
 			.corpo-relatorio tr td {
 				border-bottom:1px solid #EBEBEB;
+			}
+
+			#rodape #datahora,
+			#rodape #usuario
+			{
+				float:right;
+				margin-left:20px;
 			}
 		</style>
 	</head>
@@ -165,13 +175,33 @@
 
 		$_where = $where->dump() != '' ? " WHERE ". $where->dump() : '';
 
+		if ($_entidade->nome == 'td_erp_nfse_envio_log')
+		{
+			// Ordenação específica para NFSE Envio Log
+			$order_by = " ORDER BY nfse_dps ASC, datahora DESC, error_code ASC";
+			
+			// Agrupamento específico para NFSE Envio Log
+			$group_by = " GROUP BY nfse_dps";
+		}
+		else
+		{
+			// Ordenação padrão
+			$order_by = " ORDER BY id DESC";
+
+			// Agrupamento padrão
+			$group_by = "";
+		}
+
 		// *** CORPO *** //
-		$tbody 			= tdClass::Criar("tbody");
-		$tbody->class 	= 'corpo-relatorio';
+		$total_registros 	= 0;
+		$tbody 				= tdClass::Criar("tbody");
+		$tbody->class 		= 'corpo-relatorio';
+
 		if ($conn = Transacao::Get()){
-			$sql = "SELECT id," . implode(",",$camposNome) . " FROM " . $_entidade->nome . $_where;
+			$sql = "SELECT id," . implode(",",$camposNome) . " FROM " . $_entidade->nome . $_where . $group_by . $order_by . ";";
 			$query = $conn->query($sql);
-			if ($query->rowCount() <= 0){
+			$total_registros = $query->rowCount();
+			if ($total_registros <= 0){
 				$tr = tdClass::Criar("tabelalinha");
 				$td = tdClass::Criar("tabelacelula");
 				$td->add("Nenhum Registro Encontrado");
@@ -219,11 +249,11 @@
 		}
 
 		// *** RODAPE *** //
-		$tfoot = tdClass::Criar("tfoot");
+		$tfoot = tdClass::Criar("tfoot");		
 
 		if ($is_linha_somatorio && sizeof($camposSomatorio) > 0){
 			$sql 	= "SELECT id," . implode(",",$camposSomatorio) . " FROM " . $_entidade->nome . " WHERE ". $where->dump();
-			$query 	= $conn->query($sql);
+			$query 	= $conn->query($sql);			
 			if ($query->rowCount() > 0){
 				$linha = $query->fetch();	
 				$trRodape 	= tdClass::Criar("tabelalinha");
@@ -252,12 +282,16 @@
 		$datahora->id = "datahora";
 		$datahora->add("Data e Hora: " . date("d/m/Y H:i:s"));
 
+		$span_total_registro = tdClass::Criar("span");
+		$span_total_registro->id = "total-registros";
+		$span_total_registro->add("Total de Registros: " . $total_registros);
+
 		$hr = tdClass::Criar("hr");
 		$hr->class = "separadorcabecalho";
 
 		$rodape = tdClass::Criar("div");
 		$rodape->id = "rodape";
-		$rodape->add($hr,$usuario,$datahora);
+		$rodape->add($hr,$span_total_registro,$datahora,$usuario);
 
 		$tdRodape = tdClass::Criar("tabelacelula");
 		$tdRodape->add($rodape);

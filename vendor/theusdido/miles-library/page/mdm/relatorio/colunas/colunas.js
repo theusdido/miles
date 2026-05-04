@@ -32,10 +32,10 @@ function loadColunas(){
     
                 icone_config.click(function(){
                     atributo_id_selected = d.atributo.id;
-                    $("#modalRelatorios").modal({
+                    $("#modalColunasConfiguracoes").modal({
                         backdrop:false
                     });
-                    $('#modalRelatorios').modal('show');
+                    $('#modalColunasConfiguracoes').modal('show');
                     setDados();
                 });
 

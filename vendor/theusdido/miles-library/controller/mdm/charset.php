@@ -51,10 +51,16 @@
 			// Caracteres desformatados
 			$_de 	= array('Ã§','Ã£','Ã“','Ãµ','Ã³','Ã¡','Ã©','Ãª','Ã­','Ãº');
 			$_para	= array('ç','ã','Ó','õ','ó','á','é','ê','í','ú');
+
+			// Palavras desformatadas
+			$_de_palavras = array('Usu?rio','Descri??o','P?gina','Configura?es','Permiss?es','Relat?rio','Movimenta??o','Hist?rico','Altera??o','Conex?o','A??o','M?s','Configura??o','Avalia??o','Conte?do','Tradu??o','Ãrea','Fun??o','Restri??o','Pr?tica','Pedag?gica','L?ngua','Configura?es','Administraão','Interaão','Hor?rio','Orientaão','Avaliaão','Administra??o','Orienta??o');
+			$_para_palavras = array('Usuário','Descrição','Página','Configurações','Permissões','Relatório','Movimentação','Histórico','Alteração','Conexão','Ação','Mês','Configuração','Avaliação','Conteúdo','Tradução','Área','Função','Restrição','Prática','Pedagogia','Língua','Configurações','Administração','Interação','Horário','Orientação','Avaliação','Administração','Orientação');
+
 			$sqlv 	= "SELECT id,{$atributo} valor FROM {$entidade};";
 			$queryv = $conn->query($sqlv);
 			while ($linhav = $queryv->fetch()){
 				$_valor = str_replace($_de,$_para,$linhav["valor"]);
+				$_valor = str_replace($_de_palavras, $_para_palavras, $_valor);
 				if (!isutf8($_valor)){
 					// Só funcionou com o comando nativo
 					$_valor = utf8_decode($_valor); 
