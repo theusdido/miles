@@ -1,4 +1,5 @@
 <?php
+
     $entidade = tdc::r('entidade');
     $firebase = new Firebase();
     
@@ -20,8 +21,8 @@
             
         break;
         default:
-            try{                
-                $firebase->del($entidade);                
+            try{
+                $firebase->del($entidade);
                 foreach(tdc::da($entidade) as $d){
                     $id_    = $d['id'];
                     $ref_   = $entidade . '/' . $id_;

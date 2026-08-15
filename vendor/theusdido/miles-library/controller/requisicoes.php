@@ -930,6 +930,10 @@
 			$_entidade	= tdc::e($_atributo->entidade);
 			$_valor		= tdc::r('data');
 
-			echo tdc::c($_entidade->nome,tdc::f($_atributo->nome,'=',$_valor));
+			$_filtro 	= tdc::f();
+			$_filtro->addFiltro($_atributo->nome,'=',$_valor);
+			$_filtro->addFiltro("id",'!=',tdc::r('id'));
+
+			echo tdc::c($_entidade->nome,$_filtro);
 		break;
 	}

@@ -1,16 +1,27 @@
 <?php
+
 	$bloco_aviso = tdClass::Criar("bloco");
 	$bloco_aviso->class = "col-md-12";
 
-	$sql = tdClass::Criar("sqlcriterio");
-	$sql->addFiltro("datainicio",'>=',date("Y-m-d"));
-	$sql->addFiltro("datainicio",'<=',date("Y-m-d"));
-	$sql->addFiltro("projeto",'=',CURRENT_PROJECT_ID);
-	$sql->addFiltro("empresa",'=',Session::get()->empresa);
-	$dataset = tdClass::Criar("repositorio",array(PREFIXO . "_aviso"))->carregar($sql);
+	$sql = "
+		SELECT 
+			a.id,
+			a.tipoaviso,
+			a.mensagem
+		FROM ".AVISO." a
+		LEFT JOIN ".TIPOAVISO." b ON b.id = a.tipoaviso
+		WHERE a.datainicio <= NOW()
+		AND a.datafinal >= NOW()
+		AND (a.inativo <> 1 OR a.inativo IS NULL)
+		ORDER BY a.datafinal DESC;
+	";
+
+	$query = $conn->query($sql);
+	$dataset = $query->fetchAll(PDO::FETCH_OBJ);
+
 	foreach($dataset as $aviso){
-		$panel = tdClass::Criar("panel");
-		$panel->head("AVISO");
+		$panel = tdClass::Criar("card");
+		$panel->addHeader("AVISO");
 		switch ($aviso->tipoaviso){
 			case 1:
 				$panel->tipo = "success";
@@ -24,8 +35,10 @@
 			case 4:
 				$panel->tipo = "info";
 			break;
+			default:
+				$panel->tipo = "secondary";
 		}
-		$panel->body($aviso->mensagem);
+		$panel->addBody($aviso->mensagem);
 		$bloco_aviso->add($panel);
 	}
 	

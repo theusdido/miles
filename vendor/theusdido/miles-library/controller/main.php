@@ -36,6 +36,7 @@
 		if (file_exists($customautentica)) include $customautentica;
 		if (file_exists($systemautentica)) include $systemautentica;
     }
+
 	$pagina->body->add($root,$jsTemplate);
 	$pagina->addScript(Config::getJsConfig());
 	$pagina->mostrar();

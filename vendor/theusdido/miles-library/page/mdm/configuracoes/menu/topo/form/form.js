@@ -75,6 +75,8 @@ function load(){
             $("#icon").val(_data.icon);
             $("#fixo").val(_data.fixo);
             $("#coluna").val(_data.coluna);
+
+            carregarEntidade($("#tipomenu").val());
         }
     });
 }
@@ -163,7 +165,7 @@ function configuracaoInicial(){
     $("#entidade,#pai,#coluna").val(0);
     $("#entidade,#pai,#coluna").attr("readonly",true);
     $("#entidade,#pai,#coluna").attr("disabled",true);
-    $("#descricao,#link,#target,id,entidade,ordem,pai").val("");
+    $("#descricao,#link,#target,#id,#ordem").val("");
     $("#descricao,#link").removeAttr("readonly");
     $('#entidade').load(session.urlmiles + '?controller=mdm/menu/topo&op=option-entidade');
     $("#link").val("#");
@@ -173,8 +175,12 @@ function configuracaoPagina(){
     $("#entidade").val(0);
     $("#entidade").attr("readonly",true);
     $("#entidade").attr("disabled",true);
-    $("#descricao,#link,#target,id,entidade,ordem,pai").val("");
     $("#descricao,#link,#pai,#coluna").removeAttr("readonly");
-    $("#descricao,#link,#pai,#coluna").removeAttr("disabled");
-    $("#link").val("index.php?controller=page&page=?");
+    $("#descricao,#link,#pai,#coluna").removeAttr("disabled");    
+
+    if ($("#id").val() == ""){
+        $("#link").val("index.php?controller=page&page=?");
+        $("#descricao,#link,#target,#ordem").val("");
+        $('#pai').val(0);
+    }
 }

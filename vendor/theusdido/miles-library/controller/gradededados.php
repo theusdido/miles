@@ -81,7 +81,8 @@
 	
 	// Retorna dados do Firebase para entidade auxiliar
 	$entidade_auxiliar = json_decode(tdc::r('entidadeauxiliar'));
-	if ($entidade_auxiliar && _IS_REPLICATION_FIREBASE){
+	$listar_gradedados_firebase = json_decode(tdc::r('listar_gradedados_firebase'));
+	if ($entidade_auxiliar && _IS_REPLICATION_FIREBASE && $listar_gradedados_firebase){
 		$firebase = new Firebase();
 		#$dados = $firebase->getPage(tdc::r('entidade_nome'),$max_registros,$ini_reg);		
 		#$dados = $firebase->getPage(tdc::r('entidade_nome'));
@@ -124,7 +125,13 @@
 
 	// Carrega Dados
 	$sql = tdClass::Criar("sqlcriterio");
-	$sql->setPropriedade("limit",$ini_reg.",".$max_registros);
+
+	// Limitar a quantidade de registro caso não for utilizado nenhum filtro
+	if (empty(tdc::r('filtro')) && empty(tdc::r('filtros')) && empty(tdc::r('filtroNN'))){
+		$sql->setPropriedade("limit",$ini_reg.",".$max_registros);
+	}
+
+
 
 	$array_order = array();
 	if ($order = tdc::r("order",$array_order)){

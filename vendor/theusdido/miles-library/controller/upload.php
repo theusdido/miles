@@ -93,10 +93,11 @@
 	if ($valor!=""){
 		$isnew 		= false;
 		$valorjson 	= json_decode($valor);
+
 		if (is_object($valorjson)){
 			$nomeexibicaoarquivo = $valorjson->filename;
 			// Verifica se é um registro novo e está em modo de edição no formulário
-			if ($valorjson->tipo == "" || ($valorjson->filename == null || $valorjson->filename == "null")){
+			if (empty($valorjson->tipo) && (empty($valorjson->filename) || $valorjson->filename == "null")){
 				$isnew = true;
 			}
 		}else{
@@ -203,7 +204,6 @@
 		$("#'.$id_input.'").change(function(){
 			let max_size_file 	= parseInt('.Config::uploadMaxFile().');
 			let file_size		= parseInt((($(this)[0].files[0].size / 1024) / 1024));
-			console.log(max_size_file, file_size);
 			if (file_size > max_size_file){
 				alert("Tamanho máximo do arquivo foi excedido");
 				return false;

@@ -32,7 +32,6 @@
     $envio->nfse_dps = $rpsnumero;
     $envio->referencia = substr($nota_referencia, 0, 2) . '/' . substr($nota_referencia, 2, 4);
 
-    var_dump($res);
     if ($res['status'] == 'error' && !empty($res['message'])){
         $error = explode('|', $res['message']);
         $error_code = str_replace('ERRO: ','',trim($error[0]));

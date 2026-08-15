@@ -98,6 +98,7 @@
             $tipoaba					= isset($_POST["tipoaba"])?$_POST["tipoaba"]:'';
             $entidadeauxiliar			= bool_r($_POST["entidadeauxiliar"]);
             $controlarregistrousuario   = bool_r($_POST["controlarregistrousuario"]);
+            $listar_gradedados_firebase = bool_r($_POST["listar_gradedados_firebase"]);
 
             $entidade_id = criarEntidade(
                 $conn,
@@ -117,7 +118,8 @@
                 $criarinativo = true,
                 $tipoaba = 'tabs',
                 $entidadeauxiliar,
-                $controlarregistrousuario
+                $controlarregistrousuario,
+                $listar_gradedados_firebase
             );
 
             tdc::wj(['id' => $entidade_id , '_data' => Entity::getJSON($entidade_id)]);

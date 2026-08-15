@@ -16,7 +16,7 @@
 		$_url_miles			= REQUEST_PROTOCOL . 'miles.' .$_domain . $_full_port . '/';
 		$_mainHost 			= REQUEST_PROTOCOL . $_domain . $_full_port . '/';
 	}else{
-		$_url_miles			= REQUEST_PROTOCOL .$_domain . $_full_port . '/' . $_root_folder;
+		$_url_miles			= REQUEST_PROTOCOL .$_domain . $_full_port . '/' . ($_root_folder == '/' ? '' : $_root_folder);
 		if (isset($_SERVER['SERVER_NAME'])){
 			$_mainHost 	= REQUEST_PROTOCOL . $_SERVER['SERVER_NAME'] . '/';
 			$_mainHost	= str_replace('www.','', $_mainHost);

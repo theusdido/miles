@@ -37,6 +37,9 @@
 	// Limpa cachê do SOAP
 	ini_set("soap.wsdl_cache_enabled", 0);
 
+	// Carrega os pacotes de terceiros
+	require '../vendor/autoload.php';
+
 	// Carrega os arquivos de configuração do sistema
 	require '../vendor/theusdido/miles-library/autoload.php';
 

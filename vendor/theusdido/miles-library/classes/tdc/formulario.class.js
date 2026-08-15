@@ -46,6 +46,9 @@ tdFormulario.prototype.construct = function(entidade_id,registro_id = 0,entidade
 		console.warn('Entidade => ' + entidade_id + ' não existe em td_entidade.');
 		console.warn('*** Provavelmente não tem entidade no Menu Topo. ***');
 	}
+
+	// Seta as máscaras no campos do formulário
+	this.setMascara();
 }
 
 tdFormulario.prototype.setExtras = function(_extras){
@@ -80,8 +83,7 @@ tdFormulario.prototype.init = function(){
 	this.emExecucao();
 	this.setBuscaFiltro();
 	//this.addHTMLPersonalizado(); # Retirado, terá outra abordagem o carregamento de HTML personalizado
-	this.setAtributoDependencia();
-	this.setMascara();
+	this.setAtributoDependencia();	
 }
 tdFormulario.prototype.novo = function(){
 	let contextoListar 		= this.getContextoListar();
@@ -807,7 +809,7 @@ tdFormulario.prototype.salvar = function(){
 		formulario[this.getIndexForm()].entidades_filho.forEach(function(e){
 			formulario['cadastro_' + e].dados.forEach(function(d){
 				dadosenviar.push(d);
-			});			
+			});
 		});
 
 		// Dados da entidade principal
@@ -841,8 +843,7 @@ tdFormulario.prototype.salvar = function(){
 					let _instancia = this.instancia;
 					retorno.entidadesID.forEach(function(entidades_retorno){
 						let index_form_retorno = 'cadastro_' + getEntidadeId(entidades_retorno.entidade);
-						switch(entidades_retorno.tipo_relacionamento){
-							case '':
+						switch(parseInt(entidades_retorno.tipo_relacionamento)){							
 							case 0: 
 							case 1:
 							case 7:
@@ -851,11 +852,18 @@ tdFormulario.prototype.salvar = function(){
 								formulario[index_form_retorno].registro_id = entidades_retorno.id;
 								$('#id[data-entidade="'+entidades_retorno.entidade+'"]').val(entidades_retorno.id);
 							break;
-							default:
+							case 6:
+								formulario[index_form_retorno].gradesdados.clear();
+								formulario[index_form_retorno].gradesdados.addFiltro(entidades_retorno.atributo_relacionamento, '=', retorno.id);
+								formulario[index_form_retorno].gradesdados.reload();
+							break;
+							case 5:
+							case 10:
 								// Recarrega as grades de dados
 								formulario[index_form_retorno].gradesdados.clear();
 								formulario[index_form_retorno].gradesdados.addFiltroNN(retorno.entidade, retorno.id, getEntidadeId(entidades_retorno.entidade));
-								formulario[index_form_retorno].gradesdados.reload();							
+								formulario[index_form_retorno].gradesdados.reload();
+							break;
 						}
 						formulario[index_form_retorno].dados = [];
 					});
@@ -1087,7 +1095,7 @@ tdFormulario.prototype.editar = function(){
 				// Seta a grade de dados para as entidades de relacionamento
 				}else if (tipoRelacionamento == 2 || tipoRelacionamento == 6 || tipoRelacionamento == 5 || tipoRelacionamento == 8 || tipoRelacionamento == 10){
 					let index_form_rel = 'cadastro_' + r.entidade;
-					this.setGradeRelacionamento(index_form_rel,r.id,r.dados);					
+					this.setGradeRelacionamento(index_form_rel,r.id,r.dados);
 					$(formulario[index_form_rel].getContexto(),this.getContexto()).hide();
 					$(formulario[index_form_rel].getContextoListar(),this.getContexto()).show();
 				}else if(tipoRelacionamento == 11){
@@ -1236,7 +1244,7 @@ tdFormulario.prototype.setGradeRelacionamento = function(index_form,id,dados){
 	if (dados != ''){
 		dados.forEach(function(d){
 			linha[d.atributo] = d.valor;
-		});
+		});		
 		formulario[index_form].gradesdados.addLinha(id,linha);
 	}
 }
@@ -1904,7 +1912,6 @@ tdFormulario.prototype.setMascara = function(){
 		// Calendário
 		var clicado = false;
 		$(".formato-calendario").parents(".calendar-picker-group").find(".input-group-btn button").click(function(){
-			
 			$(this).parents(".calendar-picker-group").find(".formato-calendario").datepicker({
 				dateFormat: "dd/mm/yy",
 				dayNames: ["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"],
@@ -1965,7 +1972,7 @@ tdFormulario.prototype.unLoaderSalvar = function(){
 	unLoaderSalvar(this.getContexto());
 }
 
-tdFormulario.prototype.camposUnicos = function(){	
+tdFormulario.prototype.camposUnicos = function(){
 	$(".form-control",this.getContexto()).each(function(){
 		let atributo = $(this).attr("id");
 		if (atributo == ""){
@@ -1976,17 +1983,19 @@ tdFormulario.prototype.camposUnicos = function(){
 		let entidadeAttr 	= $(this).data("entidade");
 		let atributoID 		= getIdAtributo(atributo,entidadeAttr);
 
-		if (parseInt(atributoID) != 0){			
+		if (parseInt(atributoID) != 0){
 			let atributoOBJ = td_atributo[atributoID];
 			if (parseInt(atributoOBJ.is_unique_key) == 1){
 				$(this).blur(function(){
+					let registro_id = $('#id[data-entidade="'+$(this).data("entidade")+'"]').first().val();
 					$.ajax({
 						context:this,
 						url:config.urlrequisicoes,
 						data:{
 							op:"campo-unico",
 							data:this.value,
-							atributo:atributoID
+							atributo:atributoID,
+							id:registro_id
 						},
 						complete:function(ret){
 							var retorno = parseInt(ret.responseText);

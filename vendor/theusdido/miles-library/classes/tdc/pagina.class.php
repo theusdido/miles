@@ -145,6 +145,7 @@ class Pagina Extends Html {
 		}
 		
 		if ($this->showCSSTheme){
+			$tema 					= null;
 			$tema_project 			= NULL;
 			$tema_layout_system 	= NULL;
 			$tema_color_system 		= NULL;
@@ -191,11 +192,11 @@ class Pagina Extends Html {
 				$tema_menuleft->href 	= URL_FILE_COLOR_STYLE_MENULEFT;
 				$tema_menuleft->rel 	= 'stylesheet';
 			}
-
+			
 			if (file_exists(FILE_SYSTEM_THEME_GERAL)){
 				$tema 					= tdClass::Criar("link");
-				$tema->href 			= FILE_SYSTEM_THEME_GERAL;
-				$tema->rel 				= 'stylesheet';				
+				$tema->href 			= URL_SYSTEM_THEME_GERAL;
+				$tema->rel 				= 'stylesheet';
 			}
 
 			if (file_exists(FILE_SYSTEM_GRADEDEDADOS)){
@@ -555,9 +556,6 @@ class Pagina Extends Html {
 			// Classe Gerar Arquivos WEBCOMPONENTES
 			$jsGerarHtmlClass 			= tdClass::Criar("script");
 			$jsGerarHtmlClass->src 		= URL_CLASS_TDC . "gerarhtml.class.js";
-
-			$jsConfig 		= tdc::o('script');
-			$jsConfig->src 	= URL_SYSTEM . 'config.js';
 
 			$this->body->add(
 				$_firebase_realtime_database_class,

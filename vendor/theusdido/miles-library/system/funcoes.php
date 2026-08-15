@@ -446,17 +446,33 @@ function getUrl($url,$opcoes = null){
 			'http' => array(
 				'header'		=> 'Cookie: ' .  $cookie ."\r\n",
 				'method'		=> 'GET',
-				'ignore_errors' => true
-			)
+				'ignore_errors' => false
+			),
+			'ssl' => array(
+				'verify_peer'       => false,
+				'verify_peer_name'  => true,
+			)			
 		);
-		session_write_close(); //Desboqueia o arquivo de sessão
+		session_write_close(); // Desboqueia o arquivo de sessão
 		$context 	= stream_context_create($opts);
 		$conteudo 	= file_get_contents($url,false,$context);
-		session_start(); //Bloqueia o arquivo de sessão
+
+		// Verifica se o retorno foi falso e lança o erro explicitamente
+        if ($conteudo === false) {
+            throw new Exception("Não foi possível carregar o conteúdo da URL: {$url}");
+        }
+
+		session_start(); // Bloqueia o arquivo de sessão
 	}catch(Exception $e){
-		if (IS_SHOW_ERROR_MESSAGE){
-			var_dump($e);
-		}
+		// Garante que a sessão seja reaberta se o erro acontecer APÓS o session_write_close
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+		if (defined('IS_SHOW_ERROR_MESSAGE') && IS_SHOW_ERROR_MESSAGE) {
+            var_dump($e->getMessage());
+			var_dump($url);
+        }
 		$conteudo = '';
 	}finally{
 		return $conteudo;
@@ -676,7 +692,8 @@ function criarEntidade(
 	$criarinativo = true, #14
 	$tipoaba = 'tabs', #15
 	$entidadeauxiliar = false, #16
-	$controlarregistrousuario = false #17
+	$controlarregistrousuario = false, #17
+	$listar_gradedados_firebase = false #18
 ){
 	$prefixo 			= getSystemPREFIXO();
 	$nome 				= $prefixo . str_replace($prefixo,'',$nome);
@@ -684,6 +701,7 @@ function criarEntidade(
 	$campodescchave 	= $campodescchave == '' ? 0 : $campodescchave;
 	$entidadeauxiliar	= $entidadeauxiliar ? 'true' : 'false';
 	$controlarregistrousuario = $controlarregistrousuario ? 'true' : 'false';
+	$listar_gradedados_firebase = $listar_gradedados_firebase ? 'true' : 'false';
 
 	$sqlExisteEntidade 		= "SELECT id,nome FROM " . ENTIDADE . " WHERE nome='{$nome}';";
 	$queryExisteEntidade 	= $conn->query($sqlExisteEntidade);
@@ -713,7 +731,8 @@ function criarEntidade(
 			carregarlibjavascript,
 			tipoaba,
 			entidadeauxiliar,
-			controlarregistrousuario
+			controlarregistrousuario,
+			listar_gradedados_firebase
 		) VALUES (
 		 	".$entidade.",
 			'{$nome}',
@@ -728,7 +747,8 @@ function criarEntidade(
 			{$carregarlibjavascript},
 			'{$tipoaba}',
 			{$entidadeauxiliar},
-			{$controlarregistrousuario}
+			{$controlarregistrousuario},
+			{$listar_gradedados_firebase}
 		);";
 	}else{
 		$entidade = $linhaExisteEntidade["id"];
@@ -745,7 +765,8 @@ function criarEntidade(
 				carregarlibjavascript={$carregarlibjavascript},
 				tipoaba='{$tipoaba}',
 				entidadeauxiliar={$entidadeauxiliar},
-				controlarregistrousuario={$controlarregistrousuario}
+				controlarregistrousuario={$controlarregistrousuario},
+				listar_gradedados_firebase={$listar_gradedados_firebase}
 			WHERE id = {$entidade};
 		";
 	}

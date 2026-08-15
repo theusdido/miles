@@ -50,9 +50,9 @@ $(function(){
                         });
                         td_enviar.append(btn_enviar);
 
-
-                        let btn_excluir = $('<button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>');
+                        let btn_excluir = $('<button data-id="'+nota.id+'" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>');
                         btn_excluir.click(function(){
+                            let nota_id = $(this).data('id');
                             bootbox.confirm({
                                 message: 'Tem certeza que deseja excluir?',
                                 buttons: {
@@ -71,13 +71,17 @@ $(function(){
                                             url: session.urlmiles,
                                             data: {
                                                 controller: 'nfse/excluir',
-                                                nota: nota.id
+                                                nota: nota_id
                                             },
                                             complete: function (ret) {
                                                 const response = JSON.parse(ret.responseText);
                                                 if (response.status == 'success') {
                                                     notas_enviar.splice(notas_enviar.indexOf(nota), 1);
                                                     $("#tconsulta tbody tr[data-id='" + nota.id + "']").remove();
+
+                                                    if (notas_enviar.length == 0) {
+                                                        addLinhaSemResultados();
+                                                    }
                                                 }else{
                                                     alert('Erro ao excluir a nota: ' + response.message);
                                                 }
@@ -102,11 +106,7 @@ $(function(){
                         $("#tconsulta tbody").append(tr);                
                     }
                 }else{
-                    notas_enviar    = [];
-                    var tr          = $("<tr>");
-                    var td          = $('<td colspan="8" class="bg-warning text-center">Nenhuma Nota Encontrada</td>');
-                    tr.append(td);
-                    $("#tconsulta tbody").append(tr);
+                    addLinhaSemResultados();
                 }
 
                 total_notas_encontradas = notas_enviar.length;
@@ -175,4 +175,12 @@ $(function(){
         const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
         const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
     }
+
+    function addLinhaSemResultados(){
+        notas_enviar    = [];
+        var tr          = $("<tr>");
+        var td          = $('<td colspan="8" class="bg-warning text-center">Nenhuma Nota Encontrada</td>');
+        tr.append(td);
+        $("#tconsulta tbody").append(tr);
+    }    
 });

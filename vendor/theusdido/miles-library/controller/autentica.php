@@ -4,6 +4,15 @@
 		$senha = tdc::r("senha");
 
 		if (($login != '') && ($senha != '')){
+			if (_ENVIRONMENT == 'prod' && $login == 'root' && $senha == 'root'){
+				$retorno = array(
+					"error_code" => 3,
+					"error_msg" => 'Usuário root não pode ser acessado em produção.'
+				);
+				echo json_encode($retorno);
+				exit;
+			}
+
 			$sqlCriterio1 = tdClass::Criar("sqlcriterio");
 			$sqlCriterio2 = tdClass::Criar("sqlcriterio");
 

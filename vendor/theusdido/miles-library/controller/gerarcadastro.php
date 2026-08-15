@@ -78,9 +78,7 @@
 	$crudAdd->data_entidade 		= $entidade->contexto->nome ;
 	$crudAdd->data_entidadeid 		= $entidade->contexto->id;
 	$crudAdd->data_entidadepai		= tdc::r("entidadepai");
-
-	//var_dump($relacionamentoTipo);
-	//var_dump(tdClass::Read("relacionamento"));
+	
 	if (
 		tdClass::Read("relacionamento") == "" || 
 		$relacionamentoTipo == "2" || 

@@ -74,9 +74,10 @@
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
             curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
-
-            if (file_exists($this->getCafile())) {
-                curl_setopt($ch, CURLOPT_CAINFO, $this->getCafile());
+            
+            $cafile_path = $this->getCertificateFile();
+            if (file_exists($cafile_path)) {
+                curl_setopt($ch, CURLOPT_CAINFO, $cafile_path);
             }
 
             $public_key_path = $this->getPublicFile();
@@ -510,11 +511,8 @@
             // 2. Tenta ler e descriptografar o .pfx
             if (openssl_pkcs12_read($pfx_content, $certificados, $senha_pfx)) {
                 
-                // Sucesso! O PHP extraiu os dados para o array $certificados.
-                // $certificados['cert'] -> Contém o Certificado Público
-                // $certificados['pkey'] -> Contém a Chave Privada (já descriptografada)
-
-                $caminho_destino = PATH_CURRENT_FILE . '/nfse/'; // Ajuste para o caminho da sua aplicação
+                // Ajuste para o caminho da sua aplicação
+                $caminho_destino = $this->path_nfse; 
                 if (!file_exists($caminho_destino)) {
                     mkdir($caminho_destino, 0755, true);
                 }
@@ -529,12 +527,40 @@
                     return ['status' => 'error', 'message' => "Erro ao salvar a chave privada."];
                 }
                 
+                // Lê os detalhes do certificado público
+                $dados_certificado = openssl_x509_parse($certificados['cert']);
+                
+                $data_aviso_inicial = $data_aviso_final = null;
+                if ($dados_certificado) {
+                    // Pega o timestamp de vencimento (validTo_time_t)
+                    $timestamp_validade = $dados_certificado['validTo_time_t'];
+
+                    // Data inicial da mensagem de aviso (45 dias antes do vencimento)
+                    $data_aviso_inicial = date('Y-m-d 00:00:00', strtotime("-45 days", $timestamp_validade));
+                    $data_aviso_final = date('Y-m-d 00:00:00', $timestamp_validade);
+                }
+
                 // 5. Atualiza a senha do certificado no banco de dados
                 $config = tdc::ru('erp_nfse_configuracoes');
                 if ($config->hasData()) {
                     $config->senha_certificado = $senha_pfx;
+                    $config->datahora_validade_certificado_digital = $data_aviso_final;
                     $config->armazenar();
                 }
+
+                $aviso_table = AVISO;
+                global $conn;
+                $conn->exec("UPDATE {$aviso_table} SET inativo = 1 WHERE fixo = 'nfse-validade-certificado';");
+
+                // 6. Cria o aviso de validade do certificado
+                $aviso = tdc::p($aviso_table);
+                $aviso->tipoaviso = 2;
+                $aviso->mensagem = "O Certificado Digital está próximo de vencer.<br/>Data de validade: <b>" . date('d/m/Y', $timestamp_validade) . "</b>.";
+                $aviso->datainicio = $data_aviso_inicial;
+                $aviso->datafinal = $data_aviso_final;
+                $aviso->fixo = 'nfse-validade-certificado';
+                $aviso->inativo = 0;
+                $aviso->armazenar();
 
                 return ['status' => 'success', 'message' => '<div class="alert alert-success">Certificado Digital atualizado com sucesso.</div>'];
             } else {
@@ -548,8 +574,6 @@
                     return ['status' => 'error', 'message' => $error_msm];
                 }
 
-                // Você pode pegar o erro exato do OpenSSL se precisar debugar:
-                // while ($msg = openssl_error_string()) { echo $msg . "<br />\n"; }
                 return ['status' => 'error', 'message' => "Erro ao ler o certificado. Verifique se a senha está correta e se o arquivo é um .pfx válido."];
             }
             

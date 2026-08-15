@@ -25,3 +25,4 @@
 	$datafinal = criarAtributo($conn,$entidadeID,"datafinal","Data de Final","datetime",0,0,23,1,0,0,"");
 	$tipoaviso = criarAtributo($conn,$entidadeID,"tipoaviso","Tipo de Aviso","int",0,0,4,1,getEntidadeId("tipoaviso",$conn),0,"");
 	$mensagem = criarAtributo($conn,$entidadeID,"mensagem","Mensagem","text",0,0,21,0,0,0,"");
+	$fixo = criarAtributo($conn,$entidadeID,"fixo","Fixo","varchar",50,1,3,0,0,0,"");

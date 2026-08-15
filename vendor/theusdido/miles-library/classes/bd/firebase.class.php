@@ -1,6 +1,9 @@
 <?php	    
-    require 'vendor/kreait/firebase-php/src/Firebase/Factory.php';
-    require 'vendor/kreait/firebase-php/src/Firebase/Database.php';
+    require PATH_VENDOR . 'kreait/firebase-php/src/Firebase/Factory.php';
+    require PATH_VENDOR . 'kreait/firebase-php/src/Firebase/Database.php';
+
+    #require 'vendor/kreait/firebase-php/src/Firebase/Factory.php';
+    #require 'vendor/kreait/firebase-php/src/Firebase/Database.php';
 
     use Kreait\Firebase\Factory;
     use Kreait\Firebase\Database;
@@ -40,7 +43,6 @@
 
         public function ref($collection){
             $path_full_collection = _ENVIRONMENT . '/' . $collection;
-            #var_dump($path_full_collection);
             return $this->database->getReference($path_full_collection);
         }
 
@@ -85,12 +87,12 @@
             $criterio->addFiltro('tipo','in',[2, 6, 8, 11]);
 
             // Mapea os relacionamentos
-            $relacionamentos        = tdc::da(RELACIONAMENTO, $criterio);            
+            $relacionamentos        = tdc::da(RELACIONAMENTO, $criterio);
             $relacionamentos_id     = array();
             foreach($relacionamentos as $rel){
                 array_push($relacionamentos_id, $rel['filho']);
             }
-                        
+
             // Percorre os relacionamentos
             foreach($relacionamentos_id as $r_){
 
@@ -129,7 +131,7 @@
             $query = $ref->orderByKey(); // Ordena pela chave (necessário para startAt)
 
             // 1. Aplica o limite (tamanho da página)
-            $query = $query->limitToFirst($limit); 
+            $query = $query->limitToFirst($limit);
 
             // 2. Se for fornecida uma chave inicial, a consulta começará APÓS esta chave.
             // Isso é crucial para buscar a "próxima" página.

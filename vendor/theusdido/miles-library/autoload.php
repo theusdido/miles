@@ -142,6 +142,9 @@
 	// Define o diretório da biblioteca para include e require
 	define('PATH_LIBRARY_SYSTEM', $_path_library_system);
 
+	// Define o diretório vendor do Miles Framework, onde estão os pacotes de terceiros
+	define('PATH_VENDOR', $_path_miles . 'vendor' . DIRECTORY_SEPARATOR);
+
 	// Tratamento de Erros
 	$_path_exception = PATH_LIBRARY_SYSTEM . 'exception.php';
 
@@ -189,7 +192,7 @@
 
 	// Conexão com banco de dados
 	require $_path_system . 'connection.php';
-	
+
 	// Rotas
 	require $_path_system . 'rota.php';
 

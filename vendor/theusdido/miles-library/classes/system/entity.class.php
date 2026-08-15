@@ -430,6 +430,7 @@ class Entity {
 		$filtro_relacionamento->addFiltro("pai","=",$_entidade['id']);
 		$_entidadeauxiliar = $_entidade['entidadeauxiliar'] == 1 ? 'true' : 'false';
 		$_controlarregistrousuario = $_entidade['controlarregistrousuario'] == 1 ? 'true' : 'false';
+		$listar_gradedados_firebase = $_entidade['listar_gradedados_firebase'] == 1 ? 'true' : 'false';
 		
 		return json_encode(array(
 			'id' 								=> $_entidade['id'],
@@ -448,7 +449,8 @@ class Entity {
 			'atributos' 						=> tdc::da(ATRIBUTO,$filtro_atributo),
 			'relacionamentos' 					=> tdc::da(RELACIONAMENTO,$filtro_relacionamento),
 			'entidadeauxiliar' 					=> $_entidadeauxiliar,
-			'controlarregistrousuario'			=> $_controlarregistrousuario
+			'controlarregistrousuario'			=> $_controlarregistrousuario,
+			'listar_gradedados_firebase'		=> $listar_gradedados_firebase
 		));
 	}
 

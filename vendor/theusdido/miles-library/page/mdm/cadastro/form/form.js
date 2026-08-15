@@ -8,6 +8,8 @@ $('#criarprojeto').attr('checked',false);
 $('#criarauth').attr('checked',false);
 $('#entidadeauxiliar').attr('checked',false);
 $('#controlarregistrousuario').attr('checked',false);
+$('#listar_gradedados_firebase').attr('checked',false);
+
 
 $('#nome').removeAttr('disabled');
 $('#nome').removeAttr('readonly');
@@ -121,6 +123,7 @@ $('#btn-salvar-cadastro').click(function(){
         criarempresa                    :$('#criarempresa').prop('checked'),
         criarauth                       :$('#criarauth').prop('checked'),
         controlarregistrousuario        :$('#controlarregistrousuario').prop('checked'),
+        listar_gradedados_firebase      :$('#listar_gradedados_firebase').prop('checked'),
         tipoaba                         :$('input[type=radio][name=tipoaba]:checked').val()
     }
 
@@ -184,8 +187,9 @@ function load(){
             $('#registrounico')                 .attr('checked',getBoolCheckedValue(_data.registrounico));
             $('#carregarlibjavascript')         .attr('checked',getBoolCheckedValue(_data.carregarlibjavascript));
             $('#exibircabecalho')               .attr('checked',getBoolCheckedValue(_data.exibircabecalho));
-            $('#entidadeauxiliar')              .attr('checked',getBoolCheckedValue(_data.entidadeauxiliar));            
+            $('#entidadeauxiliar')              .attr('checked',getBoolCheckedValue(_data.entidadeauxiliar));    
             $('#controlarregistrousuario')      .attr('checked',getBoolCheckedValue(_data.controlarregistrousuario));
+            $('#listar_gradedados_firebase')    .attr('checked',getBoolCheckedValue(_data.listar_gradedados_firebase));
 
             nome_old = _data.nome;
 

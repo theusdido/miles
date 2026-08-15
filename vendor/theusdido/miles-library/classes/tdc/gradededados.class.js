@@ -154,7 +154,8 @@ GradeDeDados.prototype.load = function(){
 			qtdademaximaregistro:this.qtdeMaxRegistro,
 			order:this.getOrder(),
 			entidadeauxiliar:td_entidade[this.entidade].entidadeauxiliar,
-			entidade_nome:td_entidade[this.entidade].nomecompleto
+			entidade_nome:td_entidade[this.entidade].nomecompleto,
+			listar_gradedados_firebase:td_entidade[this.entidade].listar_gradedados_firebase
 		},
 		error:function(ret){
 			console.log("ERRO ao carregar a grade de dados => " + ret.responseText);
@@ -436,7 +437,7 @@ GradeDeDados.prototype.irbloco = function(bloco){
 	this.reload();
 }
 GradeDeDados.prototype.pesquisa = function(){
-	let instancia = this;
+	let instancia = this;	
 	if ($(this.contexto).find(".pesquisa-grade").length <= 0 && this.exibirpesquisa){
 		let div 			= $("<div class='pesquisa-grade'>");
 		let label 			= $("<label>Pesquisar</label>");
@@ -486,7 +487,7 @@ GradeDeDados.prototype.pesquisa = function(){
 		inputGroup.append(inputGroupBtn);
 		div.append(label);
 		div.append(inputGroup);
-		$(this.contexto).append(div);
+		$(this.contexto).find('.gradededados').first().before(div);
 	}
 	if (!this.exibirpesquisa){
 		$(this.contexto).find(".pesquisa-grade").hide();
@@ -497,7 +498,7 @@ GradeDeDados.prototype.excluir = function(){
 	let entidade 	= this.entidade;
 	let instancia 	= this;
 	let excluirRegistroUnico = (arguments.length > 0)?true:false;
-	
+
 	// Permissões
 	for (permissao in td_permissoes){
 		if (session.userid == td_permissoes[permissao].usuario && entidade == td_permissoes[permissao].entidade){			
@@ -579,7 +580,10 @@ GradeDeDados.prototype.excluir = function(){
 
 			if (instancia.totalRegistros <= 0){
 				instancia.nenhumRegistro();
-				composicao[td_entidade[instancia.entidade].descricao] = false;
+
+				if (typeof composicao !== "undefined"){
+					composicao[td_entidade[instancia.entidade].descricao] = false;
+				}
 			}
 		  }
 		},

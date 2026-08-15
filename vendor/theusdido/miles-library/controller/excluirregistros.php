@@ -4,12 +4,12 @@
 
 	if ($entidadeID != "" && $registrosID != ""){
 		
-		if (is_numeric($entidadeID)){	
+		if (is_numeric($entidadeID)){
 			$entidade = tdClass::Criar("persistent",array(ENTIDADE,$entidadeID));
-
+			
 			// Se a entidade relacionamento do tipo composição [ PAI ]
 			$sql = tdClass::Criar("sqlcriterio");
-			$sql->add(tdClass::Criar("sqlfiltro",array("pai","=",$entidadeID)));	
+			$sql->add(tdClass::Criar("sqlfiltro",array("pai","=",$entidadeID)));
 			$relacionamento_composicao 		= tdClass::Criar("repositorio",array(RELACIONAMENTO));
 			$dadosComposicao 				= $relacionamento_composicao->carregar($sql);
 			foreach($relacionamento_composicao->carregar($sql) as $dadosComposicao){
@@ -51,7 +51,7 @@
 				}
 			}
 
-			//Excluindo arquivos
+			// Excluindo arquivos
 			$ft_excluir		= tdc::f();
 			$ft_excluir->addFiltro('entidade','=',$entidade->contexto->id);
 			$ft_excluir->addFiltro('tipohtml','=',19);

@@ -926,10 +926,15 @@ function setMonitorStorage(conceito,data){
 		data = JSON.stringify(data,replacer);
 	}
 
-	_session.set('_monitor_mdm',{
-		_conceito:conceito,
-		_data:data
-	});		
+	try{
+		_session.set('_monitor_mdm',{
+			_conceito:conceito,
+			_data:data
+		});		
+	}catch(e){
+		console.error("Erro ao salvar conceito " + conceito + " no monitor de MDM => " + e.message);
+	}
+
 }
 
 function loadAllJSConcepts(){

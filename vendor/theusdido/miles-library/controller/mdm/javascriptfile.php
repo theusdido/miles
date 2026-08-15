@@ -1,6 +1,5 @@
-<?php
-	
-	$_file_mdm_js_compile = Asset::path('FILE_MDM_JS_COMPILE');
+<?php	
+	$_file_mdm_js_compile = Asset::path('FILE_MDM_JS_COMPILE');	
 
 	if (!file_exists($_file_mdm_js_compile)){
 		$_file_mdm_js_compile = $_path_project_install . FOLDER_BUILD_JS . FILE_MDM_JS_COMPILE;

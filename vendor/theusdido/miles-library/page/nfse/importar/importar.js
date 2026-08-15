@@ -95,18 +95,29 @@ $(function(){
                 referencia: $("#referencia").val() // Enviando a referência também na operação de salvar
             },
             complete: function(ret){
-                if (parseInt(ret.responseText) == 1){
-                    quantidade_notas--;
-                    if (quantidade_notas >= 1){
-                        salvar();
-                    }else{
-                        $("#status2").html('<img src="'+session.urlcurrenttheme+'check.gif" />');
-                        //parent.$("#enviar").button('reset');
-                        //parent.$("#enviar").attr("class","btn btn-success");
-                        //parent.$("#enviar").html("Enviado");ss
-                    }
-                }else{
-                    $("#status2").html('<img src="'+session.urlcurrenttheme+'erro.gif" width="25" />');                              
+                const res = parseInt(ret.responseText);
+                switch (res) {
+                    case 1:
+                        quantidade_notas--;
+                        if (quantidade_notas >= 1){
+                            salvar();
+                        }else{
+                            $("#status2").html('<img src="'+session.urlcurrenttheme+'check.gif" />');
+                            //parent.$("#enviar").button('reset');
+                            //parent.$("#enviar").attr("class","btn btn-success");
+                            //parent.$("#enviar").html("Enviado");ss
+                        }
+                    break;
+                    case 2:
+                        bootbox.alert({
+                            title: "Mensagem",
+                            message: "<div class='alert alert-danger'><b>Erro:</b> Arquivo de importação da NFSe não está no formato esperado.</div>"
+                        });                        
+                    break;
+                }
+
+                if (res != 1){
+                    $("#status2").html('<img src="'+session.urlcurrenttheme+'erro.gif" width="25" />');
                 }
             }
         });

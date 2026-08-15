@@ -15,6 +15,8 @@ class Card Extends Elemento {
 	private $footer     = '';
 	public $tamanho     = '';
 	public $nome        = '';
+	public $tipo		= '';
+
 	/*
 		* Método construct 
 	    * Data de Criacao: 29/02/2024
@@ -41,8 +43,6 @@ class Card Extends Elemento {
 	}
 
 	public function addBody($content){
-		
-		
 		$this->body->add($content);
 	}
 
@@ -52,6 +52,10 @@ class Card Extends Elemento {
 		$this->footer->add($content);
 	}
 	public function mostrar(){
+
+		if ($this->tipo != ''){
+			$this->header->class = " text-bg-{$this->tipo}";
+		}
 
 		if ($this->header->qtde_filhos > 0)
             $this->add($this->header);

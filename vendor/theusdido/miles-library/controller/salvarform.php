@@ -8,6 +8,7 @@
 		$id				= (int)$linha['id'];
 		$entidade_nome	= $linha['entidade'];
 		$entidade 		= tdc::p($entidade_nome,$id);
+		$atributo_relacionamento = $linha["relacionamento"]["atributo"];
 
 		// Verifica se está modo de edição
 		if ($entidade->hasData()){
@@ -17,10 +18,14 @@
 			$entidade->id 	= $id;
 			$entidade->setIsNew();
 		}
-		
-		$tipo_relacionamento = $linha["fp"] == "true" ? 0 : (int)$linha['tiporel'];
-		array_push($entidadesIDRetorno,array("entidade" => $entidade_nome, "id" => $id , "tipo_relacionamento" => $tipo_relacionamento));
 
+		$tipo_relacionamento = $linha["fp"] == "true" ? 0 : (int)$linha['tiporel'];		
+		array_push($entidadesIDRetorno,array(
+			"entidade" => $entidade_nome, "id" => $id,
+			"tipo_relacionamento" => $tipo_relacionamento,
+			"atributo_relacionamento" => $atributo_relacionamento
+		));
+		
 		// Retorno para a requisição
 		if ($linha['fp'] == 'true'){
 			$retorno_id 			= $id;
@@ -33,7 +38,7 @@
 			$objMain->entidade 		= $entidade_nome;
 			$objMain->id			= $id;
 			$objMain->is_fp 		= $isfp;
-			$objMain->atributo		= $linha["relacionamento"]["atributo"];
+			$objMain->atributo		= $atributo_relacionamento;
 			$objMain->tipo_rel 		= $tipo_relacionamento;
 
 		}else{
@@ -44,7 +49,7 @@
 			$objRel->entidade 	= $entidade_nome;
 			$objRel->id			= $id;
 			$objRel->is_fp 		= $isfp;
-			$objRel->atributo	= $linha["relacionamento"]["atributo"];
+			$objRel->atributo	= $atributo_relacionamento;
 			$objRel->tipo_rel 	= $tipo_relacionamento;
 			array_push($relacionamentos,$objRel);
 		}
@@ -86,19 +91,20 @@
 	// Seta os relacionamentos
 	foreach($relacionamentos as $rel){
 
-		if (!is_numeric($rel->atributo) && $rel->atributo != null && $rel->atributo != ''){
-			// Seta o atributo de relacionamento
-			$_entidade_rel 						= tdc::p($rel->entidade,$rel->id);
-			$_entidade_rel->{$rel->atributo} 	= $objMain->id;
-			$_entidade_rel->armazenar();
-		}
-
-		// Seta na LISTA
 		$entidadePai 		= getEntidadeId($objMain->entidade);
 		$entidadeFilho 		= getEntidadeId($rel->entidade);
 		$regPai 			= $objMain->id;
 		$regFilho 			= $rel->id;
 
+		if (!is_numeric($rel->atributo) && $rel->atributo != null && $rel->atributo != ''){
+			// Seta o atributo de relacionamento
+			$_entidade_rel 						= tdc::p($rel->entidade,$rel->id);
+			$_entidade_rel->{$rel->atributo} 	= $objMain->id;
+			$_entidade_rel->is_save_json		= tdc::e($entidadeFilho)->entidadeauxiliar == 0 ? false : true;
+			$_entidade_rel->armazenar();
+		}
+
+		// Seta na LISTA
 		tdLista::save($entidadePai,$entidadeFilho,$regPai,$regFilho,$rel->tipo_rel);
 	}
 

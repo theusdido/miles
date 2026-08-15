@@ -58,7 +58,6 @@ entidadesAuxiliares();
 //     });
 // },60000);
 
-
 // Global com a grade de dados da movimentação
 var _gradedados_mov_current;
 
