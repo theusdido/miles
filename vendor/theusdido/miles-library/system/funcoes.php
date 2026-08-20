@@ -446,12 +446,19 @@ function getUrl($url,$opcoes = null){
 			'http' => array(
 				'header'		=> 'Cookie: ' .  $cookie ."\r\n",
 				'method'		=> 'GET',
-				'ignore_errors' => false
+				'ignore_errors' => false,
+				'timeout'		=> 10
 			),
+			'http' => array(
+				'header'		=> 'Cookie: ' .  $cookie ."\r\n",
+				'method'		=> 'GET',
+				'ignore_errors' => false,
+				'timeout'		=> 10
+			),			
 			'ssl' => array(
 				'verify_peer'       => false,
 				'verify_peer_name'  => true,
-			)			
+			)
 		);
 		session_write_close(); // Desboqueia o arquivo de sessão
 		$context 	= stream_context_create($opts);
@@ -2754,7 +2761,7 @@ function getTableName($tabela){
 	*	@return: String Página
 */
 function loadPage($page){
-	return getURL(URL_MILES . 'index.php?controller=page&page=' . $page);
+	return getURLContent(URL_MILES . 'index.php?controller=page&page=' . $page);
 }
 
 /*
@@ -2981,4 +2988,59 @@ function getListaRegPai($entidadepai,$entidadefilho,$regfilho){
 	
 	$lista = tdClass::Criar("repositorio",array("td_lista"))->carregar($sql);
 	return $lista;
+}
+
+function getPathContent($caminho) {
+	if (!file_exists($caminho) || !is_readable($caminho)) {
+		Debug::console("Erro: <b>{$caminho}</b> não encontrado ou não está em modo de leitura.");
+		return false;                                                                                                           
+	}                                                                                                                           
+																																
+	$tamanho = filesize($caminho);                                                                                              
+	if ($tamanho === 0) return '';                                                                                              
+																							
+	$handle = fopen($caminho, 'rb');                                                                                       
+	$conteudo = fread($handle, $tamanho);
+	fclose($handle);
+																																
+	return $conteudo;                                                                                                           
+}
+
+function getURLContent($url, $timeout = 10) {      
+
+	$data = array(
+		"controller" 		=> "page",
+		"page"				=> "mdm/home"
+	);
+	$curl = curl_init();
+	curl_setopt_array($curl, [
+		CURLOPT_RETURNTRANSFER => true,
+		CURLOPT_URL => URL_API,
+		CURLOPT_POSTFIELDS => $data,
+		CURLOPT_TIMEOUT        => $timeout,
+		CURLOPT_FOLLOWLOCATION => true,
+		CURLOPT_SSL_VERIFYPEER => true,
+	]);
+	$response = curl_exec($curl);
+	curl_close($curl);
+	return $response;
+
+	/*                                                                           
+	$ch = curl_init();
+	curl_setopt_array($ch, [
+		CURLOPT_URL            => $url,
+		CURLOPT_RETURNTRANSFER => true,
+		CURLOPT_FOLLOWLOCATION => true,
+		CURLOPT_TIMEOUT        => $timeout,
+		CURLOPT_SSL_VERIFYPEER => true,
+		CURLOPT_SSL_VERIFYHOST => false
+	]);
+	
+	$conteudo = curl_exec($ch);
+	$httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+	curl_close($ch);
+	
+	
+	return ($httpCode === 200) ? $conteudo : false;
+	*/
 }

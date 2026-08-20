@@ -135,7 +135,7 @@
 	switch(tdc::r("acao")){
 		case "compilar":
 			echo 1;
-			getUrl(URL_MILES . 'index.php?controller=mdm/componente&entidade=' . $entidade->contexto->id);
+			getURLContent(URL_MILES . 'index.php?controller=mdm/componente&entidade=' . $entidade->contexto->id);
 			tdFile::add($pathfilepage . $entidade->contexto->nome . ".html", $bloco->toString());
 		break;
 		default:

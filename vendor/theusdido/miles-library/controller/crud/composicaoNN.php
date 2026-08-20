@@ -12,7 +12,7 @@ $urlrequest 	= getURLProject(
 	'relacionamento'		=> $rel->id,
 	'entidadepai' 			=> $ent_pai->contexto->id)
 );
-$conteudo 		= getUrl($urlrequest);
+$conteudo 		= getURLContent($urlrequest);
 if (!$conteudo){
 	$div_rel->add('<div class="alert alert-danger" role="alert"><b>Ops!</b> Não foi possível criar esta página.</div>');
 }else{

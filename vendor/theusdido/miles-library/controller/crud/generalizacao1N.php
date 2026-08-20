@@ -44,7 +44,7 @@
 		'entidadepai'		=> $rel->pai)
 	);
 
-	$conteudo = getUrl($urlrequest);
+	$conteudo = getURLContent($urlrequest);
 	if (!$conteudo){
 		$div_rel->add('<div class="alert alert-danger" role="alert"><b>Ops!</b> Não foi possível criar esta página.</div>');
 	}else{

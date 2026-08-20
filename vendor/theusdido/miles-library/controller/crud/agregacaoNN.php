@@ -10,7 +10,7 @@ $urlrequest = getURLProject(
 	'entidade' 			=> $ent_filho->contexto->id,
 	'relacionamento'	=> $rel->id)
 );
-$conteudo = getUrl($urlrequest);
+$conteudo = getURLContent($urlrequest);
 
 #echo '<br/>######################################################################';
 #var_dump($conteudo);

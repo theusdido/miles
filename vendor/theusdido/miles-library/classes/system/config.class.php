@@ -273,7 +273,10 @@ class Config {
 	*/
 	public static function getJsInicial(){
 		$script 		= tdc::o('script');
-		$script->src 	= URL_SYSTEM . 'inicial.js';
+		$config_file	= URL_SYSTEM . 'inicial.js';
+		if (file_exists($config_file)){
+			$script->add(file_get_contents($config_file));
+		}
 		return $script;
 	}
 
@@ -286,7 +289,10 @@ class Config {
 	*/
 	public static function getJsConfig(){
 		$script 		= tdc::o('script');
-		$script->add(getURL(URL_SYSTEM . 'config.js'));
+		$config_file 	= PATH_SYSTEM . 'config.js';
+		if (file_exists($config_file)){
+			$script->add(file_get_contents($config_file));
+		}
 		return $script;
 	}
 }

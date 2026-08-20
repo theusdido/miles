@@ -6,5 +6,5 @@ if ($op == 'lista-conceito'){
 }
 
 // Gera o arquivo JavaScript do MDM
-$javascriptfile = getUrl(URL_MILES . 'index.php?controller=mdm/javascriptfile');
+$javascriptfile = getURLContent(URL_MILES . 'index.php?controller=mdm/javascriptfile');
 var_dump($javascriptfile);

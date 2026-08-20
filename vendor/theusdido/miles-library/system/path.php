@@ -89,6 +89,9 @@
 	// Caminho dos arquivos de registros padrão
 	define('PATH_REGISTRO', PATH_INSTALL . 'registro' . DIRECTORY_SEPARATOR);
 
+	// Caminho para requisição da API (index.php)
+	define('PATH_API',PATH_MILES . 'index.php');
+
 	// * 
 	// * Caminhos estáticos do projeto
 	// *

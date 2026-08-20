@@ -264,7 +264,7 @@ class Pagina Extends Html {
 		
 		if ($this->popperjs){
 			$popperjs 				= tdClass::Criar("script");
-			$popperjs->src 			= "https://unpkg.com/@popperjs/core@2";			
+			$popperjs->src 			= URL_LIB . "unpkg/@popperjs/core@2.11.8/dist/umd/popper.min.js";
 			$this->body->add($popperjs);
 		}
 

@@ -15,11 +15,50 @@
 		Data: 11/07/2023
 
 	********************************* */
-	$_project_name_identifify_params 	= !getenv('_PROJECT_NAME_IDENTIFY_PARAMS') ? '' : getenv('_PROJECT_NAME_IDENTIFY_PARAMS');
-	$_env_params						= !getenv('_ENV') ? '' : getenv('_ENV');
-	$_path_main_miles_json 				= 'miles.json';
+	$_project_name_identifify_params = '';
+	if (getenv('_PROJECT_NAME_IDENTIFY_PARAMS')){
+		$_project_name_identifify_params = getenv('_PROJECT_NAME_IDENTIFY_PARAMS');
+	}else if (isset($_SERVER['_PROJECT_NAME_IDENTIFY_PARAMS'])){
+		$_project_name_identifify_params = $_SERVER['_PROJECT_NAME_IDENTIFY_PARAMS'];
+	}else if (isset($_SERVER['REDIRECT__PROJECT_NAME_IDENTIFY_PARAMS'])){
+		$_project_name_identifify_params = $_SERVER['REDIRECT__PROJECT_NAME_IDENTIFY_PARAMS'];
+	}else if (isset($_ENV['_PROJECT_NAME_IDENTIFY_PARAMS'])){
+		$_project_name_identifify_params = $_ENV['_PROJECT_NAME_IDENTIFY_PARAMS'];
+	}
+
+	$_env_params = '';
+	if (getenv('_ENV')){
+		$_env_params = getenv('_ENV');
+	}else if (isset($_SERVER['_ENV'])){
+		$_env_params = $_SERVER['_ENV'];
+	}else if (isset($_SERVER['REDIRECT__ENV'])){
+		$_env_params = $_SERVER['REDIRECT__ENV'];
+	}else if (isset($_ENV['_ENV'])){
+		$_env_params = $_ENV['_ENV'];
+	}
+
+	$_http_host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : '';
 	$_folder_project					= 'projects';
 	$_relative_root						= (AMBIENTE == 'SISTEMA' ? '' : '../');
+	$_path_main_miles_json 				= 'miles.json';
+
+	if ($_project_name_identifify_params == '' && $_http_host != ''){
+		$_host_clean = str_replace(array('dev.','.com','.br','miles.','www.','loja.'),'',$_http_host);
+		$projects_dir = $_relative_root . $_folder_project;
+		if (file_exists($projects_dir . DIRECTORY_SEPARATOR . $_host_clean . DIRECTORY_SEPARATOR . $_path_main_miles_json)){
+			$_project_name_identifify_params = $_host_clean;
+		}else if (is_dir($projects_dir)){
+			foreach (scandir($projects_dir) as $p_dir){
+				if ($p_dir != '.' && $p_dir != '..' && is_dir($projects_dir . DIRECTORY_SEPARATOR . $p_dir)){
+					if (stripos($_http_host, $p_dir) !== false && file_exists($projects_dir . DIRECTORY_SEPARATOR . $p_dir . DIRECTORY_SEPARATOR . $_path_main_miles_json)){
+						$_project_name_identifify_params = $p_dir;
+						break;
+					}
+				}
+			}
+		}
+	}
+
 	$_path_relative_project				= $_relative_root . $_folder_project . DIRECTORY_SEPARATOR . $_project_name_identifify_params . DIRECTORY_SEPARATOR;
 	$_path_project_miles_json			= $_path_relative_project . $_path_main_miles_json;
 	$_url_relative_project				= $_folder_project . '/' . $_project_name_identifify_params . '/';
@@ -31,6 +70,7 @@
 	// Caso as variáveis venham por parametro
 	if (isset($_GET['project_name_identifify_params']) && isset($_GET['env'])){
 		$_project_name_identifify_params 	= $_GET['project_name_identifify_params'];
+		$_path_relative_project				= $_relative_root . $_folder_project . DIRECTORY_SEPARATOR . $_project_name_identifify_params . DIRECTORY_SEPARATOR;
 		$_path_project_miles_json			= $_path_relative_project . $_path_main_miles_json;
 	}
 

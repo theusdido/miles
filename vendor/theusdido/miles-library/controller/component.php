@@ -32,7 +32,7 @@
 	// Carrega o HTML antes por causa do file_get_contents, erro de cabeçaho
 	$htmlFile 	= PATH_SYSTEM_COMPONENT . $_component_path . '.html';
 	if (file_exists($htmlFile)){
-		$html_file =  @getUrl(URL_COMPONENT . $_component_path . '.html');
+		$html_file =  @getURLContent(URL_COMPONENT . $_component_path . '.html');
 		if (!$is_scope_component){
 			echo $html_file;
 		}	

@@ -78,7 +78,7 @@ class mdm
         $fp = fopen($htmlFile ,'w');
         fwrite($fp,htmlespecialcaracteres(
 
-            getURL(URL_MILES,array(
+            getURLContent(URL_MILES,array(
                 'params' => array(
                     'entidade'          => $entidade->id,
                     'currentproject'    => CURRENT_PROJECT_ID,          
