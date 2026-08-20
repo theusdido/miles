@@ -1,6 +1,5 @@
 <?php
-	echo 'D1';
-	exit;
+	
 	// Carrega o HTML antes por causa do file_get_contents, erro de cabeçaho
 	$htmlFile 	= PATH_SYSTEM_PAGE . $_page_path . '.html';
 
@@ -35,17 +34,14 @@
 	// Carrega arquivo JavaScript
 	$jsFile = PATH_SYSTEM_PAGE . $_page_path . '.js';
 	if (file_exists($jsFile)){
-
-
-
-		#$js 		= tdc::o('script');
-		#$js->src 	= URL_PAGE . $_page_path . '.js';
-		#$js->mostrar();
+		$js 		= tdc::o('script');
+		$js->src 	= URL_PAGE . $_page_path . '.js';
+		$js->mostrar();
 	}
 
 	$jsFile = PATH_CURRENT_PAGE . $_page_path . '.js';
 	if (file_exists($jsFile)){
-		#$js 		= tdc::o('script');
-		#$js->src 	= URL_CURRENT_PAGE . $_page_path . '.js';
-		#$js->mostrar();
+		$js 		= tdc::o('script');
+		$js->src 	= URL_CURRENT_PAGE . $_page_path . '.js';
+		$js->mostrar();
 	}

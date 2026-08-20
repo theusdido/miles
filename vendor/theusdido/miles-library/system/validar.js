@@ -441,19 +441,19 @@ if (typeof $().mask == "function"){
 		}
 	});
 
-	try
-	{
-		// AddList
-		$('.add_list').popover({
-			html : true
-		});
+	if (typeof $.fn.popover === "function" && $('.add_list').length > 0){
+		try {
+			// AddList
+			$('.add_list').popover({
+				html : true
+			});
 
-		$('.add_list').click(function(){
-			$(".popover").css("max-width","500px");
-			carregar("index.php?controller=crud&op=add&t='.$coluna->chaveestrangeira.'&popover=true","#content-popover-'.$coluna->id.'");
-		});
-	}catch(e){
-		console.warn('Popover não encontrado!');
+			$('.add_list').click(function(){
+				$(".popover").css("max-width","500px");
+			});
+		} catch(e) {
+			// Ignora caso ocorra falha na inicialização do popover
+		}
 	}
 
 	

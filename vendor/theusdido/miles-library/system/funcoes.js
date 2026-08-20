@@ -918,15 +918,15 @@ function setTdCheckboxSN($_group, $_valor){
 }
 
 function setMonitorStorage(conceito,data){
-	
-	if(typeof data == 'object'){
-		const replacer = (chave, valor) => {
-			return String(valor).replace('\"','"');
-		};
-		data = JSON.stringify(data,replacer);
-	}
-
 	try{
+		if (typeof data === 'string') {
+			try {
+				data = JSON.parse(data);
+			} catch (e) {
+				// Mantém como string caso não seja um JSON válido
+			}
+		}
+
 		_session.set('_monitor_mdm',{
 			_conceito:conceito,
 			_data:data
@@ -934,7 +934,6 @@ function setMonitorStorage(conceito,data){
 	}catch(e){
 		console.error("Erro ao salvar conceito " + conceito + " no monitor de MDM => " + e.message);
 	}
-
 }
 
 function loadAllJSConcepts(){

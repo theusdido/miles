@@ -1933,13 +1933,18 @@ tdFormulario.prototype.setMascara = function(){
 		});
 
 		// AddList
-		$('.add_list').popover({
-		html : true
-		});
-		$('.add_list').click(function(){
-			$(".popover").css("max-width","500px");
-			carregar("index.php?controller=crud&op=add&t='.$coluna->chaveestrangeira.'&popover=true","#content-popover-'.$coluna->id.'");
-		});
+		if (typeof $.fn.popover === "function" && $('.add_list').length > 0){
+			try {
+				$('.add_list').popover({
+					html : true
+				});
+				$('.add_list').click(function(){
+					$(".popover").css("max-width","500px");
+				});
+			} catch(e) {
+				// Ignora se o plugin não estiver disponível
+			}
+		}
 		
 		//Mês-Ano
 		$(".formato-mesano").mask("99/9999");

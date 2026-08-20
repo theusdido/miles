@@ -435,55 +435,7 @@ function getExtensao($str){
 	}
 }
 function getUrl($url,$opcoes = null){
-	try{
-		if ($opcoes != null){
-			if (isset($opcoes["params"])){
-				$url .= (strpos($url,'?') === false ? '?' : '&') . http_build_query($opcoes["params"]);
-			}
-		}
-		$cookie = isset($_SERVER['HTTP_COOKIE']) ? $_SERVER['HTTP_COOKIE'] : '';
-		$opts 	= array(
-			'http' => array(
-				'header'		=> 'Cookie: ' .  $cookie ."\r\n",
-				'method'		=> 'GET',
-				'ignore_errors' => false,
-				'timeout'		=> 10
-			),
-			'http' => array(
-				'header'		=> 'Cookie: ' .  $cookie ."\r\n",
-				'method'		=> 'GET',
-				'ignore_errors' => false,
-				'timeout'		=> 10
-			),			
-			'ssl' => array(
-				'verify_peer'       => false,
-				'verify_peer_name'  => true,
-			)
-		);
-		session_write_close(); // Desboqueia o arquivo de sessão
-		$context 	= stream_context_create($opts);
-		$conteudo 	= file_get_contents($url,false,$context);
-
-		// Verifica se o retorno foi falso e lança o erro explicitamente
-        if ($conteudo === false) {
-            throw new Exception("Não foi possível carregar o conteúdo da URL: {$url}");
-        }
-
-		session_start(); // Bloqueia o arquivo de sessão
-	}catch(Exception $e){
-		// Garante que a sessão seja reaberta se o erro acontecer APÓS o session_write_close
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
-
-		if (defined('IS_SHOW_ERROR_MESSAGE') && IS_SHOW_ERROR_MESSAGE) {
-            var_dump($e->getMessage());
-			var_dump($url);
-        }
-		$conteudo = '';
-	}finally{
-		return $conteudo;
-	}
+	return getURLContent($url,$opcoes);
 }
 function getHTMLTipoFormato($htmltipo,$valor,$entidade=0,$atributo=0,$id=0){
 	
@@ -3006,41 +2958,86 @@ function getPathContent($caminho) {
 	return $conteudo;                                                                                                           
 }
 
-function getURLContent($url, $timeout = 10) {      
+/*
+	* getURLContent
+	* Data de Criacao: 20/08/2026
+	* @author Edilson Valentim dos Santos Bitencourt (Theusdido)
+	* Carrega o conteúdo de uma URL via cURL
+	* PARAMETROS
+	*	@params: String url:"URL a ser requisitada"
+	*	@params: Array opcoes:"Opções adicionais (params, headers, timeout, cookie, post/data, method)"
+	* RETORNO
+	*	@return: String|false Conteúdo retornado pela requisição ou false em caso de falha
+*/
+function getURLContent($url, $opcoes = null) {
+	if ($opcoes !== null && is_array($opcoes)) {
+		if (isset($opcoes["params"]) && is_array($opcoes["params"])) {
+			$url .= (strpos($url, '?') === false ? '?' : '&') . http_build_query($opcoes["params"]);
+		}
+	}
 
-	$data = array(
-		"controller" 		=> "page",
-		"page"				=> "mdm/home"
-	);
-	$curl = curl_init();
-	curl_setopt_array($curl, [
-		CURLOPT_RETURNTRANSFER => true,
-		CURLOPT_URL => URL_API,
-		CURLOPT_POSTFIELDS => $data,
-		CURLOPT_TIMEOUT        => $timeout,
-		CURLOPT_FOLLOWLOCATION => true,
-		CURLOPT_SSL_VERIFYPEER => true,
-	]);
-	$response = curl_exec($curl);
-	curl_close($curl);
-	return $response;
+	$cookie  = isset($opcoes['cookie']) ? $opcoes['cookie'] : (isset($_SERVER['HTTP_COOKIE']) ? $_SERVER['HTTP_COOKIE'] : '');
+	$timeout = isset($opcoes['timeout']) ? (int)$opcoes['timeout'] : 10;
 
-	/*                                                                           
 	$ch = curl_init();
-	curl_setopt_array($ch, [
+	$curlOpts = [
 		CURLOPT_URL            => $url,
 		CURLOPT_RETURNTRANSFER => true,
 		CURLOPT_FOLLOWLOCATION => true,
 		CURLOPT_TIMEOUT        => $timeout,
-		CURLOPT_SSL_VERIFYPEER => true,
+		CURLOPT_SSL_VERIFYPEER => false,
 		CURLOPT_SSL_VERIFYHOST => false
-	]);
-	
-	$conteudo = curl_exec($ch);
-	$httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-	curl_close($ch);
-	
-	
-	return ($httpCode === 200) ? $conteudo : false;
-	*/
+	];
+
+	if ($cookie !== '') {
+		$curlOpts[CURLOPT_COOKIE] = $cookie;
+	}
+
+	if (isset($opcoes['headers']) && is_array($opcoes['headers'])) {
+		$curlOpts[CURLOPT_HTTPHEADER] = $opcoes['headers'];
+	}
+
+	if (isset($opcoes['post']) || isset($opcoes['data']) || isset($opcoes['postfields'])) {
+		$postData = isset($opcoes['post']) ? $opcoes['post'] : (isset($opcoes['data']) ? $opcoes['data'] : $opcoes['postfields']);
+		$curlOpts[CURLOPT_POST] = true;
+		$curlOpts[CURLOPT_POSTFIELDS] = $postData;
+	} elseif (isset($opcoes['method']) && strtoupper($opcoes['method']) !== 'GET') {
+		$curlOpts[CURLOPT_CUSTOMREQUEST] = strtoupper($opcoes['method']);
+	}
+
+	curl_setopt_array($ch, $curlOpts);
+
+	$session_opened = (session_status() === PHP_SESSION_ACTIVE);
+	if ($session_opened) {
+		session_write_close(); // Desbloqueia o arquivo de sessão
+	}
+
+	try {
+		$conteudo  = curl_exec($ch);
+		$httpCode  = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+		$curlError = curl_error($ch);
+		curl_close($ch);
+
+		if ($conteudo === false || ($httpCode !== 0 && ($httpCode < 200 || $httpCode >= 400))) {
+			if (defined('IS_SHOW_ERROR_MESSAGE') && IS_SHOW_ERROR_MESSAGE) {
+				if (!empty($curlError)) {
+					var_dump($curlError);
+				}
+				var_dump("Erro ao carregar URL (HTTP {$httpCode}): {$url}");
+			}
+			return false;
+		}
+
+		return ($httpCode === 200 || $httpCode === 0) ? $conteudo : false;
+	} catch (Throwable $e) {
+		if (defined('IS_SHOW_ERROR_MESSAGE') && IS_SHOW_ERROR_MESSAGE) {
+			var_dump($e->getMessage());
+			var_dump($url);
+		}
+		return false;
+	} finally {
+		if ($session_opened && session_status() === PHP_SESSION_NONE) {
+			session_start(); // Reabre a sessão
+		}
+	}
 }
