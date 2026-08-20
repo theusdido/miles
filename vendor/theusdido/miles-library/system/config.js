@@ -122,6 +122,6 @@ let inactivityTime = function () {
 };
 
 if (JSON.parse(window.sessionStorage.getItem("is_session_active"))){
-    console.log('iniciou a inatividade');
+    // Inicia o tempo de inatividade do usuário
     inactivityTime();
 }

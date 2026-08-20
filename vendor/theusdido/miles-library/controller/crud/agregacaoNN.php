@@ -10,11 +10,8 @@ $urlrequest = getURLProject(
 	'entidade' 			=> $ent_filho->contexto->id,
 	'relacionamento'	=> $rel->id)
 );
-$conteudo = getURLContent($urlrequest);
 
-#echo '<br/>######################################################################';
-#var_dump($conteudo);
-#echo '<br/>######################################################################';
+$conteudo = getURLContent($urlrequest);
 if (!$conteudo){
 	$div_rel->add('<div class="alert alert-danger" role="alert"><b>Ops!</b> Não foi possível criar esta página.</div>');
 }else{

@@ -131,7 +131,9 @@ Menu.prototype.carregarpagina = function(path,target,dados_menu){
 		// Zera a variável formulário para garantir o escopo
 		formulario = [];
 		carregarScriptCRUD(dados_menu.tipomenu,dados_menu.entidade);
-		clearMenuLeft();
+
+		// Limpa Menu Lateral
+		if (typeof clearMenuLeft === 'function') clearMenuLeft();
 		if (dados_menu.filhos.length > 0){
 			menuleft(dados_menu.id);
 		}
