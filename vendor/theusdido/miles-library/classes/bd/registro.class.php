@@ -87,6 +87,27 @@ abstract class Registro {
 		}
 	}
 
+	public function __isset($propriedade){
+		if (method_exists($this, 'get_' . $propriedade)){
+			return true;
+		}
+		if (is_array($this->dados)){
+			return isset($this->dados[$propriedade]);
+		}
+		if (is_object($this->dados)){
+			return isset($this->dados->{$propriedade});
+		}
+		return false;
+	}
+
+	public function __unset($propriedade){
+		if (is_array($this->dados)){
+			unset($this->dados[$propriedade]);
+		}else if (is_object($this->dados)){
+			unset($this->dados->{$propriedade});
+		}
+	}
+
 	/*  
 		* Método getEntidade 
 	    * Data de Criacao: 05/06/2012
