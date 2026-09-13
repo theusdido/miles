@@ -28,7 +28,7 @@
 	$feedback			= criarAtributo($conn,$entidadeID,"feedback","Feedback","text",0,1,21);
 
 	// Criando Acesso
-	$menu = addMenu($conn,'Pedagógico','#','',0,0,'escola-pedagogico');
+	$menu = addMenu($conn,'Avaliação','#','',0,0,'escola-avaliacao');
 
 	// Adicionando Menu
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu,1,'escola-' . $entidadeNome,$entidadeID,'cadastro');

@@ -203,12 +203,14 @@ abstract class Registro {
 			}						
 		}finally{			
 
-			Monitory::add(
-				$this->isnew ? "I" : "U",
-				$this->getID(),
-				0,
-				empty($this->id) ? 0 : $this->id
-			);
+			if (!IS_INSTALLING){
+				Monitory::add(
+					$this->isnew ? "I" : "U",
+					$this->getID(),
+					0,
+					empty($this->id) ? 0 : $this->id
+				);
+			}
 			
 			$_d = array();
 			if($this->is_save_json){

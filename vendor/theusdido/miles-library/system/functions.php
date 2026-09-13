@@ -98,3 +98,18 @@ function parseIniFile($path,$process_section = true,$scanner_mode = INI_SCANNER_
 function getPathSOFormat($path){
 	return PHP_OS == 'WINNT' ? str_replace('/','\\',$path) : $path;
 }
+
+/*
+	* Função paramsValue
+	* Data de Criacao: 12/09/2026
+	* Autor @theusdido
+
+	Retorna o valor do parametro sendo GET ou POST com ou sem "_"
+*/
+function paramsValue($params){
+	if (isset($_GET[$params])) return $_GET[$params];
+	if (isset($_GET["_$params"])) return $_GET["_$params"];
+	if (isset($_POST[$params])) return $_POST[$params];
+	if (isset($_POST["_$params"])) return $_POST["_$params"];
+	return null;
+}

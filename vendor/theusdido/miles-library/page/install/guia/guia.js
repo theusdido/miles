@@ -129,3 +129,7 @@ function setCurrentGuia(_guia){
 function loadContent(_page){
     $('#conteudo-instalacao').load(session.urlmiles + '?controller=page&page=install/' + _page);
 }
+
+function goMiles(){
+    location.href = session.urlalias;
+}

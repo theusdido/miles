@@ -28,7 +28,7 @@
 	Entity::setDescriptionField($conn,$entidadeID,$descricao,true);
 	
 	// Criando Acesso
-	$menu = addMenu($conn,'Pedagógico','#','',0,0,'escola-pedagogico-avaliacao');
+	$menu = addMenu($conn,'Avaliação','#','',0,0,'escola-avaliacao');
 
 	// Adicionando Menu
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu,1,'escola-' . $entidadeNome,$entidadeID,'cadastro');

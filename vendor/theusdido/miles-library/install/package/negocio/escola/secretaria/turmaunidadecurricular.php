@@ -27,7 +27,7 @@
 	$aulassemanais		= criarAtributo($conn,$entidadeID,"aulassemanais","Aulas Semanais","tinyint",0,1,25);
 
 	// Criando Acesso
-	$menu = addMenu($conn,'Escola','#','',0,0,'escola');
+	$menu = addMenu($conn,'Secretaria','#','',0,0,'escola-secretaria');
 
 	// Adicionando Menu
 	addMenu($conn,$entidadeDescricao,"files/cadastro/".$entidadeID."/".getSystemPREFIXO().$entidadeNome.".html",'',$menu,1,'escola-' . $entidadeNome,$entidadeID,'cadastro');

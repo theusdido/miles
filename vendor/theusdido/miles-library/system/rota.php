@@ -1,11 +1,11 @@
 <?php
 
-	$systemcontroller 	= PATH_MVC_CONTROLLER . $controller .  '.php';
+	$systemcontroller 	= PATH_MVC_CONTROLLER . $_controller .  '.php';
 	$systemrequisicoes	= PATH_MVC_CONTROLLER . 'requisicoes.php';
 	$systemautentica	= PATH_MVC_CONTROLLER . 'autentica.php';
 	$systemmain			= PATH_MVC_CONTROLLER . 'main.php';
 
-	$customcontroller 	= PATH_CURRENT_CONTROLLER . $controller . '.php';
+	$customcontroller 	= PATH_CURRENT_CONTROLLER . $_controller . '.php';
 	$customautentica	= PATH_CURRENT_CONTROLLER . 'autentica.php';
 	$custommain			= PATH_CURRENT_CONTROLLER . 'main.php';
 
@@ -56,20 +56,20 @@
 		//exit;
 	}		
 	
-	if ($controller == "gerarcadastro" || tdClass::Read("key") == "k"){
+	if ($_controller == "gerarcadastro" || tdClass::Read("key") == "k"){
 		if (file_exists($customcontroller)) include $customcontroller;
 		if (file_exists($systemcontroller)) include $systemcontroller;
 		exit;
 	}
 	
-	if ($controller == "permissaoinicial"){
+	if ($_controller == "permissaoinicial"){
 		if (file_exists($systemrequisicoes)) include $systemrequisicoes;
 		exit;
 	}
 
 	switch(AMBIENTE){
 		case 'SISTEMA':
-			if ($controller == '' && $_page == '' && $_component == ''){
+			if ($_controller == '' && $_page == '' && $_component == ''){
 				if (file_exists($custommain)) include $custommain;
 				if (file_exists($systemmain)) include $systemmain;
 			}else{

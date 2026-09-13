@@ -35,19 +35,19 @@
 	#$endereco_cliente->entidadecliente 	    = $_entidade_cliente_id;
 	#$endereco_cliente->entidadeendereco 	= $_entidade_endereco_id;
 
-	$controller 		= tdc::r('controller');
+	$_controller 		= tdc::r("_controller") == '' ? tdc::r("controller") : tdc::r("_controller");
 	$paginacontroller 	= tdc::r('pagina');
 
-	if ($controller == "websitepage" || $paginacontroller != ''){
+	if ($_controller == "websitepage" || $paginacontroller != ''){
 		$pc = array($paginacontroller , "custom");
 		#include 'template.php';
 	}else{
-		if ($controller == ''){	
+		if ($_controller == ''){	
 			$pc = array();
 			#include 'template.php';
 		}else{
-			$pc = array($controller);
-			#include $controller . ".php";
+			$pc = array($_controller);
+			#include $_controller . ".php";
 			#include 'importarjs.php';
 		}
 	}

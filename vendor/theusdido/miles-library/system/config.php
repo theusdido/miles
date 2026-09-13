@@ -50,6 +50,9 @@
 	$phpversion 	= (int)$_phpversion[0];
 	$phpbuild 		= (int)$_phpversion[1];
 	$phpcompilation	= isset($_phpversion[2])?(int)$_phpversion[2]:0;
+	$_controller	= paramsValue('controller');
+	$_page			= paramsValue('page');
+	$_op			= paramsValue('op');
 
 	$_session_isactive = false;
 	if ($phpversion >= 5 && $phpbuild > 3){
@@ -76,8 +79,8 @@
 		exit;
 	}
 
-	if (isset($_GET['controller']) && isset($_GET['op'])){
-		if ($_GET['controller'] == 'requisicoes' && $_GET['op'] == 'is_session_active'){
+	if (!empty($_controller) && isset($_GET['op'])){
+		if ($_controller == 'requisicoes' && $_GET['op'] == 'is_session_active'){
 			if (isset($_SESSION['userid'])){						
 				echo json_encode(true);
 			}else{
@@ -87,13 +90,17 @@
 		}
 	}
 
-	if (!isset($_env->database->config_file)){
-		echo 'Erro: Nome do arquivo de configuração do banco de dados não encontrado em miles.json.';
-		exit;
+	$is_page_install 			= strpos($_page ?? '','install') !== false ? true : false;
+	$is_controller_install 		= strpos($_controller ?? '','install') !== false ? true : false;
+	define('IS_INSTALLING', $is_controller_install || $is_page_install);
+	
+	if (!isset($_env->database->config_file) && !IS_INSTALLING){
+		showMessage('Erro: Nome do arquivo de configuração do banco de dados não encontrado em miles.json.');
+		exit;			
 	}
-
-	$_config_db 		= $_path_config_project . $_env->database->config_file .'_mysql.ini';
-
+	
+	$_env_database_config_file	= $_env->database->config_file;
+	$_config_db 				= $_path_config_project . $_env_database_config_file .'_mysql.ini';
 	if (file_exists($_config_db)){
 		$_db 		= parseIniFile($_config_db);
 		$_db_name 	= $_db['base'];
@@ -101,7 +108,7 @@
 		$_db_name 	= $_SESSION["db_base"];
 	}else{
 		$_db_name 	= '';
-	}
+	}	
 
 	try{
 		if (!defined('SCHEMA')){
@@ -110,7 +117,10 @@
 	}catch(Throwable $t){
 		showMessage('Arquivo do banco de dados não está configurado!');
 		exit;
-	}
+	}	
+
+	// Database Connection do Projeto
+	if (!defined("DATABASECONNECTION")) define("DATABASECONNECTION", $_env_database_config_file);
 
 	// Seta o ID do projeto atual
 	$_SESSION["currentproject"] = $currentProject;
@@ -227,9 +237,6 @@
 	// Navegador
 	define('BROWSER', getNavegador());
 
-	// Database Connection do Projeto
-	if (!defined("DATABASECONNECTION")) define("DATABASECONNECTION", $_env->database->config_file);
-
 	// Aumenta o tamanho máximo para upload em 200MB
 	ini_set('upload_max_filesize', '200M');
 
@@ -249,9 +256,12 @@
 		default:
 			$_dados	= json_decode(tdc::r('dados') == '' ? (tdc::r('_dados')==''?'{}':tdc::r('_dados')) : tdc::r('dados'));		
 	}
-
-	$controller 		= tdc::r("_controller") == '' ? tdc::r("controller") : tdc::r("_controller");
-	$_controller		= tdc::r("_controller",$controller); # Novo padrão com _ na frente
+	
+	// Se não existir o controller no GET, usa o padrão do tdc::r
+	if (empty($_controller)){
+		$controller 		= tdc::r("_controller") == '' ? tdc::r("controller") : tdc::r("_controller");
+		$_controller		= tdc::r("_controller",$controller); # Novo padrão com _ na frente
+	}
 
 	// Variável para valor padrão para verificação
 	$_value = tdc::r('_value');

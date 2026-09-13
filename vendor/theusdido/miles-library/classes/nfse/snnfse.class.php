@@ -392,12 +392,15 @@
 
             $inscricao_municipal = '';
             if (
-                $emissor_dps == 1 && 
+                ($emissor_dps == 1 && 
                 !$this->isTomadorPessoaFisica($cpf_tomador) &&
-                !$is_cadastro_cnc
+                !$is_cadastro_cnc) ||
+                $this->ambiente == 2
             ){
                 $inscricao_municipal = '<IM>1169</IM>';
             }
+
+            $inscricao_municipal = '<IM>1169</IM>';
             
             // Retorna a string XML
             return $this->limparStringXml('

@@ -1736,7 +1736,7 @@ function createDirectory($dir){
 	}
 }
 function getDescTipoConnection($typedatabase = null){
-    $typedatabase = $typedatabase==null?DATABASECONNECTION:$typedatabase;
+    $typedatabase = $typedatabase==null?(defined('DATABASECONNECTION')?DATABASECONNECTION:''):$typedatabase;
 	if (is_numeric($typedatabase)){
 		switch($typedatabase){
 			case 1: $tipo = "desenv"; break;

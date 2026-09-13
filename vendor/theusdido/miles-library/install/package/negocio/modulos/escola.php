@@ -22,6 +22,14 @@
             array('name' => 'atividade' , 'title' => 'Atividade'),
             array('name' => 'aula' , 'title' => 'Aula'),
             array('name' => 'chamada' , 'title' => 'Chamada'),
+            array('name' => 'metodologia' , 'title' => 'Metodologia'),
+            array('name' => 'assunto' , 'title' => 'Assunto'),
+            array('name' => 'sequenciadidatica' , 'title' => 'Sequencia Didática')
+        )
+    ),
+    array( "name" => "avaliacao", "title" => "Avaliação", "components" =>
+        array(
+
             array('name' => 'avaliacao' , 'title' => 'Avaliação'),
             array('name' => 'criterioavaliacao' , 'title' => 'Critério de Avaliação'),
             array('name' => 'instrumentoavaliacao' , 'title' => 'Instrumento de Avaliação'),
@@ -29,12 +37,9 @@
             array('name' => 'avaliacaoturma' , 'title' => 'Avaliação da Turma'),
             array('name' => 'avaliacaoaluno' , 'title' => 'Avaliação do Aluno(a)'),
             array('name' => 'avaliacaofeedback' , 'title' => 'Feedback da Avaliação'),
-            array('name' => 'avaliacaofeedbackcriterio' , 'title' => 'Feedback dos Critérios da Avaliação'),
-            array('name' => 'metodologia' , 'title' => 'Metodologia'),
-            array('name' => 'assunto' , 'title' => 'Assunto'),
-            array('name' => 'sequenciadidatica' , 'title' => 'Sequencia Didática')
+            array('name' => 'avaliacaofeedbackcriterio' , 'title' => 'Feedback dos Critérios da Avaliação')
         )
-    ),
+    ),    
     array( "name" => "itinerarioformativo", "title" => "Itinerario Formativo", "components" =>
         array(
             array('name' => 'competencia' , 'title' => 'Competência'),
@@ -43,7 +48,8 @@
             array('name' => 'objetivoespecifico' , 'title' => 'Objetivos Específicos'),
             array('name' => 'unidadecurricular' , 'title' => 'Unidade Curricular'),
             array('name' => 'trilha' , 'title' => 'Trilha'),
-            array('name' => 'eixo' , 'title' => 'Eixo')
+            array('name' => 'eixo' , 'title' => 'Eixo'),
+            array('name' => 'referencia' , 'title' => 'Referência')
         )
     ),
     array( "name" => "planoensino", "title" => "Plano de Ensino", "components" =>
