@@ -15,6 +15,8 @@ class SqlCriterio extends SqlExpressao {
 	public $expressao;
 	public $operador;
 	public $propriedade;
+	public static $IS_CRITERIA_ACTIVE_ONLY = 'TD_CRITERIA_ACTIVE_ONLY';
+	public static $IS_CRITERIA_INACTIVE_ONLY = 'TD_CRITERIA_INACTIVE_ONLY';
 	
 	/*  
 		* Método Add
@@ -121,14 +123,19 @@ class SqlCriterio extends SqlExpressao {
 		Retorno um filtro padrão para listar apenas os registros ativos
 	*/		
 	public function onlyActive(){
-		$sql = tdClass::Criar("sqlcriterio");
-		$filtroZero = tdClass::Criar("sqlfiltro",array("inativo","=",0));
-		$filtroNull = tdClass::Criar("sqlfiltro",array("inativo","IS",NULL));
-		$sql->add($filtroZero);
-		$sql->add($filtroNull,OU);		
-		$this->add($sql);
-		return $sql;
+		return $this->add(self::getCriterioActiveOnly());
 	}
+
+	/*  
+		* Método onlyInactive
+	    * Data de Criacao: 13/09/2020
+	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
+		
+		Retorno um filtro padrão para listar apenas os registros inativos
+	*/		
+	public function onlyInactive(){
+		return $this->add(self::getCriterioInactiveOnly());
+	}	
 	
 	/*  
 		* Método onlyOne 
@@ -225,5 +232,35 @@ class SqlCriterio extends SqlExpressao {
 	public function order($atributo = 'id',$order = 'ASC')
 	{
 		$this->setPropriedade("order",$atributo . " " . $order);		
+	}
+
+	/*  
+		* Método getCriterioActiveOnly
+	    * Data de Criacao: 13/09/2026
+	    * Author @theusdido
+
+		Retorna o criterio para registros ativos
+	*/
+	public static function getCriterioActiveOnly(){
+		$criterio = tdClass::Criar("sqlcriterio");
+		$filtroZero = tdClass::Criar("sqlfiltro",array("inativo","=",0));
+		$filtroNull = tdClass::Criar("sqlfiltro",array("inativo","IS",NULL));
+		$criterio->add($filtroZero);
+		$criterio->add($filtroNull,OU);				
+		return $criterio;
+	}
+
+	/*  
+		* Método getCriterioInactiveOnly
+	    * Data de Criacao: 13/09/2026
+	    * Author @theusdido
+
+		Retorna o criterio para registros inativos
+	*/
+	public static function getCriterioInactiveOnly(){
+		$criterio = tdClass::Criar("sqlcriterio");
+		$filtroZero = tdClass::Criar("sqlfiltro",array("inativo","=",1));		
+		$criterio->add($filtroZero);
+		return $criterio;
 	}
 }

@@ -356,25 +356,8 @@ if (typeof $().mask == "function"){
 	}
 	
 	if (typeof $.fn.maskMoney === "function"){
-
-		// Moeda
-		$(".formato-moeda").maskMoney({
-			symbol:"R$", 
-			thousands:".", 
-			decimal:",",
-			symbolStay: true,
-			showSymbol:true
-		});
-
-		// Número Decimal
-		$(".formato-numerodecimal").maskMoney({
-			symbol:"", 
-			thousands:"", 
-			decimal:",", 
-			symbolStay: false,
-			showSymbol:false, 
-			precision:casasdecimais
-		});
+		setFormatoMoeda();
+		setFormatoNumeroDecimal();
 	}
 
 	// Número Processo Judicial
@@ -462,4 +445,28 @@ if (typeof $().mask == "function"){
 	
 	// Hora
 	$(".formato-hora").mask("99:99:99");
+
+	function setFormatoMoeda(){
+		// Moeda
+		$(".formato-moeda").maskMoney({
+			symbol:"R$", 
+			thousands:".", 
+			decimal:",",
+			symbolStay: true,
+			showSymbol:true,
+			precision:casasdecimais
+		});
+	}
+
+	function setFormatoNumeroDecimal(precisao = null){
+		// Número Decimal
+		$(".formato-numerodecimal").maskMoney({
+			symbol:"", 
+			thousands:"", 
+			decimal:",", 
+			symbolStay: false,
+			showSymbol:false, 
+			precision:precisao == null ? casasdecimais : precisao
+		});		
+	}
 }

@@ -21,6 +21,7 @@ class gerarHTML {
     }
 
     pagina(_html){
+        if (typeof td_entidade[this._entidade_id] == 'undefined') return false;
         $.ajax({
             url:session.urlmiles,
             type:"POST",

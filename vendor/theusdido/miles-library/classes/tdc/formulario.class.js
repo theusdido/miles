@@ -565,12 +565,18 @@ tdFormulario.prototype.setBotoes = function(){
 }
 
 tdFormulario.prototype.loadGrade = function(){
-	this.getGrade().show();
+	let _grade = this.getGrade();
+	if (_grade != null){
+		_grade.show();
+	}
 }
 tdFormulario.prototype.voltar = function(){
 
 	if (this.is_principal){
-		this.getGrade().show();
+		let _grade = this.getGrade();
+		if (_grade != null){
+			_grade.show();
+		}
 	}
 
 	$(this.getContexto()).hide();

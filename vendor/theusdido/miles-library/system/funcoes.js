@@ -228,33 +228,51 @@ function retornaFiltroDescricao(entidade,atributo,id){
 	});
 	return r;
 }
-function statusFormControl(campo,tipo){
+function statusFormControl(campo,options){
+	let tipo = '';
+	let feedback = '';
+	if (typeof options === 'string'){
+		tipo = options;
+		feedback = '';
+	}else if(typeof options === 'object'){
+		tipo = options.tipo != undefined ? options.tipo : '';
+		feedback = options.feedback != undefined ? options.feedback : '';
+	}
 	$('.status-'+$(campo).attr("id")).remove();
 	switch (tipo){
 		case 'success':
 			if (!$(campo).parent().hasClass("calendar-picker-group")){
 				$(campo).parent().addClass('has-success has-feedback');
 				$(campo).parent().removeClass('has-error');
-				$(campo).parent().prepend(
-					'<span class=\"fas fa-check form-control-feedback status-'+$(campo).attr("id")+'\" aria-hidden=\"true\"></span>' +
-					'<span class=\"sr-only status-'+$(campo).attr("id")+'\">(success)</span>'
-				);							
+				$(campo).removeClass("is-invalid");
+				$(campo).addClass("is-valid");
+				//$(campo).parent().prepend(
+				//	'<span class=\"fas fa-check form-control-feedback status-'+$(campo).attr("id")+'\" aria-hidden=\"true\"></span>' +
+				//	'<span class=\"sr-only status-'+$(campo).attr("id")+'\">(success)</span>'
+				//);							
 			}else{
 				$(campo).parent().parent().addClass('has-success has-feedback');
 				$(campo).parent().parent().removeClass('has-error');
+				$(campo).removeClass("is-invalid");
+				$(campo).addClass("is-valid");				
 			}		
 		break;
 		case 'error':
 			if (!$(campo).parent().hasClass("calendar-picker-group")){
 				$(campo).parent().addClass('has-error has-feedback');
 				$(campo).parent().removeClass('has-success');
-				$(campo).parent().prepend(
-					'<span class=\"fas fa-times form-control-feedback status-'+$(campo).attr("id")+'\" aria-hidden=\"true\"></span>' +
-					'<span class=\"sr-only status-'+$(campo).attr("id")+'\">(error)</span>'
-				);
+				$(campo).removeClass("is-valid");
+				$(campo).addClass("is-invalid");
+				//$(campo).parent().append($('<div class="invalid-feedback">'+feedback+'</div>'));
+				//$(campo).parent().prepend(
+				//	'<span class=\"fas fa-times form-control-feedback status-'+$(campo).attr("id")+'\" aria-hidden=\"true\"></span>' +
+				//	'<span class=\"sr-only status-'+$(campo).attr("id")+'\">(error)</span>'
+				//);
 			}else{
 				$(campo).parent().parent().addClass('has-error has-feedback');
 				$(campo).parent().parent().removeClass('has-success');	
+				$(campo).removeClass("is-valid");
+				$(campo).addClass("is-invalid");				
 			}
 		break;
 		case 'default':
@@ -262,9 +280,13 @@ function statusFormControl(campo,tipo){
 			if (!$(campo).parent().hasClass("calendar-picker-group")){
 				$(campo).parent().removeClass('has-success');
 				$(campo).parent().removeClass('has-error');
+				$(campo).removeClass("is-invalid");
+				$(campo).removeClass("is-valid");
 			}else{
 				$(campo).parent().parent().removeClass('has-success');
-				$(campo).parent().parent().removeClass('has-error');				
+				$(campo).parent().parent().removeClass('has-error');
+				$(campo).removeClass("is-invalid");
+				$(campo).removeClass("is-valid");
 			}	
 		break;	
 	}

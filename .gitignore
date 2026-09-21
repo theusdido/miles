@@ -26,7 +26,12 @@ firebase.json
 projects/
 agents/
 gemini.md
-php_error.logprojects/
+php_error.log
+projects/
 agents/
 gemini.md
 php_error.log
+sistema/
+debug.txt
+bootstrap-4.3.1-dist/
+.env

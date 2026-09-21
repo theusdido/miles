@@ -36,6 +36,7 @@
             array('name' => 'avaliacaotipo' , 'title' => 'Tipo de Avaliação'),
             array('name' => 'avaliacaoturma' , 'title' => 'Avaliação da Turma'),
             array('name' => 'avaliacaoaluno' , 'title' => 'Avaliação do Aluno(a)'),
+            array('name' => 'avaliacaonota' , 'title' => 'Nota da Avaliação'),
             array('name' => 'avaliacaofeedback' , 'title' => 'Feedback da Avaliação'),
             array('name' => 'avaliacaofeedbackcriterio' , 'title' => 'Feedback dos Critérios da Avaliação')
         )

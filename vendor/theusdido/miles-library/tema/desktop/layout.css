@@ -98,6 +98,12 @@ legend {
 .has-feedback > .glyphicon{
 	margin-right:0;
 }
+
+.has-feedback .form-control-feedback
+{
+	position: absolute !important;
+}
+
 #userinfo img , #userinfo > h4 {
 	float:right;
 	text-align:right;

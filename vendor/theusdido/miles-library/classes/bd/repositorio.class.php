@@ -34,20 +34,8 @@ final class Repositorio {
 		Recupera um conjunto de objetos(coleção) da base de dados através de uma critério de seleção, e instanciá-los em memória
 		@params criterio
 	*/		
-	public function carregar(){
-		if (func_num_args() <= 0 || func_get_arg(0) == null){		
-			$criterio = tdClass::Criar("sqlcriterio");
-		}else{
-			$criterio = func_get_arg(0);
-			if (gettype($criterio) != "object"){
-				echo "Argumento inválido";
-				return false;
-			}
-			if (get_class($criterio) != "SqlCriterio"){
-				echo "Argumento inválido";
-				return false;				
-			}
-		}
+	public function carregar($criterio = null){
+		$criterio 	= self::getCriterioArg($criterio);		
 		$resultados	= array();
 		$sql 		= tdClass::Criar("sqlselecionar");
 		$sql->setEntidade($this->classe);
@@ -130,17 +118,8 @@ final class Repositorio {
 		
 		Retorna se os dados em forma de array
 	*/
-	public function getDataArray(){	
-			if (func_num_args() <= 0 || func_get_arg(0) == null){		
-			$criterio = tdClass::Criar("sqlcriterio");
-		}else{
-			$criterio = func_get_arg(0);
-			if (gettype($criterio) != "object" && get_class($criterio) != "SqlCriterio"){
-				echo "Argumento inválido";
-				return false;
-			}
-		}
-
+	public function getDataArray($criterio = null){	
+		$criterio 	= self::getCriterioArg($criterio);
 		$resultados	= array();
 		$sql 		= tdClass::Criar("sqlselecionar");
 		$sql->setEntidade($this->classe);
@@ -172,5 +151,35 @@ final class Repositorio {
 		}else{
 			return true;
 		}
-	}	
+	}
+
+	/*  
+		* Método getCriterioArg
+	    * Data de Criacao: 13/09/2026
+	    * @author Edilson Valentim dos Santos Bitencourt (Theusdido)
+		
+		Retorna um criterio vazio caso nenhum seja passado por patâmetro
+	*/
+	private static function getCriterioArg($func_get_arg = null){
+		if ($func_get_arg === null){
+			return tdClass::Criar("sqlcriterio");
+		}
+		$criterio_type = gettype($func_get_arg);
+
+		if ($criterio_type == 'string'){
+			if ($func_get_arg == SqlCriterio::$IS_CRITERIA_ACTIVE_ONLY){
+				return SqlCriterio::getCriterioActiveOnly();
+			}else if ($func_get_arg == SqlCriterio::$IS_CRITERIA_INACTIVE_ONLY){
+				return SqlCriterio::getCriterioInactiveOnly();
+			}else{
+				echo "Argumento do critério do repositório inválido.";
+				return false;
+			}
+		}else if ($criterio_type != "object" || !($func_get_arg instanceof SqlCriterio)){			
+			echo "Argumento do critério do repositório inválido.";
+			return false;
+		}else{
+			return $func_get_arg;
+		}
+	}
 }	

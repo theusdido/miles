@@ -1,0 +1,19 @@
+#tabela-lista-alunos .th-numero
+{
+    width:5%;
+}
+
+#tabela-lista-alunos .th-matricula
+{
+    width:15%;
+}
+
+#tabela-lista-alunos .th-estudante
+{
+    width:70%;
+}
+
+#tabela-lista-alunos .th-nota
+{
+    width:10%;
+}
